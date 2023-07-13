@@ -1,0 +1,72 @@
+// import 'dart:html'L
+import 'package:flutter/material.dart';
+
+import 'models/curso.dart';
+import 'models/modulo.dart';
+
+
+const String pkStripe = 'pk_test_51NCcdnGhOVgj1hOFzlJboe8kgzH1VX1rvTVqG8PiC5jLTrGXs1bQzwFdXgCJO3y8Ba8dWzaq7VqwtP3O6ph2gISg001gyqcNha';
+const String skStripe = 'sk_test_51NCcdnGhOVgj1hOFz0oLPJyzTrmV6vHGVP6wLuZ5cz9rOqGKP9O8CqHBwTBPusa4mI5xz1BHKRORu1GiwVWM1CfV00F85lS9Jb';
+
+const Color bgColor = Color(0xff00041C);
+const Color blancoText = Color(0xFFffffff);
+const Color azulText = Color(0xff15E0FB);
+const Color verdeBorde = Color(0xff9BCB6C);
+const NetworkImage logoGrande = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575762/logogrande_s3thla.png');
+const NetworkImage logoJp = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575763/logojp_ykatas.png');
+const String regaloDescargaUrl = 'https://drive.google.com/file/d/1X3-E_xPYIMWY3iDwHQeWz3tkYyWU3A3I/view?usp=sharing';
+const NetworkImage planetaI = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575459/planetai_pqplnw.png');
+const NetworkImage planetaM = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575890/planetam_uhn6yw.png');
+const NetworkImage planetaF = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575763/planetaf_u3oxbf.png');
+const NetworkImage circulo = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575764/circulo_mvprhd.png');
+const NetworkImage baseGif = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575766/base_pphf0f.gif');
+const NetworkImage rocketGif = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680631413/rocket_aaqsxb.gif');
+const NetworkImage ufoGif = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680631408/ufo_k0zbvx.gif');
+const NetworkImage bgContacto = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575765/bgcontact_lxwbfo.png');
+const NetworkImage bgEncargado = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575765/encargadobg_tzl7ci.png');
+const NetworkImage bgMentoria = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575763/mentoriabg_gdiec1.png');
+const NetworkImage bgAsesoria = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680651215/asesoriabg_tewxpf.png');
+const NetworkImage bgConferencia = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575765/conferenciasbg_cr2xtz.png');
+const NetworkImage iconInsta = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680651763/iconInsta_p5m2nu.png');
+const NetworkImage iconFb = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680652723/logo-facebook_my0xq6.png');
+const NetworkImage iconTiktok = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575762/logo-tiktok_fw3bfo.png');
+const NetworkImage bgHome = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575764/bghome_tnmrqj.png');
+const NetworkImage adsCircle = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575763/ADS_h72ur3.png');
+const NetworkImage arrDown = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575763/arr-down_ywdc5o.png');
+const String noimage = 'https://res.cloudinary.com/dyxt5lhzw/image/upload/v1686363837/noimage_mpl4wc.jpg';
+
+final List<String> resultados = [
+  'https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680631665/result3_xmkh0q.png',
+  'https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680631664/result2_d2p20i.png',
+  'https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680631665/result3_xmkh0q.png'
+];
+
+Curso cursoDummy = Curso(
+    duracion: '0',
+    estado: true,
+    createdAt: DateTime.now(),
+    updatedAt: DateTime.now(),
+    descripcion: '',
+    img: '',
+    modulos: [
+      Modulo(
+        createdAt: DateTime.now(),
+        updatedAt: DateTime.now(),
+        coments: [],
+        estado: true,
+        img: '',
+        video:
+            'https://static.vecteezy.com/system/resources/previews/004/844/749/mp4/icon-loading-round-gradient-angle-loop-out-animation-with-dark-background-gradient-line-style-for-game-animation-and-others-free-video.mp4',
+        id: 'id',
+        nombre: '',
+        descripcion: '',
+        curso: '',
+        usuario: '',
+        descarga: '',
+      )
+    ],
+    nombre: 'nombre',
+    subtitle: '',
+    usuario: '',
+    id: '',
+  );
