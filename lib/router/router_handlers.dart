@@ -12,8 +12,8 @@ import 'package:jpdirector_frontend/ui/views/admin_dash/cursos_admin_view.dart';
 import 'package:jpdirector_frontend/ui/views/admin_dash/forms_admin_view.dart';
 import 'package:jpdirector_frontend/ui/views/admin_dash/leads_admin_view.dart';
 import 'package:jpdirector_frontend/ui/views/admin_dash/users_admin_view.dart';
-import 'package:jpdirector_frontend/ui/views/home_body.dart';
-import 'package:jpdirector_frontend/ui/views/home_views/checkout_ads/new_curso_checkout.dart';
+import 'package:jpdirector_frontend/ui/views/home_views/home_body.dart';
+import 'package:jpdirector_frontend/ui/views/landing/landing_curso.dart';
 import 'package:jpdirector_frontend/ui/views/static/checkout_thx_view.dart';
 import 'package:jpdirector_frontend/ui/views/static/new_password.dart';
 import 'package:jpdirector_frontend/ui/views/static/reset_password.dart';
@@ -91,6 +91,23 @@ class VisitorHandlers {
       );
     },
   );
+  static Handler cursoLanding = Handler(
+    handlerFunc: (context, params) {
+      final id = params['cursoId']?.first ?? '';
+      return FutureBuilder(
+        future: Provider.of<AllCursosProvider>(context!, listen: false).getCursosById(id),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(child: SizedBox(width: 35, height: 35, child: CircularProgressIndicator()));
+          }
+
+          return LandingCurso(
+            cursoID: id,
+          );
+        },
+      );
+    },
+  );
 
   static Handler payNewUser = Handler(
     handlerFunc: (context, params) {
@@ -112,7 +129,8 @@ class VisitorHandlers {
 
         return CreateUserCheckout(cursoId: cursoId, priceId: baner?.priceId ?? '', state: state);
       } else {
-        return const NewCursoCheckout();
+        // return const NewCursoCheckout();
+        return const Placeholder();
       }
     },
   );
@@ -133,7 +151,7 @@ class VisitorHandlers {
     if (page == 'home') {
       return const HomeBody(index: 0);
     }
-    if (page == 'ads') {
+    if (page == 'cursos') {
       return const HomeBody(index: 1);
     }
     if (page == 'servicios') {
@@ -229,11 +247,21 @@ class UsersAuthHandlers {
     final videoIndex = params['videoIndex']!.first;
 
     if (cursoID.isEmpty) return const DashMisCursosView();
+
     final authProvider = Provider.of<AuthProvider>(context!, listen: false);
 
-    if (authProvider.authStatus == AuthStatus.notAuthenticated) return const HomeBody();
+    if (authProvider.authStatus == AuthStatus.notAuthenticated) return const LoginPage();
 
-    //
+    if (!authProvider.user!.cursos.contains(cursoID)) {
+      return FutureBuilder(
+        // future: Provider.of<AllCursosProvider>(context, listen: false).getCursosById(cursoID),
+        builder: (context, snapshot) {
+          return LandingCurso(
+            cursoID: cursoID,
+          );
+        },
+      );
+    }
 
     return FutureBuilder(
       future: Provider.of<AllCursosProvider>(context, listen: false).getCursosById(cursoID),
@@ -264,14 +292,6 @@ class UsersAuthHandlers {
     Provider.of<SideBarProvider>(context!, listen: false).setCurrentPageUrl('');
     return const PdpView();
   });
-
-//   static Handler recovery = Handler(handlerFunc: (context, params) {
-//     final authProvider = Provider.of<AuthProvider>(context!, listen: false);
-//     if (authProvider.authStatus == AuthStatus.notAuthenticated)
-//       return RecoverypassPage();
-//     else
-//       return DashMiCuenta();
-//   });
 
   // DASHBOARD
 
@@ -346,12 +366,3 @@ class AdminHandlers {
     }
   });
 }
-//   static Handler clienteConfiguracionDash = Handler(handlerFunc: (context, params) {
-//     final authProvider = Provider.of<AuthProvider>(context!);
-//     Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.clienteConfiguracionDash);
-//     if (authProvider.authStatus == AuthStatus.notAuthenticated)
-//       return LoginPage();
-//     else
-//       return DashConfiguracionView();
-//   });
-// }

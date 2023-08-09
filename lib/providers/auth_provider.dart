@@ -46,7 +46,7 @@ class AuthProvider extends ChangeNotifier {
     JpApi.post('/auth/login', data).then((json) {
       final authResponse = AuthResponse.fromJson(json);
       if (!authResponse.usuario.estado) {
-        NotificationServices.showSnackbarError('Debe verificar su cuenta, Revise su correo Electrónico', Colors.red);
+        NotifServ.showSnackbarError('Debe verificar su cuenta, Revise su correo Electrónico', Colors.red);
         NavigatorService.replaceTo(Flurorouter.loginRoute);
         isLoading = false;
         notifyListeners();
@@ -63,7 +63,7 @@ class AuthProvider extends ChangeNotifier {
       notifyListeners();
     }).catchError((e) {
       isLoading = false;
-      NotificationServices.showSnackbarError('Credenciales Invalidas', Colors.red);
+      NotifServ.showSnackbarError('Credenciales Invalidas', Colors.red);
       notifyListeners();
     });
   }
@@ -90,7 +90,7 @@ class AuthProvider extends ChangeNotifier {
       notifyListeners();
       return true;
     } catch (e) {
-      NotificationServices.showSnackbarError('Token invalido', Colors.red);
+      NotifServ.showSnackbarError('Token invalido', Colors.red);
       authStatus = AuthStatus.notAuthenticated;
       isLoading = false;
       notifyListeners();
@@ -117,7 +117,7 @@ class AuthProvider extends ChangeNotifier {
       _token = authResponse.token;
 
       if (!user!.estado) {
-        NotificationServices.showSnackbarError('Gracias por registrarte, revisa tu correo para verificar tu cuenta', Colors.green);
+        NotifServ.showSnackbarError('Gracias por registrarte, revisa tu correo para verificar tu cuenta', Colors.green);
         NavigatorService.navigateTo(Flurorouter.loginRoute);
         isLoading = false;
         notifyListeners();
@@ -132,7 +132,7 @@ class AuthProvider extends ChangeNotifier {
     }).catchError((e) {
       isLoading = false;
       notifyListeners();
-      NotificationServices.showSnackbarError('Correo ya existe. ir al Log in', Colors.red);
+      NotifServ.showSnackbarError('Correo ya existe. ir al Log in', Colors.red);
     });
   }
 
@@ -161,7 +161,9 @@ class AuthProvider extends ChangeNotifier {
     try {
       final resp = await JpApi.post('/auth/sendresetpass/$email', {});
 
-      if (resp['msg'] == 'ok') return true;
+      if (resp['msg'] == 'ok') {
+        return true;
+      }
       return false;
     } catch (e) {
       return false;
@@ -175,7 +177,7 @@ class AuthProvider extends ChangeNotifier {
       user = Usuario.fromJson(json);
       notifyListeners();
     } catch (e) {
-      NotificationServices.showSnackbarError('Ocurrio algun error', Colors.red);
+      NotifServ.showSnackbarError('Ocurrio algun error', Colors.red);
     }
   }
 }

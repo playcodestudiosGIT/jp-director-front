@@ -8,6 +8,7 @@ import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
+import '../models/curso.dart';
 import '../models/usuario_model.dart';
 import '../providers/users_provider.dart';
 import '../services/notificacion_service.dart';
@@ -36,11 +37,14 @@ class UsersDTS extends DataTableSource {
                 backgroundImage: (user.img != '') ? NetworkImage(user.img) : const NetworkImage('url'),
               ),
             ),
-            if(user.rol == 'ADMIN_ROLE')
-            const Positioned(
-              top: 0,
-              right: 0,
-              child: Icon(Icons.star, color: Colors.amberAccent,)),
+            if (user.rol == 'ADMIN_ROLE')
+              const Positioned(
+                  top: 0,
+                  right: 0,
+                  child: Icon(
+                    Icons.star,
+                    color: Colors.amberAccent,
+                  )),
             const Positioned(
                 bottom: 0,
                 right: 0,
@@ -100,7 +104,6 @@ class UsersDTS extends DataTableSource {
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      
                       const SizedBox(width: 8),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -176,20 +179,19 @@ class UsersDTS extends DataTableSource {
           children: [
             ...user.cursos.map((e) {
               final allCursosProvider = Provider.of<AllCursosProvider>(context, listen: false);
-              final curso = allCursosProvider.obtenerCurso(e);
+              final Curso curso = allCursosProvider.obtenerCurso(e);
+              if (curso.img == "") return Container();
               return Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                        child: Row(
-                          children: [
-                            if(curso.img == "")
-                            const Image(image: NetworkImage(noimage), width: 25),
-                            if (curso.img != "")
-                            Image(image: NetworkImage(curso.img), width: 25),
-                            const SizedBox(width: 10),
-                            Text(curso.nombre),
-                          ],
-                        ),
-                      );
+                margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                child: Row(
+                  children: [
+                    if (curso.img == "") const Image(image: NetworkImage(noimage), width: 25),
+                    if (curso.img != "") Image(image: NetworkImage(curso.img), width: 25),
+                    const SizedBox(width: 10),
+                    Text(curso.nombre),
+                  ],
+                ),
+              );
             })
           ],
         ),
@@ -207,13 +209,12 @@ class UsersDTS extends DataTableSource {
 
                 if (isAct && context.mounted) {
                   await Provider.of<UsersProvider>(context, listen: false).getPaginatedUsers();
-                  
                 }
               },
               icon: const Icon(
                 Icons.edit_outlined,
                 size: 16,
-                color: bgColor,
+                color: azulText,
               )),
           IconButton(
               onPressed: () {
@@ -233,10 +234,10 @@ class UsersDTS extends DataTableSource {
 
                           if (isDelete && context.mounted) {
                             Navigator.of(context).pop();
-                            NotificationServices.showSnackbarError('Usuario "${user.nombre}" Eliminado', Colors.green);
+                            NotifServ.showSnackbarError('Usuario "${user.nombre}" Eliminado', Colors.green);
                           } else {
                             Navigator.of(context).pop();
-                            NotificationServices.showSnackbarError('Error Eliminando Usuario', Colors.red);
+                            NotifServ.showSnackbarError('Error Eliminando Usuario', Colors.red);
                           }
                         },
                         child: const Text('Si, Borrar'))
@@ -285,7 +286,7 @@ class UsersDTS extends DataTableSource {
       if (context.mounted) Provider.of<UsersProvider>(context, listen: false).getPaginatedUsers();
 
       notifyListeners();
-      NotificationServices.showSnackbarError('cambiada con exito', Colors.green);
+      NotifServ.showSnackbarError('cambiada con exito', Colors.green);
     } else {
       // User canceled the picker
     }

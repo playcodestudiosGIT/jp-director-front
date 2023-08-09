@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/providers/users_provider.dart';
 import 'package:jpdirector_frontend/ui/shared/botones/custom_button.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/title_label.dart';
 
 import 'package:provider/provider.dart';
 
@@ -65,7 +66,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
     // }
 
     return Container(
-      color: bgColor,
+      // color: bgColor,
       padding: (wScreen < 715) ? const EdgeInsets.only(left: 45) : const EdgeInsets.only(left: 10),
       child: ListView(
         physics: const ClampingScrollPhysics(),
@@ -73,121 +74,117 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
           const SizedBox(
             height: 80,
           ),
-          Text(
-            'Mi Cuenta',
-            style: DashboardLabel.h1,
-          ),
+          const TitleLabel(texto: 'Mi Cuenta'),
           const SizedBox(
             height: 10,
           ),
-          Container(
-              child: Wrap(
+          Wrap(
             alignment: WrapAlignment.center,
             spacing: 30,
             runSpacing: 30,
             children: [
-              CircleAvatar(
-                backgroundColor: Colors.transparent,
-                radius: 100,
-                child: Stack(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
-                      child: Image.network(
-                        authProvider.user!.img,
-                        width: 250,
-                      ),
-                    ),
-                    Positioned(
-                      right: 0,
-                      bottom: 0,
-                      child: MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: GestureDetector(
-                          onTap: () => pickImage(context, authProvider.user!.uid),
-                          child: Container(
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(color: const Color(0xff021E36), borderRadius: BorderRadius.circular(14)),
-                              width: 57,
-                              height: 44,
-                              child: const Icon(
-                                Icons.flip_camera_ios_outlined,
-                                color: azulText,
-                                size: 35,
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
+          CircleAvatar(
+            backgroundColor: Colors.transparent,
+            radius: 100,
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Image.network(
+                    authProvider.user!.img,
+                    width: 250,
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: 250,
-                height: 200,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Positioned(
+                  right: 0,
+                  bottom: 0,
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      onTap: () => pickImage(context, authProvider.user!.uid),
+                      child: Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(color: const Color(0xff021E36), borderRadius: BorderRadius.circular(14)),
+                          width: 57,
+                          height: 44,
+                          child: const Icon(
+                            Icons.flip_camera_ios_outlined,
+                            color: azulText,
+                            size: 35,
+                          )),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            width: 250,
+            height: 200,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Spacer(),
+                Text(
+                  '${authProvider.user!.nombre} ${authProvider.user!.apellido}',
+                  textAlign: TextAlign.start,
+                  style: GoogleFonts.roboto(fontSize: 26, fontWeight: FontWeight.w900, color: blancoText),
+                ),
+                const SizedBox(height: 8),
+                Row(
                   children: [
-                    const Spacer(),
+                    Icon(Icons.email_outlined, color: Colors.white.withOpacity(0.3)),
+                    const SizedBox(width: 8),
                     Text(
-                      '${authProvider.user!.nombre} ${authProvider.user!.apellido}',
+                      authProvider.user!.correo,
                       textAlign: TextAlign.start,
-                      style: GoogleFonts.roboto(fontSize: 26, fontWeight: FontWeight.w900, color: blancoText),
+                      style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w300, color: blancoText),
                     ),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Icon(Icons.email_outlined, color: Colors.white.withOpacity(0.3)),
-                        const SizedBox(width: 8),
-                        Text(
-                          authProvider.user!.correo,
-                          textAlign: TextAlign.start,
-                          style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w300, color: blancoText),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Icon(Icons.phone_outlined, color: Colors.white.withOpacity(0.3)),
-                        const SizedBox(width: 8),
-                        Text(
-                          authProvider.user!.telf,
-                          textAlign: TextAlign.start,
-                          style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w300, color: blancoText),
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
                   ],
                 ),
-              ),
-              Container(
-                constraints: const BoxConstraints(maxWidth: 600, minWidth: 370, minHeight: 130),
-                padding: const EdgeInsets.all(20),
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                height: 150,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(22), color: blancoText.withOpacity(0.1)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                const SizedBox(height: 8),
+                Row(
                   children: [
-                    const Text(
-                      'Sobre mi.',
-                      style: TextStyle(color: blancoText, fontSize: 18),
-                      textAlign: TextAlign.start,
-                    ),
-                    const SizedBox(height: 15),
+                    Icon(Icons.phone_outlined, color: Colors.white.withOpacity(0.3)),
+                    const SizedBox(width: 8),
                     Text(
-                      authProvider.user!.me,
-                      maxLines: 5,
-                      style: const TextStyle(color: blancoText),
+                      authProvider.user!.telf,
                       textAlign: TextAlign.start,
+                      style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w300, color: blancoText),
                     ),
                   ],
                 ),
-              ),
+                const Spacer(),
+              ],
+            ),
+          ),
+          Container(
+            constraints: const BoxConstraints(maxWidth: 600, minWidth: 370, minHeight: 130),
+            padding: const EdgeInsets.all(20),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            height: 150,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(22), color: blancoText.withOpacity(0.1)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Sobre mi.',
+                  style: TextStyle(color: blancoText, fontSize: 18),
+                  textAlign: TextAlign.start,
+                ),
+                const SizedBox(height: 15),
+                Text(
+                  authProvider.user!.me,
+                  maxLines: 5,
+                  style: const TextStyle(color: blancoText),
+                  textAlign: TextAlign.start,
+                ),
+              ],
+            ),
+          ),
             ],
-          )),
+          ),
           const SizedBox(
             height: 15,
           ),
@@ -195,7 +192,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
             children: [
               CustomButton(
                 text: 'Actualizar Información',
-                width: 170,
+                width: 200,
                 onPress: () async {
                   final dialog = AlertDialog(
                     backgroundColor: bgColor,
@@ -349,10 +346,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
               margin: const EdgeInsets.symmetric(horizontal: 15),
               child: Column(
                 children: [
-                  Text(
-                    'Redes Sociales',
-                    style: DashboardLabel.h1,
-                  ),
+                  const TitleLabel(texto: 'Redes Sociales'),
                   const SizedBox(
                     height: 25,
                   ),
@@ -418,7 +412,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                   ),
                   CustomButton(
                     text: 'Actualizar redes sociales',
-                    width: 190,
+                    width: 215,
                     onPress: () {
                       final dialog = AlertDialog(
                         backgroundColor: bgColor,
@@ -619,7 +613,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
           Provider.of<AuthProvider>(context, listen: false).user!.img = img.toString();
         });
       }
-      NotificationServices.showSnackbarError('cambiada con exito', Colors.green);
+      NotifServ.showSnackbarError('cambiada con exito', Colors.green);
     } else {
       // User canceled the picker
     }

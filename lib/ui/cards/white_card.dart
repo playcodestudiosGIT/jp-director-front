@@ -26,7 +26,7 @@ class WhiteCard extends StatelessWidget {
               children: [
                 Text(
                   title!,
-                  style: DashboardLabel.h3.copyWith(color: bgColor),
+                  style: DashboardLabel.h3,
                 ),
                 
                 Row(
@@ -40,7 +40,7 @@ class WhiteCard extends StatelessWidget {
                       onPress: () {
                         Scaffold.of(context).openEndDrawer();
                       },
-                      width: 140,
+                      width: 160,
                       icon: Icons.comment,
                     ),
                     if(size.width <= 500)
@@ -65,5 +65,5 @@ class WhiteCard extends StatelessWidget {
   }
 
   BoxDecoration buildBoxDecoration() => BoxDecoration(
-      color: blancoText, borderRadius: BorderRadius.circular(5), boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 5)]);
+      color: bgColor, borderRadius: BorderRadius.circular(5), boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 5)]);
 }

@@ -4,13 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../constant.dart';
 
-
 class CustomMenuItem extends StatefulWidget {
   final String text;
   final Function onPressed;
   final int delay;
+  final double width;
+  final double padding;
 
-  const CustomMenuItem({Key? key, required this.text, required this.onPressed, this.delay = 0}) : super(key: key);
+  const CustomMenuItem({Key? key, required this.text, required this.onPressed, this.delay = 0, required this.width, required this.padding}) : super(key: key);
 
   @override
   _CustomMenuItemState createState() => _CustomMenuItemState();
@@ -31,11 +32,13 @@ class _CustomMenuItemState extends State<CustomMenuItem> {
         child: GestureDetector(
           onTap: () => widget.onPressed(),
           child: AnimatedContainer(
+            alignment: Alignment.centerLeft,
             duration: const Duration(milliseconds: 300),
-            width: 150,
+            width: widget.width,
             height: 50,
             color: isHover ? azulText : Colors.transparent,
-            child: Center(
+            child: Padding(
+              padding: EdgeInsets.only(left: widget.padding),
               child: Text(widget.text, style: GoogleFonts.roboto(fontSize: 20, color: isHover ? const Color(0xFF00041C) : const Color(0xfffffffff))),
             ),
           ),

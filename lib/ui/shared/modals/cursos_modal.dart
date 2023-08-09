@@ -17,8 +17,6 @@ class CursosModal extends StatefulWidget {
 }
 
 class _CursosModalState extends State<CursosModal> {
-
-
   @override
   Widget build(BuildContext context) {
     final allCursosProvider = Provider.of<AllCursosProvider>(context);
@@ -77,11 +75,11 @@ class _CursosModalState extends State<CursosModal> {
                   constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
                   child: TextFormField(
                     style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
-                    initialValue: (curso.id == '') ? '' : curso.subtitle,
+                    initialValue: (curso.id == '') ? '' : curso.precio,
                     onChanged: (value) => setState(() {
-                      allCursosProvider.subtitleCursoModal = value;
+                      allCursosProvider.precioCursoModal = value;
                     }),
-                    decoration: buildInputDecoration(label: 'Subtitulo del curso', icon: Icons.subtitles_outlined),
+                    decoration: buildInputDecoration(label: 'Precio del curso', icon: Icons.price_change),
                   ),
                 ),
                 Container(
@@ -93,6 +91,17 @@ class _CursosModalState extends State<CursosModal> {
                       allCursosProvider.imgCursoModal = value;
                     }),
                     decoration: buildInputDecoration(label: 'Imagen del curso', icon: Icons.image_outlined),
+                  ),
+                ),
+                Container(
+                  constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
+                  child: TextFormField(
+                    style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
+                    initialValue: (curso.id == '') ? '' : curso.baner,
+                    onChanged: (value) => setState(() {
+                      allCursosProvider.banerCursoModal = value;
+                    }),
+                    decoration: buildInputDecoration(label: 'Baner del curso', icon: Icons.image_outlined),
                   ),
                 ),
                 Container(
@@ -200,13 +209,11 @@ class _CursosModalState extends State<CursosModal> {
                       if (widget.uid == '') {
                         // Crear
                         await allCursosProvider.createCurso();
-
                       } else {
                         // Actualizar
 
                         await allCursosProvider.updateCurso(
                           uid: widget.uid,
-                          
                         );
                       }
 
@@ -276,13 +283,16 @@ class _SquareModuloState extends State<SquareModulo> {
         ),
         const Spacer(),
         IconButton(
-            onPressed: () {
-              showDialog(
+            onPressed: () async {
+              final isok = await showDialog(
                   context: context,
                   builder: (context) => Dialog(
                         cursoID: widget.cursoID ?? '',
                         modulo: widget.modulo,
                       ));
+              if (isok && context.mounted) {
+                setState(() {});
+              }
             },
             icon: const Icon(
               Icons.edit,
@@ -458,7 +468,9 @@ class _DialogState extends State<Dialog> {
                             await Provider.of<AllCursosProvider>(context, listen: false)
                                 .createModulo(nombre: nombre, video: video, descripcion: descripcion, descarga: descarga, curso: widget.cursoID);
                           } else {
-                            // Actualizar
+                            await Provider.of<AllCursosProvider>(context, listen: false)
+                                .updateModulo(uid: id, nombreModulo: nombre, urlVideo: video, descripcionModulo: descripcion, urlDescarga: descarga);
+          
                           }
                           if (context.mounted) {
                             Navigator.pop(context, true);

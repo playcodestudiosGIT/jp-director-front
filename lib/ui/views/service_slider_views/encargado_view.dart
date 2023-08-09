@@ -74,7 +74,7 @@ class EncargadoView extends StatelessWidget {
                           style: GoogleFonts.roboto(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
-                            color: blancoText,
+                            color: blancoText.withOpacity(0.5),
                           ),
                         ),
                         const SizedBox(

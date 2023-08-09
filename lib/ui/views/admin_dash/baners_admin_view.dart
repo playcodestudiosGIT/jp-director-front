@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/constant.dart';
 import 'package:jpdirector_frontend/providers/baners_provider.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/title_label.dart';
 import 'package:jpdirector_frontend/ui/shared/modals/baners_modal.dart';
 
 import 'package:provider/provider.dart';
@@ -8,7 +10,6 @@ import 'package:provider/provider.dart';
 import '../../../datatables/baners_datasource.dart';
 
 class BanersAdminView extends StatefulWidget {
-  
   const BanersAdminView({super.key});
 
   @override
@@ -30,66 +31,69 @@ class _BanersAdminViewState extends State<BanersAdminView> {
     final size = MediaQuery.of(context).size;
     return Container(
       padding: (size.width < 715)
-        ? const EdgeInsets.only(top: 15, left: 50, right: 15 / 2)
-        : const EdgeInsets.only(top: 15, left: 15, right: 15 / 2),
+          ? const EdgeInsets.only(top: 15, left: 15 / 2, right: 15 / 2)
+          : const EdgeInsets.only(top: 15, left: 15 / 2, right: 15 / 2),
       child: ListView(
         physics: const ClampingScrollPhysics(),
         children: [
           const SizedBox(height: 80),
           const Padding(
-            padding: EdgeInsets.only(left: 30.0),
-            child: Text(
-              'Administración de Baners',
-              style: TextStyle(color: Colors.white),
+            padding: EdgeInsets.only(left: 0.0),
+            child: TitleLabel(
+              texto: 'Administración de Baners',
             ),
           ),
-          PaginatedDataTable(
-            dataRowMaxHeight: 150,
-            dataRowMinHeight: 150,
-            columns: const [
-              DataColumn(
-                label: Text('Imagen'),
-              ),
-              DataColumn(
-                label: Text('Nombre'),
-              ),
-              DataColumn(
-                label: Text('ID\'s'),
-              ),
-              DataColumn(
-                label: Text('Acciones'),
-              ),
-            ],
-            source: BanersDTS(baners, context),
-            header: const Text(
-              'Lista de Cursos Disponibles',
-              // style: ,
-              maxLines: 2,
-            ),
-            rowsPerPage: _rowsPerPage,
-            onRowsPerPageChanged: (value) {
-              setState(() {
-                _rowsPerPage = value ?? 10;
-              });
-            },
-            actions: [
-              ElevatedButton(
-                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(azulText)),
-                onPressed: () {
-                  showModalBottomSheet(
-                    backgroundColor: Colors.transparent,
-                    context: context,
-                    builder: (context) => const BanersModal(
-                      baner: null,
-                    ),
-                  );
-                },
-                child: const Icon(
-                  Icons.style_outlined,
-                  color: Colors.white,
+          Theme(
+            data: ThemeData.dark().copyWith(cardColor: bgColor),
+            child: PaginatedDataTable(
+              
+              dataRowMaxHeight: 200,
+              dataRowMinHeight: 200,
+              columns: [
+                DataColumn(
+                  label: Text('IMAGEN', style: DashboardLabel.h4.copyWith(fontWeight: FontWeight.bold)),
                 ),
-              )
-            ],
+                DataColumn(
+                  label: Text('NOMBRE', style: DashboardLabel.h4.copyWith(fontWeight: FontWeight.bold)),
+                ),
+                DataColumn(
+                  label: Text('ID\'s', style: DashboardLabel.h4.copyWith(fontWeight: FontWeight.bold)),
+                ),
+                DataColumn(
+                  label: Text('ACCIONES', style: DashboardLabel.h4.copyWith(fontWeight: FontWeight.bold)),
+                ),
+              ],
+              source: BanersDTS(baners, context),
+              header: Text(
+                'Lista de Baners',
+                style: DashboardLabel.paragraph,
+                maxLines: 2,
+              ),
+              rowsPerPage: _rowsPerPage,
+              onRowsPerPageChanged: (value) {
+                setState(() {
+                  _rowsPerPage = value ?? 10;
+                });
+              },
+              actions: [
+                ElevatedButton(
+                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(azulText)),
+                  onPressed: () {
+                    showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (context) => const BanersModal(
+                        baner: null,
+                      ),
+                    );
+                  },
+                  child: const Icon(
+                    Icons.style_outlined,
+                    color: Colors.white,
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),

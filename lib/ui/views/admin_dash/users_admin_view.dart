@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/constant.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/title_label.dart';
 
 import 'package:provider/provider.dart';
 
@@ -33,67 +34,68 @@ class _UsersAdminViewState extends State<UsersAdminView> {
     final size = MediaQuery.of(context).size;
     return Container(
       padding: (size.width < 715)
-        ? const EdgeInsets.only(top: 15, left: 50, right: 15 / 2)
-        : const EdgeInsets.only(top: 15, left: 15, right: 15 / 2),
+        ? const EdgeInsets.only(top: 15, left: 15/2, right: 15 /2)
+        : const EdgeInsets.only(top: 15, left: 15/2, right: 15 /2),
       child: ListView(
         physics: const ClampingScrollPhysics(),
         children: [
           const SizedBox(height: 80),
           const Padding(
-            padding: EdgeInsets.only(left: 30.0),
-            child: Text(
-              'Administración de Usuarios', style: TextStyle(color: Colors.white),
+            padding: EdgeInsets.only(left: 0.0),
+            child: TitleLabel(
+              texto: 'Administración de Usuarios'
             ),
           ),
       
-          PaginatedDataTable(
-            dataRowMaxHeight: 150,
-            dataRowMinHeight: 150,
-            columns: const [
-              DataColumn(
-                label: Text('Foto'),
-              ),
-              DataColumn(label: Text('Nombre')),
-              DataColumn(label: Text('Cursos')),
-              DataColumn(label: Text('Acciones')),
-            ],
-            source: UsersDTS(users, context),
-            header: const Text(
-              'Lista de usuarios',
-              // style: ,
-              maxLines: 2,
-            ),
-            rowsPerPage: _rowsPerPage,
-            onRowsPerPageChanged: (value) {
-              setState(() {
-                _rowsPerPage = value ?? 10;
-              });
-            },
-            actions: [
-              ElevatedButton(
-                
-                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(azulText)),
-                onPressed: () async {
-                  final isCourse = await showModalBottomSheet(
-                    backgroundColor: Colors.transparent,
-                    context: context,
-                    builder: (context) => const UsersModal(
-                      user: null,
-                    ),
-                  );
-
-                  if(isCourse){
-                    setState(() {
-                      Provider.of<UsersProvider>(context, listen: false).getPaginatedUsers();
-                    });
-                  }
-                },
-                child: const Icon(
-                  Icons.person_add,
-                  color: Colors.white,
+          Theme(
+            data: ThemeData.dark().copyWith(cardColor: bgColor),
+            child: PaginatedDataTable(
+              dataRowMaxHeight: 150,
+              dataRowMinHeight: 150,
+              columns: const [
+                DataColumn(
+                  label: Text('IMAGEN', style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
-              )
-            ],
+                DataColumn(label: Text('NOMBRE', style: TextStyle(fontWeight: FontWeight.bold))),
+                DataColumn(label: Text('CURSOS', style: TextStyle(fontWeight: FontWeight.bold))),
+                DataColumn(label: Text('ACCIONES', style: TextStyle(fontWeight: FontWeight.bold))),
+              ],
+              source: UsersDTS(users, context),
+              header: const Text(
+                'Lista de usuarios',
+              ),
+              rowsPerPage: _rowsPerPage,
+              onRowsPerPageChanged: (value) {
+                setState(() {
+                  _rowsPerPage = value ?? 5;
+                });
+              },
+              actions: [
+                ElevatedButton(
+                  
+                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(azulText)),
+                  onPressed: () async {
+                    final isCourse = await showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (context) => const UsersModal(
+                        user: null,
+                      ),
+                    );
+          
+                    if(isCourse){
+                      setState(() {
+                        Provider.of<UsersProvider>(context, listen: false).getPaginatedUsers();
+                      });
+                    }
+                  },
+                  child: const Icon(
+                    Icons.person_add,
+                    color: Colors.white,
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),

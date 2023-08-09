@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
 import 'package:jpdirector_frontend/providers/auth_provider.dart';
 import 'package:jpdirector_frontend/providers/baners_provider.dart';
-import 'package:jpdirector_frontend/ui/shared/widgets/cursos_botones.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/title_label.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
@@ -30,37 +30,26 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
-    List<Widget> banerDestruct = [];
-    for (var baner in Provider.of<BanersProvider>(context, listen: false).baners) {
-      if (!authProvider.user!.cursos.contains(baner.cursoId)) {
-        banerDestruct.add(CursoImagen(priceId: baner.priceId, img: baner.img, cursoId: baner.cursoId));
+    List<Widget> cursoDestruct = [];
+    for (var curso in Provider.of<AllCursosProvider>(context, listen: false).allCursos) {
+      if (!authProvider.user!.cursos.contains(curso.id)) {
+        cursoDestruct.add(Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: CourseCard(curso: curso, esMio: false,),
+        ));
         continue;
       }
     }
     final destruct = Provider.of<AllCursosProvider>(context).misCursos.map((e) => CourseCard(
-          uid: e.id,
-          name: e.nombre,
-          subtitle: e.subtitle,
-          description: e.descripcion,
-          image: e.img,
-          duration: e.duracion,
-          modulos: e.modulos.length.toString(),
+          curso: e,
+          esMio: true,
         ));
     final wScreen = MediaQuery.of(context).size.width;
     return Container(
-        color: bgColor,
-        padding: (wScreen < 715) ? const EdgeInsets.only(left: 45) : const EdgeInsets.only(left: 10),
+        color: Colors.transparent,
+        // padding: (wScreen < 715) ? const EdgeInsets.only(left: 45) : const EdgeInsets.only(left: 10),
         child: Stack(
           children: [
-            const Positioned(
-                bottom: -400,
-                left: -450,
-                child: SizedBox(
-                  height: 900,
-                  child: Image(
-                    image: circulo,
-                  ),
-                )),
             Positioned(
                 top: 90,
                 right: 230,
@@ -74,57 +63,56 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
                     ),
                   ),
                 )),
-            const Positioned(
-                bottom: -400,
-                right: -450,
-                child: SizedBox(
-                  height: 700,
-                  child: Image(
-                    image: circulo,
-                  ),
-                )),
             ListView(physics: const ClampingScrollPhysics(), children: [
               const SizedBox(
                 height: 80,
               ),
-              SizedBox(
-                height: 40,
-                child: Text(
-                  'Cursos Disponibles',
-                  style: DashboardLabel.h1.copyWith(color: blancoText),
-                ),
-              ),
-              SizedBox(
-                height: 100,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      ...banerDestruct
-                    ],
-                  ),
-                )
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              Text(
-                'Mis Cursos',
-                style: DashboardLabel.h1.copyWith(color: blancoText),
-              ),
+              const TitleLabel(texto: 'Mis Cursos'),
               const SizedBox(
                 height: 10,
               ),
               SizedBox(
                 width: double.infinity,
                 child: Center(
-                  child: Wrap(
-                      alignment: WrapAlignment.center,
-                      children: [if (destruct.isEmpty) const CircularProgressIndicator(), if (destruct.isNotEmpty) ...destruct]
+                  child: Wrap(alignment: WrapAlignment.center, children: [
+                    if (destruct.isEmpty)
+                      Text(
+                        'No tienes ningun curso',
+                        style: DashboardLabel.paragraph,
+                      ),
+                    if (destruct.isNotEmpty) ...destruct
+                  ]
 
                       //  ,
                       ),
                 ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const TitleLabel(texto: 'Cursos Disponibles'),
+              SizedBox(
+                  height: 435,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        if (cursoDestruct.isEmpty)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 60),
+                            child: Text(
+                              'Ya tienes todos los cursos',
+                              style: DashboardLabel.paragraph,
+                            ),
+                          ),
+                        if (cursoDestruct.isNotEmpty) ...cursoDestruct
+                      ],
+                    ),
+                  )),
+              const SizedBox(
+                height: 20,
               ),
             ]),
           ],

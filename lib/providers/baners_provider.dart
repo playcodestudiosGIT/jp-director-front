@@ -49,9 +49,9 @@ class BanersProvider extends ChangeNotifier {
       _baners.add(baner);
 
       notifyListeners();
-      NotificationServices.showSnackbarError('Baner Actualizado con exito', Colors.green);
+      NotifServ.showSnackbarError('Baner Actualizado con exito', Colors.green);
     } catch (e) {
-      NotificationServices.showSnackbarError('Error actualizando baner', Colors.red);
+      NotifServ.showSnackbarError('Error actualizando baner', Colors.red);
     }
   }
 
@@ -71,7 +71,7 @@ class BanersProvider extends ChangeNotifier {
       baners.add(baner);
       notifyListeners();
     }).catchError((e) {
-      NotificationServices.showSnackbarError('Error creando Baner', Colors.red);
+      NotifServ.showSnackbarError('Error creando Baner', Colors.red);
     });
   }
 
@@ -82,10 +82,10 @@ class BanersProvider extends ChangeNotifier {
       _baners.removeWhere((element) => element.id == id);
 
       notifyListeners();
-      NotificationServices.showSnackbarError('Baner borrado con exito', Colors.green);
+      NotifServ.showSnackbarError('Baner borrado con exito', Colors.green);
       return true;
     } catch (e) {
-      NotificationServices.showSnackbarError('Error borrando baner', Colors.red);
+      NotifServ.showSnackbarError('Error borrando baner', Colors.red);
     }
   }
 }

@@ -1,111 +1,141 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:jpdirector_frontend/constant.dart';
+import 'package:jpdirector_frontend/providers/auth_provider.dart';
 import 'package:jpdirector_frontend/router/router.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
+import 'package:jpdirector_frontend/ui/shared/widgets/progreso.dart';
 import 'package:provider/provider.dart';
 
+import '../../models/curso.dart';
 import '../../providers/all_cursos_provider.dart';
 import '../../services/navigator_service.dart';
 import 'white_card_border.dart';
 
 class CourseCard extends StatelessWidget {
-  final String uid;
-  final String image;
-  final String name;
-  final String subtitle;
-  final String modulos;
-  final String description;
-  final String duration;
+  final Curso curso;
+  final bool esMio;
 
-  const CourseCard(
-      {Key? key,
-      required this.image,
-      required this.name,
-      required this.subtitle,
-      required this.description,
-      required this.uid,
-      required this.duration,
-      required this.modulos})
-      : super(key: key);
+  const CourseCard({Key? key, required this.esMio, required this.curso}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: () async {
-          await Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
-          NavigatorService.navigateTo('${Flurorouter.curso}$uid/${'0'}');
-        },
+        onTap: (!esMio)
+            ? () => NavigatorService.navigateTo('${Flurorouter.cursoLanding}/${curso.id}')
+            : () async {
+                await Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
+
+                if (authProvider.authStatus == AuthStatus.authenticated && context.mounted) {
+                  NavigatorService.navigateTo('${Flurorouter.curso}${curso.id}/${'0'}');
+                } else {
+                  NavigatorService.navigateTo('${Flurorouter.cursoLanding}/${curso.id}');
+                }
+              },
         child: SizedBox(
-          width: 345,
-          height: 485,
-          child: (name == 'nombre')
-            ? const Center(child: SizedBox(width: 35, height: 35, child: CircularProgressIndicator(color: Colors.white),),)
-            : WhiteCardBorder(
-              border: 44,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 8),
-                  Container(
-                    margin: const EdgeInsets.only(left: 10, right: 10, top: 0),
-                    decoration: _cardDecoration(image),
-                    height: 230,
+          width: 250,
+          height: (esMio) ? 320 : 435,
+          child: (curso.nombre == 'nombre')
+              ? const Center(
+                  child: SizedBox(
+                    width: 35,
+                    height: 35,
+                    child: CircularProgressIndicator(color: Colors.white),
                   ),
-                  const SizedBox(height: 15),
-                  Container(
-                      margin: const EdgeInsets.only(left: 10, right: 10, top: 0),
-                      child: Text(
-                        name,
-                        style: GoogleFonts.roboto(fontSize: 20, fontWeight: FontWeight.w800),
-                      )),
-                  const SizedBox(height: 15),
-                  Container(
-                      margin: const EdgeInsets.only(left: 10, right: 10, top: 0),
-                      child: Text(
-                        subtitle,
-                        style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400),
-                      )),
-                  Container(
-                      margin: const EdgeInsets.only(left: 10, right: 10, top: 11),
-                      child: Text(
-                        description,
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.roboto(
-                          fontSize: 14,
-                        ),
-                      )),
-                  const SizedBox(height: 15),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      children: [
-                        const Icon(Icons.view_module),
-                        // const Text(
-                        //   ' Modulos: ',
-                        //   style: TextStyle(fontSize: 10),
-                        // ),
-                        Text(modulos),
-                        const SizedBox(width: 30),
-                        const Icon(Icons.timer_outlined),
-                        // const Text(
-                        //   ' Duracion: ',
-                        //   style: TextStyle(fontSize: 10),
-                        // ),
-                        Text(duration)
+                )
+              : WhiteCardBorder(
+                  border: 5,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                            decoration: _cardDecoration(curso.img),
+                            width: 250,
+                            height: 230,
+                          ),
+                          Container(
+                            width: 250,
+                            height: 230,
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    colors: [Colors.transparent, bgColor.withOpacity(1)],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    stops: const [0.6, 1])),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                TextButton(
+                                    style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
+                                    onPressed: () {
+                                      NavigatorService.navigateTo('${Flurorouter.curso}${curso.id}/${'0'}');
+                                    },
+                                    child: (esMio)
+                                        ? Text('CONTINUAR', style: DashboardLabel.mini.copyWith(color: azulText))
+                                        : Text('VER MAS', style: DashboardLabel.mini.copyWith(color: azulText)))
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      Container(
+                          margin: const EdgeInsets.only(left: 5, right: 5, top: 0),
+                          child: Text(
+                            curso.nombre,
+                            style: DashboardLabel.h4,
+                          )),
+                      if (!esMio) ...[
+                        const SizedBox(height: 5),
+                        Container(
+                            margin: const EdgeInsets.only(left: 5, right: 5, top: 0),
+                            child: Text(
+                              '\$ ${curso.precio}.00',
+                              style: DashboardLabel.h4,
+                            )),
+                        Container(
+                            height: 90,
+                            margin: const EdgeInsets.only(left: 5, right: 5, top: 5),
+                            child: Text(curso.descripcion,
+                                maxLines: 5,
+                                overflow: TextOverflow.ellipsis,
+                                style: DashboardLabel.paragraph.copyWith(color: blancoText.withOpacity(0.5)))),
                       ],
-                    ),
-                  )
-                ],
-              )),
+                      const SizedBox(height: 15),
+                      if (esMio) ...[SizedBox(width: 220, height: 30, child: MiProgreso(curso: curso))],
+                      if (!esMio) ...[
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Row(
+                            children: [
+                              Icon(Icons.view_module, color: blancoText.withOpacity(0.5), size: 20),
+                              const SizedBox(width: 3),
+                              Text(curso.modulos.length.toString(), style: DashboardLabel.paragraph),
+                              const SizedBox(width: 30),
+                              Icon(Icons.timer_outlined, color: blancoText.withOpacity(0.5), size: 20),
+                              Text(curso.duracion, style: DashboardLabel.paragraph)
+                            ],
+                          ),
+                        )
+                      ]
+                    ],
+                  )),
         ),
       ),
     );
   }
 
   BoxDecoration _cardDecoration(String img) {
-    return BoxDecoration(borderRadius: BorderRadius.circular(40), image: DecorationImage(image: NetworkImage(img), fit: BoxFit.cover));
+    return BoxDecoration(
+        borderRadius: BorderRadius.circular(0),
+        image: DecorationImage(
+          image: NetworkImage(img),
+          fit: BoxFit.cover,
+        ));
   }
 }
-

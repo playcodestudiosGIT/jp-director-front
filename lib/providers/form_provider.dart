@@ -156,11 +156,11 @@ class FormProvider extends ChangeNotifier {
 
       isLoading = false;
       notifyListeners();
-      NotificationServices.showSnackbarError('Formulario enviado', Colors.green);
+      NotifServ.showSnackbarError('Formulario enviado', Colors.green);
     } catch (e) {
       isLoading = false;
       notifyListeners();
-      NotificationServices.showSnackbarError('error al enviar el form $e', Colors.red);
+      NotifServ.showSnackbarError('error al enviar el form $e', Colors.red);
     }
   }
 
@@ -173,10 +173,10 @@ class FormProvider extends ChangeNotifier {
       );
 
       notifyListeners();
-      NotificationServices.showSnackbarError('Formulario borrado con exito', Colors.green);
+      NotifServ.showSnackbarError('Formulario borrado con exito', Colors.green);
       return true;
     } catch (e) {
-      NotificationServices.showSnackbarError('Error borrando formulario', Colors.red);
+      NotifServ.showSnackbarError('Error borrando formulario', Colors.red);
       throw Exception('Error en el delete form');
     }
   }

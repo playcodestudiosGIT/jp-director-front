@@ -73,7 +73,7 @@ class MentoriaView extends StatelessWidget {
                           style: GoogleFonts.roboto(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
-                            color: blancoText,
+                            color: blancoText.withOpacity(0.5),
                           ),
                         ),
                       ],
@@ -81,7 +81,7 @@ class MentoriaView extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 30,
                 ),
                 BotonVerde(
                   width: 200,

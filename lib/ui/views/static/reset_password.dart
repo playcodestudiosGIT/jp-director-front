@@ -101,15 +101,14 @@ class _ResetPassState extends State<ResetPass> {
                                             width: 140,
                                             text: 'Enviar',
                                             onPress: () async {
-                                              final ok = await Provider.of<AuthProvider>(context, listen: false)
-                                                  .sendResetPass(email: email);
+                                              final ok = await Provider.of<AuthProvider>(context, listen: false).sendResetPass(email: email);
 
                                               if (ok) {
                                                 setState(() {
                                                   isOk = true;
                                                 });
                                               } else {
-                                                NotificationServices.showSnackbarError('El correo no existe', Colors.red);
+                                                NotifServ.showSnackbarError('El correo no existe', Colors.red);
                                               }
                                             },
                                           ),

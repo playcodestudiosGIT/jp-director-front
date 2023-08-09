@@ -24,12 +24,11 @@ class _RegisterPageState extends State<RegisterPage> {
       create: (_) => RegisterFormProvider(),
       child: SafeArea(
         child: Scaffold(
+          backgroundColor: Colors.transparent,
           body: Stack(
             children: [
-              Container(
-                color: const Color(0xFF00041C),
-              ),
-              const Positioned(top: 0, left: -500, child: SizedBox(width: 1100, child: Image(image: circulo))),
+
+              // const Positioned(top: 0, left: -500, child: SizedBox(width: 1100, child: Image(image: circulo))),
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -64,6 +63,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   width: 4,
                                 ),
                                 TextButton(
+                                  style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
                                   onPressed: () {
                                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const LoginPage()));
                                   }, // Navigate to register page

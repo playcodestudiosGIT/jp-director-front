@@ -2,10 +2,8 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/providers/auth_provider.dart';
-import 'package:jpdirector_frontend/providers/sidebar_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
-
 import '../../../constant.dart';
 import '../../../models/curso.dart';
 import '../../../models/progress.dart';
@@ -36,22 +34,24 @@ class _CourseViewState extends State<CourseView> {
   late VideoPlayerController videoPlayerController;
   late ChewieController chewieController;
   late Progress prog;
+  bool isLoading = true;
 
   int videotime = 0;
 
   @override
   void initState() {
-    Provider.of<AllCursosProvider>(context, listen: false).getCursosById(widget.cursoTmp.id);
     final user = Provider.of<AuthProvider>(context, listen: false).user;
     prog = user!.progress.where((element) => element.moduloId == widget.cursoTmp.modulos[widget.videoIndex].id).first;
     Provider.of<AuthProvider>(context, listen: false).isAutenticated();
-    videoPlayerController = VideoPlayerController.network(widget.cursoTmp.modulos[widget.videoIndex].video);
+    videoPlayerController = VideoPlayerController.network(widget.cursoTmp.modulos[widget.videoIndex].video)
+      ..initialize().then((_) {
+        isLoading = false;
+        setState(() {});
+      });
     chewieController = ChewieController(
       startAt: Duration(seconds: prog.marker),
       autoInitialize: true,
-      placeholder: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(image: NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575762/logogrande_s3thla.png')))),
+      placeholder: Container(decoration: const BoxDecoration(image: DecorationImage(image: logoGrande))),
       hideControlsTimer: const Duration(milliseconds: 1000),
       materialProgressColors: ChewieProgressColors(bufferedColor: azulText.withOpacity(0.3), playedColor: azulText, backgroundColor: bgColor),
       cupertinoProgressColors: ChewieProgressColors(bufferedColor: bgColor, backgroundColor: bgColor),
@@ -60,15 +60,6 @@ class _CourseViewState extends State<CourseView> {
       looping: false,
       aspectRatio: 16 / 9,
     );
-
-    chewieController.addListener(() {
-      if (chewieController.isFullScreen) {
-        Provider.of<SideBarProvider>(context, listen: false).setIsAparece(false);
-      } else {
-        //Aparece barra
-        Provider.of<SideBarProvider>(context, listen: false).setIsAparece(true);
-      }
-    });
 
     videoPlayerController.addListener(() async {
       if (videotime > videoPlayerController.value.duration.inSeconds - 15) {
@@ -138,7 +129,7 @@ class _CourseViewState extends State<CourseView> {
                 width: wScreen,
                 height: hScreen,
                 color: bgColor,
-                padding: (wScreen < 715) ? const EdgeInsets.only(left: 45) : const EdgeInsets.only(left: 10),
+                padding: (wScreen < 715) ? const EdgeInsets.only(left: 0) : const EdgeInsets.only(left: 10),
                 child: ListView(children: [
                   Column(children: [
                     const SizedBox(
@@ -149,7 +140,9 @@ class _CourseViewState extends State<CourseView> {
                         children: [
                           const SizedBox(width: 10),
                           IconButton(
-                              onPressed: () => NavigatorService.replaceTo(Flurorouter.clienteMisCursosDash),
+                              onPressed: () {
+                                NavigatorService.replaceTo(Flurorouter.clienteMisCursosDash);
+                              },
                               icon: const Icon(
                                 Icons.arrow_back,
                                 color: blancoText,
@@ -160,27 +153,52 @@ class _CourseViewState extends State<CourseView> {
                             style: DashboardLabel.h1.copyWith(color: blancoText),
                           ),
                           const Spacer(),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              const SizedBox(width: 8),
+                              if (percent == 100.0)
+                                TextButton(
+                                    style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
+                                    onPressed: () {},
+                                    child: Text(
+                                      'Certificado',
+                                      style: DashboardLabel.mini.copyWith(color: azulText),
+                                    )),
+                              const SizedBox(width: 8),
+                              Stack(
                                 children: [
-                                  Text('Progreso: ', style: DashboardLabel.mini.copyWith(color: blancoText)),
-                                  Text('${percent.toStringAsFixed(1)} %', style: DashboardLabel.mini.copyWith(color: blancoText)),
+                                  Positioned(
+                                      top: (percent == 100.0) ? 7 : 11,
+                                      left: 7,
+                                      child: (percent == 100.0)
+                                          ? const Icon(
+                                              Icons.check,
+                                              color: Colors.green,
+                                              size: 20,
+                                            )
+                                          : Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Text(percent.toStringAsFixed(0),
+                                                    style: DashboardLabel.mini.copyWith(color: blancoText, fontSize: 10)),
+                                                Text('%', style: DashboardLabel.mini.copyWith(color: blancoText)),
+                                              ],
+                                            )),
+                                  Container(
+                                    margin: const EdgeInsets.all(2),
+                                    width: 30,
+                                    height: 30,
+                                    child: CircularProgressIndicator(
+                                      value: pont / total,
+
+                                      color: (percent == 100.0) ? Colors.green : azulText,
+                                      backgroundColor: Colors.white.withOpacity(0.3),
+
+                                      // valueColor: ,
+                                    ),
+                                  ),
                                 ],
-                              ),
-                              const SizedBox(height: 8),
-                              SizedBox(
-                                width: 120,
-                                child: LinearProgressIndicator(
-                                  value: pont / total,
-
-                                  color: azulText,
-                                  backgroundColor: Colors.white.withOpacity(0.3),
-
-                                  // valueColor: ,
-                                ),
                               ),
                             ],
                           ),
@@ -197,8 +215,8 @@ class _CourseViewState extends State<CourseView> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: wScreen - 250,
+                          Container(
+                            constraints: const BoxConstraints(maxWidth: 1200, minWidth: 1000),
                             height: hScreen - 150,
                             child: SingleChildScrollView(
                               child: WhiteCard(
@@ -271,23 +289,23 @@ class _CourseViewState extends State<CourseView> {
                                                               }
                                                             },
                                                           )),
-                                                      title: Text(e.nombre),
-                                                      subtitle: Text(e.descripcion),
+                                                      title: Text(e.nombre, style: DashboardLabel.paragraph,),
+                                                      subtitle: Text(e.descripcion, style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5)),),
                                                       onTap: () {
                                                         NavigatorService.replaceTo('${Flurorouter.curso}${curso.id}/$i');
                                                       },
                                                     ),
-                                                    Row(
-                                                      mainAxisAlignment: MainAxisAlignment.end,
-                                                      children: [
-                                                        Row(children: [
-                                                          const Icon(Icons.ondemand_video_outlined, size: 15, color: Colors.black38),
-                                                          const SizedBox(width: 10),
-                                                          Text('2hr', style: DashboardLabel.mini.copyWith(color: Colors.black38))
-                                                        ]),
-                                                      ],
-                                                    ),
-                                                    const Divider(),
+                                                    // Row(
+                                                    //   mainAxisAlignment: MainAxisAlignment.end,
+                                                    //   children: [
+                                                    //     Row(children: [
+                                                    //       const Icon(Icons.ondemand_video_outlined, size: 15, color: Colors.black38),
+                                                    //       const SizedBox(width: 10),
+                                                    //       Text('2hr', style: DashboardLabel.mini.copyWith(color: Colors.black38))
+                                                    //     ]),
+                                                    //   ],
+                                                    // ),
+                                                    Divider(color: blancoText.withOpacity(0.5),),
                                                   ],
                                                 );
                                               }),
@@ -316,9 +334,11 @@ class _CourseViewState extends State<CourseView> {
                                         width: double.infinity,
                                         height: 400,
                                         color: Colors.black,
-                                        child: Chewie(
-                                          controller: chewieController,
-                                        )),
+                                        child: (isLoading)
+                                            ? const Center(child: SizedBox(width: 35, height: 35, child: CircularProgressIndicator()))
+                                            : Chewie(
+                                                controller: chewieController,
+                                              )),
                                     const SizedBox(
                                       height: 15,
                                     ),
@@ -327,7 +347,7 @@ class _CourseViewState extends State<CourseView> {
                                         child: CustomButton(
                                           text: 'Descargar Material',
                                           onPress: () {},
-                                          width: 200,
+                                          width: 210,
                                           icon: Icons.download_outlined,
                                         )),
                                     const SizedBox(
@@ -367,23 +387,23 @@ class _CourseViewState extends State<CourseView> {
                                                     }
                                                   },
                                                 )),
-                                            title: Text(e.nombre),
-                                            subtitle: Text(e.descripcion),
+                                            title: Text(e.nombre, style: DashboardLabel.paragraph,),
+                                            subtitle: Text(e.descripcion , style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5))),
                                             onTap: () {
                                               NavigatorService.replaceTo('${Flurorouter.curso}${curso.id}/$i');
                                             },
                                           ),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.end,
-                                            children: [
-                                              Row(children: [
-                                                const Icon(Icons.ondemand_video_outlined, size: 15, color: Colors.black38),
-                                                const SizedBox(width: 10),
-                                                Text('2hr', style: DashboardLabel.mini.copyWith(color: Colors.black38))
-                                              ]),
-                                            ],
-                                          ),
-                                          const Divider(),
+                                          // Row(
+                                          //   mainAxisAlignment: MainAxisAlignment.end,
+                                          //   children: [
+                                          //     Row(children: [
+                                          //       const Icon(Icons.ondemand_video_outlined, size: 15, color: Colors.black38),
+                                          //       const SizedBox(width: 10),
+                                          //       Text('2hr', style: DashboardLabel.mini.copyWith(color: Colors.black38))
+                                          //     ]),
+                                          //   ],
+                                          // ),
+                                          Divider(color: blancoText.withOpacity(0.5),),
                                         ],
                                       );
                                     }),

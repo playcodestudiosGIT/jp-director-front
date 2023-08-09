@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../constant.dart';
 
 
-class NotificationServices {
+class NotifServ {
   static GlobalKey<ScaffoldMessengerState> msgKey = GlobalKey<ScaffoldMessengerState>(debugLabel: 'msgKey');
 
   static showSnackbarError(String msg, Color color) {

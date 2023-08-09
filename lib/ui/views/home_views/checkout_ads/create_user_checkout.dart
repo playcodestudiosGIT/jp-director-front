@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
 import 'package:jpdirector_frontend/providers/forms/register_form_provider.dart';
-import 'package:jpdirector_frontend/ui/cards/buy_curso_card.dart';
+import 'package:jpdirector_frontend/ui/cards/curso_card.dart';
 import 'package:jpdirector_frontend/ui/shared/widgets/forms/login_form.dart';
 import 'package:jpdirector_frontend/ui/shared/widgets/forms/register_form.dart';
 import 'package:provider/provider.dart';
@@ -24,14 +24,20 @@ class CreateUserCheckout extends StatefulWidget {
 
 class _CreateUserCheckoutState extends State<CreateUserCheckout> {
   GlobalKey<FormState> checkoutKey = GlobalKey<FormState>(debugLabel: 'newcursowhituser');
+
+  @override
+  void dispose() {
+    checkoutKey.currentState!.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-
     // double wScreen = MediaQuery.of(context).size.width;
     double hScreen = MediaQuery.of(context).size.height;
 
     return FutureBuilder(
-      // future: Future.delayed(const Duration(milliseconds: 500)),
+      // future:
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
@@ -45,7 +51,6 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
           );
         }
 
-        final curso = Provider.of<AllCursosProvider>(context).cursoView;
         return Scaffold(
             body: ListView(
           children: [
@@ -76,14 +81,14 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
                                 child: Column(
                                   children: [
                                     const SizedBox(height: 30),
-                                    BuyCursoCard(
-                                        image: curso.img,
-                                        name: curso.nombre,
-                                        subtitle: curso.subtitle,
-                                        description: curso.descripcion,
-                                        uid: curso.id,
-                                        duration: curso.duracion,
-                                        modulos: curso.modulos.length.toString()),
+                                    FutureBuilder(
+                                      future: Provider.of<AllCursosProvider>(context).getCursosById(widget.cursoId),
+                                      builder: (context, snapshot) {
+                                        final curso = Provider.of<AllCursosProvider>(context).cursoView;
+
+                                        return CourseCard(esMio: false, curso: curso);
+                                      },
+                                    ),
                                     Center(
                                       child: Container(
                                           padding: const EdgeInsets.all(10),
@@ -173,9 +178,9 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
                                   // height: 510,
                                   width: 340,
                                   child: LoginForm(
-                                      cursoId: widget.cursoId,
-                                      isBuying: true,
-                                    ),
+                                    cursoId: widget.cursoId,
+                                    isBuying: true,
+                                  ),
                                 ),
                               const SizedBox(
                                 height: 30,

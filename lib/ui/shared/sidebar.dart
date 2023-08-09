@@ -6,7 +6,7 @@ import '../../providers/auth_provider.dart';
 import '../../providers/sidebar_provider.dart';
 import '../../router/router.dart';
 import '../../services/navigator_service.dart';
-import 'widgets/menu_item.dart';
+import 'widgets/menu_item_side.dart';
 import 'widgets/text_separador_menu.dart';
 
 class SideBar extends StatelessWidget {

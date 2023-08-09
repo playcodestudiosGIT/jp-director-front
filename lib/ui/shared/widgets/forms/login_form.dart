@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -21,12 +23,22 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  late TextEditingController emailCtrl;
+  late TextEditingController passCtrl;
+
+  @override
+  void dispose() {
+    Provider.of<LoginFormProvider>(context, listen: false).keyLoginForm.currentState!.dispose();
+    emailCtrl.dispose();
+    passCtrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final loginFormProvider = Provider.of<LoginFormProvider>(context);
-    TextEditingController emailCtrl = TextEditingController(text: loginFormProvider.email);
-    TextEditingController passCtrl = TextEditingController(text: loginFormProvider.pass);
+    emailCtrl = TextEditingController(text: loginFormProvider.email);
+    passCtrl = TextEditingController(text: loginFormProvider.pass);
     return Container(
       width: double.infinity,
       height: 500,
@@ -44,7 +56,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
             TextFormField(
               // initialValue: loginFormProvider.email,
-              controller: emailCtrl,
+              // controller: emailCtrl,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               keyboardType: TextInputType.emailAddress,
               validator: (value) => (EmailValidator.validate(value.toString())) ? null : 'Ingrese su correo',
@@ -151,9 +163,11 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   TextButton(
                     style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, '${Flurorouter.payNewUserRouteAlt}${widget.cursoId}?state=register');
-                    }, // Navigate to register page
+                    onPressed: (!widget.cursoId.isNull)
+                        ? () {
+                            Navigator.pushReplacementNamed(context, '${Flurorouter.payNewUserRouteAlt}${widget.cursoId}?state=register');
+                          }
+                        : () => {Navigator.pushReplacementNamed(context, Flurorouter.registerRoute)}, // Navigate to register page
                     child: Text(
                       'Registrate aquí',
                       style: GoogleFonts.roboto(fontSize: 14, color: azulText, fontWeight: FontWeight.w800),

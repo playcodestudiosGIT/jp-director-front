@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
 import '../constant.dart';
@@ -42,19 +42,19 @@ class CursosDTS extends DataTableSource {
             const SizedBox(height: 30),
             Text(
               curso.nombre.toUpperCase(),
-              style: GoogleFonts.roboto(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black54),
+              style: DashboardLabel.h4,
             ),
             const SizedBox(height: 4),
             Text(
-              curso.subtitle,
-              style: GoogleFonts.roboto(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black54),
+              curso.precio,
+              style: DashboardLabel.mini,
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
             ),
             const SizedBox(height: 4),
             Text(
               curso.descripcion,
-              style: GoogleFonts.roboto(fontSize: 12, color: Colors.black54),
+              style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5)),
               overflow: TextOverflow.ellipsis,
               maxLines: 4,
             ),
@@ -63,26 +63,26 @@ class CursosDTS extends DataTableSource {
               children: [
                 Text(
                   'ID: ${curso.id}',
-                  style: GoogleFonts.roboto(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black54),
+                  style: DashboardLabel.mini,
                 ),
                 IconButton(
                     onPressed: () async {
                       await Clipboard.setData(ClipboardData(text: curso.id));
                       // copied successfully
                     },
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.copy_outlined,
                       size: 12,
-                      color: Colors.black38,
+                      color: Colors.white.withOpacity(0.5),
                     ))
               ],
             ),
-            const Spacer(),
+            // const Spacer(),
             Row(
               children: [
                 Text(
                   'Modulos: ',
-                  style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black54),
+                  style: DashboardLabel.mini,
                 ),
                 Text(modulos.length.toString()),
               ],
@@ -92,7 +92,7 @@ class CursosDTS extends DataTableSource {
               children: [
                 Text(
                   'Duración: ',
-                  style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black54),
+                  style: DashboardLabel.mini,
                 ),
                 Text(curso.duracion),
               ],
@@ -118,7 +118,7 @@ class CursosDTS extends DataTableSource {
               icon: const Icon(
                 Icons.edit_outlined,
                 size: 16,
-                color: bgColor,
+                color: azulText,
               )),
           // IconButton(onPressed: () {}, icon: const Icon(Icons.email_outlined)),
           IconButton(
@@ -138,10 +138,10 @@ class CursosDTS extends DataTableSource {
                           final isDelete = await Provider.of<AllCursosProvider>(context, listen: false).deleteCurso(curso.id);
                           if (isDelete != null && context.mounted) {
                             Navigator.pop(context, true);
-                            NotificationServices.showSnackbarError('Lead "${curso.nombre}" Eliminado', Colors.green);
+                            NotifServ.showSnackbarError('Lead "${curso.nombre}" Eliminado', Colors.green);
                           } else {
                             Navigator.pop(context, false);
-                            NotificationServices.showSnackbarError('Error Eliminando Curso', Colors.red);
+                            NotifServ.showSnackbarError('Error Eliminando Curso', Colors.red);
                           }
                         },
                         child: const Text('Si, Borrar'))

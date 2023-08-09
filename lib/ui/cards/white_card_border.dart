@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 import '../../constant.dart';
 
 class WhiteCardBorder extends StatelessWidget {
@@ -14,8 +13,10 @@ class WhiteCardBorder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(8),
-      padding: const EdgeInsets.all(10),
+      width: 200,
+      height: 100,
+      margin: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       decoration: buildBoxDecoration(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,6 +37,11 @@ class WhiteCardBorder extends StatelessWidget {
     );
   }
 
-  BoxDecoration buildBoxDecoration() => BoxDecoration(
-      color: blancoText, borderRadius: BorderRadius.circular(border), boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 5)]);
+  BoxDecoration buildBoxDecoration() => BoxDecoration(color: bgColor, borderRadius: BorderRadius.circular(border), boxShadow: [
+        BoxShadow(
+          color: azulText.withOpacity(0.08),
+          blurRadius: 20,
+          offset: const Offset(0, 0),
+        )
+      ]);
 }

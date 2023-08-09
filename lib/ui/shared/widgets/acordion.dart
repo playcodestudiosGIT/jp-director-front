@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/accordion/gf_accordion.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 
 
 import '../../../constant.dart';
@@ -19,19 +20,17 @@ class Acordeon extends StatelessWidget {
         GFAccordion(
           title: title,
           content: content,
-          collapsedTitleBackgroundColor: bgColor,
-          expandedTitleBackgroundColor: bgColor,
-          textStyle: GoogleFonts.roboto(
-            color: blancoText,
-            fontSize: (wScreen < 1200) ? 24 : 40,
-          ),
+          contentBackgroundColor: blancoText,
+          collapsedTitleBackgroundColor: bgColor.withOpacity(0.5),
+          expandedTitleBackgroundColor: bgColor.withOpacity(0.5),
+          textStyle: (wScreen < 1200) ? DashboardLabel.h2 : DashboardLabel.h1,
           collapsedIcon: const Icon(
             Icons.arrow_downward,
-            color: blancoText,
+            color: azulText,
           ),
           expandedIcon: const Icon(
             Icons.arrow_upward,
-            color: blancoText,
+            color: azulText,
           ),
           contentPadding: const EdgeInsets.all(30),
         ),

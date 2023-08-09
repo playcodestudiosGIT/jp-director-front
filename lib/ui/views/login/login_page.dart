@@ -19,12 +19,13 @@ class _LoginPageState extends State<LoginPage> {
     double hScreen = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      backgroundColor: Colors.transparent,
         body: ListView(
       children: [
         Stack(
           alignment: Alignment.topCenter,
           children: [
-            const Positioned(top: 0, left: -500, child: SizedBox(width: 1100, child: Image(image: circulo))),
+            
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,

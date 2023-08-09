@@ -36,7 +36,7 @@ class NormalBody extends StatelessWidget {
             Container(
               width: double.infinity,
               padding: const EdgeInsets.only(bottom: 100),
-              color: bgColor,
+
             ),
             Positioned(
               top: 250,
@@ -126,7 +126,7 @@ class NormalBody extends StatelessWidget {
                                       ),
                                       GestureDetector(
                                         onTap: () {
-                                          NavigatorService.navigateTo('/ads');
+                                          NavigatorService.navigateTo('/cursos');
                                         },
                                         child: MouseRegion(
                                           cursor: SystemMouseCursors.click,

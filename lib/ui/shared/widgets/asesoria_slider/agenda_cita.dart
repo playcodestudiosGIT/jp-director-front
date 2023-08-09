@@ -220,7 +220,7 @@ class _AgendaState extends State<Agenda> {
                               agendarProvider.redirectToCheckout(email:  agendarProvider.email, priceId: 'price_1MKVK0CVYYmwLSmFiLLvWWcN', date: agendarProvider.date, hour:agendarProvider.horaSinFormato[0]  ); //agendarProvider.email, agendarProvider.date, agendarProvider.horaSinFormato[0]
                             });
                           } else {
-                            NotificationServices.showSnackbarError('Formulario invalido', Colors.red);
+                            NotifServ.showSnackbarError('Formulario invalido', Colors.red);
                           }
                         },
                       ),

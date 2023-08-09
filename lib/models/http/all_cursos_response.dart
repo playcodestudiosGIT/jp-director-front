@@ -1,23 +1,19 @@
-// To parse this JSON data, do
-//
-//     final allCursosResponse = allCursosResponseFromJson(jsonString);
-
 import 'dart:convert';
 
 import '../curso.dart';
 
+AllCursosResponse allCursosResponseFromJson(String str) => AllCursosResponse.fromJson(json.decode(str));
+
+String allCursosResponseToJson(AllCursosResponse data) => json.encode(data.toJson());
+
 class AllCursosResponse {
-    int total;
-    List<Curso> cursos;
+    final int total;
+    final List<Curso> cursos;
 
     AllCursosResponse({
         required this.total,
         required this.cursos,
     });
-
-    factory AllCursosResponse.fromRawJson(String str) => AllCursosResponse.fromJson(json.decode(str));
-
-    String toRawJson() => json.encode(toJson());
 
     factory AllCursosResponse.fromJson(Map<String, dynamic> json) => AllCursosResponse(
         total: json["total"],

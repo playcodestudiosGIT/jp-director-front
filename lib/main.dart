@@ -80,10 +80,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       scrollBehavior: MyCustomScrollBehavior(),
       debugShowCheckedModeBanner: false,
-      title: 'JP-Director',
+      title: 'JP Director',
       onGenerateRoute: Flurorouter.router.generator,
       navigatorKey: NavigatorService.navigatorKey,
-      scaffoldMessengerKey: NotificationServices.msgKey,
+      scaffoldMessengerKey: NotifServ.msgKey,
       builder: ((_, child) {
         
         final authProvider = Provider.of<AuthProvider>(context);

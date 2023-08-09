@@ -100,7 +100,7 @@ class AgendarProvider extends ChangeNotifier {
           successUrl: successUrl,
           cancelUrl: 'https://jpdirector.herokuapp.com/#/form/agendar'));
     } catch (e) {
-      NotificationServices.showSnackbarError('Formulario invalido', Colors.red);
+      NotifServ.showSnackbarError('Formulario invalido', Colors.red);
     }
   }
 

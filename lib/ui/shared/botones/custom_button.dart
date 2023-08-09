@@ -20,17 +20,20 @@ class CustomButton extends StatelessWidget {
           width: width,
           height: 34,
           child: Center(
-              child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      if (icon != null)
-                      ...[
-                        Icon(icon, color: Colors.white,),
-                        const SizedBox(width: 10)
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        if (icon != null)
+                        ...[
+                          Icon(icon, color: bgColor),
+                          const SizedBox(width: 10)
+                        ],
+                        Text(text.toUpperCase(), style: const TextStyle(fontFamily: 'Roboto', color: bgColor, fontSize: 14, fontWeight: FontWeight.w800)),
                       ],
-                      Text(text, style: const TextStyle(fontFamily: 'Roboto', color: blancoText, fontSize: 14, fontWeight: FontWeight.w800)),
-                    ],
-                  )),
+                    ),
+              )),
         ),
       ),
     );

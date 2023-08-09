@@ -1,6 +1,7 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/models/baner.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:jpdirector_frontend/ui/shared/modals/baners_modal.dart';
 import 'package:provider/provider.dart';
 
@@ -27,8 +28,8 @@ class BanersDTS extends DataTableSource {
             Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: SizedBox(
-                    width: 340,
-                    height: 150,
+                    width: 200,
+                    height: 200,
                     child: Image(
                       image: (baner.img == '') ? const NetworkImage(noimage) : NetworkImage(baner.img),
                       fit: BoxFit.cover,
@@ -46,14 +47,14 @@ class BanersDTS extends DataTableSource {
         ),
         onTap: () => pickImage(context, baner.id.toString()),
       ),
-      DataCell(Text(baner.nombre)),
+      DataCell(Text(baner.nombre, style: DashboardLabel.paragraph)),
       DataCell(Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           
-          Text(baner.priceId),
+          Text(baner.priceId, style: DashboardLabel.paragraph),
           const SizedBox(height: 4),
-          Text(baner.cursoId),
+          Text(baner.cursoId, style: DashboardLabel.paragraph),
         ],
       )),
       DataCell(Row(
@@ -69,7 +70,7 @@ class BanersDTS extends DataTableSource {
               icon: const Icon(
                 Icons.edit_outlined,
                 size: 16,
-                color: bgColor,
+                color: azulText,
               )),
           IconButton(
               onPressed: () {
@@ -88,10 +89,10 @@ class BanersDTS extends DataTableSource {
                           final isDelete = await Provider.of<BanersProvider>(context, listen: false).deleteBaner(baner.id);
                           if (isDelete != null && context.mounted) {
                             Navigator.of(context).pop();
-                            NotificationServices.showSnackbarError('Lead "${baner.nombre}" Eliminado', Colors.green);
+                            NotifServ.showSnackbarError('Lead "${baner.nombre}" Eliminado', Colors.green);
                           } else {
                             Navigator.of(context).pop();
-                            NotificationServices.showSnackbarError('Error Eliminando Usuario', Colors.red);
+                            NotifServ.showSnackbarError('Error Eliminando Usuario', Colors.red);
                           }
                         },
                         child: const Text('Si, Borrar'))
@@ -139,7 +140,7 @@ class BanersDTS extends DataTableSource {
       if(context.mounted) Provider.of<BanersProvider>(context, listen: false).getBaners();
 
       notifyListeners();
-      NotificationServices.showSnackbarError('cambiada con exito', Colors.green);
+      NotifServ.showSnackbarError('cambiada con exito', Colors.green);
     } else {
       // User canceled the picker
     }

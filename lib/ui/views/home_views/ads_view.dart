@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
@@ -24,33 +25,16 @@ class _AdsViewState extends State<AdsView> {
     final authProvider = Provider.of<AuthProvider>(context);
     return Padding(
       padding:
-          (wScreen < 715 && authProvider.authStatus == AuthStatus.authenticated) ? const EdgeInsets.only(left: 40) : const EdgeInsets.only(left: 0),
+          (wScreen < 715 && authProvider.authStatus == AuthStatus.authenticated) ? const EdgeInsets.only(left: 0) : const EdgeInsets.only(left: 0),
       child: Stack(children: [
-        Container(
-          color: bgColor,
-        ),
-        Positioned(
-            top: 80,
-            left: -450,
-            child: SizedBox(
-              height: 900,
-              child: SlideInUp(
-                from: 60,
-                duration: const Duration(seconds: 10),
-                child: SlideInLeft(
-                  from: 100,
-                  duration: const Duration(seconds: 10),
-                  child: const Image(
-                    image: circulo,
-                  ),
-                ),
-              ),
-            )),
+        // Container(
+        //   color: bgColor,
+        // ),
         Positioned(
             top: 90,
-            right: 30,
+            right: 330,
             child: Transform.rotate(
-              angle: 16,
+              angle: 6,
               child: Opacity(
                 opacity: 0.1,
                 child: SlideInUp(
@@ -58,6 +42,7 @@ class _AdsViewState extends State<AdsView> {
                   duration: const Duration(seconds: 10),
                   child: const Image(
                     image: rocketGif,
+                    width: 200,
                   ),
                 ),
               ),
@@ -90,16 +75,19 @@ class _AdsViewState extends State<AdsView> {
               ),
               Text(
                 'Cursos',
-                style: GoogleFonts.roboto(fontSize: 32, fontWeight: FontWeight.w900, color: blancoText),
+                style: DashboardLabel.h1,
+              ),
+              const SizedBox(
+                height: 15,
               ),
               FutureBuilder(
                 future: Provider.of<BanersProvider>(context, listen: false).getBaners(),
                 builder: (context, snapshot) {
                   return Container(
-                    constraints: const BoxConstraints(maxHeight: 300, maxWidth: 800),
+                    constraints: const BoxConstraints(maxWidth: 800),
                     child: Wrap(
                       spacing: 15,
-                      runSpacing: 0,
+                      runSpacing: 15,
                       direction: Axis.horizontal,
                       alignment: WrapAlignment.center,
                       children: [
@@ -107,9 +95,7 @@ class _AdsViewState extends State<AdsView> {
                         if (baners.isNotEmpty)
                           ...baners.map(
                             (e) => CursoImagen(
-                              img: e.img,
-                              priceId: e.priceId,
-                              cursoId: e.cursoId,
+                              baner: e,
                             ),
                           )
                       ],
@@ -127,7 +113,7 @@ class _AdsViewState extends State<AdsView> {
                   child: Text(
                     'Consigue clientes que quieran comprar tu producto o servicio utilizando la herramienta por la que llegaste aqui: Instagram - Facebook - Tik Tok',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.roboto(fontSize: 20, fontWeight: FontWeight.w400, color: blancoText),
+                    style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5)),
                   ),
                 ),
               )

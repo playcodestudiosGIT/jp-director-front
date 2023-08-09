@@ -28,8 +28,8 @@ class Flurorouter {
 
   //ruta pagos
   static String payRoute = '/pay';
-  static String payNewUserRouteAlt = '/pay/new/';
-  static String payNewUserRoute = '/pay/new/:cursoId';
+  static String payNewUserRouteAlt = '/pay/new';
+  static String payNewUserRoute = '/pay/new/:cursoId/:state';
 
   //verify route
   static String verifyRoute = '/auth/verify/:confirmCode';
@@ -49,6 +49,11 @@ class Flurorouter {
   static String cursoID = '/user/dashboard/:cursoID/:videoIndex';
   static String curso = '/user/dashboard/';
   // static String curso = '/curso';
+
+
+  //Cursos Landing
+  static String cursoLandingId = '/user/land/:cursoId';
+  static String cursoLanding = '/user/land';
 
   // rutas admin
 
@@ -85,6 +90,12 @@ class Flurorouter {
         handler: VisitorHandlers.payNewUser, transitionType: TransitionType.fadeIn, transitionDuration: const Duration(milliseconds: 100));
     router.define(payNewUserRouteAlt,
         handler: VisitorHandlers.payNewUser, transitionType: TransitionType.fadeIn, transitionDuration: const Duration(milliseconds: 100));
+
+        //Cursos landing 
+    router.define(cursoLandingId,
+        handler: VisitorHandlers.cursoLanding, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
+    router.define(cursoLanding,
+        handler: VisitorHandlers.cursoLanding, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 
 // Statics routes
 

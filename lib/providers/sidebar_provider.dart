@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class SideBarProvider extends ChangeNotifier {
   static late AnimationController menuController;
   static bool isOpen = false;
-  bool isAparece = true;
+  bool isAparece = false;
 
   setIsAparece(bool value) {
     isAparece = value;

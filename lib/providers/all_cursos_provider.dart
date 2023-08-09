@@ -23,12 +23,20 @@ class AllCursosProvider extends ChangeNotifier {
   Curso _cursoView = cursoDummy;
 
   String _nombreCursoModal = '';
-  String _subtitleCursoModal = '';
+  String _precioCursoModal = '';
   String _descripcionCursoModal = '';
   String _imgCursoModal = '';
+  String _banerCursoModal = '';
   String _duracionCursoModal = '';
 
   // --------------------------------- //
+
+  String get banerCursoModal => _banerCursoModal;
+
+  set banerCursoModal(String value) {
+    _banerCursoModal = value;
+    notifyListeners();
+  }
 
   Curso get cursoView => _cursoView;
 
@@ -78,10 +86,10 @@ class AllCursosProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  String get subtitleCursoModal => _subtitleCursoModal;
+  String get subtitleCursoModal => _precioCursoModal;
 
-  set subtitleCursoModal(String value) {
-    _subtitleCursoModal = value;
+  set precioCursoModal(String value) {
+    _precioCursoModal = value;
     notifyListeners();
   }
 
@@ -131,7 +139,8 @@ class AllCursosProvider extends ChangeNotifier {
       cursoModal = curso;
       _imgCursoModal = curso.img;
       _descripcionCursoModal = curso.descripcion;
-      _subtitleCursoModal = curso.subtitle;
+      _precioCursoModal = curso.precio;
+      _banerCursoModal = curso.baner;
       _nombreCursoModal = curso.nombre;
 
       notifyListeners();
@@ -142,25 +151,25 @@ class AllCursosProvider extends ChangeNotifier {
 
   // funciones
 
-  getCursosById(String id) async {
+  Future<Curso> getCursosById(String id) async {
     try {
       final resp = await JpApi.httpGet('/cursos/$id');
       final cursosResponse = Curso.fromJson(resp);
       _cursoView = cursosResponse;
- 
       notifyListeners();
       return _cursoView;
     } catch (e) {
-      throw 'Error getCursosId';
+      throw 'Error getCursosById $e';
     }
   }
 
   createCurso() {
     final data = {
       "nombre": _nombreCursoModal,
-      "subtitle": _subtitleCursoModal,
+      "precio": _precioCursoModal,
       "descripcion": _descripcionCursoModal,
       "img": _imgCursoModal,
+      "baner": _banerCursoModal,
       "duracion": _duracionCursoModal,
     };
 
@@ -168,9 +177,9 @@ class AllCursosProvider extends ChangeNotifier {
       final curso = Curso.fromJson(json);
       _allCursos.add(curso);
       notifyListeners();
-      NotificationServices.showSnackbarError('Curso Creado con exito', Colors.green);
+      NotifServ.showSnackbarError('Curso Creado con exito', Colors.green);
     }).catchError((e) {
-      NotificationServices.showSnackbarError('Error creando curso', Colors.red);
+      NotifServ.showSnackbarError('Error creando curso', Colors.red);
     });
   }
 
@@ -202,7 +211,7 @@ class AllCursosProvider extends ChangeNotifier {
       // NotificationServices.showSnackbarError(resp['msg'], Colors.red);
       return;
     } else {
-      NotificationServices.showSnackbarError('Curso agregado', Colors.green);
+      NotifServ.showSnackbarError('Curso agregado', Colors.green);
       notifyListeners();
     }
   }
@@ -212,7 +221,7 @@ class AllCursosProvider extends ChangeNotifier {
       await JpApi.put('/usuarios/remove/$userId', {"cursoId": cursoId});
       _cursosUserModalTemp.removeWhere((element) => element.id == cursoId);
       notifyListeners();
-      NotificationServices.showSnackbarError('Curso Borrado', Colors.green);
+      NotifServ.showSnackbarError('Curso Borrado', Colors.green);
     } catch (e) {
       throw 'error $e';
     }
@@ -223,9 +232,10 @@ class AllCursosProvider extends ChangeNotifier {
   }) async {
     final data = {
       "nombre": _nombreCursoModal,
-      "subtitle": _subtitleCursoModal,
+      "precio": _precioCursoModal,
       "descripcion": _descripcionCursoModal,
       "img": _imgCursoModal,
+      "baner": _banerCursoModal,
       "duracion": _duracionCursoModal,
     };
 
@@ -241,9 +251,9 @@ class AllCursosProvider extends ChangeNotifier {
       _allCursos.add(curso);
 
       notifyListeners();
-      NotificationServices.showSnackbarError('Curso Actualizado con exito', Colors.green);
+      NotifServ.showSnackbarError('Curso Actualizado con exito', Colors.green);
     } catch (e) {
-      NotificationServices.showSnackbarError('Error actualizando curso', Colors.red);
+      NotifServ.showSnackbarError('Error actualizando curso', Colors.red);
       throw Exception('Error Actualizando usuario.');
     }
   }
@@ -257,10 +267,10 @@ class AllCursosProvider extends ChangeNotifier {
       );
 
       notifyListeners();
-      NotificationServices.showSnackbarError('Curso borrado con exito', Colors.green);
+      NotifServ.showSnackbarError('Curso borrado con exito', Colors.green);
       return true;
     } catch (e) {
-      NotificationServices.showSnackbarError('Error borrando curso', Colors.red);
+      NotifServ.showSnackbarError('Error borrando curso', Colors.red);
     }
   }
 
@@ -277,10 +287,35 @@ class AllCursosProvider extends ChangeNotifier {
     await JpApi.post('/modulos', data).then((json) {
       getAllCursos();
       notifyListeners();
-      NotificationServices.showSnackbarError('Modulo agregado con exito', Colors.green);
+      NotifServ.showSnackbarError('Modulo agregado con exito', Colors.green);
     }).catchError((e) {
-      NotificationServices.showSnackbarError('Error agregado modulo', Colors.red);
+      NotifServ.showSnackbarError('Error agregado modulo', Colors.red);
     });
+  }
+
+  Future updateModulo({
+    required String uid,
+    required String nombreModulo,
+    required String descripcionModulo,
+    required String urlVideo,
+    required String urlDescarga,
+  }) async {
+    final data = {
+      "nombre": nombreModulo,
+      "descripcion": descripcionModulo,
+      "video": urlVideo,
+      "descarga": urlDescarga,
+    };
+
+    try {
+      final json = await JpApi.put('/modulos/$uid', data);
+
+      notifyListeners();
+      NotifServ.showSnackbarError('Modulo Actualizado con exito', Colors.green);
+    } catch (e) {
+      NotifServ.showSnackbarError('Error actualizando modulo', Colors.red);
+      // throw Exception('Error Actualizando modulo.');
+    }
   }
 
   Future deleteModulo(String id) async {
@@ -292,10 +327,10 @@ class AllCursosProvider extends ChangeNotifier {
       _cursoModal.modulos.removeWhere((element) => element.id == id);
       getAllCursos();
       notifyListeners();
-      NotificationServices.showSnackbarError('Modulo borrado con exito', Colors.green);
+      NotifServ.showSnackbarError('Modulo borrado con exito', Colors.green);
       return true;
     } catch (e) {
-      NotificationServices.showSnackbarError('Error borrando modulo', Colors.red);
+      NotifServ.showSnackbarError('Error borrando modulo', Colors.red);
     }
   }
 
@@ -310,9 +345,9 @@ class AllCursosProvider extends ChangeNotifier {
     await JpApi.post('/modulos/coments/add', data).then((json) {
       getAllCursos();
       notifyListeners();
-      NotificationServices.showSnackbarError('Comentario agregado con exito', Colors.green);
+      NotifServ.showSnackbarError('Comentario agregado con exito', Colors.green);
     }).catchError((e) {
-      NotificationServices.showSnackbarError('Error agregado comentario', Colors.red);
+      NotifServ.showSnackbarError('Error agregado comentario', Colors.red);
     });
   }
 
@@ -333,7 +368,6 @@ class AllCursosProvider extends ChangeNotifier {
   Future createResp({required String id, required String respuesta}) async {
     try {
       await JpApi.post('/modulos/resp/add/$id', {"respuesta": respuesta});
-
     } catch (e) {
       throw 'Error $e';
     }

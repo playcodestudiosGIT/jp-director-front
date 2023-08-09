@@ -21,7 +21,7 @@ class ContactoView extends StatelessWidget {
 
     return Container(
         margin: EdgeInsets.only(
-          left: wScreen < 670 && authProvider.authStatus == AuthStatus.authenticated ? 30 : 0,
+          left: wScreen < 670 && authProvider.authStatus == AuthStatus.authenticated ? 0 : 0,
         ),
         width: double.infinity,
         decoration: BoxDecoration(
@@ -50,13 +50,6 @@ class ContactoView extends StatelessWidget {
                           '@jpdirector - Jorge Pérez',
                           style: GoogleFonts.roboto(fontSize: 24, fontWeight: FontWeight.w700, color: azulText),
                         ),
-                        // Text(
-                        //   'Jorge Pérez @jpdirector',
-                        //   style: GoogleFonts.roboto(
-                        //       fontSize: 28,
-                        //       fontWeight: FontWeight.w500,
-                        //       color: azulText),
-                        // ),
                         const SizedBox(
                           height: 20,
                         ),

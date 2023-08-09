@@ -12,11 +12,11 @@ class SeparadorMenuTexto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.only(left: 10),
       margin: const EdgeInsets.only(bottom: 5),
       child: Text(
         text,
-        style: GoogleFonts.roboto(fontSize: 12, fontWeight: FontWeight.w400, color: blancoText.withOpacity(0.5)),
+        style: GoogleFonts.roboto(fontSize: 12, fontWeight: FontWeight.w400, color: blancoText.withOpacity(0.2)),
       ),
     );
   }

@@ -371,12 +371,12 @@ class _UsersModalState extends State<UsersModal> {
                         margin: const EdgeInsets.only(top: 20),
                         alignment: Alignment.center,
                         child: CustomButton(
-                          width: 80,
+                          width: 100,
                           onPress: () async {
                             if (id == null) {
                               // Crear
                               await Provider.of<UsersProvider>(context, listen: false).createUser(nombre, apellido, correo, clave, rol, estado);
-                              NotificationServices.showSnackbarError('Usuario Creado con exito', Colors.green);
+                              NotifServ.showSnackbarError('Usuario Creado con exito', Colors.green);
                             } else {
                               await usersProvider.updateUser(
                                   uid: id,
@@ -391,7 +391,7 @@ class _UsersModalState extends State<UsersModal> {
                                   instagram: instagram,
                                   estado: estado,
                                   rol: rol);
-                              NotificationServices.showSnackbarError('Usuario actualizado con exito', Colors.green);
+                              NotifServ.showSnackbarError('Usuario actualizado con exito', Colors.green);
                             }
 
                             if (context.mounted) {
@@ -409,7 +409,7 @@ class _UsersModalState extends State<UsersModal> {
                         margin: const EdgeInsets.only(top: 20),
                         alignment: Alignment.center,
                         child: CustomButton(
-                          width: 80,
+                          width: 100,
                           color: Colors.red.withOpacity(0.5),
                           onPress: () {
                             Navigator.pop(context, false);
@@ -509,7 +509,7 @@ class _AddCursoModalState extends State<AddCursoModal> {
                       if (!authProvider.user!.cursos.contains(cursoId)) {
                         allCursosProvider.addCursoToUser(context: context, userId: widget.userId);
                       } else {
-                        NotificationServices.showSnackbarError('Curso repetido', Colors.red);
+                        NotifServ.showSnackbarError('Curso repetido', Colors.red);
                       }
                       Navigator.pop(context, true);
                     },

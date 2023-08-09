@@ -39,7 +39,7 @@ class LoginButton extends StatelessWidget {
                         Icon(icon, color: Colors.white,),
                         const SizedBox(width: 10)
                       ],
-                      Text(text, style: const TextStyle(fontFamily: 'Roboto', color: blancoText, fontSize: 14, fontWeight: FontWeight.w800)),
+                      Text(text, style: const TextStyle(fontFamily: 'Roboto', color: bgColor, fontSize: 14, fontWeight: FontWeight.w800)),
                     ],
                   )),
         ),

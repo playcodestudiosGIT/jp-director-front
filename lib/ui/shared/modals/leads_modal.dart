@@ -101,11 +101,11 @@ class _LeadsModalState extends State<LeadsModal> {
                       if (id == null) {
                         // Crear
                         await leadsProvider.createLead(email: email!, telf: telf!);
-                        NotificationServices.showSnackbarError('Lead Creado con exito', Colors.green);
+                        NotifServ.showSnackbarError('Lead Creado con exito', Colors.green);
                       } else {
                         // Actualizar
                         await leadsProvider.updateLead(id: id, email: email!, telf: telf!);
-                        NotificationServices.showSnackbarError('Lead actualizado con exito', Colors.green);
+                        NotifServ.showSnackbarError('Lead actualizado con exito', Colors.green);
                       }
 
                       if (context.mounted) {

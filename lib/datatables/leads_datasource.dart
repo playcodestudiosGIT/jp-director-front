@@ -58,10 +58,10 @@ class LeadsDTS extends DataTableSource {
                           final isDelete = await Provider.of<LeadsProvider>(context, listen: false).deleteLead(lead.uid);
                           if (isDelete != null && context.mounted) {
                             Navigator.of(context).pop();
-                            NotificationServices.showSnackbarError('Lead "${lead.email}" Eliminado', Colors.green);
+                            NotifServ.showSnackbarError('Lead "${lead.email}" Eliminado', Colors.green);
                           } else {
                             Navigator.of(context).pop();
-                            NotificationServices.showSnackbarError('Error Eliminando Usuario', Colors.red);
+                            NotifServ.showSnackbarError('Error Eliminando Usuario', Colors.red);
                           }
                         },
                         child: const Text('Si, Borrar'))

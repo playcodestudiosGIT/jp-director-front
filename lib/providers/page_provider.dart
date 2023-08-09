@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:universal_html/html.dart' as html;
 
 class PageProvider extends ChangeNotifier {
-  PageController homePageController = PageController();
-  final List<String> _pages = ['home', 'ads', 'servicios', 'resultados', 'contacto'];
+  static late AnimationController circleController;
+  late PageController homePageController;
+  final List<String> _pages = ['home', 'cursos', 'servicios', 'resultados', 'contacto'];
   int _currentIndex = 0;
 
   getCurrentIndex() => _currentIndex;

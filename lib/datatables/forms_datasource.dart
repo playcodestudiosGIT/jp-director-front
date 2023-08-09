@@ -104,7 +104,7 @@ class FormsDTS extends DataTableSource {
                           //BORRAR USUARIO
                           Provider.of<FormProvider>(context, listen: false).deleteForm(form.uid);
                           Navigator.of(context).pop();
-                          NotificationServices.showSnackbarError('Lead "${form.email}" Eliminado', Colors.green);
+                          NotifServ.showSnackbarError('Lead "${form.email}" Eliminado', Colors.green);
                         },
                         child: const Text('Si, Borrar'))
                   ],

@@ -4,7 +4,6 @@ import '../api/jp_api.dart';
 import '../services/notificacion_service.dart';
 
 class PayProvider extends ChangeNotifier {
-
   String _url = '';
 
   String get url => _url;
@@ -13,8 +12,6 @@ class PayProvider extends ChangeNotifier {
     _url = value;
     notifyListeners();
   }
-
-
 
   Future<String> createSession({
     required int price,
@@ -26,14 +23,16 @@ class PayProvider extends ChangeNotifier {
       'cursoId': cursoId,
       'userEmail': userEmail,
     };
-
+    print(cursoId);
+    print(price);
+    print(userEmail);
     try {
       final json = await JpApi.post('/pay/create-session', data).then((json) {
         _url = json["url"];
       });
       return _url;
     } catch (e) {
-      NotificationServices.showSnackbarError('$e', Colors.red);
+      NotifServ.showSnackbarError('$e', Colors.red);
       return _url;
     }
   }

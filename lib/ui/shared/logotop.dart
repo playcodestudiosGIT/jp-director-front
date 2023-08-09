@@ -10,16 +10,17 @@ class LogoTop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final wSize = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
         NavigatorService.replaceTo(Flurorouter.homeRoute);
       },
-      child: const MouseRegion(
+      child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: SizedBox(
-          width: 230,
+          width: (wSize < 400) ? 80 : 200,
           child: Image(
-            image: logoJp,
+            image: (wSize < 400) ?logoIso :logoJp,
           ),
         ),
       ),

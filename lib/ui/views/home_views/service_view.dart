@@ -46,39 +46,25 @@ class _ServicesViewState extends State<ServicesView> {
       child: Stack(
         alignment: (wScreen < 550) ? Alignment.topCenter : Alignment.center,
         children: [
-          Container(
-            color: bgColor,
-          ),
+          
           Positioned(
               top: 550,
-              left: 130,
+              right: 330,
               child: Transform.rotate(
-                angle: 15,
+                angle: 10,
                 child: Opacity(
                   opacity: 0.1,
                   child: SlideInUp(
                     from: 450,
                     duration: const Duration(seconds: 20),
                     child: const Image(
-                      width: 300,
+                      width: 150,
                       image: rocketGif,
                     ),
                   ),
                 ),
               )),
-          Positioned(
-              top: 180,
-              right: -450,
-              child: SizedBox(
-                height: 900,
-                child: SlideInUp(
-                  from: 200,
-                  duration: const Duration(seconds: 20),
-                  child: const Image(
-                    image: circulo,
-                  ),
-                ),
-              )),
+          
           SingleChildScrollView(
             child: SizedBox(
                 height: size.height,
@@ -243,7 +229,7 @@ class _ServicesViewState extends State<ServicesView> {
                               }
                             }),
                             icon: const Icon(Icons.arrow_back),
-                            color: blancoText,
+                            color: azulText,
                           ),
                         ),
                       Expanded(

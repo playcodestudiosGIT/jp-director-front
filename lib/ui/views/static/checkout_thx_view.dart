@@ -37,7 +37,6 @@ class _CheckoutThxViewState extends State<CheckoutThxView> {
     return FutureBuilder(
       future: payProvider.checkPayAndAddCurso(cursoId: widget.cursoId, userId: authProvider.user!.uid, sessionId: authProvider.user!.sessionId),
       builder: (context, snapshot) {
-        print(' snapshoot ${snapshot.data}');
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: SizedBox(width: 30, height: 30, child: CircularProgressIndicator()));
         }
