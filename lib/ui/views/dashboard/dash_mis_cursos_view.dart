@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
 import 'package:jpdirector_frontend/providers/auth_provider.dart';
-import 'package:jpdirector_frontend/providers/baners_provider.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/title_label.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +22,6 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
     Provider.of<AuthProvider>(context, listen: false).isAutenticated();
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
     Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
-    Provider.of<BanersProvider>(context, listen: false).getBaners();
     Provider.of<AllCursosProvider>(context, listen: false).obtenerMisCursos(authProvider.user!);
   }
 
@@ -35,19 +33,23 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
       if (!authProvider.user!.cursos.contains(curso.id)) {
         cursoDestruct.add(Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: CourseCard(curso: curso, esMio: false,),
+          child: CourseCard(
+            curso: curso,
+            esMio: false,
+          ),
         ));
         continue;
       }
     }
-    final destruct = Provider.of<AllCursosProvider>(context).misCursos.map((e) => CourseCard(
-          curso: e,
-          esMio: true,
+    final destruct = Provider.of<AllCursosProvider>(context).misCursos.map((e) => Container(
+          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: CourseCard(
+            curso: e,
+            esMio: true,
+          ),
         ));
-    final wScreen = MediaQuery.of(context).size.width;
     return Container(
         color: Colors.transparent,
-        // padding: (wScreen < 715) ? const EdgeInsets.only(left: 45) : const EdgeInsets.only(left: 10),
         child: Stack(
           children: [
             Positioned(

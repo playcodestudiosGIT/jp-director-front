@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constant.dart';
-import '../../../providers/forms/agendar_provider.dart';
 import '../../../providers/form_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
@@ -23,14 +22,7 @@ class AgendaThxView extends StatefulWidget {
 class _AgendaThxViewState extends State<AgendaThxView> {
   @override
   Widget build(BuildContext context) {
-    final agendaProvider = Provider.of<AgendarProvider>(context, listen: false);
-    return FutureBuilder(
-      future: agendaProvider.createAgenda(email: widget.email ?? '', dateAgendar: widget.date ?? ''),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: SizedBox(width: 30, height: 30, child: CircularProgressIndicator()));
-        }
-        return Center(
+    return Center(
           child: Wrap(
             alignment: WrapAlignment.center,
             children: [
@@ -41,8 +33,6 @@ class _AgendaThxViewState extends State<AgendaThxView> {
             ],
           ),
         );
-      },
-    );
   }
 }
 
@@ -141,12 +131,10 @@ class LetrasAsesoria extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-            child: Image.asset(
-              'images/base.gif',
-              colorBlendMode: BlendMode.modulate,
-              color: blancoText.withOpacity(0.4),
-            ),
+          Image.asset(
+            'images/base.gif',
+            colorBlendMode: BlendMode.modulate,
+            color: blancoText.withOpacity(0.4),
           ),
           const SizedBox(
             height: 30,
@@ -175,21 +163,21 @@ class ButtomRrss extends StatelessWidget {
   const ButtomRrss({Key? key, required this.text, required this.route, required this.icon}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Future<void> _launchUrlInstagram() async {
+    Future<void> launchUrlInstagram() async {
       final Uri url = Uri.parse('https://www.instagram.com/jpdirector/');
       if (!await launchUrl(url)) {
         throw Exception('Could not launch $url');
       }
     }
 
-    Future<void> _launchUrlFacebook() async {
+    Future<void> launchUrlFacebook() async {
       final Uri url = Uri.parse('https://www.facebook.com/jpdirector/');
       if (!await launchUrl(url)) {
         throw Exception('Could not launch $url');
       }
     }
 
-    Future<void> _launchUrlTikTok() async {
+    Future<void> launchUrlTikTok() async {
       final Uri url = Uri.parse('https://www.tiktok.com/@jpdirectorr');
       if (!await launchUrl(url)) {
         throw Exception('Could not launch $url');
@@ -199,13 +187,13 @@ class ButtomRrss extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (route == 'Instagram') {
-          _launchUrlInstagram();
+          launchUrlInstagram();
         }
         if (route == 'Facebook') {
-          _launchUrlFacebook();
+          launchUrlFacebook();
         }
         if (route == 'Tiktok') {
-          _launchUrlTikTok();
+          launchUrlTikTok();
         }
       },
       child: MouseRegion(

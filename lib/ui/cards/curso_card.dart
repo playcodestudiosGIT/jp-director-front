@@ -24,19 +24,19 @@ class CourseCard extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: (!esMio)
-            ? () => NavigatorService.navigateTo('${Flurorouter.cursoLanding}/${curso.id}')
+            ? () => NavigatorService.replaceTo('${Flurorouter.cursoLanding}/${curso.id}')
             : () async {
                 await Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
 
                 if (authProvider.authStatus == AuthStatus.authenticated && context.mounted) {
-                  NavigatorService.navigateTo('${Flurorouter.curso}${curso.id}/${'0'}');
+                  NavigatorService.replaceTo('${Flurorouter.curso}${curso.id}/${'0'}');
                 } else {
-                  NavigatorService.navigateTo('${Flurorouter.cursoLanding}/${curso.id}');
+                  NavigatorService.replaceTo('${Flurorouter.cursoLanding}/${curso.id}');
                 }
               },
         child: SizedBox(
           width: 250,
-          height: (esMio) ? 320 : 435,
+          height: (esMio) ? 325 : 440,
           child: (curso.nombre == 'nombre')
               ? const Center(
                   child: SizedBox(
@@ -73,7 +73,7 @@ class CourseCard extends StatelessWidget {
                                 TextButton(
                                     style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
                                     onPressed: () {
-                                      NavigatorService.navigateTo('${Flurorouter.curso}${curso.id}/${'0'}');
+                                      NavigatorService.replaceTo('${Flurorouter.curso}${curso.id}/${'0'}');
                                     },
                                     child: (esMio)
                                         ? Text('CONTINUAR', style: DashboardLabel.mini.copyWith(color: azulText))

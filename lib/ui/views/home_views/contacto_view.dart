@@ -7,7 +7,6 @@ import 'package:jpdirector_frontend/ui/shared/logotop.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
-import '../../../providers/auth_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 
@@ -17,12 +16,8 @@ class ContactoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final wScreen = MediaQuery.of(context).size.width;
-    final authProvider = Provider.of<AuthProvider>(context);
 
     return Container(
-        margin: EdgeInsets.only(
-          left: wScreen < 670 && authProvider.authStatus == AuthStatus.authenticated ? 0 : 0,
-        ),
         width: double.infinity,
         decoration: BoxDecoration(
           color: bgColor,
@@ -190,7 +185,6 @@ class ContactoView extends StatelessWidget {
   }
 }
 
-
 class CustomAlertDialogGift extends StatefulWidget {
   const CustomAlertDialogGift({super.key});
 
@@ -203,8 +197,9 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
   Widget build(BuildContext context) {
     final GlobalKey<FormState> formController = GlobalKey();
     String email = 'youremail@email.com';
-    String telf = '(+555) 55555555';
+    String telf = '12223334455';
     bool isOk = Provider.of<LeadsProvider>(context).isOk;
+
     return AlertDialog(
       backgroundColor: Colors.transparent,
       content: Center(
@@ -221,13 +216,13 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
               height: 30,
             ),
             if (isOk)
-            Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Text(
-                      'Todo listo, ya puedes descargar tu regalo haciendo click en el enlace que hemos enviado a tu correo electrónico ',
-                      style: GoogleFonts.roboto(color: Colors.white),
-                    ),
-                  ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Text(
+                  'Todo listo, ya puedes descargar tu regalo haciendo click en el enlace que hemos enviado a tu correo electrónico ',
+                  style: GoogleFonts.roboto(color: Colors.white),
+                ),
+              ),
             if (!isOk)
               Column(
                 children: [
@@ -254,11 +249,23 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                               onChanged: (value) {
                                 email = value;
                               }),
-                              const SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           TextFormField(
                               autovalidateMode: AutovalidateMode.onUserInteraction,
                               keyboardType: TextInputType.phone,
-                              validator: (value) => (value!.isEmpty || value.length < 6) ? 'Teléfono invalido' : null,
+                              validator: (value) {
+                                
+                                if (value!.isEmpty || value.length <= 6) {
+                                  return 'Teléfono sin caractéres especiales (12223334455)';
+                                }
+                                if (value.length > 6 && value.length < 10) {
+                                  return 'Debe incluir cod intenacional + cod de área';
+                                }
+                                if (!RegExp(r"^[0-9]").hasMatch(value)) {
+                                  return 'Solo debe contener números. (12223334455)';
+                                }
+                                return null;
+                              },
                               style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
                               decoration: buildInputDecoration(icon: Icons.email, label: telf),
                               onChanged: (value) {
@@ -317,12 +324,6 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
     );
   }
 }
-
-
-
-
-
-
 
 InputDecoration buildInputDecoration({required String label, required IconData icon, IconData? suffIcon, Function? onPrs}) => InputDecoration(
     fillColor: blancoText.withOpacity(0.03),

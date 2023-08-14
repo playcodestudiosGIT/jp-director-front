@@ -181,7 +181,8 @@ class _FormsModalState extends State<FormsModal> {
                   margin: const EdgeInsets.only(top: 20),
                   alignment: Alignment.center,
                   child: CustomButton(
-                    width: 80,
+                    color: Colors.green,
+                    width: 100,
                     onPress: () async {
                       if (id == '') {
                         // Crear
@@ -207,7 +208,7 @@ class _FormsModalState extends State<FormsModal> {
                   margin: const EdgeInsets.only(top: 20),
                   alignment: Alignment.center,
                   child: CustomButton(
-                    width: 80,
+                    width: 100,
                     color: Colors.red.withOpacity(0.5),
                     onPress: () {
                       Navigator.of(context).pop();

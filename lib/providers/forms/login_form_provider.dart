@@ -64,6 +64,7 @@ class LoginFormProvider extends ChangeNotifier {
       }
       await authProvider.login(email, pass);
       if (context.mounted) {
+        
         await Provider.of<BanersProvider>(context, listen: false).getBaners();
         if (context.mounted) {
           await Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();

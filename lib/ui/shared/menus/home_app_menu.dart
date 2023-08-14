@@ -16,6 +16,7 @@ class HomeAppMenu extends StatefulWidget {
   const HomeAppMenu({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeAppMenuState createState() => _HomeAppMenuState();
 }
 
@@ -63,11 +64,10 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                       child: Container(width: wScreen, height: hScreen, color: Colors.transparent)),
                   Container(
                       color: const Color(0xFF00041C),
-                      padding: const EdgeInsets.only(right: 5),
-                      width: isOpen ? 200 : 200,
+                      width: isOpen ? 180 : 180,
                       height: isOpen ? menuHSize : 50,
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           _MenuTitle(isOpen: isOpen, controller: controller),
                           if (isOpen) ...[
@@ -142,8 +142,8 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                                 icon: Icons.logout_rounded,
                                 isActive: false,
                                 onPress: () {
-                                  authProvider.logOut();
-                                  NavigatorService.replaceTo(Flurorouter.homeRoute);
+                                  authProvider.logOut(context);
+                                  
                                 }),
                           ]
                         ],
@@ -283,7 +283,7 @@ class _MenuTitle extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 SizedBox(
-                    width: 110,
+                    width: 115,
                     child: Text('${authProvider.user!.nombre} ${authProvider.user!.apellido}',
                         style: DashboardLabel.paragraph.copyWith(color: azulText), overflow: TextOverflow.ellipsis))
               ],

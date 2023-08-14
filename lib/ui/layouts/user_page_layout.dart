@@ -116,6 +116,7 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                         NavigatorService.replaceTo(Flurorouter.loginRoute);
                       },
                     )),
+                if(wScreen > 420)
                 Positioned(
                   right: (wScreen <= 390) ? 90 : 125,
                   top: 15,

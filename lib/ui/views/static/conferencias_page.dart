@@ -15,12 +15,11 @@ class ConferenciasPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Stack(
         children: [
-          Container(color: bgColor),
-          const _MentoriaBody(),
-          const SizedBox(
+          _MentoriaBody(),
+          SizedBox(
             height: 200,
           )
         ],
@@ -34,7 +33,6 @@ class _MentoriaBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<AuthProvider>(context);
     double wScreen = MediaQuery.of(context).size.width;
     double hScreen = MediaQuery.of(context).size.height;
 
@@ -46,27 +44,24 @@ class _MentoriaBody extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(
                     height: 80,
                   ),
                   Container(
+                    padding: const EdgeInsets.only(left: 20),
                     alignment: Alignment.centerLeft,
                     constraints: const BoxConstraints(maxWidth: 1200),
-                    child: Padding(
-                      padding: (authProvider.authStatus == AuthStatus.authenticated)
-                          ? const EdgeInsets.only(left: 40, top: 17)
-                          : const EdgeInsets.only(left: 0, top: 0),
-                      child: IconButton(
-                          onPressed: () {
-                            NavigatorService.navigateTo('/servicios');
-                          },
-                          icon: const Icon(
-                            Icons.arrow_back,
-                            color: azulText,
-                            size: 30,
-                          )),
-                    ),
+                    child: IconButton(
+                        onPressed: () {
+                          NavigatorService.navigateTo('/servicios');
+                        },
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: azulText,
+                          size: 30,
+                        )),
                   ),
                   Wrap(
                     alignment: WrapAlignment.spaceBetween,
@@ -75,34 +70,21 @@ class _MentoriaBody extends StatelessWidget {
                         constraints: const BoxConstraints(maxWidth: 600),
                         child: const LetrasConferencias(),
                       ),
-                      if (wScreen > 1200)
-                        Container(
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                child: ConstrainedBox(
-                                  constraints: const BoxConstraints(maxWidth: 600),
-                                  child: const Image(
-                                    image: bgConferencia,
-                                    alignment: Alignment.center,
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                top: 460,
-                                right: (wScreen > 1200) ? 250 : 250,
-                                child: const Image(
-                                  image: adsCircle,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
                     ],
                   ),
-                  Container(
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      '¿Qué hablaré durante tu evento?',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.roboto(fontSize: 26, fontWeight: FontWeight.w900, color: azulText),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  SizedBox(
                     width: double.infinity,
-                    color: bgColor,
                     child: Center(
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -181,30 +163,27 @@ class LetrasConferencias extends StatelessWidget {
             bgColor,
           ])),
         ),
-        if (wScreen < 1201)
-          Container(
-            child: Stack(
-              children: [
-                Positioned(
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 500),
-                    child: const Image(
-                      image: bgConferencia,
-                      width: 400,
-                    ),
-                  ),
+        Stack(
+          children: [
+            Positioned(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 500),
+                child: const Image(
+                  image: bgConferencia,
+                  width: 400,
                 ),
-                const Positioned(
-                  top: 280,
-                  left: 140,
-                  child: Image(
-                    image: adsCircle,
-                    width: 100,
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
+            const Positioned(
+              top: 280,
+              left: 140,
+              child: Image(
+                image: adsCircle,
+                width: 100,
+              ),
+            ),
+          ],
+        ),
         const SizedBox(
           height: 30,
         ),
@@ -215,17 +194,6 @@ class LetrasConferencias extends StatelessWidget {
           child: Text(
             'Seamos sinceros, estamos en la era de lo personalizado.\n\nEs por eso que contratándome para tu conferencia me enfocaré en los temas que SÍ les interesan, educando y divirtiendo a todos los participantes del evento.',
             style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400, color: blancoText),
-          ),
-        ),
-        const SizedBox(
-          height: 30,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            '¿Qué hablaré durante tu evento?',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.roboto(fontSize: 26, fontWeight: FontWeight.w900, color: azulText),
           ),
         ),
         const SizedBox(

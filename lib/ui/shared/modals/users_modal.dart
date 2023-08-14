@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,7 +33,7 @@ class _UsersModalState extends State<UsersModal> {
   late String? instagram;
   late String? facebook;
   late String? tiktok;
-  bool estado = false;
+  late bool estado;
   List<String> cursos = [];
 
   String? id;
@@ -54,13 +52,7 @@ class _UsersModalState extends State<UsersModal> {
     tiktok = widget.user?.tiktok;
     clave = '';
     rol = widget.user?.rol ?? 'USER_ROLE';
-    if (!widget.user.isNull) {
-      if (widget.user!.estado) {
-        estado = true;
-      } else {
-        estado = false;
-      }
-    }
+    estado = widget.user?.estado ?? false;
     if (id != null) {
       cursos = widget.user!.cursos;
     } else {
@@ -75,9 +67,8 @@ class _UsersModalState extends State<UsersModal> {
     final allCursosProvider = Provider.of<AllCursosProvider>(context, listen: false);
     final destruct = cursos.map((e) => allCursosProvider.obtenerCurso(e));
     return Container(
-      padding: (size.width < 500) ? const EdgeInsets.only(left: 40, top: 15, right: 15, bottom: 15) : const EdgeInsets.all(15),
       height: 600,
-      width: 300, // expande
+      width: 355, // expande
       decoration: buildBoxDecoration(),
       child: ListView(children: [
         Column(
@@ -305,17 +296,19 @@ class _UsersModalState extends State<UsersModal> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        constraints: const BoxConstraints(maxWidth: 300, minWidth: 300),
+                        width: double.infinity,
+                        constraints: const BoxConstraints(maxWidth: 355),
                         child: Column(
                           children: [
                             if (id != null)
                               Row(
                                 children: [
+                                  const SizedBox(width: 15),
                                   Text(
                                     'CURSOS',
                                     style: GoogleFonts.roboto(color: Colors.white),
                                   ),
-                                  const Spacer(),
+                                  const SizedBox(width: 15),
                                   MouseRegion(
                                     cursor: SystemMouseCursors.click,
                                     child: GestureDetector(
@@ -455,8 +448,8 @@ class _AddCursoModalState extends State<AddCursoModal> {
     final authProvider = Provider.of<AuthProvider>(context);
     String cursoId = '';
     return Container(
+        width: double.infinity,
         padding: const EdgeInsets.all(15),
-        constraints: const BoxConstraints(maxWidth: 400, minWidth: 350),
         height: 200,
         decoration: BoxDecoration(color: bgColor, borderRadius: BorderRadius.circular(25)),
         child: Center(
@@ -513,16 +506,16 @@ class _AddCursoModalState extends State<AddCursoModal> {
                       }
                       Navigator.pop(context, true);
                     },
-                    width: 100,
+                    width: 90,
                     color: Colors.green,
                   ),
-                  const SizedBox(width: 15),
+                  const SizedBox(width: 8),
                   CustomButton(
                     text: 'Cancelar',
                     onPress: () {
                       Navigator.pop(context, false);
                     },
-                    width: 100,
+                    width: 90,
                     color: Colors.red,
                   )
                 ],

@@ -2,10 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
-import '../../../providers/auth_provider.dart';
 
 class ResultadosView extends StatelessWidget {
   final List listMiniPhotos = resultadosMini;
@@ -15,7 +13,6 @@ class ResultadosView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Image(image: NetworkImage(img))
     final List<Widget> listResultWiget = [
       ...listMiniPhotos.map((image) {
         final i = listMiniPhotos.indexOf(image);
@@ -31,58 +28,55 @@ class ResultadosView extends StatelessWidget {
     ];
 
     final wScreen = MediaQuery.of(context).size.width;
-    final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: Padding(
-        padding:
-            (wScreen < 715 && authProvider.authStatus == AuthStatus.authenticated) ? const EdgeInsets.only(left: 0) : const EdgeInsets.only(left: 0),
-        child: Center(
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              SingleChildScrollView(
-                child: Center(
-                  child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Column(children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Text(
-                            'MÍRALO CON TUS PROPIOS OJOS',
-                            style: GoogleFonts.roboto(fontSize: (wScreen < 450) ? 18 : 24, fontWeight: FontWeight.w900, color: azulText),
-                          ),
+      body: Center(
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            SingleChildScrollView(
+              child: Center(
+                child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Text(
+                          'MÍRALO CON TUS PROPIOS OJOS',
+                          style: GoogleFonts.roboto(fontSize: (wScreen < 450) ? 18 : 24, fontWeight: FontWeight.w900, color: azulText),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          height: 500,
-                          child: PageView(children: [
-                            CarouselSlider(
-                                items: listResultWiget,
-                                options: CarouselOptions(
-                                  viewportFraction: 0.5,
-                                  enlargeFactor: 0.8,
-                                  enlargeCenterPage: true,
-                                  enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                                  pageSnapping: false,
-                                  initialPage: 0,
-                                  enableInfiniteScroll: true,
-                                  autoPlay: true
-                                )),
-                          ]),
-                        ),
-                        Center(
-                          child: Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 5), color: Colors.transparent, child: const Image(image: baseGif)),
-                        )
-                      ])),
-                ),
-              )
-            ],
-          ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 500,
+                        child: PageView(children: [
+                          CarouselSlider(
+                              items: listResultWiget,
+                              options: CarouselOptions(
+
+                                height: 500,
+                                viewportFraction: 0.5,
+                                enlargeFactor: 0.8,
+                                enlargeCenterPage: true,
+                                enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                                pageSnapping: false,
+                                initialPage: 0,
+                                enableInfiniteScroll: true,
+                                autoPlay: true
+                              )),
+                        ]),
+                      ),
+                      Center(
+                        child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 5), color: Colors.transparent, child: const Image(image: baseGif)),
+                      )
+                    ])),
+              ),
+            )
+          ],
         ),
       ),
     );
@@ -133,15 +127,18 @@ class _ContentDialogState extends State<ContentDialog> {
               controller: pagecntl,
               children: [
                 ...resultados
-                    .map((e) => PhotoView(
-                        loadingBuilder: (context, event) => const Center(
-                                child: SizedBox(
-                              width: 35,
-                              height: 35,
-                              child: CircularProgressIndicator(),
-                            )),
-                        backgroundDecoration: const BoxDecoration(color: Colors.transparent),
-                        imageProvider: NetworkImage(e)))
+                    .map((e) => Padding(
+                      padding: const EdgeInsets.only(bottom: 40.0),
+                      child: PhotoView(
+                          loadingBuilder: (context, event) => const Center(
+                                  child: SizedBox(
+                                width: 35,
+                                height: 35,
+                                child: CircularProgressIndicator(),
+                              )),
+                          backgroundDecoration: const BoxDecoration(color: Colors.transparent),
+                          imageProvider: NetworkImage(e)),
+                    ))
                     .toList()
               ],
             ),
@@ -149,54 +146,59 @@ class _ContentDialogState extends State<ContentDialog> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      TextButton(
-                          style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(azulText)),
-                          onPressed: () {
-                            if (index == 0) {
-                              index = 4;
-                              pagecntl.jumpToPage(4);
-                            } else {
-                              index--;
-                              pagecntl.previousPage(duration: const Duration(microseconds: 300), curve: Curves.ease);
-                            }
-                            setState(() {});
-                          },
-                          child: const Icon(
-                            Icons.arrow_circle_left_outlined,
-                            size: 20,
-                            color: bgColor,
-                          )),
-                      TextButton(
-                          style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(azulText)),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Icon(
-                            Icons.clear,
-                            size: 40,
-                            color: Colors.red,
-                          )),
-                      TextButton(
-                          style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(azulText)),
-                          onPressed: () {
-                            if (index > 4) {
-                              pagecntl.jumpToPage(0);
-                              index = 0;
-                            } else {
-                              index++;
-                              pagecntl.nextPage(duration: const Duration(microseconds: 300), curve: Curves.ease);
-                            }
-                            setState(() {});
-                          },
-                          child: const Icon(
-                            Icons.arrow_circle_right_outlined,
-                            size: 20,
-                            color: bgColor,
-                          )),
-                    ],
+                  Container(width: double.infinity),
+                  Container(
+                    color: bgColor.withOpacity(0.7),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        IconButton(
+                            style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(azulText)),
+                            onPressed: () {
+                              if (index == 0) {
+                                index = 4;
+                                pagecntl.jumpToPage(4);
+                              } else {
+                                index--;
+                                pagecntl.previousPage(duration: const Duration(microseconds: 300), curve: Curves.ease);
+                              }
+                              setState(() {});
+                            },
+                            icon: const Icon(
+                              Icons.arrow_circle_left_outlined,
+                              size: 30,
+                              color: azulText,
+                            )),
+                        IconButton(
+                            style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(azulText)),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: const Icon(
+                              Icons.clear,
+                              size: 30,
+                              color: Colors.red,
+                            )),
+                        IconButton(
+                            style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(azulText)),
+                            onPressed: () {
+                              if (index > 4) {
+                                pagecntl.jumpToPage(0);
+                                index = 0;
+                              } else {
+                                index++;
+                                pagecntl.nextPage(duration: const Duration(microseconds: 300), curve: Curves.ease);
+                              }
+                              setState(() {});
+                            },
+                            icon: const Icon(
+                              Icons.arrow_circle_right_outlined,
+                              size: 30,
+                              color: azulText,
+                            )),
+                      ],
+                    ),
                   ),
                 ],
               ),

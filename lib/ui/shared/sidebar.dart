@@ -94,7 +94,7 @@ class SideBar extends StatelessWidget {
                   icon: Icons.logout_rounded,
                   isActive: false,
                   onPress: () {
-                    authProvider.logOut();
+                    authProvider.logOut(context);
                   }),
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/models/formulario.dart';
 import 'package:provider/provider.dart';
@@ -23,40 +24,82 @@ class FormsDTS extends DataTableSource {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 8),
-          Text(
-            form.rootform.toUpperCase(),
-            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.bold),
+          Row(
+            children: [
+              Text(
+                'Servicio:  ',
+                style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.bold, color: blancoText.withOpacity(0.5)),
+              ),
+              Text(
+                form.rootform.toUpperCase(),
+                style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.bold),
+              ),
+            ],
           ),
           const Divider(),
           const SizedBox(height: 4),
-          Text('Nombre: ${form.nombre}'),
-          const Divider(),
-          const SizedBox(height: 4),
-          Text('Email: ${form.email}'),
-          const Divider(),
-          const SizedBox(height: 4),
-          Text('Telefono:  ${form.phone}'),
-          const Divider(),
-          const SizedBox(height: 4),
-          Text('Negocio:   ${form.business}'),
-          const Divider(),
-          const SizedBox(height: 4),
-          Text('Años de Operaciones:   ${form.operationyears}'),
-          const Divider(),
-          const SizedBox(height: 4),
-          Text('Nivel de Publicidad:   ${form.advertisinglevel}'),
-          const Divider(),
           Row(
             children: [
-              const Text('Advertising Before   '),
-              Checkbox(value: form.advertisingbefore, onChanged: null),
+              Text('Nombre:  ', style: TextStyle(color: blancoText.withOpacity(0.5)),),
+              Text(form.nombre),
+              
+            ],
+          ),
+          const Divider(),
+          const SizedBox(height: 4),
+          Row(
+            children: [
+              Text('Email:  ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text(form.email),
+              const Spacer(),
+              Icon(Icons.copy, size: 15, color: blancoText.withOpacity(0.5),)
+            ],
+          ),
+          const Divider(),
+          const SizedBox(height: 4),
+          Row(
+            children: [
+              Text('Teléfono:  ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text(form.phone),
+            ],
+          ),
+          const Divider(),
+          const SizedBox(height: 4),
+          Row(
+            children: [
+              Text('Negocio:   ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text(form.business),
+            ],
+          ),
+          const Divider(),
+          const SizedBox(height: 4),
+          Row(
+            children: [
+              Text('Años de Operaciones:   ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text(form.operationyears),
+            ],
+          ),
+          const Divider(),
+          const SizedBox(height: 4),
+          Row(
+            children: [
+              Text('Nivel de Publicidad:   ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text(form.advertisinglevel),
             ],
           ),
           const Divider(),
           Row(
             children: [
-              const Text('Acepto:  '),
-              Text(form.agree),
+              Text('Advertising Before   ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              if(form.advertisingbefore) const Text('SI'),
+              if(!form.advertisingbefore) const Text('NO')
+            ],
+          ),
+          const Divider(),
+          Row(
+            children: [
+              Text('Acepto:  ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text(form.agree.toUpperCase()),
             ],
           ),
         ],
@@ -65,11 +108,29 @@ class FormsDTS extends DataTableSource {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 8),
-          Text(form.facebookurl),
+          Row(
+            children: [
+              Icon(FontAwesomeIcons.facebook, color: blancoText.withOpacity(0.5),),
+              const SizedBox(width: 15), 
+              Text(form.facebookurl),
+            ],
+          ),
           const Divider(),
-          Text(form.instagramurl),
+          Row(
+            children: [
+              Icon(FontAwesomeIcons.instagram, color: blancoText.withOpacity(0.5),),
+              const SizedBox(width: 15), 
+              Text(form.instagramurl),
+            ],
+          ),
           const Divider(),
-          Text(form.tiktokurl),
+          Row(
+            children: [
+              Icon(FontAwesomeIcons.tiktok, color: blancoText.withOpacity(0.5),),
+              const SizedBox(width: 15), 
+              Text(form.tiktokurl),
+            ],
+          ),
           const Divider(),
         ],
       )),
@@ -119,7 +180,7 @@ class FormsDTS extends DataTableSource {
                 size: 16,
                 color: Colors.red.withOpacity(0.8),
               )),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.email_outlined)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.email_outlined, color: azulText,)),
         ],
       )),
     ]);

@@ -124,9 +124,7 @@ class LetrasAsesoria extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-            child: const Image(image: baseGif)
-          ),
+          const Image(image: baseGif),
         ],
       ),
     );
@@ -141,21 +139,21 @@ class ButtomRrss extends StatelessWidget {
   const ButtomRrss({Key? key, required this.text, required this.route, required this.icon}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Future<void> _launchUrlInstagram() async {
+    Future<void> launchUrlInstagram() async {
       final Uri url = Uri.parse('https://www.instagram.com/jpdirector/');
       if (!await launchUrl(url)) {
         throw Exception('Could not launch $url');
       }
     }
 
-    Future<void> _launchUrlFacebook() async {
+    Future<void> launchUrlFacebook() async {
       final Uri url = Uri.parse('https://www.facebook.com/jpdirector/');
       if (!await launchUrl(url)) {
         throw Exception('Could not launch $url');
       }
     }
 
-    Future<void> _launchUrlTikTok() async {
+    Future<void> launchUrlTikTok() async {
       final Uri url = Uri.parse('https://www.tiktok.com/@jpdirectorr');
       if (!await launchUrl(url)) {
         throw Exception('Could not launch $url');
@@ -165,13 +163,13 @@ class ButtomRrss extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (route == 'Instagram') {
-          _launchUrlInstagram();
+          launchUrlInstagram();
         }
         if (route == 'Facebook') {
-          _launchUrlFacebook();
+          launchUrlFacebook();
         }
         if (route == 'Tiktok') {
-          _launchUrlTikTok();
+          launchUrlTikTok();
         }
       },
       child: MouseRegion(

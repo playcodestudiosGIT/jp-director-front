@@ -165,9 +165,23 @@ class _WebBodyState extends State<WebBody> {
 
     return Column(
       children: [
-        const SizedBox(height: 100),
+        const SizedBox(height: 80),
         Column(
           children: [
+            Container(
+                    
+                    alignment: Alignment.centerLeft,
+                    constraints: const BoxConstraints(maxWidth: 800),
+                    child: IconButton(
+                        onPressed: () {
+                          NavigatorService.navigateTo('/cursos');
+                        },
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: azulText,
+                          size: 30,
+                        )),
+                  ),
             Stack(
               alignment: Alignment.center,
               children: [
@@ -239,7 +253,7 @@ class _WebBodyState extends State<WebBody> {
                               CustomButton(
                                   text: 'Continuar',
                                   onPress: () {
-                                    NavigatorService.navigateTo('${Flurorouter.curso}${widget.curso.id}/${'0'}');
+                                    NavigatorService.replaceTo('${Flurorouter.curso}${widget.curso.id}/${'0'}');
                                   },
                                   width: 250),
                             if (!esMio)
@@ -247,7 +261,7 @@ class _WebBodyState extends State<WebBody> {
                                   text: 'Comprar',
                                   onPress: () async {
                                     if (authProvider.authStatus == AuthStatus.notAuthenticated) {
-                                      NavigatorService.navigateTo('${Flurorouter.payNewUserRouteAlt}/${widget.curso.id}/login');
+                                      NavigatorService.replaceTo('${Flurorouter.payNewUserRouteAlt}/${widget.curso.id}/login');
                                     }
                                     if (authProvider.authStatus == AuthStatus.authenticated) {
                                       final resp = await Provider.of<PayProvider>(context, listen: false)
@@ -479,16 +493,8 @@ class _MobileBodyState extends State<MobileBody> {
 
   @override
   Widget build(BuildContext context) {
-    bool esMio = false;
-    final Usuario user = Provider.of<AuthProvider>(context).user ?? usuarioDummy;
+    // final Usuario user = Provider.of<AuthProvider>(context).user ?? usuarioDummy;
 
-    if (user.nombre == '') {
-      esMio = false;
-    }
-
-    if (user.nombre != '' || user.cursos.contains(widget.curso.id)) {
-      esMio = true;
-    }
     final List<Widget> modulos = widget.curso.modulos.map((e) {
       return Acordeon(title: e.nombre, content: e.descripcion);
     }).toList();
@@ -499,7 +505,21 @@ class _MobileBodyState extends State<MobileBody> {
           children: [
             Column(
               children: [
-                const SizedBox(height: 100),
+                const SizedBox(height: 80),
+                Container(
+                    
+                    alignment: Alignment.centerLeft,
+                    constraints: const BoxConstraints(maxWidth: 800),
+                    child: IconButton(
+                        onPressed: () {
+                          NavigatorService.navigateTo('/cursos');
+                        },
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: azulText,
+                          size: 30,
+                        )),
+                  ),
                 Container(
                   constraints: const BoxConstraints(maxWidth: 250),
                   child: (widget.curso.img == '') ? const CircularProgressIndicator() : Image(image: NetworkImage(widget.curso.img)),
@@ -507,7 +527,7 @@ class _MobileBodyState extends State<MobileBody> {
               ],
             ),
             Positioned(
-                top: 100,
+                top: 120,
                 child: Container(
                   width: 250,
                   height: 250,
@@ -678,9 +698,12 @@ class _MobileBodyState extends State<MobileBody> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    'Desde hace 4 años me dedico a potenciar marcas y negocios con estrategias efectivas en ads que dan en el punto. \n\nEn todo el proceso he manejado una cantidad de \$1.000.000 USD en campañas publicitarias, logrando \$15.000.000 USD en ventas por internet. Luego de innumerables pruebas, análisis y educación, decidí realizar esta experiencia grupal para enseñarle a emprendedores, dueños de negocio o equipos de marketing a entender el motor que es realizar campañas publicitarias.',
-                    style: DashboardLabel.h4.copyWith(height: 1.4, color: blancoText.withOpacity(0.5)),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Text(
+                      'Desde hace 4 años me dedico a potenciar marcas y negocios con estrategias efectivas en ads que dan en el punto. \n\nEn todo el proceso he manejado una cantidad de \$1.000.000 USD en campañas publicitarias, logrando \$15.000.000 USD en ventas por internet. Luego de innumerables pruebas, análisis y educación, decidí realizar esta experiencia grupal para enseñarle a emprendedores, dueños de negocio o equipos de marketing a entender el motor que es realizar campañas publicitarias.',
+                      style: DashboardLabel.h4.copyWith(height: 1.4, color: blancoText.withOpacity(0.5)),
+                    ),
                   ),
                   const SizedBox(
                     height: 20,

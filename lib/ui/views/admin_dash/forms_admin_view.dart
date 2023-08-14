@@ -87,11 +87,11 @@ class _FormAdminViewState extends State<FormAdminView> {
                     children: [
                       Icon(
                         Icons.add_outlined,
-                        color: Colors.white,
+                        color: bgColor,
                       ),
                       Icon(
                         Icons.format_list_numbered_outlined,
-                        color: Colors.white,
+                        color: bgColor,
                       ),
                     ],
                   ),

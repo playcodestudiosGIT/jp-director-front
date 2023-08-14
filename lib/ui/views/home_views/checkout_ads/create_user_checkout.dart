@@ -27,7 +27,8 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
 
   @override
   void dispose() {
-    checkoutKey.currentState!.dispose();
+    // checkoutKey.currentState!.dispose();
+    // Provider.of<LoginFormProvider>(context, listen: false).keyLoginForm.currentState!.dispose();
     super.dispose();
   }
 
@@ -37,7 +38,7 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
     double hScreen = MediaQuery.of(context).size.height;
 
     return FutureBuilder(
-      // future:
+      future: Future.delayed(const Duration(milliseconds: 500)),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(

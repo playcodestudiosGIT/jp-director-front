@@ -10,8 +10,8 @@ class JpApi {
   static void configureDio() {
     //base Url
     _dio.options.baseUrl = 
-    // 'https://jpdirector-d69b948c5617.herokuapp.com/api';
-     'http://localhost:8080/api';
+    'https://www.jpdirector.net/api';
+    //  'http://localhost:8080/api';
 
     //Configure headers
     _dio.options.headers = {'x-token': LocalStorage.prefs.get('token') ?? ''};

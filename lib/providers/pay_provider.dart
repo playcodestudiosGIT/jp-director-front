@@ -23,11 +23,8 @@ class PayProvider extends ChangeNotifier {
       'cursoId': cursoId,
       'userEmail': userEmail,
     };
-    print(cursoId);
-    print(price);
-    print(userEmail);
     try {
-      final json = await JpApi.post('/pay/create-session', data).then((json) {
+      await JpApi.post('/pay/create-session', data).then((json) {
         _url = json["url"];
       });
       return _url;

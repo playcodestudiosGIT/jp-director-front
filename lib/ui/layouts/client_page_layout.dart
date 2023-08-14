@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/constant.dart';
@@ -78,17 +76,14 @@ class _ClientPageLayoutState extends State<ClientPageLayout> with SingleTickerPr
                       builder: (context, _) => Stack(
                             children: [
                               if (SideBarProvider.isOpen) ...[
-                                BackdropFilter(
-                                  filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
-                                  child: Opacity(
-                                    opacity: SideBarProvider.opacity.value,
-                                    child: GestureDetector(
-                                      onTap: () => SideBarProvider.closeMenu(),
-                                      child: Container(
-                                        width: wScreen,
-                                        height: hScreen,
-                                        color: Colors.black26,
-                                      ),
+                                Opacity(
+                                  opacity: SideBarProvider.opacity.value,
+                                  child: GestureDetector(
+                                    onTap: () => SideBarProvider.closeMenu(),
+                                    child: Container(
+                                      width: wScreen,
+                                      height: hScreen,
+                                      color: Colors.black26,
                                     ),
                                   ),
                                 ),

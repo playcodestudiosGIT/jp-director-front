@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/ui/shared/botones/botonverde.dart';
 
-import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
-import '../../../providers/auth_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/widgets/acordion.dart';
@@ -16,12 +14,11 @@ class MentoriaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Stack(
         children: [
-          Container(color: bgColor),
-          const _MentoriaBody(),
-          const SizedBox(
+          _MentoriaBody(),
+          SizedBox(
             height: 200,
           )
         ],
@@ -35,7 +32,6 @@ class _MentoriaBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<AuthProvider>(context);
     double wScreen = MediaQuery.of(context).size.width;
     double hScreen = MediaQuery.of(context).size.height;
     return Stack(
@@ -45,28 +41,24 @@ class _MentoriaBody extends StatelessWidget {
             width: wScreen,
             child: SingleChildScrollView(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(
                     height: 80,
                   ),
                   Container(
+                    padding: const EdgeInsets.only(left: 20),
                     alignment: Alignment.centerLeft,
                     constraints: const BoxConstraints(maxWidth: 1200),
-                    child: Padding(
-                      padding: (authProvider.authStatus == AuthStatus.authenticated)
-                          ? const EdgeInsets.only(left: 40, top: 17)
-                          : const EdgeInsets.only(left: 0, top: 0),
-                      child: IconButton(
-                          onPressed: () {
-                            NavigatorService.navigateTo('/servicios');
-                          },
-                          icon: const Icon(
-                            Icons.arrow_back,
-                            color: azulText,
-                            size: 30,
-                          )),
-                    ),
+                    child: IconButton(
+                        onPressed: () {
+                          NavigatorService.navigateTo('/servicios');
+                        },
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: azulText,
+                          size: 30,
+                        )),
                   ),
                   Wrap(
                     alignment: WrapAlignment.spaceBetween,
@@ -75,40 +67,37 @@ class _MentoriaBody extends StatelessWidget {
                         constraints: const BoxConstraints(maxWidth: 600, maxHeight: 880),
                         child: const LetrasMentoria(),
                       ),
-                      if (wScreen > 1300)
-                        Container(
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                child: ConstrainedBox(
-                                  constraints: const BoxConstraints(maxWidth: 700),
-                                  child: const Image(
-                                    image: bgMentoria,
-                                    color: blancoText,
-                                    colorBlendMode: BlendMode.modulate,
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                top: 500,
-                                right: (wScreen > 1200) ? 230 : 0,
-                                child: const Image(
-                                  image: adsCircle,
-                                  color: blancoText,
-                                  colorBlendMode: BlendMode.modulate,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                      // if (wScreen > 1300)
+                        // Stack(
+                        //   children: [
+                        //     Positioned(
+                        //       child: ConstrainedBox(
+                        //         constraints: const BoxConstraints(maxWidth: 700),
+                        //         child: const Image(
+                        //           image: bgMentoria,
+                        //           color: blancoText,
+                        //           colorBlendMode: BlendMode.modulate,
+                        //         ),
+                        //       ),
+                        //     ),
+                        //     Positioned(
+                        //       top: 500,
+                        //       right: (wScreen > 1200) ? 230 : 0,
+                        //       child: const Image(
+                        //         image: adsCircle,
+                        //         color: blancoText,
+                        //         colorBlendMode: BlendMode.modulate,
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
                     ],
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  Container(
+                  SizedBox(
                     width: double.infinity,
-                    color: bgColor,
                     child: Center(
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -148,7 +137,6 @@ class LetrasMentoria extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<AuthProvider>(context);
     final wScreen = MediaQuery.of(context).size.width;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -167,38 +155,34 @@ class LetrasMentoria extends StatelessWidget {
             bgColor,
           ])),
         ),
-        if (wScreen < 1300)
-          Container(
-            child: Stack(
-              children: [
-                Positioned(
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 700, minWidth: 300),
-                    child: const Image(
-                      image: bgMentoria,
-                      width: 400,
-                    ),
+        // if (wScreen < 1300)
+          Stack(
+            children: [
+              Positioned(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 700, minWidth: 300),
+                  child: const Image(
+                    image: bgMentoria,
+                    width: 400,
                   ),
                 ),
-                const Positioned(
-                  top: 260,
-                  right: 150,
-                  child: Image(
-                    image: adsCircle,
-                    width: 100,
-                  ),
+              ),
+              const Positioned(
+                top: 260,
+                right: 150,
+                child: Image(
+                  image: adsCircle,
+                  width: 100,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         if (wScreen > 1300)
           const SizedBox(
             height: 30,
           ),
         Padding(
-          padding: (authProvider.authStatus == AuthStatus.authenticated)
-              ? const EdgeInsets.only(left: 40, top: 17)
-              : const EdgeInsets.only(left: 10, top: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: Text(
             'Durante el primer mes, te enseñaré todo lo que sé y elaboraremos - lanzaremos en conjunto tu plan de publicidad donde aprenderás la forma correcta de crecer tu negocio.\n\nLos siguientes dos meses tendremos varias sesiones de análisis de resultados con el plan que desarrollamos, y progresivamente optimizaremos todas tus campañas.\n\nEntenderás como si estuvieras viendo un semáforo; avanzar o parar dependiendo del color que muestre.',
             style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400, color: blancoText),

@@ -82,11 +82,11 @@ class _CursosAdminViewState extends State<CursosAdminView> {
                     children: [
                       Icon(
                         Icons.add,
-                        color: Colors.white,
+                        color: bgColor,
                       ),
                       Icon(
                         Icons.menu_book_outlined,
-                        color: Colors.white,
+                        color: bgColor,
                       ),
                     ],
                   ),

@@ -80,7 +80,7 @@ class _LeadsAdminViewState extends State<LeadsAdminView> {
                   },
                   child: const Icon(
                     Icons.email_outlined,
-                    color: Colors.white,
+                    color: bgColor,
                   ),
                 )
               ],

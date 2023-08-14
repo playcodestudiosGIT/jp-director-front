@@ -50,7 +50,7 @@ class _CourseViewState extends State<CourseView> {
       });
     chewieController = ChewieController(
       startAt: Duration(seconds: prog.marker),
-      autoInitialize: true,
+      // autoInitialize: true,
       placeholder: Container(decoration: const BoxDecoration(image: DecorationImage(image: logoGrande))),
       hideControlsTimer: const Duration(milliseconds: 1000),
       materialProgressColors: ChewieProgressColors(bufferedColor: azulText.withOpacity(0.3), playedColor: azulText, backgroundColor: bgColor),
@@ -86,6 +86,7 @@ class _CourseViewState extends State<CourseView> {
 
   @override
   void dispose() async {
+    
     videoPlayerController.dispose();
     chewieController.dispose();
     super.dispose();
@@ -121,6 +122,7 @@ class _CourseViewState extends State<CourseView> {
     return (curso.nombre == '')
         ? const Center(child: SizedBox(width: 35, height: 35, child: CircularProgressIndicator()))
         : Scaffold(
+          backgroundColor: Colors.transparent,
             endDrawer: CustomEndDrawer(
               cursoID: widget.cursoTmp.id,
               videoIndex: widget.videoIndex,
@@ -128,7 +130,7 @@ class _CourseViewState extends State<CourseView> {
             body: Container(
                 width: wScreen,
                 height: hScreen,
-                color: bgColor,
+                // color: bgColor,
                 padding: (wScreen < 715) ? const EdgeInsets.only(left: 0) : const EdgeInsets.only(left: 10),
                 child: ListView(children: [
                   Column(children: [
@@ -150,7 +152,7 @@ class _CourseViewState extends State<CourseView> {
                           const SizedBox(width: 10),
                           Text(
                             curso.nombre,
-                            style: DashboardLabel.h1.copyWith(color: blancoText),
+                            style: (wScreen <= 360) ? DashboardLabel.h2.copyWith(color: blancoText) : DashboardLabel.h1.copyWith(color: blancoText),
                           ),
                           const Spacer(),
                           Row(
@@ -289,9 +291,16 @@ class _CourseViewState extends State<CourseView> {
                                                               }
                                                             },
                                                           )),
-                                                      title: Text(e.nombre, style: DashboardLabel.paragraph,),
-                                                      subtitle: Text(e.descripcion, style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5)),),
+                                                      title: Text(
+                                                        e.nombre,
+                                                        style: DashboardLabel.paragraph,
+                                                      ),
+                                                      subtitle: Text(
+                                                        e.descripcion,
+                                                        style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5)),
+                                                      ),
                                                       onTap: () {
+                                                        chewieController.togglePause();
                                                         NavigatorService.replaceTo('${Flurorouter.curso}${curso.id}/$i');
                                                       },
                                                     ),
@@ -305,7 +314,9 @@ class _CourseViewState extends State<CourseView> {
                                                     //     ]),
                                                     //   ],
                                                     // ),
-                                                    Divider(color: blancoText.withOpacity(0.5),),
+                                                    Divider(
+                                                      color: blancoText.withOpacity(0.5),
+                                                    ),
                                                   ],
                                                 );
                                               }),
@@ -333,7 +344,7 @@ class _CourseViewState extends State<CourseView> {
                                         margin: (wScreen < 390) ? const EdgeInsets.only(left: 0) : const EdgeInsets.symmetric(horizontal: 15),
                                         width: double.infinity,
                                         height: 400,
-                                        color: Colors.black,
+                                        // color: Colors.black,
                                         child: (isLoading)
                                             ? const Center(child: SizedBox(width: 35, height: 35, child: CircularProgressIndicator()))
                                             : Chewie(
@@ -370,7 +381,7 @@ class _CourseViewState extends State<CourseView> {
                                       return Column(
                                         children: [
                                           ListTile(
-                                            tileColor: (i == widget.videoIndex) ? Colors.amber : Colors.red,
+                                            
                                             minLeadingWidth: 20,
                                             leading: SizedBox(
                                                 width: 35,
@@ -387,9 +398,13 @@ class _CourseViewState extends State<CourseView> {
                                                     }
                                                   },
                                                 )),
-                                            title: Text(e.nombre, style: DashboardLabel.paragraph,),
-                                            subtitle: Text(e.descripcion , style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5))),
+                                            title: Text(
+                                              e.nombre,
+                                              style: DashboardLabel.paragraph,
+                                            ),
+                                            subtitle: Text(e.descripcion, style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5))),
                                             onTap: () {
+                                              chewieController.pause();
                                               NavigatorService.replaceTo('${Flurorouter.curso}${curso.id}/$i');
                                             },
                                           ),
@@ -403,7 +418,9 @@ class _CourseViewState extends State<CourseView> {
                                           //     ]),
                                           //   ],
                                           // ),
-                                          Divider(color: blancoText.withOpacity(0.5),),
+                                          Divider(
+                                            color: blancoText.withOpacity(0.5),
+                                          ),
                                         ],
                                       );
                                     }),

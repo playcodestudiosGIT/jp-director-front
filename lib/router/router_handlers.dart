@@ -1,12 +1,9 @@
-import 'dart:js_interop';
 
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_credit_card/extension.dart';
 import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
 import 'package:jpdirector_frontend/providers/baners_provider.dart';
 import 'package:jpdirector_frontend/providers/leads_provider.dart';
-import 'package:jpdirector_frontend/ui/shared/widgets/asesoria_slider/tdc_pay.dart';
 import 'package:jpdirector_frontend/ui/views/admin_dash/baners_admin_view.dart';
 import 'package:jpdirector_frontend/ui/views/admin_dash/cursos_admin_view.dart';
 import 'package:jpdirector_frontend/ui/views/admin_dash/forms_admin_view.dart';
@@ -113,10 +110,10 @@ class VisitorHandlers {
     handlerFunc: (context, params) {
       final cursoId = params['cursoId']!.first;
       String? state = params['state']?.first ?? 'register';
-
-      if (cursoId.isNull) return const LoginPage();
-
       final authProvider = Provider.of<AuthProvider>(context!, listen: false);
+
+      if (cursoId.isEmpty) return const LoginPage();
+
       if (authProvider.authStatus == AuthStatus.notAuthenticated) {
         Provider.of<AllCursosProvider>(context, listen: false).getCursosById(cursoId);
         Provider.of<BanersProvider>(context, listen: false).getBaners();
@@ -141,7 +138,7 @@ class VisitorHandlers {
     final page = params['page']!.first;
 
     Provider.of<SideBarProvider>(context!, listen: false).setCurrentPageUrl(Flurorouter.rootRoute);
-    if (page.isNullOrEmpty) {
+    if (page.isEmpty) {
       return const HomeBody(index: 0);
     }
 
@@ -162,9 +159,6 @@ class VisitorHandlers {
     }
     if (page == 'contacto') {
       return const HomeBody(index: 4);
-    }
-    if (page == 'pay') {
-      return const TdcPay();
     }
     if (page != '/') {
       return const NoPageFound();
@@ -233,14 +227,14 @@ class UsersAuthHandlers {
     );
   });
 
-  static Handler payTdc = Handler(handlerFunc: (context, params) {
-    //create agenda
-    return Builder(
-      builder: (context) {
-        return const TdcPay();
-      },
-    );
-  });
+  // static Handler payTdc = Handler(handlerFunc: (context, params) {
+  //   //create agenda
+  //   return Builder(
+  //     builder: (context) {
+  //       return const TdcPay();
+  //     },
+  //   );
+  // });
 
   static Handler cursoID = Handler(handlerFunc: (context, params) {
     final cursoID = params['cursoID']!.first;
@@ -253,13 +247,8 @@ class UsersAuthHandlers {
     if (authProvider.authStatus == AuthStatus.notAuthenticated) return const LoginPage();
 
     if (!authProvider.user!.cursos.contains(cursoID)) {
-      return FutureBuilder(
-        // future: Provider.of<AllCursosProvider>(context, listen: false).getCursosById(cursoID),
-        builder: (context, snapshot) {
-          return LandingCurso(
-            cursoID: cursoID,
-          );
-        },
+      return LandingCurso(
+        cursoID: cursoID,
       );
     }
 

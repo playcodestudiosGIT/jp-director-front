@@ -1,4 +1,3 @@
-import 'dart:js_interop';
 
 import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/constant.dart';
@@ -308,7 +307,7 @@ class AllCursosProvider extends ChangeNotifier {
     };
 
     try {
-      final json = await JpApi.put('/modulos/$uid', data);
+      await JpApi.put('/modulos/$uid', data);
 
       notifyListeners();
       NotifServ.showSnackbarError('Modulo Actualizado con exito', Colors.green);
@@ -358,10 +357,11 @@ class AllCursosProvider extends ChangeNotifier {
     for (var e in user.cursos) {
       Curso? cursotmp = allCursos.where((element) => element.id == e).firstOrNull;
 
-      if (!cursotmp.isNull) {
-        misNewCursos.add(cursotmp!);
+      if (cursotmp != null) {
+        misNewCursos.add(cursotmp);
         _misCursos = misNewCursos;
       }
+
     }
   }
 

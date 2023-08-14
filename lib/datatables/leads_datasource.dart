@@ -18,11 +18,22 @@ class LeadsDTS extends DataTableSource {
     final lead = leads[index];
 
     return DataRow.byIndex(index: index, cells: [
-      DataCell(Column(
+      DataCell(
+        Column(
         children: [
-          Text(lead.email),
+          Row(
+            children: [
+              Text('Correo:   ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text(lead.email),
+            ],
+          ),
           const SizedBox(height: 10),
-          Text(lead.telf),
+          Row(
+            children: [
+              Text('Teléfono:   ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text(lead.telf),
+            ],
+          ),
         ],
       )),
       DataCell(Row(
@@ -40,7 +51,7 @@ class LeadsDTS extends DataTableSource {
                 size: 16,
                 color: bgColor,
               )),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.email_outlined)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.email_outlined, color: azulText,)),
           IconButton(
               onPressed: () {
                 final dialog = AlertDialog(

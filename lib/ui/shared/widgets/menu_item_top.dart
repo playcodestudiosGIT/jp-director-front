@@ -30,7 +30,7 @@ class _MenuItemTopState extends State<MenuItemTop> {
         child: InkWell(
           onTap: widget.isActive ? null : () => widget.onPress(),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             child: MouseRegion(
               onEnter: (_) => setState(() => isHovered = true),
               onExit: (_) => setState(() => isHovered = false),

@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/ui/shared/botones/botonverde.dart';
 
-import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
-import '../../../providers/auth_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/widgets/acordion.dart';
@@ -16,12 +14,12 @@ class AsesoriaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Stack(
         children: [
-          Container(color: bgColor),
-          const _AsesoriaBody(),
-          const SizedBox(
+          // Container(color: bgColor),
+          _AsesoriaBody(),
+          SizedBox(
             height: 200,
           )
         ],
@@ -35,7 +33,6 @@ class _AsesoriaBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<AuthProvider>(context);
     double wScreen = MediaQuery.of(context).size.width;
     double hScreen = MediaQuery.of(context).size.height;
 
@@ -52,9 +49,7 @@ class _AsesoriaBody extends StatelessWidget {
                     height: 80,
                   ),
                   Container(
-                    padding: (authProvider.authStatus == AuthStatus.authenticated)
-                        ? const EdgeInsets.only(left: 40, top: 17)
-                        : const EdgeInsets.only(left: 0, top: 0),
+                    padding: const EdgeInsets.only(left: 20),
                     alignment: Alignment.centerLeft,
                     constraints: const BoxConstraints(maxWidth: 1200),
                     child: IconButton(
@@ -74,34 +69,34 @@ class _AsesoriaBody extends StatelessWidget {
                         constraints: const BoxConstraints(maxWidth: 600, maxHeight: 850),
                         child: const LetrasAsesoria(),
                       ),
-                      if (wScreen > 1200)
-                        Container(
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                child: ConstrainedBox(
-                                  constraints: const BoxConstraints(maxWidth: 600, minWidth: 300),
-                                  child: const Image(image: bgAsesoria),
-                                ),
-                              ),
-                              Positioned(
-                                top: 360,
-                                right: (wScreen > 1200) ? 250 : 250,
-                                child: const Image(
-                                  image: adsCircle,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                      // if (wScreen > 1200)
+                      //   Container(
+                      //     child: Stack(
+                      //       children: [
+                      //         Positioned(
+                      //           child: ConstrainedBox(
+                      //             constraints: const BoxConstraints(maxWidth: 600, minWidth: 300),
+                      //             child: const Image(image: bgAsesoria),
+                      //           ),
+                      //         ),
+                      //         Positioned(
+                      //           top: 360,
+                      //           right: (wScreen > 1200) ? 250 : 250,
+                      //           child: const Image(
+                      //             image: adsCircle,
+                      //           ),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ),
                     ],
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  Container(
+                  SizedBox(
                     width: double.infinity,
-                    color: bgColor,
+                    // color: bgColor,
                     child: Center(
                       child: Container(
                         // padding: EdgeInsets.symmetric(horizontal: 20),
@@ -177,7 +172,7 @@ class LetrasAsesoria extends StatelessWidget {
           'con TU NEGOCIO',
           style: GoogleFonts.roboto(fontSize: 32, fontWeight: FontWeight.w900, color: blancoText),
         ),
-        if (wScreen < 1200)
+        // if (wScreen < 1200)
           Stack(
             children: [
               const Image(

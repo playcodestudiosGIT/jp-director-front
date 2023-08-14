@@ -15,7 +15,6 @@ const Color verdeBorde = Color(0xff9BCB6C);
 const NetworkImage logoIso = NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1691274003/logojp_iso_vum6rm.png');
 const NetworkImage logoGrande = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575762/logogrande_s3thla.png');
 const NetworkImage logoJp = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575763/logojp_ykatas.png');
-const String regaloDescargaUrl = 'https://drive.google.com/file/d/1X3-E_xPYIMWY3iDwHQeWz3tkYyWU3A3I/view?usp=sharing';
 const NetworkImage planetaI = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575459/planetai_pqplnw.png');
 const NetworkImage planetaM = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575890/planetam_uhn6yw.png');
 const NetworkImage planetaF = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575763/planetaf_u3oxbf.png');
@@ -82,4 +81,23 @@ Curso cursoDummy = Curso(
   id: '',
 );
 
-Usuario usuarioDummy = Usuario(nombre: '', apellido: '', correo: '', img: '', telf: '', me: '', instagram: '', facebook: '', tiktok: '', rol: 'USER_ROLE', estado: true, google: false, cursos: [], progress: [], confirmCode: '', sessionId: '', createdAt: DateTime.now(), updatedAt: DateTime.now(), uid: '');
+Usuario usuarioDummy = Usuario(
+    nombre: '',
+    apellido: '',
+    correo: '',
+    img: '',
+    telf: '',
+    me: '',
+    instagram: '',
+    facebook: '',
+    tiktok: '',
+    rol: 'USER_ROLE',
+    estado: true,
+    google: false,
+    cursos: [],
+    progress: [],
+    confirmCode: '',
+    sessionId: '',
+    createdAt: DateTime.now(),
+    updatedAt: DateTime.now(),
+    uid: '');

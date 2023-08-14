@@ -9,6 +9,7 @@ class TitleLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       margin: const EdgeInsets.all(15),
       alignment: Alignment.centerLeft,
@@ -18,7 +19,7 @@ class TitleLabel extends StatelessWidget {
         padding: const EdgeInsets.only(left: 15.0),
         child: Text(
           texto,
-          style: DashboardLabel.h1.copyWith(color: blancoText),
+          style: (size.width <= 360 ) ? DashboardLabel.h3.copyWith(color: blancoText) : DashboardLabel.h1.copyWith(color: blancoText),
         ),
       ),
     );

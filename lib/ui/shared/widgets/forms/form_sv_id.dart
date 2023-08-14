@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../constant.dart';
-import '../../../../providers/auth_provider.dart';
 import '../../../../providers/form_provider.dart';
 
 
@@ -21,7 +20,6 @@ class _FormSVidState extends State<FormSVid> {
     final wScreen = MediaQuery.of(context).size.width;
     final hScreen = MediaQuery.of(context).size.height;
     final formProvider = Provider.of<FormProvider>(context);
-    final authProvider = Provider.of<AuthProvider>(context);
     late String title = formProvider.rootForm;
 
     if (formProvider.rootForm == 'mentoria') {

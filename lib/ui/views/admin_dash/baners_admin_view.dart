@@ -89,7 +89,7 @@ class _BanersAdminViewState extends State<BanersAdminView> {
                   },
                   child: const Icon(
                     Icons.style_outlined,
-                    color: Colors.white,
+                    color: bgColor,
                   ),
                 )
               ],

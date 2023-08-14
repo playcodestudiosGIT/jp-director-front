@@ -9,22 +9,20 @@ class NoPageFound extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: const Color(0xFF00041C),
-      child: Container(
-        child: const Column(
-          children: [
-            SizedBox(
-              height: 120,
-            ),
-            Image(
-              image: ufoGif,
-              width: 800,
-            ),
-            Text(
-              'Página no encontrada 404',
-              style: TextStyle(color: blancoText, fontSize: 50),
-            ),
-          ],
-        ),
+      child: const Column(
+        children: [
+          SizedBox(
+            height: 120,
+          ),
+          Image(
+            image: ufoGif,
+            width: 800,
+          ),
+          Text(
+            'Página no encontrada 404',
+            style: TextStyle(color: blancoText, fontSize: 50),
+          ),
+        ],
       ),
     );
   }

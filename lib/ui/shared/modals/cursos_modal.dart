@@ -463,7 +463,6 @@ class _DialogState extends State<Dialog> {
                       CustomButton(
                         text: (id == '') ? 'Crear' : 'Actualizar',
                         onPress: () async {
-                          //TODO: CreR
                           if (id == '') {
                             await Provider.of<AllCursosProvider>(context, listen: false)
                                 .createModulo(nombre: nombre, video: video, descripcion: descripcion, descarga: descarga, curso: widget.cursoID);

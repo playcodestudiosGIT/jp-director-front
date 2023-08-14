@@ -61,16 +61,21 @@ class UsersDTS extends DataTableSource {
         child: Container(
           padding: const EdgeInsets.all(15),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Container(width: 1, height: 150, color: blancoText.withOpacity(0.1)),
+              const SizedBox(width: 15),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const SizedBox(width: 200),
                   Row(
                     children: [
-                      const Icon(
+                      Icon(
                         Icons.person_outline,
-                        size: 12,
+                        size: 20,
+                        color: blancoText.withOpacity(0.5),
                       ),
                       const SizedBox(width: 8),
                       Text(
@@ -82,9 +87,10 @@ class UsersDTS extends DataTableSource {
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      const Icon(
+                      Icon(
                         Icons.email_outlined,
-                        size: 12,
+                        size: 20,
+                        color: blancoText.withOpacity(0.5),
                       ),
                       const SizedBox(width: 8),
                       Text(user.correo, style: GoogleFonts.roboto()),
@@ -93,9 +99,10 @@ class UsersDTS extends DataTableSource {
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      const Icon(
+                      Icon(
                         Icons.phone_outlined,
-                        size: 12,
+                        size: 20,
+                        color: blancoText.withOpacity(0.5),
                       ),
                       const SizedBox(width: 8),
                       Text(user.telf, style: GoogleFonts.roboto()),
@@ -122,12 +129,14 @@ class UsersDTS extends DataTableSource {
                   ),
                 ],
               ),
+              const SizedBox(width: 15),
+              Container(width: 1, height: 150, color: blancoText.withOpacity(0.1)),
               const SizedBox(width: 30),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Sobre mi', style: GoogleFonts.roboto(fontWeight: FontWeight.bold)),
+                  Text('Sobre mi', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(.5))),
                   const SizedBox(height: 8),
                   SizedBox(
                       width: 200,
@@ -139,6 +148,8 @@ class UsersDTS extends DataTableSource {
                       )),
                 ],
               ),
+              const SizedBox(width: 15),
+              Container(width: 1, height: 150, color: blancoText.withOpacity(0.1)),
               const SizedBox(width: 30),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -146,7 +157,7 @@ class UsersDTS extends DataTableSource {
                 children: [
                   Row(
                     children: [
-                      const Icon(FontAwesomeIcons.instagram),
+                      Icon(FontAwesomeIcons.instagram, color: blancoText.withOpacity(0.5)),
                       const SizedBox(width: 10),
                       Text(user.instagram, style: GoogleFonts.roboto()),
                     ],
@@ -154,7 +165,7 @@ class UsersDTS extends DataTableSource {
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      const Icon(FontAwesomeIcons.facebook),
+                      Icon(FontAwesomeIcons.facebook, color: blancoText.withOpacity(0.5)),
                       const SizedBox(width: 10),
                       Text(user.facebook, style: GoogleFonts.roboto()),
                     ],
@@ -162,13 +173,15 @@ class UsersDTS extends DataTableSource {
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      const Icon(FontAwesomeIcons.tiktok),
+                      Icon(FontAwesomeIcons.tiktok, color: blancoText.withOpacity(0.5)),
                       const SizedBox(width: 10),
                       Text(user.tiktok, style: GoogleFonts.roboto()),
                     ],
                   )
                 ],
               ),
+              const SizedBox(width: 15),
+              Container(width: 1, height: 150, color: blancoText.withOpacity(0.1)),
             ],
           ),
         ),

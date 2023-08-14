@@ -16,6 +16,7 @@ import '../../../services/notificacion_service.dart';
 import '../../cards/white_card.dart';
 import '../../shared/labels/dashboard_label.dart';
 
+// ignore: must_be_immutable
 class DashMiCuenta extends StatefulWidget {
   late String nombreModal = '';
   late String apellidoModal = '';
@@ -58,12 +59,6 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
     final authProvider = Provider.of<AuthProvider>(context);
     final usersProvider = Provider.of<UsersProvider>(context);
     final wScreen = MediaQuery.of(context).size.width;
-
-    // validateForm() async {
-    //   if (formKey.currentState!.validate()) {
-    //     if (newPass != '') await authProvider.cambiarClave(id: authProvider.user!.uid, newPass: newPass);
-    //   }
-    // }
 
     return Container(
       // color: bgColor,
@@ -519,73 +514,6 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
           const SizedBox(
             height: 60,
           ),
-          // Form(
-          //   key: formKey,
-          //   child: Container(
-          //     margin: const EdgeInsets.symmetric(horizontal: 15),
-          //     child: Column(
-          //       children: [
-          //         Container(
-          //           child: Text(
-          //             'Cambio de contraseña',
-          //             style: DashboardLabel.h1,
-          //           ),
-          //         ),
-          //         const SizedBox(
-          //           height: 25,
-          //         ),
-          //         Container(
-          //           constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
-          //           child: TextFormField(
-          //             keyboardType: TextInputType.visiblePassword,
-          //             obscureText: true,
-          //             validator: (value) {
-          //               if (value != reptNewPass) return 'Las contraseñas deben coincidir';
-          //               return null;
-          //             },
-          //             onChanged: (value) => newPass = value,
-          //             style: GoogleFonts.roboto(color: Colors.black54, fontSize: 14),
-          //             decoration: buildInputDecoration(icon: Icons.password, label: 'Nueva contraseña'),
-          //           ),
-          //         ),
-          //         const SizedBox(
-          //           height: 15,
-          //         ),
-          //         Container(
-          //           constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
-          //           child: TextFormField(
-          //             keyboardType: TextInputType.visiblePassword,
-          //             obscureText: true,
-          //             validator: (value) {
-          //               if (value != newPass) return 'Las contraseñas deben coincidir';
-          //               return null;
-          //             },
-          //             onChanged: (value) => reptNewPass = value,
-          //             style: GoogleFonts.roboto(color: Colors.black54, fontSize: 14),
-          //             decoration: buildInputDecoration(icon: Icons.password, label: 'Repita nueva contraseña'),
-          //           ),
-          //         ),
-          //         const SizedBox(
-          //           height: 15,
-          //         ),
-          //         CustomButton(
-          //           text: 'Cambiar contraseña',
-          //           width: 160,
-          //           onPress: () async {
-          //             try {
-          //               //prender espera
-          //               await validateForm();
-          //               // formKey.currentState!.reset();
-          //               //apagar espera
-          //             } catch (e) {
-          //               throw Error();
-          //             }
-          //           },
-          //         )
-          //       ],
-          //     ),
-          //   ),
-          // ),
           const SizedBox(
             height: 80,
           )

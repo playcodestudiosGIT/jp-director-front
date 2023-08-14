@@ -35,7 +35,7 @@ class AppbarTop extends StatelessWidget {
                     }),
                   ),
                 ),
-                const SizedBox(width: 180, height: 10),
+                const SizedBox(width: 220, height: 10),
               ],
             ),
           ],

@@ -96,7 +96,8 @@ class _LeadsModalState extends State<LeadsModal> {
                   margin: const EdgeInsets.only(top: 20),
                   alignment: Alignment.center,
                   child: CustomButton(
-                    width: 80,
+                    width: 100,
+                    color: Colors.green,
                     onPress: () async {
                       if (id == null) {
                         // Crear
@@ -122,7 +123,7 @@ class _LeadsModalState extends State<LeadsModal> {
                   margin: const EdgeInsets.only(top: 20),
                   alignment: Alignment.center,
                   child: CustomButton(
-                    width: 80,
+                    width: 100,
                     color: Colors.red.withOpacity(0.5),
                     onPress: () {
                       Navigator.of(context).pop();

@@ -1,4 +1,3 @@
-import 'dart:js_interop';
 
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +27,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   void dispose() {
-    Provider.of<LoginFormProvider>(context, listen: false).keyLoginForm.currentState!.dispose();
+    // Provider.of<LoginFormProvider>(context, listen: false).keyLoginForm.currentState!.dispose();
     emailCtrl.dispose();
     passCtrl.dispose();
     super.dispose();
@@ -36,7 +35,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    final loginFormProvider = Provider.of<LoginFormProvider>(context);
+    final loginFormProvider = Provider.of<LoginFormProvider>(context, listen: false);
     emailCtrl = TextEditingController(text: loginFormProvider.email);
     passCtrl = TextEditingController(text: loginFormProvider.pass);
     return Container(
@@ -69,7 +68,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
             TextFormField(
               // initialValue: loginFormProvider.pass,
-              controller: passCtrl,
+              // controller: passCtrl,
               obscureText: loginFormProvider.obscureText,
               keyboardType: TextInputType.visiblePassword,
               // autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -163,7 +162,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   TextButton(
                     style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
-                    onPressed: (!widget.cursoId.isNull)
+                    onPressed: (widget.cursoId == null)
                         ? () {
                             Navigator.pushReplacementNamed(context, '${Flurorouter.payNewUserRouteAlt}${widget.cursoId}?state=register');
                           }

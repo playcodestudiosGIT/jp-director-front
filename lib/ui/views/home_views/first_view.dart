@@ -178,14 +178,9 @@ class MobileBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isAuth = Provider.of<AuthProvider>(context).authStatus;
     double screenData = MediaQuery.of(context).size.width;
-    return Container(
-      margin: (isAuth == AuthStatus.authenticated)
-          ? const EdgeInsets.only(top: 60, left: 30)
-          : const EdgeInsets.only(
-              top: 60,
-            ),
+    return SizedBox(
+      
       width: 430,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

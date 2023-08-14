@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/ui/shared/botones/custom_button.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 
-import '../../constant.dart';
 
 class WhiteCard extends StatelessWidget {
   final String? title;
@@ -58,6 +57,7 @@ class WhiteCard extends StatelessWidget {
             ),
             const Divider()
           ],
+          const SizedBox(height: 15),
           child
         ],
       ),
@@ -65,5 +65,5 @@ class WhiteCard extends StatelessWidget {
   }
 
   BoxDecoration buildBoxDecoration() => BoxDecoration(
-      color: bgColor, borderRadius: BorderRadius.circular(5), boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 5)]);
+      color: Colors.transparent, borderRadius: BorderRadius.circular(5), boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 5)]);
 }

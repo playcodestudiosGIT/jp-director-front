@@ -14,6 +14,7 @@ class CustomMenuItem extends StatefulWidget {
   const CustomMenuItem({Key? key, required this.text, required this.onPressed, this.delay = 0, required this.width, required this.padding}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _CustomMenuItemState createState() => _CustomMenuItemState();
 }
 
@@ -39,7 +40,7 @@ class _CustomMenuItemState extends State<CustomMenuItem> {
             color: isHover ? azulText : Colors.transparent,
             child: Padding(
               padding: EdgeInsets.only(left: widget.padding),
-              child: Text(widget.text, style: GoogleFonts.roboto(fontSize: 20, color: isHover ? const Color(0xFF00041C) : const Color(0xfffffffff))),
+              child: Text(widget.text, style: GoogleFonts.roboto(fontSize: 20, color: isHover ? const Color(0xFF00041C) : const Color(0xffffffff))),
             ),
           ),
         ),

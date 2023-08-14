@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/ui/shared/botones/botonverde.dart';
-import 'package:provider/provider.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 
 import '../../../constant.dart';
-import '../../../providers/auth_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/widgets/acordion.dart';
@@ -15,12 +14,11 @@ class EncargadoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Stack(
         children: [
-          Container(color: bgColor),
-          const _EncargadoBody(),
-          const SizedBox(
+          _EncargadoBody(),
+          SizedBox(
             height: 200,
           )
         ],
@@ -34,7 +32,6 @@ class _EncargadoBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<AuthProvider>(context);
     double wScreen = MediaQuery.of(context).size.width;
     double hScreen = MediaQuery.of(context).size.height;
 
@@ -51,22 +48,18 @@ class _EncargadoBody extends StatelessWidget {
                     height: 80,
                   ),
                   Container(
+                    padding: const EdgeInsets.only(left: 20),
                     alignment: Alignment.centerLeft,
                     constraints: const BoxConstraints(maxWidth: 1200),
-                    child: Padding(
-                      padding: (authProvider.authStatus == AuthStatus.authenticated)
-                          ? const EdgeInsets.only(left: 40, top: 17)
-                          : const EdgeInsets.only(left: 0, top: 0),
-                      child: IconButton(
-                          onPressed: () {
-                            NavigatorService.navigateTo('/servicios');
-                          },
-                          icon: const Icon(
-                            Icons.arrow_back,
-                            color: azulText,
-                            size: 30,
-                          )),
-                    ),
+                    child: IconButton(
+                        onPressed: () {
+                          NavigatorService.navigateTo('/servicios');
+                        },
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: azulText,
+                          size: 30,
+                        )),
                   ),
                   Wrap(
                     alignment: WrapAlignment.spaceBetween,
@@ -75,39 +68,36 @@ class _EncargadoBody extends StatelessWidget {
                         constraints: const BoxConstraints(maxWidth: 600, maxHeight: 912),
                         child: const LetrasAsesoria(),
                       ),
-                      if (wScreen > 1200)
-                        Container(
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                child: ConstrainedBox(
-                                  constraints: const BoxConstraints(maxWidth: 700),
-                                  child: const Image(
-                                    image: bgEncargado,
-                                    color: blancoText,
-                                    colorBlendMode: BlendMode.modulate,
-                                  ),
-                                ),
-                              ),
-                              const Positioned(
-                                top: 100,
-                                right: 100,
-                                child: Image(
-                                  image: adsCircle,
-                                  width: 100,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                      // if (wScreen > 1200)
+                      //   Stack(
+                      //     children: [
+                      //       Positioned(
+                      //         child: ConstrainedBox(
+                      //           constraints: const BoxConstraints(maxWidth: 700),
+                      //           child: const Image(
+                      //             image: bgEncargado,
+                      //             color: blancoText,
+                      //             colorBlendMode: BlendMode.modulate,
+                      //           ),
+                      //         ),
+                      //       ),
+                      //       const Positioned(
+                      //         top: 100,
+                      //         right: 100,
+                      //         child: Image(
+                      //           image: adsCircle,
+                      //           width: 100,
+                      //         ),
+                      //       ),
+                      //     ],
+                      //   ),
                     ],
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  Container(
+                  SizedBox(
                     width: double.infinity,
-                    color: bgColor,
                     child: Center(
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -163,7 +153,7 @@ class _EncargadoBody extends StatelessWidget {
                       child: Text(
                         'Recuerda: Primero. conversaremos para hacer el checklist de tu negocio y analizar qué es lo que más necesitas en este momento.',
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.roboto(fontSize: (wScreen > 1200) ? 24 : 16, fontWeight: FontWeight.w700, color: blancoText),
+                        style: DashboardLabel.h4,
                       ),
                     ),
                   ),
@@ -191,98 +181,89 @@ class LetrasAsesoria extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<AuthProvider>(context);
     double wScreen = MediaQuery.of(context).size.width;
-    return Padding(
-      padding:
-          (authProvider.authStatus == AuthStatus.authenticated) ? const EdgeInsets.only(left: 40, top: 17) : const EdgeInsets.only(left: 10, top: 10),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Text(
-            'SER EL ENCARGADO',
-            style: GoogleFonts.roboto(fontSize: (wScreen < 600) ? 26 : 32, fontWeight: FontWeight.w900, color: blancoText),
-          ),
-          Container(
-            width: 320,
-            height: 5,
-            decoration: const BoxDecoration(
-                gradient: LinearGradient(colors: [
-              bgColor,
-              azulText,
-              bgColor,
-            ])),
-          ),
-          if (wScreen < 1200)
-            Container(
-              child: Stack(
-                children: [
-                  Positioned(
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 500),
-                      child: const Image(
-                        image: bgEncargado,
-                        width: 400,
-                      ),
-                    ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Text(
+          'SER EL ENCARGADO',
+          style: GoogleFonts.roboto(fontSize: (wScreen < 600) ? 26 : 32, fontWeight: FontWeight.w900, color: blancoText),
+        ),
+        Container(
+          width: 320,
+          height: 5,
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(colors: [
+            bgColor,
+            azulText,
+            bgColor,
+          ])),
+        ),
+        // if (wScreen < 1200)
+          Stack(
+            children: [
+              Positioned(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 500),
+                  child: const Image(
+                    image: bgEncargado,
+                    width: 400,
                   ),
-                  const Positioned(
-                    top: 100,
-                    right: 40,
-                    child: Image(
-                      image: adsCircle,
-                      width: 100,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          const SizedBox(
-            height: 30,
-          ),
-          SizedBox(
-            width: 450,
-            child: Text(
-              'Este servicio está diseñado para ti, que estás buscando a la persona que se encargue de realizar la estrategia y manejo de publicidad de tu marca. Me enfocaré en el crecimiento, obtención de clientes potenciales de calidad y aumento de las ventas.',
-              style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400, color: blancoText),
-            ),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          Text(
-            '¿Cómo?',
-            style: GoogleFonts.roboto(fontSize: 36, fontWeight: FontWeight.w900, color: azulText),
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: Container(
-                alignment: Alignment.center,
-                child: const Image(
-                  image: arrDown,
                 ),
               ),
+              const Positioned(
+                top: 100,
+                right: 40,
+                child: Image(
+                  image: adsCircle,
+                  width: 100,
+                ),
+              ),
+            ],
+          ),
+        const SizedBox(
+          height: 30,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Text(
+            'Este servicio está diseñado para ti, que estás buscando a la persona que se encargue de realizar la estrategia y manejo de publicidad de tu marca. Me enfocaré en el crecimiento, obtención de clientes potenciales de calidad y aumento de las ventas.',
+            style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400, color: blancoText),
+          ),
+        ),
+        const SizedBox(
+          height: 30,
+        ),
+        Text(
+          '¿Cómo?',
+          style: GoogleFonts.roboto(fontSize: 36, fontWeight: FontWeight.w900, color: azulText),
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: Container(
+              alignment: Alignment.center,
+              child: const Image(
+                image: arrDown,
+              ),
             ),
           ),
-          const SizedBox(
-            height: 30,
-          ),
-          BotonVerde(
-            text: 'Estoy listo, comencemos.',
-            onPressed: () => NavigatorService.navigateTo(Flurorouter.encargadoFormRoute),
-            width: 200,
-          ),
-          Container(
-            child: Image(
-              image: baseGif,
-              colorBlendMode: BlendMode.modulate,
-              color: blancoText.withOpacity(0.4),
-            ),
-          ),
-        ],
-      ),
+        ),
+        const SizedBox(
+          height: 30,
+        ),
+        BotonVerde(
+          text: 'Estoy listo, comencemos.',
+          onPressed: () => NavigatorService.navigateTo(Flurorouter.encargadoFormRoute),
+          width: 200,
+        ),
+        Image(
+          image: baseGif,
+          colorBlendMode: BlendMode.modulate,
+          color: blancoText.withOpacity(0.4),
+        ),
+      ],
     );
   }
 }

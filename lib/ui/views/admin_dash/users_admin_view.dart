@@ -56,7 +56,7 @@ class _UsersAdminViewState extends State<UsersAdminView> {
                 DataColumn(
                   label: Text('IMAGEN', style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
-                DataColumn(label: Text('NOMBRE', style: TextStyle(fontWeight: FontWeight.bold))),
+                DataColumn(label: Text('INFORMACIÓN', style: TextStyle(fontWeight: FontWeight.bold))),
                 DataColumn(label: Text('CURSOS', style: TextStyle(fontWeight: FontWeight.bold))),
                 DataColumn(label: Text('ACCIONES', style: TextStyle(fontWeight: FontWeight.bold))),
               ],
@@ -91,7 +91,7 @@ class _UsersAdminViewState extends State<UsersAdminView> {
                   },
                   child: const Icon(
                     Icons.person_add,
-                    color: Colors.white,
+                    color: bgColor,
                   ),
                 )
               ],
