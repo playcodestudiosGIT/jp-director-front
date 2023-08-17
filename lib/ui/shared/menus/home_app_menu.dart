@@ -278,6 +278,7 @@ class _MenuTitle extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 CircleAvatar(
+                  backgroundColor: bgColor,
                   radius: 15,
                   backgroundImage: NetworkImage(authProvider.user!.img),
                 ),

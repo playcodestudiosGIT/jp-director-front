@@ -8,6 +8,7 @@ class AsesoriaAgendarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final hSize = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Stack(
         children: [
@@ -16,8 +17,8 @@ class AsesoriaAgendarPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const TopAreaBack(),
-              const SizedBox(height: 20),
-              Container(constraints: const BoxConstraints(maxHeight: 800, maxWidth: 800), child: const Agenda()),
+              const SizedBox(height: 15),
+              Container(constraints: BoxConstraints(maxHeight: hSize, maxWidth: 800), child: const Agenda()),
             ],
           )),
         ],

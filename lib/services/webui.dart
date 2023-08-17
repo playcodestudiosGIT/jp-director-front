@@ -17,14 +17,17 @@ class AgendaPlugState extends State<AgendaPlug> {
   void initState() {
     // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(
+        
         createdViewId,
         (int viewId) => html.IFrameElement()
           ..style.width = '100%' //'800'
           ..style.height = '100%' //'400'
           ..srcdoc = """<!-- Principio del widget integrado de Calendly -->
-<div class="calendly-inline-widget" data-url="https://calendly.com/jp-director/asesoria-1-1?background_color=00041c&text_color=ffffff&primary_color=15e0fb" style="min-width:320px;height:780px;background-color:transparent"></div>
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<!-- Final del widget integrado de Calendly -->"""
+    
+                      <div class="calendly-inline-widget" data-url="https://calendly.com/jp-director/asesoria-1-1?background_color=00041c&text_color=ffffff&primary_color=15e0fb" style="min-width:320px;height:1100px;";></div>
+                      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                  
+                      <!-- Final del widget integrado de Calendly -->"""
           ..style.border = 'none');
 
     super.initState();
@@ -43,9 +46,9 @@ class AgendaPlugState extends State<AgendaPlug> {
       width: wScreen,
       height: hScreen,
       child: Directionality(
-        
           textDirection: TextDirection.ltr,
           child: HtmlElementView(
+
             viewType: createdViewId,
           )),
     );

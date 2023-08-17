@@ -101,9 +101,6 @@ class AuthProvider extends ChangeNotifier {
   logOut(BuildContext context) {
     LocalStorage.prefs.remove('token');
     authStatus = AuthStatus.notAuthenticated;
-    // if (context.mounted){
-    //   Provider.of<LoginFormProvider>(context, listen: false).keyLoginForm.currentState!.reset();
-    // }
     NavigatorService.replaceTo(Flurorouter.homeRoute);
     isLoading = false;
     notifyListeners();

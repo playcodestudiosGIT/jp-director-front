@@ -157,7 +157,7 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
                                           ),
                                           TextButton(
                                             onPressed: () {
-                                              NavigatorService.navigateTo('${Flurorouter.payNewUserRouteAlt}${widget.cursoId}?state=login');
+                                              NavigatorService.navigateTo('${Flurorouter.payNewUserRouteAlt}/${widget.cursoId}/login');
                                             }, // Navigate to register page
                                             child: Text(
                                               'Inicia sesión aquí',

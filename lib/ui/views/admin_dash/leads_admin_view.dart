@@ -5,6 +5,7 @@ import 'package:jpdirector_frontend/providers/leads_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../datatables/leads_datasource.dart';
+import '../../shared/labels/dashboard_label.dart';
 import '../../shared/labels/title_label.dart';
 import '../../shared/modals/leads_modal.dart';
 
@@ -46,18 +47,18 @@ class _LeadsAdminViewState extends State<LeadsAdminView> {
           Theme(
             data: ThemeData.dark().copyWith(cardColor: bgColor),
             child: PaginatedDataTable(
-              columns: const [
+              columns: [
                 DataColumn(
-                  label: Text('INFORMACIÓN', style: TextStyle(fontWeight: FontWeight.bold)),
+                  label: Text('INFORMACIÓN', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
                 DataColumn(
-                  label: Text('ACCIONES', style: TextStyle(fontWeight: FontWeight.bold)),
+                  label: Text('ACCIONES', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
               ],
               source: LeadsDTS(leads, context),
-              header: const Text(
+              header: Text(
                 'Lista de descargas',
-                // style: ,
+                style: DashboardLabel.h3,
                 maxLines: 2,
               ),
               rowsPerPage: _rowsPerPage,

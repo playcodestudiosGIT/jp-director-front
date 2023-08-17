@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/constant.dart';
 import 'package:jpdirector_frontend/providers/form_provider.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/title_label.dart';
 
 import 'package:provider/provider.dart';
@@ -48,21 +49,21 @@ class _FormAdminViewState extends State<FormAdminView> {
             child: PaginatedDataTable(
               dataRowMaxHeight: 370,
               dataRowMinHeight: 300,
-              columns: const [
+              columns:  [
                 DataColumn(
-                  label: Text('INFORMACIÓN', style: TextStyle(fontWeight: FontWeight.bold)),
+                  label: Text('INFORMACIÓN', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
                 DataColumn(
-                  label: Text('REDES SOCIALES', style: TextStyle(fontWeight: FontWeight.bold)),
+                  label: Text('REDES SOCIALES', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
                 DataColumn(
-                  label: Text('ACCIONES', style: TextStyle(fontWeight: FontWeight.bold)),
+                  label: Text('ACCIONES', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
               ],
               source: FormsDTS(forms, context),
-              header: const Text(
+              header: Text(
                 'Lista de Formularios',
-                // style: ,
+                style: DashboardLabel.h3,
                 maxLines: 2,
               ),
               rowsPerPage: _rowsPerPage,
@@ -85,10 +86,6 @@ class _FormAdminViewState extends State<FormAdminView> {
                   },
                   child: const Row(
                     children: [
-                      Icon(
-                        Icons.add_outlined,
-                        color: bgColor,
-                      ),
                       Icon(
                         Icons.format_list_numbered_outlined,
                         color: bgColor,

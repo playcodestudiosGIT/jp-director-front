@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/constant.dart';
 import 'package:jpdirector_frontend/models/baner.dart';
 import 'package:jpdirector_frontend/providers/baners_provider.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
 import '../botones/custom_button.dart';
@@ -52,14 +53,14 @@ class _BanersModalState extends State<BanersModal> {
                   ),
                 Text(
                   (id != null) ? 'Editar: ${widget.baner?.nombre}' : 'Nuevo Baner',
-                  style: GoogleFonts.roboto(color: Colors.white, fontWeight: FontWeight.w500),
+                  style: DashboardLabel.h4,
                 ),
                 const Spacer(),
                 IconButton(
                     onPressed: () => Navigator.of(context).pop(),
                     icon: const Icon(
                       Icons.close,
-                      color: Colors.white,
+                      color: Colors.red,
                     ))
               ],
             ),
@@ -120,7 +121,7 @@ class _BanersModalState extends State<BanersModal> {
                   margin: const EdgeInsets.only(top: 20),
                   alignment: Alignment.center,
                   child: CustomButton(
-                    width: 80,
+                    width: 100,
                     onPress: () async {
                       if (id == null) {
                         // Crear
@@ -137,6 +138,7 @@ class _BanersModalState extends State<BanersModal> {
                       }
                     },
                     text: (widget.baner != null) ? 'Actualizar' : 'Crear',
+                    color: Colors.green,
                   ),
                 ),
                 const SizedBox(
@@ -146,7 +148,7 @@ class _BanersModalState extends State<BanersModal> {
                   margin: const EdgeInsets.only(top: 20),
                   alignment: Alignment.center,
                   child: CustomButton(
-                    width: 80,
+                    width: 100,
                     color: Colors.red.withOpacity(0.5),
                     onPress: () {
                       Navigator.of(context).pop();

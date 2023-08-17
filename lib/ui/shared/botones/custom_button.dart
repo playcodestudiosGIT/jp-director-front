@@ -25,11 +25,7 @@ class CustomButton extends StatelessWidget {
                 child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (icon != null)
-                        ...[
-                          Icon(icon, color: bgColor),
-                          const SizedBox(width: 10)
-                        ],
+              
                         Text(text.toUpperCase(), style: const TextStyle(fontFamily: 'Roboto', color: bgColor, fontSize: 14, fontWeight: FontWeight.w800)),
                       ],
                     ),

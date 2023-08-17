@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/constant.dart';
 import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:jpdirector_frontend/ui/shared/modals/cursos_modal.dart';
 
 import 'package:provider/provider.dart';
@@ -43,21 +44,21 @@ class _CursosAdminViewState extends State<CursosAdminView> {
             child: PaginatedDataTable(
               dataRowMinHeight: 150,
               dataRowMaxHeight: 270,
-              columns: const [
+              columns: [
                 DataColumn(
-                  label: Text('IMAGEN DEL CURSO', style: TextStyle(fontWeight: FontWeight.bold)),
+                  label: Text('IMAGEN DEL CURSO', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
                 DataColumn(
-                  label: Text('INFORMACION DEL CURSO', style: TextStyle(fontWeight: FontWeight.bold)),
+                  label: Text('INFORMACION DEL CURSO', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
                 DataColumn(
-                  label: Text('ACCIONES', style: TextStyle(fontWeight: FontWeight.bold)),
+                  label: Text('ACCIONES', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
               ],
               source: CursosDTS(context, cursos.length),
-              header: const Text(
+              header: Text(
                 'Lista de Cursos',
-                // style: ,
+                style: DashboardLabel.h3,
                 maxLines: 2,
               ),
               rowsPerPage: _rowsPerPage,
@@ -80,10 +81,6 @@ class _CursosAdminViewState extends State<CursosAdminView> {
                   },
                   child: const Row(
                     children: [
-                      Icon(
-                        Icons.add,
-                        color: bgColor,
-                      ),
                       Icon(
                         Icons.menu_book_outlined,
                         color: bgColor,

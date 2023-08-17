@@ -19,7 +19,7 @@ class TitleLabel extends StatelessWidget {
         padding: const EdgeInsets.only(left: 15.0),
         child: Text(
           texto,
-          style: (size.width <= 360 ) ? DashboardLabel.h3.copyWith(color: blancoText) : DashboardLabel.h1.copyWith(color: blancoText),
+          style: (size.width <= 400 ) ? DashboardLabel.h3.copyWith(color: blancoText) : DashboardLabel.h1.copyWith(color: blancoText),
         ),
       ),
     );

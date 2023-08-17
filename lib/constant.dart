@@ -72,7 +72,8 @@ Curso cursoDummy = Curso(
       descripcion: '',
       curso: '',
       usuario: '',
-      descarga: '',
+      idDriveFolder: '',
+      idDriveZip: '',
     )
   ],
   nombre: 'nombre',

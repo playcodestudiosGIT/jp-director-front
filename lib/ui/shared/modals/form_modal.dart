@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/constant.dart';
 import 'package:jpdirector_frontend/models/formulario.dart';
 import 'package:jpdirector_frontend/providers/form_provider.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
 import '../botones/custom_button.dart';
@@ -62,14 +63,14 @@ class _FormsModalState extends State<FormsModal> {
                   ),
                 Text(
                   (id != '') ? 'Editar: ${widget.form?.email}' : 'Nuevo Formulario',
-                  style: GoogleFonts.roboto(color: Colors.white, fontWeight: FontWeight.w500),
+                  style: DashboardLabel.h4
                 ),
                 const Spacer(),
                 IconButton(
                     onPressed: () => Navigator.of(context).pop(),
                     icon: const Icon(
                       Icons.close,
-                      color: Colors.white,
+                      color: Colors.red,
                     ))
               ],
             ),

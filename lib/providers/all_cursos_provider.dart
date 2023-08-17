@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/constant.dart';
 import 'package:jpdirector_frontend/services/notificacion_service.dart';
@@ -277,10 +276,18 @@ class AllCursosProvider extends ChangeNotifier {
     required String nombre,
     required String video,
     required String descripcion,
-    required String descarga,
+    required String idDriveFolder,
+    required String idDriveZip,
     required String curso,
   }) async {
-    final data = {"nombre": nombre, "descripcion": descripcion, "video": video, "descarga": descarga, "curso": curso};
+    final data = {
+      "nombre": nombre,
+      "descripcion": descripcion,
+      "video": video,
+      "idDriveFolder": idDriveFolder,
+      "idDriveZip": idDriveZip,
+      "curso": curso,
+    };
 
     // Petición HTTP
     await JpApi.post('/modulos', data).then((json) {
@@ -297,13 +304,15 @@ class AllCursosProvider extends ChangeNotifier {
     required String nombreModulo,
     required String descripcionModulo,
     required String urlVideo,
-    required String urlDescarga,
+    required String idDriveFolder,
+    required String idDriveZip,
   }) async {
     final data = {
       "nombre": nombreModulo,
       "descripcion": descripcionModulo,
       "video": urlVideo,
-      "descarga": urlDescarga,
+      "idDriveFolder": idDriveFolder,
+      "idDriveZip": idDriveZip,
     };
 
     try {
@@ -361,7 +370,6 @@ class AllCursosProvider extends ChangeNotifier {
         misNewCursos.add(cursotmp);
         _misCursos = misNewCursos;
       }
-
     }
   }
 

@@ -81,7 +81,7 @@ class _UsersModalState extends State<UsersModal> {
                   ),
                 Text(
                   (id != null) ? 'Editar: ${widget.user?.nombre}' : 'Nuevo Usuario',
-                  style: GoogleFonts.roboto(color: Colors.white, fontWeight: FontWeight.w500),
+                  style: DashboardLabel.h4,
                 ),
                 const Spacer(),
                 IconButton(

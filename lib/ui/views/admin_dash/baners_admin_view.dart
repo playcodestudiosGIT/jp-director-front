@@ -51,22 +51,22 @@ class _BanersAdminViewState extends State<BanersAdminView> {
               dataRowMinHeight: 200,
               columns: [
                 DataColumn(
-                  label: Text('IMAGEN', style: DashboardLabel.h4.copyWith(fontWeight: FontWeight.bold)),
+                  label: Text('IMAGEN', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
                 DataColumn(
-                  label: Text('NOMBRE', style: DashboardLabel.h4.copyWith(fontWeight: FontWeight.bold)),
+                  label: Text('NOMBRE', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
                 DataColumn(
-                  label: Text('ID\'s', style: DashboardLabel.h4.copyWith(fontWeight: FontWeight.bold)),
+                  label: Text('ID\'s', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
                 DataColumn(
-                  label: Text('ACCIONES', style: DashboardLabel.h4.copyWith(fontWeight: FontWeight.bold)),
+                  label: Text('ACCIONES', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
               ],
               source: BanersDTS(baners, context),
               header: Text(
                 'Lista de Baners',
-                style: DashboardLabel.paragraph,
+                style: DashboardLabel.h3,
                 maxLines: 2,
               ),
               rowsPerPage: _rowsPerPage,

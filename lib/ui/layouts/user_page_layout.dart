@@ -71,37 +71,53 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                   decoration: buildBoxDecorationAppbar(),
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 10),
-                    child: GestureDetector(
-                      onTap: () {
-                        NavigatorService.replaceTo(Flurorouter.homeRoute);
-                      },
-                      child: Row(
-                        children: [
-                          if(wScreen <= 390)
-                          const SizedBox(width: 50),
-                          if(wScreen > 390)
-                          const SizedBox(width: 30),
-                          MouseRegion(
+                    child: Row(
+                      children: [
+                        if (wScreen <= 390) const SizedBox(width: 50),
+                        if (wScreen > 390) const SizedBox(width: 30),
+                        GestureDetector(
+                          onTap: () {
+                            NavigatorService.replaceTo(Flurorouter.homeRoute);
+                          },
+                          child: MouseRegion(
                             cursor: SystemMouseCursors.click,
                             child: Container(
                               alignment: Alignment.centerLeft,
-                              width: (wScreen <= 390)? 50 :200,
-                              child: (wScreen <= 390)
-                                ? const Image(image: logoIso)
-                                : const Image(image: logoJp),
+                              width: (wScreen <= 390) ? 50 : 200,
+                              child: (wScreen <= 390) ? const Image(image: logoIso) : const Image(image: logoJp),
                             ),
                           ),
-                          const Spacer(),
-                          if (wScreen >= 850) ...[
-                            // MenuItemTop(text: 'INICIO', isActive: false, onPress: () {}),
-                            MenuItemTop(text: 'CURSOS', isActive: false, onPress: () {NavigatorService.navigateTo('/cursos');}),
-                            MenuItemTop(text: 'SERVICIOS', isActive: false, onPress: () {NavigatorService.navigateTo('/servicios');}),
-                            MenuItemTop(text: 'RESULTADOS', isActive: false, onPress: () {NavigatorService.navigateTo('/resultados');}),
-                            MenuItemTop(text: 'CONTACTO', isActive: false, onPress: () {NavigatorService.navigateTo('/contacto');}),
-                            const SizedBox(width: 245)
-                          ]
-                        ],
-                      ),
+                        ),
+                        const Spacer(),
+                        if (wScreen >= 850) ...[
+                          // MenuItemTop(text: 'INICIO', isActive: false, onPress: () {}),
+                          MenuItemTop(
+                              text: 'CURSOS',
+                              isActive: false,
+                              onPress: () {
+                                NavigatorService.navigateTo('/cursos');
+                              }),
+                          MenuItemTop(
+                              text: 'SERVICIOS',
+                              isActive: false,
+                              onPress: () {
+                                NavigatorService.navigateTo('/servicios');
+                              }),
+                          MenuItemTop(
+                              text: 'RESULTADOS',
+                              isActive: false,
+                              onPress: () {
+                                NavigatorService.navigateTo('/resultados');
+                              }),
+                          MenuItemTop(
+                              text: 'CONTACTO',
+                              isActive: false,
+                              onPress: () {
+                                NavigatorService.navigateTo('/contacto');
+                              }),
+                          const SizedBox(width: 245)
+                        ]
+                      ],
                     ),
                   ),
                 ),
@@ -116,21 +132,21 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                         NavigatorService.replaceTo(Flurorouter.loginRoute);
                       },
                     )),
-                if(wScreen > 420)
-                Positioned(
-                  right: (wScreen <= 390) ? 90 : 125,
-                  top: 15,
-                  child: TextButton(
-                    style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
-                    onPressed: () {
-                      NavigatorService.replaceTo(Flurorouter.registerRoute);
-                    }, // Navigate to register page
-                    child: Text(
-                      'Registrate',
-                      style: GoogleFonts.roboto(fontSize: 14, color: azulText, fontWeight: FontWeight.w800),
+                if (wScreen > 420)
+                  Positioned(
+                    right: (wScreen <= 390) ? 90 : 125,
+                    top: 15,
+                    child: TextButton(
+                      style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
+                      onPressed: () {
+                        NavigatorService.replaceTo(Flurorouter.registerRoute);
+                      }, // Navigate to register page
+                      child: Text(
+                        'Registrate',
+                        style: GoogleFonts.roboto(fontSize: 14, color: azulText, fontWeight: FontWeight.w800),
+                      ),
                     ),
                   ),
-                ),
               ],
             ),
           ),

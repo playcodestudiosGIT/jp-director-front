@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
 import '../../../constant.dart';
 import '../../../models/curso.dart';
@@ -86,7 +87,6 @@ class _CourseViewState extends State<CourseView> {
 
   @override
   void dispose() async {
-    
     videoPlayerController.dispose();
     chewieController.dispose();
     super.dispose();
@@ -122,7 +122,7 @@ class _CourseViewState extends State<CourseView> {
     return (curso.nombre == '')
         ? const Center(child: SizedBox(width: 35, height: 35, child: CircularProgressIndicator()))
         : Scaffold(
-          backgroundColor: Colors.transparent,
+            backgroundColor: Colors.transparent,
             endDrawer: CustomEndDrawer(
               cursoID: widget.cursoTmp.id,
               videoIndex: widget.videoIndex,
@@ -152,7 +152,7 @@ class _CourseViewState extends State<CourseView> {
                           const SizedBox(width: 10),
                           Text(
                             curso.nombre,
-                            style: (wScreen <= 360) ? DashboardLabel.h2.copyWith(color: blancoText) : DashboardLabel.h1.copyWith(color: blancoText),
+                            style: (wScreen <= 400) ? DashboardLabel.h3.copyWith(color: blancoText) : DashboardLabel.h1.copyWith(color: blancoText),
                           ),
                           const Spacer(),
                           Row(
@@ -164,8 +164,8 @@ class _CourseViewState extends State<CourseView> {
                                     style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
                                     onPressed: () {},
                                     child: Text(
-                                      'Certificado',
-                                      style: DashboardLabel.mini.copyWith(color: azulText),
+                                      'CERTIFICADO',
+                                      style: DashboardLabel.paragraph.copyWith(color: azulText),
                                     )),
                               const SizedBox(width: 8),
                               Stack(
@@ -179,14 +179,24 @@ class _CourseViewState extends State<CourseView> {
                                               color: Colors.green,
                                               size: 20,
                                             )
-                                          : Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Text(percent.toStringAsFixed(0),
-                                                    style: DashboardLabel.mini.copyWith(color: blancoText, fontSize: 10)),
-                                                Text('%', style: DashboardLabel.mini.copyWith(color: blancoText)),
-                                              ],
-                                            )),
+                                          : Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              const SizedBox(width: 20),
+                                              Row(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  children: [
+                                                    
+                                                    Text(percent.toStringAsFixed(0),
+                                                    textAlign: TextAlign.center,
+                                                        style: DashboardLabel.mini.copyWith(color: blancoText, fontSize: 10)),
+                                                    Text('%',textAlign: TextAlign.center, style: DashboardLabel.mini.copyWith(color: blancoText)),
+                                                  ],
+                                                ),
+                                            ],
+                                          )),
                                   Container(
                                     margin: const EdgeInsets.all(2),
                                     width: 30,
@@ -248,11 +258,39 @@ class _CourseViewState extends State<CourseView> {
                                           ),
                                           Padding(
                                               padding: const EdgeInsets.symmetric(horizontal: 15),
-                                              child: CustomButton(
-                                                text: 'Descargar Material',
-                                                onPress: () {},
-                                                width: 200,
-                                                icon: Icons.download_outlined,
+                                              child: Row(
+                                                children: [
+                                                  CustomButton(
+                                                    text: 'Ver Material',
+                                                    onPress: () {
+                                                      final url = Uri.parse(
+                                                          'https://drive.google.com/drive/folders/${curso.modulos[widget.videoIndex].idDriveFolder}?usp=sharing');
+                                                      launchUrl(url);
+                                                    },
+                                                    width: 200,
+                                                    icon: Icons.download_outlined,
+                                                  ),
+                                                  const SizedBox(width: 15),
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      final url = Uri.parse(
+                                                          'https://drive.google.com/uc?id=${curso.modulos[widget.videoIndex].idDriveZip}&export=download');
+                                                      launchUrl(url);
+                                                    },
+                                                    child: MouseRegion(
+                                                      cursor: SystemMouseCursors.click,
+                                                      child: Container(
+                                                        width: 30,
+                                                        height: 30,
+                                                        decoration: BoxDecoration(
+                                                          borderRadius: BorderRadius.circular(30),
+                                                          color: azulText,
+                                                        ),
+                                                        child: const Center(child: Icon(Icons.download_outlined, color: bgColor,)),
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
                                               )),
                                           const SizedBox(
                                             height: 15,
@@ -354,13 +392,41 @@ class _CourseViewState extends State<CourseView> {
                                       height: 15,
                                     ),
                                     Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                                        child: CustomButton(
-                                          text: 'Descargar Material',
-                                          onPress: () {},
-                                          width: 210,
-                                          icon: Icons.download_outlined,
-                                        )),
+                                              padding: const EdgeInsets.symmetric(horizontal: 15),
+                                              child: Row(
+                                                children: [
+                                                  CustomButton(
+                                                    text: 'Ver Material',
+                                                    onPress: () {
+                                                      final url = Uri.parse(
+                                                          'https://drive.google.com/drive/folders/${curso.modulos[widget.videoIndex].idDriveFolder}?usp=sharing');
+                                                      launchUrl(url);
+                                                    },
+                                                    width: 200,
+                                                    icon: Icons.download_outlined,
+                                                  ),
+                                                  const SizedBox(width: 15),
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      final url = Uri.parse(
+                                                          'https://drive.google.com/uc?id=${curso.modulos[widget.videoIndex].idDriveZip}&export=download');
+                                                      launchUrl(url);
+                                                    },
+                                                    child: MouseRegion(
+                                                      cursor: SystemMouseCursors.click,
+                                                      child: Container(
+                                                        width: 30,
+                                                        height: 30,
+                                                        decoration: BoxDecoration(
+                                                          borderRadius: BorderRadius.circular(30),
+                                                          color: azulText,
+                                                        ),
+                                                        child: const Center(child: Icon(Icons.download_outlined, color: bgColor,)),
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              )),
                                     const SizedBox(
                                       height: 15,
                                     ),
@@ -381,7 +447,6 @@ class _CourseViewState extends State<CourseView> {
                                       return Column(
                                         children: [
                                           ListTile(
-                                            
                                             minLeadingWidth: 20,
                                             leading: SizedBox(
                                                 width: 35,
@@ -405,7 +470,7 @@ class _CourseViewState extends State<CourseView> {
                                             subtitle: Text(e.descripcion, style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5))),
                                             onTap: () {
                                               chewieController.pause();
-                                              NavigatorService.replaceTo('${Flurorouter.curso}${curso.id}/$i');
+                                              NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/$i');
                                             },
                                           ),
                                           // Row(
@@ -468,10 +533,10 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
           color: bgColor,
           child: ListView(
             children: [
-              const SizedBox(height: 100),
-              Text('Lista de comentarios', style: DashboardLabel.h4),
+              const SizedBox(height: 70),
+              Text('Lista de comentarios', style: DashboardLabel.mini),
               const SizedBox(height: 10),
-              Divider(color: Colors.white.withOpacity(0.2)),
+              Divider(color: Colors.white.withOpacity(0.5)),
               const SizedBox(height: 15),
               ...curso.modulos[widget.videoIndex].coments.map((comentario) {
                 final userComent = UserServices.getUserInfo(context, comentario.usuario);
@@ -659,7 +724,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
             child: Container(
               color: bgColor,
               width: 250,
-              height: 230,
+              height: 170,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -669,10 +734,10 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                     key: keyform,
                     child: Container(
                         width: double.infinity,
-                        constraints: const BoxConstraints(minHeight: 100),
-                        margin: const EdgeInsets.all(8),
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-                        decoration: BoxDecoration(color: Colors.white.withOpacity(0.1), borderRadius: BorderRadius.circular(25)),
+                        // constraints: const BoxConstraints(minHeight: 90),
+
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                        // decoration: BoxDecoration(color: Colors.white.withOpacity(0.1), borderRadius: BorderRadius.circular(25)),
                         child: TextFormField(
                           initialValue: comentario,
                           style: DashboardLabel.mini,
@@ -689,7 +754,6 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                           },
                         )),
                   ),
-                  // const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -713,9 +777,9 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                   const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.only(left: 10.0),
-                    child: Text('Un administrador respondera tu pregunta', style: DashboardLabel.mini),
+                    child: Text('Un administrador respondera tu pregunta', style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5))),
                   ),
-                  const SizedBox(height: 25)
+                  const SizedBox(height: 10)
                 ],
               ),
             )),

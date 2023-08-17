@@ -17,7 +17,11 @@ class _AgendaState extends State<Agenda> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: multiplatform.AgendaPlug(),
+      body: Column(
+        children: [
+          multiplatform.AgendaPlug(),
+        ],
+      ),
     );
   }
 }

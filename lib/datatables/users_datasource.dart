@@ -231,6 +231,15 @@ class UsersDTS extends DataTableSource {
               )),
           IconButton(
               onPressed: () {
+                
+              },
+              icon: const Icon(
+                Icons.email_outlined,
+                size: 16,
+                color: blancoText,
+              )),
+          IconButton(
+              onPressed: () {
                 final dialog = AlertDialog(
                   title: const Text('Esta seguro de borrar'),
                   content: Text('Borrar definitivamente el usuario "${user.nombre}"'),

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/constant.dart';
 import 'package:jpdirector_frontend/models/modulo.dart';
 import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
 import '../../../models/curso.dart';
@@ -38,14 +39,14 @@ class _CursosModalState extends State<CursosModal> {
                   ),
                 Text(
                   (curso.id != '') ? 'Editar: ${curso.nombre}' : 'Nuevo Curso',
-                  style: GoogleFonts.roboto(color: Colors.white, fontWeight: FontWeight.w500),
+                  style: DashboardLabel.h4
                 ),
                 const Spacer(),
                 IconButton(
                     onPressed: () => Navigator.of(context).pop(),
                     icon: const Icon(
                       Icons.close,
-                      color: Colors.white,
+                      color: Colors.red,
                     ))
               ],
             ),
@@ -204,7 +205,8 @@ class _CursosModalState extends State<CursosModal> {
                   margin: const EdgeInsets.only(top: 20),
                   alignment: Alignment.center,
                   child: CustomButton(
-                    width: 80,
+                    color: Colors.green,
+                    width: 100,
                     onPress: () async {
                       if (widget.uid == '') {
                         // Crear
@@ -231,7 +233,7 @@ class _CursosModalState extends State<CursosModal> {
                   margin: const EdgeInsets.only(top: 20),
                   alignment: Alignment.center,
                   child: CustomButton(
-                    width: 80,
+                    width: 100,
                     color: Colors.red.withOpacity(0.5),
                     onPress: () {
                       Navigator.pop(context, false);
@@ -368,7 +370,8 @@ class _DialogState extends State<Dialog> {
   late String descripcion;
   late String video;
   late String curso;
-  late String descarga;
+  late String idDriveFolder;
+  late String idDriveZip;
   late String id;
 
   @override
@@ -379,7 +382,8 @@ class _DialogState extends State<Dialog> {
     descripcion = widget.modulo?.descripcion ?? '';
     video = widget.modulo?.video ?? '';
     curso = widget.modulo?.curso ?? '';
-    descarga = widget.modulo?.descarga ?? '';
+    idDriveFolder = widget.modulo?.idDriveFolder ?? '';
+    idDriveZip = widget.modulo?.idDriveZip ?? '';
     id = widget.modulo?.id ?? '';
   }
 
@@ -397,7 +401,7 @@ class _DialogState extends State<Dialog> {
         child: Container(
           decoration: buildBoxDecoration(),
           width: 300,
-          height: 340,
+          height: 400,
           child: Column(
             children: [
               Expanded(
@@ -448,11 +452,24 @@ class _DialogState extends State<Dialog> {
                     constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
                     child: TextFormField(
                       style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
-                      initialValue: descarga,
-                      onChanged: (value) => descarga = value,
+                      initialValue: idDriveFolder,
+                      onChanged: (value) => idDriveFolder = value,
                       decoration: buildInputDecoration(
-                        label: 'Url de Material de descarga',
-                        icon: Icons.download_outlined,
+                        label: 'ID de Carpeta',
+                        icon: Icons.folder_outlined,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  Container(
+                    constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
+                    child: TextFormField(
+                      style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
+                      initialValue: idDriveZip,
+                      onChanged: (value) => idDriveZip = value,
+                      decoration: buildInputDecoration(
+                        label: 'ID de Zip',
+                        icon: Icons.compress_outlined,
                       ),
                     ),
                   ),
@@ -464,12 +481,23 @@ class _DialogState extends State<Dialog> {
                         text: (id == '') ? 'Crear' : 'Actualizar',
                         onPress: () async {
                           if (id == '') {
-                            await Provider.of<AllCursosProvider>(context, listen: false)
-                                .createModulo(nombre: nombre, video: video, descripcion: descripcion, descarga: descarga, curso: widget.cursoID);
+                            await Provider.of<AllCursosProvider>(context, listen: false).createModulo(
+                              nombre: nombre,
+                              video: video,
+                              descripcion: descripcion,
+                              idDriveFolder: idDriveFolder,
+                              curso: widget.cursoID,
+                              idDriveZip: idDriveZip,
+                            );
                           } else {
-                            await Provider.of<AllCursosProvider>(context, listen: false)
-                                .updateModulo(uid: id, nombreModulo: nombre, urlVideo: video, descripcionModulo: descripcion, urlDescarga: descarga);
-          
+                            await Provider.of<AllCursosProvider>(context, listen: false).updateModulo(
+                              uid: id,
+                              nombreModulo: nombre,
+                              urlVideo: video,
+                              descripcionModulo: descripcion,
+                              idDriveFolder: idDriveFolder,
+                              idDriveZip: idDriveZip,
+                            );
                           }
                           if (context.mounted) {
                             Navigator.pop(context, true);

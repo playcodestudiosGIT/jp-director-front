@@ -99,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                                   // height: 550,
                                   child: const LoginForm()),
                               const SizedBox(
-                                height: 30,
+                                height: 100,
                               ),
                             ],
                           ),

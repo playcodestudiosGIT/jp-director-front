@@ -9,7 +9,7 @@ import '../auth_provider.dart';
 class LoginFormProvider extends ChangeNotifier {
   final _storage = const FlutterSecureStorage();
 
-  final keyLoginForm = GlobalKey<FormState>(debugLabel: 'login');
+  
 
   String email = '';
   String pass = '';
@@ -49,10 +49,10 @@ class LoginFormProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> validateForm(BuildContext context) async {
+  Future<bool> validateForm({required BuildContext context, required bool isValid}) async {
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
 
-    if (keyLoginForm.currentState!.validate()) {
+    if (isValid) {
       if (remember) {
         await _storage.write(key: "KEY_MAIL", value: email);
         await _storage.write(key: "KEY_PASS", value: pass);

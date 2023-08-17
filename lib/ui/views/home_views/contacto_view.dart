@@ -1,8 +1,10 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/providers/leads_provider.dart';
 import 'package:jpdirector_frontend/ui/shared/botones/custom_button.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:jpdirector_frontend/ui/shared/logotop.dart';
 import 'package:provider/provider.dart';
 
@@ -50,7 +52,7 @@ class ContactoView extends StatelessWidget {
                         ),
                         Text(
                           'Desde hace 4 años estoy comprometido a educar y potenciar negocios con estrategias efectivas en publicidad que dan el punto.\n\nCon un recorrido de mas de \$1.000.000 USD invertidos y un retorno de \$15.000.000 USD en gran cantidad de campañas publicitarias con inumerables pruebas en Facebook, Instagram y TikTok ADS, afirmo que el éxito en los negocios se consigue con:\n\n1.Una excelente estrategia publicitaria\n2.Analizar los datos\n3.Contar con un profesional con experiencia\n\nMi misión es ser tu mentor o el encargado de tu marca y acompañarte en todo el proceso.',
-                          style: GoogleFonts.roboto(fontSize: 12, fontWeight: FontWeight.w500, color: blancoText),
+                          style: DashboardLabel.mini,
                         ),
                         const SizedBox(
                           height: 20,
@@ -79,10 +81,48 @@ class ContactoView extends StatelessWidget {
                                 )),
                           ],
                         ),
+                        const SizedBox(height: 10)
                       ],
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
+                  Container(
+                    color: bgColor.withOpacity(0.7),
+                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                    width: double.infinity,
+                    // height: ,
+                    child: Wrap(
+                      alignment: WrapAlignment.center,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        Text(
+                          'Si tienes alguna duda, comunícate conmigo vía ',
+                          style: DashboardLabel.paragraph,
+                        ),
+                     
+                        MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: GestureDetector(
+                            onTap: () {
+                              //TODO: WhatsApp launch
+                            },
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton.outlined(onPressed: (){}, icon: const Icon(FontAwesomeIcons.whatsapp, color: verdeBorde,)),
+                                Text(
+                                  'Whatsapp',
+                                  style: DashboardLabel.paragraph.copyWith(color: azulText),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
                   Container(
                     padding: const EdgeInsets.all(8),
                     width: double.infinity,
@@ -254,7 +294,6 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                               autovalidateMode: AutovalidateMode.onUserInteraction,
                               keyboardType: TextInputType.phone,
                               validator: (value) {
-                                
                                 if (value!.isEmpty || value.length <= 6) {
                                   return 'Teléfono sin caractéres especiales (12223334455)';
                                 }

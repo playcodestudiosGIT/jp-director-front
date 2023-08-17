@@ -12,7 +12,8 @@ class Modulo {
     String descripcion;
     String img;
     String video;
-    String descarga;
+    String idDriveFolder;
+    String idDriveZip;
     DateTime createdAt;
     DateTime updatedAt;
 
@@ -22,7 +23,8 @@ class Modulo {
         required this.descripcion,
         required this.img,
         required this.video,
-        required this.descarga,
+        required this.idDriveFolder,
+        required this.idDriveZip,
         required this.id,
         required this.nombre,
         required this.curso,
@@ -41,7 +43,8 @@ class Modulo {
         descripcion: json["descripcion"],
         img: json["img"],
         video: json["video"],
-        descarga: json["descarga"],
+        idDriveFolder: json["idDriveFolder"],
+        idDriveZip: json["idDriveZip"],
         id: json["_id"],
         nombre: json["nombre"],
         curso: json["curso"],
@@ -56,7 +59,8 @@ class Modulo {
         "descripcion": descripcion,
         "img": img,
         "video": video,
-        "descarga": descarga,
+        "idDriveFolder": idDriveFolder,
+        "idDriveZip": idDriveZip,
         "_id": id,
         "nombre": nombre,
         "curso": curso,

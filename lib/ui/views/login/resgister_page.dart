@@ -127,7 +127,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Container(
                 alignment: Alignment.centerLeft,
                 width: double.infinity,
-                height: 80,
+                height: 60,
                 color: const Color(0xFF00041C),
                 child: GestureDetector(
                   onTap: () {

@@ -123,6 +123,7 @@ class WebBody extends StatefulWidget {
   final List<Widget> listSliders;
   final List<Widget> listTestimonio;
   final Curso curso;
+
   const WebBody({super.key, required this.curso, required this.listSliders, required this.listTestimonio});
 
   @override
@@ -169,19 +170,18 @@ class _WebBodyState extends State<WebBody> {
         Column(
           children: [
             Container(
-                    
-                    alignment: Alignment.centerLeft,
-                    constraints: const BoxConstraints(maxWidth: 800),
-                    child: IconButton(
-                        onPressed: () {
-                          NavigatorService.navigateTo('/cursos');
-                        },
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          color: azulText,
-                          size: 30,
-                        )),
-                  ),
+              alignment: Alignment.centerLeft,
+              constraints: const BoxConstraints(maxWidth: 800),
+              child: IconButton(
+                  onPressed: () {
+                    NavigatorService.navigateTo('/cursos');
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: azulText,
+                    size: 30,
+                  )),
+            ),
             Stack(
               alignment: Alignment.center,
               children: [
@@ -264,8 +264,8 @@ class _WebBodyState extends State<WebBody> {
                                       NavigatorService.replaceTo('${Flurorouter.payNewUserRouteAlt}/${widget.curso.id}/login');
                                     }
                                     if (authProvider.authStatus == AuthStatus.authenticated) {
-                                      final resp = await Provider.of<PayProvider>(context, listen: false)
-                                          .createSession(price: int.parse(widget.curso.precio), cursoId: widget.curso.id, userEmail: authProvider.user!.correo);
+                                      final resp = await Provider.of<PayProvider>(context, listen: false).createSession(
+                                          price: int.parse(widget.curso.precio), cursoId: widget.curso.id, userEmail: authProvider.user!.correo);
                                       if (resp != '') {
                                         final Uri urluri = Uri.parse(resp);
                                         if (!await launchUrl(urluri)) {
@@ -456,7 +456,26 @@ class _WebBodyState extends State<WebBody> {
           constraints: const BoxConstraints(maxWidth: 800),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [CustomButton(text: 'QUIERO ESTE CURSO YA', onPress: () {}, width: 250)],
+            children: [
+              CustomButton(
+                  text: 'QUIERO ESTE CURSO YA',
+                  onPress: () async {
+                    if (authProvider.authStatus == AuthStatus.notAuthenticated) {
+                      NavigatorService.replaceTo('${Flurorouter.payNewUserRouteAlt}/${widget.curso.id}/login');
+                    }
+                    if (authProvider.authStatus == AuthStatus.authenticated) {
+                      final resp = await Provider.of<PayProvider>(context, listen: false)
+                          .createSession(price: int.parse(widget.curso.precio), cursoId: widget.curso.id, userEmail: authProvider.user!.correo);
+                      if (resp != '') {
+                        final Uri urluri = Uri.parse(resp);
+                        if (!await launchUrl(urluri)) {
+                          throw Exception('Could not launch $urluri');
+                        }
+                      }
+                    }
+                  },
+                  width: 250)
+            ],
           ),
         ),
         const SizedBox(height: 100),
@@ -476,6 +495,7 @@ class MobileBody extends StatefulWidget {
 }
 
 class _MobileBodyState extends State<MobileBody> {
+  bool esMio = false;
   int currIndex = 0;
   late PageController pageController;
 
@@ -493,7 +513,15 @@ class _MobileBodyState extends State<MobileBody> {
 
   @override
   Widget build(BuildContext context) {
-    // final Usuario user = Provider.of<AuthProvider>(context).user ?? usuarioDummy;
+    final Usuario user = Provider.of<AuthProvider>(context).user ?? usuarioDummy;
+    if (user.nombre == '') {
+      esMio = false;
+    }
+
+    if (user.nombre != '' && user.cursos.contains(widget.curso.id)) {
+      esMio = true;
+    }
+    final authProvider = Provider.of<AuthProvider>(context);
 
     final List<Widget> modulos = widget.curso.modulos.map((e) {
       return Acordeon(title: e.nombre, content: e.descripcion);
@@ -505,21 +533,20 @@ class _MobileBodyState extends State<MobileBody> {
           children: [
             Column(
               children: [
-                const SizedBox(height: 80),
+                const SizedBox(height: 70),
                 Container(
-                    
-                    alignment: Alignment.centerLeft,
-                    constraints: const BoxConstraints(maxWidth: 800),
-                    child: IconButton(
-                        onPressed: () {
-                          NavigatorService.navigateTo('/cursos');
-                        },
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          color: azulText,
-                          size: 30,
-                        )),
-                  ),
+                  alignment: Alignment.centerLeft,
+                  constraints: const BoxConstraints(maxWidth: 800),
+                  child: IconButton(
+                      onPressed: () {
+                        NavigatorService.navigateTo('/cursos');
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: azulText,
+                        size: 30,
+                      )),
+                ),
                 Container(
                   constraints: const BoxConstraints(maxWidth: 250),
                   child: (widget.curso.img == '') ? const CircularProgressIndicator() : Image(image: NetworkImage(widget.curso.img)),
@@ -562,7 +589,38 @@ class _MobileBodyState extends State<MobileBody> {
           ],
         ),
         const SizedBox(height: 30),
-        CustomButton(text: 'Comprar', onPress: () {}, width: 250),
+        if (esMio) ...[
+          Text(
+            'Ya tienes este curso',
+            style: DashboardLabel.mini,
+          ),
+          CustomButton(
+              text: 'continuar',
+              onPress: () async {
+                NavigatorService.replaceTo('${Flurorouter.curso}/${widget.curso.id}/0');
+              },
+              width: 250),
+        ],
+        if (!esMio) ...[
+          CustomButton(
+              text: 'Comprar',
+              onPress: () async {
+                if (authProvider.authStatus == AuthStatus.notAuthenticated) {
+                  NavigatorService.replaceTo('${Flurorouter.payNewUserRouteAlt}/${widget.curso.id}/login');
+                }
+                if (authProvider.authStatus == AuthStatus.authenticated) {
+                  final resp = await Provider.of<PayProvider>(context, listen: false)
+                      .createSession(price: int.parse(widget.curso.precio), cursoId: widget.curso.id, userEmail: authProvider.user!.correo);
+                  if (resp != '') {
+                    final Uri urluri = Uri.parse(resp);
+                    if (!await launchUrl(urluri)) {
+                      throw Exception('Could not launch $urluri');
+                    }
+                  }
+                }
+              },
+              width: 250),
+        ],
         const SizedBox(height: 30),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -721,9 +779,42 @@ class _MobileBodyState extends State<MobileBody> {
         const SizedBox(height: 60),
         Container(
           constraints: const BoxConstraints(maxWidth: 800),
-          child: Row(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [CustomButton(text: 'QUIERO ESTE CURSO YA', onPress: () {}, width: 250)],
+            children: [
+              if (esMio) ...[
+          Text(
+            'Ya tienes este curso',
+            style: DashboardLabel.mini,
+          ),
+          CustomButton(
+              text: 'continuar',
+              onPress: () async {
+                NavigatorService.replaceTo('${Flurorouter.curso}/${widget.curso.id}/0');
+              },
+              width: 250),
+        ],
+        if (!esMio) ...[
+          CustomButton(
+              text: 'Quiero este curso YA!',
+              onPress: () async {
+                if (authProvider.authStatus == AuthStatus.notAuthenticated) {
+                  NavigatorService.replaceTo('${Flurorouter.payNewUserRouteAlt}/${widget.curso.id}/login');
+                }
+                if (authProvider.authStatus == AuthStatus.authenticated) {
+                  final resp = await Provider.of<PayProvider>(context, listen: false)
+                      .createSession(price: int.parse(widget.curso.precio), cursoId: widget.curso.id, userEmail: authProvider.user!.correo);
+                  if (resp != '') {
+                    final Uri urluri = Uri.parse(resp);
+                    if (!await launchUrl(urluri)) {
+                      throw Exception('Could not launch $urluri');
+                    }
+                  }
+                }
+              },
+              width: 250),
+        ],
+            ],
           ),
         ),
         const SizedBox(height: 100),

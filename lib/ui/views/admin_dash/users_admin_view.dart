@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/constant.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/title_label.dart';
 
 import 'package:provider/provider.dart';
@@ -34,35 +35,33 @@ class _UsersAdminViewState extends State<UsersAdminView> {
     final size = MediaQuery.of(context).size;
     return Container(
       padding: (size.width < 715)
-        ? const EdgeInsets.only(top: 15, left: 15/2, right: 15 /2)
-        : const EdgeInsets.only(top: 15, left: 15/2, right: 15 /2),
+          ? const EdgeInsets.only(top: 15, left: 15 / 2, right: 15 / 2)
+          : const EdgeInsets.only(top: 15, left: 15 / 2, right: 15 / 2),
       child: ListView(
         physics: const ClampingScrollPhysics(),
         children: [
           const SizedBox(height: 80),
           const Padding(
             padding: EdgeInsets.only(left: 0.0),
-            child: TitleLabel(
-              texto: 'Administración de Usuarios'
-            ),
+            child: TitleLabel(texto: 'Administración de Usuarios'),
           ),
-      
           Theme(
             data: ThemeData.dark().copyWith(cardColor: bgColor),
             child: PaginatedDataTable(
               dataRowMaxHeight: 150,
               dataRowMinHeight: 150,
-              columns: const [
+              columns: [
                 DataColumn(
-                  label: Text('IMAGEN', style: TextStyle(fontWeight: FontWeight.bold)),
+                  label: Text('IMAGEN', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
-                DataColumn(label: Text('INFORMACIÓN', style: TextStyle(fontWeight: FontWeight.bold))),
-                DataColumn(label: Text('CURSOS', style: TextStyle(fontWeight: FontWeight.bold))),
-                DataColumn(label: Text('ACCIONES', style: TextStyle(fontWeight: FontWeight.bold))),
+                DataColumn(label: Text('INFORMACIÓN', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5)))),
+                DataColumn(label: Text('CURSOS', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5)))),
+                DataColumn(label: Text('ACCIONES', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5)))),
               ],
               source: UsersDTS(users, context),
-              header: const Text(
+              header: Text(
                 'Lista de usuarios',
+                style: DashboardLabel.h3,
               ),
               rowsPerPage: _rowsPerPage,
               onRowsPerPageChanged: (value) {
@@ -72,7 +71,6 @@ class _UsersAdminViewState extends State<UsersAdminView> {
               },
               actions: [
                 ElevatedButton(
-                  
                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(azulText)),
                   onPressed: () async {
                     final isCourse = await showModalBottomSheet(
@@ -82,8 +80,10 @@ class _UsersAdminViewState extends State<UsersAdminView> {
                         user: null,
                       ),
                     );
-          
-                    if(isCourse){
+
+                    if (isCourse == null) return;
+
+                    if (isCourse) {
                       setState(() {
                         Provider.of<UsersProvider>(context, listen: false).getPaginatedUsers();
                       });

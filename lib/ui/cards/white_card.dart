@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/ui/shared/botones/custom_button.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 
+import '../../constant.dart';
+
 
 class WhiteCard extends StatelessWidget {
   final String? title;
@@ -40,17 +42,13 @@ class WhiteCard extends StatelessWidget {
                         Scaffold.of(context).openEndDrawer();
                       },
                       width: 160,
-                      icon: Icons.comment,
                     ),
                     if(size.width <= 500)
-                    CustomButton(
-                      text: '',
-                      onPress: () {
-                        Scaffold.of(context).openEndDrawer();
-                      },
-                      width: 55,
-                      icon: Icons.comment,
-                    ),
+                    SizedBox(width: 55, height: 55, child: IconButton(
+                     
+                      onPressed: (){
+                      Scaffold.of(context).openEndDrawer();
+                    }, icon: const Icon(Icons.comment_outlined, color: azulText,)),)
                   ],
                 )
               ],

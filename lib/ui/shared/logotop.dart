@@ -13,7 +13,7 @@ class LogoTop extends StatelessWidget {
     final wSize = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
-        NavigatorService.replaceTo(Flurorouter.homeRoute);
+        NavigatorService.replaceTo(Flurorouter.clienteMisCursosDash);
       },
       child: MouseRegion(
         cursor: SystemMouseCursors.click,

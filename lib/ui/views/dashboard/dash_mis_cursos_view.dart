@@ -82,7 +82,8 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
                         'No tienes ningun curso',
                         style: DashboardLabel.paragraph,
                       ),
-                    if (destruct.isNotEmpty) ...destruct
+                    if (destruct.isNotEmpty) ...destruct,
+                    const SizedBox(width: 85, height: 10)
                   ]
 
                       //  ,
@@ -109,7 +110,8 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
                               style: DashboardLabel.paragraph,
                             ),
                           ),
-                        if (cursoDestruct.isNotEmpty) ...cursoDestruct
+                        if (cursoDestruct.isNotEmpty) ...cursoDestruct,
+                         const SizedBox(width: 85, height: 10)
                       ],
                     ),
                   )),
