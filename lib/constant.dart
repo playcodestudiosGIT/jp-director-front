@@ -1,5 +1,6 @@
 // import 'dart:html'L
 import 'package:flutter/material.dart';
+import 'package:jpdirector_frontend/models/certificado.dart';
 
 import 'models/curso.dart';
 import 'models/modulo.dart';
@@ -53,10 +54,12 @@ final List<String> resultados = [
 Curso cursoDummy = Curso(
   duracion: '0',
   estado: true,
+  publicado: true,
   createdAt: DateTime.now(),
   updatedAt: DateTime.now(),
   descripcion: '',
   img: '',
+  urlImgCert: '',
   baner: '',
   modulos: [
     Modulo(
@@ -101,4 +104,14 @@ Usuario usuarioDummy = Usuario(
     sessionId: '',
     createdAt: DateTime.now(),
     updatedAt: DateTime.now(),
-    uid: '');
+    uid: '',
+    certificados: []);
+
+final certDummy = Certificado(
+  id: 'id',
+  urlPdf: 'urlPdf',
+  cursoId: 'cursoId',
+  usuarioId: 'usuarioId',
+  createdAt: DateTime.now(),
+  updatedAt: DateTime.now(),
+);

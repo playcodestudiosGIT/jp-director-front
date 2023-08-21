@@ -31,7 +31,7 @@ class BuyCursoCard extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: () {
-          NavigatorService.navigateTo('${Flurorouter.curso}$uid/${'0'}');
+          NavigatorService.navigateTo('${Flurorouter.curso}/$uid/0');
         },
         child: SizedBox(
           width: 345,

@@ -29,7 +29,7 @@ class CourseCard extends StatelessWidget {
                 await Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
 
                 if (authProvider.authStatus == AuthStatus.authenticated && context.mounted) {
-                  NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/${'0'}');
+                  NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/0');
                 } else {
                   NavigatorService.replaceTo('${Flurorouter.cursoLanding}/${curso.id}');
                 }
@@ -73,7 +73,7 @@ class CourseCard extends StatelessWidget {
                                 TextButton(
                                     style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
                                     onPressed: () {
-                                      NavigatorService.replaceTo('${Flurorouter.curso}${curso.id}/${'0'}');
+                                      NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/0');
                                     },
                                     child: (esMio)
                                         ? Text('CONTINUAR', style: DashboardLabel.mini.copyWith(color: azulText))

@@ -90,7 +90,7 @@ class AuthProvider extends ChangeNotifier {
       notifyListeners();
       return true;
     } catch (e) {
-      NotifServ.showSnackbarError('Token invalido', Colors.red);
+      NotifServ.showSnackbarError('Hubo un problema con tu autenticación', Colors.red);
       authStatus = AuthStatus.notAuthenticated;
       isLoading = false;
       notifyListeners();

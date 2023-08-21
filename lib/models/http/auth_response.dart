@@ -1,6 +1,6 @@
-import 'dart:convert';
 
 import '../usuario_model.dart';
+import 'dart:convert';
 
 class AuthResponse {
     Usuario usuario;

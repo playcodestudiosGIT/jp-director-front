@@ -108,14 +108,7 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                                     NavigatorService.navigateTo(Flurorouter.cursosAdminDash);
                                     isOpen = false;
                                   }),
-                              MenuItemSide(
-                                  text: 'Baners',
-                                  icon: Icons.style_outlined,
-                                  isActive: sideBarProvider.currentPage == Flurorouter.banersAdminDash,
-                                  onPress: () {
-                                    NavigatorService.navigateTo(Flurorouter.banersAdminDash);
-                                    isOpen = false;
-                                  }),
+                             
                               MenuItemSide(
                                   text: 'Formularios',
                                   icon: Icons.question_answer,

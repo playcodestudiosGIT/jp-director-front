@@ -1,4 +1,3 @@
-import 'dart:js_interop';
 
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +27,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   void dispose() {
-    if (keyLoginForm.currentState.isDefinedAndNotNull) keyLoginForm.currentState!.dispose();
+    if (keyLoginForm.currentState != null) keyLoginForm.currentState!.dispose();
     super.dispose();
   }
 

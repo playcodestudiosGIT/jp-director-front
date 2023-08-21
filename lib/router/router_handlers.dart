@@ -1,10 +1,7 @@
-
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
-import 'package:jpdirector_frontend/providers/baners_provider.dart';
 import 'package:jpdirector_frontend/providers/leads_provider.dart';
-import 'package:jpdirector_frontend/ui/views/admin_dash/baners_admin_view.dart';
 import 'package:jpdirector_frontend/ui/views/admin_dash/cursos_admin_view.dart';
 import 'package:jpdirector_frontend/ui/views/admin_dash/forms_admin_view.dart';
 import 'package:jpdirector_frontend/ui/views/admin_dash/leads_admin_view.dart';
@@ -17,7 +14,6 @@ import 'package:jpdirector_frontend/ui/views/static/reset_password.dart';
 import 'package:jpdirector_frontend/ui/views/static/verify_user_page.dart';
 import 'package:provider/provider.dart';
 
-import '../models/baner.dart';
 import '../providers/auth_provider.dart';
 import '../providers/sidebar_provider.dart';
 import '../ui/pdp_view.dart';
@@ -116,15 +112,8 @@ class VisitorHandlers {
 
       if (authProvider.authStatus == AuthStatus.notAuthenticated) {
         Provider.of<AllCursosProvider>(context, listen: false).getCursosById(cursoId);
-        Provider.of<BanersProvider>(context, listen: false).getBaners();
-        final Baner? baner = Provider.of<BanersProvider>(context, listen: false)
-            .baners
-            .where(
-              (element) => element.cursoId == cursoId,
-            )
-            .firstOrNull;
 
-        return CreateUserCheckout(cursoId: cursoId, priceId: baner?.priceId ?? '', state: state);
+        return CreateUserCheckout(cursoId: cursoId, state: state);
       } else {
         // return const NewCursoCheckout();
         return const Placeholder();
@@ -227,15 +216,6 @@ class UsersAuthHandlers {
     );
   });
 
-  // static Handler payTdc = Handler(handlerFunc: (context, params) {
-  //   //create agenda
-  //   return Builder(
-  //     builder: (context) {
-  //       return const TdcPay();
-  //     },
-  //   );
-  // });
-
   static Handler cursoID = Handler(handlerFunc: (context, params) {
     final cursoID = params['cursoID']!.first;
     final videoIndex = params['videoIndex']!.first;
@@ -255,9 +235,9 @@ class UsersAuthHandlers {
     return FutureBuilder(
       future: Provider.of<AllCursosProvider>(context, listen: false).getCursosById(cursoID),
       builder: (context, snapshot) {
-        final curso = Provider.of<AllCursosProvider>(context, listen: false).cursoView;
+        final curso = snapshot.data;
         Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl('');
-        return (curso.nombre == 'nombre')
+        return (curso == null || curso.nombre == 'nombre')
             ? const Center(child: SizedBox(width: 35, height: 35, child: CircularProgressIndicator()))
             : CourseView(
                 videoIndex: int.parse(videoIndex),
@@ -297,7 +277,6 @@ class UsersAuthHandlers {
     if (authProvider.authStatus == AuthStatus.notAuthenticated) {
       return const LoginPage();
     } else {
-      Provider.of<BanersProvider>(context, listen: false).getBaners();
       Provider.of<AllCursosProvider>(context, listen: false).obtenerMisCursos(authProvider.user!);
       Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
       return const DashMisCursosView();
@@ -343,15 +322,6 @@ class AdminHandlers {
     } else {
       Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.formsAdminDash);
       return const FormAdminView();
-    }
-  });
-  static Handler banersAdminDash = Handler(handlerFunc: (context, params) {
-    final authProvider = Provider.of<AuthProvider>(context!, listen: false);
-    if (authProvider.authStatus == AuthStatus.notAuthenticated || authProvider.user!.rol != 'ADMIN_ROLE') {
-      return const HomeBody();
-    } else {
-      Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.banersAdminDash);
-      return const BanersAdminView();
     }
   });
 }

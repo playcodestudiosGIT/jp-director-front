@@ -1,6 +1,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jpdirector_frontend/models/certificado.dart';
 import 'package:jpdirector_frontend/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -14,6 +15,7 @@ import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../../services/user_services.dart';
 import '../../cards/white_card.dart';
+import '../../shared/botones/boton_icon_redondo.dart';
 import '../../shared/botones/custom_button.dart';
 import '../../shared/labels/dashboard_label.dart';
 import '../../shared/respuesta_widget.dart';
@@ -32,6 +34,7 @@ class CourseView extends StatefulWidget {
 }
 
 class _CourseViewState extends State<CourseView> {
+  late Curso curso;
   late VideoPlayerController videoPlayerController;
   late ChewieController chewieController;
   late Progress prog;
@@ -41,17 +44,17 @@ class _CourseViewState extends State<CourseView> {
 
   @override
   void initState() {
+    curso = Provider.of<AllCursosProvider>(context, listen: false).cursoView;
     final user = Provider.of<AuthProvider>(context, listen: false).user;
-    prog = user!.progress.where((element) => element.moduloId == widget.cursoTmp.modulos[widget.videoIndex].id).first;
+    prog = user!.progress.where((element) => element.moduloId == curso.modulos[widget.videoIndex].id).first;
     Provider.of<AuthProvider>(context, listen: false).isAutenticated();
-    videoPlayerController = VideoPlayerController.network(widget.cursoTmp.modulos[widget.videoIndex].video)
+    videoPlayerController = VideoPlayerController.network(curso.modulos[widget.videoIndex].video)
       ..initialize().then((_) {
         isLoading = false;
         setState(() {});
       });
     chewieController = ChewieController(
       startAt: Duration(seconds: prog.marker),
-      // autoInitialize: true,
       placeholder: Container(decoration: const BoxDecoration(image: DecorationImage(image: logoGrande))),
       hideControlsTimer: const Duration(milliseconds: 1000),
       materialProgressColors: ChewieProgressColors(bufferedColor: azulText.withOpacity(0.3), playedColor: azulText, backgroundColor: bgColor),
@@ -71,7 +74,6 @@ class _CourseViewState extends State<CourseView> {
         } else {
           index++;
         }
-        // NavigatorService.replaceTo('${Flurorouter.curso}${widget.cursoTmp.id}/$index');
       }
       if (videotime == videoPlayerController.value.duration.inSeconds && !prog.isComplete) {
         await Provider.of<AuthProvider>(context, listen: false).updateProg(moduloId: prog.moduloId, marker: videotime, isComplete: true);
@@ -102,7 +104,6 @@ class _CourseViewState extends State<CourseView> {
       });
     });
     final authProvider = Provider.of<AuthProvider>(context);
-    final curso = Provider.of<AllCursosProvider>(context).cursoView;
     final ids = [];
     final List<Progress> progresses = [];
 
@@ -118,6 +119,11 @@ class _CourseViewState extends State<CourseView> {
     final pont = progresses.where((element) => element.isComplete).length;
 
     final percent = pont / total * 100;
+
+    final Certificado cert = authProvider.user!.certificados.firstWhere(
+      (element) => element.cursoId == curso.id,
+      orElse: () => certDummy,
+    );
 
     return (curso.nombre == '')
         ? const Center(child: SizedBox(width: 35, height: 35, child: CircularProgressIndicator()))
@@ -140,7 +146,8 @@ class _CourseViewState extends State<CourseView> {
                     Stack(children: [
                       Row(
                         children: [
-                          const SizedBox(width: 10),
+                          if (wScreen > 325) const SizedBox(width: 10),
+                          if (wScreen <= 325) const SizedBox(width: 5),
                           IconButton(
                               onPressed: () {
                                 NavigatorService.replaceTo(Flurorouter.clienteMisCursosDash);
@@ -152,55 +159,198 @@ class _CourseViewState extends State<CourseView> {
                           const SizedBox(width: 10),
                           Text(
                             curso.nombre,
-                            style: (wScreen <= 400) ? DashboardLabel.h3.copyWith(color: blancoText) : DashboardLabel.h1.copyWith(color: blancoText),
+                            style: (wScreen <= 400) ? DashboardLabel.h4.copyWith(color: blancoText) : DashboardLabel.h1.copyWith(color: blancoText),
                           ),
                           const Spacer(),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               const SizedBox(width: 8),
-                              if (percent == 100.0)
+                              if (percent == 100.0 && cert.urlPdf == 'urlPdf')
                                 TextButton(
                                     style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
-                                    onPressed: () {},
-                                    child: Text(
-                                      'CERTIFICADO',
-                                      style: DashboardLabel.paragraph.copyWith(color: azulText),
-                                    )),
-                              const SizedBox(width: 8),
-                              Stack(
-                                children: [
-                                  Positioned(
-                                      top: (percent == 100.0) ? 7 : 11,
-                                      left: 7,
-                                      child: (percent == 100.0)
-                                          ? const Icon(
-                                              Icons.check,
-                                              color: Colors.green,
-                                              size: 20,
-                                            )
-                                          : Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                            children: [
-                                              const SizedBox(width: 20),
-                                              Row(
+                                    onPressed: () async {
+                                      final dialog = AlertDialog(
+                                          backgroundColor: Colors.transparent,
+                                          content: FutureBuilder(
+                                            future: Provider.of<AllCursosProvider>(context, listen: false)
+                                                .generarCert(userId: authProvider.user!.uid, cursoId: curso.id),
+                                            builder: (context, snapshot) {
+                                              late final Certificado? newCert;
+
+                                              if (snapshot.hasData) {
+                                                newCert = snapshot.data;
+                                              }
+                                              if (snapshot.connectionState == ConnectionState.waiting) {
+                                                return Column(
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   crossAxisAlignment: CrossAxisAlignment.center,
                                                   children: [
-                                                    
-                                                    Text(percent.toStringAsFixed(0),
-                                                    textAlign: TextAlign.center,
-                                                        style: DashboardLabel.mini.copyWith(color: blancoText, fontSize: 10)),
-                                                    Text('%',textAlign: TextAlign.center, style: DashboardLabel.mini.copyWith(color: blancoText)),
+                                                    const SizedBox(
+                                                      width: 35,
+                                                      height: 35,
+                                                      child: CircularProgressIndicator(),
+                                                    ),
+                                                    const SizedBox(height: 10),
+                                                    Text(
+                                                      'Generando Certificado',
+                                                      style: DashboardLabel.h3,
+                                                    )
                                                   ],
-                                                ),
-                                            ],
+                                                );
+                                              } else {
+                                                return Container(
+                                                  padding: const EdgeInsets.all(5),
+                                                  color: bgColor,
+                                                  width: double.infinity,
+                                                  height: double.infinity,
+                                                  constraints: const BoxConstraints(maxWidth: 300, maxHeight: 350),
+                                                  child: Center(
+                                                    child: Stack(
+                                                      alignment: Alignment.topCenter,
+                                                      children: [
+                                                        Column(
+                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                                          children: [
+                                                            Row(
+                                                              mainAxisAlignment: MainAxisAlignment.end,
+                                                              children: [
+                                                                MouseRegion(
+                                                                  cursor: SystemMouseCursors.click,
+                                                                  child: GestureDetector(
+                                                                      onTap: () {
+                                                                        Navigator.pop(context, true);
+                                                                      },
+                                                                      child: const CircleAvatar(
+                                                                        backgroundColor: Colors.red,
+                                                                        radius: 15,
+                                                                        child: Center(
+                                                                            child: Icon(
+                                                                          Icons.clear,
+                                                                          color: blancoText,
+                                                                        )),
+                                                                      )),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            const Icon(
+                                                              Icons.check_circle_outline_outlined,
+                                                              color: Colors.green,
+                                                              size: 200,
+                                                            ),
+                                                            SizedBox(
+                                                              width: 280,
+                                                              child: Text(
+                                                                'Felicidades, tu certificado esta listo!',
+                                                                textAlign: TextAlign.center,
+                                                                style: DashboardLabel.h4,
+                                                              ),
+                                                            ),
+                                                            const SizedBox(
+                                                              height: 15,
+                                                            ),
+                                                            Row(
+                                                              crossAxisAlignment: CrossAxisAlignment.end,
+                                                              mainAxisAlignment: MainAxisAlignment.end,
+                                                              children: [
+                                                                TextButton.icon(
+                                                                  style: ButtonStyle(
+                                                                      backgroundColor: MaterialStatePropertyAll(azulText.withOpacity(0.1))),
+                                                                  onPressed: () {
+                                                                    final Uri url = Uri.parse(newCert!.urlPdf);
+                                                                    launchUrl(url);
+                                                                  },
+                                                                  icon: const Icon(
+                                                                    Icons.remove_red_eye,
+                                                                    color: azulText,
+                                                                  ),
+                                                                  label: Text(
+                                                                    'VER',
+                                                                    style: DashboardLabel.h4.copyWith(color: azulText),
+                                                                  ),
+                                                                ),
+                                                                const SizedBox(
+                                                                  width: 10,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+                                            },
+                                          ));
+
+                                      await showDialog(context: context, builder: (context) => dialog);
+                                      authProvider.isAutenticated();
+                                    },
+                                    child: (wScreen < 500)
+                                        ? const Icon(Icons.workspace_premium_outlined)
+                                        : Text(
+                                            'CERTIFICADO',
+                                            style: DashboardLabel.paragraph.copyWith(color: azulText),
                                           )),
+                              if (percent == 100.0 && cert.urlPdf != 'urlPdf') ...[
+                                if (wScreen >= 400)
+                                  TextButton(
+                                      style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
+                                      onPressed: () {
+                                        final Uri url = Uri.parse(cert.urlPdf);
+                                        launchUrl(url);
+                                      },
+                                      child: Text(
+                                        'VER CERTIFICADO',
+                                        style: DashboardLabel.paragraph.copyWith(color: azulText),
+                                      )),
+                                if (wScreen < 400)
+                                  BotonRedondoIcono(
+                                    fillColor: azulText,
+                                    iconColor: bgColor,
+                                    icon: Icons.workspace_premium_outlined,
+                                    onTap: () {
+                                      final Uri url = Uri.parse(cert.urlPdf);
+                                      launchUrl(url);
+                                    },
+                                  )
+                              ],
+                              const SizedBox(width: 8),
+                              Stack(
+                                children: [
+                                  if (wScreen > 325)
+                                    Positioned(
+                                        top: (percent == 100.0) ? 7 : 11,
+                                        left: 7,
+                                        child: (percent == 100.0)
+                                            ? const Icon(
+                                                Icons.check,
+                                                color: Colors.green,
+                                                size: 20,
+                                              )
+                                            : Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                children: [
+                                                  const SizedBox(width: 20),
+                                                  Row(
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                    children: [
+                                                      Text(percent.toStringAsFixed(0),
+                                                          textAlign: TextAlign.center,
+                                                          style: DashboardLabel.mini.copyWith(color: blancoText, fontSize: 10)),
+                                                      Text('%', textAlign: TextAlign.center, style: DashboardLabel.mini.copyWith(color: blancoText)),
+                                                    ],
+                                                  ),
+                                                ],
+                                              )),
                                   Container(
                                     margin: const EdgeInsets.all(2),
-                                    width: 30,
-                                    height: 30,
+                                    width: (wScreen < 325) ? 20 : 30,
+                                    height: (wScreen < 325) ? 20 : 30,
                                     child: CircularProgressIndicator(
                                       value: pont / total,
 
@@ -271,25 +421,15 @@ class _CourseViewState extends State<CourseView> {
                                                     icon: Icons.download_outlined,
                                                   ),
                                                   const SizedBox(width: 15),
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      final url = Uri.parse(
-                                                          'https://drive.google.com/uc?id=${curso.modulos[widget.videoIndex].idDriveZip}&export=download');
-                                                      launchUrl(url);
-                                                    },
-                                                    child: MouseRegion(
-                                                      cursor: SystemMouseCursors.click,
-                                                      child: Container(
-                                                        width: 30,
-                                                        height: 30,
-                                                        decoration: BoxDecoration(
-                                                          borderRadius: BorderRadius.circular(30),
-                                                          color: azulText,
-                                                        ),
-                                                        child: const Center(child: Icon(Icons.download_outlined, color: bgColor,)),
-                                                      ),
-                                                    ),
-                                                  )
+                                                  BotonRedondoIcono(
+                                                      fillColor: azulText,
+                                                      iconColor: bgColor,
+                                                      icon: Icons.file_download,
+                                                      onTap: () {
+                                                        final url = Uri.parse(
+                                                            'https://drive.google.com/uc?id=${curso.modulos[widget.videoIndex].idDriveZip}&export=download');
+                                                        launchUrl(url);
+                                                      }),
                                                 ],
                                               )),
                                           const SizedBox(
@@ -319,7 +459,7 @@ class _CourseViewState extends State<CourseView> {
                                                           height: 35,
                                                           child: Checkbox(
                                                             fillColor: MaterialStateProperty.all(azulText),
-                                                            checkColor: Colors.white,
+                                                            checkColor: bgColor,
                                                             value: prog.isComplete,
                                                             onChanged: (value) async {
                                                               await Provider.of<AuthProvider>(context, listen: false)
@@ -392,41 +532,31 @@ class _CourseViewState extends State<CourseView> {
                                       height: 15,
                                     ),
                                     Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 15),
-                                              child: Row(
-                                                children: [
-                                                  CustomButton(
-                                                    text: 'Ver Material',
-                                                    onPress: () {
-                                                      final url = Uri.parse(
-                                                          'https://drive.google.com/drive/folders/${curso.modulos[widget.videoIndex].idDriveFolder}?usp=sharing');
-                                                      launchUrl(url);
-                                                    },
-                                                    width: 200,
-                                                    icon: Icons.download_outlined,
-                                                  ),
-                                                  const SizedBox(width: 15),
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      final url = Uri.parse(
-                                                          'https://drive.google.com/uc?id=${curso.modulos[widget.videoIndex].idDriveZip}&export=download');
-                                                      launchUrl(url);
-                                                    },
-                                                    child: MouseRegion(
-                                                      cursor: SystemMouseCursors.click,
-                                                      child: Container(
-                                                        width: 30,
-                                                        height: 30,
-                                                        decoration: BoxDecoration(
-                                                          borderRadius: BorderRadius.circular(30),
-                                                          color: azulText,
-                                                        ),
-                                                        child: const Center(child: Icon(Icons.download_outlined, color: bgColor,)),
-                                                      ),
-                                                    ),
-                                                  )
-                                                ],
-                                              )),
+                                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                                        child: Row(
+                                          children: [
+                                            CustomButton(
+                                              text: 'Ver Material',
+                                              onPress: () {
+                                                final url = Uri.parse(
+                                                    'https://drive.google.com/drive/folders/${curso.modulos[widget.videoIndex].idDriveFolder}?usp=sharing');
+                                                launchUrl(url);
+                                              },
+                                              width: 200,
+                                              icon: Icons.download_outlined,
+                                            ),
+                                            const SizedBox(width: 15),
+                                            BotonRedondoIcono(
+                                                fillColor: azulText,
+                                                iconColor: bgColor,
+                                                icon: Icons.file_download,
+                                                onTap: () {
+                                                  final url = Uri.parse(
+                                                      'https://drive.google.com/uc?id=${curso.modulos[widget.videoIndex].idDriveZip}&export=download');
+                                                  launchUrl(url);
+                                                }),
+                                          ],
+                                        )),
                                     const SizedBox(
                                       height: 15,
                                     ),
@@ -453,7 +583,7 @@ class _CourseViewState extends State<CourseView> {
                                                 height: 35,
                                                 child: Checkbox(
                                                   fillColor: MaterialStateProperty.all(azulText),
-                                                  checkColor: Colors.white,
+                                                  checkColor: bgColor,
                                                   value: prog.isComplete,
                                                   onChanged: (value) async {
                                                     await Provider.of<AuthProvider>(context, listen: false)
@@ -473,16 +603,6 @@ class _CourseViewState extends State<CourseView> {
                                               NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/$i');
                                             },
                                           ),
-                                          // Row(
-                                          //   mainAxisAlignment: MainAxisAlignment.end,
-                                          //   children: [
-                                          //     Row(children: [
-                                          //       const Icon(Icons.ondemand_video_outlined, size: 15, color: Colors.black38),
-                                          //       const SizedBox(width: 10),
-                                          //       Text('2hr', style: DashboardLabel.mini.copyWith(color: Colors.black38))
-                                          //     ]),
-                                          //   ],
-                                          // ),
                                           Divider(
                                             color: blancoText.withOpacity(0.5),
                                           ),
@@ -773,7 +893,6 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                       const SizedBox(width: 5)
                     ],
                   ),
-
                   const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.only(left: 10.0),

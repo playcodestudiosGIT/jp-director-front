@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/constant.dart';
+import 'package:jpdirector_frontend/models/certificado.dart';
 import 'package:jpdirector_frontend/services/notificacion_service.dart';
 
 import '../api/jp_api.dart';
@@ -26,6 +27,7 @@ class AllCursosProvider extends ChangeNotifier {
   String _imgCursoModal = '';
   String _banerCursoModal = '';
   String _duracionCursoModal = '';
+  String _urlImgCert = '';
 
   // --------------------------------- //
 
@@ -61,6 +63,13 @@ class AllCursosProvider extends ChangeNotifier {
 
   set cursosUserModalTemp(List<Curso> value) {
     _cursosUserModalTemp = value;
+    notifyListeners();
+  }
+
+  String get urlImgCert => _urlImgCert;
+
+  set urlImgCert(String value) {
+    _urlImgCert = value;
     notifyListeners();
   }
 
@@ -140,6 +149,7 @@ class AllCursosProvider extends ChangeNotifier {
       _precioCursoModal = curso.precio;
       _banerCursoModal = curso.baner;
       _nombreCursoModal = curso.nombre;
+      _urlImgCert = curso.urlImgCert;
 
       notifyListeners();
     } catch (e) {
@@ -169,6 +179,7 @@ class AllCursosProvider extends ChangeNotifier {
       "img": _imgCursoModal,
       "baner": _banerCursoModal,
       "duracion": _duracionCursoModal,
+      "urlImgCert": _urlImgCert,
     };
 
     JpApi.post('/cursos', data).then((json) {
@@ -235,6 +246,7 @@ class AllCursosProvider extends ChangeNotifier {
       "img": _imgCursoModal,
       "baner": _banerCursoModal,
       "duracion": _duracionCursoModal,
+      "urlImgCert": _urlImgCert,
     };
 
     try {
@@ -386,6 +398,19 @@ class AllCursosProvider extends ChangeNotifier {
       await JpApi.delete('/modulos/coments/$comentId', {"moduloId": moduloId});
     } catch (e) {
       throw 'Error $e';
+    }
+  }
+
+  Future<Certificado> generarCert({required String userId, required String cursoId}) async {
+    final data = {"userId": userId, "cursoId": cursoId};
+
+    try {
+      final res = await JpApi.post('/uploads/certificados/gen', data);
+
+
+      return Certificado.fromJson(res["cert"]);
+    } catch (e) {
+      return Certificado(id: 'id', urlPdf: 'urlPdf', cursoId: 'cursoId', usuarioId: 'usuarioId', createdAt: DateTime.now(), updatedAt: DateTime.now());
     }
   }
 }

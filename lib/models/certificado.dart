@@ -1,45 +1,45 @@
 import 'dart:convert';
 
-class Baner {
+class Certificado {
     String id;
-    String nombre;
-    String priceId;
+    String urlPdf;
     String cursoId;
-    String img;
+    String usuarioId;
     DateTime createdAt;
     DateTime updatedAt;
 
-    Baner({
+
+    Certificado({
         required this.id,
-        required this.nombre,
-        required this.priceId,
+        required this.urlPdf,
         required this.cursoId,
-        required this.img,
+        required this.usuarioId,
         required this.createdAt,
         required this.updatedAt,
+
     });
 
-    factory Baner.fromRawJson(String str) => Baner.fromJson(json.decode(str));
+    factory Certificado.fromRawJson(String str) => Certificado.fromJson(json.decode(str));
 
     String toRawJson() => json.encode(toJson());
 
-    factory Baner.fromJson(Map<String, dynamic> json) => Baner(
+    factory Certificado.fromJson(Map<String, dynamic> json) => Certificado(
         id: json["_id"],
-        nombre: json["nombre"],
-        priceId: json["priceId"],
+        urlPdf: json["urlPdf"],
         cursoId: json["cursoId"],
-        img: json["img"],
+        usuarioId: json["usuarioId"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
+
     );
 
     Map<String, dynamic> toJson() => {
         "_id": id,
-        "nombre": nombre,
-        "priceId": priceId,
+        "urlPdf": urlPdf,
         "cursoId": cursoId,
-        "img": img,
+        "usuarioId": usuarioId,
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt.toIso8601String(),
+
     };
 }

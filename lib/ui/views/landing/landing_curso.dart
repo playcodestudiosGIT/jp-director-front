@@ -253,7 +253,7 @@ class _WebBodyState extends State<WebBody> {
                               CustomButton(
                                   text: 'Continuar',
                                   onPress: () {
-                                    NavigatorService.replaceTo('${Flurorouter.curso}${widget.curso.id}/${'0'}');
+                                    NavigatorService.replaceTo('${Flurorouter.curso}/${widget.curso.id}/0');
                                   },
                                   width: 250),
                             if (!esMio)

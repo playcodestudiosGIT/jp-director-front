@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:jpdirector_frontend/models/certificado.dart';
 import 'package:jpdirector_frontend/models/progress.dart';
 
 class Usuario {
@@ -15,10 +16,11 @@ class Usuario {
     String rol;
     bool estado;
     bool google;
+    String sessionId;
     List<String> cursos;
     List<Progress> progress;
+    List<Certificado> certificados;
     String confirmCode;
-    String sessionId;
     DateTime createdAt;
     DateTime updatedAt;
     String uid;
@@ -36,10 +38,11 @@ class Usuario {
         required this.rol,
         required this.estado,
         required this.google,
+        required this.sessionId,
         required this.cursos,
         required this.progress,
+        required this.certificados,
         required this.confirmCode,
-        required this.sessionId,
         required this.createdAt,
         required this.updatedAt,
         required this.uid,
@@ -62,10 +65,11 @@ class Usuario {
         rol: json["rol"],
         estado: json["estado"],
         google: json["google"],
+        sessionId: json["sessionId"],
         cursos: List<String>.from(json["cursos"].map((x) => x)),
         progress: List<Progress>.from(json["progress"].map((x) => Progress.fromJson(x))),
+        certificados: List<Certificado>.from(json["certificados"].map((x) => Certificado.fromJson(x))),
         confirmCode: json["confirmCode"],
-        sessionId: json["sessionId"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
         uid: json["uid"],
@@ -84,10 +88,11 @@ class Usuario {
         "rol": rol,
         "estado": estado,
         "google": google,
+        "sessionId": sessionId,
         "cursos": List<dynamic>.from(cursos.map((x) => x)),
         "progress": List<dynamic>.from(progress.map((x) => x.toJson())),
+        "certificados": List<dynamic>.from(certificados.map((x) => x.toJson())),
         "confirmCode": confirmCode,
-        "sessionId": sessionId,
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt.toIso8601String(),
         "uid": uid,

@@ -35,7 +35,6 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CursoModalProvider()),
         ChangeNotifierProvider(create: (_) => AllRespuestasProvider()),
         ChangeNotifierProvider(create: (_) => FormProvider()),
-        ChangeNotifierProvider(create: (_) => BanersProvider()),
         ChangeNotifierProvider(create: (_) => PayProvider()),
         ChangeNotifierProvider(create: (_) => LeadsProvider()),
         ChangeNotifierProvider(create: (_) => LoginFormProvider()),

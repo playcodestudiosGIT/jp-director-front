@@ -1,13 +1,15 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jpdirector_frontend/models/curso.dart';
+import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
-import '../../../models/baner.dart';
+
 import '../../../providers/auth_provider.dart';
-import '../../../providers/baners_provider.dart';
+
 import '../../shared/widgets/cursos_botones.dart';
 
 class AdsView extends StatefulWidget {
@@ -19,17 +21,23 @@ class AdsView extends StatefulWidget {
 
 class _AdsViewState extends State<AdsView> {
   @override
+  void initState() {
+    super.initState();
+    Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final List<Baner> baners = Provider.of<BanersProvider>(context).baners;
+    final List<Curso> cursos = Provider.of<AllCursosProvider>(context).allCursos;
+
+    final List<Curso> listCursos = cursos.where((element) => element.publicado).toList();
     final wScreen = MediaQuery.of(context).size.width;
     final authProvider = Provider.of<AuthProvider>(context);
+    if(listCursos.isEmpty){setState(() {});}
     return Padding(
       padding:
           (wScreen < 715 && authProvider.authStatus == AuthStatus.authenticated) ? const EdgeInsets.only(left: 0) : const EdgeInsets.only(left: 0),
       child: Stack(children: [
-        // Container(
-        //   color: bgColor,
-        // ),
         Positioned(
             top: 90,
             right: 330,
@@ -81,7 +89,7 @@ class _AdsViewState extends State<AdsView> {
                 height: 15,
               ),
               FutureBuilder(
-                future: Provider.of<BanersProvider>(context, listen: false).getBaners(),
+                future: Provider.of<AllCursosProvider>(context, listen: false).getAllCursos(),
                 builder: (context, snapshot) {
                   return Container(
                     constraints: const BoxConstraints(maxWidth: 800),
@@ -91,11 +99,11 @@ class _AdsViewState extends State<AdsView> {
                       direction: Axis.horizontal,
                       alignment: WrapAlignment.center,
                       children: [
-                        if (baners.isEmpty) const Center(child: SizedBox(width: 40, height: 40, child: CircularProgressIndicator())),
-                        if (baners.isNotEmpty)
-                          ...baners.map(
+                        if (listCursos.isEmpty) const Center(child: SizedBox(width: 40, height: 40, child: CircularProgressIndicator())),
+                        if (listCursos.isNotEmpty)
+                          ...listCursos.map(
                             (e) => CursoImagen(
-                              baner: e,
+                              curso: e,
                             ),
                           )
                       ],

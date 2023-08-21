@@ -98,21 +98,22 @@ class _CursosModalState extends State<CursosModal> {
                   constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
                   child: TextFormField(
                     style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
-                    initialValue: (curso.id == '') ? '' : curso.baner,
+                    initialValue: (curso.id == '') ? '' : curso.urlImgCert,
                     onChanged: (value) => setState(() {
-                      allCursosProvider.banerCursoModal = value;
+                      allCursosProvider.urlImgCert = value;
                     }),
-                    decoration: buildInputDecoration(label: 'Baner del curso', icon: Icons.image_outlined),
+                    decoration: buildInputDecoration(label: 'Imagen de certificado', icon: Icons.image_outlined),
                   ),
                 ),
                 Container(
                   constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
                   child: TextFormField(
                     style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
-                    initialValue: (curso.id == '') ? '' : curso.descripcion,
-                    maxLines: 5,
-                    onChanged: (value) => setState(() => allCursosProvider.descripcionCursoModal = value),
-                    decoration: buildInputDecoration(label: 'Descripción del curso', icon: Icons.description_outlined),
+                    initialValue: (curso.id == '') ? '' : curso.baner,
+                    onChanged: (value) => setState(() {
+                      allCursosProvider.banerCursoModal = value;
+                    }),
+                    decoration: buildInputDecoration(label: 'Baner del curso', icon: Icons.image_outlined),
                   ),
                 ),
                 Container(
@@ -128,6 +129,17 @@ class _CursosModalState extends State<CursosModal> {
                     decoration: buildInputDecoration(icon: Icons.timer_outlined, label: 'Duración'),
                   ),
                 ),
+                Container(
+                  constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
+                  child: TextFormField(
+                    style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
+                    initialValue: (curso.id == '') ? '' : curso.descripcion,
+                    maxLines: 5,
+                    onChanged: (value) => setState(() => allCursosProvider.descripcionCursoModal = value),
+                    decoration: buildInputDecoration(label: 'Descripción del curso', icon: Icons.description_outlined),
+                  ),
+                ),
+                
               ]),
             ),
             if (widget.uid != '')

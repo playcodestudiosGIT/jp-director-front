@@ -2,7 +2,6 @@ export 'package:provider/provider.dart';
 export 'all_cursos_provider.dart';
 export 'all_respuestas_provider.dart';
 export 'auth_provider.dart';
-export 'baners_provider.dart';
 export 'form_provider.dart';
 export 'forms/curso_modal_provider.dart';
 export 'forms/login_form_provider.dart';

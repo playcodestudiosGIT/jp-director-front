@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/constant.dart';
+import 'package:jpdirector_frontend/models/curso.dart';
 import 'package:jpdirector_frontend/router/router.dart';
 import 'package:jpdirector_frontend/services/navigator_service.dart';
 
-import '../../../models/baner.dart';
 import '../labels/dashboard_label.dart';
 
 class CursoImagen extends StatelessWidget {
-  final Baner baner;
+  final Curso curso;
   const CursoImagen({
     super.key,
-    required this.baner,
+    required this.curso,
   });
 
   @override
@@ -20,7 +20,7 @@ class CursoImagen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: GestureDetector(
         onTap: () {
-          NavigatorService.navigateTo('${Flurorouter.cursoLanding}/${baner.cursoId}');
+          NavigatorService.navigateTo('${Flurorouter.cursoLanding}/${curso.id}');
         },
         child: MouseRegion(
             cursor: SystemMouseCursors.click,
@@ -28,7 +28,7 @@ class CursoImagen extends StatelessWidget {
               decoration: buildBoxDecoration(),
               child: Stack(
                 children: [
-                  Image(width: (wScreen < 580) ? 180 : 250, image: NetworkImage(baner.img)),
+                  Image(width: (wScreen < 580) ? 180 : 250, image: NetworkImage(curso.img)),
                   Container(
                     width: (wScreen < 580) ? 180 : 250,
                     height: (wScreen < 580) ? 180 : 250,
@@ -45,7 +45,7 @@ class CursoImagen extends StatelessWidget {
                         TextButton(
                             style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
                             onPressed: () {
-                              NavigatorService.navigateTo('${Flurorouter.cursoLanding}${baner.cursoId}/${'0'}');
+                              NavigatorService.navigateTo('${Flurorouter.cursoLanding}/${curso.id}');
                             },
                             child: Text('VER MAS', style: DashboardLabel.mini.copyWith(color: azulText)))
                       ],

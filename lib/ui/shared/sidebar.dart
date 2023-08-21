@@ -63,13 +63,6 @@ class SideBar extends StatelessWidget {
                     isActive: sideBarProvider.currentPage == Flurorouter.cursosAdminDash,
                     onPress: () => navigateTo(Flurorouter.cursosAdminDash)
                     ),
-                
-                MenuItemSide(
-                    text: 'Baners',
-                    icon: Icons.style_outlined,
-                    isActive: sideBarProvider.currentPage == Flurorouter.banersAdminDash,
-                    onPress: () => navigateTo(Flurorouter.banersAdminDash)
-                    ),
 
                     MenuItemSide(
                     text: 'Leads',

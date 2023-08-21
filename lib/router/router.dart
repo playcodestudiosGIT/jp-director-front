@@ -65,7 +65,6 @@ class Flurorouter {
 
   static String leadsAdminDash = '/admin/leads';
   static String formsAdminDash = '/admin/forms';
-  static String banersAdminDash = '/admin/baners';
 
   // CONDICIONES Y TERMINOS
   static String tycRoute = '/doc/tyc';
@@ -173,7 +172,6 @@ class Flurorouter {
     router.define(leadsAdminDash, handler: AdminHandlers.leadsAdminDash, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
     router.define(cursosAdminDash, handler: AdminHandlers.cursosAdminDash, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
     router.define(formsAdminDash, handler: AdminHandlers.formsAdminDash, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
-    router.define(banersAdminDash, handler: AdminHandlers.banersAdminDash, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
     
 
 

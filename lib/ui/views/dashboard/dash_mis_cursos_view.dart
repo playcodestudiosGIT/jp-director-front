@@ -27,9 +27,10 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
 
   @override
   Widget build(BuildContext context) {
+    final wSize = MediaQuery.of(context).size.width;
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
     List<Widget> cursoDestruct = [];
-    for (var curso in Provider.of<AllCursosProvider>(context, listen: false).allCursos) {
+    for (var curso in Provider.of<AllCursosProvider>(context).allCursos) {
       if (!authProvider.user!.cursos.contains(curso.id)) {
         cursoDestruct.add(Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -48,6 +49,10 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
             esMio: true,
           ),
         ));
+
+    if (destruct.isEmpty) {
+      setState(() {});
+    }
     return Container(
         color: Colors.transparent,
         child: Stack(
@@ -76,14 +81,17 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
               SizedBox(
                 width: double.infinity,
                 child: Center(
-                  child: Wrap(alignment: WrapAlignment.center, children: [
+                  child: Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    alignment: WrapAlignment.center, children: [
                     if (destruct.isEmpty)
                       Text(
                         'No tienes ningun curso',
                         style: DashboardLabel.paragraph,
                       ),
                     if (destruct.isNotEmpty) ...destruct,
-                    const SizedBox(width: 85, height: 10)
+                    if (wSize > 500)
+                    const SizedBox(width: 85, height: 10),
                   ]
 
                       //  ,
@@ -111,7 +119,7 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
                             ),
                           ),
                         if (cursoDestruct.isNotEmpty) ...cursoDestruct,
-                         const SizedBox(width: 85, height: 10)
+                        const SizedBox(width: 85, height: 10)
                       ],
                     ),
                   )),
