@@ -7,8 +7,10 @@ import 'package:jpdirector_frontend/ui/shared/botones/custom_button.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:jpdirector_frontend/ui/shared/logotop.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 
@@ -17,6 +19,7 @@ class ContactoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
 
     return Container(
@@ -51,7 +54,7 @@ class ContactoView extends StatelessWidget {
                           height: 20,
                         ),
                         Text(
-                          'Desde hace 4 años estoy comprometido a educar y potenciar negocios con estrategias efectivas en publicidad que dan el punto.\n\nCon un recorrido de mas de \$1.000.000 USD invertidos y un retorno de \$15.000.000 USD en gran cantidad de campañas publicitarias con inumerables pruebas en Facebook, Instagram y TikTok ADS, afirmo que el éxito en los negocios se consigue con:\n\n1.Una excelente estrategia publicitaria\n2.Analizar los datos\n3.Contar con un profesional con experiencia\n\nMi misión es ser tu mentor o el encargado de tu marca y acompañarte en todo el proceso.',
+                          appLocal.contactoLargeText,
                           style: DashboardLabel.mini,
                         ),
                         const SizedBox(
@@ -69,7 +72,7 @@ class ContactoView extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(15)),
                                 child: TextButton(
                                   child: Text(
-                                    'DESCARGA ESTE REGALO',
+                                    appLocal.descargaRegaloBtn,
                                     style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w700, color: blancoText),
                                   ),
                                   onPressed: () {
@@ -96,21 +99,26 @@ class ContactoView extends StatelessWidget {
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
                         Text(
-                          'Si tienes alguna duda, comunícate conmigo vía ',
+                          appLocal.siTienesDudas,
                           style: DashboardLabel.paragraph,
                         ),
-                     
                         MouseRegion(
                           cursor: SystemMouseCursors.click,
                           child: GestureDetector(
                             onTap: () {
-                              //TODO: WhatsApp launch
+                              final Uri url = Uri.parse('https://wa.me/12142265941?text=from:%20Web%20contact.%20Need%20information%20about');
+                              launchUrl(url);
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                IconButton(onPressed: (){}, icon: const Icon(FontAwesomeIcons.whatsapp, color: verdeBorde,)),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      FontAwesomeIcons.whatsapp,
+                                      color: verdeBorde,
+                                    )),
                                 Text(
                                   'Whatsapp',
                                   style: DashboardLabel.paragraph.copyWith(color: azulText),
@@ -146,7 +154,7 @@ class ContactoView extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.only(bottom: wScreen < 500 ? 0 : 8),
                           child: Text(
-                            'TODOS LOS DERECHOS RESERVADOS © 2023',
+                            appLocal.derechosReservados,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: blancoText,
@@ -165,7 +173,7 @@ class ContactoView extends StatelessWidget {
                                 child: MouseRegion(
                                   cursor: SystemMouseCursors.click,
                                   child: Text(
-                                    'POLÍTICAS DE PRIVACIDAD',
+                                    appLocal.politicasDeProivacidad,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: azulText,
@@ -189,7 +197,7 @@ class ContactoView extends StatelessWidget {
                                 child: MouseRegion(
                                   cursor: SystemMouseCursors.click,
                                   child: Text(
-                                    'TÉRMINOS Y CONDICIONES',
+                                    appLocal.terminosYCondiciones,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: azulText,
@@ -281,7 +289,7 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                       child: Column(
                         children: [
                           TextFormField(
-                            cursorColor: azulText,
+                              cursorColor: azulText,
                               autovalidateMode: AutovalidateMode.onUserInteraction,
                               keyboardType: TextInputType.emailAddress,
                               validator: (value) => (EmailValidator.validate(value.toString())) ? null : 'Ingrese su correo',
@@ -292,7 +300,7 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                               }),
                           const SizedBox(height: 10),
                           TextFormField(
-                            cursorColor: azulText,
+                              cursorColor: azulText,
                               autovalidateMode: AutovalidateMode.onUserInteraction,
                               keyboardType: TextInputType.phone,
                               validator: (value) {

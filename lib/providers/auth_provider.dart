@@ -30,6 +30,13 @@ class AuthProvider extends ChangeNotifier {
 
 // ------------------//
 
+  Locale _locale = const Locale('es');
+  Locale get locale => _locale;
+  void setLocale(Locale value) {
+    _locale = value;
+    notifyListeners();
+  }
+
   List<Curso> get misCursos => _misCursos;
 
   set misCursos(List<Curso> value) {

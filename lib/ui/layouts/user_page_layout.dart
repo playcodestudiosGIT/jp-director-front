@@ -1,11 +1,13 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jpdirector_frontend/providers/auth_provider.dart';
 import 'package:jpdirector_frontend/providers/sidebar_provider.dart';
 import 'package:jpdirector_frontend/ui/shared/widgets/menu_item_top.dart';
 import 'package:provider/provider.dart';
 
 import '../../constant.dart';
+import '../../generated/l10n.dart';
 import '../../providers/page_provider.dart';
 import '../../router/router.dart';
 import '../../services/navigator_service.dart';
@@ -25,11 +27,34 @@ class UserPageLayout extends StatefulWidget {
 class _UserPageLayoutState extends State<UserPageLayout> {
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final isAparece = Provider.of<SideBarProvider>(context).isAparece;
+    final authProvider = Provider.of<AuthProvider>(context);
     final wScreen = MediaQuery.of(context).size.width;
     final hScreen = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.transparent,
+        mini: true,
+        onPressed: () {
+          // asdf
+          if (authProvider.locale == const Locale('es')) {
+            authProvider.setLocale(const Locale('en'));
+          } else {
+            authProvider.setLocale(const Locale('es'));
+          }
+        },
+        child: (authProvider.locale == const Locale('es'))
+            ? const Image(
+                image: NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/es_flag_qbeneh.png'),
+                width: 30,
+              )
+            : const Image(
+                image: NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/en_flag_fyiybd.png'),
+                width: 30,
+                ),
+      ),
       backgroundColor: bgColor,
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -70,7 +95,7 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                   height: 60,
                   decoration: buildBoxDecorationAppbar(),
                   child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
                     child: Row(
                       children: [
                         if (wScreen <= 390) const SizedBox(width: 50),
@@ -92,25 +117,25 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                         if (wScreen >= 850) ...[
                           // MenuItemTop(text: 'INICIO', isActive: false, onPress: () {}),
                           MenuItemTop(
-                              text: 'CURSOS',
+                              text: appLocal.topBotonCursos,
                               isActive: false,
                               onPress: () {
                                 NavigatorService.navigateTo('/cursos');
                               }),
                           MenuItemTop(
-                              text: 'SERVICIOS',
+                              text: appLocal.topBotonServicios,
                               isActive: false,
                               onPress: () {
                                 NavigatorService.navigateTo('/servicios');
                               }),
                           MenuItemTop(
-                              text: 'RESULTADOS',
+                              text: appLocal.topBotonResultados,
                               isActive: false,
                               onPress: () {
                                 NavigatorService.navigateTo('/resultados');
                               }),
                           MenuItemTop(
-                              text: 'CONTACTO',
+                              text: appLocal.topBotonContacto,
                               isActive: false,
                               onPress: () {
                                 NavigatorService.navigateTo('/contacto');
@@ -126,7 +151,7 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                     right: (wScreen <= 390) ? 10 : 45,
                     top: 12,
                     child: CustomButton(
-                      text: 'ENTRAR',
+                      text: appLocal.botonLogin,
                       width: 70,
                       onPress: () {
                         NavigatorService.replaceTo(Flurorouter.loginRoute);
@@ -137,13 +162,12 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                     right: (wScreen <= 390) ? 90 : 125,
                     top: 15,
                     child: TextButton(
-                      
-                      style: ButtonStyle( backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
+                      style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
                       onPressed: () {
                         NavigatorService.replaceTo(Flurorouter.registerRoute);
                       }, // Navigate to register page
                       child: Text(
-                        'Registrate',
+                        appLocal.botonReg,
                         style: GoogleFonts.roboto(fontSize: 14, color: azulText, fontWeight: FontWeight.w800),
                       ),
                     ),

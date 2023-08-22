@@ -5,6 +5,7 @@ import 'package:jpdirector_frontend/ui/shared/botones/botonverde.dart';
 
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/widgets/acordion.dart';
@@ -143,12 +144,13 @@ class _LetrasAsesoria extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     double wScreen = MediaQuery.of(context).size.width;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'ASESORIA 1:1',
+          appLocal.asesoria11,
           style: GoogleFonts.roboto(fontSize: (wScreen < 600) ? 26 : 32, fontWeight: FontWeight.w900, color: blancoText),
         ),
         Container(

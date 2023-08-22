@@ -139,7 +139,7 @@ class AllCursosProvider extends ChangeNotifier {
   bool isLoading = false;
 
   Future getCursoModal(id) async {
-    await getAllCursos();
+    // await getAllCursos();
     try {
       final json = await JpApi.httpGet('/cursos/$id');
       final Curso curso = Curso.fromJson(json);
@@ -303,7 +303,7 @@ class AllCursosProvider extends ChangeNotifier {
 
     // Petición HTTP
     await JpApi.post('/modulos', data).then((json) {
-      getAllCursos();
+      // getAllCursos();
       notifyListeners();
       NotifServ.showSnackbarError('Modulo agregado con exito', Colors.green);
     }).catchError((e) {
@@ -345,7 +345,7 @@ class AllCursosProvider extends ChangeNotifier {
       // await getCursoModal(id);
 
       _cursoModal.modulos.removeWhere((element) => element.id == id);
-      getAllCursos();
+      // getAllCursos();
       notifyListeners();
       NotifServ.showSnackbarError('Modulo borrado con exito', Colors.green);
       return true;
@@ -363,7 +363,7 @@ class AllCursosProvider extends ChangeNotifier {
 
     // Petición HTTP
     await JpApi.post('/modulos/coments/add', data).then((json) {
-      getAllCursos();
+      // getAllCursos();
       notifyListeners();
       NotifServ.showSnackbarError('Comentario agregado con exito', Colors.green);
     }).catchError((e) {
@@ -372,7 +372,7 @@ class AllCursosProvider extends ChangeNotifier {
   }
 
   Future obtenerMisCursos(Usuario user) async {
-    await getAllCursos();
+    // await getAllCursos();
     final List<Curso> misNewCursos = [];
 
     for (var e in user.cursos) {

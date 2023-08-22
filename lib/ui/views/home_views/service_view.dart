@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../service_slider_views/asesoria_view.dart';
 import '../service_slider_views/conference_view.dart';
 import '../service_slider_views/encargado_view.dart';
@@ -27,6 +28,7 @@ class _ServicesViewState extends State<ServicesView> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
     final List<Widget> sliders = [
       const AsesoriaView(),
@@ -66,7 +68,7 @@ class _ServicesViewState extends State<ServicesView> {
                   height: 90,
                 ),
                 Text(
-                  'SERVICIOS',
+                  appLocal.servicios,
                   style: GoogleFonts.roboto(fontSize: 40, fontWeight: FontWeight.w900, color: blancoText),
                 ),
                 Container(
@@ -101,7 +103,7 @@ class _ServicesViewState extends State<ServicesView> {
                                                 sliderController.animateToPage(index);
                                               }),
                                           child: Text(
-                                            'ASESORÍA 1:1',
+                                            appLocal.asesoria11,
                                             style: GoogleFonts.roboto(color: blancoText, fontSize: 15, fontWeight: FontWeight.w500),
                                           )),
                                       if (index == 0) ...[
@@ -128,7 +130,7 @@ class _ServicesViewState extends State<ServicesView> {
                                         }),
                                     child: Column(
                                       children: [
-                                        Text('MENTORÍA', style: GoogleFonts.roboto(color: blancoText, fontSize: 15, fontWeight: FontWeight.w500)),
+                                        Text(appLocal.mentoria, style: GoogleFonts.roboto(color: blancoText, fontSize: 15, fontWeight: FontWeight.w500)),
                                         if (index == 1) ...[
                                           const SizedBox(height: 4),
                                           Container(
@@ -154,7 +156,7 @@ class _ServicesViewState extends State<ServicesView> {
                                         }),
                                     child: Column(
                                       children: [
-                                        Text('SER EL ENCARGADO',
+                                        Text(appLocal.serElEncargado,
                                             style: GoogleFonts.roboto(color: blancoText, fontSize: 15, fontWeight: FontWeight.w500)),
                                         if (index == 2) ...[
                                           const SizedBox(height: 4),
@@ -181,7 +183,7 @@ class _ServicesViewState extends State<ServicesView> {
                                         }),
                                     child: Column(
                                       children: [
-                                        Text('CONFERENCIAS', style: GoogleFonts.roboto(color: blancoText, fontSize: 15, fontWeight: FontWeight.w500)),
+                                        Text(appLocal.conferencias, style: GoogleFonts.roboto(color: blancoText, fontSize: 15, fontWeight: FontWeight.w500)),
                                         if (index == 3) ...[
                                           const SizedBox(height: 4),
                                           Container(

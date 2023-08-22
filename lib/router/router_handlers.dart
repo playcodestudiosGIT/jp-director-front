@@ -133,7 +133,7 @@ class UsersAuthHandlers {
     if (authProvider.authStatus == AuthStatus.notAuthenticated) {
       return const LoginPage();
     } else {
-      Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
+      // Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
       Provider.of<AllCursosProvider>(context, listen: false).obtenerMisCursos(authProvider.user!);
       Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
       return const DashMisCursosView();
@@ -284,7 +284,6 @@ class AdminHandlers {
       return const HomeBody();
     } else {
       Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.cursosAdminDash);
-      // Provider.of<LeadsProvider>(context, listen: false).getLeads();
       return const CursosAdminView();
     }
   });

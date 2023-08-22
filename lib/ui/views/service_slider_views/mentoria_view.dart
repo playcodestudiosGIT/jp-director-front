@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/ui/shared/botones/botonverde.dart';
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/labels/dashboard_label.dart';
@@ -12,6 +13,7 @@ class MentoriaView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     double wScreen = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
@@ -29,7 +31,7 @@ class MentoriaView extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          'MENTORÍA INTENSIVA',
+                          appLocal.mentoriaIntensiva,
                           style: (wScreen < 550) ? DashboardLabel.h1 : DashboardLabel.gigant,
                         ),
                         Container(
@@ -56,7 +58,7 @@ class MentoriaView extends StatelessWidget {
                       children: [
                         FittedBox(
                           child: Text(
-                            'INTELIGENTE INVERSIÓN'.toUpperCase(),
+                            appLocal.inteligenteInv,
                             textAlign: TextAlign.start,
                             style: GoogleFonts.roboto(
                               fontSize: 20,
@@ -69,7 +71,7 @@ class MentoriaView extends StatelessWidget {
                           height: 30,
                         ),
                         Text(
-                          'Tener un mentor acelera drásticamente el éxito de tu negocio. Durante 3 meses estaré contigo mano a mano elaborando tu plan de publicidad y enseñándote cómo hacerlo por ti mismo.',
+                          appLocal.tenerUnMentor,
                           style: GoogleFonts.roboto(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
@@ -85,7 +87,7 @@ class MentoriaView extends StatelessWidget {
                 ),
                 BotonVerde(
                   width: 200,
-                  text: 'Mas Información',
+                  text: appLocal.masInformacionBtn,
                   onPressed: () => NavigatorService.navigateTo(Flurorouter.mentoriaRoute),
                 ),
                 

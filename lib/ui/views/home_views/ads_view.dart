@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
 
+import '../../../generated/l10n.dart';
 import '../../../providers/auth_provider.dart';
 
 import '../../shared/widgets/cursos_botones.dart';
@@ -28,8 +29,8 @@ class _AdsViewState extends State<AdsView> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final List<Curso> cursos = Provider.of<AllCursosProvider>(context).allCursos;
-
     final List<Curso> listCursos = cursos.where((element) => element.publicado).toList();
     final wScreen = MediaQuery.of(context).size.width;
     final authProvider = Provider.of<AuthProvider>(context);
@@ -64,7 +65,7 @@ class _AdsViewState extends State<AdsView> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Text(
-                  'APRENDE TODO SOBRE ADS',
+                  appLocal.aprendeTodoAds,
                   style: GoogleFonts.roboto(fontSize: (wScreen > 580) ? 40 : 22, fontWeight: FontWeight.w900, color: blancoText),
                 ),
               ),
@@ -82,34 +83,29 @@ class _AdsViewState extends State<AdsView> {
                 height: 30,
               ),
               Text(
-                'Cursos',
+                appLocal.cursos,
                 style: DashboardLabel.h1,
               ),
               const SizedBox(
                 height: 15,
               ),
-              FutureBuilder(
-                future: Provider.of<AllCursosProvider>(context, listen: false).getAllCursos(),
-                builder: (context, snapshot) {
-                  return Container(
-                    constraints: const BoxConstraints(maxWidth: 800),
-                    child: Wrap(
-                      spacing: 15,
-                      runSpacing: 15,
-                      direction: Axis.horizontal,
-                      alignment: WrapAlignment.center,
-                      children: [
-                        if (listCursos.isEmpty) const Center(child: SizedBox(width: 40, height: 40, child: CircularProgressIndicator())),
-                        if (listCursos.isNotEmpty)
-                          ...listCursos.map(
-                            (e) => CursoImagen(
-                              curso: e,
-                            ),
-                          )
-                      ],
-                    ),
-                  );
-                },
+              Container(
+                constraints: const BoxConstraints(maxWidth: 800),
+                child: Wrap(
+                  spacing: 15,
+                  runSpacing: 15,
+                  direction: Axis.horizontal,
+                  alignment: WrapAlignment.center,
+                  children: [
+                    if (listCursos.isEmpty) const Center(child: SizedBox(width: 40, height: 40, child: CircularProgressIndicator())),
+                    if (listCursos.isNotEmpty)
+                      ...listCursos.map(
+                        (e) => CursoImagen(
+                          curso: e,
+                        ),
+                      )
+                  ],
+                ),
               ),
               const SizedBox(
                 height: 60,
@@ -119,7 +115,7 @@ class _AdsViewState extends State<AdsView> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    'Consigue clientes que quieran comprar tu producto o servicio utilizando la herramienta por la que llegaste aqui: Instagram - Facebook - Tik Tok',
+                    appLocal.consigueClientesQueQuieran,
                     textAlign: TextAlign.center,
                     style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5)),
                   ),

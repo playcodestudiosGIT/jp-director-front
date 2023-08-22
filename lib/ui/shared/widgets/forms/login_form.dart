@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../constant.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../providers/forms/login_form_provider.dart';
 import '../../../../router/router.dart';
 import '../../../../services/navigator_service.dart';
@@ -33,6 +34,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final loginFormProvider = Provider.of<LoginFormProvider>(context, listen: false);
     return Builder(
       builder: (context) {
@@ -45,7 +47,7 @@ class _LoginFormState extends State<LoginForm> {
             child: Column(
               children: [
                 Text(
-                  'INICIA SESIÓN',
+                  appLocal.iniciaSesion,
                   style: GoogleFonts.roboto(fontSize: 32, color: azulText, fontWeight: FontWeight.w800),
                 ),
                 const SizedBox(
@@ -57,10 +59,10 @@ class _LoginFormState extends State<LoginForm> {
                   // controller: emailCtrl,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.emailAddress,
-                  validator: (value) => (EmailValidator.validate(value.toString())) ? null : 'Ingrese su correo',
+                  validator: (value) => (EmailValidator.validate(value.toString())) ? null : appLocal.ingreseSuCorreo,
                   onChanged: (value) => loginFormProvider.setEmail(value),
                   style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                  decoration: buildInputDecoration(icon: Icons.email, label: 'Correo Electrónico'),
+                  decoration: buildInputDecoration(icon: Icons.email, label: appLocal.correoTextFiel),
                 ),
                 const SizedBox(
                   height: 15,
@@ -73,13 +75,13 @@ class _LoginFormState extends State<LoginForm> {
                   keyboardType: TextInputType.visiblePassword,
                   // autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
-                    if (value!.isEmpty) return 'Ingrese una contraseña valido';
-                    if (value.length < 6) return 'La contraseña debe contener mas de 6 caracteres';
+                    if (value!.isEmpty) return appLocal.ingreseUnaPassValida;
+                    if (value.length < 6) return appLocal.laContraDebe6Caracteres;
                     return null;
                   },
                   onChanged: (value) => loginFormProvider.setPassword(value),
                   style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                  decoration: buildInputDecoration(icon: Icons.password, label: 'Contraseña', suffIcon: Icons.remove_red_eye_outlined, onPrs: () {}),
+                  decoration: buildInputDecoration(icon: Icons.password, label: appLocal.contrasenaTextFiel, suffIcon: Icons.remove_red_eye_outlined, onPrs: () {}),
                 ),
                 const SizedBox(
                   height: 10,
@@ -88,7 +90,7 @@ class _LoginFormState extends State<LoginForm> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      'Recuérdame',
+                      appLocal.recuerdame,
                       style: GoogleFonts.roboto(color: blancoText, fontSize: 12),
                     ),
                     Checkbox(
@@ -122,7 +124,7 @@ class _LoginFormState extends State<LoginForm> {
                 ),
                 LoginButton(
                   width: 140,
-                  text: 'INICIAR SESIÓN',
+                  text: appLocal.iniciaSesion,
                   onPress: () async {
                     final bool isValid = keyLoginForm.currentState!.validate();
                     await loginFormProvider.validateForm(context: context, isValid: isValid);
@@ -136,7 +138,7 @@ class _LoginFormState extends State<LoginForm> {
                   children: [
                     if (!widget.isBuying) ...[
                       Text(
-                        '¿Eres Nuevo?',
+                        appLocal.eresNuevo,
                         style: GoogleFonts.roboto(fontSize: 14, color: blancoText, fontWeight: FontWeight.w400),
                       ),
                       const SizedBox(
@@ -148,14 +150,14 @@ class _LoginFormState extends State<LoginForm> {
                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const RegisterPage()));
                         }, // Navigate to register page
                         child: Text(
-                          'Registrate aquí',
+                          appLocal.registrateAqui,
                           style: GoogleFonts.roboto(fontSize: 14, color: azulText, fontWeight: FontWeight.w800),
                         ),
                       ),
                     ],
                     if (widget.isBuying) ...[
                       Text(
-                        '¿Eres Nuevo?',
+                        appLocal.eresNuevo,
                         style: GoogleFonts.roboto(fontSize: 14, color: blancoText, fontWeight: FontWeight.w400),
                       ),
                       const SizedBox(
@@ -172,7 +174,7 @@ class _LoginFormState extends State<LoginForm> {
                                 Navigator.pushReplacementNamed(context, Flurorouter.registerRoute);
                               }, // Navigate to register page
                         child: Text(
-                          'Registrate aquí',
+                          appLocal.registrateAqui,
                           style: GoogleFonts.roboto(fontSize: 14, color: azulText, fontWeight: FontWeight.w800),
                         ),
                       )
@@ -188,7 +190,7 @@ class _LoginFormState extends State<LoginForm> {
                     child: GestureDetector(
                         onTap: () => NavigatorService.navigateTo(Flurorouter.resetPassRoute),
                         child: Text(
-                          'Olvide mi contraseña',
+                          appLocal.olvideMiPass,
                           style: DashboardLabel.mini.copyWith(color: azulText),
                         )),
                   )

@@ -4,6 +4,7 @@ import 'package:jpdirector_frontend/ui/shared/botones/botonverde.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 
@@ -22,6 +23,8 @@ class AsesoriaMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    final appLocal = AppLocalizations.of(context);
     double wScreen = MediaQuery.of(context).size.width;
     return Container(
         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -38,7 +41,7 @@ class AsesoriaMain extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        'ASESORIA 1:1',
+                        appLocal.asesoria11,
                         style: (wScreen < 550) ? DashboardLabel.h1 : DashboardLabel.gigant,
                       ),
                       Container(
@@ -65,7 +68,7 @@ class AsesoriaMain extends StatelessWidget {
                     children: [
                       FittedBox(
                         child: Text(
-                          'COMPLETAMENTE PERSONALIZADO'.toUpperCase(),
+                          appLocal.completamentePers,
                           textAlign: TextAlign.start,
                           style: GoogleFonts.roboto(
                             fontSize: 18,
@@ -78,7 +81,7 @@ class AsesoriaMain extends StatelessWidget {
                         height: 30,
                       ),
                       Text(
-                        'En una videollamada de 1 hora conversaremos de:\nCampañas, Presupuestos, Estrategias, Problemas Actuales, Inhabilitaciones y todo lo que quieras aclarar o aprender.',
+                        appLocal.enUnaVideollamada,
                         style: GoogleFonts.roboto(
                           fontSize: 18,
                           fontWeight: FontWeight.w400,
@@ -89,7 +92,7 @@ class AsesoriaMain extends StatelessWidget {
                         height: 15,
                       ),
                       Text(
-                        'Resolvamos esto',
+                        appLocal.resolvamosEsto,
                         style: GoogleFonts.roboto(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
@@ -103,7 +106,7 @@ class AsesoriaMain extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              BotonVerde(text: 'Quiero mi Asesoría', onPressed: ()=> NavigatorService.navigateTo(Flurorouter.asesoriaRoute), width: 200)
+              BotonVerde(text: appLocal.quieroMiAsesoriaBtn, onPressed: ()=> NavigatorService.navigateTo(Flurorouter.asesoriaRoute), width: 200)
             ],
           ),
         ));

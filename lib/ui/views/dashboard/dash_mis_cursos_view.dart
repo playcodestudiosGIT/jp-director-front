@@ -49,10 +49,6 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
             esMio: true,
           ),
         ));
-
-    if (destruct.isEmpty) {
-      setState(() {});
-    }
     return Container(
         color: Colors.transparent,
         child: Stack(

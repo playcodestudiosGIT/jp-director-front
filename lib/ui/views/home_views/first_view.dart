@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jpdirector_frontend/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
@@ -23,8 +24,8 @@ class NormalBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final screenData = MediaQuery.of(context).size;
-    // final pageProvider = Provider.of<PageProvider>(context, listen: false);
     final authProvider = Provider.of<AuthProvider>(context);
     return SingleChildScrollView(
       child: Padding(
@@ -36,7 +37,6 @@ class NormalBody extends StatelessWidget {
             Container(
               width: double.infinity,
               padding: const EdgeInsets.only(bottom: 100),
-
             ),
             Positioned(
               top: 250,
@@ -69,29 +69,29 @@ class NormalBody extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Container(
-                                padding: const EdgeInsets.only(left: 80),
+                                padding: const EdgeInsets.only(left: 60),
                                 // width: 600,
                                 child: Center(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       const SizedBox(
                                         height: 10,
                                       ),
                                       Text(
-                                        'Educación y\nEstrategia de ADS',
+                                        appLocal.educacionYEstrategia,
                                         style: GoogleFonts.roboto(
                                             fontSize: (screenData.width < 450) ? 38 : 48, fontWeight: FontWeight.bold, color: blancoText),
                                       ),
                                       Text(
-                                        'Llegaste al mundo indicado',
+                                        appLocal.llegasteAlMundo,
                                         style: GoogleFonts.roboto(
                                             fontSize: (screenData.width < 450) ? 26 : 32, fontWeight: FontWeight.w500, color: blancoText),
                                       ),
                                       Row(
                                         children: [
                                           Text(
-                                            'SI',
+                                            appLocal.siu,
                                             style: GoogleFonts.roboto(fontSize: 86, fontWeight: FontWeight.w500, color: azulText),
                                           ),
                                           FadeInRight(
@@ -100,19 +100,19 @@ class NormalBody extends StatelessWidget {
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  'Buscas acelerar tu negocio con publicidad',
+                                                  appLocal.buscasAcelerar,
                                                   style: GoogleFonts.roboto(fontSize: 15, fontWeight: FontWeight.w500, color: blancoText),
                                                 ),
                                                 Text(
-                                                  'Quieres conseguir más clientes',
+                                                  appLocal.quieresConseguir,
                                                   style: GoogleFonts.roboto(fontSize: 15, fontWeight: FontWeight.w500, color: blancoText),
                                                 ),
                                                 Text(
-                                                  'Quieres tener un mentor que te enseñe de manera correcta',
+                                                  appLocal.quieresTener,
                                                   style: GoogleFonts.roboto(fontSize: 15, fontWeight: FontWeight.w500, color: blancoText),
                                                 ),
                                                 Text(
-                                                  'Deseas dejar de sentir angustia por resultados que no convierten',
+                                                  appLocal.deseasDejar,
                                                   style: GoogleFonts.roboto(fontSize: 15, fontWeight: FontWeight.w500, color: blancoText),
                                                 ),
                                               ],
@@ -121,26 +121,35 @@ class NormalBody extends StatelessWidget {
                                         ],
                                       ),
                                       Text(
-                                        'Descubre cómo impulsar tu negocio',
+                                        appLocal.descubreComo,
                                         style: GoogleFonts.roboto(fontSize: 29, fontWeight: FontWeight.w500, color: azulText),
                                       ),
-                                      GestureDetector(
-                                        onTap: () {
-                                          NavigatorService.navigateTo('/cursos');
-                                        },
-                                        child: MouseRegion(
-                                          cursor: SystemMouseCursors.click,
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            child: BounceInDown(
-                                              from: 15,
-                                              duration: const Duration(seconds: 1),
-                                              child: const Image(
-                                                image: arrDown,
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            width: double.infinity,
+                                            constraints: const BoxConstraints(maxWidth: 450),
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                NavigatorService.navigateTo('/cursos');
+                                              },
+                                              child: MouseRegion(
+                                                cursor: SystemMouseCursors.click,
+                                                child: Container(
+                                                  alignment: Alignment.center,
+                                                  child: BounceInDown(
+                                                    from: 15,
+                                                    duration: const Duration(seconds: 1),
+                                                    child: const Image(
+                                                      image: arrDown,
+                                                    ),
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
+                                        ],
                                       )
                                     ],
                                   ),
@@ -178,15 +187,15 @@ class MobileBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     double screenData = MediaQuery.of(context).size.width;
     return SizedBox(
-      
       width: 430,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Educación y\nEstrategia de ADS',
+            appLocal.educacionYEstrategia,
             textAlign: (screenData > 550) ? TextAlign.left : TextAlign.center,
             style: GoogleFonts.roboto(fontSize: (screenData > 550) ? 40 : 28, fontWeight: FontWeight.bold, color: blancoText),
           ),
@@ -196,7 +205,7 @@ class MobileBody extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Text(
-              'Llegaste al mundo indicado',
+              appLocal.llegasteAlMundo,
               style: GoogleFonts.roboto(fontSize: (screenData > 550) ? 32 : 24, fontWeight: FontWeight.w500, color: blancoText),
             ),
           ),
@@ -209,26 +218,26 @@ class MobileBody extends StatelessWidget {
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 Text(
-                  'SI',
+                  appLocal.si,
                   style: GoogleFonts.roboto(fontSize: (screenData > 550) ? 86 : 54, fontWeight: FontWeight.w500, color: azulText),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Buscas acelerar tu negocio con publicidad',
+                      appLocal.buscasAcelerar,
                       style: GoogleFonts.roboto(fontSize: (screenData > 550) ? 15 : 10, fontWeight: FontWeight.w500, color: blancoText),
                     ),
                     Text(
-                      'Quieres conseguir más clientes',
+                      appLocal.quieresConseguir,
                       style: GoogleFonts.roboto(fontSize: (screenData > 550) ? 15 : 10, fontWeight: FontWeight.w500, color: blancoText),
                     ),
                     Text(
-                      'Quieres tener un mentor que te enseñe de manera correcta',
+                      appLocal.quieresTener,
                       style: GoogleFonts.roboto(fontSize: (screenData > 550) ? 15 : 10, fontWeight: FontWeight.w500, color: blancoText),
                     ),
                     Text(
-                      'Deseas dejar de sentir angustia por resultados que no convierten',
+                      appLocal.deseasDejar,
                       style: GoogleFonts.roboto(fontSize: (screenData > 550) ? 15 : 10, fontWeight: FontWeight.w500, color: blancoText),
                     ),
                   ],
@@ -246,11 +255,38 @@ class MobileBody extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Text(
-              'Descubre cómo impulsar tu negocio',
+              appLocal.descubreComo,
               textAlign: (screenData > 550) ? TextAlign.left : TextAlign.center,
               style: GoogleFonts.roboto(fontSize: (screenData < 450) ? 20 : 32, fontWeight: FontWeight.w900, color: azulText),
             ),
           ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: double.infinity,
+                constraints: BoxConstraints(maxWidth: screenData),
+                child: GestureDetector(
+                  onTap: () {
+                    NavigatorService.navigateTo('/cursos');
+                  },
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: BounceInDown(
+                        from: 15,
+                        duration: const Duration(seconds: 1),
+                        child: const Image(
+                          image: arrDown,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );

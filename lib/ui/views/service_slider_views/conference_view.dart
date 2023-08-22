@@ -4,6 +4,7 @@ import 'package:jpdirector_frontend/router/router.dart';
 import 'package:jpdirector_frontend/ui/shared/botones/botonverde.dart';
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/labels/dashboard_label.dart';
 
@@ -12,6 +13,7 @@ class ConferenceView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     double wScreen = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8.0),
@@ -30,7 +32,7 @@ class ConferenceView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'CONFERENCIAS',
+                          appLocal.conferencias,
                           style: (wScreen < 550) ? DashboardLabel.h1 : DashboardLabel.gigant,
                         ),
                         Container(
@@ -56,7 +58,7 @@ class ConferenceView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Contrátame para exponer la importancia de publicidad online enfocada en el rubro que desees Seguros, Abogados, Real Estate, Médicos, Salones de Belleza, Coaching, Restaurantes y todos los negocios o emprendimientos que necesiten conocer ejemplos reales para hacer publicidad.',
+                          appLocal.contratamePara,
                           style: GoogleFonts.roboto(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
@@ -70,7 +72,7 @@ class ConferenceView extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                BotonVerde(text: 'Agendar', onPressed: ()=> NavigatorService.navigateTo(Flurorouter.conferenciasRoute), width: 100)
+                BotonVerde(text: appLocal.agendarBtn, onPressed: ()=> NavigatorService.navigateTo(Flurorouter.conferenciasRoute), width: 100)
               ],
             ),
           )),

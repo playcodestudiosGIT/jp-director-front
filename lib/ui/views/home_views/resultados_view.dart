@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:photo_view/photo_view.dart';
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 
 class ResultadosView extends StatelessWidget {
   final List listMiniPhotos = resultadosMini;
@@ -13,6 +14,7 @@ class ResultadosView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final List<Widget> listResultWiget = [
       ...listMiniPhotos.map((image) {
         final i = listMiniPhotos.indexOf(image);
@@ -42,7 +44,7 @@ class ResultadosView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Text(
-                          'MÍRALO CON TUS PROPIOS OJOS',
+                          appLocal.miraloOjos,
                           style: GoogleFonts.roboto(fontSize: (wScreen < 450) ? 18 : 24, fontWeight: FontWeight.w900, color: azulText),
                         ),
                       ),

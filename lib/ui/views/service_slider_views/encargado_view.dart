@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/ui/shared/botones/botonverde.dart';
 
-
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/labels/dashboard_label.dart';
@@ -13,6 +13,7 @@ class EncargadoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     double wScreen = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8.0),
@@ -32,7 +33,7 @@ class EncargadoView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          'SER EL ENCARGADO',
+                          appLocal.serElEncargado,
                           style: (wScreen < 550) ? DashboardLabel.h1 : DashboardLabel.gigant,
                         ),
                         Container(
@@ -58,7 +59,7 @@ class EncargadoView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'SOY EL RESPONSABLE DE TU ÉXITO'.toUpperCase(),
+                          appLocal.soyElResp,
                           textAlign: TextAlign.start,
                           style: GoogleFonts.roboto(
                             fontSize: 20,
@@ -70,7 +71,7 @@ class EncargadoView extends StatelessWidget {
                           height: 10,
                         ),
                         Text(
-                          '¿Estás en el momento de contratar a un especialista que aumente tu flujo de clientes, alcance y visitas al negocio?',
+                          appLocal.estasEnElMomento,
                           style: GoogleFonts.roboto(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
@@ -81,7 +82,7 @@ class EncargadoView extends StatelessWidget {
                           height: 15,
                         ),
                         Text(
-                          'Cuenta conmigo',
+                          appLocal.cuentaConmigo,
                           style: GoogleFonts.roboto(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
@@ -95,12 +96,10 @@ class EncargadoView extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                BotonVerde(text: 'Agendar una Llamada', onPressed: () => NavigatorService.navigateTo(Flurorouter.encargadoRoute), width: 200)
+                BotonVerde(text: appLocal.agendarLlamadaBtn, onPressed: () => NavigatorService.navigateTo(Flurorouter.encargadoRoute), width: 200)
               ],
             ),
           )),
     );
   }
 }
-
-

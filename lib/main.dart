@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:jpdirector_frontend/generated/l10n.dart';
+
+
 import 'package:jpdirector_frontend/providers/export_all_providers.dart';
 import 'package:jpdirector_frontend/services/local_storage.dart';
 
@@ -58,8 +62,11 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
+
+  
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
     return MaterialApp(
       scrollBehavior: MyCustomScrollBehavior(),
       debugShowCheckedModeBanner: false,
@@ -68,7 +75,7 @@ class MyAppState extends State<MyApp> {
       navigatorKey: NavigatorService.navigatorKey,
       scaffoldMessengerKey: NotifServ.msgKey,
       builder: ((_, child) {
-        final authProvider = Provider.of<AuthProvider>(context);
+        
 
         if (authProvider.authStatus == AuthStatus.checking) return const SplashLayout();
 
@@ -82,9 +89,18 @@ class MyAppState extends State<MyApp> {
           );
         }
       }),
+      
       theme: ThemeData(
         scaffoldBackgroundColor: bgColor,
       ),
+      locale: authProvider.locale,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        AppLocalizations.delegate
+      ],
+      supportedLocales: AppLocalizations.delegate.supportedLocales
     );
   }
 }

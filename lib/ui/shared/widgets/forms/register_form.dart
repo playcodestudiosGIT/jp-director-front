@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../constant.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../providers/auth_provider.dart';
 import '../../../../providers/forms/register_form_provider.dart';
 import '../../botones/custom_button.dart';
@@ -18,6 +19,7 @@ class RegisterForm extends StatefulWidget {
 class _RegisterFormState extends State<RegisterForm> {
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final registerFormProvider = Provider.of<RegisterFormProvider>(context);
     final authProvider = Provider.of<AuthProvider>(context);
     return Container(
@@ -27,7 +29,7 @@ class _RegisterFormState extends State<RegisterForm> {
         child: Column(
           children: [
             Text(
-              'CREAR CUENTA',
+              appLocal.crearCuenta,
               style: GoogleFonts.roboto(fontSize: 28, color: azulText, fontWeight: FontWeight.w800),
             ),
             const SizedBox(
@@ -37,11 +39,11 @@ class _RegisterFormState extends State<RegisterForm> {
               cursorColor: azulText,
               keyboardType: TextInputType.emailAddress,
               autovalidateMode: AutovalidateMode.onUserInteraction,
-              validator: (value) => (EmailValidator.validate(value.toString())) ? null : 'Ingrese su correo',
+              validator: (value) => (EmailValidator.validate(value.toString())) ? null : appLocal.ingreseSuCorreo,
               initialValue: registerFormProvider.email,
               onChanged: (value) => registerFormProvider.email = value,
               style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-              decoration: buildInputDecoration(icon: Icons.email, label: 'Correo Electrónico'),
+              decoration: buildInputDecoration(icon: Icons.email, label: appLocal.correoTextFiel),
             ),
             const SizedBox(
               height: 10,
@@ -49,11 +51,11 @@ class _RegisterFormState extends State<RegisterForm> {
             TextFormField(
               cursorColor: azulText,
               autovalidateMode: AutovalidateMode.onUserInteraction,
-              validator: (value) => (value!.isNotEmpty) ? null : 'Ingrese su nombre',
+              validator: (value) => (value!.isNotEmpty) ? null : appLocal.ingreseNombreTextField,
               initialValue: registerFormProvider.nombre,
               onChanged: (value) => registerFormProvider.setNombre(value),
               style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-              decoration: buildInputDecoration(icon: Icons.perm_identity, label: 'Nombre'),
+              decoration: buildInputDecoration(icon: Icons.perm_identity, label: appLocal.nombreTextField),
             ),
             const SizedBox(
               height: 10,
@@ -61,11 +63,11 @@ class _RegisterFormState extends State<RegisterForm> {
             TextFormField(
               cursorColor: azulText,
               autovalidateMode: AutovalidateMode.onUserInteraction,
-              validator: (value) => (value!.isNotEmpty) ? null : 'Ingrese su apellido',
+              validator: (value) => (value!.isNotEmpty) ? null : appLocal.ingreseApellidoTextFiel,
               initialValue: registerFormProvider.apellido,
               onChanged: (value) => registerFormProvider.setApellido(value),
               style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-              decoration: buildInputDecoration(icon: Icons.supervised_user_circle_rounded, label: 'Apellido'),
+              decoration: buildInputDecoration(icon: Icons.supervised_user_circle_rounded, label: appLocal.apellidoTextFiel),
             ),
             const SizedBox(
               height: 10,
@@ -76,15 +78,15 @@ class _RegisterFormState extends State<RegisterForm> {
               obscureText: true,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (value) {
-                if (value!.isEmpty) return 'Ingrese una contraseña valida';
-                if (value.length < 6) return 'La contraseña debe contener mas de 6 caracteres';
-                if (value != registerFormProvider.password2) return 'Las contraseñas no coinciden';
+                if (value!.isEmpty) return appLocal.ingreseUnaPassValida;
+                if (value.length < 6) return appLocal.laContraDebe6Caracteres;
+                if (value != registerFormProvider.password2) return appLocal.passNoCoinciden;
                 return null;
               },
               initialValue: registerFormProvider.password1,
               onChanged: (value) => registerFormProvider.password1 = value,
               style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-              decoration: buildInputDecoration(icon: Icons.password, label: 'Contraseña'),
+              decoration: buildInputDecoration(icon: Icons.password, label: appLocal.contrasenaTextFiel),
             ),
             const SizedBox(
               height: 10,
@@ -94,15 +96,15 @@ class _RegisterFormState extends State<RegisterForm> {
               obscureText: true,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (value) {
-                if (value!.isEmpty) return 'Ingrese una contraseña valida';
-                if (value.length < 6) return 'La contraseña debe contener mas de 6 caracteres';
-                if (value != registerFormProvider.password1) return 'Las contraseñas no coinciden';
+                if (value!.isEmpty) return appLocal.ingreseUnaPassValida;
+                if (value.length < 6) return appLocal.laContraDebe6Caracteres;
+                if (value != registerFormProvider.password1) return appLocal.passNoCoinciden;
                 return null;
               },
               initialValue: registerFormProvider.password2,
               onChanged: (value) => registerFormProvider.password2 = value,
               style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-              decoration: buildInputDecoration(icon: Icons.password, label: 'Repita la contraseña'),
+              decoration: buildInputDecoration(icon: Icons.password, label: appLocal.repitaContrasenaTextFiel),
             ),
             const SizedBox(
               height: 20,
@@ -112,7 +114,7 @@ class _RegisterFormState extends State<RegisterForm> {
               children: [
                 CustomButton(
                   width: 140,
-                  text: 'REGISTRAR',
+                  text: appLocal.registrarBtn,
                   onPress: () {
                     final isValid = registerFormProvider.validateForm();
                     if (!isValid) return;

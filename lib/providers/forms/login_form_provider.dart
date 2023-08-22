@@ -60,9 +60,9 @@ class LoginFormProvider extends ChangeNotifier {
         await _storage.deleteAll();
       }
       await authProvider.login(email, pass);
-      if (context.mounted) {
-        await Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
-      }
+      // if (context.mounted) {
+      //   await Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
+      // }
       notifyListeners();
       return true;
     } else {
