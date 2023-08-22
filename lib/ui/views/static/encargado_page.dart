@@ -5,6 +5,7 @@ import 'package:jpdirector_frontend/ui/shared/botones/botonverde.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/widgets/acordion.dart';
@@ -32,6 +33,7 @@ class _EncargadoBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     double wScreen = MediaQuery.of(context).size.width;
     double hScreen = MediaQuery.of(context).size.height;
 
@@ -79,42 +81,41 @@ class _EncargadoBody extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         constraints: const BoxConstraints(minWidth: 300, maxWidth: 900),
-                        child: const Column(
-                          // \n\n
+                        child: Column(
                           children: [
                             Acordeon(
-                              title: 'Diseño de Estrategias',
+                              title: appLocal.disenoEstrat,
                               content:
-                                  'Desarrollaré las estrategias claras y precisas con tiempos definidos poniendo en prioridad a tus distintos clientes ideales con todo el estudio que se necesita para poder impactarlos de manera persuasiva. ',
+                                  appLocal.disenoEstratResp,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 30,
                             ),
                             Acordeon(
-                                title: '¿Configuración de Campañas',
+                                title: appLocal.confCampanas,
                                 content:
-                                    'Todo lo técnico que se hace dentro de la plataforma para que las campañas estén en correcto funcionamiento según la estrategia establecida. '),
-                            SizedBox(
+                                    appLocal.confCampanasResp),
+                            const SizedBox(
                               height: 30,
                             ),
                             Acordeon(
-                                title: 'Optimización',
+                                title: appLocal.optimizacion,
                                 content:
-                                    'Una optimización eficaz, en español, quiere decir que analizaré los datos y luego de obtener los resultados tomaremos decisiones para mejorarlos según transcurra el tiempo y así el éxito sea continuo.'),
-                            SizedBox(
+                                    appLocal.optimizacionResp),
+                            const SizedBox(
                               height: 30,
                             ),
                             Acordeon(
-                                title: '¿Por qué yo?',
+                                title: appLocal.porQueYo,
                                 content:
-                                    'SELECTIVO Y SINCERO\nSer el encargado de tu marca requiere compromiso y responsabilidad, es por eso que antes de comenzar analizaré tu negocio con mucho detalle para concluir si cumples con todos los requerimientos para poder apoyarte.\n\nEn caso de ser un SÍ pondremos un plan de acción eficaz.\n\nEn caso de ser un NO te daré mi feedback sincero para referirte con el especialista o plan que tu negocio necesite.\n\nPRECIO SEGÚN TU MODELO DE NEGOCIO\nAlgo que me caracteriza es que reviso muy a detalle tu negocio antes de comenzar e incluso evaluando en conjunto contigo puedo saber si estás preparado para dar este paso.\n\nMi promesa es que cuando adquieras mi servicio sea un gran alivio y veas resultados.\n\nEXPERIENCIA Y RESULTADOS\nDesde la creación de la estrategia, copywriting, anuncios creativos, segmentación, funnels de conversión de tu web, manejo de presupuesto y análisis de resultados están dentro de mis capacidades para ocupar este puesto'),
-                            SizedBox(
+                                    appLocal.porQueYoResp),
+                            const SizedBox(
                               height: 30,
                             ),
                             Acordeon(
-                                title: 'Preguntas frecuentes',
+                                title: appLocal.preguntasfrecuentes,
                                 content:
-                                    '¿Cuál es el costo promedio para que seas el encargado de la publicidad de mi negocio?\nEl precio comienza desde los \$4000 en adelante, depende de muchos factores y los objetivos que tengas como negocio es por eso que me tomo el tiempo de analizar previamente y saber si puedo asumir el proyecto.\n\n¿Veré resultados de inmediato?\nEsta pregunta es muy común, y esto depende de como está plasmada la estrategia, tu producto, precio y valor percibido por tu audiencia.\n\nLa respuesta correcta es que me encargaré de que impactes a tu público objetivo de una manera inteligente.\n\nUna vez rellene el formulario ¿Qué sucederá?\nEn el transcurso de  2 a 3 días me comunicaré contigo para darte todos los detalles y tendremos una reunión que durará 30 minutos para entender tus necesidades y números al 100%.'),
+                                    appLocal.preguntasfrecuentes2Resp),
                           ],
                         ),
                       ),
@@ -128,7 +129,7 @@ class _EncargadoBody extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 40, right: 20),
                       child: Text(
-                        'Recuerda: Primero. conversaremos para hacer el checklist de tu negocio y analizar qué es lo que más necesitas en este momento.',
+                        appLocal.recuerdaPrimero,
                         textAlign: TextAlign.center,
                         style: DashboardLabel.h4,
                       ),
@@ -138,7 +139,7 @@ class _EncargadoBody extends StatelessWidget {
                     height: 30,
                   ),
                   BotonVerde(
-                    text: '¿Empezamos?',
+                    text: appLocal.empezamosBtn,
                     onPressed: () => Navigator.pushNamed(context, Flurorouter.encargadoFormRoute),
                     width: 120,
                   ),
@@ -158,12 +159,13 @@ class _LetrasAsesoria extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     double wScreen = MediaQuery.of(context).size.width;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
-          'SER EL ENCARGADO',
+          appLocal.serElEncargado,
           style: GoogleFonts.roboto(fontSize: (wScreen < 600) ? 26 : 32, fontWeight: FontWeight.w900, color: blancoText),
         ),
         Container(
@@ -204,7 +206,7 @@ class _LetrasAsesoria extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Text(
-            'Este servicio está diseñado para ti, que estás buscando a la persona que se encargue de realizar la estrategia y manejo de publicidad de tu marca. Me enfocaré en el crecimiento, obtención de clientes potenciales de calidad y aumento de las ventas.',
+            appLocal.esteServicioEsta,
             style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400, color: blancoText),
           ),
         ),
@@ -212,7 +214,7 @@ class _LetrasAsesoria extends StatelessWidget {
           height: 30,
         ),
         Text(
-          '¿Cómo?',
+          appLocal.como,
           style: GoogleFonts.roboto(fontSize: 36, fontWeight: FontWeight.w900, color: azulText),
         ),
         GestureDetector(
@@ -231,7 +233,7 @@ class _LetrasAsesoria extends StatelessWidget {
           height: 30,
         ),
         BotonVerde(
-          text: 'Estoy listo, comencemos.',
+          text: appLocal.estoyListoBtn,
           onPressed: () => NavigatorService.navigateTo(Flurorouter.encargadoFormRoute),
           width: 200,
         ),

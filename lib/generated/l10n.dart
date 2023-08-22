@@ -510,7 +510,15 @@ class AppLocalizations {
     );
   }
 
-  // skipped getter for the '250' key
+  /// `$250`
+  String get precio11 {
+    return Intl.message(
+      '\$250',
+      name: 'precio11',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `usd`
   String get usd {

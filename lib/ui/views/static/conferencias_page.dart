@@ -5,6 +5,7 @@ import 'package:jpdirector_frontend/ui/shared/botones/botonverde.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../providers/auth_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
@@ -33,6 +34,7 @@ class _MentoriaBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     double wScreen = MediaQuery.of(context).size.width;
     double hScreen = MediaQuery.of(context).size.height;
 
@@ -75,7 +77,7 @@ class _MentoriaBody extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      '¿Qué hablaré durante tu evento?',
+                      appLocal.queHablareEvento,
                       textAlign: TextAlign.center,
                       style: GoogleFonts.roboto(fontSize: 26, fontWeight: FontWeight.w900, color: azulText),
                     ),
@@ -89,40 +91,40 @@ class _MentoriaBody extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         constraints: const BoxConstraints(minWidth: 300, maxWidth: 900),
-                        child: const Column(
+                        child: Column(
                           children: [
                             Acordeon(
-                              title: 'Publicidad Online',
-                              content: 'La importancia de estar presentes y maneras de lograr el éxito con casos reales.',
+                              title: appLocal.pubOnline,
+                              content: appLocal.pubOnlineResp,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 30,
                             ),
                             Acordeon(
-                                title: 'Actualizaciones y rapidez de la tecnología',
+                                title: appLocal.actRapidez,
                                 content:
-                                    'Leyendo esto seguro salió una actualización de alguna herramienta o una nueva funcionalidad es por eso que ese día hablaremos de lo actual del 2023.'),
-                            SizedBox(
+                                    appLocal.actRapidezResp),
+                            const SizedBox(
                               height: 30,
                             ),
                             Acordeon(
-                                title: 'Motivación',
+                                title: appLocal.motivacion,
                                 content:
-                                    'Se necesita mucho coraje para llevar un negocio o cumplir con todos los objetivos del día a día. Es por eso que cuento mi trayectoria para inspirar y dar el ejemplo de que SÍ es posible.'),
-                            SizedBox(
+                                    appLocal.motivacionResp),
+                            const SizedBox(
                               height: 30,
                             ),
                             Acordeon(
-                                title: 'Casos especializados',
+                                title: appLocal.casosEsp,
                                 content:
-                                    'Imaginemos que eres una empresa de Seguros y quieres ejemplos de cómo hacer publicidad. Pues entonces: manos a la obra, expondré temas y casos en los que entiendan y les sirvan para poder implementarlos en su día a día.'),
-                            SizedBox(
+                                    appLocal.casosEspResp),
+                            const SizedBox(
                               height: 30,
                             ),
                             Acordeon(
-                                title: 'Preguntas frecuentes',
+                                title: appLocal.preguntasfrecuentes,
                                 content:
-                                    '¿Cómo funciona el proceso para agendar la fecha?\nEscríbeme a hola@jpdirector.net para chequear si ese día  está disponible, si es el caso,  puedes hacer un pago de dos partes 50% del precio de la conferencia y el otro 50% debe ser cancelado cinco días antes del evento.\n\n¿Puedes asistir a cualquier estado dentro de los Estados Unidos?\nClaro, solo debemos coordinar los boletos de avión, hospedaje y viáticos.'),
+                                    appLocal.preguntasfrecuentes3Resp),
                           ],
                         ),
                       ),
@@ -144,13 +146,14 @@ class _LetrasConferencias extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final authProvider = Provider.of<AuthProvider>(context);
     double wScreen = MediaQuery.of(context).size.width;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
-          'CONFERENCIAS',
+          appLocal.conferencias,
           style: GoogleFonts.roboto(fontSize: (wScreen < 600) ? 32 : 40, fontWeight: FontWeight.w900, color: blancoText),
         ),
         Container(
@@ -192,7 +195,7 @@ class _LetrasConferencias extends StatelessWidget {
               ? const EdgeInsets.only(left: 40, top: 17)
               : const EdgeInsets.only(left: 10, top: 10),
           child: Text(
-            'Seamos sinceros, estamos en la era de lo personalizado.\n\nEs por eso que contratándome para tu conferencia me enfocaré en los temas que SÍ les interesan, educando y divirtiendo a todos los participantes del evento.',
+            appLocal.seamosSinceros,
             style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400, color: blancoText),
           ),
         ),
@@ -200,7 +203,7 @@ class _LetrasConferencias extends StatelessWidget {
           height: 30,
         ),
         BotonVerde(
-          text: 'Estoy listo, Comencemos',
+          text: appLocal.estoyListoBtn,
           onPressed: () => Navigator.pushNamed(context, Flurorouter.conferenciasFormRoute),
           width: 200,
         ),

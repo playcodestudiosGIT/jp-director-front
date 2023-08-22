@@ -176,6 +176,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "porQueYo": MessageLookupByLibrary.simpleMessage("¿Why me?"),
         "porQueYoResp": MessageLookupByLibrary.simpleMessage(
             "SELECTIVE AND SINCERE\nBeing in charge of your brand requires commitment and responsibility, that is why before starting I will analyze your business in great detail to conclude if you meet all the requirements to be able to support you.\n\nIf it is a YES, we will put an effective action plan.\n\nIf it is a NO, I will give you my sincere feedback to refer you to the specialist or plan that your business needs.\n\nPRICE ACCORDING TO YOUR BUSINESS MODEL\nSomething that characterizes me is that I review very By detailing your business before starting and even evaluating it together with you, I can know if you are ready to take this step.\n\nMy promise is that when you acquire my service it will be a great relief and you will see results.\n\nEXPERIENCE AND RESULTS\nSince The creation of the strategy, copywriting, creative ads, segmentation, conversion funnels for your website, budget management and analysis of results are within my capabilities to occupy this position."),
+        "precio11": MessageLookupByLibrary.simpleMessage("\$250"),
         "preguntasfrecuentes":
             MessageLookupByLibrary.simpleMessage("Frequent questions"),
         "preguntasfrecuentes1Resp": MessageLookupByLibrary.simpleMessage(
