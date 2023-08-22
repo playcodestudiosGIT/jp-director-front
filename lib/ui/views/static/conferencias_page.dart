@@ -68,7 +68,7 @@ class _MentoriaBody extends StatelessWidget {
                     children: [
                       ConstrainedBox(
                         constraints: const BoxConstraints(maxWidth: 600),
-                        child: const LetrasConferencias(),
+                        child: const _LetrasConferencias(),
                       ),
                     ],
                   ),
@@ -139,8 +139,8 @@ class _MentoriaBody extends StatelessWidget {
   }
 }
 
-class LetrasConferencias extends StatelessWidget {
-  const LetrasConferencias({super.key});
+class _LetrasConferencias extends StatelessWidget {
+  const _LetrasConferencias();
 
   @override
   Widget build(BuildContext context) {

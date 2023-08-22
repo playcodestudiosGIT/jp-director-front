@@ -38,7 +38,7 @@ class _LoginFormState extends State<LoginForm> {
       builder: (context) {
         return Container(
           width: double.infinity,
-          height: 500,
+          height: 520,
           padding: const EdgeInsets.only(top: 20, left: 30, right: 30),
           child: Form(
             key: keyLoginForm,
@@ -52,6 +52,7 @@ class _LoginFormState extends State<LoginForm> {
                   height: 30,
                 ),
                 TextFormField(
+                  cursorColor: azulText,
                   // initialValue: loginFormProvider.email,
                   // controller: emailCtrl,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -65,6 +66,7 @@ class _LoginFormState extends State<LoginForm> {
                   height: 15,
                 ),
                 TextFormField(
+                  cursorColor: azulText,
                   // initialValue: loginFormProvider.pass,
                   // controller: passCtrl,
                   obscureText: loginFormProvider.obscureText,
@@ -160,6 +162,7 @@ class _LoginFormState extends State<LoginForm> {
                         width: 4,
                       ),
                       TextButton(
+                        
                         style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
                         onPressed: (widget.cursoId != '')
                             ? () {
@@ -208,6 +211,10 @@ InputDecoration buildInputDecoration({required String label, required IconData i
     border: const OutlineInputBorder(
       borderSide: BorderSide(color: azulText),
     ),
+    focusedBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: azulText),
+    ),
+    
     enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
     labelText: label,
     labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),

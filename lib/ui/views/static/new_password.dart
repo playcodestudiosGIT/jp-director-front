@@ -90,19 +90,21 @@ class _NewPasswordState extends State<NewPassword> {
                                             ),
                                             const SizedBox(height: 15),
                                             TextFormField(
+                                              cursorColor: azulText,
                                               obscureText: true,
                                               validator: (value) => (passw1 == passw2) ? null : 'Las claves no coinciden',
                                               onChanged: (value) => passw1 = value,
                                               style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                                              decoration: buildInputDecoration(label: 'Nueva contraseña', icon: Icons.email_outlined),
+                                              decoration: _buildInputDecoration(label: 'Nueva contraseña', icon: Icons.email_outlined),
                                             ),
                                             const SizedBox(height: 15),
                                             TextFormField(
+                                              cursorColor: azulText,
                                               obscureText: true,
                                               validator: (value) => (passw1 == passw2) ? null : 'Las claves no coinciden',
                                               onChanged: (value) => passw2 = value,
                                               style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                                              decoration: buildInputDecoration(label: 'Repita Nueva contraseña', icon: Icons.email_outlined),
+                                              decoration: _buildInputDecoration(label: 'Repita Nueva contraseña', icon: Icons.email_outlined),
                                             ),
                                             const SizedBox(height: 30),
                                             CustomButton(
@@ -187,10 +189,13 @@ class _NewPasswordState extends State<NewPassword> {
   }
 }
 
-InputDecoration buildInputDecoration({required String label, required IconData icon, IconData? suffIcon, Function? onPrs}) => InputDecoration(
+InputDecoration _buildInputDecoration({required String label, required IconData icon}) => InputDecoration(
     fillColor: blancoText.withOpacity(0.03),
     filled: true,
     border: const OutlineInputBorder(
+      borderSide: BorderSide(color: azulText),
+    ),
+    focusedBorder: const OutlineInputBorder(
       borderSide: BorderSide(color: azulText),
     ),
     enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),

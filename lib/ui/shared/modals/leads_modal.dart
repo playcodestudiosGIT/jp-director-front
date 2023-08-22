@@ -72,6 +72,7 @@ class _LeadsModalState extends State<LeadsModal> {
                 SizedBox(
                   width: 200,
                   child: TextFormField(
+                    cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white),
                     initialValue: widget.lead?.email ?? '',
                     onChanged: (value) => email = value,
@@ -81,6 +82,7 @@ class _LeadsModalState extends State<LeadsModal> {
                 SizedBox(
                   width: 200,
                   child: TextFormField(
+                    cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white),
                     initialValue: widget.lead?.telf ?? '',
                     onChanged: (value) => telf = value,
@@ -149,6 +151,9 @@ InputDecoration buildInputDecoration({required String label, required IconData i
     fillColor: blancoText.withOpacity(0.03),
     filled: true,
     border: const OutlineInputBorder(
+      borderSide: BorderSide(color: azulText),
+    ),
+    focusedBorder: const OutlineInputBorder(
       borderSide: BorderSide(color: azulText),
     ),
     enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),

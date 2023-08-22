@@ -116,6 +116,7 @@ class _FormsModalState extends State<FormsModal> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
+                    cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white),
                     initialValue: nombre,
                     onChanged: (value) {
@@ -128,6 +129,7 @@ class _FormsModalState extends State<FormsModal> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
+                    cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white),
                     initialValue: email,
                     onChanged: (value) {
@@ -140,6 +142,7 @@ class _FormsModalState extends State<FormsModal> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
+                    cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white),
                     initialValue: telefono,
                     onChanged: (value) {
@@ -152,6 +155,7 @@ class _FormsModalState extends State<FormsModal> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
+                    cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white),
                     initialValue: negocio,
                     onChanged: (value) {
@@ -164,6 +168,7 @@ class _FormsModalState extends State<FormsModal> {
                 SizedBox(
                   width: 300,
                   child: TextFormField(
+                    cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white),
                     initialValue: yearsOp,
                     onChanged: (value) {
@@ -235,6 +240,9 @@ InputDecoration buildInputDecoration({required String label, required IconData i
     fillColor: blancoText.withOpacity(0.03),
     filled: true,
     border: const OutlineInputBorder(
+      borderSide: BorderSide(color: azulText),
+    ),
+    focusedBorder: const OutlineInputBorder(
       borderSide: BorderSide(color: azulText),
     ),
     enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),

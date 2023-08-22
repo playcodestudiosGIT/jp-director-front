@@ -71,7 +71,7 @@ class LeadsDTS extends DataTableSource {
                             Navigator.of(context).pop();
                             NotifServ.showSnackbarError('Lead "${lead.email}" Eliminado', Colors.green);
                           } else {
-                            Navigator.of(context).pop();
+                            if (context.mounted)Navigator.of(context).pop();
                             NotifServ.showSnackbarError('Error Eliminando Usuario', Colors.red);
                           }
                         },

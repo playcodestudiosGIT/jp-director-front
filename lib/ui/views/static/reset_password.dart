@@ -89,9 +89,10 @@ class _ResetPassState extends State<ResetPass> {
                                             height: 15,
                                           ),
                                           TextFormField(
+                                            cursorColor: azulText,
                                             validator: (value) => (EmailValidator.validate(value.toString())) ? null : 'Ingrese su correo',
                                             style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                                            decoration: buildInputDecoration(label: 'Correo Electrónico', icon: Icons.email_outlined),
+                                            decoration: _buildInputDecoration(label: 'Correo Electrónico', icon: Icons.email_outlined),
                                             onChanged: (value) => email = value,
                                           ),
                                           const SizedBox(
@@ -186,10 +187,13 @@ class _ResetPassState extends State<ResetPass> {
   }
 }
 
-InputDecoration buildInputDecoration({required String label, required IconData icon, IconData? suffIcon, Function? onPrs}) => InputDecoration(
+InputDecoration _buildInputDecoration({required String label, required IconData icon}) => InputDecoration(
     fillColor: blancoText.withOpacity(0.03),
     filled: true,
     border: const OutlineInputBorder(
+      borderSide: BorderSide(color: azulText),
+    ),
+    focusedBorder: const OutlineInputBorder(
       borderSide: BorderSide(color: azulText),
     ),
     enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),

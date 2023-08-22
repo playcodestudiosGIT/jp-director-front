@@ -238,6 +238,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                         Container(
                           constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
                           child: TextFormField(
+                            cursorColor: azulText,
                             initialValue: authProvider.user!.nombre,
                             onChanged: (value) {
                               widget.nombreModal = value;
@@ -253,6 +254,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                         Container(
                           constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
                           child: TextFormField(
+                            cursorColor: azulText,
                             initialValue: authProvider.user!.apellido,
                             onChanged: (value) {
                               widget.apellidoModal = value;
@@ -266,8 +268,10 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                           height: 15,
                         ),
                         Container(
+                          
                           constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
                           child: TextFormField(
+                            cursorColor: azulText,
                             keyboardType: TextInputType.phone,
                             initialValue: authProvider.user!.telf,
                             onChanged: (value) {
@@ -284,6 +288,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                         Container(
                           constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
                           child: TextFormField(
+                            cursorColor: azulText,
                             keyboardType: TextInputType.emailAddress,
                             initialValue: authProvider.user!.correo,
                             onChanged: (value) {
@@ -300,6 +305,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                         Container(
                           constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
                           child: TextFormField(
+                            cursorColor: azulText,
                             maxLines: 4,
                             initialValue: authProvider.user!.me,
                             onChanged: (value) {
@@ -453,6 +459,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                             Container(
                               constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
                               child: TextFormField(
+                                cursorColor: azulText,
                                 initialValue: authProvider.user!.facebook,
                                 onChanged: (value) {
                                   widget.facebookModal = value;
@@ -468,6 +475,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                             Container(
                               constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
                               child: TextFormField(
+                                cursorColor: azulText,
                                 initialValue: authProvider.user!.instagram,
                                 onChanged: (value) {
                                   widget.instagramModal = value;
@@ -483,6 +491,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                             Container(
                               constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
                               child: TextFormField(
+                                cursorColor: azulText,
                                 initialValue: authProvider.user!.tiktok,
                                 onChanged: (value) {
                                   widget.tiktokModal = value;
@@ -572,6 +581,9 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
       fillColor: blancoText.withOpacity(0.03),
       filled: true,
       border: const OutlineInputBorder(
+        borderSide: BorderSide(color: azulText),
+      ),
+      focusedBorder: const OutlineInputBorder(
         borderSide: BorderSide(color: azulText),
       ),
       enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),

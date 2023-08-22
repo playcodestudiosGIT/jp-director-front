@@ -67,7 +67,7 @@ class _AsesoriaBody extends StatelessWidget {
                     children: [
                       ConstrainedBox(
                         constraints: const BoxConstraints(maxWidth: 600, maxHeight: 850),
-                        child: const LetrasAsesoria(),
+                        child: const _LetrasAsesoria(),
                       ),
                       // if (wScreen > 1200)
                       //   Container(
@@ -138,8 +138,8 @@ class _AsesoriaBody extends StatelessWidget {
   }
 }
 
-class LetrasAsesoria extends StatelessWidget {
-  const LetrasAsesoria({super.key});
+class _LetrasAsesoria extends StatelessWidget {
+  const _LetrasAsesoria();
 
   @override
   Widget build(BuildContext context) {

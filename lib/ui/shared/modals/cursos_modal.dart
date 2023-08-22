@@ -62,6 +62,7 @@ class _CursosModalState extends State<CursosModal> {
                 Container(
                   constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
                   child: TextFormField(
+                    cursorColor: azulText,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) => (value!.isNotEmpty) ? null : 'Titulo del curso',
                     initialValue: (curso.id == '') ? '' : curso.nombre,
@@ -75,6 +76,7 @@ class _CursosModalState extends State<CursosModal> {
                 Container(
                   constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
                   child: TextFormField(
+                    cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
                     initialValue: (curso.id == '') ? '' : curso.precio,
                     onChanged: (value) => setState(() {
@@ -86,6 +88,7 @@ class _CursosModalState extends State<CursosModal> {
                 Container(
                   constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
                   child: TextFormField(
+                    cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
                     initialValue: (curso.id == '') ? '' : curso.img,
                     onChanged: (value) => setState(() {
@@ -97,6 +100,7 @@ class _CursosModalState extends State<CursosModal> {
                 Container(
                   constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
                   child: TextFormField(
+                    cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
                     initialValue: (curso.id == '') ? '' : curso.urlImgCert,
                     onChanged: (value) => setState(() {
@@ -108,6 +112,7 @@ class _CursosModalState extends State<CursosModal> {
                 Container(
                   constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
                   child: TextFormField(
+                    cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
                     initialValue: (curso.id == '') ? '' : curso.baner,
                     onChanged: (value) => setState(() {
@@ -119,6 +124,7 @@ class _CursosModalState extends State<CursosModal> {
                 Container(
                   constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
                   child: TextFormField(
+                    cursorColor: azulText,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) => (value!.isNotEmpty) ? null : 'duración es obligatoria',
                     initialValue: (curso.duracion == '0') ? '0 min' : curso.duracion,
@@ -132,6 +138,7 @@ class _CursosModalState extends State<CursosModal> {
                 Container(
                   constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
                   child: TextFormField(
+                    cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
                     initialValue: (curso.id == '') ? '' : curso.descripcion,
                     maxLines: 5,
@@ -357,6 +364,9 @@ InputDecoration buildInputDecoration({required String label, required IconData i
     border: const OutlineInputBorder(
       borderSide: BorderSide(color: azulText),
     ),
+    focusedBorder: const OutlineInputBorder(
+      borderSide: BorderSide(color: azulText),
+    ),
     enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
     labelText: label,
     labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),
@@ -423,6 +433,7 @@ class _DialogState extends State<Dialog> {
                   Container(
                     constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
                     child: TextFormField(
+                      cursorColor: azulText,
                       style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
                       initialValue: nombre,
                       onChanged: (value) => nombre = value,
@@ -436,6 +447,7 @@ class _DialogState extends State<Dialog> {
                   Container(
                     constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
                     child: TextFormField(
+                      cursorColor: azulText,
                       maxLines: 3,
                       style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
                       initialValue: descripcion,
@@ -450,6 +462,7 @@ class _DialogState extends State<Dialog> {
                   Container(
                     constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
                     child: TextFormField(
+                      cursorColor: azulText,
                       style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
                       initialValue: video,
                       onChanged: (value) => video = value,
@@ -463,6 +476,7 @@ class _DialogState extends State<Dialog> {
                   Container(
                     constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
                     child: TextFormField(
+                      cursorColor: azulText,
                       style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
                       initialValue: idDriveFolder,
                       onChanged: (value) => idDriveFolder = value,
@@ -476,6 +490,7 @@ class _DialogState extends State<Dialog> {
                   Container(
                     constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
                     child: TextFormField(
+                      cursorColor: azulText,
                       style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
                       initialValue: idDriveZip,
                       onChanged: (value) => idDriveZip = value,

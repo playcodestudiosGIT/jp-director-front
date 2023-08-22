@@ -137,7 +137,8 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                     right: (wScreen <= 390) ? 90 : 125,
                     top: 15,
                     child: TextButton(
-                      style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
+                      
+                      style: ButtonStyle( backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
                       onPressed: () {
                         NavigatorService.replaceTo(Flurorouter.registerRoute);
                       }, // Navigate to register page

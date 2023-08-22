@@ -64,7 +64,7 @@ class JpApi {
     try {
       final resp = await _dio.put(path, data: formData);
       return resp;
-    } on DioError catch (e) {
+    } on DioException catch (e) {
 
       throw ('Error en el PUT ACT IMG USER $e');
     }
@@ -76,7 +76,7 @@ class JpApi {
     try {
       final resp = await _dio.put(path, data: formData);
       return resp;
-    } on DioError catch (e) {
+    } on DioException catch (e) {
 
       throw ('Error en el PUT ACT IMG BANER $e');
     }

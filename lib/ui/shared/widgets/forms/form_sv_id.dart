@@ -80,6 +80,7 @@ class _FormSVidState extends State<FormSVid> {
                               width: 200,
                             ),
                           TextFormField(
+                            cursorColor: azulText,
                             keyboardType: TextInputType.emailAddress,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (value) => EmailValidator.validate(value!) ? null : 'Ingrese un correo valido',
@@ -92,6 +93,7 @@ class _FormSVidState extends State<FormSVid> {
                             height: 15,
                           ),
                           TextFormField(
+                            cursorColor: azulText,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (value) => (value!.isNotEmpty) ? null : 'Ingrese su nombre',
                             // initialValue: formProvider.nombre,
@@ -103,6 +105,7 @@ class _FormSVidState extends State<FormSVid> {
                             height: 15,
                           ),
                           TextFormField(
+                            cursorColor: azulText,
                             keyboardType: TextInputType.phone,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             // validator: (value) => (value!.length == 8)
@@ -117,6 +120,7 @@ class _FormSVidState extends State<FormSVid> {
                             height: 15,
                           ),
                           TextFormField(
+                            cursorColor: azulText,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (value) => (value!.isNotEmpty) ? null : 'Requerido',
                             // initialValue: formProvider.nombre,
@@ -143,6 +147,9 @@ class _FormSVidState extends State<FormSVid> {
         fillColor: blancoText.withOpacity(0.03),
         filled: true,
         border: const OutlineInputBorder(
+          borderSide: BorderSide(color: azulText),
+        ),
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: azulText),
         ),
         enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),

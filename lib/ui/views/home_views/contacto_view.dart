@@ -110,7 +110,7 @@ class ContactoView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                IconButton.outlined(onPressed: (){}, icon: const Icon(FontAwesomeIcons.whatsapp, color: verdeBorde,)),
+                                IconButton(onPressed: (){}, icon: const Icon(FontAwesomeIcons.whatsapp, color: verdeBorde,)),
                                 Text(
                                   'Whatsapp',
                                   style: DashboardLabel.paragraph.copyWith(color: azulText),
@@ -281,6 +281,7 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                       child: Column(
                         children: [
                           TextFormField(
+                            cursorColor: azulText,
                               autovalidateMode: AutovalidateMode.onUserInteraction,
                               keyboardType: TextInputType.emailAddress,
                               validator: (value) => (EmailValidator.validate(value.toString())) ? null : 'Ingrese su correo',
@@ -291,6 +292,7 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                               }),
                           const SizedBox(height: 10),
                           TextFormField(
+                            cursorColor: azulText,
                               autovalidateMode: AutovalidateMode.onUserInteraction,
                               keyboardType: TextInputType.phone,
                               validator: (value) {
@@ -368,6 +370,9 @@ InputDecoration buildInputDecoration({required String label, required IconData i
     fillColor: blancoText.withOpacity(0.03),
     filled: true,
     border: const OutlineInputBorder(
+      borderSide: BorderSide(color: azulText),
+    ),
+    focusedBorder: const OutlineInputBorder(
       borderSide: BorderSide(color: azulText),
     ),
     enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),

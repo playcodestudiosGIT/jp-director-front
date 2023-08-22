@@ -258,7 +258,7 @@ class UsersDTS extends DataTableSource {
                             Navigator.of(context).pop();
                             NotifServ.showSnackbarError('Usuario "${user.nombre}" Eliminado', Colors.green);
                           } else {
-                            Navigator.of(context).pop();
+                            if (context.mounted) Navigator.of(context).pop();
                             NotifServ.showSnackbarError('Error Eliminando Usuario', Colors.red);
                           }
                         },

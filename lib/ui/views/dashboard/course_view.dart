@@ -48,7 +48,8 @@ class _CourseViewState extends State<CourseView> {
     final user = Provider.of<AuthProvider>(context, listen: false).user;
     prog = user!.progress.where((element) => element.moduloId == curso.modulos[widget.videoIndex].id).first;
     Provider.of<AuthProvider>(context, listen: false).isAutenticated();
-    videoPlayerController = VideoPlayerController.network(curso.modulos[widget.videoIndex].video)
+    final Uri url = Uri.parse(curso.modulos[widget.videoIndex].video);
+    videoPlayerController = VideoPlayerController.networkUrl(url)
       ..initialize().then((_) {
         isLoading = false;
         setState(() {});
@@ -859,6 +860,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                         // decoration: BoxDecoration(color: Colors.white.withOpacity(0.1), borderRadius: BorderRadius.circular(25)),
                         child: TextFormField(
+                          cursorColor: azulText,
                           initialValue: comentario,
                           style: DashboardLabel.mini,
                           validator: (value) {
@@ -912,6 +914,9 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
       border: const OutlineInputBorder(
         borderSide: BorderSide(color: azulText),
       ),
+      focusedBorder: const OutlineInputBorder(
+        borderSide: BorderSide(color: azulText),
+      ),
       enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
       labelText: label,
       labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),
@@ -937,6 +942,7 @@ class _DialogRespState extends State<DialogResp> {
           Container(
             constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
             child: TextFormField(
+              cursorColor: azulText,
               maxLines: 5,
               style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
               initialValue: textValue,
@@ -980,6 +986,9 @@ InputDecoration buildInputDecoration({required String label, required IconData i
     fillColor: blancoText.withOpacity(0.03),
     filled: true,
     border: const OutlineInputBorder(
+      borderSide: BorderSide(color: azulText),
+    ),
+    focusedBorder: const OutlineInputBorder(
       borderSide: BorderSide(color: azulText),
     ),
     enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),

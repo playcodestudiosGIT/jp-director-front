@@ -147,6 +147,7 @@ class _RecoverypassFormState extends State<RecoverypassForm> {
               height: 30,
             ),
             TextFormField(
+              cursorColor: azulText,
               keyboardType: TextInputType.emailAddress,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (value) => (EmailValidator.validate(value.toString())) ? null : 'Ingrese su correo',
@@ -216,6 +217,9 @@ class _RecoverypassFormState extends State<RecoverypassForm> {
         fillColor: blancoText.withOpacity(0.03),
         filled: true,
         border: const OutlineInputBorder(
+          borderSide: BorderSide(color: azulText),
+        ),
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: azulText),
         ),
         enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),

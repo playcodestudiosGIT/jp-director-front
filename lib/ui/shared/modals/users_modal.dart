@@ -109,6 +109,7 @@ class _UsersModalState extends State<UsersModal> {
                   SizedBox(
                     width: 200,
                     child: TextFormField(
+                      cursorColor: azulText,
                       style: GoogleFonts.roboto(color: Colors.white),
                       initialValue: widget.user?.nombre ?? '',
                       onChanged: (value) => nombre = value,
@@ -118,6 +119,7 @@ class _UsersModalState extends State<UsersModal> {
                   SizedBox(
                     width: 200,
                     child: TextFormField(
+                      cursorColor: azulText,
                       style: GoogleFonts.roboto(color: Colors.white),
                       initialValue: widget.user?.apellido ?? '',
                       onChanged: (value) => apellido = value,
@@ -127,6 +129,7 @@ class _UsersModalState extends State<UsersModal> {
                   SizedBox(
                     width: 200,
                     child: TextFormField(
+                      cursorColor: azulText,
                       style: GoogleFonts.roboto(color: Colors.white),
                       initialValue: widget.user?.correo ?? '',
                       onChanged: (value) {
@@ -139,6 +142,7 @@ class _UsersModalState extends State<UsersModal> {
                     SizedBox(
                       width: 200,
                       child: TextFormField(
+                        cursorColor: azulText,
                         style: GoogleFonts.roboto(color: Colors.white),
                         initialValue: widget.user?.telf ?? '',
                         onChanged: (value) => telf = value,
@@ -148,6 +152,7 @@ class _UsersModalState extends State<UsersModal> {
                     SizedBox(
                       width: 200,
                       child: TextFormField(
+                        cursorColor: azulText,
                         style: GoogleFonts.roboto(color: Colors.white),
                         initialValue: widget.user?.me ?? 'Sobre mi',
                         onChanged: (value) => me = value,
@@ -157,6 +162,7 @@ class _UsersModalState extends State<UsersModal> {
                     SizedBox(
                       width: 200,
                       child: TextFormField(
+                        cursorColor: azulText,
                         style: GoogleFonts.roboto(color: Colors.white),
                         initialValue: widget.user?.instagram ?? 'Instagram',
                         onChanged: (value) => instagram = value,
@@ -166,6 +172,7 @@ class _UsersModalState extends State<UsersModal> {
                     SizedBox(
                       width: 200,
                       child: TextFormField(
+                        cursorColor: azulText,
                         style: GoogleFonts.roboto(color: Colors.white),
                         initialValue: widget.user?.facebook ?? 'Facebook',
                         onChanged: (value) => facebook = value,
@@ -175,6 +182,7 @@ class _UsersModalState extends State<UsersModal> {
                     SizedBox(
                       width: 200,
                       child: TextFormField(
+                        cursorColor: azulText,
                         style: GoogleFonts.roboto(color: Colors.white),
                         initialValue: widget.user?.tiktok ?? 'Tiktok',
                         onChanged: (value) => tiktok = value,
@@ -201,6 +209,7 @@ class _UsersModalState extends State<UsersModal> {
                       SizedBox(
                         width: 200,
                         child: TextFormField(
+                          cursorColor: azulText,
                           style: GoogleFonts.roboto(color: Colors.white),
                           onChanged: (value) => clave = value,
                           decoration: buildInputDecoration(label: 'Contraseña', icon: Icons.password),
@@ -609,6 +618,9 @@ InputDecoration buildInputDecoration({required String label, required IconData i
     fillColor: blancoText.withOpacity(0.03),
     filled: true,
     border: const OutlineInputBorder(
+      borderSide: BorderSide(color: azulText),
+    ),
+    focusedBorder: const OutlineInputBorder(
       borderSide: BorderSide(color: azulText),
     ),
     enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),

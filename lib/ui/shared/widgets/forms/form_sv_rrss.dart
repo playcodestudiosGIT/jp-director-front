@@ -77,6 +77,7 @@ class _FormSVrrssState extends State<FormSVrrss> {
                             ),
                           if (formProvider.rootForm == 'conferencias')
                             TextFormField(
+                              cursorColor: azulText,
                               style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
                               maxLines: 5,
                               decoration:
@@ -100,6 +101,7 @@ class _FormSVrrssState extends State<FormSVrrss> {
                               ConstrainedBox(
                                 constraints: const BoxConstraints(maxWidth: 250),
                                 child: TextFormField(
+                                  cursorColor: azulText,
                                   // validator: ,
                                   // initialValue: formProvider.facebook,
                                   onChanged: (value) => formProvider.setFacebook(value),
@@ -124,6 +126,7 @@ class _FormSVrrssState extends State<FormSVrrss> {
                               ConstrainedBox(
                                 constraints: const BoxConstraints(maxWidth: 250),
                                 child: TextFormField(
+                                  cursorColor: azulText,
                                   onChanged: (value) => formProvider.setTiktok(value),
                                   style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
                                   decoration: buildInputDecoration(const Text('tiktok.com/')),
@@ -146,6 +149,7 @@ class _FormSVrrssState extends State<FormSVrrss> {
                               ConstrainedBox(
                                 constraints: const BoxConstraints(maxWidth: 250),
                                 child: TextFormField(
+                                  cursorColor: azulText,
                                   onChanged: (value) => formProvider.setInstagram(value),
                                   style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
                                   decoration: buildInputDecoration(const Text('instagram.com/')),
@@ -195,6 +199,9 @@ class _FormSVrrssState extends State<FormSVrrss> {
         fillColor: blancoText.withOpacity(0.03),
         filled: true,
         border: const OutlineInputBorder(
+          borderSide: BorderSide(color: azulText),
+        ),
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: azulText),
         ),
         enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),

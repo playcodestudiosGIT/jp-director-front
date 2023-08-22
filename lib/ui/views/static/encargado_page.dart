@@ -66,31 +66,8 @@ class _EncargadoBody extends StatelessWidget {
                     children: [
                       ConstrainedBox(
                         constraints: const BoxConstraints(maxWidth: 600, maxHeight: 912),
-                        child: const LetrasAsesoria(),
+                        child: const _LetrasAsesoria(),
                       ),
-                      // if (wScreen > 1200)
-                      //   Stack(
-                      //     children: [
-                      //       Positioned(
-                      //         child: ConstrainedBox(
-                      //           constraints: const BoxConstraints(maxWidth: 700),
-                      //           child: const Image(
-                      //             image: bgEncargado,
-                      //             color: blancoText,
-                      //             colorBlendMode: BlendMode.modulate,
-                      //           ),
-                      //         ),
-                      //       ),
-                      //       const Positioned(
-                      //         top: 100,
-                      //         right: 100,
-                      //         child: Image(
-                      //           image: adsCircle,
-                      //           width: 100,
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
                     ],
                   ),
                   const SizedBox(
@@ -176,8 +153,8 @@ class _EncargadoBody extends StatelessWidget {
   }
 }
 
-class LetrasAsesoria extends StatelessWidget {
-  const LetrasAsesoria({super.key});
+class _LetrasAsesoria extends StatelessWidget {
+  const _LetrasAsesoria();
 
   @override
   Widget build(BuildContext context) {

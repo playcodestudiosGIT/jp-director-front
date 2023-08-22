@@ -1,38 +1,9 @@
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
-import 'package:jpdirector_frontend/providers/leads_provider.dart';
-import 'package:jpdirector_frontend/ui/views/admin_dash/cursos_admin_view.dart';
-import 'package:jpdirector_frontend/ui/views/admin_dash/forms_admin_view.dart';
-import 'package:jpdirector_frontend/ui/views/admin_dash/leads_admin_view.dart';
-import 'package:jpdirector_frontend/ui/views/admin_dash/users_admin_view.dart';
-import 'package:jpdirector_frontend/ui/views/home_views/home_body.dart';
-import 'package:jpdirector_frontend/ui/views/landing/landing_curso.dart';
-import 'package:jpdirector_frontend/ui/views/static/checkout_thx_view.dart';
-import 'package:jpdirector_frontend/ui/views/static/new_password.dart';
-import 'package:jpdirector_frontend/ui/views/static/reset_password.dart';
-import 'package:jpdirector_frontend/ui/views/static/verify_user_page.dart';
-import 'package:provider/provider.dart';
-
-import '../providers/auth_provider.dart';
-import '../providers/sidebar_provider.dart';
-import '../ui/pdp_view.dart';
-import '../ui/tyc_view.dart';
-import '../ui/views/dashboard/course_view.dart';
-import '../ui/views/dashboard/dash_mi_cuenta_view.dart';
-import '../ui/views/dashboard/dash_mis_cursos_view.dart';
-import '../ui/views/home_views/checkout_ads/create_user_checkout.dart';
-import '../ui/views/login/login_page.dart';
-import '../ui/views/login/resgister_page.dart';
-import '../ui/views/no_page_found.dart';
-import '../ui/views/static/agenda_thx_view.dart';
-import '../ui/views/static/asesoria_agendar_page.dart';
-import '../ui/views/static/asesoria_page.dart';
-import '../ui/views/static/conferencias_page.dart';
-import '../ui/views/static/encargado_page.dart';
-import '../ui/views/static/formularios_page.dart';
-import '../ui/views/static/mentoria_page.dart';
+import 'package:fluro/fluro.dart';
 import 'router.dart';
+
+import 'package:jpdirector_frontend/ui/views/ui_views.dart';
+import '../providers/export_all_providers.dart';
 
 class VisitorHandlers {
   static Handler asesoria = Handler(
@@ -162,6 +133,8 @@ class UsersAuthHandlers {
     if (authProvider.authStatus == AuthStatus.notAuthenticated) {
       return const LoginPage();
     } else {
+      Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
+      Provider.of<AllCursosProvider>(context, listen: false).obtenerMisCursos(authProvider.user!);
       Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
       return const DashMisCursosView();
     }

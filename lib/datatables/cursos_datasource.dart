@@ -140,7 +140,7 @@ class CursosDTS extends DataTableSource {
                             Navigator.pop(context, true);
                             NotifServ.showSnackbarError('Lead "${curso.nombre}" Eliminado', Colors.green);
                           } else {
-                            Navigator.pop(context, false);
+                            if(context.mounted)Navigator.pop(context, false);
                             NotifServ.showSnackbarError('Error Eliminando Curso', Colors.red);
                           }
                         },

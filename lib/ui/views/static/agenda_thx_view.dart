@@ -28,7 +28,7 @@ class _AgendaThxViewState extends State<AgendaThxView> {
             children: [
               ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 600),
-                child: LetrasAsesoria(email: widget.email ?? 'noemail@noemail.com'),
+                child: _LetrasAsesoria(email: widget.email ?? 'noemail@noemail.com'),
               ),
             ],
           ),
@@ -36,10 +36,10 @@ class _AgendaThxViewState extends State<AgendaThxView> {
   }
 }
 
-class LetrasAsesoria extends StatelessWidget {
+class _LetrasAsesoria extends StatelessWidget {
   final String email;
 
-  const LetrasAsesoria({Key? key, required this.email}) : super(key: key);
+  const _LetrasAsesoria({Key? key, required this.email}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final wScreen = MediaQuery.of(context).size.width;
@@ -114,17 +114,17 @@ class LetrasAsesoria extends StatelessWidget {
             runSpacing: 10,
             alignment: (wScreen < 550) ? WrapAlignment.center : WrapAlignment.spaceBetween,
             children: const [
-              ButtomRrss(
+              _ButtomRrss(
                 route: 'Instagram',
                 text: '@jpdirector',
                 icon: iconInsta,
               ),
-              ButtomRrss(
+              _ButtomRrss(
                 route: 'Facebook',
                 text: '@jpdirector',
                 icon: iconFb,
               ),
-              ButtomRrss(
+              _ButtomRrss(
                 route: 'Tiktok',
                 text: '@jpdirector',
                 icon: iconTiktok,
@@ -155,12 +155,12 @@ class LetrasAsesoria extends StatelessWidget {
   }
 }
 
-class ButtomRrss extends StatelessWidget {
+class _ButtomRrss extends StatelessWidget {
   final String text;
   final String route;
   final NetworkImage icon;
 
-  const ButtomRrss({Key? key, required this.text, required this.route, required this.icon}) : super(key: key);
+  const _ButtomRrss({Key? key, required this.text, required this.route, required this.icon}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     Future<void> launchUrlInstagram() async {

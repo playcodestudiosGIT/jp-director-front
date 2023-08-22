@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jpdirector_frontend/constant.dart';
+import 'package:jpdirector_frontend/providers/auth_provider.dart';
+import 'package:jpdirector_frontend/router/router.dart';
+import 'package:jpdirector_frontend/services/navigator_service.dart';
 import 'package:provider/provider.dart';
 
-import '../constant.dart';
-import '../providers/auth_provider.dart';
-import '../router/router.dart';
-import '../services/navigator_service.dart';
 
 class TycView extends StatelessWidget {
   const TycView({super.key});

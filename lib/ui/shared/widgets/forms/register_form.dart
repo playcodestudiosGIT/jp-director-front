@@ -9,7 +9,6 @@ import '../../../../providers/forms/register_form_provider.dart';
 import '../../botones/custom_button.dart';
 
 class RegisterForm extends StatefulWidget {
-
   const RegisterForm({super.key});
 
   @override
@@ -17,7 +16,6 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
-
   @override
   Widget build(BuildContext context) {
     final registerFormProvider = Provider.of<RegisterFormProvider>(context);
@@ -36,6 +34,7 @@ class _RegisterFormState extends State<RegisterForm> {
               height: 10,
             ),
             TextFormField(
+              cursorColor: azulText,
               keyboardType: TextInputType.emailAddress,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (value) => (EmailValidator.validate(value.toString())) ? null : 'Ingrese su correo',
@@ -48,6 +47,7 @@ class _RegisterFormState extends State<RegisterForm> {
               height: 10,
             ),
             TextFormField(
+              cursorColor: azulText,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (value) => (value!.isNotEmpty) ? null : 'Ingrese su nombre',
               initialValue: registerFormProvider.nombre,
@@ -59,6 +59,7 @@ class _RegisterFormState extends State<RegisterForm> {
               height: 10,
             ),
             TextFormField(
+              cursorColor: azulText,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (value) => (value!.isNotEmpty) ? null : 'Ingrese su apellido',
               initialValue: registerFormProvider.apellido,
@@ -70,6 +71,7 @@ class _RegisterFormState extends State<RegisterForm> {
               height: 10,
             ),
             TextFormField(
+              cursorColor: azulText,
               keyboardType: TextInputType.visiblePassword,
               obscureText: true,
               autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -88,6 +90,7 @@ class _RegisterFormState extends State<RegisterForm> {
               height: 10,
             ),
             TextFormField(
+              cursorColor: azulText,
               obscureText: true,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (value) {
@@ -140,6 +143,9 @@ class _RegisterFormState extends State<RegisterForm> {
         fillColor: blancoText.withOpacity(0.03),
         filled: true,
         border: const OutlineInputBorder(
+          borderSide: BorderSide(color: azulText),
+        ),
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: azulText),
         ),
         enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),

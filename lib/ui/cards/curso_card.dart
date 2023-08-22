@@ -106,7 +106,7 @@ class CourseCard extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 style: DashboardLabel.paragraph.copyWith(color: blancoText.withOpacity(0.5)))),
                       ],
-                      const SizedBox(height: 15),
+                      const SizedBox(height: 10),
                       if (esMio) ...[SizedBox(width: 220, height: 30, child: MiProgreso(curso: curso))],
                       if (!esMio) ...[
                         Padding(
