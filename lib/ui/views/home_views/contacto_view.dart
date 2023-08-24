@@ -131,6 +131,7 @@ class ContactoView extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
+                  if (MediaQuery.of(context).size.height > 715)
                   Container(
                     padding: const EdgeInsets.all(8),
                     width: double.infinity,

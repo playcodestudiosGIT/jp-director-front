@@ -5,6 +5,7 @@ import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../providers/auth_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
@@ -33,6 +34,7 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
     final hScreen = MediaQuery.of(context).size.height;
     final authProvider = Provider.of<AuthProvider>(context);
@@ -161,7 +163,7 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                                 padding: 30,
                                 width: 240,
                                 delay: 0,
-                                text: 'Inicio',
+                                text: appLocal.inicioMenuBtn,
                                 onPressed: () {
                                   if (isOpen) {
                                     controller.reverse();
@@ -177,7 +179,7 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                                 padding: 30,
                                 width: 240,
                                 delay: 30,
-                                text: 'Cursos',
+                                text: appLocal.cursosMenuBtn,
                                 onPressed: () {
                                   if (isOpen) {
                                     controller.reverse();
@@ -193,7 +195,7 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                                 padding: 30,
                                 width: 240,
                                 delay: 60,
-                                text: 'Servicios',
+                                text: appLocal.serviciosMenuBtn,
                                 onPressed: () {
                                   if (isOpen) {
                                     controller.reverse();
@@ -209,7 +211,7 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                                 padding: 30,
                                 width: 240,
                                 delay: 90,
-                                text: 'Resultados',
+                                text: appLocal.resultadosMenuBtn,
                                 onPressed: () {
                                   if (isOpen) {
                                     controller.reverse();
@@ -225,7 +227,7 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                                 padding: 30,
                                 width: 240,
                                 delay: 120,
-                                text: 'Contacto',
+                                text: appLocal.contactoMenuBtn,
                                 onPressed: () {
                                   if (isOpen) {
                                     controller.reverse();

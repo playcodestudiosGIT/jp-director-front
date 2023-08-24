@@ -43,24 +43,24 @@ class _HomeBodyState extends State<HomeBody> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        if (scrollValue >= 1.6)
-          Positioned(
-              top: 550,
-              right: 130,
-              child: Transform.rotate(
-                angle: 10,
-                child: Opacity(
-                  opacity: 0.1,
-                  child: SlideInUp(
-                    from: 450,
-                    duration: const Duration(seconds: 20),
-                    child: const Image(
-                      width: 300,
-                      image: rocketGif,
-                    ),
-                  ),
-                ),
-              )),
+        // if (scrollValue >= 1.6)
+        //   Positioned(
+        //       top: 550,
+        //       right: 130,
+        //       child: Transform.rotate(
+        //         angle: 10,
+        //         child: Opacity(
+        //           opacity: 0.1,
+        //           child: SlideInUp(
+        //             from: 450,
+        //             duration: const Duration(seconds: 20),
+        //             child: const Image(
+        //               width: 300,
+        //               image: rocketGif,
+        //             ),
+        //           ),
+        //         ),
+        //       )),
         Container(
           constraints: const BoxConstraints(maxWidth: 1280),
           child: ListView(

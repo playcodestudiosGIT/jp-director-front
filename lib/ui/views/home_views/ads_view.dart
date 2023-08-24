@@ -66,7 +66,7 @@ class _AdsViewState extends State<AdsView> {
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Text(
                   appLocal.aprendeTodoAds,
-                  style: GoogleFonts.roboto(fontSize: (wScreen > 580) ? 40 : 22, fontWeight: FontWeight.w900, color: blancoText),
+                  style: GoogleFonts.roboto(fontSize: (wScreen > 580) ? 36 : 22, fontWeight: FontWeight.w900, color: blancoText),
                 ),
               ),
               Container(
@@ -108,7 +108,7 @@ class _AdsViewState extends State<AdsView> {
                 ),
               ),
               const SizedBox(
-                height: 60,
+                height: 50,
               ),
               SizedBox(
                 width: 796,

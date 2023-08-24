@@ -170,7 +170,7 @@ class _ContentDialogState extends State<ContentDialog> {
                             icon: const Icon(
                               Icons.arrow_circle_left_outlined,
                               size: 30,
-                              color: bgColor,
+                              color: azulText,
                             )),
                         IconButton(
                             style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(azulText)),
@@ -195,9 +195,10 @@ class _ContentDialogState extends State<ContentDialog> {
                               setState(() {});
                             },
                             icon: const Icon(
+
                               Icons.arrow_circle_right_outlined,
                               size: 30,
-                              color: bgColor,
+                              color: azulText,
                             )),
                       ],
                     ),

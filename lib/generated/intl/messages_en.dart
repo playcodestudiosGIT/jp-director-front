@@ -35,14 +35,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "By logging in you agree to our "),
         "apellidoTextFiel": MessageLookupByLibrary.simpleMessage("Surname"),
         "aprendeTodoAds":
-            MessageLookupByLibrary.simpleMessage("LEARN ALL ABOUT ADS"),
-        "asesoria11": MessageLookupByLibrary.simpleMessage("ADVISORY 1:1"),
+            MessageLookupByLibrary.simpleMessage("LEARN EVERYTHING ABOUT ADS"),
+        "asesoria11": MessageLookupByLibrary.simpleMessage("ADVICE 1:1"),
         "avanzado": MessageLookupByLibrary.simpleMessage("Advanced"),
         "basico": MessageLookupByLibrary.simpleMessage("Essential"),
-        "botonLogin": MessageLookupByLibrary.simpleMessage("LOGIN"),
+        "botonLogin": MessageLookupByLibrary.simpleMessage("LOG IN"),
         "botonReg": MessageLookupByLibrary.simpleMessage("Register"),
         "buscasAcelerar": MessageLookupByLibrary.simpleMessage(
-            "Are you looking to accelerate your business with advertising?"),
+            "You want to accelerate your business with advertising"),
         "cancelarBtn": MessageLookupByLibrary.simpleMessage("CANCEL"),
         "casosEsp": MessageLookupByLibrary.simpleMessage("Specialized cases"),
         "casosEspResp": MessageLookupByLibrary.simpleMessage(
@@ -51,7 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "como": MessageLookupByLibrary.simpleMessage("As?"),
         "comoPuedoBuscarteRRSS": MessageLookupByLibrary.simpleMessage(
             "How can I find you on social networks?"),
-        "completamentePers":
+        "completPers":
             MessageLookupByLibrary.simpleMessage("COMPLETELY CUSTOMIZED"),
         "conTuNeg": MessageLookupByLibrary.simpleMessage("with YOUR BUSINESS"),
         "confCampanas":
@@ -65,7 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "consigueClientesQueQuieran": MessageLookupByLibrary.simpleMessage(
             "Get customers who want to buy your product or service using the tool you came here for: Instagram - Facebook - Tik Tok"),
         "contactoLargeText": MessageLookupByLibrary.simpleMessage(
-            "For 4 years I have been committed to educating and empowering businesses with effective advertising strategies that give the point.\n\nWith a journey of more than \$1,000,000 USD invested and a return of \$15,000,000 USD in a large number of advertising campaigns with Countless proofs on Facebook, Instagram and TikTok ADS, I affirm that success in business is achieved with:\n\n1.An excellent advertising strategy\n2.Analyzing the data\n3.Have an experienced professional\n\nMy mission is to be your mentor or manager of your brand and accompany you throughout the process."),
+            "For 4 years I have been committed to educating and empowering businesses with effective advertising strategies that hit the mark.\n\nWith a journey of more than \$1,000,000 USD invested and a return of \$15,000,000 USD in a large number of advertising campaigns with countless tests on Facebook, Instagram and TikTok ADS, I affirm that success in business is achieved with:\n\n. An excellent advertising strategy\n. Analyzing data\n. Having a professional with experience\n\nMy mission is to be your mentor or the manager of your brand and accompany you throughout the process."),
         "contactoMenuBtn": MessageLookupByLibrary.simpleMessage("Contact"),
         "contrasenaTextFiel": MessageLookupByLibrary.simpleMessage("Password"),
         "contratamePara": MessageLookupByLibrary.simpleMessage(
@@ -87,7 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "descubreComo": MessageLookupByLibrary.simpleMessage(
             "Discover how to boost your business"),
         "deseasDejar": MessageLookupByLibrary.simpleMessage(
-            "You want to stop feeling anguish about results that do not convert"),
+            "You want to stop feeling anguish for results that do not convert"),
         "deseasQueLaConf": MessageLookupByLibrary.simpleMessage(
             "Do you want the conference to be face-to-face or do you prefer online?"),
         "disenoEstrat": MessageLookupByLibrary.simpleMessage("Strategy Design"),
@@ -96,7 +96,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "duranteElPrimerMes": MessageLookupByLibrary.simpleMessage(
             "During the first month, I will teach you everything I know and we will elaborate - jointly launch your advertising plan where you will learn the correct way to grow your business.\n\nThe following two months we will have several sessions of analysis of results with the plan that we developed , and we will progressively optimize all your campaigns.\n\nYou will understand as if you were seeing a traffic light; advance or stop depending on the color it shows."),
         "educacionYEstrategia":
-            MessageLookupByLibrary.simpleMessage("ADS Education\nand Strategy"),
+            MessageLookupByLibrary.simpleMessage("Education and\nADS Strategy"),
+        "elEmailNoExiste":
+            MessageLookupByLibrary.simpleMessage("The mail does not exist"),
         "empezamosBtn": MessageLookupByLibrary.simpleMessage("Shall we start?"),
         "enElTranscurso": MessageLookupByLibrary.simpleMessage(
             "In the course of 2 to 3 days I will be communicating with you to explain the next steps."),
@@ -125,6 +127,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Thank you for providing us with your information!"),
         "hasHechoPubAntes":
             MessageLookupByLibrary.simpleMessage("Have you advertised before?"),
+        "ingresaTuDirEmail":
+            MessageLookupByLibrary.simpleMessage("Enter your email address"),
         "ingreseApellidoTextFiel":
             MessageLookupByLibrary.simpleMessage("Enter your surname"),
         "ingreseNombreTextField":
@@ -140,19 +144,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "inteligenteInv":
             MessageLookupByLibrary.simpleMessage("SMART INVESTMENT"),
         "intermedio": MessageLookupByLibrary.simpleMessage("Intermediate"),
+        "irAlLoginBtn": MessageLookupByLibrary.simpleMessage("Go to login"),
         "laContraDebe6Caracteres": MessageLookupByLibrary.simpleMessage(
             "The password must have more than 6 characters"),
-        "llegasteAlMundo":
-            MessageLookupByLibrary.simpleMessage("You came to the right world"),
+        "llegasteAlMundo": MessageLookupByLibrary.simpleMessage(
+            "You arrived at the right place"),
         "masInformacionBtn":
             MessageLookupByLibrary.simpleMessage("More information"),
         "menosde6meses":
             MessageLookupByLibrary.simpleMessage("less than 6 months"),
-        "mentoria": MessageLookupByLibrary.simpleMessage("MENTORING"),
+        "mentoria": MessageLookupByLibrary.simpleMessage("MENTORSHIP"),
         "mentoriaIntensiva":
             MessageLookupByLibrary.simpleMessage("INTENSIVE MENTORING"),
         "miraloOjos":
-            MessageLookupByLibrary.simpleMessage("LOOK WITH YOUR OWN EYES"),
+            MessageLookupByLibrary.simpleMessage("SEE IT WITH YOUR OWN EYES"),
         "motivacion": MessageLookupByLibrary.simpleMessage("Motivation"),
         "motivacionResp": MessageLookupByLibrary.simpleMessage(
             "It takes a lot of courage to run a business or meet all the day-to-day goals. That is why I tell my story to inspire and set an example that YES it is possible."),
@@ -172,7 +177,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "politicaDePrivacidad":
             MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "politicasDeProivacidad":
-            MessageLookupByLibrary.simpleMessage("PRIVACY POLICIES"),
+            MessageLookupByLibrary.simpleMessage("PRIVACY POLICY"),
         "porQueYo": MessageLookupByLibrary.simpleMessage("¿Why me?"),
         "porQueYoResp": MessageLookupByLibrary.simpleMessage(
             "SELECTIVE AND SINCERE\nBeing in charge of your brand requires commitment and responsibility, that is why before starting I will analyze your business in great detail to conclude if you meet all the requirements to be able to support you.\n\nIf it is a YES, we will put an effective action plan.\n\nIf it is a NO, I will give you my sincere feedback to refer you to the specialist or plan that your business needs.\n\nPRICE ACCORDING TO YOUR BUSINESS MODEL\nSomething that characterizes me is that I review very By detailing your business before starting and even evaluating it together with you, I can know if you are ready to take this step.\n\nMy promise is that when you acquire my service it will be a great relief and you will see results.\n\nEXPERIENCE AND RESULTS\nSince The creation of the strategy, copywriting, creative ads, segmentation, conversion funnels for your website, budget management and analysis of results are within my capabilities to occupy this position."),
@@ -201,11 +206,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "queVeremos3mResp": MessageLookupByLibrary.simpleMessage(
             "-From level zero to 100 all the factors and tools necessary for your advertising strategy.\n\n-All the education on Instagram - Facebook - Tik Tok to carry out profitable advertising campaigns.\n\n-Strategy and analysis of results such as optimization decisions."),
         "quieresConseguir": MessageLookupByLibrary.simpleMessage(
-            "Do you want to get more clients?"),
+            "You want to get more customers"),
         "quieresTener": MessageLookupByLibrary.simpleMessage(
-            "Do you want to have a mentor who will teach you the right way?"),
+            "You want to have a mentor who teaches you correctly"),
         "quieroMiAsesoriaBtn":
             MessageLookupByLibrary.simpleMessage("I want my advice"),
+        "recibirasInstruccionesPass": MessageLookupByLibrary.simpleMessage(
+            "You will receive an email with instructions to reset your password."),
         "recuerdaPrimero": MessageLookupByLibrary.simpleMessage(
             "Remember: First. We will talk to make the checklist of your business and analyze what you need most at this time."),
         "recuerdame": MessageLookupByLibrary.simpleMessage("Remember me"),
@@ -216,6 +223,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "resolvamosEsto":
             MessageLookupByLibrary.simpleMessage("Let\'s figure this out."),
         "resultadosMenuBtn": MessageLookupByLibrary.simpleMessage("Results"),
+        "seHaEnviadoUnCorreo": MessageLookupByLibrary.simpleMessage(
+            "An email with instructions has been sent, please check your email"),
         "seamosSinceros": MessageLookupByLibrary.simpleMessage(
             "Let\'s be honest, we are in the era of personalized.\n\nThat is why by hiring me for your conference I will focus on the topics that DO interest them, educating and entertaining all the participants of the event."),
         "seleccioneOpcion":
@@ -232,7 +241,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "siguemeEnTodas": MessageLookupByLibrary.simpleMessage(
             "Follow me on all networks to know TIPS and ADS updates"),
         "siguienteBtn": MessageLookupByLibrary.simpleMessage("NEXT"),
-        "siu": MessageLookupByLibrary.simpleMessage("IF"),
+        "siu": MessageLookupByLibrary.simpleMessage("YES"),
         "soyElResp": MessageLookupByLibrary.simpleMessage(
             "I AM RESPONSIBLE FOR YOUR SUCCESS"),
         "telefonoForm": MessageLookupByLibrary.simpleMessage("Phone number"),

@@ -14,7 +14,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  
   @override
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
@@ -33,14 +32,14 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const SizedBox(
-                      height: 200,
+                      height: 80,
                     ),
                     Stack(
                       alignment: Alignment.topCenter,
                       children: [
                         Container(
-                          alignment: Alignment.topCenter,
-                          constraints: BoxConstraints(maxWidth: 1200, minHeight: hScreen - 200),
+                          alignment: Alignment.center,
+                          constraints: BoxConstraints(maxWidth: 1200, minHeight: hScreen),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -96,14 +95,14 @@ class _LoginPageState extends State<LoginPage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   if (wScreen <= 980) const SizedBox(width: 200, child: Image(image: logoGrande)),
-                                  const SizedBox(width: 340, child: LoginForm()),
+                                  const SizedBox(width: 364, child: LoginForm()),
                                   if (wScreen <= 980)
                                     Column(
                                       children: [
                                         Center(
                                           child: Container(
                                               padding: const EdgeInsets.all(10),
-                                              constraints: const BoxConstraints(maxWidth: 400),
+                                              constraints: const BoxConstraints(maxWidth: 370),
                                               child: Wrap(
                                                 alignment: WrapAlignment.center,
                                                 children: [

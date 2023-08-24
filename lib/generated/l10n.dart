@@ -50,70 +50,70 @@ class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  /// `ADS Education\nand Strategy`
+  /// `Education and\nADS Strategy`
   String get educacionYEstrategia {
     return Intl.message(
-      'ADS Education\nand Strategy',
+      'Education and\nADS Strategy',
       name: 'educacionYEstrategia',
       desc: '',
       args: [],
     );
   }
 
-  /// `You came to the right world`
+  /// `You arrived at the right place`
   String get llegasteAlMundo {
     return Intl.message(
-      'You came to the right world',
+      'You arrived at the right place',
       name: 'llegasteAlMundo',
       desc: '',
       args: [],
     );
   }
 
-  /// `IF`
+  /// `YES`
   String get siu {
     return Intl.message(
-      'IF',
+      'YES',
       name: 'siu',
       desc: '',
       args: [],
     );
   }
 
-  /// `Are you looking to accelerate your business with advertising?`
+  /// `You want to accelerate your business with advertising`
   String get buscasAcelerar {
     return Intl.message(
-      'Are you looking to accelerate your business with advertising?',
+      'You want to accelerate your business with advertising',
       name: 'buscasAcelerar',
       desc: '',
       args: [],
     );
   }
 
-  /// `Do you want to get more clients?`
+  /// `You want to get more customers`
   String get quieresConseguir {
     return Intl.message(
-      'Do you want to get more clients?',
+      'You want to get more customers',
       name: 'quieresConseguir',
       desc: '',
       args: [],
     );
   }
 
-  /// `Do you want to have a mentor who will teach you the right way?`
+  /// `You want to have a mentor who teaches you correctly`
   String get quieresTener {
     return Intl.message(
-      'Do you want to have a mentor who will teach you the right way?',
+      'You want to have a mentor who teaches you correctly',
       name: 'quieresTener',
       desc: '',
       args: [],
     );
   }
 
-  /// `You want to stop feeling anguish about results that do not convert`
+  /// `You want to stop feeling anguish for results that do not convert`
   String get deseasDejar {
     return Intl.message(
-      'You want to stop feeling anguish about results that do not convert',
+      'You want to stop feeling anguish for results that do not convert',
       name: 'deseasDejar',
       desc: '',
       args: [],
@@ -130,10 +130,10 @@ class AppLocalizations {
     );
   }
 
-  /// `LEARN ALL ABOUT ADS`
+  /// `LEARN EVERYTHING ABOUT ADS`
   String get aprendeTodoAds {
     return Intl.message(
-      'LEARN ALL ABOUT ADS',
+      'LEARN EVERYTHING ABOUT ADS',
       name: 'aprendeTodoAds',
       desc: '',
       args: [],
@@ -170,20 +170,20 @@ class AppLocalizations {
     );
   }
 
-  /// `ADVISORY 1:1`
+  /// `ADVICE 1:1`
   String get asesoria11 {
     return Intl.message(
-      'ADVISORY 1:1',
+      'ADVICE 1:1',
       name: 'asesoria11',
       desc: '',
       args: [],
     );
   }
 
-  /// `MENTORING`
+  /// `MENTORSHIP`
   String get mentoria {
     return Intl.message(
-      'MENTORING',
+      'MENTORSHIP',
       name: 'mentoria',
       desc: '',
       args: [],
@@ -210,20 +210,20 @@ class AppLocalizations {
     );
   }
 
-  /// `LOOK WITH YOUR OWN EYES`
+  /// `SEE IT WITH YOUR OWN EYES`
   String get miraloOjos {
     return Intl.message(
-      'LOOK WITH YOUR OWN EYES',
+      'SEE IT WITH YOUR OWN EYES',
       name: 'miraloOjos',
       desc: '',
       args: [],
     );
   }
 
-  /// `For 4 years I have been committed to educating and empowering businesses with effective advertising strategies that give the point.\n\nWith a journey of more than $1,000,000 USD invested and a return of $15,000,000 USD in a large number of advertising campaigns with Countless proofs on Facebook, Instagram and TikTok ADS, I affirm that success in business is achieved with:\n\n1.An excellent advertising strategy\n2.Analyzing the data\n3.Have an experienced professional\n\nMy mission is to be your mentor or manager of your brand and accompany you throughout the process.`
+  /// `For 4 years I have been committed to educating and empowering businesses with effective advertising strategies that hit the mark.\n\nWith a journey of more than $1,000,000 USD invested and a return of $15,000,000 USD in a large number of advertising campaigns with countless tests on Facebook, Instagram and TikTok ADS, I affirm that success in business is achieved with:\n\n. An excellent advertising strategy\n. Analyzing data\n. Having a professional with experience\n\nMy mission is to be your mentor or the manager of your brand and accompany you throughout the process.`
   String get contactoLargeText {
     return Intl.message(
-      'For 4 years I have been committed to educating and empowering businesses with effective advertising strategies that give the point.\n\nWith a journey of more than \$1,000,000 USD invested and a return of \$15,000,000 USD in a large number of advertising campaigns with Countless proofs on Facebook, Instagram and TikTok ADS, I affirm that success in business is achieved with:\n\n1.An excellent advertising strategy\n2.Analyzing the data\n3.Have an experienced professional\n\nMy mission is to be your mentor or manager of your brand and accompany you throughout the process.',
+      'For 4 years I have been committed to educating and empowering businesses with effective advertising strategies that hit the mark.\n\nWith a journey of more than \$1,000,000 USD invested and a return of \$15,000,000 USD in a large number of advertising campaigns with countless tests on Facebook, Instagram and TikTok ADS, I affirm that success in business is achieved with:\n\n. An excellent advertising strategy\n. Analyzing data\n. Having a professional with experience\n\nMy mission is to be your mentor or the manager of your brand and accompany you throughout the process.',
       name: 'contactoLargeText',
       desc: '',
       args: [],
@@ -260,10 +260,10 @@ class AppLocalizations {
     );
   }
 
-  /// `PRIVACY POLICIES`
+  /// `PRIVACY POLICY`
   String get politicasDeProivacidad {
     return Intl.message(
-      'PRIVACY POLICIES',
+      'PRIVACY POLICY',
       name: 'politicasDeProivacidad',
       desc: '',
       args: [],
@@ -320,10 +320,10 @@ class AppLocalizations {
     );
   }
 
-  /// `LOGIN`
+  /// `LOG IN`
   String get botonLogin {
     return Intl.message(
-      'LOGIN',
+      'LOG IN',
       name: 'botonLogin',
       desc: '',
       args: [],
@@ -341,10 +341,10 @@ class AppLocalizations {
   }
 
   /// `COMPLETELY CUSTOMIZED`
-  String get completamentePers {
+  String get completPers {
     return Intl.message(
       'COMPLETELY CUSTOMIZED',
-      name: 'completamentePers',
+      name: 'completPers',
       desc: '',
       args: [],
     );
@@ -1533,6 +1533,56 @@ class AppLocalizations {
     return Intl.message(
       'TO REGISTER',
       name: 'registrarBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your email address`
+  String get ingresaTuDirEmail {
+    return Intl.message(
+      'Enter your email address',
+      name: 'ingresaTuDirEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You will receive an email with instructions to reset your password.`
+  String get recibirasInstruccionesPass {
+    return Intl.message(
+      'You will receive an email with instructions to reset your password.',
+      name: 'recibirasInstruccionesPass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The mail does not exist`
+  String get elEmailNoExiste {
+    return Intl.message(
+      'The mail does not exist',
+      name: 'elEmailNoExiste',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An email with instructions has been sent, please check your email`
+  String get seHaEnviadoUnCorreo {
+    return Intl.message(
+      'An email with instructions has been sent, please check your email',
+      name: 'seHaEnviadoUnCorreo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go to login`
+  String get irAlLoginBtn {
+    return Intl.message(
+      'Go to login',
+      name: 'irAlLoginBtn',
       desc: '',
       args: [],
     );

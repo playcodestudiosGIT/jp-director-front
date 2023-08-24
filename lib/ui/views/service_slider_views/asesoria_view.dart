@@ -8,7 +8,6 @@ import '../../../generated/l10n.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 
-
 class AsesoriaView extends StatelessWidget {
   const AsesoriaView({super.key});
 
@@ -23,9 +22,9 @@ class AsesoriaMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     final appLocal = AppLocalizations.of(context);
     double wScreen = MediaQuery.of(context).size.width;
+    double hScreen = MediaQuery.of(context).size.height;
     return Container(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         constraints: const BoxConstraints(maxWidth: 800),
@@ -40,27 +39,29 @@ class AsesoriaMain extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
-                        appLocal.asesoria11,
-                        style: (wScreen < 550) ? DashboardLabel.h1 : DashboardLabel.gigant,
-                      ),
-                      Container(
-                        width: 300,
-                        height: 5,
-                        decoration: const BoxDecoration(
-                            gradient: LinearGradient(colors: [
-                          bgColor,
-                          azulText,
-                          bgColor,
-                        ])),
-                      ),
+                      if (hScreen > 624) ...[
+                        Text(
+                          appLocal.asesoria11,
+                          style: (wScreen < 550) ? DashboardLabel.h1 : DashboardLabel.gigant,
+                        ),
+                        Container(
+                          width: 300,
+                          height: 5,
+                          decoration: const BoxDecoration(
+                              gradient: LinearGradient(colors: [
+                            bgColor,
+                            azulText,
+                            bgColor,
+                          ])),
+                        ),
+                      ],
                       const SizedBox(
-                        height: 30,
+                        height: 25,
                       ),
                     ],
                   ),
                   const SizedBox(
-                    width: 60,
+                    width: 30,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +69,7 @@ class AsesoriaMain extends StatelessWidget {
                     children: [
                       FittedBox(
                         child: Text(
-                          appLocal.completamentePers,
+                          appLocal.completPers,
                           textAlign: TextAlign.start,
                           style: GoogleFonts.roboto(
                             fontSize: 18,
@@ -78,7 +79,7 @@ class AsesoriaMain extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(
-                        height: 30,
+                        height: 25,
                       ),
                       Text(
                         appLocal.enUnaVideollamada,
@@ -106,10 +107,9 @@ class AsesoriaMain extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              BotonVerde(text: appLocal.quieroMiAsesoriaBtn, onPressed: ()=> NavigatorService.navigateTo(Flurorouter.asesoriaRoute), width: 200)
+              BotonVerde(text: appLocal.quieroMiAsesoriaBtn, onPressed: () => NavigatorService.navigateTo(Flurorouter.asesoriaRoute), width: 200)
             ],
           ),
         ));
   }
 }
-

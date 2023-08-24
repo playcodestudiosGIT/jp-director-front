@@ -52,7 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "como": MessageLookupByLibrary.simpleMessage("¿Cómo?"),
         "comoPuedoBuscarteRRSS": MessageLookupByLibrary.simpleMessage(
             "¿Cómo te puedo buscar en redes sociales?"),
-        "completamentePers":
+        "completPers":
             MessageLookupByLibrary.simpleMessage("COMPLETAMENTE PERSONALIZADO"),
         "conTuNeg": MessageLookupByLibrary.simpleMessage("con TU NEGOCIO"),
         "confCampanas":
@@ -103,6 +103,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Durante el primer mes, te enseñaré todo lo que sé y elaboraremos - lanzaremos en conjunto tu plan de publicidad donde aprenderás la forma correcta de crecer tu negocio.\n\nLos siguientes dos meses tendremos varias sesiones de análisis de resultados con el plan que desarrollamos, y progresivamente optimizaremos todas tus campañas.\n\nEntenderás como si estuvieras viendo un semáforo; avanzar o parar dependiendo del color que muestre."),
         "educacionYEstrategia": MessageLookupByLibrary.simpleMessage(
             "Educación y\nEstrategia de ADS"),
+        "elEmailNoExiste":
+            MessageLookupByLibrary.simpleMessage("El correo no existe"),
         "empezamosBtn": MessageLookupByLibrary.simpleMessage("¿Empezamos?"),
         "enElTranscurso": MessageLookupByLibrary.simpleMessage(
             "En el transcurso de 2 a 3 días me estaré comunicando contigo para explicarte los siguientes pasos."),
@@ -131,6 +133,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "¡Gracias por brindarnos tu información!"),
         "hasHechoPubAntes": MessageLookupByLibrary.simpleMessage(
             "¿Has hecho publicidad antes?"),
+        "ingresaTuDirEmail": MessageLookupByLibrary.simpleMessage(
+            "Ingresa tu dirección de correo"),
         "ingreseApellidoTextFiel":
             MessageLookupByLibrary.simpleMessage("Ingrese su apellido"),
         "ingreseNombreTextField":
@@ -148,6 +152,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "inteligenteInv":
             MessageLookupByLibrary.simpleMessage("INTELIGENTE INVERSIÓN"),
         "intermedio": MessageLookupByLibrary.simpleMessage("Intermedio"),
+        "irAlLoginBtn": MessageLookupByLibrary.simpleMessage("Ir al Login"),
         "laContraDebe6Caracteres": MessageLookupByLibrary.simpleMessage(
             "La contraseña debe tener mas de 6 caracteres"),
         "llegasteAlMundo":
@@ -214,6 +219,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Quieres tener un mentor que te enseñe de manera correcta"),
         "quieroMiAsesoriaBtn":
             MessageLookupByLibrary.simpleMessage("Quiero mi Asesoría"),
+        "recibirasInstruccionesPass": MessageLookupByLibrary.simpleMessage(
+            "recibiras un correo electrónico con instrucciones para reestablecer tu contraseña"),
         "recuerdaPrimero": MessageLookupByLibrary.simpleMessage(
             "Recuerda: Primero. conversaremos para hacer el checklist de tu negocio y analizar qué es lo que más necesitas en este momento."),
         "recuerdame": MessageLookupByLibrary.simpleMessage("Recuérdame"),
@@ -225,6 +232,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "resolvamosEsto":
             MessageLookupByLibrary.simpleMessage("Resolvamos esto."),
         "resultadosMenuBtn": MessageLookupByLibrary.simpleMessage("Resultados"),
+        "seHaEnviadoUnCorreo": MessageLookupByLibrary.simpleMessage(
+            "Se ha enviado un correo electrónico con instrucciones, porfavor verifica tu correo electrónico"),
         "seamosSinceros": MessageLookupByLibrary.simpleMessage(
             "Seamos sinceros, estamos en la era de lo personalizado.\n\nEs por eso que contratándome para tu conferencia me enfocaré en los temas que SÍ les interesan, educando y divirtiendo a todos los participantes del evento."),
         "seleccioneOpcion":

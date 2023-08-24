@@ -36,7 +36,29 @@ class _ClientPageLayoutState extends State<ClientPageLayout> with SingleTickerPr
     final isAparece = Provider.of<SideBarProvider>(context).isAparece;
     final wScreen = MediaQuery.of(context).size.width;
     final hScreen = MediaQuery.of(context).size.height;
+    final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.transparent,
+        mini: true,
+        onPressed: () {
+          // asdf
+          if (authProvider.locale == const Locale('es')) {
+            authProvider.setLocale(const Locale('en'));
+          } else {
+            authProvider.setLocale(const Locale('es'));
+          }
+        },
+        child: (authProvider.locale == const Locale('es'))
+            ? const Image(
+                image: NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/es_flag_qbeneh.png'),
+                width: 30,
+              )
+            : const Image(
+                image: NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/en_flag_fyiybd.png'),
+                width: 30,
+                ),
+      ),
       backgroundColor: bgColor,
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,

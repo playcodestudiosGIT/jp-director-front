@@ -29,7 +29,7 @@
     "botonLogin": "ENTRAR",
     "botonReg": "Registrate",
 
-    "completamentePers": "COMPLETAMENTE PERSONALIZADO",
+    "completPers": "COMPLETAMENTE PERSONALIZADO",
     "enUnaVideollamada": "En una videollamada de 1 hora conversaremos de:\nCampañas, Presupuestos, Estrategias, Problemas Actuales, Inhabilitaciones y todo lo que quieras aclarar o aprender.",
     "resolvamosEsto": "Resolvamos esto.",
     "quieroMiAsesoriaBtn": "Quiero mi Asesoría",
@@ -165,5 +165,11 @@
     "ingreseUnaPassValida": "Ingrese una contraseña valida",
     "laContraDebe6Caracteres": "La contraseña debe tener mas de 6 caracteres",
     "passNoCoinciden": "Las contraseñas no coinciden",
-    "registrarBtn": "REGISTRAR"
+    "registrarBtn": "REGISTRAR",
+
+    "ingresaTuDirEmail": "Ingresa tu dirección de correo",
+    "recibirasInstruccionesPass": "recibiras un correo electrónico con instrucciones para reestablecer tu contraseña",
+    "elEmailNoExiste": "El correo no existe",
+    "seHaEnviadoUnCorreo": "Se ha enviado un correo electrónico con instrucciones, porfavor verifica tu correo electrónico",
+    "irAlLoginBtn": "Ir al Login"
 }

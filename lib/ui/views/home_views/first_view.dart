@@ -194,6 +194,7 @@ class MobileBody extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          const SizedBox(height: 60),
           Text(
             appLocal.educacionYEstrategia,
             textAlign: (screenData > 550) ? TextAlign.left : TextAlign.center,
@@ -210,7 +211,7 @@ class MobileBody extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10),
@@ -218,7 +219,7 @@ class MobileBody extends StatelessWidget {
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 Text(
-                  appLocal.si,
+                  appLocal.siu,
                   style: GoogleFonts.roboto(fontSize: (screenData > 550) ? 86 : 54, fontWeight: FontWeight.w500, color: azulText),
                 ),
                 Column(
@@ -247,7 +248,7 @@ class MobileBody extends StatelessWidget {
           ),
           Image(
             image: bgHome,
-            width: (screenData < 450) ? 400 : 500,
+            width: (screenData < 450) ? 300 : 500,
           ),
           const SizedBox(
             height: 10,
