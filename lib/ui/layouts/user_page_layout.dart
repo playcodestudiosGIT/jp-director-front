@@ -147,8 +147,9 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                   ),
                 ),
                 if (wScreen < 850) const Positioned(left: -10, top: 5, child: HomeAppMenu()),
+                if (wScreen > 480)
                 Positioned(
-                    right: (wScreen <= 390) ? 10 : 45,
+                    right: 10,
                     top: 12,
                     child: CustomButton(
                       text: appLocal.botonLogin,
@@ -157,19 +158,46 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                         NavigatorService.replaceTo(Flurorouter.loginRoute);
                       },
                     )),
-                if (wScreen > 420)
-                  Positioned(
-                    right: (wScreen <= 390) ? 90 : 125,
+                if (wScreen <= 480)
+                Positioned(
+                    right: 10,
+                    top: 10,
+                    child: IconButton(
+                      icon: const Icon(Icons.login_outlined, color: azulText),
+                      style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
+                      onPressed: () {
+                        NavigatorService.replaceTo(Flurorouter.loginRoute);
+                      },
+                    )),
+                if (wScreen > 480)
+                Positioned(
+                    right: 90,
                     top: 15,
                     child: TextButton(
                       style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
                       onPressed: () {
                         NavigatorService.replaceTo(Flurorouter.registerRoute);
-                      }, // Navigate to register page
+                      },
                       child: Text(
                         appLocal.botonReg,
                         style: GoogleFonts.roboto(fontSize: 14, color: azulText, fontWeight: FontWeight.w800),
                       ),
+                    ),
+                  ),
+                if (wScreen <= 480)
+                  Positioned(
+                    right: 60,
+                    top: 10,
+                    child: IconButton(
+                      style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
+                      onPressed: () {
+                        NavigatorService.replaceTo(Flurorouter.registerRoute);
+                      },
+                      icon: const Icon(Icons.app_registration_rounded, color: azulText,), // Navigate to register page
+                      // child: Text(
+                      //   appLocal.botonReg,
+                      //   style: GoogleFonts.roboto(fontSize: 14, color: azulText, fontWeight: FontWeight.w800),
+                      // ),
                     ),
                   ),
               ],

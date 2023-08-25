@@ -6,6 +6,7 @@ import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:jpdirector_frontend/ui/shared/widgets/progreso.dart';
 import 'package:provider/provider.dart';
 
+import '../../generated/l10n.dart';
 import '../../models/curso.dart';
 import '../../providers/all_cursos_provider.dart';
 import '../../services/navigator_service.dart';
@@ -19,6 +20,7 @@ class CourseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final authProvider = Provider.of<AuthProvider>(context);
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -76,8 +78,8 @@ class CourseCard extends StatelessWidget {
                                       NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/0');
                                     },
                                     child: (esMio)
-                                        ? Text('CONTINUAR', style: DashboardLabel.mini.copyWith(color: azulText))
-                                        : Text('VER MAS', style: DashboardLabel.mini.copyWith(color: azulText)))
+                                        ? Text(appLocal.continuar, style: DashboardLabel.mini.copyWith(color: azulText))
+                                        : Text(appLocal.verMas, style: DashboardLabel.mini.copyWith(color: azulText)))
                               ],
                             ),
                           ),

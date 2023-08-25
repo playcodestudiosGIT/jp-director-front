@@ -3,6 +3,7 @@ import 'package:jpdirector_frontend/ui/shared/botones/custom_button.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 
 import '../../constant.dart';
+import '../../generated/l10n.dart';
 
 
 class WhiteCard extends StatelessWidget {
@@ -13,6 +14,7 @@ class WhiteCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final size = MediaQuery.of(context).size;
     return Container(
       margin: const EdgeInsets.all(8),
@@ -37,7 +39,7 @@ class WhiteCard extends StatelessWidget {
                     const SizedBox(width: 30),
                     if(size.width > 500)
                     CustomButton(
-                      text: 'Comentarios',
+                      text: appLocal.comentariosBtn,
                       onPress: () {
                         Scaffold.of(context).openEndDrawer();
                       },

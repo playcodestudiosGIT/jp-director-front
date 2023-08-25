@@ -699,7 +699,7 @@ packages:
     source: hosted
     version: "2.4.9"
   video_player_platform_interface:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: video_player_platform_interface
       sha256: "1ca9acd7a0fb15fb1a990cb554e6f004465c6f37c99d2285766f08a4b2802988"
@@ -707,7 +707,7 @@ packages:
     source: hosted
     version: "6.2.0"
   video_player_web:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: video_player_web
       sha256: "44ce41424d104dfb7cf6982cc6b84af2b007a24d126406025bf40de5d481c74c"

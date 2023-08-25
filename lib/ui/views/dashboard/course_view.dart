@@ -6,7 +6,9 @@ import 'package:jpdirector_frontend/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
+import 'package:video_player_platform_interface/video_player_platform_interface.dart';
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../models/curso.dart';
 import '../../../models/progress.dart';
 import '../../../providers/all_cursos_provider.dart';
@@ -49,7 +51,8 @@ class _CourseViewState extends State<CourseView> {
     prog = user!.progress.where((element) => element.moduloId == curso.modulos[widget.videoIndex].id).first;
     Provider.of<AuthProvider>(context, listen: false).isAutenticated();
     final Uri url = Uri.parse(curso.modulos[widget.videoIndex].video);
-    videoPlayerController = VideoPlayerController.networkUrl(url)
+    videoPlayerController = VideoPlayerController.networkUrl(url,
+        videoPlayerOptions: VideoPlayerOptions(webOptions: const VideoPlayerWebOptions(allowContextMenu: false, allowRemotePlayback: true)))
       ..initialize().then((_) {
         isLoading = false;
         setState(() {});
@@ -97,6 +100,7 @@ class _CourseViewState extends State<CourseView> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
     final hScreen = MediaQuery.of(context).size.height;
     videoPlayerController.addListener(() {
@@ -194,7 +198,7 @@ class _CourseViewState extends State<CourseView> {
                                                     ),
                                                     const SizedBox(height: 10),
                                                     Text(
-                                                      'Generando Certificado',
+                                                      appLocal.generandoCert,
                                                       style: DashboardLabel.h3,
                                                     )
                                                   ],
@@ -243,7 +247,7 @@ class _CourseViewState extends State<CourseView> {
                                                             SizedBox(
                                                               width: 280,
                                                               child: Text(
-                                                                'Felicidades, tu certificado esta listo!',
+                                                                appLocal.felicidadesCert,
                                                                 textAlign: TextAlign.center,
                                                                 style: DashboardLabel.h4,
                                                               ),
@@ -267,7 +271,7 @@ class _CourseViewState extends State<CourseView> {
                                                                     color: azulText,
                                                                   ),
                                                                   label: Text(
-                                                                    'VER',
+                                                                    appLocal.ver,
                                                                     style: DashboardLabel.h4.copyWith(color: azulText),
                                                                   ),
                                                                 ),
@@ -292,7 +296,7 @@ class _CourseViewState extends State<CourseView> {
                                     child: (wScreen < 500)
                                         ? const Icon(Icons.workspace_premium_outlined)
                                         : Text(
-                                            'CERTIFICADO',
+                                            appLocal.certificadoBtn,
                                             style: DashboardLabel.paragraph.copyWith(color: azulText),
                                           )),
                               if (percent == 100.0 && cert.urlPdf != 'urlPdf') ...[
@@ -304,7 +308,7 @@ class _CourseViewState extends State<CourseView> {
                                         launchUrl(url);
                                       },
                                       child: Text(
-                                        'VER CERTIFICADO',
+                                        appLocal.verCertificadoBtn,
                                         style: DashboardLabel.paragraph.copyWith(color: azulText),
                                       )),
                                 if (wScreen < 400)
@@ -412,7 +416,7 @@ class _CourseViewState extends State<CourseView> {
                                               child: Row(
                                                 children: [
                                                   CustomButton(
-                                                    text: 'Ver Material',
+                                                    text: appLocal.verMaterialBtn,
                                                     onPress: () {
                                                       final url = Uri.parse(
                                                           'https://drive.google.com/drive/folders/${curso.modulos[widget.videoIndex].idDriveFolder}?usp=sharing');
@@ -483,16 +487,6 @@ class _CourseViewState extends State<CourseView> {
                                                         NavigatorService.replaceTo('${Flurorouter.curso}${curso.id}/$i');
                                                       },
                                                     ),
-                                                    // Row(
-                                                    //   mainAxisAlignment: MainAxisAlignment.end,
-                                                    //   children: [
-                                                    //     Row(children: [
-                                                    //       const Icon(Icons.ondemand_video_outlined, size: 15, color: Colors.black38),
-                                                    //       const SizedBox(width: 10),
-                                                    //       Text('2hr', style: DashboardLabel.mini.copyWith(color: Colors.black38))
-                                                    //     ]),
-                                                    //   ],
-                                                    // ),
                                                     Divider(
                                                       color: blancoText.withOpacity(0.5),
                                                     ),
@@ -519,16 +513,19 @@ class _CourseViewState extends State<CourseView> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Container(
-                                        margin: (wScreen < 390) ? const EdgeInsets.only(left: 0) : const EdgeInsets.symmetric(horizontal: 15),
-                                        width: double.infinity,
-                                        height: 400,
-                                        // color: Colors.black,
-                                        child: (isLoading)
-                                            ? const Center(child: SizedBox(width: 35, height: 35, child: CircularProgressIndicator()))
-                                            : Chewie(
-                                                controller: chewieController,
-                                              )),
+                                    GestureDetector(
+                                      onSecondaryTap: () {},
+                                      child: Container(
+                                          margin: (wScreen < 390) ? const EdgeInsets.only(left: 0) : const EdgeInsets.symmetric(horizontal: 15),
+                                          width: double.infinity,
+                                          height: 400,
+                                          // color: Colors.black,
+                                          child: (isLoading)
+                                              ? const Center(child: SizedBox(width: 35, height: 35, child: CircularProgressIndicator()))
+                                              : Chewie(
+                                                  controller: chewieController,
+                                                )),
+                                    ),
                                     const SizedBox(
                                       height: 15,
                                     ),
@@ -537,7 +534,7 @@ class _CourseViewState extends State<CourseView> {
                                         child: Row(
                                           children: [
                                             CustomButton(
-                                              text: 'Ver Material',
+                                              text: appLocal.verMaterialBtn,
                                               onPress: () {
                                                 final url = Uri.parse(
                                                     'https://drive.google.com/drive/folders/${curso.modulos[widget.videoIndex].idDriveFolder}?usp=sharing');
@@ -644,6 +641,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final curso = Provider.of<AllCursosProvider>(context).cursoView;
     return Stack(
       children: [
@@ -655,7 +653,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
           child: ListView(
             children: [
               const SizedBox(height: 70),
-              Text('Lista de comentarios', style: DashboardLabel.mini),
+              Text(appLocal.listaDeComentarios, style: DashboardLabel.mini),
               const SizedBox(height: 10),
               Divider(color: Colors.white.withOpacity(0.5)),
               const SizedBox(height: 15),
@@ -726,22 +724,6 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          // Row(
-                          //   children: [
-                          //     // IconButton(
-                          //     //     onPressed: () {},
-                          //     //     icon: const Icon(
-                          //     //       Icons.arrow_circle_up_outlined,
-                          //     //       color: azulText,
-                          //     //       size: 20,
-                          //     //     )),
-                          //     // Text(
-                          //     //   '26',
-                          //     //   style: DashboardLabel.mini,
-                          //     // ),
-                          //   ],
-                          // ),
-
                           if (Provider.of<AuthProvider>(context, listen: false).user!.rol == 'ADMIN_ROLE') ...[
                             IconButton(
                               onPressed: () async {
@@ -776,7 +758,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                                     child: Column(
                                       children: [
                                         Text(
-                                          'Seguro que desea borrar el comentario?',
+                                          appLocal.seguroBorrarComent,
                                           style: DashboardLabel.h4,
                                         ),
                                         const SizedBox(height: 30),
@@ -784,7 +766,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                                           mainAxisAlignment: MainAxisAlignment.end,
                                           children: [
                                             CustomButton(
-                                              text: 'Borrar',
+                                              text: appLocal.siBorrar,
                                               onPress: () {
                                                 final moduloId = curso.modulos[widget.videoIndex].id;
                                                 Provider.of<AllCursosProvider>(context, listen: false)
@@ -796,7 +778,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                                             ),
                                             const SizedBox(width: 10),
                                             CustomButton(
-                                                text: 'Cancelar',
+                                                text: appLocal.cancelarBtn,
                                                 onPress: () {
                                                   Navigator.pop(context, false);
                                                 },
@@ -835,7 +817,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                 );
               }),
               const SizedBox(height: 15),
-              Center(child: Text('Fin de los comentarios', style: DashboardLabel.mini)),
+              Center(child: Text(appLocal.finDeLosComentarios, style: DashboardLabel.mini)),
               const SizedBox(height: 250)
             ],
           ),
@@ -864,10 +846,10 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                           initialValue: comentario,
                           style: DashboardLabel.mini,
                           validator: (value) {
-                            if (value == null || value.isEmpty || value.length < 3) return 'Comentario Invalido';
+                            if (value == null || value.isEmpty || value.length < 3) return appLocal.comentarioInvalido;
                             return null;
                           },
-                          decoration: buildInputDecoration(label: 'Agrega un comentario', icon: Icons.comment_outlined),
+                          decoration: buildInputDecoration(label: appLocal.agregarUnComentario, icon: Icons.comment_outlined),
                           maxLines: 3,
                           onChanged: (value) {
                             setState(() {
@@ -880,7 +862,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       CustomButton(
-                        text: 'Comentar',
+                        text: appLocal.comentar,
                         onPress: () => setState(() {
                           if (keyform.currentState!.validate()) {
                             Provider.of<AllCursosProvider>(context, listen: false)
@@ -898,7 +880,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                   const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.only(left: 10.0),
-                    child: Text('Un administrador respondera tu pregunta', style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5))),
+                    child: Text(appLocal.unAdmRespondera, style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5))),
                   ),
                   const SizedBox(height: 10)
                 ],

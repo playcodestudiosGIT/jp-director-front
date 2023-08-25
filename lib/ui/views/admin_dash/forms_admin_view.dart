@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/constant.dart';
+import 'package:jpdirector_frontend/generated/l10n.dart';
 import 'package:jpdirector_frontend/providers/form_provider.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/title_label.dart';
@@ -28,6 +29,7 @@ class _FormAdminViewState extends State<FormAdminView> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final forms = Provider.of<FormProvider>(context).allForms;
     final size = MediaQuery.of(context).size;
     return Container(
@@ -38,10 +40,10 @@ class _FormAdminViewState extends State<FormAdminView> {
         physics: const ClampingScrollPhysics(),
         children: [
           const SizedBox(height: 80),
-          const Padding(
-            padding: EdgeInsets.only(left: 0.0),
+          Padding(
+            padding: const EdgeInsets.only(left: 0.0),
             child: TitleLabel(
-              texto: 'Administración de Formularios',
+              texto: appLocal.adminForms,
             ),
           ),
           Theme(
@@ -51,18 +53,18 @@ class _FormAdminViewState extends State<FormAdminView> {
               dataRowMinHeight: 300,
               columns:  [
                 DataColumn(
-                  label: Text('INFORMACIÓN', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
+                  label: Text(appLocal.informacionMayus, style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
                 DataColumn(
-                  label: Text('REDES SOCIALES', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
+                  label: Text(appLocal.redesSociales, style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
                 DataColumn(
-                  label: Text('ACCIONES', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
+                  label: Text(appLocal.acciones, style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
               ],
               source: FormsDTS(forms, context),
               header: Text(
-                'Lista de Formularios',
+                appLocal.listaForm,
                 style: DashboardLabel.h3,
                 maxLines: 2,
               ),

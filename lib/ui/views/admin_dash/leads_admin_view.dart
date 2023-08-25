@@ -5,6 +5,7 @@ import 'package:jpdirector_frontend/providers/leads_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../datatables/leads_datasource.dart';
+import '../../../generated/l10n.dart';
 import '../../shared/labels/dashboard_label.dart';
 import '../../shared/labels/title_label.dart';
 import '../../shared/modals/leads_modal.dart';
@@ -28,6 +29,7 @@ class _LeadsAdminViewState extends State<LeadsAdminView> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final leads = Provider.of<LeadsProvider>(context).leads;
     final size = MediaQuery.of(context).size;
     return Container(
@@ -38,10 +40,10 @@ class _LeadsAdminViewState extends State<LeadsAdminView> {
         physics: const ClampingScrollPhysics(),
         children: [
           const SizedBox(height: 80),
-          const Padding(
-            padding: EdgeInsets.only(left: 0.0),
+          Padding(
+            padding: const EdgeInsets.only(left: 0.0),
             child: TitleLabel(
-              texto: 'Administración de Leads',
+              texto: appLocal.adminLeads,
             ),
           ),
           Theme(
@@ -49,15 +51,15 @@ class _LeadsAdminViewState extends State<LeadsAdminView> {
             child: PaginatedDataTable(
               columns: [
                 DataColumn(
-                  label: Text('INFORMACIÓN', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
+                  label: Text(appLocal.datosDescarga, style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
                 DataColumn(
-                  label: Text('ACCIONES', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
+                  label: Text(appLocal.acciones, style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
               ],
               source: LeadsDTS(leads, context),
               header: Text(
-                'Lista de descargas',
+                appLocal.listaDescarga,
                 style: DashboardLabel.h3,
                 maxLines: 2,
               ),

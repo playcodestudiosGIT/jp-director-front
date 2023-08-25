@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../generated/l10n.dart';
 import '../../../models/curso.dart';
 import '../../../providers/export_all_providers.dart';
 import '../../../router/router.dart';
@@ -13,6 +14,7 @@ class BotonQuieroYa extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final authProvider = Provider.of<AuthProvider>(context);
     return Container(
       constraints: const BoxConstraints(maxWidth: 800),
@@ -20,7 +22,7 @@ class BotonQuieroYa extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomButton(
-              text: 'QUIERO ESTE CURSO YA',
+              text: appLocal.quieroYaBtn,
               onPress: () async {
                 if (authProvider.authStatus == AuthStatus.notAuthenticated) {
                   NavigatorService.replaceTo('${Flurorouter.payNewUserRouteAlt}/${curso.id}/login');

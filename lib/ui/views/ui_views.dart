@@ -15,7 +15,7 @@ export '/ui/views/static/asesoria_page.dart';
 export '/ui/views/static/checkout_thx_view.dart';
 export '/ui/views/static/encargado_page.dart';
 export '/ui/views/static/new_password.dart';
-export '/ui/views/static/reset_password.dart';
+export 'login/reset_password.dart';
 export '/ui/views/static/verify_user_page.dart';
 export '/ui/views/admin_dash/cursos_admin_view.dart';
 export '/ui/views/admin_dash/forms_admin_view.dart';

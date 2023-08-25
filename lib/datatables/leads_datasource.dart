@@ -3,6 +3,7 @@ import 'package:jpdirector_frontend/providers/leads_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../constant.dart';
+import '../generated/l10n.dart';
 import '../models/lead.dart';
 import '../services/notificacion_service.dart';
 import '../ui/shared/modals/leads_modal.dart';
@@ -15,6 +16,7 @@ class LeadsDTS extends DataTableSource {
 
   @override
   DataRow getRow(int index) {
+    final appLocal = AppLocalizations.of(context);
     final lead = leads[index];
 
     return DataRow.byIndex(index: index, cells: [
@@ -23,14 +25,14 @@ class LeadsDTS extends DataTableSource {
         children: [
           Row(
             children: [
-              Text('Correo:   ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text(appLocal.correoForm, style: TextStyle(color: blancoText.withOpacity(0.5))),
               Text(lead.email),
             ],
           ),
           const SizedBox(height: 10),
           Row(
             children: [
-              Text('Teléfono:   ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text(appLocal.telefonoForm, style: TextStyle(color: blancoText.withOpacity(0.5))),
               Text(lead.telf),
             ],
           ),
@@ -55,8 +57,8 @@ class LeadsDTS extends DataTableSource {
           IconButton(
               onPressed: () {
                 final dialog = AlertDialog(
-                  title: const Text('Esta seguro de borrar'),
-                  content: Text('Borrar definitivamente el usuario "${lead.email}"'),
+                  title: Text(appLocal.seguroBorrar),
+                  content: Text('${appLocal.borrarDefinitivo} Lead "${lead.email}"'),
                   actions: [
                     TextButton(
                         onPressed: () {
@@ -69,13 +71,13 @@ class LeadsDTS extends DataTableSource {
                           final isDelete = await Provider.of<LeadsProvider>(context, listen: false).deleteLead(lead.uid);
                           if (isDelete != null && context.mounted) {
                             Navigator.of(context).pop();
-                            NotifServ.showSnackbarError('Lead "${lead.email}" Eliminado', Colors.green);
+                            NotifServ.showSnackbarError('Lead "${lead.email}" ${appLocal.eliminado}', Colors.green);
                           } else {
                             if (context.mounted)Navigator.of(context).pop();
-                            NotifServ.showSnackbarError('Error Eliminando Usuario', Colors.red);
+                            NotifServ.showSnackbarError(appLocal.errorEliminadoLead, Colors.red);
                           }
                         },
-                        child: const Text('Si, Borrar'))
+                        child: Text(appLocal.siBorrar))
                   ],
                 );
                 showDialog(

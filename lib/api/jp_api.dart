@@ -43,7 +43,7 @@ class JpApi {
       final resp = await _dio.put(path, data: formData);
       return resp.data;
     } catch (e) {
-      throw ('POST-Error en la conexión $e');
+      throw ('POST-Error conexión $e');
     }
   }
 
@@ -54,7 +54,7 @@ class JpApi {
       final resp = await _dio.delete(path, data: formData);
       return resp.data;
     } catch (e) {
-      throw ('DELETE-Error en la conexión $e');
+      throw ('DELETE-Error conexion $e');
     }
   }
 
@@ -66,7 +66,7 @@ class JpApi {
       return resp;
     } on DioException catch (e) {
 
-      throw ('Error en el PUT ACT IMG USER $e');
+      throw ('PUT-Error ACT IMG USER $e');
     }
   }
   
@@ -78,7 +78,7 @@ class JpApi {
       return resp;
     } on DioException catch (e) {
 
-      throw ('Error en el PUT ACT IMG BANER $e');
+      throw ('PUT-Error ACT IMG BANER $e');
     }
   }
 }

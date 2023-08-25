@@ -95,14 +95,14 @@ class _LoginPageState extends State<LoginPage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   if (wScreen <= 980) const SizedBox(width: 200, child: Image(image: logoGrande)),
-                                  const SizedBox(width: 364, child: LoginForm()),
+                                  const SizedBox(width: 320, child: LoginForm()),
                                   if (wScreen <= 980)
                                     Column(
                                       children: [
                                         Center(
                                           child: Container(
                                               padding: const EdgeInsets.all(10),
-                                              constraints: const BoxConstraints(maxWidth: 370),
+                                              constraints: const BoxConstraints(maxWidth: 320),
                                               child: Wrap(
                                                 alignment: WrapAlignment.center,
                                                 children: [
@@ -132,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                                                   InkWell(
                                                     onTap: () => NavigatorService.navigateTo(Flurorouter.pdpRoute),
                                                     child: Text(
-                                                      appLocal.politicasDeProivacidad,
+                                                      appLocal.politicaDePrivacidad,
                                                       textAlign: TextAlign.center,
                                                       style: const TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
                                                     ),

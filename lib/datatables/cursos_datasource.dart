@@ -5,6 +5,7 @@ import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
 import '../constant.dart';
+import '../generated/l10n.dart';
 import '../models/curso.dart';
 import '../services/notificacion_service.dart';
 import '../ui/shared/modals/cursos_modal.dart';
@@ -17,6 +18,7 @@ class CursosDTS extends DataTableSource {
 
   @override
   DataRow getRow(int index) {
+    final appLocal = AppLocalizations.of(context);
     List<Curso> cursos = Provider.of<AllCursosProvider>(context).allCursos;
     final curso = cursos[index];
 
@@ -81,7 +83,7 @@ class CursosDTS extends DataTableSource {
             Row(
               children: [
                 Text(
-                  'Modulos: ',
+                  appLocal.modulos2puntos,
                   style: DashboardLabel.mini,
                 ),
                 Text(modulos.length.toString()),
@@ -91,7 +93,7 @@ class CursosDTS extends DataTableSource {
             Row(
               children: [
                 Text(
-                  'Duración: ',
+                  appLocal.duracion2puntos,
                   style: DashboardLabel.mini,
                 ),
                 Text(curso.duracion),
@@ -124,8 +126,8 @@ class CursosDTS extends DataTableSource {
           IconButton(
               onPressed: () {
                 final dialog = AlertDialog(
-                  title: const Text('Esta seguro de borrar'),
-                  content: Text('Borrar definitivamente el usuario "${curso.nombre}"'),
+                  title: Text(appLocal.seguroBorrar),
+                  content: Text('${appLocal.borrarDefinitivo} "${curso.nombre}"'),
                   actions: [
                     TextButton(
                         onPressed: () {
@@ -138,10 +140,10 @@ class CursosDTS extends DataTableSource {
                           final isDelete = await Provider.of<AllCursosProvider>(context, listen: false).deleteCurso(curso.id);
                           if (isDelete != null && context.mounted) {
                             Navigator.pop(context, true);
-                            NotifServ.showSnackbarError('Lead "${curso.nombre}" Eliminado', Colors.green);
+                            NotifServ.showSnackbarError('Lead "${curso.nombre}" ${appLocal.eliminado}', Colors.green);
                           } else {
-                            if(context.mounted)Navigator.pop(context, false);
-                            NotifServ.showSnackbarError('Error Eliminando Curso', Colors.red);
+                            if (context.mounted) Navigator.pop(context, false);
+                            NotifServ.showSnackbarError(appLocal.errorEliminadoCurso, Colors.red);
                           }
                         },
                         child: const Text('Si, Borrar'))

@@ -60,7 +60,7 @@ class ResultadosView extends StatelessWidget {
                               options: CarouselOptions(
 
                                 height: 500,
-                                viewportFraction: 0.5,
+                                viewportFraction: (wScreen < 600) ? 0.7 : 0.5,
                                 enlargeFactor: 0.8,
                                 enlargeCenterPage: true,
                                 enlargeStrategy: CenterPageEnlargeStrategy.zoom,

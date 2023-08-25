@@ -11,6 +11,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../api/jp_api.dart';
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../providers/auth_provider.dart';
 import '../../../services/notificacion_service.dart';
 import '../../cards/white_card.dart';
@@ -18,16 +19,8 @@ import '../../shared/labels/dashboard_label.dart';
 
 // ignore: must_be_immutable
 class DashMiCuenta extends StatefulWidget {
-  late String nombreModal = '';
-  late String apellidoModal = '';
-  late String correoModal = '';
-  late String telfModal = '';
-  late String meModal = '';
-  late String claveModal = '';
-  late String facebookModal = '';
-  late String instagramModal = '';
-  late String tiktokModal = '';
-  DashMiCuenta({super.key});
+  
+  const DashMiCuenta({super.key});
 
   @override
   State<DashMiCuenta> createState() => _DashMiCuentaState();
@@ -38,24 +31,34 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
   GlobalKey<FormState> formKey1 = GlobalKey<FormState>(debugLabel: 'dashFormKey1');
   String newPass = '';
   String reptNewPass = '';
+  late String nombreModal;
+  late String apellidoModal;
+  late String correoModal ;
+  late String telfModal ;
+  late String meModal ;
+  late String claveModal ;
+  late String facebookModal ;
+  late String instagramModal ;
+  late String tiktokModal ;
 
   @override
   void initState() {
     super.initState();
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
-    widget.nombreModal = authProvider.user!.nombre;
-    widget.apellidoModal = authProvider.user!.apellido;
-    widget.telfModal = authProvider.user!.telf;
-    widget.correoModal = authProvider.user!.correo;
-    widget.meModal = authProvider.user!.me;
-    widget.claveModal = '';
-    widget.facebookModal = authProvider.user!.facebook;
-    widget.instagramModal = authProvider.user!.instagram;
-    widget.tiktokModal = authProvider.user!.tiktok;
+    nombreModal = authProvider.user!.nombre;
+    apellidoModal = authProvider.user!.apellido;
+    telfModal = authProvider.user!.telf;
+    correoModal = authProvider.user!.correo;
+    meModal = authProvider.user!.me;
+    claveModal = '';
+    facebookModal = authProvider.user!.facebook;
+    instagramModal = authProvider.user!.instagram;
+    tiktokModal = authProvider.user!.tiktok;
   }
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final authProvider = Provider.of<AuthProvider>(context);
     final usersProvider = Provider.of<UsersProvider>(context);
 
@@ -65,7 +68,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
         const SizedBox(
           height: 80,
         ),
-        const TitleLabel(texto: 'Mi Cuenta'),
+        TitleLabel(texto: appLocal.miCuentaMenuBtn),
         const SizedBox(
           height: 10,
         ),
@@ -159,9 +162,9 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Sobre mi.',
-                style: TextStyle(color: blancoText, fontSize: 18),
+              Text(
+                appLocal.sobreMi,
+                style: const TextStyle(color: blancoText, fontSize: 18),
                 textAlign: TextAlign.start,
               ),
               const SizedBox(height: 15),
@@ -182,26 +185,26 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
         Column(
           children: [
             CustomButton(
-              text: 'Actualizar Información',
+              text: appLocal.actInfoBtn,
               width: 200,
               onPress: () async {
                 final dialog = AlertDialog(
                   backgroundColor: bgColor,
                   actions: [
                     CustomButton(
-                      text: 'Actualizar',
+                      text: appLocal.actualizarBtn,
                       onPress: () async {
                         await usersProvider.updateUser(
                             uid: authProvider.user!.uid,
-                            nombre: widget.nombreModal,
-                            apellido: widget.apellidoModal,
-                            correo: widget.correoModal,
-                            me: widget.meModal,
-                            telf: widget.telfModal,
-                            facebook: widget.facebookModal,
-                            instagram: widget.instagramModal,
-                            tiktok: widget.tiktokModal,
-                            pass: widget.claveModal,
+                            nombre: nombreModal,
+                            apellido: apellidoModal,
+                            correo: correoModal,
+                            me: meModal,
+                            telf: telfModal,
+                            facebook: facebookModal,
+                            instagram: instagramModal,
+                            tiktok: tiktokModal,
+                            pass: claveModal,
                             );
                         if (context.mounted) {
                           setState(() {
@@ -213,7 +216,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                       color: Colors.green,
                     ),
                     CustomButton(
-                      text: 'Cancelar',
+                      text: appLocal.cancelarBtn,
                       onPress: () {
                         Navigator.pop(context, false);
                       },
@@ -229,7 +232,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                     child: Column(
                       children: [
                         Text(
-                          'Actualizar Información',
+                          appLocal.actInfo,
                           style: DashboardLabel.h1,
                         ),
                         const SizedBox(
@@ -241,11 +244,11 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                             cursorColor: azulText,
                             initialValue: authProvider.user!.nombre,
                             onChanged: (value) {
-                              widget.nombreModal = value;
+                              nombreModal = value;
                               authProvider.user!.nombre = value;
                             },
                             style: GoogleFonts.roboto(color: Colors.white, fontSize: 14),
-                            decoration: buildInputDecoration(icon: FontAwesomeIcons.userAstronaut, label: 'Nombre'),
+                            decoration: buildInputDecoration(icon: FontAwesomeIcons.userAstronaut, label: appLocal.nombreTextField),
                           ),
                         ),
                         const SizedBox(
@@ -257,11 +260,11 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                             cursorColor: azulText,
                             initialValue: authProvider.user!.apellido,
                             onChanged: (value) {
-                              widget.apellidoModal = value;
+                              apellidoModal = value;
                               authProvider.user!.apellido = value;
                             },
                             style: GoogleFonts.roboto(color: Colors.white, fontSize: 14),
-                            decoration: buildInputDecoration(icon: FontAwesomeIcons.idCard, label: 'Apellido'),
+                            decoration: buildInputDecoration(icon: FontAwesomeIcons.idCard, label: appLocal.apellidoTextFiel),
                           ),
                         ),
                         const SizedBox(
@@ -275,11 +278,11 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                             keyboardType: TextInputType.phone,
                             initialValue: authProvider.user!.telf,
                             onChanged: (value) {
-                              widget.telfModal = value.toString();
+                              telfModal = value.toString();
                               authProvider.user!.telf = value;
                             },
                             style: GoogleFonts.roboto(color: Colors.white, fontSize: 14),
-                            decoration: buildInputDecoration(icon: FontAwesomeIcons.phone, label: 'Teléfono'),
+                            decoration: buildInputDecoration(icon: FontAwesomeIcons.phone, label: appLocal.telefonoForm),
                           ),
                         ),
                         const SizedBox(
@@ -292,11 +295,11 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                             keyboardType: TextInputType.emailAddress,
                             initialValue: authProvider.user!.correo,
                             onChanged: (value) {
-                              widget.correoModal = value;
+                              correoModal = value;
                               authProvider.user!.correo = value;
                             },
                             style: GoogleFonts.roboto(color: Colors.white, fontSize: 14),
-                            decoration: buildInputDecoration(icon: FontAwesomeIcons.addressCard, label: 'Correo'),
+                            decoration: buildInputDecoration(icon: FontAwesomeIcons.addressCard, label: appLocal.correoTextFiel),
                           ),
                         ),
                         const SizedBox(
@@ -309,11 +312,11 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                             maxLines: 4,
                             initialValue: authProvider.user!.me,
                             onChanged: (value) {
-                              widget.meModal = value;
+                              meModal = value;
                               authProvider.user!.me = value;
                             },
                             style: GoogleFonts.roboto(color: Colors.white, fontSize: 14),
-                            decoration: buildInputDecoration(icon: FontAwesomeIcons.circleInfo, label: 'Sobre Mi'),
+                            decoration: buildInputDecoration(icon: FontAwesomeIcons.circleInfo, label: appLocal.sobreMi),
                           ),
                         ),
                       ],
@@ -343,7 +346,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
             margin: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               children: [
-                const TitleLabel(texto: 'Redes Sociales'),
+                TitleLabel(texto: appLocal.redesSociales),
                 const SizedBox(
                   height: 25,
                 ),
@@ -408,26 +411,26 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                   height: 15,
                 ),
                 CustomButton(
-                  text: 'Actualizar redes sociales',
+                  text: appLocal.actRrssBtn,
                   width: 215,
                   onPress: () {
                     final dialog = AlertDialog(
                       backgroundColor: bgColor,
                       actions: [
                         CustomButton(
-                          text: 'Actualizar',
+                          text: appLocal.actualizarBtn,
                           onPress: () {
                             usersProvider.updateUser(
                                 uid: authProvider.user!.uid,
-                                nombre: widget.nombreModal,
-                                apellido: widget.apellidoModal,
-                                correo: widget.correoModal,
-                                me: widget.meModal,
-                                telf: widget.telfModal,
-                                facebook: widget.facebookModal,
-                                instagram: widget.instagramModal,
-                                tiktok: widget.tiktokModal,
-                                pass: widget.claveModal,
+                                nombre: nombreModal,
+                                apellido: apellidoModal,
+                                correo: correoModal,
+                                me: meModal,
+                                telf: telfModal,
+                                facebook: facebookModal,
+                                instagram: instagramModal,
+                                tiktok: tiktokModal,
+                                pass: claveModal,
                                 rol: 'USER_ROLE');
                             setState(() {});
                             Navigator.pop(context);
@@ -436,7 +439,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                           color: Colors.green,
                         ),
                         CustomButton(
-                            text: 'Cancelar',
+                            text: appLocal.cancelarBtn,
                             onPress: () {
                               Navigator.pop(context);
                             },
@@ -450,7 +453,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                         child: Column(
                           children: [
                             Text(
-                              'Actualizar Redes Sociales',
+                              appLocal.actRrssBtn,
                               style: DashboardLabel.h2,
                             ),
                             const SizedBox(
@@ -462,7 +465,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                                 cursorColor: azulText,
                                 initialValue: authProvider.user!.facebook,
                                 onChanged: (value) {
-                                  widget.facebookModal = value;
+                                  facebookModal = value;
                                   authProvider.user!.facebook = value;
                                 },
                                 style: DashboardLabel.paragraph,
@@ -478,7 +481,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                                 cursorColor: azulText,
                                 initialValue: authProvider.user!.instagram,
                                 onChanged: (value) {
-                                  widget.instagramModal = value;
+                                  instagramModal = value;
                                   authProvider.user!.instagram = value;
                                 },
                                 style: DashboardLabel.paragraph,
@@ -494,7 +497,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                                 cursorColor: azulText,
                                 initialValue: authProvider.user!.tiktok,
                                 onChanged: (value) {
-                                  widget.tiktokModal = value;
+                                  tiktokModal = value;
                                   authProvider.user!.tiktok = value.toString();
                                 },
                                 style: DashboardLabel.paragraph,
@@ -527,16 +530,17 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
   }
 
   pickImage(BuildContext context, String id) async {
+    final appLocal = AppLocalizations.of(context);
     FilePickerResult? result = await FilePicker.platform.pickFiles();
 
     if (result != null) {
       PlatformFile file = result.files.first;
 
       if (file.extension!.toLowerCase() != 'jpg' && file.extension!.toLowerCase() != 'jpeg' && file.extension!.toLowerCase() != 'png') {
-        alertaDeDialogo(title: 'Extension Invalida', dubtitle: 'La extension debe ser "PNG, JPG ó JPEG"', textButton: 'Entendido');
+        alertaDeDialogo(title: appLocal.extensionInvalida, dubtitle: appLocal.laExtensionDebe, textButton: 'OK');
       }
       if (file.size > 1000000) {
-        alertaDeDialogo(title: 'Tamaño invalido', dubtitle: 'La imagen debe pesar menos de 1 MB', textButton: 'Entendido');
+        alertaDeDialogo(title: appLocal.tamanoInvalido, dubtitle: appLocal.debePesarMenos, textButton: 'OK');
       }
 
       final img = await JpApi.editUserImg('/uploads/usuarios/$id', file.bytes!);
@@ -545,7 +549,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
           Provider.of<AuthProvider>(context, listen: false).user!.img = img.toString();
         });
       }
-      NotifServ.showSnackbarError('cambiada con exito', Colors.green);
+      NotifServ.showSnackbarError(appLocal.imgCambiadaNtf, Colors.green);
     } else {
       // User canceled the picker
     }

@@ -7,6 +7,7 @@ import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:jpdirector_frontend/ui/shared/widgets/acordion.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../generated/l10n.dart';
 import '../../../models/curso.dart';
 import '../../../models/usuario_model.dart';
 import '../../../providers/export_all_providers.dart';
@@ -79,6 +80,7 @@ class _WebBodyState extends State<WebBody> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final Usuario user = Provider.of<AuthProvider>(context).user ?? usuarioDummy;
 
     if (user.nombre == '') {
@@ -120,7 +122,7 @@ class _WebBodyState extends State<WebBody> {
           constraints: const BoxConstraints(maxWidth: 800),
           width: double.infinity,
           child: Text(
-            'Actualizado 2023',
+            appLocal.actualizado2023,
             style: DashboardLabel.h4.copyWith(color: const Color(0xffFFEF98), fontWeight: FontWeight.bold),
           ),
         ),
@@ -205,7 +207,7 @@ class _WebBodyState extends State<WebBody> {
           ),
         ),
         const SizedBox(height: 60),
-        Text('Conoce lo que aprenderas', style: DashboardLabel.h1),
+        Text(appLocal.conoceloQue, style: DashboardLabel.h1),
         const SizedBox(height: 30),
         Container(constraints: const BoxConstraints(maxWidth: 800), child: Column(children: modulos)),
         const SizedBox(height: 100),

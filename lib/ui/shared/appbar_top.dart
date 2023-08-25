@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/ui/shared/logotop.dart';
 import 'package:jpdirector_frontend/ui/shared/widgets/menu_item_top.dart';
 
+import '../../generated/l10n.dart';
 import '../../router/router.dart';
 import '../../services/navigator_service.dart';
 
@@ -10,6 +11,7 @@ class AppbarTop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
     return Container(
         width: wScreen,
@@ -28,9 +30,9 @@ class AppbarTop extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Container(
-                    width: 140,
+                    width: 110,
                     alignment: Alignment.center,
-                    child: MenuItemTop(text: 'MIS CURSOS', isActive: false, onPress: () {
+                    child: MenuItemTop(text: appLocal.misCursosMenuBtn, isActive: false, onPress: () {
                       NavigatorService.navigateTo(Flurorouter.clienteMisCursosDash);
                     }),
                   ),

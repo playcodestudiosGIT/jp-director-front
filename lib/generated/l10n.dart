@@ -1538,6 +1538,16 @@ class AppLocalizations {
     );
   }
 
+  /// `RECUPERAR TU CONTRASEÑA`
+  String get recuperarPass {
+    return Intl.message(
+      'RECUPERAR TU CONTRASEÑA',
+      name: 'recuperarPass',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Enter your email address`
   String get ingresaTuDirEmail {
     return Intl.message(
@@ -1583,6 +1593,1016 @@ class AppLocalizations {
     return Intl.message(
       'Go to login',
       name: 'irAlLoginBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `BUY`
+  String get comprarBtn {
+    return Intl.message(
+      'BUY',
+      name: 'comprarBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Updated 2023`
+  String get actualizado2023 {
+    return Intl.message(
+      'Updated 2023',
+      name: 'actualizado2023',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This mission is for you`
+  String get estaMision {
+    return Intl.message(
+      'This mission is for you',
+      name: 'estaMision',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Entrepreneur or Freelancer`
+  String get emprendedorOFree {
+    return Intl.message(
+      'Entrepreneur or Freelancer',
+      name: 'emprendedorOFree',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you are an entrepreneur, have a business or want training that truly trains your team to launch campaigns correctly`
+  String get emprendedorOFreeText {
+    return Intl.message(
+      'If you are an entrepreneur, have a business or want training that truly trains your team to launch campaigns correctly',
+      name: 'emprendedorOFreeText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Business Owners`
+  String get duenosNegocios {
+    return Intl.message(
+      'Business Owners',
+      name: 'duenosNegocios',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You see advertising all the time on your phone and you know that your business needs it to make itself known and sell more. This training will help you understand how to do it and its importance.`
+  String get duenosNegociosText {
+    return Intl.message(
+      'You see advertising all the time on your phone and you know that your business needs it to make itself known and sell more. This training will help you understand how to do it and its importance.',
+      name: 'duenosNegociosText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Business (Local or physical)`
+  String get negocioLocFis {
+    return Intl.message(
+      'Business (Local or physical)',
+      name: 'negocioLocFis',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clothing store, restaurant, gym, bar or any business that needs traffic in your store to consume your product or service.`
+  String get negocioLocFisText {
+    return Intl.message(
+      'Clothing store, restaurant, gym, bar or any business that needs traffic in your store to consume your product or service.',
+      name: 'negocioLocFisText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Professionals in Marketing and Communication`
+  String get profesionalesEnMark {
+    return Intl.message(
+      'Professionals in Marketing and Communication',
+      name: 'profesionalesEnMark',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you are studying or working in a company, this will be very valuable to develop within the company or offer it as one of your services.`
+  String get profesionalesEnMarkText {
+    return Intl.message(
+      'If you are studying or working in a company, this will be very valuable to develop within the company or offer it as one of your services.',
+      name: 'profesionalesEnMarkText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Consultants or Specialists`
+  String get consultEspec {
+    return Intl.message(
+      'Consultants or Specialists',
+      name: 'consultEspec',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EYou are a doctor, coach, realtor, lawyer or nutritionist and your services are highly sought after on social networks, so all that remains is to expose yourself in the correct way in advertising.`
+  String get consultEspecText {
+    return Intl.message(
+      'EYou are a doctor, coach, realtor, lawyer or nutritionist and your services are highly sought after on social networks, so all that remains is to expose yourself in the correct way in advertising.',
+      name: 'consultEspecText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disabled, Retarded, or Blocked`
+  String get inhabResagBloq {
+    return Intl.message(
+      'Disabled, Retarded, or Blocked',
+      name: 'inhabResagBloq',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you are studying or working in a company, this will be very valuable to develop within the company or offer it as one of your services.`
+  String get inhabResagBloqText {
+    return Intl.message(
+      'If you are studying or working in a company, this will be very valuable to develop within the company or offer it as one of your services.',
+      name: 'inhabResagBloqText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Know what you will learn`
+  String get conoceloQue {
+    return Intl.message(
+      'Know what you will learn',
+      name: 'conoceloQue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `They lived the mission`
+  String get ellosVivieronMision {
+    return Intl.message(
+      'They lived the mission',
+      name: 'ellosVivieronMision',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quiero Ads`
+  String get quieroAds {
+    return Intl.message(
+      'Quiero Ads',
+      name: 'quieroAds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `students`
+  String get estudiantes {
+    return Intl.message(
+      'students',
+      name: 'estudiantes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `“I loved it, it is very complete and a world of knowledge. For my business this course achieved a before and after”.`
+  String get testimonioSaylin {
+    return Intl.message(
+      '“I loved it, it is very complete and a world of knowledge. For my business this course achieved a before and after”.',
+      name: 'testimonioSaylin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `“I studied computer science and a lot of education. After seeing the course I not only recovered my investment but I can also run my own advertising, thanks JP”.`
+  String get testimonioAnier {
+    return Intl.message(
+      '“I studied computer science and a lot of education. After seeing the course I not only recovered my investment but I can also run my own advertising, thanks JP”.',
+      name: 'testimonioAnier',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I have ideas and plans to develop for 6 months thanks to this course. Everyone who sees it will understand after learning with JP”`
+  String get testimonioTania {
+    return Intl.message(
+      'I have ideas and plans to develop for 6 months thanks to this course. Everyone who sees it will understand after learning with JP”',
+      name: 'testimonioTania',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `“In 1 month I managed to have more than 100 potential clients with my advertising campaigns. I recommend this course to everyone who wants to learn.”`
+  String get testimonioGerman {
+    return Intl.message(
+      '“In 1 month I managed to have more than 100 potential clients with my advertising campaigns. I recommend this course to everyone who wants to learn.”',
+      name: 'testimonioGerman',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I am JP Director`
+  String get soyJpDir {
+    return Intl.message(
+      'I am JP Director',
+      name: 'soyJpDir',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `For 4 years I have been dedicated to promoting brands and businesses with effective strategies in ads that hit the point. \n\nIn the whole process I have managed an amount of $1,000,000 USD in advertising campaigns, achieving $15,000,000 USD in internet sales. After countless tests, analysis and education, I decided to carry out this group experience to teach entrepreneurs, business owners or marketing teams to understand the engine of advertising campaigns.`
+  String get desdeHace4 {
+    return Intl.message(
+      'For 4 years I have been dedicated to promoting brands and businesses with effective strategies in ads that hit the point. \n\nIn the whole process I have managed an amount of \$1,000,000 USD in advertising campaigns, achieving \$15,000,000 USD in internet sales. After countless tests, analysis and education, I decided to carry out this group experience to teach entrepreneurs, business owners or marketing teams to understand the engine of advertising campaigns.',
+      name: 'desdeHace4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I WANT THIS COURSE NOW`
+  String get quieroYaBtn {
+    return Intl.message(
+      'I WANT THIS COURSE NOW',
+      name: 'quieroYaBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CONTINUE`
+  String get continuar {
+    return Intl.message(
+      'CONTINUE',
+      name: 'continuar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `you already have this course`
+  String get yaTienesEsteCurso {
+    return Intl.message(
+      'you already have this course',
+      name: 'yaTienesEsteCurso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You don't have any course`
+  String get noTienesCursos {
+    return Intl.message(
+      'You don\'t have any course',
+      name: 'noTienesCursos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `MY COURSES`
+  String get misCursosMenuBtn {
+    return Intl.message(
+      'MY COURSES',
+      name: 'misCursosMenuBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SETTING`
+  String get configuracionMenuBtn {
+    return Intl.message(
+      'SETTING',
+      name: 'configuracionMenuBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My account`
+  String get miCuentaMenuBtn {
+    return Intl.message(
+      'My account',
+      name: 'miCuentaMenuBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Users`
+  String get usuariosMenuBtn {
+    return Intl.message(
+      'Users',
+      name: 'usuariosMenuBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forms`
+  String get formulariosMenuBtn {
+    return Intl.message(
+      'Forms',
+      name: 'formulariosMenuBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leads`
+  String get leadsMenuBtn {
+    return Intl.message(
+      'Leads',
+      name: 'leadsMenuBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `LOG OUT`
+  String get logout {
+    return Intl.message(
+      'LOG OUT',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EXIT`
+  String get logoutLabel {
+    return Intl.message(
+      'EXIT',
+      name: 'logoutLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You already have all the courses`
+  String get yaTienesTodos {
+    return Intl.message(
+      'You already have all the courses',
+      name: 'yaTienesTodos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My courses`
+  String get misCursosLabel {
+    return Intl.message(
+      'My courses',
+      name: 'misCursosLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Available courses`
+  String get cursosDisponibles {
+    return Intl.message(
+      'Available courses',
+      name: 'cursosDisponibles',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About me`
+  String get sobreMi {
+    return Intl.message(
+      'About me',
+      name: 'sobreMi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `UPDATE INFORMATION`
+  String get actInfoBtn {
+    return Intl.message(
+      'UPDATE INFORMATION',
+      name: 'actInfoBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `UPDATE INFORMATION`
+  String get actInfo {
+    return Intl.message(
+      'UPDATE INFORMATION',
+      name: 'actInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `UPDATE NETWORKS`
+  String get actRrssBtn {
+    return Intl.message(
+      'UPDATE NETWORKS',
+      name: 'actRrssBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Social Networks`
+  String get redesSociales {
+    return Intl.message(
+      'Social Networks',
+      name: 'redesSociales',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `UPDATE`
+  String get actualizarBtn {
+    return Intl.message(
+      'UPDATE',
+      name: 'actualizarBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid Extension`
+  String get extensionInvalida {
+    return Intl.message(
+      'Invalid Extension',
+      name: 'extensionInvalida',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The extension must be PNG, JPG or JPEG`
+  String get laExtensionDebe {
+    return Intl.message(
+      'The extension must be PNG, JPG or JPEG',
+      name: 'laExtensionDebe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid size`
+  String get tamanoInvalido {
+    return Intl.message(
+      'Invalid size',
+      name: 'tamanoInvalido',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The image must be less than 1 MB`
+  String get debePesarMenos {
+    return Intl.message(
+      'The image must be less than 1 MB',
+      name: 'debePesarMenos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Image changed successfully`
+  String get imgCambiadaNtf {
+    return Intl.message(
+      'Image changed successfully',
+      name: 'imgCambiadaNtf',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `See more`
+  String get verMas {
+    return Intl.message(
+      'See more',
+      name: 'verMas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Modules: `
+  String get modulos2puntos {
+    return Intl.message(
+      'Modules: ',
+      name: 'modulos2puntos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Duration: `
+  String get duracion2puntos {
+    return Intl.message(
+      'Duration: ',
+      name: 'duracion2puntos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete`
+  String get seguroBorrar {
+    return Intl.message(
+      'Are you sure you want to delete',
+      name: 'seguroBorrar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete user`
+  String get seguroBorrarUsuario {
+    return Intl.message(
+      'Are you sure you want to delete user',
+      name: 'seguroBorrarUsuario',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permanently delete the user`
+  String get borrarDefinitivo {
+    return Intl.message(
+      'Permanently delete the user',
+      name: 'borrarDefinitivo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Removed`
+  String get eliminado {
+    return Intl.message(
+      'Removed',
+      name: 'eliminado',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error deleting course`
+  String get errorEliminadoCurso {
+    return Intl.message(
+      'Error deleting course',
+      name: 'errorEliminadoCurso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error deleting user`
+  String get errorEliminadoUsuario {
+    return Intl.message(
+      'Error deleting user',
+      name: 'errorEliminadoUsuario',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error deleting lead`
+  String get errorEliminadoLead {
+    return Intl.message(
+      'Error deleting lead',
+      name: 'errorEliminadoLead',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Services: `
+  String get servicios2puntos {
+    return Intl.message(
+      'Services: ',
+      name: 'servicios2puntos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Business: `
+  String get negocio2puntos {
+    return Intl.message(
+      'Business: ',
+      name: 'negocio2puntos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Advertising Level: `
+  String get advisoryLvl {
+    return Intl.message(
+      'Advertising Level: ',
+      name: 'advisoryLvl',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Advertising Before`
+  String get advisoryBefore {
+    return Intl.message(
+      'Advertising Before',
+      name: 'advisoryBefore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Agree:`
+  String get acepto2puntos {
+    return Intl.message(
+      'Agree:',
+      name: 'acepto2puntos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear form`
+  String get borrarForm {
+    return Intl.message(
+      'Clear form',
+      name: 'borrarForm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permanently delete the form`
+  String get borrarFormDef {
+    return Intl.message(
+      'Permanently delete the form',
+      name: 'borrarFormDef',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes, Delete`
+  String get siBorrar {
+    return Intl.message(
+      'Yes, Delete',
+      name: 'siBorrar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ACTIVE`
+  String get activo {
+    return Intl.message(
+      'ACTIVE',
+      name: 'activo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PENDING`
+  String get pendiente {
+    return Intl.message(
+      'PENDING',
+      name: 'pendiente',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User`
+  String get usuario {
+    return Intl.message(
+      'User',
+      name: 'usuario',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lead Management`
+  String get adminLeads {
+    return Intl.message(
+      'Lead Management',
+      name: 'adminLeads',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `DOWNLOAD DATA`
+  String get datosDescarga {
+    return Intl.message(
+      'DOWNLOAD DATA',
+      name: 'datosDescarga',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download list`
+  String get listaDescarga {
+    return Intl.message(
+      'Download list',
+      name: 'listaDescarga',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ACTIONS`
+  String get acciones {
+    return Intl.message(
+      'ACTIONS',
+      name: 'acciones',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forms Administration`
+  String get adminForms {
+    return Intl.message(
+      'Forms Administration',
+      name: 'adminForms',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forms list`
+  String get listaForm {
+    return Intl.message(
+      'Forms list',
+      name: 'listaForm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `INFORMATION`
+  String get informacionMayus {
+    return Intl.message(
+      'INFORMATION',
+      name: 'informacionMayus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course Administration`
+  String get adminCursos {
+    return Intl.message(
+      'Course Administration',
+      name: 'adminCursos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course List`
+  String get listaDeCursos {
+    return Intl.message(
+      'Course List',
+      name: 'listaDeCursos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `IMAGE OF THE COURSE`
+  String get imgDeCurso {
+    return Intl.message(
+      'IMAGE OF THE COURSE',
+      name: 'imgDeCurso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `COURSE INFORMATION`
+  String get infoDeCurso {
+    return Intl.message(
+      'COURSE INFORMATION',
+      name: 'infoDeCurso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Users Management`
+  String get adminUsuarios {
+    return Intl.message(
+      'Users Management',
+      name: 'adminUsuarios',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Users list`
+  String get listaUsuarios {
+    return Intl.message(
+      'Users list',
+      name: 'listaUsuarios',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `IMAGE`
+  String get imagen {
+    return Intl.message(
+      'IMAGE',
+      name: 'imagen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `COURSES`
+  String get cursoMayus {
+    return Intl.message(
+      'COURSES',
+      name: 'cursoMayus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SEE CERTIFICATE`
+  String get verCertificadoBtn {
+    return Intl.message(
+      'SEE CERTIFICATE',
+      name: 'verCertificadoBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SEE`
+  String get ver {
+    return Intl.message(
+      'SEE',
+      name: 'ver',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `COMMENTS`
+  String get comentariosBtn {
+    return Intl.message(
+      'COMMENTS',
+      name: 'comentariosBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SEE MATERIALS`
+  String get verMaterialBtn {
+    return Intl.message(
+      'SEE MATERIALS',
+      name: 'verMaterialBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comment list`
+  String get listaDeComentarios {
+    return Intl.message(
+      'Comment list',
+      name: 'listaDeComentarios',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End of comments`
+  String get finDeLosComentarios {
+    return Intl.message(
+      'End of comments',
+      name: 'finDeLosComentarios',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add a comment`
+  String get agregarUnComentario {
+    return Intl.message(
+      'Add a comment',
+      name: 'agregarUnComentario',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `COMMENT`
+  String get comentar {
+    return Intl.message(
+      'COMMENT',
+      name: 'comentar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An Administrator will answer your question`
+  String get unAdmRespondera {
+    return Intl.message(
+      'An Administrator will answer your question',
+      name: 'unAdmRespondera',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Generating Certificate`
+  String get generandoCert {
+    return Intl.message(
+      'Generating Certificate',
+      name: 'generandoCert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Congratulations, your certificate is ready!`
+  String get felicidadesCert {
+    return Intl.message(
+      'Congratulations, your certificate is ready!',
+      name: 'felicidadesCert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CERTIFICATE`
+  String get certificadoBtn {
+    return Intl.message(
+      'CERTIFICATE',
+      name: 'certificadoBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete the comment?`
+  String get seguroBorrarComent {
+    return Intl.message(
+      'Are you sure you want to delete the comment?',
+      name: 'seguroBorrarComent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid Comment`
+  String get comentarioInvalido {
+    return Intl.message(
+      'Invalid Comment',
+      name: 'comentarioInvalido',
       desc: '',
       args: [],
     );

@@ -5,6 +5,7 @@ import 'package:jpdirector_frontend/models/formulario.dart';
 import 'package:provider/provider.dart';
 
 import '../constant.dart';
+import '../generated/l10n.dart';
 import '../providers/form_provider.dart';
 import '../services/notificacion_service.dart';
 import '../ui/shared/modals/form_modal.dart';
@@ -17,6 +18,7 @@ class FormsDTS extends DataTableSource {
 
   @override
   DataRow getRow(int index) {
+    final appLocal = AppLocalizations.of(context);
     final form = forms[index];
 
     return DataRow.byIndex(index: index, cells: [
@@ -27,7 +29,7 @@ class FormsDTS extends DataTableSource {
           Row(
             children: [
               Text(
-                'Servicio:  ',
+                appLocal.servicios2puntos,
                 style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.bold, color: blancoText.withOpacity(0.5)),
               ),
               Text(
@@ -40,7 +42,7 @@ class FormsDTS extends DataTableSource {
           const SizedBox(height: 4),
           Row(
             children: [
-              Text('Nombre:  ', style: TextStyle(color: blancoText.withOpacity(0.5)),),
+              Text('${appLocal.nombreTextField}:  ', style: TextStyle(color: blancoText.withOpacity(0.5)),),
               Text(form.nombre),
               
             ],
@@ -49,7 +51,7 @@ class FormsDTS extends DataTableSource {
           const SizedBox(height: 4),
           Row(
             children: [
-              Text('Email:  ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text('${appLocal.correoTextFiel}:  ', style: TextStyle(color: blancoText.withOpacity(0.5))),
               Text(form.email),
               const Spacer(),
               Icon(Icons.copy, size: 15, color: blancoText.withOpacity(0.5),)
@@ -59,7 +61,7 @@ class FormsDTS extends DataTableSource {
           const SizedBox(height: 4),
           Row(
             children: [
-              Text('Teléfono:  ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text('${appLocal.telefonoForm}:  ', style: TextStyle(color: blancoText.withOpacity(0.5))),
               Text(form.phone),
             ],
           ),
@@ -67,7 +69,7 @@ class FormsDTS extends DataTableSource {
           const SizedBox(height: 4),
           Row(
             children: [
-              Text('Negocio:   ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text('${appLocal.negocio2puntos}:   ', style: TextStyle(color: blancoText.withOpacity(0.5))),
               Text(form.business),
             ],
           ),
@@ -75,7 +77,7 @@ class FormsDTS extends DataTableSource {
           const SizedBox(height: 4),
           Row(
             children: [
-              Text('Años de Operaciones:   ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text(' ${appLocal.cuantosAnosNegAct}:', style: TextStyle(color: blancoText.withOpacity(0.5))),
               Text(form.operationyears),
             ],
           ),
@@ -83,22 +85,22 @@ class FormsDTS extends DataTableSource {
           const SizedBox(height: 4),
           Row(
             children: [
-              Text('Nivel de Publicidad:   ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text('${appLocal.advisoryLvl}:   ', style: TextStyle(color: blancoText.withOpacity(0.5))),
               Text(form.advertisinglevel),
             ],
           ),
           const Divider(),
           Row(
             children: [
-              Text('Advertising Before   ', style: TextStyle(color: blancoText.withOpacity(0.5))),
-              if(form.advertisingbefore) const Text('SI'),
+              Text(appLocal.advisoryBefore, style: TextStyle(color: blancoText.withOpacity(0.5))),
+              if(form.advertisingbefore) Text(appLocal.si),
               if(!form.advertisingbefore) const Text('NO')
             ],
           ),
           const Divider(),
           Row(
             children: [
-              Text('Acepto:  ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text(appLocal.acepto2puntos, style: TextStyle(color: blancoText.withOpacity(0.5))),
               Text(form.agree.toUpperCase()),
             ],
           ),
@@ -147,13 +149,13 @@ class FormsDTS extends DataTableSource {
               icon: const Icon(
                 Icons.edit_outlined,
                 size: 16,
-                color: bgColor,
+                color: azulText,
               )),
           IconButton(
               onPressed: () {
                 final dialog = AlertDialog(
-                  title: const Text('Borrar formulario'),
-                  content: Text('Borrar definitivamente el formulario "${form.email}"'),
+                  title: Text(appLocal.borrarForm),
+                  content: Text('${appLocal.borrarFormDef} "${form.email}"'),
                   actions: [
                     TextButton(
                         onPressed: () {
@@ -165,9 +167,9 @@ class FormsDTS extends DataTableSource {
                           //BORRAR USUARIO
                           Provider.of<FormProvider>(context, listen: false).deleteForm(form.uid);
                           Navigator.of(context).pop();
-                          NotifServ.showSnackbarError('Lead "${form.email}" Eliminado', Colors.green);
+                          NotifServ.showSnackbarError('Lead "${form.email}" ${appLocal.eliminado}', Colors.green);
                         },
-                        child: const Text('Si, Borrar'))
+                        child: Text(appLocal.siBorrar))
                   ],
                 );
                 showDialog(
@@ -180,7 +182,6 @@ class FormsDTS extends DataTableSource {
                 size: 16,
                 color: Colors.red.withOpacity(0.8),
               )),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.email_outlined, color: azulText,)),
         ],
       )),
     ]);

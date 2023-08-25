@@ -73,9 +73,9 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                         children: [
                           _MenuTitle(isOpen: isOpen, controller: controller),
                           if (isOpen) ...[
-                            const SeparadorMenuTexto(text: 'CONFIGURACIÓN'),
+                            SeparadorMenuTexto(text: appLocal.configuracionMenuBtn),
                             MenuItemSide(
-                                text: 'Mi Cuenta',
+                                text: appLocal.miCuentaMenuBtn,
                                 icon: Icons.person_outline,
                                 isActive: sideBarProvider.currentPage == Flurorouter.clienteDash,
                                 onPress: () {
@@ -84,7 +84,7 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                                 }),
                             if (wScreen < 500)
                               MenuItemSide(
-                                  text: 'Mis Cursos',
+                                  text: appLocal.misCursosLabel,
                                   icon: Icons.person_outline,
                                   isActive: sideBarProvider.currentPage == Flurorouter.clienteMisCursosDash,
                                   onPress: () {
@@ -95,7 +95,7 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                               const SizedBox(height: 30),
                               const SeparadorMenuTexto(text: 'ADMIN'),
                               MenuItemSide(
-                                  text: 'Usuarios',
+                                  text: appLocal.usuariosMenuBtn,
                                   icon: Icons.people_alt_outlined,
                                   isActive: sideBarProvider.currentPage == Flurorouter.usersAdminDash,
                                   onPress: () {
@@ -103,7 +103,7 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                                     isOpen = false;
                                   }),
                               MenuItemSide(
-                                  text: 'Cursos',
+                                  text: appLocal.cursos,
                                   icon: Icons.menu_book_outlined,
                                   isActive: sideBarProvider.currentPage == Flurorouter.cursosAdminDash,
                                   onPress: () {
@@ -112,7 +112,7 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                                   }),
                              
                               MenuItemSide(
-                                  text: 'Formularios',
+                                  text: appLocal.formulariosMenuBtn,
                                   icon: Icons.question_answer,
                                   isActive: sideBarProvider.currentPage == Flurorouter.formsAdminDash,
                                   onPress: () {
@@ -120,7 +120,7 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                                     isOpen = false;
                                   }),
                               MenuItemSide(
-                                  text: 'Leads',
+                                  text: appLocal.leadsMenuBtn,
                                   icon: Icons.card_giftcard,
                                   isActive: sideBarProvider.currentPage == Flurorouter.leadsAdminDash,
                                   onPress: () {
@@ -131,9 +131,9 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                             const SizedBox(
                               height: 30,
                             ),
-                            const SeparadorMenuTexto(text: 'SALIR'),
+                            SeparadorMenuTexto(text: appLocal.logoutLabel),
                             MenuItemSide(
-                                text: 'Logout',
+                                text: appLocal.logout,
                                 icon: Icons.logout_rounded,
                                 isActive: false,
                                 onPress: () {
@@ -296,7 +296,7 @@ class _MenuTitle extends StatelessWidget {
                   width: 15,
                 ),
                 AnimatedIcon(
-                  size: 40,
+                  size: 30,
                   icon: AnimatedIcons.menu_close,
                   progress: controller,
                   color: azulText,

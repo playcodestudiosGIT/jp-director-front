@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../constant.dart';
 
+import '../../generated/l10n.dart';
 import '../../models/curso.dart';
 import '../../providers/export_all_providers.dart';
 
@@ -18,6 +19,7 @@ class CursoBanerView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final authProvider = Provider.of<AuthProvider>(context);
     final wSize = MediaQuery.of(context).size.width;
     return (wSize < 615)
@@ -65,11 +67,11 @@ class CursoBanerView extends StatelessWidget {
               ),
               if (esMio) ...[
                 Text(
-                  'Ya tienes este curso',
+                  appLocal.comprarBtn,
                   style: DashboardLabel.mini,
                 ),
                 CustomButton(
-                    text: 'continuar',
+                    text: appLocal.continuar,
                     onPress: () async {
                       NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/0');
                     },
@@ -77,7 +79,7 @@ class CursoBanerView extends StatelessWidget {
               ],
               if (!esMio) ...[
                 CustomButton(
-                    text: 'Comprar',
+                    text: appLocal.comprarBtn,
                     onPress: () async {
                       if (authProvider.authStatus == AuthStatus.notAuthenticated) {
                         NavigatorService.replaceTo('${Flurorouter.payNewUserRouteAlt}/${curso.id}/login');
@@ -157,20 +159,20 @@ class CursoBanerView extends StatelessWidget {
                             ),
                           if (esMio)
                             Text(
-                              'Ya tienes este curso',
+                              appLocal.yaTienesEsteCurso,
                               style: DashboardLabel.mini,
                             ),
                           const SizedBox(height: 10),
                           if (esMio)
                             CustomButton(
-                                text: 'Continuar',
+                                text: appLocal.continuar,
                                 onPress: () {
                                   NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/0');
                                 },
                                 width: 250),
                           if (!esMio)
                             CustomButton(
-                                text: 'Comprar',
+                                text: appLocal.comprarBtn,
                                 onPress: () async {
                                   if (authProvider.authStatus == AuthStatus.notAuthenticated) {
                                     NavigatorService.replaceTo('${Flurorouter.payNewUserRouteAlt}/${curso.id}/login');

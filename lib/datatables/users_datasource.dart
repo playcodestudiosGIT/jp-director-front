@@ -8,6 +8,7 @@ import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
+import '../generated/l10n.dart';
 import '../models/curso.dart';
 import '../models/usuario_model.dart';
 import '../providers/users_provider.dart';
@@ -23,6 +24,7 @@ class UsersDTS extends DataTableSource {
 
   @override
   DataRow getRow(int index) {
+    final appLocal = AppLocalizations.of(context);
     late final user = users[index];
 
     return DataRow.byIndex(index: index, cells: [
@@ -119,9 +121,9 @@ class UsersDTS extends DataTableSource {
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: (user.estado)
-                            ? Text('ACTIVO', style: DashboardLabel.paragraph)
+                            ? Text(appLocal.activo, style: DashboardLabel.paragraph)
                             : Text(
-                                'PENDIENTE',
+                                appLocal.pendiente,
                                 style: GoogleFonts.roboto(color: Colors.white),
                               ),
                       ),
@@ -136,7 +138,7 @@ class UsersDTS extends DataTableSource {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Sobre mi', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(.5))),
+                  Text(appLocal.sobreMi, style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(.5))),
                   const SizedBox(height: 8),
                   SizedBox(
                       width: 200,
@@ -241,8 +243,8 @@ class UsersDTS extends DataTableSource {
           IconButton(
               onPressed: () {
                 final dialog = AlertDialog(
-                  title: const Text('Esta seguro de borrar'),
-                  content: Text('Borrar definitivamente el usuario "${user.nombre}"'),
+                  title: Text(appLocal.seguroBorrar),
+                  content: Text('${appLocal.seguroBorrarUsuario} "${user.nombre}"'),
                   actions: [
                     TextButton(
                         onPressed: () {
@@ -256,13 +258,13 @@ class UsersDTS extends DataTableSource {
 
                           if (isDelete && context.mounted) {
                             Navigator.of(context).pop();
-                            NotifServ.showSnackbarError('Usuario "${user.nombre}" Eliminado', Colors.green);
+                            NotifServ.showSnackbarError('${appLocal.usuario} "${user.nombre}" ${appLocal.eliminado}', Colors.green);
                           } else {
                             if (context.mounted) Navigator.of(context).pop();
-                            NotifServ.showSnackbarError('Error Eliminando Usuario', Colors.red);
+                            NotifServ.showSnackbarError(appLocal.errorEliminadoUsuario, Colors.red);
                           }
                         },
-                        child: const Text('Si, Borrar'))
+                        child: Text(appLocal.siBorrar))
                   ],
                 );
                 showDialog(
@@ -291,16 +293,17 @@ class UsersDTS extends DataTableSource {
   int get selectedRowCount => 0;
 
   pickImage(BuildContext context, String id) async {
+    final appLocal = AppLocalizations.of(context);
     FilePickerResult? result = await FilePicker.platform.pickFiles();
 
     if (result != null) {
       PlatformFile file = result.files.first;
 
       if (file.extension!.toLowerCase() != 'jpg' && file.extension!.toLowerCase() != 'jpeg' && file.extension!.toLowerCase() != 'png') {
-        alertaDeDialogo(title: 'Extension Invalida', dubtitle: 'La extension debe ser "PNG, JPG ó JPEG"', textButton: 'Entendido');
+        alertaDeDialogo(title: appLocal.extensionInvalida, dubtitle: appLocal.laExtensionDebe, textButton: 'OK');
       }
       if (file.size > 1000000) {
-        alertaDeDialogo(title: 'Tamaño invalido', dubtitle: 'La imagen debe pesar menos de 1 MB', textButton: 'Entendido');
+        alertaDeDialogo(title: appLocal.tamanoInvalido, dubtitle: appLocal.debePesarMenos, textButton: 'OK');
       }
 
       await JpApi.editUserImg('/uploads/usuarios/$id', file.bytes!);
@@ -308,7 +311,7 @@ class UsersDTS extends DataTableSource {
       if (context.mounted) Provider.of<UsersProvider>(context, listen: false).getPaginatedUsers();
 
       notifyListeners();
-      NotifServ.showSnackbarError('cambiada con exito', Colors.green);
+      NotifServ.showSnackbarError(appLocal.imgCambiadaNtf, Colors.green);
     } else {
       // User canceled the picker
     }

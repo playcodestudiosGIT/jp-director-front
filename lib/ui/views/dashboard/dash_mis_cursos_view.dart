@@ -5,6 +5,7 @@ import 'package:jpdirector_frontend/ui/shared/labels/title_label.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../cards/curso_card.dart';
 import '../../shared/labels/dashboard_label.dart';
 
@@ -27,6 +28,7 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final wSize = MediaQuery.of(context).size.width;
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
     List<Widget> cursoDestruct = [];
@@ -70,7 +72,7 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
               const SizedBox(
                 height: 80,
               ),
-              const TitleLabel(texto: 'Mis Cursos'),
+              TitleLabel(texto: appLocal.misCursosLabel),
               const SizedBox(
                 height: 10,
               ),
@@ -82,7 +84,7 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
                     alignment: WrapAlignment.center, children: [
                     if (destruct.isEmpty)
                       Text(
-                        'No tienes ningun curso',
+                        appLocal.noTienesCursos,
                         style: DashboardLabel.paragraph,
                       ),
                     if (destruct.isNotEmpty) ...destruct,
@@ -97,7 +99,7 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
               const SizedBox(
                 height: 20,
               ),
-              const TitleLabel(texto: 'Cursos Disponibles'),
+              TitleLabel(texto: appLocal.cursosDisponibles),
               SizedBox(
                   height: 435,
                   child: SingleChildScrollView(
@@ -110,7 +112,7 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 60),
                             child: Text(
-                              'Ya tienes todos los cursos',
+                              appLocal.yaTienesTodos,
                               style: DashboardLabel.paragraph,
                             ),
                           ),

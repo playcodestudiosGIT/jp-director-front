@@ -6,6 +6,7 @@ import 'package:jpdirector_frontend/ui/shared/labels/title_label.dart';
 import 'package:provider/provider.dart';
 
 import '../../../datatables/users_datasource.dart';
+import '../../../generated/l10n.dart';
 import '../../../models/usuario_model.dart';
 import '../../../providers/all_cursos_provider.dart';
 import '../../../providers/users_provider.dart';
@@ -30,6 +31,7 @@ class _UsersAdminViewState extends State<UsersAdminView> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     Provider.of<UsersProvider>(context, listen: false).getPaginatedUsers();
     final List<Usuario> users = Provider.of<UsersProvider>(context).users;
     final size = MediaQuery.of(context).size;
@@ -41,9 +43,9 @@ class _UsersAdminViewState extends State<UsersAdminView> {
         physics: const ClampingScrollPhysics(),
         children: [
           const SizedBox(height: 80),
-          const Padding(
-            padding: EdgeInsets.only(left: 0.0),
-            child: TitleLabel(texto: 'Administración de Usuarios'),
+          Padding(
+            padding: const EdgeInsets.only(left: 0.0),
+            child: TitleLabel(texto: appLocal.adminUsuarios),
           ),
           Theme(
             data: ThemeData.dark().copyWith(cardColor: bgColor),
@@ -52,15 +54,15 @@ class _UsersAdminViewState extends State<UsersAdminView> {
               dataRowMinHeight: 150,
               columns: [
                 DataColumn(
-                  label: Text('IMAGEN', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
+                  label: Text(appLocal.imagen, style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                 ),
-                DataColumn(label: Text('INFORMACIÓN', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5)))),
-                DataColumn(label: Text('CURSOS', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5)))),
-                DataColumn(label: Text('ACCIONES', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5)))),
+                DataColumn(label: Text(appLocal.informacionMayus, style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5)))),
+                DataColumn(label: Text(appLocal.cursoMayus, style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5)))),
+                DataColumn(label: Text(appLocal.acciones, style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5)))),
               ],
               source: UsersDTS(users, context),
               header: Text(
-                'Lista de usuarios',
+                appLocal.listaUsuarios,
                 style: DashboardLabel.h3,
               ),
               rowsPerPage: _rowsPerPage,
