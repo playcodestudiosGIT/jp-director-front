@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:jpdirector_frontend/generated/l10n.dart';
-
 
 import 'package:jpdirector_frontend/providers/export_all_providers.dart';
 import 'package:jpdirector_frontend/services/local_storage.dart';
@@ -62,46 +62,45 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-
-  
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: bgColor, // <-- SEE HERE
+      statusBarIconBrightness: Brightness.light, //<-- For Android SEE HERE (dark icons)
+      statusBarBrightness: Brightness.light, //<-- For iOS SEE HERE (dark icons)
+    ));
     return MaterialApp(
-      scrollBehavior: MyCustomScrollBehavior(),
-      debugShowCheckedModeBanner: false,
-      title: 'JP Director',
-      onGenerateRoute: Flurorouter.router.generator,
-      navigatorKey: NavigatorService.navigatorKey,
-      scaffoldMessengerKey: NotifServ.msgKey,
-      builder: ((_, child) {
-        
+        scrollBehavior: MyCustomScrollBehavior(),
+        debugShowCheckedModeBanner: false,
+        title: 'JP Director',
+        onGenerateRoute: Flurorouter.router.generator,
+        navigatorKey: NavigatorService.navigatorKey,
+        scaffoldMessengerKey: NotifServ.msgKey,
+        builder: ((_, child) {
+          if (authProvider.authStatus == AuthStatus.checking) return const SplashLayout();
 
-        if (authProvider.authStatus == AuthStatus.checking) return const SplashLayout();
-
-        if (authProvider.authStatus == AuthStatus.authenticated) {
-          return ClientPageLayout(
-            child: child!,
-          );
-        } else {
-          return UserPageLayout(
-            child: child!,
-          );
-        }
-      }),
-      
-      theme: ThemeData(
-        scaffoldBackgroundColor: bgColor,
-      ),
-      locale: authProvider.locale,
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        AppLocalizations.delegate
-      ],
-      supportedLocales: AppLocalizations.delegate.supportedLocales
-    );
+          if (authProvider.authStatus == AuthStatus.authenticated) {
+            return ClientPageLayout(
+              child: child!,
+            );
+          } else {
+            return UserPageLayout(
+              child: child!,
+            );
+          }
+        }),
+        theme: ThemeData(
+          scaffoldBackgroundColor: bgColor,
+        ),
+        locale: authProvider.locale,
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          AppLocalizations.delegate
+        ],
+        supportedLocales: AppLocalizations.delegate.supportedLocales);
   }
 }
 

@@ -7,8 +7,8 @@ import '../../../generated/l10n.dart';
 import '../../../providers/forms/register_form_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
+import '../../shared/politicas_footer.dart';
 import '../../shared/widgets/forms/register_form.dart';
-import 'login_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -84,49 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                             ],
                           ),
-                          Center(
-                            child: Container(
-                                constraints: const BoxConstraints(maxWidth: 580),
-                                child: Wrap(
-                                  alignment: WrapAlignment.center,
-                                  children: [
-                                    Text(
-                                      appLocal.alIniciarSesion,
-                                      textAlign: TextAlign.center,
-                                      style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
-                                    ),
-                                    InkWell(
-                                      onTap: () => NavigatorService.navigateTo(Flurorouter.tycRoute),
-                                      child: Text(
-                                        appLocal.terminoDeUso,
-                                        textAlign: TextAlign.center,
-                                        style: const TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
-                                      ),
-                                    ),
-                                    Text(
-                                      appLocal.yReconocesQue,
-                                      textAlign: TextAlign.center,
-                                      style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
-                                    ),
-                                    Text(
-                                      appLocal.nuestra,
-                                      textAlign: TextAlign.center,
-                                      style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
-                                    ),
-                                    InkWell(
-                                      onTap: () => NavigatorService.navigateTo(Flurorouter.pdpRoute),
-                                      child: Text(
-                                        appLocal.politicaDePrivacidad,
-                                        textAlign: TextAlign.center,
-                                        style: const TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 60,
-                                    )
-                                  ],
-                                )),
-                          )
+                          const PoliticasFooter()
                         ],
                       ),
                     ),

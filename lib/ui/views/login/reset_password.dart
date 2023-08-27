@@ -1,9 +1,9 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/services/notificacion_service.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
+import 'package:jpdirector_frontend/ui/shared/politicas_footer.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
@@ -168,47 +168,7 @@ class _ResetPassState extends State<ResetPass> {
                       ],
                     ),
                     const Spacer(),
-                    Center(
-                      child: Container(
-                          padding: const EdgeInsets.all(10),
-                          constraints: const BoxConstraints(maxWidth: 580),
-                          child: Wrap(
-                            alignment: WrapAlignment.center,
-                            children: [
-                              Text(
-                                appLocal.alIniciarSesion,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
-                              ),
-                              InkWell(
-                                onTap: () => NavigatorService.navigateTo(Flurorouter.tycRoute),
-                                child: Text(
-                                  appLocal.terminoDeUso,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
-                                ),
-                              ),
-                              Text(
-                                appLocal.yReconocesQue,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
-                              ),
-                              Text(
-                                appLocal.nuestra,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
-                              ),
-                              InkWell(
-                                onTap: () => NavigatorService.navigateTo(Flurorouter.pdpRoute),
-                                child: Text(
-                                  appLocal.politicaDePrivacidad,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
-                                ),
-                              ),
-                            ],
-                          )),
-                    )
+                    const PoliticasFooter()
                   ],
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:jpdirector_frontend/constant.dart';
 import 'package:jpdirector_frontend/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
@@ -32,9 +33,7 @@ class _ClientPageLayoutState extends State<ClientPageLayout> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
-    final isAparece = Provider.of<SideBarProvider>(context).isAparece;
     final wScreen = MediaQuery.of(context).size.width;
-    final hScreen = MediaQuery.of(context).size.height;
     final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -56,7 +55,7 @@ class _ClientPageLayoutState extends State<ClientPageLayout> with SingleTickerPr
             : const Image(
                 image: NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/en_flag_fyiybd.png'),
                 width: 30,
-                ),
+              ),
       ),
       backgroundColor: bgColor,
       body: Row(
@@ -87,17 +86,13 @@ class _ClientPageLayoutState extends State<ClientPageLayout> with SingleTickerPr
                           PageProvider.circleController = controller;
                         },
                         child: const SizedBox(width: 1100, child: Image(image: circulo)))),
-                Container(
-                    constraints: const BoxConstraints(maxWidth: 1280),
-                    child: widget.child),
-                
+                Container(constraints: const BoxConstraints(maxWidth: 1280), child: widget.child),
                 const AppbarTop(),
                 const Positioned(
                     right: 0,
                     top: 5,
                     child: Stack(
                       children: [
-                        
                         HomeAppMenu(),
                       ],
                     )),

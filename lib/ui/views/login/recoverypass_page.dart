@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jpdirector_frontend/ui/shared/politicas_footer.dart';
 
 import '../../../constant.dart';
 import '../../../router/router.dart';
@@ -18,6 +19,7 @@ class RecoverypassPage extends StatefulWidget {
 class _RecoverypassPageState extends State<RecoverypassPage> {
   @override
   Widget build(BuildContext context) {
+    
     final wScreen = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
@@ -50,46 +52,7 @@ class _RecoverypassPageState extends State<RecoverypassPage> {
                       ),
                     ],
                   ),
-                  Center(
-                    child: Container(
-                        constraints: const BoxConstraints(maxWidth: 580),
-                        child: Wrap(
-                          alignment: WrapAlignment.center,
-                          children: [
-                            const Text(
-                              'Al iniciar sesión aceptas nuestros ',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
-                            ),
-                            InkWell(
-                              onTap: () {},
-                              child: const Text(
-                                'Términos de Uso ',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                            const Text(
-                              'y reconoces que has leído ',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
-                            ),
-                            const Text(
-                              'nuestra ',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
-                            ),
-                            InkWell(
-                              onTap: () {},
-                              child: const Text(
-                                'Política de Privacidad.',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ],
-                        )),
-                  )
+                  const PoliticasFooter()
                 ],
               ),
             ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 
 import '../../../constant.dart';

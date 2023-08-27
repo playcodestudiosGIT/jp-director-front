@@ -167,17 +167,6 @@ class UsersAuthHandlers {
     }
   });
 
-  static Handler successUrl = Handler(handlerFunc: (context, params) {
-    final date = params['date']!.first;
-    final email = params['email']!.first;
-
-    //create agenda
-    return AgendaThxView(
-      date: date,
-      email: email,
-    );
-  });
-
   static Handler checksession = Handler(handlerFunc: (context, params) {
     final authProvider = Provider.of<AuthProvider>(context!);
     if (authProvider.user == null) return const LoginPage();

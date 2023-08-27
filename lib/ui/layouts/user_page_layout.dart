@@ -1,9 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
 import 'package:jpdirector_frontend/providers/auth_provider.dart';
-import 'package:jpdirector_frontend/providers/sidebar_provider.dart';
 import 'package:jpdirector_frontend/ui/shared/widgets/menu_item_top.dart';
 import 'package:provider/provider.dart';
 
@@ -34,7 +34,6 @@ class _UserPageLayoutState extends State<UserPageLayout> {
   @override
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
-    final isAparece = Provider.of<SideBarProvider>(context).isAparece;
     final authProvider = Provider.of<AuthProvider>(context);
     final wScreen = MediaQuery.of(context).size.width;
     final hScreen = MediaQuery.of(context).size.height;

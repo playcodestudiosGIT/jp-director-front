@@ -38,9 +38,6 @@ class Flurorouter {
   static String resetPassRoute = '/auth/resetpass';
   static String newPassRoute = '/auth/newpass/:token';
 
-
-
-
 // rutas cliente
   static String clienteDash = '/user/dashboard';
   static String clienteSeguridadDash = '/user/dashboard/seguridad';
@@ -48,7 +45,6 @@ class Flurorouter {
   static String clienteConfiguracionDash = '/user/dashboard/configuracion';
   static String cursoID = '/user/dashboard/:cursoID/:videoIndex';
   static String curso = '/user/dashboard';
-  // static String curso = '/curso';
 
 
   //Cursos Landing
@@ -90,7 +86,7 @@ class Flurorouter {
     router.define(payNewUserRouteAlt,
         handler: VisitorHandlers.payNewUser, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 
-        //Cursos landing 
+    //Cursos landing
     router.define(cursoLandingId,
         handler: VisitorHandlers.cursoLanding, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
     router.define(cursoLanding,
@@ -130,58 +126,54 @@ class Flurorouter {
     router.define(registerRoute,
         handler: UsersAuthHandlers.register, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 
-//     router.define(recoveryPassRoute,
-//         handler: UsersAuthHandlers.recovery, transitionType: TransitionType.inFromBottom, transitionDuration: Duration(milliseconds: 100));
 
     router.define(clienteDash,
         handler: UsersAuthHandlers.clientDashboard, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 
-//     // router.define(clienteSeguridadDash,
-//     //     handler: UsersAuthHandlers.clienteSeguridadDash,
-//     //     transitionType: TransitionType.none,
-//     //     transitionDuration: Duration(milliseconds: 100));
-
     router.define(clienteMisCursosDash,
         handler: UsersAuthHandlers.clienteMisCursosDash, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 
-//     router.define(clienteConfiguracionDash,
-//         handler: UsersAuthHandlers.clienteConfiguracionDash, transitionType: TransitionType.none, transitionDuration: Duration(milliseconds: 100));
 
     router.define(checksession,
         handler: UsersAuthHandlers.checksession, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
-    router.define(successUrl,
-        handler: UsersAuthHandlers.successUrl, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
-    
 
     router.define(cursoID,
         handler: UsersAuthHandlers.cursoID, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 
-    router.define(curso, handler: UsersAuthHandlers.cursoID, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
-
+    router.define(curso,
+        handler: UsersAuthHandlers.cursoID, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 
     // Verify USER
-    
-    router.define(verifyRouteAlt, handler: UsersAuthHandlers.verify, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
-    router.define(verifyRoute, handler: UsersAuthHandlers.verify, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
-    router.define(resetPassRoute, handler: UsersAuthHandlers.resetPass, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
-    router.define(newPassRoute, handler: UsersAuthHandlers.newPass, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
+
+    router.define(verifyRouteAlt,
+        handler: UsersAuthHandlers.verify, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
+    router.define(verifyRoute,
+        handler: UsersAuthHandlers.verify, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
+    router.define(resetPassRoute,
+        handler: UsersAuthHandlers.resetPass, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
+    router.define(newPassRoute,
+        handler: UsersAuthHandlers.newPass, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 
     // ADMIN ROUTES
 
-    router.define(usersAdminDash, handler: AdminHandlers.usersAdminDash, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
-    router.define(leadsAdminDash, handler: AdminHandlers.leadsAdminDash, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
-    router.define(cursosAdminDash, handler: AdminHandlers.cursosAdminDash, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
-    router.define(formsAdminDash, handler: AdminHandlers.formsAdminDash, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
-    
-
-
+    router.define(usersAdminDash,
+        handler: AdminHandlers.usersAdminDash, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
+    router.define(leadsAdminDash,
+        handler: AdminHandlers.leadsAdminDash, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
+    router.define(cursosAdminDash,
+        handler: AdminHandlers.cursosAdminDash, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
+    router.define(formsAdminDash,
+        handler: AdminHandlers.formsAdminDash, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 
     // COPNDICIONES
 
-    router.define(docRoute, handler: UsersAuthHandlers.doc, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
-    router.define(tycRoute, handler: UsersAuthHandlers.tyc, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
+    router.define(docRoute,
+        handler: UsersAuthHandlers.doc, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
+    router.define(tycRoute,
+        handler: UsersAuthHandlers.tyc, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 
-    router.define(pdpRoute, handler: UsersAuthHandlers.pdp, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
+    router.define(pdpRoute,
+        handler: UsersAuthHandlers.pdp, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 
     // 404 System
     router.notFoundHandler = NoPageHandler.noPageFound;

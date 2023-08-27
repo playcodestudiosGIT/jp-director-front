@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="jpdirector_frontend"
+        android:label="JP Director"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

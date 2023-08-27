@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:jpdirector_frontend/constant.dart';
-import 'package:jpdirector_frontend/ui/shared/botones/custom_button.dart';
+
 import 'package:jpdirector_frontend/ui/shared/curso_baner.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:jpdirector_frontend/ui/shared/widgets/acordion.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../generated/l10n.dart';
 import '../../../models/curso.dart';
 import '../../../models/usuario_model.dart';
 import '../../../providers/export_all_providers.dart';
-import '../../../router/router.dart';
+
 import '../../../services/navigator_service.dart';
 import '../../shared/curso_landing_slider.dart';
 import '../../shared/list_testimonios.dart';
 import '../../shared/widgets/boton_quiero_ya.dart';
 import '../../shared/widgets/soy_jpdirector_landing.dart';
-import '../../shared/widgets/testimonio.dart';
 
 class LandingCurso extends StatefulWidget {
   final String cursoID;
@@ -37,21 +35,16 @@ class _LandingCursoState extends State<LandingCurso> {
   @override
   Widget build(BuildContext context) {
     Curso curso = Provider.of<AllCursosProvider>(context).cursoView;
-    
-
-    
 
     return SingleChildScrollView(
-      child:
-           WebBody(
-              curso: curso,
-            ),
+      child: WebBody(
+        curso: curso,
+      ),
     );
   }
 }
 
 class WebBody extends StatefulWidget {
-
   final Curso curso;
 
   const WebBody({super.key, required this.curso});
@@ -90,7 +83,7 @@ class _WebBodyState extends State<WebBody> {
     if (user.nombre != '' && user.cursos.contains(widget.curso.id)) {
       esMio = true;
     }
-    
+
     final List<Widget> modulos = widget.curso.modulos.map((e) {
       return Acordeon(title: e.nombre, content: e.descripcion);
     }).toList();
@@ -128,6 +121,7 @@ class _WebBodyState extends State<WebBody> {
         ),
         const SizedBox(height: 15),
         Container(
+          alignment: Alignment.centerLeft,
           padding: const EdgeInsets.symmetric(horizontal: 15),
           constraints: const BoxConstraints(maxWidth: 800),
           child: Text(

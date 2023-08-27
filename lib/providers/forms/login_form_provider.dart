@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 
-import '../all_cursos_provider.dart';
 import '../auth_provider.dart';
 
 class LoginFormProvider extends ChangeNotifier {
@@ -60,9 +59,7 @@ class LoginFormProvider extends ChangeNotifier {
         await _storage.deleteAll();
       }
       await authProvider.login(email, pass);
-      // if (context.mounted) {
-      //   await Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
-      // }
+
       notifyListeners();
       return true;
     } else {
