@@ -9,14 +9,14 @@ import 'package:provider/provider.dart';
 
 import '../../../../constant.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../../router/router.dart';
 import '../../../../services/navigator_service.dart';
 
 class CreateUserCheckout extends StatefulWidget {
   final String cursoId;
-  final String? priceId;
   final String? state;
-  const CreateUserCheckout({super.key, required this.cursoId, this.priceId = '', this.state});
+  const CreateUserCheckout({super.key, required this.cursoId, this.state});
 
   @override
   State<CreateUserCheckout> createState() => _CreateUserCheckoutState();
@@ -26,19 +26,14 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
   GlobalKey<FormState> checkoutKey = GlobalKey<FormState>(debugLabel: 'newcursowhituser');
 
   @override
-  void dispose() {
-    // checkoutKey.currentState!.dispose();
-    // Provider.of<LoginFormProvider>(context, listen: false).keyLoginForm.currentState!.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    // double wScreen = MediaQuery.of(context).size.width;
+    final appLocal = AppLocalizations.of(context);
     double hScreen = MediaQuery.of(context).size.height;
+    double wScreen = MediaQuery.of(context).size.width;
 
     return FutureBuilder(
-      future: Future.delayed(const Duration(milliseconds: 500)),
+      
+      future: Future.delayed(const Duration(milliseconds: 100)),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
@@ -53,21 +48,26 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
         }
 
         return Scaffold(
+          backgroundColor: Colors.transparent,
             body: ListView(
           children: [
             Stack(
-              alignment: Alignment.topCenter,
+              alignment: Alignment.center,
               children: [
-                const Positioned(top: 0, left: -500, child: SizedBox(width: 1100, child: Image(image: circulo))),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    if(wScreen < 740)
+                    const SizedBox(
+                      height: 100,
+                    ),
+                    if(wScreen >= 740)
                     const SizedBox(
                       height: 200,
                     ),
                     Stack(
-                      alignment: Alignment.topCenter,
+                      alignment: Alignment.center,
                       children: [
                         Container(
                           alignment: Alignment.topCenter,
@@ -75,65 +75,8 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
                           child: Wrap(
                             crossAxisAlignment: WrapCrossAlignment.center,
                             alignment: WrapAlignment.center,
-                            runSpacing: 120,
+                            runSpacing: 20,
                             children: [
-                              SizedBox(
-                                width: 400,
-                                child: Column(
-                                  children: [
-                                    const SizedBox(height: 30),
-                                    FutureBuilder(
-                                      future: Provider.of<AllCursosProvider>(context).getCursosById(widget.cursoId),
-                                      builder: (context, snapshot) {
-                                        final curso = Provider.of<AllCursosProvider>(context).cursoView;
-
-                                        return CourseCard(esMio: false, curso: curso);
-                                      },
-                                    ),
-                                    Center(
-                                      child: Container(
-                                          padding: const EdgeInsets.all(10),
-                                          constraints: const BoxConstraints(maxWidth: 580),
-                                          child: Wrap(
-                                            alignment: WrapAlignment.center,
-                                            children: [
-                                              const Text(
-                                                'Al registrar aceptas nuestros ',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
-                                              ),
-                                              InkWell(
-                                                onTap: () => NavigatorService.navigateTo(Flurorouter.tycRoute),
-                                                child: const Text(
-                                                  'Términos de Uso ',
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
-                                                ),
-                                              ),
-                                              const Text(
-                                                'y reconoces que has leído ',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
-                                              ),
-                                              const Text(
-                                                'nuestra ',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
-                                              ),
-                                              InkWell(
-                                                onTap: () => NavigatorService.navigateTo(Flurorouter.pdpRoute),
-                                                child: const Text(
-                                                  'Política de Privacidad.',
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
-                                                ),
-                                              ),
-                                            ],
-                                          )),
-                                    ),
-                                  ],
-                                ),
-                              ),
                               if (widget.state == 'register')
                                 Container(
                                   padding: const EdgeInsets.all(8),
@@ -149,7 +92,7 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            '¿Ya tienes cuenta?',
+                                            appLocal.yaTienesCuenta,
                                             style: GoogleFonts.roboto(fontSize: 14, color: blancoText, fontWeight: FontWeight.w400),
                                           ),
                                           const SizedBox(
@@ -160,7 +103,7 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
                                               NavigatorService.navigateTo('${Flurorouter.payNewUserRouteAlt}/${widget.cursoId}/login');
                                             }, // Navigate to register page
                                             child: Text(
-                                              'Inicia sesión aquí',
+                                              appLocal.iniciaAqui,
                                               style: GoogleFonts.roboto(fontSize: 14, color: azulText, fontWeight: FontWeight.w800),
                                             ),
                                           ),
@@ -175,7 +118,6 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
                               if (widget.state == 'login')
                                 Container(
                                   padding: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(color: const Color(0xff021E36), borderRadius: BorderRadius.circular(80)),
                                   // height: 510,
                                   width: 340,
                                   child: LoginForm(
@@ -185,6 +127,65 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
                                 ),
                               const SizedBox(
                                 height: 30,
+                              ),
+                              SizedBox(
+                                width: 400,
+                                child: Column(
+                                  children: [
+                                    const SizedBox(height: 30),
+                                    FutureBuilder(
+                                      future: Provider.of<AllCursosProvider>(context, listen: false).getCursosById(widget.cursoId),
+                                      builder: (context, snapshot) {
+                                        final curso = Provider.of<AllCursosProvider>(context).cursoView;
+
+                                        return CourseCard(esMio: false, curso: curso);
+                                      },
+                                    ),
+                                    const SizedBox(height: 30),
+                                    Center(
+                                      child: Container(
+                                          padding: const EdgeInsets.all(10),
+                                          constraints: const BoxConstraints(maxWidth: 580),
+                                          child: Wrap(
+                                            alignment: WrapAlignment.center,
+                                            children: [
+                                              Text(
+                                                appLocal.alHacerClickHeLeido,
+                                                textAlign: TextAlign.center,
+                                                style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
+                                              ),
+                                              InkWell(
+                                                onTap: () => NavigatorService.navigateTo(Flurorouter.tycRoute),
+                                                child: Text(
+                                                  appLocal.terminoDeUso,
+                                                  textAlign: TextAlign.center,
+                                                  style: const TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
+                                                ),
+                                              ),
+                                              Text(
+                                                appLocal.yReconocesQue,
+                                                textAlign: TextAlign.center,
+                                                style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
+                                              ),
+                                              Text(
+                                                appLocal.nuestra,
+                                                textAlign: TextAlign.center,
+                                                style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
+                                              ),
+                                              InkWell(
+                                                onTap: () => NavigatorService.navigateTo(Flurorouter.pdpRoute),
+                                                child: Text(
+                                                  appLocal.politicaDePrivacidad,
+                                                  textAlign: TextAlign.center,
+                                                  style: const TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
+                                                ),
+                                              ),
+                                            ],
+                                          )),
+                                    ),
+                                    const SizedBox(height: 100)
+                                  ],
+                                ),
                               ),
                             ],
                           ),

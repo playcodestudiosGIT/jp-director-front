@@ -5,6 +5,7 @@ import 'package:jpdirector_frontend/ui/shared/botones/botonverde.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../providers/form_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
@@ -55,21 +56,21 @@ class Slider extends StatefulWidget {
 class _SliderState extends State<Slider> {
   @override
   Widget build(BuildContext context) {
-    // final authProvider = Provider.of<AuthProvider>(context);
+    final appLocal = AppLocalizations.of(context);
     final formProvider = Provider.of<FormProvider>(context);
     late String botonText;
 
     if (formProvider.getPageIndex() == 0) {
-      botonText = 'SIGUIENTE';
+      botonText = appLocal.siguienteBtn;
     }
     if (formProvider.getPageIndex() == 1) {
-      botonText = 'SIGUIENTE';
+      botonText = appLocal.siguienteBtn;
     }
     if (formProvider.getPageIndex() == 2) {
-      botonText = 'ENVIAR';
+      botonText = appLocal.enviarBtn;
     }
     if (formProvider.getPageIndex() == 3) {
-      botonText = 'FINALIZAR';
+      botonText = appLocal.finalizarBtn;
     }
 
     onPressed() async {

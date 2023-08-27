@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
 import 'package:jpdirector_frontend/providers/auth_provider.dart';
 import 'package:jpdirector_frontend/providers/sidebar_provider.dart';
 import 'package:jpdirector_frontend/ui/shared/widgets/menu_item_top.dart';
@@ -13,7 +14,6 @@ import '../../router/router.dart';
 import '../../services/navigator_service.dart';
 import '../shared/botones/custom_button.dart';
 import '../shared/menus/home_app_menu.dart';
-import '../shared/sidebar.dart';
 
 class UserPageLayout extends StatefulWidget {
   final Widget child;
@@ -25,6 +25,12 @@ class UserPageLayout extends StatefulWidget {
 }
 
 class _UserPageLayoutState extends State<UserPageLayout> {
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
+  }
+
   @override
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
@@ -53,7 +59,7 @@ class _UserPageLayoutState extends State<UserPageLayout> {
             : const Image(
                 image: NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/en_flag_fyiybd.png'),
                 width: 30,
-                ),
+              ),
       ),
       backgroundColor: bgColor,
       body: Row(
@@ -86,9 +92,7 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                         child: const SizedBox(width: 1100, child: Image(image: circulo)))),
                 Container(
                     constraints: BoxConstraints(maxWidth: wScreen, maxHeight: hScreen),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [if (wScreen >= 715 && isAparece) const SideBar(), Expanded(child: widget.child)])),
+                    child: widget.child),
                 Container(
                   alignment: Alignment.centerLeft,
                   width: double.infinity,
@@ -98,7 +102,7 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                     margin: const EdgeInsets.symmetric(horizontal: 5),
                     child: Row(
                       children: [
-                        if (wScreen <= 390) const SizedBox(width: 50),
+                        if (wScreen <= 390) const SizedBox(width: 47),
                         if (wScreen > 390) const SizedBox(width: 30),
                         GestureDetector(
                           onTap: () {
@@ -108,7 +112,7 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                             cursor: SystemMouseCursors.click,
                             child: Container(
                               alignment: Alignment.centerLeft,
-                              width: (wScreen <= 390) ? 50 : 200,
+                              width: (wScreen <= 390) ? 53 : 200,
                               child: (wScreen <= 390) ? const Image(image: logoIso) : const Image(image: logoJp),
                             ),
                           ),
@@ -148,29 +152,29 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                 ),
                 if (wScreen < 850) const Positioned(left: -10, top: 5, child: HomeAppMenu()),
                 if (wScreen > 480)
-                Positioned(
-                    right: 10,
-                    top: 12,
-                    child: CustomButton(
-                      text: appLocal.botonLogin,
-                      width: 70,
-                      onPress: () {
-                        NavigatorService.replaceTo(Flurorouter.loginRoute);
-                      },
-                    )),
+                  Positioned(
+                      right: 10,
+                      top: 12,
+                      child: CustomButton(
+                        text: appLocal.botonLogin,
+                        width: 70,
+                        onPress: () {
+                          NavigatorService.replaceTo(Flurorouter.loginRoute);
+                        },
+                      )),
                 if (wScreen <= 480)
-                Positioned(
-                    right: 10,
-                    top: 10,
-                    child: IconButton(
-                      icon: const Icon(Icons.login_outlined, color: azulText),
-                      style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
-                      onPressed: () {
-                        NavigatorService.replaceTo(Flurorouter.loginRoute);
-                      },
-                    )),
+                  Positioned(
+                      right: 10,
+                      top: 10,
+                      child: IconButton(
+                        icon: const Icon(Icons.login_outlined, color: azulText),
+                        style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
+                        onPressed: () {
+                          NavigatorService.replaceTo(Flurorouter.loginRoute);
+                        },
+                      )),
                 if (wScreen > 480)
-                Positioned(
+                  Positioned(
                     right: 90,
                     top: 15,
                     child: TextButton(
@@ -193,7 +197,10 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                       onPressed: () {
                         NavigatorService.replaceTo(Flurorouter.registerRoute);
                       },
-                      icon: const Icon(Icons.app_registration_rounded, color: azulText,), // Navigate to register page
+                      icon: const Icon(
+                        Icons.app_registration_rounded,
+                        color: azulText,
+                      ), // Navigate to register page
                       // child: Text(
                       //   appLocal.botonReg,
                       //   style: GoogleFonts.roboto(fontSize: 14, color: azulText, fontWeight: FontWeight.w800),

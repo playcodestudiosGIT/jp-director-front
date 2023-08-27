@@ -6,9 +6,11 @@ import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/botones/custom_button.dart';
+import '../../shared/labels/inputs_decorations.dart';
 
 class NewPassword extends StatefulWidget {
   final String token;
@@ -22,6 +24,7 @@ class _NewPasswordState extends State<NewPassword> {
   bool isOk = false;
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final GlobalKey<FormState> keyFormPass = GlobalKey();
     final wScreen = MediaQuery.of(context).size.width;
     String passw1 = '';
@@ -67,13 +70,13 @@ class _NewPasswordState extends State<NewPassword> {
                                           child: Column(
                                             children: [
                                               Text(
-                                                'Tu contraseña se ha reestablecido, ya puedes iniciar sesion con tu nueva clave.',
+                                                appLocal.laContrasenaSeHaReest,
                                                 style: DashboardLabel.paragraph,
                                               ),
                                               const SizedBox(height: 15),
                                               CustomButton(
                                                 width: 140,
-                                                text: 'Ir al Login',
+                                                text: appLocal.irAlLogin,
                                                 onPress: () async {
                                                   NavigatorService.navigateTo(Flurorouter.loginRoute);
                                                 },
@@ -85,31 +88,31 @@ class _NewPasswordState extends State<NewPassword> {
                                         Column(
                                           children: [
                                             Text(
-                                              'Ingresa tu nueva clave',
+                                              appLocal.ingresaNewPass,
                                               style: DashboardLabel.h3,
                                             ),
                                             const SizedBox(height: 15),
                                             TextFormField(
                                               cursorColor: azulText,
                                               obscureText: true,
-                                              validator: (value) => (passw1 == passw2) ? null : 'Las claves no coinciden',
+                                              validator: (value) => (passw1 == passw2) ? null : appLocal.passNoCoinciden,
                                               onChanged: (value) => passw1 = value,
                                               style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                                              decoration: _buildInputDecoration(label: 'Nueva contraseña', icon: Icons.email_outlined),
+                                              decoration: InputDecor.formFieldInputDecoration(label: appLocal.ingresaNewPass, icon: Icons.email_outlined),
                                             ),
                                             const SizedBox(height: 15),
                                             TextFormField(
                                               cursorColor: azulText,
                                               obscureText: true,
-                                              validator: (value) => (passw1 == passw2) ? null : 'Las claves no coinciden',
+                                              validator: (value) => (passw1 == passw2) ? null : appLocal.passNoCoinciden,
                                               onChanged: (value) => passw2 = value,
                                               style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                                              decoration: _buildInputDecoration(label: 'Repita Nueva contraseña', icon: Icons.email_outlined),
+                                              decoration: InputDecor.formFieldInputDecoration(label: appLocal.repitaContrasenaTextFiel, icon: Icons.email_outlined),
                                             ),
                                             const SizedBox(height: 30),
                                             CustomButton(
                                               width: 140,
-                                              text: 'Enviar',
+                                              text: appLocal.enviarBtn,
                                               onPress: () async {
                                                 if (keyFormPass.currentState!.validate()) {
                                                   final ok = await Provider.of<AuthProvider>(context, listen: false)
@@ -145,35 +148,35 @@ class _NewPasswordState extends State<NewPassword> {
                         child: Wrap(
                           alignment: WrapAlignment.center,
                           children: [
-                            const Text(
-                              'Al iniciar sesión aceptas nuestros ',
+                            Text(
+                              appLocal.alIniciarSesion,
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
+                              style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
                             ),
                             InkWell(
                               onTap: () => NavigatorService.navigateTo(Flurorouter.tycRoute),
-                              child: const Text(
-                                'Términos de Uso ',
+                              child: Text(
+                                appLocal.terminoDeUso,
                                 textAlign: TextAlign.center,
-                                style: TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
+                                style: const TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
                               ),
                             ),
-                            const Text(
-                              'y reconoces que has leído ',
+                            Text(
+                              appLocal.yReconocesQue,
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
+                              style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
                             ),
-                            const Text(
-                              'nuestra ',
+                            Text(
+                              appLocal.nuestra,
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
+                              style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
                             ),
                             InkWell(
                               onTap: () => NavigatorService.navigateTo(Flurorouter.pdpRoute),
-                              child: const Text(
-                                'Política de Privacidad.',
+                              child: Text(
+                                appLocal.politicaDePrivacidad,
                                 textAlign: TextAlign.center,
-                                style: TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
+                                style: const TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
                               ),
                             ),
                           ],
@@ -189,17 +192,4 @@ class _NewPasswordState extends State<NewPassword> {
   }
 }
 
-InputDecoration _buildInputDecoration({required String label, required IconData icon}) => InputDecoration(
-    fillColor: blancoText.withOpacity(0.03),
-    filled: true,
-    border: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    focusedBorder: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
-    labelText: label,
-    labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-    prefixIcon: Icon(icon, color: azulText.withOpacity(0.3)),
-    suffixIconColor: azulText.withOpacity(0.3));
+

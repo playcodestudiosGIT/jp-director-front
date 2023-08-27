@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../constant.dart';
+import '../labels/dashboard_label.dart';
 
 class MenuItemTop extends StatefulWidget {
   final String text;
@@ -41,8 +42,7 @@ class _MenuItemTopState extends State<MenuItemTop> {
                   Text(
                     widget.text,
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.roboto(
-                      fontSize: 14,
+                    style: DashboardLabel.paragraph.copyWith(
                       color: widget.isActive
                           ? isHovered
                               ? blancoText.withOpacity(0.1)

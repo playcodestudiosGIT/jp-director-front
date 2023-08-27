@@ -34,7 +34,6 @@ class _LeadsModalState extends State<LeadsModal> {
     final leadsProvider = Provider.of<LeadsProvider>(context);
     final size = MediaQuery.of(context).size;
     return Container(
-      padding: (size.width < 500) ? const EdgeInsets.only(left: 40, top: 15, right: 15, bottom: 15) : const EdgeInsets.all(15),
       height: 500,
       width: 300, // expande
       decoration: buildBoxDecoration(),

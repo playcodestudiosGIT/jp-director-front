@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 
 import '../../../constant.dart';
 
@@ -51,8 +52,8 @@ class _MenuItemSideState extends State<MenuItemSide> {
                   ),
                   Text(
                     widget.text,
-                    style: GoogleFonts.roboto(
-                      fontSize: 16,
+                    style: DashboardLabel.paragraph.copyWith(
+            
                       color: widget.isActive
                           ? isHovered
                               ? blancoText.withOpacity(0.1)

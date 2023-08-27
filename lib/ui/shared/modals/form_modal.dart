@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jpdirector_frontend/constant.dart';
+import 'package:jpdirector_frontend/generated/l10n.dart';
 import 'package:jpdirector_frontend/models/formulario.dart';
 import 'package:jpdirector_frontend/providers/form_provider.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
@@ -45,26 +46,17 @@ class _FormsModalState extends State<FormsModal> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final formProvider = Provider.of<FormProvider>(context);
-    final size = MediaQuery.of(context).size;
     return Container(
-      padding: (size.width < 500) ? const EdgeInsets.only(left: 40, top: 15, right: 15, bottom: 15) : const EdgeInsets.all(15),
-      height: 500,
-      width: 300, // expande
+      constraints: const BoxConstraints(maxWidth: 800),
       decoration: buildBoxDecoration(),
       child: ListView(children: [
         Column(
           children: [
             Row(
               children: [
-                if (size.width < 715)
-                  const SizedBox(
-                    width: 40,
-                  ),
-                Text(
-                  (id != '') ? 'Editar: ${widget.form?.email}' : 'Nuevo Formulario',
-                  style: DashboardLabel.h4
-                ),
+                Text((id != '') ? 'Editar: ${widget.form?.email}' : 'Nuevo Formulario', style: DashboardLabel.h4),
                 const Spacer(),
                 IconButton(
                     onPressed: () => Navigator.of(context).pop(),
@@ -80,105 +72,124 @@ class _FormsModalState extends State<FormsModal> {
             const SizedBox(
               height: 15 / 2,
             ),
-            Padding(
-              padding: (size.width > 580) ? const EdgeInsets.only(left: 25) : const EdgeInsets.only(left: 0),
-              child: Wrap(alignment: WrapAlignment.center, spacing: 15 / 2, runSpacing: 15 / 2, children: [
-                SizedBox(
-                    width: 300,
-                    child: DropdownButton(
-                        isExpanded: true,
-                        dropdownColor: bgColor,
-                        value: formTipo,
-                        items: [
-                          DropdownMenuItem(
-                              value: 'mentoria',
-                              child: Text(
-                                'Mentoria',
-                                style: GoogleFonts.roboto(color: Colors.white),
-                              )),
-                          DropdownMenuItem(
-                              value: 'encargado',
-                              child: Text(
-                                'Encargado',
-                                style: GoogleFonts.roboto(color: Colors.white),
-                              )),
-                          DropdownMenuItem(
-                              value: 'conferencia',
-                              child: Text(
-                                'Conferencia',
-                                style: GoogleFonts.roboto(color: Colors.white),
-                              )),
-                        ],
-                        onChanged: (value) => setState(() {
-                              formTipo = value.toString();
-                              formProvider.rootForm = value.toString();
-                            }))),
-                SizedBox(
-                  width: 300,
-                  child: TextFormField(
-                    cursorColor: azulText,
-                    style: GoogleFonts.roboto(color: Colors.white),
-                    initialValue: nombre,
-                    onChanged: (value) {
-                      nombre = value;
-                      formProvider.nombre = value;
-                    },
-                    decoration: buildInputDecoration(label: 'Nombre', icon: Icons.person_outline),
+            Container(
+              constraints: const BoxConstraints(maxWidth: 830),
+              child: Wrap(
+                alignment: WrapAlignment.center,
+                spacing: 15,
+                runSpacing: 15,
+                children: [
+                  Container(
+                      height: 50,
+                      decoration: BoxDecoration(border: Border.all(color: azulText.withOpacity(0.3), strokeAlign: 1)),
+                      constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
+                      child: Center(
+                        child: DropdownButton(
+                            underline: Container(),
+                            isExpanded: true,
+                            dropdownColor: bgColor,
+                            value: formTipo,
+                            items: [
+                              DropdownMenuItem(
+                                  value: 'mentoria',
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: Text(
+                                      appLocal.mentoria,
+                                      style: GoogleFonts.roboto(color: Colors.white),
+                                    ),
+                                  )),
+                              DropdownMenuItem(
+                                  value: 'encargado',
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: Text(
+                                      appLocal.serElEncargado,
+                                      style: GoogleFonts.roboto(color: Colors.white),
+                                    ),
+                                  )),
+                              DropdownMenuItem(
+                                  value: 'conferencias',
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: Text(
+                                      appLocal.conferencias,
+                                      style: GoogleFonts.roboto(color: Colors.white),
+                                    ),
+                                  )),
+                            ],
+                            onChanged: (value) => setState(() {
+                                  formTipo = value.toString();
+                                  formProvider.rootForm = value.toString();
+                                })),
+                      )),
+                  Container(
+                    constraints: const BoxConstraints(maxWidth: 400),
+                    child: TextFormField(
+                      cursorColor: azulText,
+                      style: GoogleFonts.roboto(color: Colors.white),
+                      initialValue: nombre,
+                      onChanged: (value) {
+                        nombre = value;
+                        formProvider.nombre = value;
+                      },
+                      decoration: buildInputDecoration(label: appLocal.nombreyapellidoForm, icon: Icons.person_outline),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 300,
-                  child: TextFormField(
-                    cursorColor: azulText,
-                    style: GoogleFonts.roboto(color: Colors.white),
-                    initialValue: email,
-                    onChanged: (value) {
-                      email = value;
-                      formProvider.email = value;
-                    },
-                    decoration: buildInputDecoration(label: 'Correo electrónico', icon: Icons.email_outlined),
+                  Container(
+                    constraints: const BoxConstraints(maxWidth: 400),
+                    child: TextFormField(
+                      cursorColor: azulText,
+                      style: GoogleFonts.roboto(color: Colors.white),
+                      initialValue: email,
+                      onChanged: (value) {
+                        email = value;
+                        formProvider.email = value;
+                      },
+                      decoration: buildInputDecoration(label: appLocal.correoTextFiel, icon: Icons.email_outlined),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 300,
-                  child: TextFormField(
-                    cursorColor: azulText,
-                    style: GoogleFonts.roboto(color: Colors.white),
-                    initialValue: telefono,
-                    onChanged: (value) {
-                      telefono = value;
-                      formProvider.telefono = value;
-                    },
-                    decoration: buildInputDecoration(label: 'Teléfono', icon: Icons.phone_outlined),
+                  Container(
+                    constraints: const BoxConstraints(maxWidth: 400),
+                    child: TextFormField(
+                      cursorColor: azulText,
+                      style: GoogleFonts.roboto(color: Colors.white),
+                      initialValue: telefono,
+                      onChanged: (value) {
+                        telefono = value;
+                        formProvider.telefono = value;
+                      },
+                      decoration: buildInputDecoration(label: appLocal.telefonoForm, icon: Icons.phone_outlined),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 300,
-                  child: TextFormField(
-                    cursorColor: azulText,
-                    style: GoogleFonts.roboto(color: Colors.white),
-                    initialValue: negocio,
-                    onChanged: (value) {
-                      negocio = value;
-                      formProvider.negocio = value;
-                    },
-                    decoration: buildInputDecoration(label: 'Tipo de negocio', icon: Icons.business_center_outlined),
+                  Container(
+                    constraints: const BoxConstraints(maxWidth: 400),
+                    child: TextFormField(
+                      cursorColor: azulText,
+                      style: GoogleFonts.roboto(color: Colors.white),
+                      initialValue: negocio,
+                      onChanged: (value) {
+                        negocio = value;
+                        formProvider.negocio = value;
+                      },
+                      decoration: buildInputDecoration(label: appLocal.negocio2puntos, icon: Icons.business_center_outlined),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 300,
-                  child: TextFormField(
-                    cursorColor: azulText,
-                    style: GoogleFonts.roboto(color: Colors.white),
-                    initialValue: yearsOp,
-                    onChanged: (value) {
-                      yearsOp = value;
-                      formProvider.opYear = value;
-                    },
-                    decoration: buildInputDecoration(label: 'Años de Operaciones', icon: Icons.work_history_outlined),
+                  Container(
+                    constraints: const BoxConstraints(maxWidth: 400),
+                    child: TextFormField(
+                      cursorColor: azulText,
+                      style: GoogleFonts.roboto(color: Colors.white),
+                      initialValue: yearsOp,
+                      onChanged: (value) {
+                        yearsOp = value;
+                        formProvider.opYear = value;
+                      },
+                      decoration: buildInputDecoration(label: appLocal.cuantosAnosNegAct, icon: Icons.work_history_outlined),
+                    ),
                   ),
-                ),
-              ]),
+                ],
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -193,18 +204,16 @@ class _FormsModalState extends State<FormsModal> {
                       if (id == '') {
                         // Crear
                         await formProvider.sendForm();
-          
                       } else {
                         // Actualizar
                         await formProvider.updateForm(id);
-                        
                       }
 
                       if (context.mounted) {
                         Navigator.of(context).pop();
                       }
                     },
-                    text: (widget.form != null) ? 'Actualizar' : 'Crear',
+                    text: (widget.form != null) ? appLocal.actualizarBtn : appLocal.crearBtn,
                   ),
                 ),
                 const SizedBox(
@@ -219,7 +228,7 @@ class _FormsModalState extends State<FormsModal> {
                     onPress: () {
                       Navigator.of(context).pop();
                     },
-                    text: 'Cancelar',
+                    text: appLocal.cancelarBtn,
                   ),
                 ),
               ],

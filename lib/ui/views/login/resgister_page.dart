@@ -31,10 +31,8 @@ class _RegisterPageState extends State<RegisterPage> {
             child: SingleChildScrollView(
               child: Container(
                 constraints: const BoxConstraints(maxWidth: 1200),
-
                 child: Stack(
                   children: [
-                          
                     // const Positioned(top: 0, left: -500, child: SizedBox(width: 1100, child: Image(image: circulo))),
                     Center(
                       child: Column(
@@ -44,20 +42,16 @@ class _RegisterPageState extends State<RegisterPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               if (wScreen > 980) const Image(image: logoGrande),
-                              
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const SizedBox(
                                     height: 60,
                                   ),
-                                  if (wScreen <= 980)
-                                    const SizedBox(width: 200, child: Image(image: logoGrande)),
+                                  if (wScreen <= 980) const SizedBox(width: 200, child: Image(image: logoGrande)),
                                   const FittedBox(
                                     fit: BoxFit.contain,
-                                    child: SizedBox(
-                                        width: 320,
-                                        child: RegisterForm()),
+                                    child: SizedBox(width: 315, child: RegisterForm()),
                                   ),
                                   const SizedBox(
                                     height: 30,
@@ -74,7 +68,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       TextButton(
                                         style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
                                         onPressed: () {
-                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const LoginPage()));
+                                          NavigatorService.replaceTo(Flurorouter.loginRoute);
                                         }, // Navigate to register page
                                         child: Text(
                                           appLocal.iniciaAqui,
@@ -127,14 +121,15 @@ class _RegisterPageState extends State<RegisterPage> {
                                         style: const TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
                                       ),
                                     ),
-                                    const SizedBox(height: 60,)
+                                    const SizedBox(
+                                      height: 60,
+                                    )
                                   ],
                                 )),
                           )
                         ],
                       ),
                     ),
-                    
                   ],
                 ),
               ),
@@ -145,4 +140,3 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 }
-

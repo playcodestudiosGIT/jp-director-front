@@ -1,7 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
 
 import '../../../constant.dart';
+import '../../../providers/export_all_providers.dart';
 import 'ads_view.dart';
 import 'contacto_view.dart';
 import 'first_view.dart';
@@ -20,10 +22,10 @@ class HomeBody extends StatefulWidget {
 class _HomeBodyState extends State<HomeBody> {
   double scrollValue = 0.0;
   late PageController homePageController;
-  bool isRocket = false;
   @override
   void initState() {
     super.initState();
+    
     homePageController = PageController(initialPage: widget.index);
   }
 

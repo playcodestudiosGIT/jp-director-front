@@ -99,6 +99,14 @@ class CursosDTS extends DataTableSource {
                 Text(curso.duracion),
               ],
             ),
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                Text(appLocal.publicado2puntos),
+                if(curso.publicado) const Icon(Icons.visibility, color: Colors.green,),
+                if(!curso.publicado) const Icon(Icons.visibility_off, color: Colors.red,)
+              ],
+            ),
             const SizedBox(height: 30),
           ],
         ),

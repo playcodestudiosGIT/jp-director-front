@@ -660,10 +660,10 @@ class AppLocalizations {
     );
   }
 
-  /// `As?`
+  /// `¿How?`
   String get como {
     return Intl.message(
-      'As?',
+      '¿How?',
       name: 'como',
       desc: '',
       args: [],
@@ -990,13 +990,45 @@ class AppLocalizations {
     );
   }
 
-  // skipped getter for the '1y' key
+  /// `1 Year`
+  String get uny {
+    return Intl.message(
+      '1 Year',
+      name: 'uny',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the '2y' key
+  /// `2 Years`
+  String get dosy {
+    return Intl.message(
+      '2 Years',
+      name: 'dosy',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the '3y' key
+  /// `3 Years`
+  String get tresy {
+    return Intl.message(
+      '3 Years',
+      name: 'tresy',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the '4y' key
+  /// `+4 Years`
+  String get cuatroy {
+    return Intl.message(
+      '+4 Years',
+      name: 'cuatroy',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `How can I find you on social networks?`
   String get comoPuedoBuscarteRRSS {
@@ -2603,6 +2635,1166 @@ class AppLocalizations {
     return Intl.message(
       'Invalid Comment',
       name: 'comentarioInvalido',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Progress: `
+  String get progreso2puntos {
+    return Intl.message(
+      'Progress: ',
+      name: 'progreso2puntos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Return to Home`
+  String get irAlLogin {
+    return Intl.message(
+      'Return to Home',
+      name: 'irAlLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Telephone without special characters (12223334455)`
+  String get telfSinCaracteres {
+    return Intl.message(
+      'Telephone without special characters (12223334455)',
+      name: 'telfSinCaracteres',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Must include international code + area code`
+  String get telfDebeCodArea {
+    return Intl.message(
+      'Must include international code + area code',
+      name: 'telfDebeCodArea',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It should only contain numbers. (12223334455)`
+  String get telfSoloNumeros {
+    return Intl.message(
+      'It should only contain numbers. (12223334455)',
+      name: 'telfSoloNumeros',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a valid email`
+  String get ingreseCorreoValido {
+    return Intl.message(
+      'Enter a valid email',
+      name: 'ingreseCorreoValido',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What sector or city is your business from?`
+  String get deQueSector {
+    return Intl.message(
+      'What sector or city is your business from?',
+      name: 'deQueSector',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Required`
+  String get requerido {
+    return Intl.message(
+      'Required',
+      name: 'requerido',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New User`
+  String get nuevoUsuario {
+    return Intl.message(
+      'New User',
+      name: 'nuevoUsuario',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username`
+  String get nombreDeUsuario {
+    return Intl.message(
+      'Username',
+      name: 'nombreDeUsuario',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Surname`
+  String get apellidoDeUsuario {
+    return Intl.message(
+      'Surname',
+      name: 'apellidoDeUsuario',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User mail`
+  String get correoDeUsuario {
+    return Intl.message(
+      'User mail',
+      name: 'correoDeUsuario',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User password`
+  String get passDeUsuario {
+    return Intl.message(
+      'User password',
+      name: 'passDeUsuario',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User phone`
+  String get telefonoDeUsuario {
+    return Intl.message(
+      'User phone',
+      name: 'telefonoDeUsuario',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `STATE`
+  String get estado {
+    return Intl.message(
+      'STATE',
+      name: 'estado',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CREATE`
+  String get crearBtn {
+    return Intl.message(
+      'CREATE',
+      name: 'crearBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add course to user`
+  String get anadirCurso {
+    return Intl.message(
+      'Add course to user',
+      name: 'anadirCurso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select a course`
+  String get seleccioneCurso {
+    return Intl.message(
+      'Select a course',
+      name: 'seleccioneCurso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ADD`
+  String get agregarBtn {
+    return Intl.message(
+      'ADD',
+      name: 'agregarBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User created successfully`
+  String get usuarioCreado {
+    return Intl.message(
+      'User created successfully',
+      name: 'usuarioCreado',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User Updated Successfully`
+  String get usuarioActualizado {
+    return Intl.message(
+      'User Updated Successfully',
+      name: 'usuarioActualizado',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course already exists`
+  String get cursoRepetido {
+    return Intl.message(
+      'Course already exists',
+      name: 'cursoRepetido',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Course`
+  String get eliminarCurso {
+    return Intl.message(
+      'Delete Course',
+      name: 'eliminarCurso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure to delete the course?`
+  String get seguroEliminarCurso {
+    return Intl.message(
+      'Are you sure to delete the course?',
+      name: 'seguroEliminarCurso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit:`
+  String get editar2puntos {
+    return Intl.message(
+      'Edit:',
+      name: 'editar2puntos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Course`
+  String get nuevoCurso {
+    return Intl.message(
+      'New Course',
+      name: 'nuevoCurso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course name`
+  String get nombreDelCurso {
+    return Intl.message(
+      'Course name',
+      name: 'nombreDelCurso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course price`
+  String get precioDelCurso {
+    return Intl.message(
+      'Course price',
+      name: 'precioDelCurso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course image`
+  String get imagenDelCurso {
+    return Intl.message(
+      'Course image',
+      name: 'imagenDelCurso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course baner`
+  String get banerDelCurso {
+    return Intl.message(
+      'Course baner',
+      name: 'banerDelCurso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course duration`
+  String get duracionDelCurso {
+    return Intl.message(
+      'Course duration',
+      name: 'duracionDelCurso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course description`
+  String get descripcionDelCurso {
+    return Intl.message(
+      'Course description',
+      name: 'descripcionDelCurso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course modules`
+  String get modulosDelCurso {
+    return Intl.message(
+      'Course modules',
+      name: 'modulosDelCurso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add module`
+  String get agregarUnModulo {
+    return Intl.message(
+      'Add module',
+      name: 'agregarUnModulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Module name`
+  String get nombreDelModulo {
+    return Intl.message(
+      'Module name',
+      name: 'nombreDelModulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Module description`
+  String get descripcionDelModulo {
+    return Intl.message(
+      'Module description',
+      name: 'descripcionDelModulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Module video url`
+  String get urlVideoModulo {
+    return Intl.message(
+      'Module video url',
+      name: 'urlVideoModulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Module ID folder`
+  String get idCarpertaModulo {
+    return Intl.message(
+      'Module ID folder',
+      name: 'idCarpertaModulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Module ID Zip`
+  String get idZipModulo {
+    return Intl.message(
+      'Module ID Zip',
+      name: 'idZipModulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Certificate image`
+  String get imgCursoCertificado {
+    return Intl.message(
+      'Certificate image',
+      name: 'imgCursoCertificado',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The duration of the course is required`
+  String get duracionObligatoria {
+    return Intl.message(
+      'The duration of the course is required',
+      name: 'duracionObligatoria',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No modules, add a new module`
+  String get sinModulos {
+    return Intl.message(
+      'No modules, add a new module',
+      name: 'sinModulos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete module`
+  String get eliminarModulo {
+    return Intl.message(
+      'Delete module',
+      name: 'eliminarModulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure to remove the module?`
+  String get seguroEliminarModulo {
+    return Intl.message(
+      'Are you sure to remove the module?',
+      name: 'seguroEliminarModulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit module`
+  String get editarModulo {
+    return Intl.message(
+      'Edit module',
+      name: 'editarModulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New module`
+  String get nuevoModulo {
+    return Intl.message(
+      'New module',
+      name: 'nuevoModulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PUBLISHED:  `
+  String get publicado2puntos {
+    return Intl.message(
+      'PUBLISHED:  ',
+      name: 'publicado2puntos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Legal Notice and Terms of Use of the Site`
+  String get avisoLegalYTerminos {
+    return Intl.message(
+      'Legal Notice and Terms of Use of the Site',
+      name: 'avisoLegalYTerminos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last update March 7, 2023`
+  String get actualizacionTyC {
+    return Intl.message(
+      'Last update March 7, 2023',
+      name: 'actualizacionTyC',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1. LEGAL NOTICE AND TERMS OF USE`
+  String get avisoLegal1 {
+    return Intl.message(
+      '1. LEGAL NOTICE AND TERMS OF USE',
+      name: 'avisoLegal1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I can guarantee that you are in a 100% safe space, for this you must know:\n\n1.1. IDENTIFICATION DATA OF THE RESPONSIBLE\nAs stated in current regulations, I inform you that:`
+  String get puedoGatantizarte {
+    return Intl.message(
+      'I can guarantee that you are in a 100% safe space, for this you must know:\n\n1.1. IDENTIFICATION DATA OF THE RESPONSIBLE\nAs stated in current regulations, I inform you that:',
+      name: 'puedoGatantizarte',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-My company name is: ON POINT PRODUCTIONS AGENCY LLC\n-My registered office is at 4020 N MacArthur Blvd Suite 122, Irving, Texas 75038, United States of America.\n-Email: hola@jpdirector.net\n- My social activity is: Advertising`
+  String get miDenominacion {
+    return Intl.message(
+      '-My company name is: ON POINT PRODUCTIONS AGENCY LLC\n-My registered office is at 4020 N MacArthur Blvd Suite 122, Irving, Texas 75038, United States of America.\n-Email: hola@jpdirector.net\n- My social activity is: Advertising',
+      name: 'miDenominacion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1.2. PURPOSE OF THE WEB PAGE.\nThe services provided by the person in charge of the website are the following:`
+  String get finalidadWeb1_2 {
+    return Intl.message(
+      '1.2. PURPOSE OF THE WEB PAGE.\nThe services provided by the person in charge of the website are the following:',
+      name: 'finalidadWeb1_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-The sale of training and services about online businesses.\n-Manage the list of subscribers and users attached to the web.\n-Direct your network of affiliates and merchants as well as the management of their payments.`
+  String get laVentanaDeFormacion {
+    return Intl.message(
+      '-The sale of training and services about online businesses.\n-Manage the list of subscribers and users attached to the web.\n-Direct your network of affiliates and merchants as well as the management of their payments.',
+      name: 'laVentanaDeFormacion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1.3. USERS:`
+  String get usuarios1_3 {
+    return Intl.message(
+      '1.3. USERS:',
+      name: 'usuarios1_3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The access and/or use of this website attributes the condition of USER, who accepts, from said access and/or use, these terms of use, however, by the mere use of the web page it does not mean the beginning of the relationship labor/commercial some`
+  String get elAccesoyo {
+    return Intl.message(
+      'The access and/or use of this website attributes the condition of USER, who accepts, from said access and/or use, these terms of use, however, by the mere use of the web page it does not mean the beginning of the relationship labor/commercial some',
+      name: 'elAccesoyo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1.4. USE OF THE WEBSITE AND INFORMATION CAPTURE:`
+  String get usoDelSitioWeb1_4 {
+    return Intl.message(
+      '1.4. USE OF THE WEBSITE AND INFORMATION CAPTURE:',
+      name: 'usoDelSitioWeb1_4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1.4.1 USE OF THE WEBSITE`
+  String get usoDelSitioWeb1_4_1 {
+    return Intl.message(
+      '1.4.1 USE OF THE WEBSITE',
+      name: 'usoDelSitioWeb1_4_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The website https://quieroads.com/ hereinafter (THE WEB) provides access to articles, information, services and data (hereinafter,"the contents") owned by ON POINT PRODUCTIONS AGENCY LLC. The USER assumes responsibility for the use of the website.\nThe USER undertakes to make appropriate use of the content offered through its website, including but not limited to, not to use them to:\n(a) incur in illicit, illegal or contrary to good faith and public order activities;\n(b) disseminate content or propaganda of a racist, xenophobic, pornographic-illegal nature, advocating terrorism or an attack on human rights;\n(c ) cause damage to the physical and logical systems of the website, its providers or third parties, introduce or spread computer viruses or any other physical or logical systems that are likely to cause the aforementioned damage;\n(d ) try to access and, where appropriate, use the email accounts of other users and modify or manipulate their messages.\nON POINT PRODUCTIONS AGENCY LLC reserves the right to withdraw all comments and contributions that violate respect for the dignity of the person, that are discriminatory, xenophobic, racist, pornographic, that threaten youth or childhood, order or public safety or that, in his opinion, are not suitable for publication.\nIn any case, ON POINT PRODUCTIONS AGENCY LLC will not be responsible for the opinions expressed by users through any participation tools that may be created, in accordance with the provisions of the applicable regulations.`
+  String get laPaginaWebText {
+    return Intl.message(
+      'The website https://quieroads.com/ hereinafter (THE WEB) provides access to articles, information, services and data (hereinafter,"the contents") owned by ON POINT PRODUCTIONS AGENCY LLC. The USER assumes responsibility for the use of the website.\nThe USER undertakes to make appropriate use of the content offered through its website, including but not limited to, not to use them to:\n(a) incur in illicit, illegal or contrary to good faith and public order activities;\n(b) disseminate content or propaganda of a racist, xenophobic, pornographic-illegal nature, advocating terrorism or an attack on human rights;\n(c ) cause damage to the physical and logical systems of the website, its providers or third parties, introduce or spread computer viruses or any other physical or logical systems that are likely to cause the aforementioned damage;\n(d ) try to access and, where appropriate, use the email accounts of other users and modify or manipulate their messages.\nON POINT PRODUCTIONS AGENCY LLC reserves the right to withdraw all comments and contributions that violate respect for the dignity of the person, that are discriminatory, xenophobic, racist, pornographic, that threaten youth or childhood, order or public safety or that, in his opinion, are not suitable for publication.\nIn any case, ON POINT PRODUCTIONS AGENCY LLC will not be responsible for the opinions expressed by users through any participation tools that may be created, in accordance with the provisions of the applicable regulations.',
+      name: 'laPaginaWebText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1.4.2 INFORMATION CAPTURE`
+  String get capturaDeInf1_4_2 {
+    return Intl.message(
+      '1.4.2 INFORMATION CAPTURE',
+      name: 'capturaDeInf1_4_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-Contact form, where the USER must fill in the field of email, subject and name.\n-Subscription form, the USER fills in the necessary fields for subscription to the web with the fields of name, email and telephone number .\n-Sales form, the USER filling in the necessary fields for the sale with the fields of name, email, address, telephone and DNI\n-Tracking cookies, in accordance with the following rules\n-Navigation and IP Address: When browsing this website, the user automatically provides the web server with information regarding your IP address, date and time of access, the hyperlink that has been forwarded to them, your operating system and the browser used.`
+  String get capturaDeInf1_4_2Text {
+    return Intl.message(
+      '-Contact form, where the USER must fill in the field of email, subject and name.\n-Subscription form, the USER fills in the necessary fields for subscription to the web with the fields of name, email and telephone number .\n-Sales form, the USER filling in the necessary fields for the sale with the fields of name, email, address, telephone and DNI\n-Tracking cookies, in accordance with the following rules\n-Navigation and IP Address: When browsing this website, the user automatically provides the web server with information regarding your IP address, date and time of access, the hyperlink that has been forwarded to them, your operating system and the browser used.',
+      name: 'capturaDeInf1_4_2Text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Despite the foregoing, users may unsubscribe at any time from the services provided by ON POINT PRODUCTIONS AGENCY LLC or data provided by the USER in compliance with current regulations on Data Protection. Likewise, both by subscribing to this web page, and by making a comment or making a purchase on any of its pages and/or entries, the user consents:`
+  String get aPesarDeLoAnterior {
+    return Intl.message(
+      'Despite the foregoing, users may unsubscribe at any time from the services provided by ON POINT PRODUCTIONS AGENCY LLC or data provided by the USER in compliance with current regulations on Data Protection. Likewise, both by subscribing to this web page, and by making a comment or making a purchase on any of its pages and/or entries, the user consents:',
+      name: 'aPesarDeLoAnterior',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1. The processing of your personal data in the Wix environment in accordance with its privacy policies.\n2. The access of ON POINT PRODUCTIONS AGENCY LLC to the data that, according to the Wix infrastructure, the user needs to provide either for the subscription to the web or for any query through the contact form.`
+  String get elTratamientoDeSusDatos {
+    return Intl.message(
+      '1. The processing of your personal data in the Wix environment in accordance with its privacy policies.\n2. The access of ON POINT PRODUCTIONS AGENCY LLC to the data that, according to the Wix infrastructure, the user needs to provide either for the subscription to the web or for any query through the contact form.',
+      name: 'elTratamientoDeSusDatos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Likewise, we inform that the information of our users is protected according to our PRIVACY POLICY\nBy activating a subscription, contact form or comment, the user understands and accepts that:\nFrom the moment you subscribe or access any payment service, ON POINT PRODUCTIONS AGENCY LLC has access\nIn any case ON POINT PRODUCTIONS AGENCY LLC reserves the right to modify, at any time and without prior notice, the presentation and configuration of the website https://quieroads. com/ as this legal notice.`
+  String get asiMismoInformamos {
+    return Intl.message(
+      'Likewise, we inform that the information of our users is protected according to our PRIVACY POLICY\nBy activating a subscription, contact form or comment, the user understands and accepts that:\nFrom the moment you subscribe or access any payment service, ON POINT PRODUCTIONS AGENCY LLC has access\nIn any case ON POINT PRODUCTIONS AGENCY LLC reserves the right to modify, at any time and without prior notice, the presentation and configuration of the website https://quieroads. com/ as this legal notice.',
+      name: 'asiMismoInformamos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `2. INTELLECTUAL AND INDUSTRIAL PROPERTY:`
+  String get propiedadIntelectual {
+    return Intl.message(
+      '2. INTELLECTUAL AND INDUSTRIAL PROPERTY:',
+      name: 'propiedadIntelectual',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ON POINT PRODUCTIONS AGENCY LLC by itself or as an assignee, is the owner of all the intellectual and industrial property rights of its website, as well as the elements contained therein (for example, images, sound, audio, video, software or texts; trademarks or logos, color combinations, structure and design, selection of materials used, computer programs necessary for its operation, access and use, etc.), owned by ON POINT PRODUCTIONS AGENCY LLC or its licensors. All rights reserved.\nAny use not previously authorized by ON POINT PRODUCTIONS AGENCY LLC will be considered a serious breach of the intellectual or industrial property rights of the author.\nReproduction, distribution and public communication, including its modality, are expressly prohibited making available, all or part of the contents of this web page, for commercial purposes, in any support and by any technical means, without the authorization of ON POINT PRODUCTIONS AGENCY LLC.\nThe USER undertakes to respect the rights of Intellectual and Industrial Property owned by ON POINT PRODUCTIONS AGENCY LLC. You can only view the elements of the web without the possibility of printing, copying or storing them on the hard drive of your computer or on any other physical support. The USER must refrain from deleting, altering, evading or manipulating any protection device or security system that was installed on the pages of ON POINT PRODUCTIONS AGENCY LLC.\nIt is strictly prohibited to share the license for use with more people, each license is personal and non-transferable reserving as many civil and criminal actions that assist us in order to safeguard our rights, all under penalty of committing a crime against intellectual property.`
+  String get propiedadIntelectualText {
+    return Intl.message(
+      'ON POINT PRODUCTIONS AGENCY LLC by itself or as an assignee, is the owner of all the intellectual and industrial property rights of its website, as well as the elements contained therein (for example, images, sound, audio, video, software or texts; trademarks or logos, color combinations, structure and design, selection of materials used, computer programs necessary for its operation, access and use, etc.), owned by ON POINT PRODUCTIONS AGENCY LLC or its licensors. All rights reserved.\nAny use not previously authorized by ON POINT PRODUCTIONS AGENCY LLC will be considered a serious breach of the intellectual or industrial property rights of the author.\nReproduction, distribution and public communication, including its modality, are expressly prohibited making available, all or part of the contents of this web page, for commercial purposes, in any support and by any technical means, without the authorization of ON POINT PRODUCTIONS AGENCY LLC.\nThe USER undertakes to respect the rights of Intellectual and Industrial Property owned by ON POINT PRODUCTIONS AGENCY LLC. You can only view the elements of the web without the possibility of printing, copying or storing them on the hard drive of your computer or on any other physical support. The USER must refrain from deleting, altering, evading or manipulating any protection device or security system that was installed on the pages of ON POINT PRODUCTIONS AGENCY LLC.\nIt is strictly prohibited to share the license for use with more people, each license is personal and non-transferable reserving as many civil and criminal actions that assist us in order to safeguard our rights, all under penalty of committing a crime against intellectual property.',
+      name: 'propiedadIntelectualText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `3. EXCLUSION OF WARRANTIES AND LIABILITY`
+  String get exclusionDeGarant {
+    return Intl.message(
+      '3. EXCLUSION OF WARRANTIES AND LIABILITY',
+      name: 'exclusionDeGarant',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ON POINT PRODUCTIONS AGENCY LLC is not responsible, in any case, for damages of any nature that may be caused, including but not limited to: errors or omissions in the content, lack of availability of the website, - which will carry out Periodic stops for technical maintenance – as well as for the transmission of viruses or malicious or harmful programs in the contents, despite having adopted all the necessary technological measures to avoid it.`
+  String get exclusionDeGarantText {
+    return Intl.message(
+      'ON POINT PRODUCTIONS AGENCY LLC is not responsible, in any case, for damages of any nature that may be caused, including but not limited to: errors or omissions in the content, lack of availability of the website, - which will carry out Periodic stops for technical maintenance – as well as for the transmission of viruses or malicious or harmful programs in the contents, despite having adopted all the necessary technological measures to avoid it.',
+      name: 'exclusionDeGarantText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `4. MODIFICATIONS`
+  String get modificaciones {
+    return Intl.message(
+      '4. MODIFICATIONS',
+      name: 'modificaciones',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ON POINT PRODUCTIONS AGENCY LLC reserves the right to make the modifications it deems appropriate on its website without prior notice, being able to change, delete or add both the content and services provided through it and the way in which they appear. presented or located on its website.`
+  String get modificacionesText {
+    return Intl.message(
+      'ON POINT PRODUCTIONS AGENCY LLC reserves the right to make the modifications it deems appropriate on its website without prior notice, being able to change, delete or add both the content and services provided through it and the way in which they appear. presented or located on its website.',
+      name: 'modificacionesText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `5. LINK POLICY`
+  String get politicaDeEnlaces {
+    return Intl.message(
+      '5. LINK POLICY',
+      name: 'politicaDeEnlaces',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The persons or entities that intend to make or make a hyperlink from a web page of another Internet portal to the ON POINT PRODUCTIONS AGENCY LLC website\nmust submit to the following conditions:`
+  String get politicaDeEnlacesText {
+    return Intl.message(
+      'The persons or entities that intend to make or make a hyperlink from a web page of another Internet portal to the ON POINT PRODUCTIONS AGENCY LLC website\nmust submit to the following conditions:',
+      name: 'politicaDeEnlacesText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-The total or partial reproduction of any of the services or contents of the website is not allowed without the prior express authorization of ON POINT PRODUCTIONS AGENCY LLC.\n-No deep-links or IMG or image links will be established, nor frames with the ON POINT PRODUCTIONS AGENCY LLC website without its prior express authorization.\n-No false, inaccurate or incorrect statement will be made about the ON POINT PRODUCTIONS AGENCY LLC website or about its services or contents. Except for those signs that are part of the hyperlink, the web page in which it is established will not contain any brand, trade name, establishment label, denomination, logo, slogan or other distinctive signs belonging to ON POINT PRODUCTIONS AGENCY LLC unless expressly authorized by it. .\n-The establishment of the hyperlink will not imply the existence of relations between ON POINT PRODUCTIONS AGENCY LLC and the owner of the web page or portal from which it is made, nor the knowledge and acceptance of ON POINT PRODUCTIONS AGENCY LLC of the services and content offered on said web page or portal.\n-ON POINT PRODUCTIONS AGENCY LLC will not be responsible for the content or services made available to the public on the web page or portal from which the hyperlink is made, nor for the information and statements included therein.\n-The ON POINT PRODUCTIONS AGENCY LLC website may make connections and links to other websites managed and controlled by third parties available to the user. These links have the exclusive function of facilitating users to search for information, content and services on the Internet, without in any case being considered a suggestion, recommendation or invitation to visit them.\n-ON POINT PRODUCTIONS AGENCY LLC does not market, direct, or previously control, nor endorses the contents, services, information and statements available on said websites.\n-ON POINT PRODUCTIONS AGENCY LLC does not assume any type of responsibility, even indirectly or subsidiary, for damages of any kind that may arise from access, maintenance, use, quality, legality, reliability and usefulness of the contents, information, communications, opinions, statements, products and services existing or offered on the websites not managed by ON POINT PRODUCTIONS AGENCY LLC and accessible through ON POINT PRODUCTIONS AGENCY LLC.`
+  String get noSePermiteRepr {
+    return Intl.message(
+      '-The total or partial reproduction of any of the services or contents of the website is not allowed without the prior express authorization of ON POINT PRODUCTIONS AGENCY LLC.\n-No deep-links or IMG or image links will be established, nor frames with the ON POINT PRODUCTIONS AGENCY LLC website without its prior express authorization.\n-No false, inaccurate or incorrect statement will be made about the ON POINT PRODUCTIONS AGENCY LLC website or about its services or contents. Except for those signs that are part of the hyperlink, the web page in which it is established will not contain any brand, trade name, establishment label, denomination, logo, slogan or other distinctive signs belonging to ON POINT PRODUCTIONS AGENCY LLC unless expressly authorized by it. .\n-The establishment of the hyperlink will not imply the existence of relations between ON POINT PRODUCTIONS AGENCY LLC and the owner of the web page or portal from which it is made, nor the knowledge and acceptance of ON POINT PRODUCTIONS AGENCY LLC of the services and content offered on said web page or portal.\n-ON POINT PRODUCTIONS AGENCY LLC will not be responsible for the content or services made available to the public on the web page or portal from which the hyperlink is made, nor for the information and statements included therein.\n-The ON POINT PRODUCTIONS AGENCY LLC website may make connections and links to other websites managed and controlled by third parties available to the user. These links have the exclusive function of facilitating users to search for information, content and services on the Internet, without in any case being considered a suggestion, recommendation or invitation to visit them.\n-ON POINT PRODUCTIONS AGENCY LLC does not market, direct, or previously control, nor endorses the contents, services, information and statements available on said websites.\n-ON POINT PRODUCTIONS AGENCY LLC does not assume any type of responsibility, even indirectly or subsidiary, for damages of any kind that may arise from access, maintenance, use, quality, legality, reliability and usefulness of the contents, information, communications, opinions, statements, products and services existing or offered on the websites not managed by ON POINT PRODUCTIONS AGENCY LLC and accessible through ON POINT PRODUCTIONS AGENCY LLC.',
+      name: 'noSePermiteRepr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `6. RIGHT OF EXCLUSION`
+  String get derechoExcl {
+    return Intl.message(
+      '6. RIGHT OF EXCLUSION',
+      name: 'derechoExcl',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ON POINT PRODUCTIONS AGENCY LLC reserves the right to deny or withdraw access to the portal and/or the services offered without prior notice, at its own request or by a third party, to those users who fail to comply with these General Conditions of Use.`
+  String get derechoExclText {
+    return Intl.message(
+      'ON POINT PRODUCTIONS AGENCY LLC reserves the right to deny or withdraw access to the portal and/or the services offered without prior notice, at its own request or by a third party, to those users who fail to comply with these General Conditions of Use.',
+      name: 'derechoExclText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `7. GENERAL`
+  String get generalidades {
+    return Intl.message(
+      '7. GENERAL',
+      name: 'generalidades',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ON POINT PRODUCTIONS AGENCY LLC will pursue the breach of these conditions as well as any improper use of its website, exercising all civil and criminal actions that may correspond to it by law.`
+  String get generalidadesText {
+    return Intl.message(
+      'ON POINT PRODUCTIONS AGENCY LLC will pursue the breach of these conditions as well as any improper use of its website, exercising all civil and criminal actions that may correspond to it by law.',
+      name: 'generalidadesText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `8. MODIFICATION OF THE PRESENT CONDITIONS AND DURATION`
+  String get modificacionCond {
+    return Intl.message(
+      '8. MODIFICATION OF THE PRESENT CONDITIONS AND DURATION',
+      name: 'modificacionCond',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ON POINT PRODUCTIONS AGENCY LLC may modify the conditions determined here at any time, being duly published as they appear here. The validity of the aforementioned conditions will depend on their exposure and will be in force until they are modified by others duly published.`
+  String get modificacionCondText {
+    return Intl.message(
+      'ON POINT PRODUCTIONS AGENCY LLC may modify the conditions determined here at any time, being duly published as they appear here. The validity of the aforementioned conditions will depend on their exposure and will be in force until they are modified by others duly published.',
+      name: 'modificacionCondText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `9. CLAIMS AND DOUBTS`
+  String get reclamacionesDudas {
+    return Intl.message(
+      '9. CLAIMS AND DOUBTS',
+      name: 'reclamacionesDudas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ON POINT PRODUCTIONS AGENCY LLC informs that there are claim forms available to users and customers, who can send an email to hola@jpdirector.net indicating their name and surname, the service or product purchased and stating the reasons for their claim.\nYou can also direct your claim by postal mail addressed to: ON POINT PRODUCTIONS AGENCY LLC, 4020 N MacArthur Blvd Suite 122, Irving, Texas 75038, United States of America.`
+  String get reclamacionesDudasText {
+    return Intl.message(
+      'ON POINT PRODUCTIONS AGENCY LLC informs that there are claim forms available to users and customers, who can send an email to hola@jpdirector.net indicating their name and surname, the service or product purchased and stating the reasons for their claim.\nYou can also direct your claim by postal mail addressed to: ON POINT PRODUCTIONS AGENCY LLC, 4020 N MacArthur Blvd Suite 122, Irving, Texas 75038, United States of America.',
+      name: 'reclamacionesDudasText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `10. TERMS OF SALE`
+  String get condicionesDeVenta {
+    return Intl.message(
+      '10. TERMS OF SALE',
+      name: 'condicionesDeVenta',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The purpose of these general conditions is to expressly regulate the conditions applicable to the contracting processes carried out by the “Customer” users of the online courses and services offered by ON POINT PRODUCTIONS AGENCY LLC through its website.\nThese conditions will remain in force and will be valid for as long as they are accessible through the website, all without prejudice to the fact that ON POINT PRODUCTIONS AGENCY LLC reserves the right to modify, without prior notice, the general conditions as well as any of the legal texts found on said website. In any case, access to the Web after its modification, inclusion and/or substitution, implies the acceptance of the same by the user.\nThe client is subject to the general conditions in force at each of the moments of making the corresponding contracting, not being possible the contracting of any service without the prior acceptance of these general contracting conditions.\nOn this website you can purchase products or services reflected in each sales page.\nTo proceed with the payment, the client has to your disposal the following means:\nVisa/Mastercard/American Express; the user must provide the name of the cardholder, the number, the expiration date and the CVV.\nAll the information will be processed through an external payment gateway to ON POINT PRODUCTIONS AGENCY LLC located in Stripe.com, being able to obtain more information by visiting their website https://stripe.com/privacy - https://www.paypal.com/us/home.\nTo proceed with the payment, you will normally be redirected to a cart where you will be asked for the necessary information through third-party platforms such as Stripe or Paypal.`
+  String get condicionesDeVentaText {
+    return Intl.message(
+      'The purpose of these general conditions is to expressly regulate the conditions applicable to the contracting processes carried out by the “Customer” users of the online courses and services offered by ON POINT PRODUCTIONS AGENCY LLC through its website.\nThese conditions will remain in force and will be valid for as long as they are accessible through the website, all without prejudice to the fact that ON POINT PRODUCTIONS AGENCY LLC reserves the right to modify, without prior notice, the general conditions as well as any of the legal texts found on said website. In any case, access to the Web after its modification, inclusion and/or substitution, implies the acceptance of the same by the user.\nThe client is subject to the general conditions in force at each of the moments of making the corresponding contracting, not being possible the contracting of any service without the prior acceptance of these general contracting conditions.\nOn this website you can purchase products or services reflected in each sales page.\nTo proceed with the payment, the client has to your disposal the following means:\nVisa/Mastercard/American Express; the user must provide the name of the cardholder, the number, the expiration date and the CVV.\nAll the information will be processed through an external payment gateway to ON POINT PRODUCTIONS AGENCY LLC located in Stripe.com, being able to obtain more information by visiting their website https://stripe.com/privacy - https://www.paypal.com/us/home.\nTo proceed with the payment, you will normally be redirected to a cart where you will be asked for the necessary information through third-party platforms such as Stripe or Paypal.',
+      name: 'condicionesDeVentaText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `11. APPLICABLE LAW AND JURISDICTION`
+  String get leyAplicable {
+    return Intl.message(
+      '11. APPLICABLE LAW AND JURISDICTION',
+      name: 'leyAplicable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The relationship between ON POINT PRODUCTIONS AGENCY LLC and the CLIENT will be governed by United States regulations and any dispute will be submitted to the Courts and Tribunals of the State of Florida, unless the applicable Law provides otherwise.`
+  String get leyAplicableText {
+    return Intl.message(
+      'The relationship between ON POINT PRODUCTIONS AGENCY LLC and the CLIENT will be governed by United States regulations and any dispute will be submitted to the Courts and Tribunals of the State of Florida, unless the applicable Law provides otherwise.',
+      name: 'leyAplicableText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `12. CAUSES FOR DISSOLUTION OF THE CONTRACT`
+  String get causasDeDisolucion {
+    return Intl.message(
+      '12. CAUSES FOR DISSOLUTION OF THE CONTRACT',
+      name: 'causasDeDisolucion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The dissolution of the service contract can occur at any time by either party.\nYou are not bound by conditions of permanence with ON POINT PRODUCTIONS AGENCY LLC.\nON POINT PRODUCTIONS AGENCY LLC may terminate or suspend any and all contracted Services immediately , without prior notice or responsibility, in the event that you do not comply with the conditions set forth herein.\nUpon the dissolution of the contract, your right to use the Services will cease immediately.\nThe following will be causes for dissolution of the contract:`
+  String get causasDeDisolucionText {
+    return Intl.message(
+      'The dissolution of the service contract can occur at any time by either party.\nYou are not bound by conditions of permanence with ON POINT PRODUCTIONS AGENCY LLC.\nON POINT PRODUCTIONS AGENCY LLC may terminate or suspend any and all contracted Services immediately , without prior notice or responsibility, in the event that you do not comply with the conditions set forth herein.\nUpon the dissolution of the contract, your right to use the Services will cease immediately.\nThe following will be causes for dissolution of the contract:',
+      name: 'causasDeDisolucionText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The falsity, in whole or in part, of the data provided in the contracting process of any service.\nAlter, evade, reverse engineer, decompile, disassemble or alter in any way the security technology provided by ON POINT PRODUCTIONS AGENCY LLC.\nCases of abuse of support services due to the requirement of more hours than those established in the contract.\nFalse and unfounded opinions with the intention of discrediting the owner of the products or services purchased.\nAny breach established throughout of the conditions.`
+  String get laFalsedadText {
+    return Intl.message(
+      'The falsity, in whole or in part, of the data provided in the contracting process of any service.\nAlter, evade, reverse engineer, decompile, disassemble or alter in any way the security technology provided by ON POINT PRODUCTIONS AGENCY LLC.\nCases of abuse of support services due to the requirement of more hours than those established in the contract.\nFalse and unfounded opinions with the intention of discrediting the owner of the products or services purchased.\nAny breach established throughout of the conditions.',
+      name: 'laFalsedadText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The dissolution implies the loss of your rights to the contracted service.`
+  String get laDisolucion {
+    return Intl.message(
+      'The dissolution implies the loss of your rights to the contracted service.',
+      name: 'laDisolucion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ALL RIGHTS RESERVED © 2023`
+  String get todosLosDerechosRes {
+    return Intl.message(
+      'ALL RIGHTS RESERVED © 2023',
+      name: 'todosLosDerechosRes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This privacy policy together with the legal notice, cookie policy, sales policy, terms and conditions, and any other policy to which reference is made, identifies how the personal data received on this website is collected and processed.\nThe information found on this website is not directed at children. A child shall be understood as defined by the law of the jurisdiction where it is located, in the case of the United States of America it is someone under 13 years of age. If the user believes that a child has provided their personal data on this website without parental consent, they must write to hola@jpdirector.net\nIf the user is under 13 years of age, they must have the authorization of their parents or guardians legal to deliver your personal data. JPDIRECTOR has no way to effectively verify the age of the users, so it is exempt from any responsibility, if the user does not comply with what is indicated here. At JPDIRECTOR we comply with the Children's Online Privacy Protection Act of 1998 (“COPPA”).\nIdentifying data of the person in charge\nAs stated in current regulations, we inform you that:\n`
+  String get estaPolitica {
+    return Intl.message(
+      'This privacy policy together with the legal notice, cookie policy, sales policy, terms and conditions, and any other policy to which reference is made, identifies how the personal data received on this website is collected and processed.\nThe information found on this website is not directed at children. A child shall be understood as defined by the law of the jurisdiction where it is located, in the case of the United States of America it is someone under 13 years of age. If the user believes that a child has provided their personal data on this website without parental consent, they must write to hola@jpdirector.net\nIf the user is under 13 years of age, they must have the authorization of their parents or guardians legal to deliver your personal data. JPDIRECTOR has no way to effectively verify the age of the users, so it is exempt from any responsibility, if the user does not comply with what is indicated here. At JPDIRECTOR we comply with the Children\'s Online Privacy Protection Act of 1998 (“COPPA”).\nIdentifying data of the person in charge\nAs stated in current regulations, we inform you that:\n',
+      name: 'estaPolitica',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-The company name of the person responsible for this website is: ON POINT PRODUCTIONS AGENCY LLC, For the purposes of this legal notice and terms of use, it will be understood hereinafter as JPDIRECTOR\n-Its registered office is located at: 4020 N MacArthur Blvd Suite 122, Irving, Texas 75038, United States of America.\n-You can contact him at Email: hola@jpdirector.net\n-His social activity is: training, blogging and advertising advice for online businesses.\n`
+  String get laDenominacionSocial {
+    return Intl.message(
+      '-The company name of the person responsible for this website is: ON POINT PRODUCTIONS AGENCY LLC, For the purposes of this legal notice and terms of use, it will be understood hereinafter as JPDIRECTOR\n-Its registered office is located at: 4020 N MacArthur Blvd Suite 122, Irving, Texas 75038, United States of America.\n-You can contact him at Email: hola@jpdirector.net\n-His social activity is: training, blogging and advertising advice for online businesses.\n',
+      name: 'laDenominacionSocial',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data requested on the website and purpose of the treatment.\n`
+  String get datosSolicitados {
+    return Intl.message(
+      'Data requested on the website and purpose of the treatment.\n',
+      name: 'datosSolicitados',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-Name, surname and email in the contact forms: to make any direct contact with JPDIRECTOR, either to ask questions, comments, suggestions, request a service or product, or any other information. Failure to provide the minimum personal data necessary will make it impossible for JPDIRECTOR to respond to the request.\n-Name, email: to be able to make comments on the website's blog.\n-Name, surname, address, telephone, email , number tax identification: this information will be requested at the time of payment of the service to process everything related to the client.\n-Name, telephone and email for newsletter: with the express and voluntary consent of the data owner, it will be requested on the website the minimum information necessary to send an automated commercial bulletin, where you will be informed about advertising, promotions and other information on the services and/or products offered by JPDIRECTOR.\n-Email: email will be requested to access to the client area, according to the data provided when creating the account.\n`
+  String get nombApllYCorr {
+    return Intl.message(
+      '-Name, surname and email in the contact forms: to make any direct contact with JPDIRECTOR, either to ask questions, comments, suggestions, request a service or product, or any other information. Failure to provide the minimum personal data necessary will make it impossible for JPDIRECTOR to respond to the request.\n-Name, email: to be able to make comments on the website\'s blog.\n-Name, surname, address, telephone, email , number tax identification: this information will be requested at the time of payment of the service to process everything related to the client.\n-Name, telephone and email for newsletter: with the express and voluntary consent of the data owner, it will be requested on the website the minimum information necessary to send an automated commercial bulletin, where you will be informed about advertising, promotions and other information on the services and/or products offered by JPDIRECTOR.\n-Email: email will be requested to access to the client area, according to the data provided when creating the account.\n',
+      name: 'nombApllYCorr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `JPDIRECTOR will at all times ensure that the use given to the website, the contents, and the processing of the user's personal data, are carried out in the most correct way. For this, the user can always exercise their rights of access, rectification, limitation, cancellation, portability, oblivion or opposition, all in faithful compliance with the guidelines of the laws that govern the matter, writing to JPDIRECTOR does not sell, will not sell data users' personal data to other companies or third parties.\n`
+  String get jpEnTodoMomento {
+    return Intl.message(
+      'JPDIRECTOR will at all times ensure that the use given to the website, the contents, and the processing of the user\'s personal data, are carried out in the most correct way. For this, the user can always exercise their rights of access, rectification, limitation, cancellation, portability, oblivion or opposition, all in faithful compliance with the guidelines of the laws that govern the matter, writing to JPDIRECTOR does not sell, will not sell data users\' personal data to other companies or third parties.\n',
+      name: 'jpEnTodoMomento',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `JPDIRECTOR will share the data it has with third parties, only to comply with the services contracted by a user, send the newsletter, comply with legal requirements or for the administration of the website. For this purpose, the appropriate confidentiality agreements between the parties will be provided.\n`
+  String get jpCompartira {
+    return Intl.message(
+      'JPDIRECTOR will share the data it has with third parties, only to comply with the services contracted by a user, send the newsletter, comply with legal requirements or for the administration of the website. For this purpose, the appropriate confidentiality agreements between the parties will be provided.\n',
+      name: 'jpCompartira',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The links to third parties that can be found on the website have privacy policies unrelated to JPDIRECTOR. Access to these sites must be the responsibility of the user, being their responsibility to know them and their decision to accept them or not.\n`
+  String get losEnlacesATerceros {
+    return Intl.message(
+      'The links to third parties that can be found on the website have privacy policies unrelated to JPDIRECTOR. Access to these sites must be the responsibility of the user, being their responsibility to know them and their decision to accept them or not.\n',
+      name: 'losEnlacesATerceros',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FORMS`
+  String get formularios {
+    return Intl.message(
+      'FORMS',
+      name: 'formularios',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The website has 4 types of forms:\nContact: the user, client or participant can find forms that will facilitate communication with JPDIRECTOR to ask questions, comments, request a quote, reserve any of the services offered on the website or claim any right you have. Failure to provide the minimum personal data necessary will make it impossible for JPDIRECTOR to respond to the request. This treatment will be considered legitimate as it is part of a pre-contractual procedure. The JPDIRECTOR website and email server will be in charge of the treatment.\nAdvertising: users, buyers or participants will be asked for their express and voluntary consent to deliver to JPDIRECTOR the minimum data necessary to send advertising and commercial information related to the services and/or products offered by JPDIRECTOR, so that it is added to an automated email marketing file managed by the person in charge of the treatment indicated below. The processing of personal data found in this section has been done with the consent of the data owner.\nFor comments on the blog: in order to avoid spam, inappropriate messages, and to do a correct follow-up, the user his name, email and website to identify him in the comments he wishes to make in the blog entries. These data will be visible to other users of the website. If you do not want the data to be visible to other people, you should contact JPDIRECTOR at hello@jpdirector.net. The website server will be in charge of the treatment and that it will be carried out with the consent of the data owner.\nTo process the service request: users, clients or participants will be asked for their data so that JPDIRECTOR can process the requested services for the client. Legitimate processing of personal data due to the contractual relationship that exists with the client or participant. The data will be stored on the website's server.\n`
+  String get elSitioWebDispone {
+    return Intl.message(
+      'The website has 4 types of forms:\nContact: the user, client or participant can find forms that will facilitate communication with JPDIRECTOR to ask questions, comments, request a quote, reserve any of the services offered on the website or claim any right you have. Failure to provide the minimum personal data necessary will make it impossible for JPDIRECTOR to respond to the request. This treatment will be considered legitimate as it is part of a pre-contractual procedure. The JPDIRECTOR website and email server will be in charge of the treatment.\nAdvertising: users, buyers or participants will be asked for their express and voluntary consent to deliver to JPDIRECTOR the minimum data necessary to send advertising and commercial information related to the services and/or products offered by JPDIRECTOR, so that it is added to an automated email marketing file managed by the person in charge of the treatment indicated below. The processing of personal data found in this section has been done with the consent of the data owner.\nFor comments on the blog: in order to avoid spam, inappropriate messages, and to do a correct follow-up, the user his name, email and website to identify him in the comments he wishes to make in the blog entries. These data will be visible to other users of the website. If you do not want the data to be visible to other people, you should contact JPDIRECTOR at hello@jpdirector.net. The website server will be in charge of the treatment and that it will be carried out with the consent of the data owner.\nTo process the service request: users, clients or participants will be asked for their data so that JPDIRECTOR can process the requested services for the client. Legitimate processing of personal data due to the contractual relationship that exists with the client or participant. The data will be stored on the website\'s server.\n',
+      name: 'elSitioWebDispone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `RIGHTS`
+  String get derechos {
+    return Intl.message(
+      'RIGHTS',
+      name: 'derechos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The user has the following rights related to their personal data:\nAccess: the user can contact JPDIRECTOR to know the data that has been collected from him.\nRectification: the user can at any time rectify the data that he has provided to JPDIRECTOR \nOpposition: as long as it does not interrupt the provision of a service, or a legal obligation that JPDIRECTOR has, the user may request the cessation of the processing of their personal data.\nDeletion: as long as it does not interrupt the provision of a service, or an obligation that JPDIRECTOR possesses, the user may request the deletion of their personal data.\nLimitation to treatment: as long as it does not interrupt the provision of a service, or a legal obligation that JPDIRECTOR possesses, the user may request that their personal data be treated accordingly. the way in which he limits them, for example requesting that they not be modified, deleted or suppressed.\nPortability: whenever the user requests it and it can be done, he may request a copy of his personal data in a structured format, for use common, machine-readable and interoperable, or request that it be transmitted to another controller, provided that the processing is legitimized on the basis of consent or within the framework of the execution of a contract.\nNot be subject to automated individual decisions: in JPDIRECTOR does not carry out automated profiles that may significantly or negatively affect the user. Any decision made based on an automated profile is for the sole purpose of sending the user information that they have requested in accordance with their browsing habits and downloading of materials on the website.\nInformation: the user has the right to know the way in which your personal data is processed.\nTo exercise any of these rights, the user can write to the email hola@jpdirector.net\n`
+  String get elUsuarioTiene {
+    return Intl.message(
+      'The user has the following rights related to their personal data:\nAccess: the user can contact JPDIRECTOR to know the data that has been collected from him.\nRectification: the user can at any time rectify the data that he has provided to JPDIRECTOR \nOpposition: as long as it does not interrupt the provision of a service, or a legal obligation that JPDIRECTOR has, the user may request the cessation of the processing of their personal data.\nDeletion: as long as it does not interrupt the provision of a service, or an obligation that JPDIRECTOR possesses, the user may request the deletion of their personal data.\nLimitation to treatment: as long as it does not interrupt the provision of a service, or a legal obligation that JPDIRECTOR possesses, the user may request that their personal data be treated accordingly. the way in which he limits them, for example requesting that they not be modified, deleted or suppressed.\nPortability: whenever the user requests it and it can be done, he may request a copy of his personal data in a structured format, for use common, machine-readable and interoperable, or request that it be transmitted to another controller, provided that the processing is legitimized on the basis of consent or within the framework of the execution of a contract.\nNot be subject to automated individual decisions: in JPDIRECTOR does not carry out automated profiles that may significantly or negatively affect the user. Any decision made based on an automated profile is for the sole purpose of sending the user information that they have requested in accordance with their browsing habits and downloading of materials on the website.\nInformation: the user has the right to know the way in which your personal data is processed.\nTo exercise any of these rights, the user can write to the email hola@jpdirector.net\n',
+      name: 'elUsuarioTiene',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `DATA PROCESSORS\n`
+  String get encargadosDelTratamiento {
+    return Intl.message(
+      'DATA PROCESSORS\n',
+      name: 'encargadosDelTratamiento',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `JPDIRECTOR needs the support of third parties to adequately offer its services and products, with which it enters into due confidentiality agreements and verifies compliance with regulations on the protection of personal data.\nThe data provided to these third parties may not be used for other purposes. not authorized by the owner of the data.\nIn compliance with the principles of information and transparency, it is made known that these third parties are:\nMailchimp: Used for email marketing and customer management. You can see more information about the privacy policy at https ://mailchimp.com/about/security/\n•Hostgator: Hosting provider (web storage). You can see its privacy policy at https://es.wix.com/manage/privacy-security-hub\n•Facebook: Tool used as a social network and for the purpose of connecting with the owner of the data. The service is provided by the company Facebook Ireland Ltd., its servers are in the United States. They have adopted standard data processing clauses approved by the European Commission that can be consulted at: https://www.facebook.com/legal/terms/dataprocessing. . Its privacy policy can be consulted at https://www.facebook.com/business/gdpr. This tool also manages the advertising that can be carried out on WhatsApp and/or Instagram, as well as the analysis of data and statistics for a possible segmentation of advertising.\n•Google: sponsored advertising system (ADS), Service of web analysis, to see the statistics of the use of the website (Analytics) and tag management system (Tag Manager). These services are provided by the company Google LLC, located in Mountain View, California, United States of America. They have adopted standard data processing clauses approved by the European Commission that can be consulted at: https://cloud.google.com/security/gdpr/resource-center. If you wish to obtain more information about its privacy policy, you can consult: https://policies.google.com/privacy\n•Instagram: Social network and application to upload photos and videos owned by the company Facebook Inc., which is located at 1601 Willow Road Menlo Park, CA 94025, United States of America. If you are located outside of the United States of America or Canada, the data controller responsible for the information is Facebook Ireland Ltd., located at 4 Grand Canal Square Grand Canal Harbour, Dublin 2, Ireland. They have adopted standard data processing clauses approved by the European Commission that can be consulted at: https://www.facebook.com/legal/terms/dataprocessing. For more information about the privacy policy, go to: https://help.instagram.com/155833707900388\n•Linkedin: Social network oriented to companies, businesses and employment. She can be contacted at https://www.linkedin.com/help/linkedin?lang=es and her privacy policy can be viewed at https://www.linkedin.com/legal/privacy-policy\n•PayPal (Europe) S.à r.l. et Cie, S.C.A.: company used to manage payments by debit and credit card on the website. Located at 22-24 Boulevard Royal L-2449, Luxembourg. For more information you can visit https://www.paypal.com/es/webapps/mpp/ua/privacy-full?locale.x=es_ES\n •Facebook Pixel: analysis tool for advertising, used to know the actions of the owners of the data on this website. This service is provided by Facebook, Inc., which is located at 1601 Willow Road Menlo Park, CA 94025, United States of America. If you are outside of the United States of America or Canada, the data controller responsible for the information is Facebook Ireland Ltd., located at 4 Grand Canal Square Grand Canal Harbour, Dublin 2, Ireland. They have adopted standard data processing clauses approved by the European Commission that can be consulted at: https://www.facebook.com/legal/terms/dataprocessing. For more information about the privacy policy, go to https://www.facebook.com/privacy/explanation\n•Stripe: tool used to manage payments by debit and credit card on the website. They have adopted standard data processing clauses approved by the European Commission that can be consulted at: https://es.wix.com/manage/privacy-security-hub.\n•TikTok: Social network and application to upload videos whose Owner is TikTok Technology Limited located at 10 Earlsfort Terrace, Dublin, D02 T380, Ireland. For UK users: TikTok Information Technologies UK Limited, WeWork, 125 Kingsway, London, WC2B 6NH, UK. For more information about the privacy policy, go to: https://www.tiktok.com/legal/privacy-policy?lang=es\n•Twitter: Social network based in San Francisco, California, with subsidiaries in San Antonio and Boston in the United States, provided by the company Twitter, Inc. They have adopted standard data processing clauses approved by the European Commission that can be consulted at: https://gdpr.twitter.com/. She can be contacted at https://help.twitter.com/en/contact-us and her privacy policy can be viewed at https://twitter.com/es/privacy\n•Vimeo: platform created for the provision of videos. This service is provided by the company Vimeo, Inc., located in the United States and which has adopted standard data processing clauses approved by the European Commission. For more information about its privacy policy, you can visit https://vimeo.com/privacy\n•WhatsApp: Tool used for communication with users, buyers, customers and participants through the WhatsApp Ireland Limited company (for which are located in Europe), can be contacted through the link https://www.whatsapp.com/contact/?subject=messenger and its privacy policy can be seen at https://www.whatsapp.com/legal?eea =1#privacy-policy for their privacy policy, see https://wpengine.com/legal/privacy/\n•Zoom: tool used for videoconferences. This service is in charge of the company Zoom Video Communications, Inc., located in the United States of America, has adopted standard data processing clauses approved by the European Commission that can be consulted at: https://zoom.us/gdpr . If you want more information about its privacy policy, you can consult: https://zoom.us/privacy\nIn specific cases, JPDIRECTOR may use applications or tools that have not been included or named in this list, the above being a better option. that contributes to the accomplishment of a determined task; If this happens, JPDIRECTOR will notify its users, clients or participants of this situation, as the case may be.\n`
+  String get jpNecesitaElApoyo {
+    return Intl.message(
+      'JPDIRECTOR needs the support of third parties to adequately offer its services and products, with which it enters into due confidentiality agreements and verifies compliance with regulations on the protection of personal data.\nThe data provided to these third parties may not be used for other purposes. not authorized by the owner of the data.\nIn compliance with the principles of information and transparency, it is made known that these third parties are:\nMailchimp: Used for email marketing and customer management. You can see more information about the privacy policy at https ://mailchimp.com/about/security/\n•Hostgator: Hosting provider (web storage). You can see its privacy policy at https://es.wix.com/manage/privacy-security-hub\n•Facebook: Tool used as a social network and for the purpose of connecting with the owner of the data. The service is provided by the company Facebook Ireland Ltd., its servers are in the United States. They have adopted standard data processing clauses approved by the European Commission that can be consulted at: https://www.facebook.com/legal/terms/dataprocessing. . Its privacy policy can be consulted at https://www.facebook.com/business/gdpr. This tool also manages the advertising that can be carried out on WhatsApp and/or Instagram, as well as the analysis of data and statistics for a possible segmentation of advertising.\n•Google: sponsored advertising system (ADS), Service of web analysis, to see the statistics of the use of the website (Analytics) and tag management system (Tag Manager). These services are provided by the company Google LLC, located in Mountain View, California, United States of America. They have adopted standard data processing clauses approved by the European Commission that can be consulted at: https://cloud.google.com/security/gdpr/resource-center. If you wish to obtain more information about its privacy policy, you can consult: https://policies.google.com/privacy\n•Instagram: Social network and application to upload photos and videos owned by the company Facebook Inc., which is located at 1601 Willow Road Menlo Park, CA 94025, United States of America. If you are located outside of the United States of America or Canada, the data controller responsible for the information is Facebook Ireland Ltd., located at 4 Grand Canal Square Grand Canal Harbour, Dublin 2, Ireland. They have adopted standard data processing clauses approved by the European Commission that can be consulted at: https://www.facebook.com/legal/terms/dataprocessing. For more information about the privacy policy, go to: https://help.instagram.com/155833707900388\n•Linkedin: Social network oriented to companies, businesses and employment. She can be contacted at https://www.linkedin.com/help/linkedin?lang=es and her privacy policy can be viewed at https://www.linkedin.com/legal/privacy-policy\n•PayPal (Europe) S.à r.l. et Cie, S.C.A.: company used to manage payments by debit and credit card on the website. Located at 22-24 Boulevard Royal L-2449, Luxembourg. For more information you can visit https://www.paypal.com/es/webapps/mpp/ua/privacy-full?locale.x=es_ES\n •Facebook Pixel: analysis tool for advertising, used to know the actions of the owners of the data on this website. This service is provided by Facebook, Inc., which is located at 1601 Willow Road Menlo Park, CA 94025, United States of America. If you are outside of the United States of America or Canada, the data controller responsible for the information is Facebook Ireland Ltd., located at 4 Grand Canal Square Grand Canal Harbour, Dublin 2, Ireland. They have adopted standard data processing clauses approved by the European Commission that can be consulted at: https://www.facebook.com/legal/terms/dataprocessing. For more information about the privacy policy, go to https://www.facebook.com/privacy/explanation\n•Stripe: tool used to manage payments by debit and credit card on the website. They have adopted standard data processing clauses approved by the European Commission that can be consulted at: https://es.wix.com/manage/privacy-security-hub.\n•TikTok: Social network and application to upload videos whose Owner is TikTok Technology Limited located at 10 Earlsfort Terrace, Dublin, D02 T380, Ireland. For UK users: TikTok Information Technologies UK Limited, WeWork, 125 Kingsway, London, WC2B 6NH, UK. For more information about the privacy policy, go to: https://www.tiktok.com/legal/privacy-policy?lang=es\n•Twitter: Social network based in San Francisco, California, with subsidiaries in San Antonio and Boston in the United States, provided by the company Twitter, Inc. They have adopted standard data processing clauses approved by the European Commission that can be consulted at: https://gdpr.twitter.com/. She can be contacted at https://help.twitter.com/en/contact-us and her privacy policy can be viewed at https://twitter.com/es/privacy\n•Vimeo: platform created for the provision of videos. This service is provided by the company Vimeo, Inc., located in the United States and which has adopted standard data processing clauses approved by the European Commission. For more information about its privacy policy, you can visit https://vimeo.com/privacy\n•WhatsApp: Tool used for communication with users, buyers, customers and participants through the WhatsApp Ireland Limited company (for which are located in Europe), can be contacted through the link https://www.whatsapp.com/contact/?subject=messenger and its privacy policy can be seen at https://www.whatsapp.com/legal?eea =1#privacy-policy for their privacy policy, see https://wpengine.com/legal/privacy/\n•Zoom: tool used for videoconferences. This service is in charge of the company Zoom Video Communications, Inc., located in the United States of America, has adopted standard data processing clauses approved by the European Commission that can be consulted at: https://zoom.us/gdpr . If you want more information about its privacy policy, you can consult: https://zoom.us/privacy\nIn specific cases, JPDIRECTOR may use applications or tools that have not been included or named in this list, the above being a better option. that contributes to the accomplishment of a determined task; If this happens, JPDIRECTOR will notify its users, clients or participants of this situation, as the case may be.\n',
+      name: 'jpNecesitaElApoyo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `POLICIES RELATED TO THE NEWSLETTER\n`
+  String get politicasRelacionadasConNews {
+    return Intl.message(
+      'POLICIES RELATED TO THE NEWSLETTER\n',
+      name: 'politicasRelacionadasConNews',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `These policies will be understood at all times as a complementary part of the terms and conditions displayed on the website, both being equally applicable at the time of a dispute. The privacy and intellectual property policy applied will be the same as that set forth in the terms and conditions of the website.\nA “newsletter” shall be understood as the digital bulletin that JPDIRECTOR publishes periodically and that it sends to its subscribers through an external email service provider, to which the user has voluntarily subscribed.\nJPDIRECTOR is not obliged to send the newsletter in defined periods of time, so it is totally free to do so when it deems appropriate. The user may at any time exercise their rights of access, rectification, cancellation or opposition by following the instructions found in the footer of the newsletter.\nThe user must not share their content with third parties, as this would violate copyright by JPDIRECTOR. The only possible distribution channel is the one managed and/or authorized by JPDIRECTOR.\nJPDIRECTOR will not be responsible for the content of third parties exposed in the newsletter, any controversy that arises must be dealt with directly with the person or company from which it is made. mention.\nAll the material that is exposed in the newsletter is protected by copyright in favor of JPDIRECTOR, and in the case of belonging to third parties, it will be understood that JPDIRECTOR has the proper authorization to use it as agreed with the author. \n`
+  String get estasPoliticasSeEntenderan {
+    return Intl.message(
+      'These policies will be understood at all times as a complementary part of the terms and conditions displayed on the website, both being equally applicable at the time of a dispute. The privacy and intellectual property policy applied will be the same as that set forth in the terms and conditions of the website.\nA “newsletter” shall be understood as the digital bulletin that JPDIRECTOR publishes periodically and that it sends to its subscribers through an external email service provider, to which the user has voluntarily subscribed.\nJPDIRECTOR is not obliged to send the newsletter in defined periods of time, so it is totally free to do so when it deems appropriate. The user may at any time exercise their rights of access, rectification, cancellation or opposition by following the instructions found in the footer of the newsletter.\nThe user must not share their content with third parties, as this would violate copyright by JPDIRECTOR. The only possible distribution channel is the one managed and/or authorized by JPDIRECTOR.\nJPDIRECTOR will not be responsible for the content of third parties exposed in the newsletter, any controversy that arises must be dealt with directly with the person or company from which it is made. mention.\nAll the material that is exposed in the newsletter is protected by copyright in favor of JPDIRECTOR, and in the case of belonging to third parties, it will be understood that JPDIRECTOR has the proper authorization to use it as agreed with the author. \n',
+      name: 'estasPoliticasSeEntenderan',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `LEGITIMATE INTEREST\n`
+  String get interesLegitimo {
+    return Intl.message(
+      'LEGITIMATE INTEREST\n',
+      name: 'interesLegitimo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When new products or services are launched, or special promotions are carried out for a specific period of time, the name and email address of website users will be collected through a form. This processing of personal data will be done based on the legitimate interest of JPDIRECTOR to increase its sales, publicize its products or services and fulfill the purpose of sending the data owner the information promised on the website.\nThis Treatment will be carried out while the legitimate interest of JPDIRECTOR lasts. To increase guarantees and respect for privacy, the possibility of voluntary exclusion of this advertising is offered through an easy and immediate execution method, located at the bottom of the emails you receive.\nTo know if this interest is provided and respectful of the rights of the owners of the data, a weighting has been carried out that can be requested at any time by writing to the email hola@jpdirector.net\n`
+  String get cuandoSeRealice {
+    return Intl.message(
+      'When new products or services are launched, or special promotions are carried out for a specific period of time, the name and email address of website users will be collected through a form. This processing of personal data will be done based on the legitimate interest of JPDIRECTOR to increase its sales, publicize its products or services and fulfill the purpose of sending the data owner the information promised on the website.\nThis Treatment will be carried out while the legitimate interest of JPDIRECTOR lasts. To increase guarantees and respect for privacy, the possibility of voluntary exclusion of this advertising is offered through an easy and immediate execution method, located at the bottom of the emails you receive.\nTo know if this interest is provided and respectful of the rights of the owners of the data, a weighting has been carried out that can be requested at any time by writing to the email hola@jpdirector.net\n',
+      name: 'cuandoSeRealice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `DURATION OF TREATMENT\n`
+  String get duracionDeTratamiento {
+    return Intl.message(
+      'DURATION OF TREATMENT\n',
+      name: 'duracionDeTratamiento',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In the case of personal data provided for billing and purchase of products or services, they will be kept for the legally applicable time.\nIn the case of personal data provided for electronic commercial newsletters and comments on the blog, it will be for the time that the The owner of the data wishes to remain on the subscription list, so he can unsubscribe at any time, automatically as indicated in each newsletter, or by writing to soporte@quieroads.com\n`
+  String get enElCasoDeLosDatos {
+    return Intl.message(
+      'In the case of personal data provided for billing and purchase of products or services, they will be kept for the legally applicable time.\nIn the case of personal data provided for electronic commercial newsletters and comments on the blog, it will be for the time that the The owner of the data wishes to remain on the subscription list, so he can unsubscribe at any time, automatically as indicated in each newsletter, or by writing to soporte@quieroads.com\n',
+      name: 'enElCasoDeLosDatos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `RESIDENTS OF CALIFORNIA, UNITED STATES\n`
+  String get residentesCalifornia {
+    return Intl.message(
+      'RESIDENTS OF CALIFORNIA, UNITED STATES\n',
+      name: 'residentesCalifornia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `JPDIRECTOR complies with the California Consumer Privacy Act of 2018 (“CCPA”). California residents have the right to request that JPDIRECTOR disclose what personal information it has collected, used, disclosed, and sold during the 12-month period prior to receipt of such request. To exercise this right, as well as the right to delete or oppose the processing of their data, the user must write to hola@jpdirector.net\n`
+  String get jpCumpleLaLey {
+    return Intl.message(
+      'JPDIRECTOR complies with the California Consumer Privacy Act of 2018 (“CCPA”). California residents have the right to request that JPDIRECTOR disclose what personal information it has collected, used, disclosed, and sold during the 12-month period prior to receipt of such request. To exercise this right, as well as the right to delete or oppose the processing of their data, the user must write to hola@jpdirector.net\n',
+      name: 'jpCumpleLaLey',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your password has been reset, you can now log in with your new password.`
+  String get laContrasenaSeHaReest {
+    return Intl.message(
+      'Your password has been reset, you can now log in with your new password.',
+      name: 'laContrasenaSeHaReest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your new password`
+  String get ingresaNewPass {
+    return Intl.message(
+      'Enter your new password',
+      name: 'ingresaNewPass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thank you for confirm your account`
+  String get graciasPorConfirmar {
+    return Intl.message(
+      'Thank you for confirm your account',
+      name: 'graciasPorConfirmar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `INVALID LINK`
+  String get enlaceInvalido {
+    return Intl.message(
+      'INVALID LINK',
+      name: 'enlaceInvalido',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Page not found 404`
+  String get pagina404 {
+    return Intl.message(
+      'Page not found 404',
+      name: 'pagina404',
       desc: '',
       args: [],
     );

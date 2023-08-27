@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 
 import 'package:jpdirector_frontend/ui/shared/appbar_top.dart';
 import 'package:jpdirector_frontend/ui/shared/menus/home_app_menu.dart';
-import 'package:jpdirector_frontend/ui/shared/sidebar.dart';
 
 import '../../providers/all_cursos_provider.dart';
 import '../../providers/page_provider.dart';
@@ -90,29 +89,8 @@ class _ClientPageLayoutState extends State<ClientPageLayout> with SingleTickerPr
                         child: const SizedBox(width: 1100, child: Image(image: circulo)))),
                 Container(
                     constraints: const BoxConstraints(maxWidth: 1280),
-                    child: Row(
-                      children: [if (wScreen >= 715 && isAparece) const SideBar(), Expanded(child: widget.child)])),
-                if (wScreen < 715)
-                  AnimatedBuilder(
-                      animation: SideBarProvider.menuController,
-                      builder: (context, _) => Stack(
-                            children: [
-                              if (SideBarProvider.isOpen) ...[
-                                Opacity(
-                                  opacity: SideBarProvider.opacity.value,
-                                  child: GestureDetector(
-                                    onTap: () => SideBarProvider.closeMenu(),
-                                    child: Container(
-                                      width: wScreen,
-                                      height: hScreen,
-                                      color: Colors.black26,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                              Transform.translate(offset: Offset(SideBarProvider.movement.value, 0), child: (isAparece) ? const SideBar() : null)
-                            ],
-                          )),
+                    child: widget.child),
+                
                 const AppbarTop(),
                 const Positioned(
                     right: 0,

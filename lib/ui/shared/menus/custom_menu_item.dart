@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 
 import '../../../constant.dart';
 
@@ -40,7 +41,7 @@ class _CustomMenuItemState extends State<CustomMenuItem> {
             color: isHover ? azulText : Colors.transparent,
             child: Padding(
               padding: EdgeInsets.only(left: widget.padding),
-              child: Text(widget.text, style: GoogleFonts.roboto(fontSize: 20, color: isHover ? const Color(0xFF00041C) : const Color(0xffffffff))),
+              child: Text(widget.text, style: DashboardLabel.h3.copyWith(color: isHover ? const Color(0xFF00041C) : const Color(0xffffffff))),
             ),
           ),
         ),

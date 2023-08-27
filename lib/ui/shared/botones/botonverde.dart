@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../constant.dart';
+import '../labels/dashboard_label.dart';
 
 class BotonVerde extends StatelessWidget {
   final double width;
@@ -23,7 +24,7 @@ class BotonVerde extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w700, color: blancoText),
+              style: DashboardLabel.paragraph.copyWith(color: blancoText, fontWeight: FontWeight.w700),
             ),
           ),
         ),

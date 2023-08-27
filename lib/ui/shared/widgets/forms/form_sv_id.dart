@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../constant.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../providers/form_provider.dart';
 
 
@@ -17,19 +18,20 @@ class FormSVid extends StatefulWidget {
 class _FormSVidState extends State<FormSVid> {
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
     final hScreen = MediaQuery.of(context).size.height;
     final formProvider = Provider.of<FormProvider>(context);
     late String title = formProvider.rootForm;
 
     if (formProvider.rootForm == 'mentoria') {
-      title = 'MENTORÍA INTENSIVA';
+      title = appLocal.mentoriaIntensiva;
     }
     if (formProvider.rootForm == 'encargado') {
-      title = 'SER EL ENCARGADO';
+      title = appLocal.serElEncargado;
     }
     if (formProvider.rootForm == 'conferencias') {
-      title = 'CONFERENCIAS';
+      title = appLocal.conferencias;
     }
 
     return SizedBox(
@@ -83,11 +85,11 @@ class _FormSVidState extends State<FormSVid> {
                             cursorColor: azulText,
                             keyboardType: TextInputType.emailAddress,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
-                            validator: (value) => EmailValidator.validate(value!) ? null : 'Ingrese un correo valido',
+                            validator: (value) => EmailValidator.validate(value!) ? null : appLocal.ingreseCorreoValido,
                             // initialValue: formProvider.email,
                             onChanged: (value) => formProvider.setEmail(value),
                             style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                            decoration: buildInputDecoration(icon: Icons.email, label: 'Correo Electrónico'),
+                            decoration: buildInputDecoration(icon: Icons.email, label: appLocal.correoTextFiel),
                           ),
                           const SizedBox(
                             height: 15,
@@ -95,11 +97,11 @@ class _FormSVidState extends State<FormSVid> {
                           TextFormField(
                             cursorColor: azulText,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
-                            validator: (value) => (value!.isNotEmpty) ? null : 'Ingrese su nombre',
+                            validator: (value) => (value!.isNotEmpty) ? null : appLocal.nombreyapellidoForm,
                             // initialValue: formProvider.nombre,
                             onChanged: (value) => formProvider.setNombre(value),
                             style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                            decoration: buildInputDecoration(icon: Icons.supervised_user_circle_sharp, label: 'Nombre y Apellido'),
+                            decoration: buildInputDecoration(icon: Icons.supervised_user_circle_sharp, label: appLocal.nombreyapellidoForm),
                           ),
                           const SizedBox(
                             height: 15,
@@ -114,7 +116,7 @@ class _FormSVidState extends State<FormSVid> {
                             // initialValue: formProvider.telefono,
                             onChanged: (value) => formProvider.setTelefono(value),
                             style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                            decoration: buildInputDecoration(icon: Icons.local_phone, label: 'Teléfono'),
+                            decoration: buildInputDecoration(icon: Icons.local_phone, label: appLocal.telefonoForm),
                           ),
                           const SizedBox(
                             height: 15,
@@ -122,11 +124,11 @@ class _FormSVidState extends State<FormSVid> {
                           TextFormField(
                             cursorColor: azulText,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
-                            validator: (value) => (value!.isNotEmpty) ? null : 'Requerido',
+                            validator: (value) => (value!.isNotEmpty) ? null : appLocal.requerido,
                             // initialValue: formProvider.nombre,
                             onChanged: (value) => formProvider.setNegocio(value),
                             style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                            decoration: buildInputDecoration(icon: Icons.business, label: '¿De qué sector o ciudad es tu negocio?'),
+                            decoration: buildInputDecoration(icon: Icons.business, label: appLocal.deQueSector),
                           ),
                         ],
                       ),

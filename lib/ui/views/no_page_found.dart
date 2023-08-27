@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
 
 import '../../constant.dart';
+import '../../generated/l10n.dart';
 
 class NoPageFound extends StatelessWidget {
   const NoPageFound({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     return Container(
       color: const Color(0xFF00041C),
-      child: const Column(
+      child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 120,
           ),
-          Image(
+          const Image(
             image: ufoGif,
             width: 800,
           ),
           Text(
-            'Página no encontrada 404',
-            style: TextStyle(color: blancoText, fontSize: 50),
+            appLocal.pagina404,
+            style: const TextStyle(color: blancoText, fontSize: 50),
           ),
         ],
       ),

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../providers/form_provider.dart';
 
 
@@ -37,17 +38,18 @@ class LetrasAsesoria extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
     final formProvider = Provider.of<FormProvider>(context);
     late String title;
     if (formProvider.rootForm == 'mentoria') {
-      title = 'MENTORÍA INTENSIVA';
+      title = appLocal.mentoriaIntensiva;
     }
     if (formProvider.rootForm == 'encargado') {
-      title = 'SER EL ENCARGADO';
+      title = appLocal.serElEncargado;
     }
     if (formProvider.rootForm == 'conferencias') {
-      title = 'CONFERENCIAS';
+      title = appLocal.conferencias;
     }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -73,7 +75,7 @@ class LetrasAsesoria extends StatelessWidget {
             height: 70,
           ),
           Text(
-            '¡Gracias por brindarnos tu información!',
+            appLocal.graciasInfo,
             textAlign: TextAlign.start,
             style: GoogleFonts.roboto(fontSize: (wScreen < 500) ? 16 : 20, fontWeight: FontWeight.w700, color: blancoText),
           ),
@@ -81,21 +83,21 @@ class LetrasAsesoria extends StatelessWidget {
             height: 30,
           ),
           Text(
-            '¡Estás a un paso del éxito para marcar la diferencia, bienvenido a esta misión!',
+            appLocal.estasAunPaso,
             style: GoogleFonts.roboto(fontSize: (wScreen < 500) ? 16 : 20, fontWeight: FontWeight.w700, color: blancoText),
           ),
           const SizedBox(
             height: 30,
           ),
           Text(
-            'En el transcurso de 2 a 3 días me estaré comunicando contigo para explicarte los siguientes pasos.',
+            appLocal.enElTranscurso,
             style: GoogleFonts.roboto(fontSize: (wScreen < 500) ? 12 : 16, fontWeight: FontWeight.w400, color: blancoText),
           ),
           const SizedBox(
             height: 30,
           ),
           Text(
-            'Sígueme en todas las redes para conocer TIPS y actualizaciones ADS',
+            appLocal.siguemeEnTodas,
             textAlign: TextAlign.center,
             style: GoogleFonts.roboto(fontSize: (wScreen < 500) ? 16 : 20, fontWeight: FontWeight.w700, color: azulText),
           ),

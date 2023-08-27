@@ -23,12 +23,13 @@ class AdsView extends StatefulWidget {
 class _AdsViewState extends State<AdsView> {
   @override
   void initState() {
-    super.initState();
     Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    // Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
     final appLocal = AppLocalizations.of(context);
     final List<Curso> cursos = Provider.of<AllCursosProvider>(context).allCursos;
     final List<Curso> listCursos = cursos.where((element) => element.publicado).toList();
@@ -97,7 +98,7 @@ class _AdsViewState extends State<AdsView> {
                   direction: Axis.horizontal,
                   alignment: WrapAlignment.center,
                   children: [
-                    if (listCursos.isEmpty) const Center(child: SizedBox(width: 40, height: 40, child: CircularProgressIndicator())),
+                    if (listCursos.isEmpty) Center(child: SizedBox(width: 200, height: 40, child: Text(appLocal.noTienesCursos, textAlign: TextAlign.center, style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5)),))),
                     if (listCursos.isNotEmpty)
                       ...listCursos.map(
                         (e) => CursoImagen(

@@ -32,7 +32,6 @@ class _UsersAdminViewState extends State<UsersAdminView> {
   @override
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
-    Provider.of<UsersProvider>(context, listen: false).getPaginatedUsers();
     final List<Usuario> users = Provider.of<UsersProvider>(context).users;
     final size = MediaQuery.of(context).size;
     return Container(
@@ -95,7 +94,19 @@ class _UsersAdminViewState extends State<UsersAdminView> {
                     Icons.person_add,
                     color: bgColor,
                   ),
-                )
+                ),
+                // ElevatedButton(
+                //   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.transparent)),
+                //   onPressed: () {
+                //     setState(() {
+                      
+                //     });
+                //   },
+                //   child: const Icon(
+                //     Icons.refresh,
+                //     color: azulText,
+                //   ),
+                // )
               ],
             ),
           )

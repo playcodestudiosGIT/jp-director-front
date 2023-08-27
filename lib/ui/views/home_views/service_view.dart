@@ -241,7 +241,6 @@ class _ServicesViewState extends State<ServicesView> {
                             },
                             height: 450,
                             viewportFraction: 1,
-                            // initialPage: pageProvider.getStateIndex(),
                             enableInfiniteScroll: true,
                           )),
                     ),

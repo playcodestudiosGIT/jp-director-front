@@ -28,8 +28,9 @@ class _ResetPassState extends State<ResetPass> {
     final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
     final hScreen = MediaQuery.of(context).size.height;
-    
+
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Container(
         alignment: Alignment.center,
         constraints: const BoxConstraints(maxWidth: 1200),
@@ -37,7 +38,6 @@ class _ResetPassState extends State<ResetPass> {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              
               SizedBox(
                 width: wScreen,
                 height: hScreen,
@@ -58,7 +58,7 @@ class _ResetPassState extends State<ResetPass> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(
-                                width: 340,
+                                width: 315,
                                 // height: 550,
                                 child: Container(
                                   padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -115,7 +115,7 @@ class _ResetPassState extends State<ResetPass> {
                                               text: appLocal.enviarBtn,
                                               onPress: () async {
                                                 final ok = await Provider.of<AuthProvider>(context, listen: false).sendResetPass(email: email);
-                      
+
                                                 if (ok) {
                                                   setState(() {
                                                     isOk = true;
@@ -131,6 +131,26 @@ class _ResetPassState extends State<ResetPass> {
                                             Text(
                                               appLocal.recibirasInstruccionesPass,
                                               style: DashboardLabel.mini,
+                                            ),
+                                            const SizedBox(
+                                              height: 30,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.end,
+                                              children: [
+                                                MouseRegion(
+                                                  cursor: SystemMouseCursors.click,
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      NavigatorService.navigateTo(Flurorouter.homeRoute);
+                                                    },
+                                                    child: Text(
+                                                      appLocal.irAlLogin,
+                                                      style: DashboardLabel.mini.copyWith(color: azulText),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                             const SizedBox(
                                               height: 60,

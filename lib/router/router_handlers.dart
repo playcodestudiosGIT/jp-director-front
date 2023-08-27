@@ -75,7 +75,7 @@ class VisitorHandlers {
 
   static Handler payNewUser = Handler(
     handlerFunc: (context, params) {
-      final cursoId = params['cursoId']!.first;
+      final cursoId = params['cursoId']?.first ?? '';
       String? state = params['state']?.first ?? 'register';
       final authProvider = Provider.of<AuthProvider>(context!, listen: false);
 
@@ -242,7 +242,7 @@ class UsersAuthHandlers {
 
     if (authProvider.authStatus == AuthStatus.notAuthenticated) return const LoginPage();
     Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.clienteDash);
-    return DashMiCuenta();
+    return const DashMiCuenta();
   });
 
   static Handler clienteMisCursosDash = Handler(handlerFunc: (context, params) {

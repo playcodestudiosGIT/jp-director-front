@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../constant.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../providers/form_provider.dart';
 
 class FormSVknow extends StatefulWidget {
@@ -16,18 +17,19 @@ class FormSVknow extends StatefulWidget {
 class _FormSVknowState extends State<FormSVknow> {
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
     final formProvider = Provider.of<FormProvider>(context);
     late String title = formProvider.rootForm;
 
     if (formProvider.rootForm == 'mentoria') {
-      title = 'MENTORÍA INTENSIVA';
+      title = appLocal.mentoriaIntensiva;
     }
     if (formProvider.rootForm == 'encargado') {
-      title = 'SER EL ENCARGADO';
+      title = appLocal.serElEncargado;
     }
     if (formProvider.rootForm == 'conferencias') {
-      title = 'CONFERENCIAS';
+      title = appLocal.conferencias;
     }
     return SizedBox(
       width: double.infinity,
@@ -73,34 +75,32 @@ class _FormSVknowState extends State<FormSVknow> {
                             ),
                           if (formProvider.rootForm != 'conferencias')
                             DropdownButtonFormField(
-                              validator: (value) => (value != '') ? null : 'Campo requerido',
+                              validator: (value) => (value != '') ? null : appLocal.requerido,
                               value: formProvider.opYear,
-                              decoration: buildInputDecoration(label: '¿Cuántos años tiene tu negocio operativo?', icon: Icons.calendar_month),
+                              decoration: buildInputDecoration(label: appLocal.cuantosAnosNegAct, icon: Icons.calendar_month),
                               dropdownColor: bgColor,
                               items: [
-                                DropdownMenuItem(value: '', child: Text('Seleccione una opción', style: GoogleFonts.roboto(color: blancoText))),
-                                DropdownMenuItem(value: '-6m', child: Text('Menos de 6 meses', style: GoogleFonts.roboto(color: blancoText))),
-                                DropdownMenuItem(value: '1a', child: Text('1 Año', style: GoogleFonts.roboto(color: blancoText))),
-                                DropdownMenuItem(value: '2a', child: Text('2 Años', style: GoogleFonts.roboto(color: blancoText))),
-                                DropdownMenuItem(value: '3a', child: Text('3 Años', style: GoogleFonts.roboto(color: blancoText))),
-                                DropdownMenuItem(value: '+4a', child: Text('+4 Años', style: GoogleFonts.roboto(color: blancoText))),
+                                DropdownMenuItem(value: '', child: Text(appLocal.seleccioneOpcion, style: GoogleFonts.roboto(color: blancoText))),
+                                DropdownMenuItem(value: '-6m', child: Text(appLocal.menosde6meses, style: GoogleFonts.roboto(color: blancoText))),
+                                DropdownMenuItem(value: '1a', child: Text(appLocal.uny, style: GoogleFonts.roboto(color: blancoText))),
+                                DropdownMenuItem(value: '2a', child: Text(appLocal.dosy, style: GoogleFonts.roboto(color: blancoText))),
+                                DropdownMenuItem(value: '3a', child: Text(appLocal.tresy, style: GoogleFonts.roboto(color: blancoText))),
+                                DropdownMenuItem(value: '+4a', child: Text(appLocal.cuatroy, style: GoogleFonts.roboto(color: blancoText))),
                               ],
                               onChanged: (value) => formProvider.setOpYear(value),
                             ),
                           if (formProvider.rootForm == 'conferencias')
                             DropdownButtonFormField(
-                              validator: (value) => (value != '') ? null : 'Campo requerido',
+                              validator: (value) => (value != '') ? null : appLocal.requerido,
                               value: formProvider.lvlpub,
-                              decoration: buildInputDecoration(
-                                  label: '¿En qué nivel de conocimiento se encuentra tu equipo referente a la publicidad digital?',
-                                  icon: Icons.live_help_sharp),
+                              decoration: buildInputDecoration(label: appLocal.enQueNivel, icon: Icons.live_help_sharp),
                               dropdownColor: bgColor,
                               items: [
-                                DropdownMenuItem(value: '', child: Text('Seleccione una opción', style: GoogleFonts.roboto(color: blancoText))),
-                                DropdownMenuItem(value: 'cero', child: Text('Cero', style: GoogleFonts.roboto(color: blancoText))),
-                                DropdownMenuItem(value: 'basico', child: Text('Básico', style: GoogleFonts.roboto(color: blancoText))),
-                                DropdownMenuItem(value: 'intermedio', child: Text('Intermedio', style: GoogleFonts.roboto(color: blancoText))),
-                                DropdownMenuItem(value: 'avanzado', child: Text('Anvanzado', style: GoogleFonts.roboto(color: blancoText))),
+                                DropdownMenuItem(value: '', child: Text(appLocal.seleccioneOpcion, style: GoogleFonts.roboto(color: blancoText))),
+                                DropdownMenuItem(value: 'cero', child: Text(appLocal.cero, style: GoogleFonts.roboto(color: blancoText))),
+                                DropdownMenuItem(value: 'basico', child: Text(appLocal.basico, style: GoogleFonts.roboto(color: blancoText))),
+                                DropdownMenuItem(value: 'intermedio', child: Text(appLocal.intermedio, style: GoogleFonts.roboto(color: blancoText))),
+                                DropdownMenuItem(value: 'avanzado', child: Text(appLocal.avanzado, style: GoogleFonts.roboto(color: blancoText))),
                               ],
                               onChanged: (value) => formProvider.setLvlPub(value),
                             ),
@@ -110,10 +110,10 @@ class _FormSVknowState extends State<FormSVknow> {
                           if (formProvider.rootForm != 'conferencias')
                             DropdownButtonFormField(
                               value: formProvider.pubBefore,
-                              decoration: buildInputDecoration(label: '¿Has hecho publicidad antes?', icon: Icons.abc_outlined),
+                              decoration: buildInputDecoration(label: appLocal.advisoryBefore, icon: Icons.abc_outlined),
                               dropdownColor: bgColor,
                               items: [
-                                DropdownMenuItem(value: true, child: Text('Si', style: GoogleFonts.roboto(color: blancoText))),
+                                DropdownMenuItem(value: true, child: Text(appLocal.si, style: GoogleFonts.roboto(color: blancoText))),
                                 DropdownMenuItem(value: false, child: Text('No', style: GoogleFonts.roboto(color: blancoText))),
                               ],
                               onChanged: (value) => formProvider.setPubBefore(value),
@@ -121,12 +121,11 @@ class _FormSVknowState extends State<FormSVknow> {
                           if (formProvider.rootForm == 'conferencias')
                             DropdownButtonFormField(
                               value: formProvider.isOnlineConference,
-                              decoration: buildInputDecoration(
-                                  label: '¿Deseas que la conferencia sea presencial o prefieres online?', icon: Icons.abc_outlined),
+                              decoration: buildInputDecoration(label: appLocal.deseasQueLaConf, icon: Icons.abc_outlined),
                               dropdownColor: bgColor,
                               items: [
-                                DropdownMenuItem(value: true, child: Text('Conferencia Online', style: GoogleFonts.roboto(color: blancoText))),
-                                DropdownMenuItem(value: false, child: Text('Conferencia Presencial', style: GoogleFonts.roboto(color: blancoText))),
+                                DropdownMenuItem(value: true, child: Text(appLocal.confOnline, style: GoogleFonts.roboto(color: blancoText))),
+                                DropdownMenuItem(value: false, child: Text(appLocal.confPresenc, style: GoogleFonts.roboto(color: blancoText))),
                               ],
                               onChanged: (value) => formProvider.setIsOnlineConference(value),
                             ),

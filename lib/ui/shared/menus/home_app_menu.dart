@@ -40,7 +40,7 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
     final authProvider = Provider.of<AuthProvider>(context);
     final role = authProvider.user?.rol ?? 'USER_ROLE';
     final sideBarProvider = Provider.of<SideBarProvider>(context);
-    final double anothervalue = (wScreen >= 500) ? 480 : 520;
+    final double anothervalue = (wScreen >= 500) ? 435 : 520;
     final double menuHSize = (role == 'ADMIN_ROLE') ? anothervalue : 220;
     return MouseRegion(
       cursor: SystemMouseCursors.click,

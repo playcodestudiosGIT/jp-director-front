@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/constant.dart';
 
+import '../labels/dashboard_label.dart';
+
 class CustomButton extends StatelessWidget {
   final String text;
   final double width;
@@ -26,7 +28,7 @@ class CustomButton extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
               
-                        Text(text.toUpperCase(), style: const TextStyle(fontFamily: 'Roboto', color: bgColor, fontSize: 14, fontWeight: FontWeight.w800)),
+                        Text(text.toUpperCase(), style: DashboardLabel.paragraph.copyWith(color: bgColor, fontWeight: FontWeight.bold)),
                       ],
                     ),
               )),

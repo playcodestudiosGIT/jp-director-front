@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../models/curso.dart';
 import '../../../providers/all_cursos_provider.dart';
 import '../../../router/router.dart';
@@ -66,6 +67,7 @@ class LetrasAsesoria extends StatelessWidget {
   const LetrasAsesoria({Key? key, required this.curso}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -74,7 +76,7 @@ class LetrasAsesoria extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Nuevo curso: ${curso.nombre}',
+            '${appLocal.nuevoCurso}: ${curso.nombre}',
             style: GoogleFonts.roboto(fontSize: (wScreen < 500) ? 30 : 40, fontWeight: FontWeight.w900, color: blancoText),
           ),
           Container(
@@ -90,12 +92,12 @@ class LetrasAsesoria extends StatelessWidget {
           const SizedBox(
             height: 70,
           ),
-          Text('¡Estás a un paso del éxito para marcar la diferencia, bienvenido a esta misión!', style: DashboardLabel.h2),
+          Text(appLocal.estasAunPaso, style: DashboardLabel.h2),
           const SizedBox(
             height: 30,
           ),
           Text(
-            'Sígueme en todas las redes para conocer TIPS y actualizaciones ADS',
+            appLocal.siguemeEnTodas,
             textAlign: TextAlign.center,
             style: DashboardLabel.azulTextH1,
           ),
@@ -139,7 +141,7 @@ class LetrasAsesoria extends StatelessWidget {
                   onPressed: () {
                     NavigatorService.replaceTo(Flurorouter.homeRoute);
                   },
-                  child: Text('FINALIZAR', style: DashboardLabel.paragraph)),
+                  child: Text(appLocal.finalizarBtn, style: DashboardLabel.paragraph)),
             ],
           ),
         ],

@@ -28,8 +28,15 @@ class AllCursosProvider extends ChangeNotifier {
   String _banerCursoModal = '';
   String _duracionCursoModal = '';
   String _urlImgCert = '';
+  bool _publicadoCursoModal = true;
 
   // --------------------------------- //
+  bool get publicadoCursoModal => _publicadoCursoModal;
+
+  set publicadoCursoModal(bool value) {
+    _publicadoCursoModal = value;
+    notifyListeners();
+  }
 
   String get banerCursoModal => _banerCursoModal;
 
@@ -148,6 +155,7 @@ class AllCursosProvider extends ChangeNotifier {
       _descripcionCursoModal = curso.descripcion;
       _precioCursoModal = curso.precio;
       _banerCursoModal = curso.baner;
+      _duracionCursoModal = curso.duracion;
       _nombreCursoModal = curso.nombre;
       _urlImgCert = curso.urlImgCert;
 
@@ -180,6 +188,7 @@ class AllCursosProvider extends ChangeNotifier {
       "baner": _banerCursoModal,
       "duracion": _duracionCursoModal,
       "urlImgCert": _urlImgCert,
+      "publicado": _publicadoCursoModal,
     };
 
     JpApi.post('/cursos', data).then((json) {
@@ -247,6 +256,7 @@ class AllCursosProvider extends ChangeNotifier {
       "baner": _banerCursoModal,
       "duracion": _duracionCursoModal,
       "urlImgCert": _urlImgCert,
+      "publicado": _publicadoCursoModal,
     };
 
     try {
@@ -345,7 +355,7 @@ class AllCursosProvider extends ChangeNotifier {
       // await getCursoModal(id);
 
       _cursoModal.modulos.removeWhere((element) => element.id == id);
-      // getAllCursos();
+      getAllCursos();
       notifyListeners();
       NotifServ.showSnackbarError('Modulo borrado con exito', Colors.green);
       return true;
@@ -407,10 +417,10 @@ class AllCursosProvider extends ChangeNotifier {
     try {
       final res = await JpApi.post('/uploads/certificados/gen', data);
 
-
       return Certificado.fromJson(res["cert"]);
     } catch (e) {
-      return Certificado(id: 'id', urlPdf: 'urlPdf', cursoId: 'cursoId', usuarioId: 'usuarioId', createdAt: DateTime.now(), updatedAt: DateTime.now());
+      return Certificado(
+          id: 'id', urlPdf: 'urlPdf', cursoId: 'cursoId', usuarioId: 'usuarioId', createdAt: DateTime.now(), updatedAt: DateTime.now());
     }
   }
 }

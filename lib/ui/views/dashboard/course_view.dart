@@ -130,6 +130,8 @@ class _CourseViewState extends State<CourseView> {
       orElse: () => certDummy,
     );
 
+    final modulos = curso.modulos.where((m) => m.estado).toList();
+
     return (curso.nombre == '')
         ? const Center(child: SizedBox(width: 35, height: 35, child: CircularProgressIndicator()))
         : Scaffold(
@@ -449,7 +451,7 @@ class _CourseViewState extends State<CourseView> {
                                         child: SingleChildScrollView(
                                           child: Column(
                                             children: [
-                                              ...curso.modulos.map((e) {
+                                              ...modulos.map((e) {
                                                 final user = Provider.of<AuthProvider>(context).user;
                                                 int i = curso.modulos.indexOf(e);
 
@@ -566,13 +568,14 @@ class _CourseViewState extends State<CourseView> {
                                 // height: 500,
                                 child: Column(
                                   children: [
-                                    ...curso.modulos.map((e) {
+                                    
+                                    ...modulos.map((e) {
                                       final user = Provider.of<AuthProvider>(context).user;
                                       int i = curso.modulos.indexOf(e);
                                       final Progress prog = user!.progress.where((element) => element.moduloId == e.id).first;
                                       Provider.of<AllCursosProvider>(context).videoIndex = i;
 
-                                      return Column(
+                                      return (!e.estado) ? Container() : Column(
                                         children: [
                                           ListTile(
                                             minLeadingWidth: 20,

@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                               if (wScreen > 980)
                                 Column(
                                   children: [
-                                    const SizedBox(height: 353, child: Image(image: logoGrande)),
+                                    const SizedBox(height: 315, child: Image(image: logoGrande)),
                                     Center(
                                       child: Container(
                                           padding: const EdgeInsets.all(10),
@@ -95,14 +95,14 @@ class _LoginPageState extends State<LoginPage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   if (wScreen <= 980) const SizedBox(width: 200, child: Image(image: logoGrande)),
-                                  const SizedBox(width: 320, child: LoginForm()),
+                                  const SizedBox(width: 315, child: LoginForm()),
                                   if (wScreen <= 980)
                                     Column(
                                       children: [
                                         Center(
                                           child: Container(
                                               padding: const EdgeInsets.all(10),
-                                              constraints: const BoxConstraints(maxWidth: 320),
+                                              constraints: const BoxConstraints(maxWidth: 315),
                                               child: Wrap(
                                                 alignment: WrapAlignment.center,
                                                 children: [

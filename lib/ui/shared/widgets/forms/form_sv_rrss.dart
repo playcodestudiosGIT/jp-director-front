@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../constant.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../providers/form_provider.dart';
 
 class FormSVrrss extends StatefulWidget {
@@ -15,19 +16,20 @@ class FormSVrrss extends StatefulWidget {
 class _FormSVrrssState extends State<FormSVrrss> {
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
     final formProvider = Provider.of<FormProvider>(context);
 
     late String title = formProvider.rootForm;
 
     if (formProvider.rootForm == 'mentoria') {
-      title = 'MENTORÍA INTENSIVA';
+      title = appLocal.mentoriaIntensiva;
     }
     if (formProvider.rootForm == 'encargado') {
-      title = 'SER EL ENCARGADO';
+      title = appLocal.serElEncargado;
     }
     if (formProvider.rootForm == 'conferencias') {
-      title = 'CONFERENCIAS';
+      title = appLocal.conferencias;
     }
     return SizedBox(
       width: double.infinity,
@@ -62,7 +64,7 @@ class _FormSVrrssState extends State<FormSVrrss> {
                 Container(
                     alignment: Alignment.center,
                     width: double.infinity,
-                    height: 500,
+                    height: 510,
                     constraints: const BoxConstraints(maxWidth: 350),
                     child: Form(
                       key: formProvider.keyForm3,
@@ -81,12 +83,12 @@ class _FormSVrrssState extends State<FormSVrrss> {
                               style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
                               maxLines: 5,
                               decoration:
-                                  buildInputDecoration(const Text('Escribe todas tus expectativas y temas que quieres que exponga para tu empresa')),
+                                  buildInputDecoration(Text(appLocal.escribeTodasTusEspectativas)),
                             ),
                           SizedBox(
                             height: (wScreen < 980) ? 10 : 30,
                           ),
-                          Text('¿Cómo te puedo buscar en redes sociales?', style: GoogleFonts.roboto(color: blancoText)),
+                          Text(appLocal.comoPuedoBuscarteRRSS, style: GoogleFonts.roboto(color: blancoText)),
                           const SizedBox(
                             height: 30,
                           ),
@@ -163,7 +165,7 @@ class _FormSVrrssState extends State<FormSVrrss> {
                             ),
                           if (formProvider.rootForm != 'conferencias')
                             Text(
-                                '¿Entiendes que esto es un proceso en el que debes estarcomprometido y tener un modelo de negocio establecido con diferentes requerimientos?',
+                                appLocal.entiendesQueEsto,
                                 style: GoogleFonts.roboto(color: blancoText)),
                           if (formProvider.rootForm != 'conferencias')
                             const SizedBox(
@@ -171,15 +173,15 @@ class _FormSVrrssState extends State<FormSVrrss> {
                             ),
                           if (formProvider.rootForm != 'conferencias')
                             DropdownButtonFormField(
-                              validator: (value) => (value != '') ? null : 'Seleccione una opción',
+                              validator: (value) => (value != '') ? null : appLocal.seleccioneOpcion,
                               value: '',
                               dropdownColor: bgColor,
                               items: [
-                                DropdownMenuItem(value: '', child: Text('Seleccione una opción', style: GoogleFonts.roboto(color: blancoText))),
-                                DropdownMenuItem(value: 'si', child: Text('Si, estoy preparado', style: GoogleFonts.roboto(color: blancoText))),
+                                DropdownMenuItem(value: '', child: Text(appLocal.seleccioneOpcion, style: GoogleFonts.roboto(color: blancoText))),
+                                DropdownMenuItem(value: 'si', child: Text(appLocal.siEstoyPreparado, style: GoogleFonts.roboto(color: blancoText))),
                                 DropdownMenuItem(
                                     value: 'no',
-                                    child: Text('No, no sé cuales son los requerimientos', style: GoogleFonts.roboto(color: blancoText))),
+                                    child: Text(appLocal.noEstoyPreparado, style: GoogleFonts.roboto(color: blancoText))),
                               ],
                               onChanged: (value) => formProvider.setAgree(value),
                             )

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jpdirector_frontend/constant.dart';
 import 'package:jpdirector_frontend/providers/auth_provider.dart';
+import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
 class LoginButton extends StatelessWidget {
@@ -39,7 +40,7 @@ class LoginButton extends StatelessWidget {
                         Icon(icon, color: Colors.white,),
                         const SizedBox(width: 10)
                       ],
-                      Text(text, style: const TextStyle(fontFamily: 'Roboto', color: bgColor, fontSize: 14, fontWeight: FontWeight.w800)),
+                      Text(text, style: DashboardLabel.paragraph.copyWith(color: bgColor, fontWeight: FontWeight.bold)),
                     ],
                   )),
         ),

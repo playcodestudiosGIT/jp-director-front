@@ -244,6 +244,7 @@ class CustomAlertDialogGift extends StatefulWidget {
 class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final GlobalKey<FormState> formController = GlobalKey();
     String email = 'youremail@email.com';
     String telf = '12223334455';
@@ -268,7 +269,7 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Text(
-                  'Todo listo, ya puedes descargar tu regalo haciendo click en el enlace que hemos enviado a tu correo electrónico ',
+                  appLocal.todoListoDescarga,
                   style: GoogleFonts.roboto(color: Colors.white),
                 ),
               ),
@@ -278,7 +279,8 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Text(
-                      'Enviaremos un correo electrónico con el enlace de descarga',
+                      
+                      appLocal.enviaremosUnEmail,
                       style: GoogleFonts.roboto(color: Colors.white),
                     ),
                   ),
@@ -293,7 +295,7 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                               cursorColor: azulText,
                               autovalidateMode: AutovalidateMode.onUserInteraction,
                               keyboardType: TextInputType.emailAddress,
-                              validator: (value) => (EmailValidator.validate(value.toString())) ? null : 'Ingrese su correo',
+                              validator: (value) => (EmailValidator.validate(value.toString())) ? null : appLocal.correoTextFiel,
                               style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
                               decoration: buildInputDecoration(icon: Icons.email, label: email),
                               onChanged: (value) {
@@ -306,13 +308,13 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                               keyboardType: TextInputType.phone,
                               validator: (value) {
                                 if (value!.isEmpty || value.length <= 6) {
-                                  return 'Teléfono sin caractéres especiales (12223334455)';
+                                  return appLocal.telfSinCaracteres;
                                 }
                                 if (value.length > 6 && value.length < 10) {
-                                  return 'Debe incluir cod intenacional + cod de área';
+                                  return appLocal.telfDebeCodArea;
                                 }
                                 if (!RegExp(r"^[0-9]").hasMatch(value)) {
-                                  return 'Solo debe contener números. (12223334455)';
+                                  return appLocal.telfSoloNumeros;
                                 }
                                 return null;
                               },
@@ -333,7 +335,7 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                         SizedBox(
                           width: 270,
                           child: Text(
-                            'Al hacer click en aceptar, confirmo que he leido y acepto todas las políticas y condiciones',
+                            appLocal.alHacerClickHeLeido,
                             style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.5), fontSize: 10),
                           ),
                         ),
@@ -348,7 +350,7 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
               children: [
                 if (!isOk)
                   CustomButton(
-                    text: 'Enviar',
+                    text: appLocal.enviarBtn,
                     onPress: () async {
                       if (formController.currentState!.validate()) {
                         await Provider.of<LeadsProvider>(context, listen: false).createLead(email: email, telf: telf);
@@ -359,7 +361,7 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                   ),
                 const SizedBox(width: 10),
                 CustomButton(
-                  text: (isOk) ? 'Ok' : 'Cancelar',
+                  text: (isOk) ? 'OK' : appLocal.cancelarBtn,
                   onPress: () {
                     Navigator.of(context).pop();
                   },

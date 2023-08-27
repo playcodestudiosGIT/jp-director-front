@@ -25,14 +25,14 @@ class LeadsDTS extends DataTableSource {
         children: [
           Row(
             children: [
-              Text(appLocal.correoForm, style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text('${appLocal.correoForm}:  ', style: TextStyle(color: blancoText.withOpacity(0.5))),
               Text(lead.email),
             ],
           ),
           const SizedBox(height: 10),
           Row(
             children: [
-              Text(appLocal.telefonoForm, style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text('${appLocal.telefonoForm}:  ', style: TextStyle(color: blancoText.withOpacity(0.5))),
               Text(lead.telf),
             ],
           ),

@@ -167,7 +167,6 @@ class NormalBody extends StatelessWidget {
                     constraints: const BoxConstraints(maxWidth: 800, minWidth: 200),
                     alignment: Alignment.center,
                     child: Image(
-                        // color: (screenData.width < 1300) ? Colors.black.withOpacity(0.6) : bgColor.withOpacity(0),
                         colorBlendMode: (screenData.width < 1300) ? BlendMode.multiply : BlendMode.screen,
                         fit: BoxFit.scaleDown,
                         image: bgHome),

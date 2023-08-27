@@ -10,6 +10,7 @@ import 'package:jpdirector_frontend/ui/shared/botones/custom_button.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
+import '../../../generated/l10n.dart';
 import '../../../models/curso.dart';
 import '../../../models/usuario_model.dart';
 
@@ -62,11 +63,13 @@ class _UsersModalState extends State<UsersModal> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final usersProvider = Provider.of<UsersProvider>(context);
-    final size = MediaQuery.of(context).size;
+
     final allCursosProvider = Provider.of<AllCursosProvider>(context, listen: false);
     final destruct = cursos.map((e) => allCursosProvider.obtenerCurso(e));
     return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 7),
       height: 600,
       width: 355, // expande
       decoration: buildBoxDecoration(),
@@ -75,12 +78,11 @@ class _UsersModalState extends State<UsersModal> {
           children: [
             Row(
               children: [
-                if (size.width < 715)
-                  const SizedBox(
-                    width: 40,
-                  ),
+                const SizedBox(
+                  width: 30,
+                ),
                 Text(
-                  (id != null) ? 'Editar: ${widget.user?.nombre}' : 'Nuevo Usuario',
+                  (id != null) ? '${appLocal.editar2puntos} ${widget.user?.nombre}' : appLocal.nuevoUsuario,
                   style: DashboardLabel.h4,
                 ),
                 const Spacer(),
@@ -99,35 +101,35 @@ class _UsersModalState extends State<UsersModal> {
             const SizedBox(
               height: 15 / 2,
             ),
-            Padding(
-              padding: (size.width > 580) ? const EdgeInsets.only(left: 25) : const EdgeInsets.only(left: 0),
+            Container(
+              constraints: const BoxConstraints(maxWidth: 800),
               child: Wrap(
                 alignment: WrapAlignment.center,
-                spacing: 15 / 2,
-                runSpacing: 15 / 2,
+                spacing: 15,
+                runSpacing: 15,
                 children: [
-                  SizedBox(
-                    width: 200,
+                  Container(
+                    constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
                       style: GoogleFonts.roboto(color: Colors.white),
                       initialValue: widget.user?.nombre ?? '',
                       onChanged: (value) => nombre = value,
-                      decoration: buildInputDecoration(label: 'Nombre de usuario', icon: Icons.perm_identity_sharp),
+                      decoration: buildInputDecoration(label: appLocal.nombreDeUsuario, icon: Icons.perm_identity_sharp),
                     ),
                   ),
-                  SizedBox(
-                    width: 200,
+                  Container(
+                    constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
                       style: GoogleFonts.roboto(color: Colors.white),
                       initialValue: widget.user?.apellido ?? '',
                       onChanged: (value) => apellido = value,
-                      decoration: buildInputDecoration(label: 'Apellido de usuario', icon: Icons.supervised_user_circle_outlined),
+                      decoration: buildInputDecoration(label: appLocal.apellidoDeUsuario, icon: Icons.supervised_user_circle_outlined),
                     ),
                   ),
-                  SizedBox(
-                    width: 200,
+                  Container(
+                    constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
                       style: GoogleFonts.roboto(color: Colors.white),
@@ -135,32 +137,32 @@ class _UsersModalState extends State<UsersModal> {
                       onChanged: (value) {
                         correo = value;
                       },
-                      decoration: buildInputDecoration(label: 'Correo de usuario', icon: Icons.email_outlined),
+                      decoration: buildInputDecoration(label: appLocal.correoDeUsuario, icon: Icons.email_outlined),
                     ),
                   ),
                   if (id != null) ...[
-                    SizedBox(
-                      width: 200,
+                    Container(
+                      constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                       child: TextFormField(
                         cursorColor: azulText,
                         style: GoogleFonts.roboto(color: Colors.white),
                         initialValue: widget.user?.telf ?? '',
                         onChanged: (value) => telf = value,
-                        decoration: buildInputDecoration(label: 'Teléfono de usuario', icon: Icons.phone),
+                        decoration: buildInputDecoration(label: appLocal.telefonoDeUsuario, icon: Icons.phone),
                       ),
                     ),
-                    SizedBox(
-                      width: 200,
+                    Container(
+                      constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                       child: TextFormField(
                         cursorColor: azulText,
                         style: GoogleFonts.roboto(color: Colors.white),
-                        initialValue: widget.user?.me ?? 'Sobre mi',
+                        initialValue: widget.user?.me ?? appLocal.sobreMi,
                         onChanged: (value) => me = value,
-                        decoration: buildInputDecoration(label: 'Sobre mi', icon: Icons.phone),
+                        decoration: buildInputDecoration(label: appLocal.sobreMi, icon: Icons.phone),
                       ),
                     ),
-                    SizedBox(
-                      width: 200,
+                    Container(
+                      constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                       child: TextFormField(
                         cursorColor: azulText,
                         style: GoogleFonts.roboto(color: Colors.white),
@@ -169,8 +171,8 @@ class _UsersModalState extends State<UsersModal> {
                         decoration: buildInputDecoration(label: 'Instagram', icon: FontAwesomeIcons.instagram),
                       ),
                     ),
-                    SizedBox(
-                      width: 200,
+                    Container(
+                      constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                       child: TextFormField(
                         cursorColor: azulText,
                         style: GoogleFonts.roboto(color: Colors.white),
@@ -179,8 +181,8 @@ class _UsersModalState extends State<UsersModal> {
                         decoration: buildInputDecoration(label: 'Facebook', icon: FontAwesomeIcons.facebook),
                       ),
                     ),
-                    SizedBox(
-                      width: 200,
+                    Container(
+                      constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                       child: TextFormField(
                         cursorColor: azulText,
                         style: GoogleFonts.roboto(color: Colors.white),
@@ -189,135 +191,123 @@ class _UsersModalState extends State<UsersModal> {
                         decoration: buildInputDecoration(label: 'Tiktok', icon: FontAwesomeIcons.tiktok),
                       ),
                     ),
+                    Container(
+                      constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
+                      child: TextFormField(
+                        cursorColor: azulText,
+                        style: GoogleFonts.roboto(color: Colors.white),
+                        onChanged: (value) => clave = value,
+                        decoration: buildInputDecoration(label: appLocal.passDeUsuario, icon: Icons.password),
+                      ),
+                    ),
+                    Container(
+                        height: 40,
+                        decoration: BoxDecoration(border: Border.all(color: azulText.withOpacity(0.3), strokeAlign: 1)),
+                        constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
+                        child: Center(
+                          child: DropdownButton(
+                            isDense: true,
+                            style: GoogleFonts.roboto(color: Colors.white),
+                            dropdownColor: bgColor,
+                            value: rol,
+                            underline: Container(),
+                            isExpanded: true,
+                            onChanged: (value) {
+                              rol = value.toString();
+                              setState(() {});
+                            },
+                            items: [
+                              DropdownMenuItem(
+                                value: 'USER_ROLE',
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 8),
+                                  child: Center(
+                                    child: Text(
+                                      'ROLE: ${appLocal.usuario}',
+                                      style: GoogleFonts.roboto(color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              DropdownMenuItem(
+                                value: 'ADMIN_ROLE',
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 8),
+                                  child: Center(
+                                    child: Text(
+                                      'ROLE: ADMIN',
+                                      style: GoogleFonts.roboto(color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        )),
                   ]
                 ],
               ),
             ),
-            const SizedBox(
-              height: 15 / 2,
-            ),
-            Padding(
-              padding: (size.width > 580) ? const EdgeInsets.only(left: 35) : const EdgeInsets.only(left: 0),
+            const SizedBox(height: 15),
+            Container(
+              constraints: const BoxConstraints(maxWidth: 800),
               child: Wrap(
                 alignment: WrapAlignment.center,
-                spacing: 15 / 2,
-                runSpacing: 15 / 2,
+                spacing: 15,
+                runSpacing: 15,
                 children: [
-                  Wrap(
-                    alignment: WrapAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 200,
-                        child: TextFormField(
-                          cursorColor: azulText,
-                          style: GoogleFonts.roboto(color: Colors.white),
-                          onChanged: (value) => clave = value,
-                          decoration: buildInputDecoration(label: 'Contraseña', icon: Icons.password),
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Container(
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(4), border: Border.all(color: azulText.withOpacity(0.3))),
-                          width: 200,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                  const SizedBox(width: 10),
+                  Container(
+                      constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 50,
+                            child: Switch(
+                              trackOutlineColor: MaterialStatePropertyAll(azulText.withOpacity(0.3)),
+                              activeColor: Colors.green,
+                              value: estado,
+                              onChanged: (value) => setState(() {
+                                estado = value;
+                              }),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Row(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 55.0),
-                                child: Text('Rol', style: GoogleFonts.roboto(color: Colors.white, fontSize: 12)),
+                              Text(
+                                '${appLocal.estado}:  ',
+                                style: DashboardLabel.paragraph,
                               ),
-                              const SizedBox(height: 8),
-                              DropdownButton(
-                                isDense: true,
-                                style: GoogleFonts.roboto(color: Colors.white),
-                                dropdownColor: bgColor,
-                                value: rol,
-                                underline: Container(),
-                                isExpanded: true,
-                                onChanged: (value) {
-                                  rol = value.toString();
-                                  setState(() {});
-                                },
-                                items: [
-                                  DropdownMenuItem(
-                                    value: 'USER_ROLE',
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(left: 8),
-                                      child: Center(
-                                        child: Text(
-                                          'USUARIO',
-                                          style: GoogleFonts.roboto(color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  DropdownMenuItem(
-                                    value: 'ADMIN_ROLE',
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(left: 8),
-                                      child: Center(
-                                        child: Text(
-                                          'ADMIN',
-                                          style: GoogleFonts.roboto(color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
+                              if (estado)
+                                Text(appLocal.activo, style: DashboardLabel.paragraph.copyWith(color: Colors.green, fontWeight: FontWeight.bold)),
+                              if (!estado)
+                                Text(appLocal.pendiente, style: DashboardLabel.paragraph.copyWith(color: Colors.red, fontWeight: FontWeight.bold)),
                             ],
-                          )),
-                      const SizedBox(width: 10),
-                      SizedBox(
-                          width: 200,
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 50,
-                                child: Switch(
-                                  trackOutlineColor: MaterialStatePropertyAll(azulText.withOpacity(0.3)),
-                                  activeColor: Colors.green,
-                                  value: estado,
-                                  onChanged: (value) => setState(() {
-                                    estado = value;
-                                  }),
-                                ),
-                              ),
-                              const SizedBox(width: 10),
-                              Row(
-                                children: [
-                                  Text(
-                                    'ESTADO: ',
-                                    style: DashboardLabel.paragraph,
-                                  ),
-                                  if (estado)
-                                    Text('ACTIVO', style: DashboardLabel.paragraph.copyWith(color: Colors.green, fontWeight: FontWeight.bold)),
-                                  if (!estado)
-                                    Text('PENDIENTE', style: DashboardLabel.paragraph.copyWith(color: Colors.red, fontWeight: FontWeight.bold)),
-                                ],
-                              ),
-                            ],
-                          )),
-                    ],
-                  ),
+                          ),
+                        ],
+                      )),
                   const SizedBox(height: 80),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        width: double.infinity,
-                        constraints: const BoxConstraints(maxWidth: 355),
+                        constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                         child: Column(
                           children: [
                             if (id != null)
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const SizedBox(width: 15),
                                   Text(
-                                    'CURSOS',
-                                    style: GoogleFonts.roboto(color: Colors.white),
+                                    appLocal.cursos,
+                                    style: DashboardLabel.h4,
                                   ),
-                                  const SizedBox(width: 15),
+                                ],
+                              ),
+                            if (id != null)
+                              Row(
+                                children: [
                                   MouseRegion(
                                     cursor: SystemMouseCursors.click,
                                     child: GestureDetector(
@@ -339,14 +329,20 @@ class _UsersModalState extends State<UsersModal> {
                                         }
                                       },
                                       child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
-                                          const Icon(Icons.add_box_outlined, color: azulText),
+                                          const Icon(
+                                            Icons.add_box_outlined,
+                                            color: azulText,
+                                            size: 16,
+                                          ),
                                           const SizedBox(
                                             width: 10,
                                           ),
                                           Text(
-                                            'Añadir Curso',
-                                            style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 10),
+                                            appLocal.anadirCurso,
+                                            style: DashboardLabel.mini.copyWith(color: azulText),
                                           ),
                                         ],
                                       ),
@@ -378,7 +374,7 @@ class _UsersModalState extends State<UsersModal> {
                             if (id == null) {
                               // Crear
                               await Provider.of<UsersProvider>(context, listen: false).createUser(nombre, apellido, correo, clave, rol, estado);
-                              NotifServ.showSnackbarError('Usuario Creado con exito', Colors.green);
+                              NotifServ.showSnackbarError(appLocal.usuarioCreado, Colors.green);
                             } else {
                               await usersProvider.updateUser(
                                   uid: id,
@@ -393,14 +389,14 @@ class _UsersModalState extends State<UsersModal> {
                                   instagram: instagram,
                                   estado: estado,
                                   rol: rol);
-                              NotifServ.showSnackbarError('Usuario actualizado con exito', Colors.green);
+                              NotifServ.showSnackbarError(appLocal.usuarioActualizado, Colors.green);
                             }
 
                             if (context.mounted) {
                               Navigator.pop(context, true);
                             }
                           },
-                          text: (widget.user != null) ? 'Actualizar' : 'Crear',
+                          text: (widget.user != null) ? appLocal.actualizarBtn : appLocal.crearBtn,
                           color: Colors.green,
                         ),
                       ),
@@ -416,7 +412,7 @@ class _UsersModalState extends State<UsersModal> {
                           onPress: () {
                             Navigator.pop(context, false);
                           },
-                          text: 'Cancelar',
+                          text: appLocal.cancelarBtn,
                         ),
                       ),
                     ],
@@ -452,6 +448,7 @@ class AddCursoModal extends StatefulWidget {
 class _AddCursoModalState extends State<AddCursoModal> {
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final allCursosProvider = Provider.of<AllCursosProvider>(context);
     List<Curso> allCursos = Provider.of<AllCursosProvider>(context).allCursos;
     final authProvider = Provider.of<AuthProvider>(context);
@@ -465,14 +462,14 @@ class _AddCursoModalState extends State<AddCursoModal> {
           child: Column(
             children: [
               Text(
-                'Lista de cursos'.toUpperCase(),
+                appLocal.listaDeCursos.toUpperCase(),
                 style: DashboardLabel.h3,
               ),
               const SizedBox(height: 30),
               DropdownButton(
                   value: allCursosProvider.cursoSelected,
                   hint: Text(
-                    'Seleccione un curso',
+                    appLocal.seleccioneCurso,
                     style: DashboardLabel.h4,
                   ),
                   dropdownColor: bgColor,
@@ -511,7 +508,7 @@ class _AddCursoModalState extends State<AddCursoModal> {
                       if (!authProvider.user!.cursos.contains(cursoId)) {
                         allCursosProvider.addCursoToUser(context: context, userId: widget.userId);
                       } else {
-                        NotifServ.showSnackbarError('Curso repetido', Colors.red);
+                        NotifServ.showSnackbarError(appLocal.cursoRepetido, Colors.red);
                       }
                       Navigator.pop(context, true);
                     },
@@ -520,7 +517,7 @@ class _AddCursoModalState extends State<AddCursoModal> {
                   ),
                   const SizedBox(width: 8),
                   CustomButton(
-                    text: 'Cancelar',
+                    text: appLocal.cancelarBtn,
                     onPress: () {
                       Navigator.pop(context, false);
                     },
@@ -553,6 +550,7 @@ class SquareModulo extends StatefulWidget {
 class _SquareModuloState extends State<SquareModulo> {
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     return Container(
       margin: const EdgeInsets.all(8),
       constraints: const BoxConstraints(maxWidth: 420),
@@ -574,11 +572,11 @@ class _SquareModuloState extends State<SquareModulo> {
                   barrierDismissible: false,
                   context: context,
                   builder: (context) => AlertDialog(
-                        title: const Text('Eliminar Modulo'),
-                        content: Text('Estas seguro de eliminar el curso ${widget.curso!.nombre}'),
+                        title: Text(appLocal.eliminarCurso),
+                        content: Text('${appLocal.seguroEliminarCurso} ${widget.curso!.nombre}'),
                         actions: [
                           CustomButton(
-                            text: 'Eliminar',
+                            text: appLocal.siBorrar,
                             onPress: () async {
                               await Provider.of<AllCursosProvider>(context, listen: false)
                                   .deleteCursoToUser(userId: widget.userId, cursoId: widget.curso!.id);
@@ -590,7 +588,7 @@ class _SquareModuloState extends State<SquareModulo> {
                             color: Colors.red.withOpacity(0.3),
                           ),
                           CustomButton(
-                            text: 'Cancelar',
+                            text: appLocal.cancelarBtn,
                             onPress: () {
                               Navigator.pop(context, false);
                             },

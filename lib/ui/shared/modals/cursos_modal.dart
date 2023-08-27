@@ -6,6 +6,7 @@ import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
 import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
+import '../../../generated/l10n.dart';
 import '../../../models/curso.dart';
 import '../botones/custom_button.dart';
 
@@ -18,15 +19,26 @@ class CursosModal extends StatefulWidget {
 }
 
 class _CursosModalState extends State<CursosModal> {
+  late bool publicado;
+
+  @override
+  void initState() {
+    final allCursosProvider = Provider.of<AllCursosProvider>(context, listen: false);
+    final Curso curso = (widget.uid == '') ? allCursosProvider.curso : allCursosProvider.cursoModal;
+    publicado = curso.publicado;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final allCursosProvider = Provider.of<AllCursosProvider>(context);
     final Curso curso = (widget.uid == '') ? allCursosProvider.curso : allCursosProvider.cursoModal;
+
     List<Modulo> modulos = curso.modulos.where((m) => m.estado).toList();
     final size = MediaQuery.of(context).size;
 
     return Container(
-      padding: (size.width < 500) ? const EdgeInsets.only(left: 40, top: 15, right: 15, bottom: 15) : const EdgeInsets.all(15),
       decoration: buildBoxDecoration(),
       child: ListView(children: [
         Column(
@@ -37,10 +49,7 @@ class _CursosModalState extends State<CursosModal> {
                   const SizedBox(
                     width: 40,
                   ),
-                Text(
-                  (curso.id != '') ? 'Editar: ${curso.nombre}' : 'Nuevo Curso',
-                  style: DashboardLabel.h4
-                ),
+                Text((curso.id != '') ? '${appLocal.editar2puntos} ${curso.nombre}' : appLocal.nuevoCurso, style: DashboardLabel.h4),
                 const Spacer(),
                 IconButton(
                     onPressed: () => Navigator.of(context).pop(),
@@ -60,93 +69,109 @@ class _CursosModalState extends State<CursosModal> {
               padding: (size.width > 580) ? const EdgeInsets.only(left: 25) : const EdgeInsets.only(left: 0),
               child: Wrap(alignment: WrapAlignment.center, spacing: 15 / 2, runSpacing: 15 / 2, children: [
                 Container(
-                  constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
+                  constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                   child: TextFormField(
                     cursorColor: azulText,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    validator: (value) => (value!.isNotEmpty) ? null : 'Titulo del curso',
+                    validator: (value) => (value!.isNotEmpty) ? null : appLocal.imagenDelCurso,
                     initialValue: (curso.id == '') ? '' : curso.nombre,
-                    onChanged: (value) => setState(() {
-                      allCursosProvider.nombreCursoModal = value;
-                    }),
+                    onChanged: (value) => allCursosProvider.nombreCursoModal = value,
                     style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
-                    decoration: buildInputDecoration(icon: Icons.title_outlined, label: 'Nombre del curso'),
+                    decoration: buildInputDecoration(icon: Icons.title_outlined, label: appLocal.nombreDelCurso),
                   ),
                 ),
                 Container(
-                  constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
+                  constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                   child: TextFormField(
                     cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
                     initialValue: (curso.id == '') ? '' : curso.precio,
-                    onChanged: (value) => setState(() {
-                      allCursosProvider.precioCursoModal = value;
-                    }),
-                    decoration: buildInputDecoration(label: 'Precio del curso', icon: Icons.price_change),
+                    onChanged: (value) => allCursosProvider.precioCursoModal = value,
+                    decoration: buildInputDecoration(label: appLocal.precioDelCurso, icon: Icons.price_change),
                   ),
                 ),
                 Container(
-                  constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
+                  constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                   child: TextFormField(
                     cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
                     initialValue: (curso.id == '') ? '' : curso.img,
-                    onChanged: (value) => setState(() {
-                      allCursosProvider.imgCursoModal = value;
-                    }),
-                    decoration: buildInputDecoration(label: 'Imagen del curso', icon: Icons.image_outlined),
+                    onChanged: (value) => allCursosProvider.imgCursoModal = value,
+                    decoration: buildInputDecoration(label: appLocal.imagenDelCurso, icon: Icons.image_outlined),
                   ),
                 ),
                 Container(
-                  constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
+                  constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                   child: TextFormField(
                     cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
                     initialValue: (curso.id == '') ? '' : curso.urlImgCert,
-                    onChanged: (value) => setState(() {
-                      allCursosProvider.urlImgCert = value;
-                    }),
-                    decoration: buildInputDecoration(label: 'Imagen de certificado', icon: Icons.image_outlined),
+                    onChanged: (value) => allCursosProvider.urlImgCert = value,
+                    decoration: buildInputDecoration(label: appLocal.imgCursoCertificado, icon: Icons.image_outlined),
                   ),
                 ),
                 Container(
-                  constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
+                  constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                   child: TextFormField(
                     cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
                     initialValue: (curso.id == '') ? '' : curso.baner,
-                    onChanged: (value) => setState(() {
-                      allCursosProvider.banerCursoModal = value;
-                    }),
-                    decoration: buildInputDecoration(label: 'Baner del curso', icon: Icons.image_outlined),
+                    onChanged: (value) => allCursosProvider.banerCursoModal = value,
+                    decoration: buildInputDecoration(label: appLocal.banerDelCurso, icon: Icons.image_outlined),
                   ),
                 ),
                 Container(
-                  constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
+                  constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                   child: TextFormField(
                     cursorColor: azulText,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    validator: (value) => (value!.isNotEmpty) ? null : 'duración es obligatoria',
-                    initialValue: (curso.duracion == '0') ? '0 min' : curso.duracion,
-                    onChanged: (value) => setState(() {
-                      allCursosProvider.duracionCursoModal = value;
-                    }),
+                    validator: (value) => (value!.isNotEmpty) ? null : appLocal.duracionObligatoria,
+                    initialValue: (curso.id == '') ? '0 h' : curso.duracion,
+                    onChanged: (value) => allCursosProvider.duracionCursoModal = value,
                     style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
-                    decoration: buildInputDecoration(icon: Icons.timer_outlined, label: 'Duración'),
+                    decoration: buildInputDecoration(icon: Icons.timer_outlined, label: appLocal.duracionDelCurso),
                   ),
                 ),
                 Container(
-                  constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
+                  constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                   child: TextFormField(
                     cursorColor: azulText,
                     style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
                     initialValue: (curso.id == '') ? '' : curso.descripcion,
                     maxLines: 5,
-                    onChanged: (value) => setState(() => allCursosProvider.descripcionCursoModal = value),
-                    decoration: buildInputDecoration(label: 'Descripción del curso', icon: Icons.description_outlined),
+                    onChanged: (value) => allCursosProvider.descripcionCursoModal = value,
+                    decoration: buildInputDecoration(label: appLocal.descripcionDelCurso, icon: Icons.description_outlined),
                   ),
                 ),
-                
+                Container(
+                    constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 50,
+                          child: Switch(
+                            trackOutlineColor: MaterialStatePropertyAll(azulText.withOpacity(0.3)),
+                            activeColor: Colors.green,
+                            value: publicado,
+                            onChanged: (value) {
+                              publicado = !publicado;
+                              allCursosProvider.publicadoCursoModal = publicado;
+                            },
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Row(
+                          children: [
+                            Text(
+                              '${appLocal.publicado2puntos}  ',
+                              style: DashboardLabel.paragraph,
+                            ),
+                            if (publicado) Text(appLocal.si, style: DashboardLabel.paragraph.copyWith(color: Colors.green, fontWeight: FontWeight.bold)),
+                            if (!publicado) Text('NO', style: DashboardLabel.paragraph.copyWith(color: Colors.red, fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                      ],
+                    )),
               ]),
             ),
             if (widget.uid != '')
@@ -154,66 +179,75 @@ class _CursosModalState extends State<CursosModal> {
                 children: [
                   const SizedBox(height: 15),
                   Container(
-                    constraints: const BoxConstraints(maxWidth: 400),
-                    child: Row(
+                    constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
+                    child: Column(
                       children: [
-                        Text('Modulos del curso', style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14)),
-                        const Spacer(),
-                        MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: GestureDetector(
-                            onTap: () async {
-                              final created = await showDialog(
-                                  barrierDismissible: false,
-                                  context: context,
-                                  builder: (context) => Dialog(
-                                        cursoID: widget.uid,
-                                      ));
+                        Text(appLocal.modulosDelCurso, style: DashboardLabel.h4),
+                        const SizedBox(height: 15),
+                        Row(
+                          children: [
+                            const Spacer(),
+                            MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                              child: GestureDetector(
+                                onTap: () async {
+                                  final created = await showDialog(
+                                      barrierDismissible: false,
+                                      context: context,
+                                      builder: (context) => Dialog(
+                                            cursoID: widget.uid,
+                                          ));
 
-                              if (created) {
-                                setState(() {
-                                  allCursosProvider.getCursoModal(widget.uid);
-                                });
-                              }
-                            },
-                            child: Row(
-                              children: [
-                                Text(
-                                  'Agregar Modulo',
-                                  style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
+                                  if (created) {
+                                    allCursosProvider.getCursoModal(widget.uid);
+                                  }
+                                },
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      appLocal.agregarUnModulo,
+                                      style: DashboardLabel.mini.copyWith(color: azulText),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    const Icon(
+                                      Icons.add_to_photos_sharp,
+                                      color: azulText,
+                                    ),
+                                  ],
                                 ),
-                                const SizedBox(width: 10),
-                                const Icon(
-                                  Icons.add_to_photos_sharp,
-                                  color: azulText,
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
+                              ),
+                            )
+                          ],
+                        ),
                       ],
                     ),
                   ),
                   const SizedBox(height: 15),
-                  Wrap(
-                    children: [
-                      if (modulos.isEmpty)
-                        Row(children: [
-                          Text(
-                            'Sin modulos, Agregue un nuevo modulo',
-                            style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          const SizedBox(
-                            width: 25,
-                            height: 25,
-                            child: CircularProgressIndicator(),
-                          )
-                        ]),
-                      if (modulos.isNotEmpty) ...modulos.map((modulo) => SquareModulo(modulo: modulo)).toList()
-                    ],
+                  Container(
+                    constraints: const BoxConstraints(maxWidth: 800),
+                    child: Wrap(
+                      spacing: 10,
+                      runSpacing: 10,
+                      runAlignment: WrapAlignment.center,
+                      children: [
+                        if (modulos.isEmpty)
+                          Row(children: [
+                            Text(
+                              appLocal.sinModulos,
+                              style: DashboardLabel.mini,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            const SizedBox(
+                              width: 25,
+                              height: 25,
+                              child: CircularProgressIndicator(),
+                            )
+                          ]),
+                        if (modulos.isNotEmpty) ...modulos.map((modulo) => SquareModulo(modulo: modulo)).toList()
+                      ],
+                    ),
                   )
                 ],
               ),
@@ -242,7 +276,7 @@ class _CursosModalState extends State<CursosModal> {
                         Navigator.pop(context, true);
                       }
                     },
-                    text: (widget.uid != '') ? 'Actualizar' : 'Crear',
+                    text: (widget.uid != '') ? appLocal.actualizarBtn : appLocal.crearBtn,
                   ),
                 ),
                 const SizedBox(
@@ -257,7 +291,7 @@ class _CursosModalState extends State<CursosModal> {
                     onPress: () {
                       Navigator.pop(context, false);
                     },
-                    text: 'Cancelar',
+                    text: appLocal.cancelarBtn,
                   ),
                 ),
               ],
@@ -288,19 +322,48 @@ class SquareModulo extends StatefulWidget {
 class _SquareModuloState extends State<SquareModulo> {
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     return Container(
-      margin: const EdgeInsets.all(8),
-      constraints: const BoxConstraints(maxWidth: 420),
+      margin: const EdgeInsets.all(5),
+      color: azulText.withOpacity(0.1),
+      constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
       padding: const EdgeInsets.all(8),
       width: double.infinity,
-      height: 40,
-      // color: Colors.white.withOpacity(0.2),
-      child: Row(children: [
+      child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: [
         Icon(Icons.view_module, color: Colors.white.withOpacity(0.3)),
         const SizedBox(width: 10),
-        Text(
-          widget.modulo!.nombre,
-          style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3)),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 270,
+              child: Row(
+                children: [
+                  Text(
+                    widget.modulo!.nombre,
+                    style: DashboardLabel.h4,
+                  ),
+                  const SizedBox(width: 15),
+                  Icon(Icons.videocam_sharp, color: (widget.modulo!.video.isEmpty) ? Colors.red : Colors.green, size: 16),
+                  const SizedBox(width: 5),
+                  Icon(Icons.folder_copy_sharp, color: (widget.modulo!.idDriveFolder.isEmpty) ? Colors.red : Colors.green, size: 16),
+                  const SizedBox(width: 5),
+                  Icon(Icons.download_sharp, color: (widget.modulo!.idDriveZip.isEmpty) ? Colors.red : Colors.green, size: 16),
+                  const SizedBox(width: 5),
+                  const Spacer(),
+                ],
+              ),
+            ),
+            const SizedBox(height: 10),
+            SizedBox(
+                width: 270,
+                child: Text(
+                  widget.modulo!.descripcion,
+                  overflow: TextOverflow.fade,
+                  style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5)),
+                ))
+          ],
         ),
         const Spacer(),
         IconButton(
@@ -318,6 +381,7 @@ class _SquareModuloState extends State<SquareModulo> {
             icon: const Icon(
               Icons.edit,
               color: azulText,
+              size: 16,
             )),
         IconButton(
             onPressed: () async {
@@ -325,11 +389,11 @@ class _SquareModuloState extends State<SquareModulo> {
                   barrierDismissible: false,
                   context: context,
                   builder: (context) => AlertDialog(
-                        title: const Text('Eliminar Modulo'),
-                        content: Text('Estas seguro de eliminar el modulo ${widget.modulo!.nombre}'),
+                        title: Text(appLocal.eliminarModulo),
+                        content: Text('${appLocal.seguroEliminarModulo}${widget.modulo!.nombre}'),
                         actions: [
                           CustomButton(
-                            text: 'Eliminar',
+                            text: appLocal.siBorrar,
                             onPress: () async {
                               await Provider.of<AllCursosProvider>(context, listen: false).deleteModulo(widget.modulo!.id);
                               if (context.mounted) {
@@ -340,7 +404,7 @@ class _SquareModuloState extends State<SquareModulo> {
                             color: Colors.red.withOpacity(0.3),
                           ),
                           CustomButton(
-                            text: 'Cancelar',
+                            text: appLocal.cancelarBtn,
                             onPress: () {
                               Navigator.pop(context, false);
                             },
@@ -352,6 +416,7 @@ class _SquareModuloState extends State<SquareModulo> {
             icon: const Icon(
               Icons.delete,
               color: Colors.red,
+              size: 16,
             ))
       ]),
     );
@@ -411,14 +476,17 @@ class _DialogState extends State<Dialog> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
     return AlertDialog(
       elevation: 0,
       backgroundColor: Colors.transparent,
-      title: Text(
-        'Editar modulo',
-        style: GoogleFonts.roboto(color: Colors.white),
-      ),
+      title: (id == '')
+          ? Text(appLocal.nuevoModulo, style: DashboardLabel.h4)
+          : Text(
+              appLocal.editarModulo,
+              style: DashboardLabel.h4,
+            ),
       content: SingleChildScrollView(
         child: Container(
           decoration: buildBoxDecoration(),
@@ -431,21 +499,21 @@ class _DialogState extends State<Dialog> {
                 padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10),
                 child: Column(children: [
                   Container(
-                    constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
+                    constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
                       style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
                       initialValue: nombre,
                       onChanged: (value) => nombre = value,
                       decoration: buildInputDecoration(
-                        label: 'Nombre del Modulo',
+                        label: appLocal.nombreDelModulo,
                         icon: Icons.title_outlined,
                       ),
                     ),
                   ),
                   const SizedBox(height: 15),
                   Container(
-                    constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
+                    constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
                       maxLines: 3,
@@ -453,49 +521,49 @@ class _DialogState extends State<Dialog> {
                       initialValue: descripcion,
                       onChanged: (value) => descripcion = value,
                       decoration: buildInputDecoration(
-                        label: 'Descripcion del Modulo',
+                        label: appLocal.descripcionDelModulo,
                         icon: Icons.description_outlined,
                       ),
                     ),
                   ),
                   const SizedBox(height: 15),
                   Container(
-                    constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
+                    constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
                       style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
                       initialValue: video,
                       onChanged: (value) => video = value,
                       decoration: buildInputDecoration(
-                        label: 'Url video del Modulo',
+                        label: appLocal.urlVideoModulo,
                         icon: Icons.ondemand_video_outlined,
                       ),
                     ),
                   ),
                   const SizedBox(height: 15),
                   Container(
-                    constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
+                    constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
                       style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
                       initialValue: idDriveFolder,
                       onChanged: (value) => idDriveFolder = value,
                       decoration: buildInputDecoration(
-                        label: 'ID de Carpeta',
+                        label: appLocal.idCarpertaModulo,
                         icon: Icons.folder_outlined,
                       ),
                     ),
                   ),
                   const SizedBox(height: 15),
                   Container(
-                    constraints: const BoxConstraints(maxWidth: 380, minWidth: 380),
+                    constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
                       style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
                       initialValue: idDriveZip,
                       onChanged: (value) => idDriveZip = value,
                       decoration: buildInputDecoration(
-                        label: 'ID de Zip',
+                        label: appLocal.idZipModulo,
                         icon: Icons.compress_outlined,
                       ),
                     ),
@@ -505,7 +573,7 @@ class _DialogState extends State<Dialog> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       CustomButton(
-                        text: (id == '') ? 'Crear' : 'Actualizar',
+                        text: (id == '') ? appLocal.crearBtn : appLocal.actualizarBtn,
                         onPress: () async {
                           if (id == '') {
                             await Provider.of<AllCursosProvider>(context, listen: false).createModulo(
@@ -535,7 +603,7 @@ class _DialogState extends State<Dialog> {
                       ),
                       const SizedBox(width: 15),
                       CustomButton(
-                        text: 'Cancelar',
+                        text: appLocal.cancelarBtn,
                         onPress: () {
                           Navigator.pop(context, false);
                         },

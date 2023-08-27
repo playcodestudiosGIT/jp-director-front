@@ -4,6 +4,7 @@ import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../providers/auth_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
@@ -20,6 +21,7 @@ class VerifyUserPage extends StatefulWidget {
 class _VerifyUserPageState extends State<VerifyUserPage> {
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
     return FutureBuilder(
       future: Provider.of<AuthProvider>(context, listen: false).confirmEmail(token: widget.confirmCode),
@@ -60,13 +62,13 @@ class _VerifyUserPageState extends State<VerifyUserPage> {
                                       children: [
                                         if(snapshot.hasData && snapshot.data!)
                                         Text(
-                                          'Gracias por confirmar tu cuenta'.toUpperCase(),
+                                          appLocal.graciasPorConfirmar.toUpperCase(),
                                           textAlign: TextAlign.center,
                                           style: DashboardLabel.gigant.copyWith(color: azulText, fontWeight: FontWeight.bold),
                                         ),
                                         if(snapshot.hasData && !snapshot.data!)
                                         Text(
-                                          'ENLACE INVALIDO'.toUpperCase(),
+                                          appLocal.enlaceInvalido.toUpperCase(),
                                           textAlign: TextAlign.center,
                                           style: DashboardLabel.gigant.copyWith(color: Colors.red, fontWeight: FontWeight.bold),
                                         ),
@@ -78,7 +80,7 @@ class _VerifyUserPageState extends State<VerifyUserPage> {
                                         ),
                                         CustomButton(
                                           width: 140,
-                                          text: 'Ir al Login',
+                                          text: appLocal.irAlLogin,
                                           onPress: () {
                                             NavigatorService.navigateTo(Flurorouter.loginRoute);
                                           },
@@ -107,35 +109,35 @@ class _VerifyUserPageState extends State<VerifyUserPage> {
                             child: Wrap(
                               alignment: WrapAlignment.center,
                               children: [
-                                const Text(
-                                  'Al iniciar sesión aceptas nuestros ',
+                                Text(
+                                  appLocal.alIniciarSesion,
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
+                                  style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
                                 ),
                                 InkWell(
                                   onTap: () => NavigatorService.navigateTo(Flurorouter.tycRoute),
-                                  child: const Text(
-                                    'Términos de Uso ',
+                                  child: Text(
+                                    appLocal.terminoDeUso,
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
+                                    style: const TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
                                   ),
                                 ),
-                                const Text(
-                                  'y reconoces que has leído ',
+                                Text(
+                                  appLocal.yReconocesQue,
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
+                                  style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
                                 ),
-                                const Text(
-                                  'nuestra ',
+                                Text(
+                                  appLocal.nuestra,
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
+                                  style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
                                 ),
                                 InkWell(
                                   onTap: () => NavigatorService.navigateTo(Flurorouter.pdpRoute),
-                                  child: const Text(
-                                    'Política de Privacidad.',
+                                  child: Text(
+                                    appLocal.politicaDePrivacidad,
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
+                                    style: const TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
                                   ),
                                 ),
                               ],
