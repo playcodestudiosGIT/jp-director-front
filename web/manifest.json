@@ -1,6 +1,6 @@
 {
-    "name": "jpdirector_frontend",
-    "short_name": "jpdirector_frontend",
+    "name": "jp_director",
+    "short_name": "jp_director",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

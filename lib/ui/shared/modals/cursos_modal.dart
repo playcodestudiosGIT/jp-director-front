@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/constant.dart';
 import 'package:jp_director/models/modulo.dart';
 import 'package:jp_director/providers/all_cursos_provider.dart';

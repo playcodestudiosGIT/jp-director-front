@@ -1,7 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/providers/all_cursos_provider.dart';
 import 'package:jp_director/providers/auth_provider.dart';
 import 'package:jp_director/ui/shared/widgets/menu_item_top.dart';

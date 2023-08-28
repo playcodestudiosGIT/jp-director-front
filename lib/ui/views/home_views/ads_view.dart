@@ -9,7 +9,6 @@ import 'package:provider/provider.dart';
 import '../../../constant.dart';
 
 import '../../../generated/l10n.dart';
-import '../../../providers/auth_provider.dart';
 
 import '../../shared/widgets/cursos_botones.dart';
 

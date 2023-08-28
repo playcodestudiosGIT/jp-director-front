@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         Container(
                           alignment: (wScreen < 450) ? Alignment.topCenter:Alignment.center,
-                          constraints: BoxConstraints(maxWidth: 1200, minHeight: hScreen),
+                          constraints: BoxConstraints(maxWidth: 315, minHeight: hScreen),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceAround,

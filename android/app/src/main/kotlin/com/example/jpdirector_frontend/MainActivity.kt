@@ -1,4 +1,4 @@
-package com.example.jpdirector_frontend
+package com.example.jp_director
 
 import io.flutter.embedding.android.FlutterActivity
 

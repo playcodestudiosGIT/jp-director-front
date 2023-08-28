@@ -12,7 +12,7 @@ class PoliticasFooter extends StatelessWidget {
     final appLocal = AppLocalizations.of(context);
     return Center(
       child: Container(
-          constraints: const BoxConstraints(maxWidth: 580),
+          constraints: const BoxConstraints(maxWidth: 315),
           child: Wrap(
             alignment: WrapAlignment.center,
             children: [
