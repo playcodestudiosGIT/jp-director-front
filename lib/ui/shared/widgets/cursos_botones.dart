@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/constant.dart';
-import 'package:jpdirector_frontend/models/curso.dart';
-import 'package:jpdirector_frontend/router/router.dart';
-import 'package:jpdirector_frontend/services/navigator_service.dart';
+import 'package:jp_director/constant.dart';
+import 'package:jp_director/models/curso.dart';
+import 'package:jp_director/router/router.dart';
+import 'package:jp_director/services/navigator_service.dart';
 
 import '../labels/dashboard_label.dart';
 

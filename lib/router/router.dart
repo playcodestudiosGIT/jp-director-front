@@ -1,5 +1,5 @@
 import 'package:fluro/fluro.dart';
-import 'package:jpdirector_frontend/router/no_page_handler.dart';
+import 'package:jp_director/router/no_page_handler.dart';
 
 import 'router_handlers.dart';
 

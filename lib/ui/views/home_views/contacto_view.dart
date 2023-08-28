@@ -2,10 +2,11 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/providers/leads_provider.dart';
-import 'package:jpdirector_frontend/ui/shared/botones/custom_button.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
-import 'package:jpdirector_frontend/ui/shared/logotop.dart';
+import 'package:jp_director/providers/leads_provider.dart';
+import 'package:jp_director/ui/shared/botones/custom_button.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/shared/labels/inputs_decorations.dart';
+import 'package:jp_director/ui/shared/logotop.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -270,7 +271,7 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Text(
                   appLocal.todoListoDescarga,
-                  style: GoogleFonts.roboto(color: Colors.white),
+                  style: DashboardLabel.h4,
                 ),
               ),
             if (!isOk)
@@ -281,7 +282,7 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                     child: Text(
                       
                       appLocal.enviaremosUnEmail,
-                      style: GoogleFonts.roboto(color: Colors.white),
+                      style: DashboardLabel.h4,
                     ),
                   ),
                   const SizedBox(height: 15),
@@ -296,8 +297,8 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                               autovalidateMode: AutovalidateMode.onUserInteraction,
                               keyboardType: TextInputType.emailAddress,
                               validator: (value) => (EmailValidator.validate(value.toString())) ? null : appLocal.correoTextFiel,
-                              style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                              decoration: buildInputDecoration(icon: Icons.email, label: email),
+                              style: DashboardLabel.h4,
+                              decoration: InputDecor.formFieldInputDecoration(icon: Icons.email, label: email),
                               onChanged: (value) {
                                 email = value;
                               }),
@@ -318,8 +319,8 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                                 }
                                 return null;
                               },
-                              style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                              decoration: buildInputDecoration(icon: Icons.email, label: telf),
+                              style: DashboardLabel.h4,
+                              decoration: InputDecor.formFieldInputDecoration(icon: Icons.email, label: telf),
                               onChanged: (value) {
                                 telf = value;
                               }),
@@ -376,18 +377,3 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
     );
   }
 }
-
-InputDecoration buildInputDecoration({required String label, required IconData icon, IconData? suffIcon, Function? onPrs}) => InputDecoration(
-    fillColor: blancoText.withOpacity(0.03),
-    filled: true,
-    border: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    focusedBorder: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
-    labelText: label,
-    labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-    prefixIcon: Icon(icon, color: azulText.withOpacity(0.3)),
-    suffixIconColor: azulText.withOpacity(0.3));

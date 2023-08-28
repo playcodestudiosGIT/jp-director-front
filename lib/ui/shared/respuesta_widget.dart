@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/constant.dart';
+import 'package:jp_director/constant.dart';
 
 import 'labels/dashboard_label.dart';
+import 'widgets/progress_ind.dart';
 
 class RespuestaWidget extends StatelessWidget {
   final String img;
@@ -22,10 +23,7 @@ class RespuestaWidget extends StatelessWidget {
           ),
           const SizedBox(width: 10),
           (nombre == '')
-          ? const SizedBox(
-            width: 15,
-            height: 15,
-            child: CircularProgressIndicator())
+          ? const ProgressInd()
           : Text(
             '$nombre $apellido', // e.id
             style: DashboardLabel.paragraph,

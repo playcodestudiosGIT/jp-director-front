@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/models/formulario.dart';
-import 'package:jpdirector_frontend/models/http/forms_response.dart';
+import 'package:jp_director/models/formulario.dart';
+import 'package:jp_director/models/http/forms_response.dart';
 import 'package:universal_html/html.dart' as html;
 
 import '../api/jp_api.dart';

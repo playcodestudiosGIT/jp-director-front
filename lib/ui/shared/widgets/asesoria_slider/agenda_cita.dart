@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/services/mobileui.dart' if (dart.library.html) 'package:jpdirector_frontend/services/webui.dart' as multiplatform;
+import 'package:jp_director/services/mobileui.dart' if (dart.library.html) 'package:jp_director/services/webui.dart' as multiplatform;
 
 class Agenda extends StatefulWidget {
   const Agenda({super.key});

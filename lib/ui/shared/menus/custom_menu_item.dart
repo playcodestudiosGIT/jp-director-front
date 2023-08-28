@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 
 import '../../../constant.dart';
 

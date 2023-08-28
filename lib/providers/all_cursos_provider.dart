@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/constant.dart';
-import 'package:jpdirector_frontend/models/certificado.dart';
-import 'package:jpdirector_frontend/services/notificacion_service.dart';
+import 'package:jp_director/constant.dart';
+import 'package:jp_director/models/certificado.dart';
+import 'package:jp_director/services/notificacion_service.dart';
 
 import '../api/jp_api.dart';
 import '../models/curso.dart';

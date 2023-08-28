@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:jpdirector_frontend/models/resp.dart';
+import 'package:jp_director/models/resp.dart';
 
 class Coment {
     bool estado;

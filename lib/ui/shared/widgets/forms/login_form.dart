@@ -56,13 +56,11 @@ class _LoginFormState extends State<LoginForm> {
                 ),
                 TextFormField(
                   cursorColor: azulText,
-                  // initialValue: loginFormProvider.email,
-                  // controller: emailCtrl,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) => (EmailValidator.validate(value.toString())) ? null : appLocal.ingreseSuCorreo,
                   onChanged: (value) => loginFormProvider.setEmail(value),
-                  style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
+                  style: DashboardLabel.paragraph,
                   decoration: buildInputDecoration(icon: Icons.email, label: appLocal.correoTextFiel),
                 ),
                 const SizedBox(
@@ -70,18 +68,15 @@ class _LoginFormState extends State<LoginForm> {
                 ),
                 TextFormField(
                   cursorColor: azulText,
-                  // initialValue: loginFormProvider.pass,
-                  // controller: passCtrl,
                   obscureText: loginFormProvider.obscureText,
                   keyboardType: TextInputType.visiblePassword,
-                  // autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
                     if (value!.isEmpty) return appLocal.ingreseUnaPassValida;
                     if (value.length < 6) return appLocal.laContraDebe6Caracteres;
                     return null;
                   },
                   onChanged: (value) => loginFormProvider.setPassword(value),
-                  style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
+                  style: DashboardLabel.paragraph,
                   decoration: buildInputDecoration(icon: Icons.password, label: appLocal.contrasenaTextFiel, suffIcon: Icons.remove_red_eye_outlined, onPrs: () {}),
                 ),
                 const SizedBox(
@@ -92,7 +87,7 @@ class _LoginFormState extends State<LoginForm> {
                   children: [
                     Text(
                       appLocal.recuerdame,
-                      style: GoogleFonts.roboto(color: blancoText, fontSize: 12),
+                      style: DashboardLabel.mini,
                     ),
                     Checkbox(
                       activeColor: azulText,
@@ -140,7 +135,7 @@ class _LoginFormState extends State<LoginForm> {
                     if (!widget.isBuying) ...[
                       Text(
                         appLocal.eresNuevo,
-                        style: GoogleFonts.roboto(fontSize: 14, color: blancoText, fontWeight: FontWeight.w400),
+                        style: DashboardLabel.paragraph,
                       ),
                       const SizedBox(
                         width: 4,
@@ -152,14 +147,14 @@ class _LoginFormState extends State<LoginForm> {
                         }, // Navigate to register page
                         child: Text(
                           appLocal.registrateAqui,
-                          style: GoogleFonts.roboto(fontSize: 14, color: azulText, fontWeight: FontWeight.w800),
+                          style: DashboardLabel.paragraph,
                         ),
                       ),
                     ],
                     if (widget.isBuying) ...[
                       Text(
                         appLocal.eresNuevo,
-                        style: GoogleFonts.roboto(fontSize: 14, color: blancoText, fontWeight: FontWeight.w400),
+                        style: DashboardLabel.paragraph,
                       ),
                       const SizedBox(
                         width: 4,
@@ -176,7 +171,7 @@ class _LoginFormState extends State<LoginForm> {
                               }, // Navigate to register page
                         child: Text(
                           appLocal.registrateAqui,
-                          style: GoogleFonts.roboto(fontSize: 14, color: azulText, fontWeight: FontWeight.w800),
+                          style: DashboardLabel.paragraph.copyWith( color: azulText, fontWeight: FontWeight.w800),
                         ),
                       )
                     ]
@@ -221,6 +216,6 @@ InputDecoration buildInputDecoration({required String label, required IconData i
     
     enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
     labelText: label,
-    labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),
+    labelStyle: DashboardLabel.h4,
     prefixIcon: Icon(icon, color: azulText.withOpacity(0.3)),
     suffixIconColor: azulText.withOpacity(0.3));

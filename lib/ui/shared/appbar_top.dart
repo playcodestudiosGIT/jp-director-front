@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/ui/shared/logotop.dart';
-import 'package:jpdirector_frontend/ui/shared/widgets/menu_item_top.dart';
+import 'package:jp_director/ui/shared/logotop.dart';
+import 'package:jp_director/ui/shared/widgets/menu_item_top.dart';
 
 import '../../generated/l10n.dart';
 import '../../router/router.dart';

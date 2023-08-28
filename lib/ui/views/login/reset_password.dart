@@ -1,9 +1,10 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/services/notificacion_service.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
-import 'package:jpdirector_frontend/ui/shared/politicas_footer.dart';
+import 'package:jp_director/services/notificacion_service.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/shared/labels/inputs_decorations.dart';
+import 'package:jp_director/ui/shared/politicas_footer.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
@@ -103,8 +104,8 @@ class _ResetPassState extends State<ResetPass> {
                                             TextFormField(
                                               cursorColor: azulText,
                                               validator: (value) => (EmailValidator.validate(value.toString())) ? null : appLocal.ingreseSuCorreo,
-                                              style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                                              decoration: _buildInputDecoration(label: appLocal.correoTextFiel, icon: Icons.email_outlined),
+                                              style: DashboardLabel.h4,
+                                              decoration: InputDecor.formFieldInputDecoration(label: appLocal.correoTextFiel, icon: Icons.email_outlined),
                                               onChanged: (value) => email = value,
                                             ),
                                             const SizedBox(
@@ -179,18 +180,3 @@ class _ResetPassState extends State<ResetPass> {
     );
   }
 }
-
-InputDecoration _buildInputDecoration({required String label, required IconData icon}) => InputDecoration(
-    fillColor: blancoText.withOpacity(0.03),
-    filled: true,
-    border: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    focusedBorder: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
-    labelText: label,
-    labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-    prefixIcon: Icon(icon, color: azulText.withOpacity(0.3)),
-    suffixIconColor: azulText.withOpacity(0.3));

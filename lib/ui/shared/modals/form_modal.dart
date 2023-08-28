@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/constant.dart';
-import 'package:jpdirector_frontend/generated/l10n.dart';
-import 'package:jpdirector_frontend/models/formulario.dart';
-import 'package:jpdirector_frontend/providers/form_provider.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/constant.dart';
+import 'package:jp_director/generated/l10n.dart';
+import 'package:jp_director/models/formulario.dart';
+import 'package:jp_director/providers/form_provider.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/shared/labels/inputs_decorations.dart';
 import 'package:provider/provider.dart';
 
 import '../botones/custom_button.dart';
@@ -50,13 +50,14 @@ class _FormsModalState extends State<FormsModal> {
     final formProvider = Provider.of<FormProvider>(context);
     return Container(
       constraints: const BoxConstraints(maxWidth: 800),
-      decoration: buildBoxDecoration(),
+      decoration: InputDecor.buildBoxDecoration(),
       child: ListView(children: [
         Column(
           children: [
             Row(
               children: [
-                Text((id != '') ? 'Editar: ${widget.form?.email}' : 'Nuevo Formulario', style: DashboardLabel.h4),
+                const SizedBox(width: 20),
+                Text((id != '') ? '${appLocal.editar2puntos} ${widget.form?.email}' : appLocal.nuevoForm, style: DashboardLabel.h4),
                 const Spacer(),
                 IconButton(
                     onPressed: () => Navigator.of(context).pop(),
@@ -94,28 +95,19 @@ class _FormsModalState extends State<FormsModal> {
                                   value: 'mentoria',
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 8.0),
-                                    child: Text(
-                                      appLocal.mentoria,
-                                      style: GoogleFonts.roboto(color: Colors.white),
-                                    ),
+                                    child: Text(appLocal.mentoria, style: DashboardLabel.paragraph),
                                   )),
                               DropdownMenuItem(
                                   value: 'encargado',
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 8.0),
-                                    child: Text(
-                                      appLocal.serElEncargado,
-                                      style: GoogleFonts.roboto(color: Colors.white),
-                                    ),
+                                    child: Text(appLocal.serElEncargado, style: DashboardLabel.paragraph),
                                   )),
                               DropdownMenuItem(
                                   value: 'conferencias',
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 8.0),
-                                    child: Text(
-                                      appLocal.conferencias,
-                                      style: GoogleFonts.roboto(color: Colors.white),
-                                    ),
+                                    child: Text(appLocal.conferencias, style: DashboardLabel.paragraph),
                                   )),
                             ],
                             onChanged: (value) => setState(() {
@@ -127,65 +119,65 @@ class _FormsModalState extends State<FormsModal> {
                     constraints: const BoxConstraints(maxWidth: 400),
                     child: TextFormField(
                       cursorColor: azulText,
-                      style: GoogleFonts.roboto(color: Colors.white),
+                      style: DashboardLabel.paragraph,
                       initialValue: nombre,
                       onChanged: (value) {
                         nombre = value;
                         formProvider.nombre = value;
                       },
-                      decoration: buildInputDecoration(label: appLocal.nombreyapellidoForm, icon: Icons.person_outline),
+                      decoration: InputDecor.formFieldInputDecoration(label: appLocal.nombreyapellidoForm, icon: Icons.person_outline),
                     ),
                   ),
                   Container(
                     constraints: const BoxConstraints(maxWidth: 400),
                     child: TextFormField(
                       cursorColor: azulText,
-                      style: GoogleFonts.roboto(color: Colors.white),
+                      style: DashboardLabel.paragraph,
                       initialValue: email,
                       onChanged: (value) {
                         email = value;
                         formProvider.email = value;
                       },
-                      decoration: buildInputDecoration(label: appLocal.correoTextFiel, icon: Icons.email_outlined),
+                      decoration: InputDecor.formFieldInputDecoration(label: appLocal.correoTextFiel, icon: Icons.email_outlined),
                     ),
                   ),
                   Container(
                     constraints: const BoxConstraints(maxWidth: 400),
                     child: TextFormField(
                       cursorColor: azulText,
-                      style: GoogleFonts.roboto(color: Colors.white),
+                      style: DashboardLabel.paragraph,
                       initialValue: telefono,
                       onChanged: (value) {
                         telefono = value;
                         formProvider.telefono = value;
                       },
-                      decoration: buildInputDecoration(label: appLocal.telefonoForm, icon: Icons.phone_outlined),
+                      decoration: InputDecor.formFieldInputDecoration(label: appLocal.telefonoForm, icon: Icons.phone_outlined),
                     ),
                   ),
                   Container(
                     constraints: const BoxConstraints(maxWidth: 400),
                     child: TextFormField(
                       cursorColor: azulText,
-                      style: GoogleFonts.roboto(color: Colors.white),
+                      style: DashboardLabel.paragraph,
                       initialValue: negocio,
                       onChanged: (value) {
                         negocio = value;
                         formProvider.negocio = value;
                       },
-                      decoration: buildInputDecoration(label: appLocal.negocio2puntos, icon: Icons.business_center_outlined),
+                      decoration: InputDecor.formFieldInputDecoration(label: appLocal.negocio2puntos, icon: Icons.business_center_outlined),
                     ),
                   ),
                   Container(
                     constraints: const BoxConstraints(maxWidth: 400),
                     child: TextFormField(
                       cursorColor: azulText,
-                      style: GoogleFonts.roboto(color: Colors.white),
+                      style: DashboardLabel.paragraph,
                       initialValue: yearsOp,
                       onChanged: (value) {
                         yearsOp = value;
                         formProvider.opYear = value;
                       },
-                      decoration: buildInputDecoration(label: appLocal.cuantosAnosNegAct, icon: Icons.work_history_outlined),
+                      decoration: InputDecor.formFieldInputDecoration(label: appLocal.cuantosAnosNegAct, icon: Icons.work_history_outlined),
                     ),
                   ),
                 ],
@@ -232,30 +224,11 @@ class _FormsModalState extends State<FormsModal> {
                   ),
                 ),
               ],
-            )
+            ),
+            const SizedBox(height: 100)
           ],
         ),
       ]),
     );
   }
-
-  BoxDecoration buildBoxDecoration() => const BoxDecoration(
-      borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-      color: bgColor,
-      boxShadow: [BoxShadow(color: Colors.black)]);
 }
-
-InputDecoration buildInputDecoration({required String label, required IconData icon, IconData? suffIcon, Function? onPrs}) => InputDecoration(
-    fillColor: blancoText.withOpacity(0.03),
-    filled: true,
-    border: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    focusedBorder: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
-    labelText: label,
-    labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-    prefixIcon: Icon(icon, color: azulText.withOpacity(0.3)),
-    suffixIconColor: azulText.withOpacity(0.3));

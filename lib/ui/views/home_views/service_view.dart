@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
@@ -103,7 +104,7 @@ class _ServicesViewState extends State<ServicesView> {
                                             }),
                                         child: Text(
                                           appLocal.asesoria11,
-                                          style: GoogleFonts.roboto(color: blancoText, fontSize: 15, fontWeight: FontWeight.w500),
+                                          style: DashboardLabel.h4
                                         )),
                                     if (index == 0) ...[
                                       const SizedBox(height: 4),
@@ -129,7 +130,7 @@ class _ServicesViewState extends State<ServicesView> {
                                       }),
                                   child: Column(
                                     children: [
-                                      Text(appLocal.mentoria, style: GoogleFonts.roboto(color: blancoText, fontSize: 15, fontWeight: FontWeight.w500)),
+                                      Text(appLocal.mentoria, style: DashboardLabel.h4),
                                       if (index == 1) ...[
                                         const SizedBox(height: 4),
                                         Container(
@@ -156,7 +157,7 @@ class _ServicesViewState extends State<ServicesView> {
                                   child: Column(
                                     children: [
                                       Text(appLocal.serElEncargado,
-                                          style: GoogleFonts.roboto(color: blancoText, fontSize: 15, fontWeight: FontWeight.w500)),
+                                          style: DashboardLabel.h4),
                                       if (index == 2) ...[
                                         const SizedBox(height: 4),
                                         Container(
@@ -182,7 +183,7 @@ class _ServicesViewState extends State<ServicesView> {
                                       }),
                                   child: Column(
                                     children: [
-                                      Text(appLocal.conferencias, style: GoogleFonts.roboto(color: blancoText, fontSize: 15, fontWeight: FontWeight.w500)),
+                                      Text(appLocal.conferencias, style: DashboardLabel.h4),
                                       if (index == 3) ...[
                                         const SizedBox(height: 4),
                                         Container(

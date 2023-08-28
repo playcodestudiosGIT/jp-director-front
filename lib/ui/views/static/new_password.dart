@@ -1,8 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/providers/auth_provider.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/providers/auth_provider.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
@@ -106,7 +106,7 @@ class _NewPasswordState extends State<NewPassword> {
                                               obscureText: true,
                                               validator: (value) => (passw1 == passw2) ? null : appLocal.passNoCoinciden,
                                               onChanged: (value) => passw2 = value,
-                                              style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
+                                              style: DashboardLabel.h4,
                                               decoration: InputDecor.formFieldInputDecoration(label: appLocal.repitaContrasenaTextFiel, icon: Icons.email_outlined),
                                             ),
                                             const SizedBox(height: 30),

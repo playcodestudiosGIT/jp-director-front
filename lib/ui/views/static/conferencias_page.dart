@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/ui/shared/botones/botonverde.dart';
+import 'package:jp_director/ui/shared/botones/botonverde.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
@@ -9,6 +9,7 @@ import '../../../generated/l10n.dart';
 import '../../../providers/auth_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
+import '../../shared/labels/dashboard_label.dart';
 import '../../shared/widgets/acordion.dart';
 
 class ConferenciasPage extends StatelessWidget {
@@ -174,6 +175,7 @@ class _LetrasConferencias extends StatelessWidget {
                 child: const Image(
                   image: bgConferencia,
                   width: 400,
+                  height: 400,
                 ),
               ),
             ),
@@ -196,7 +198,7 @@ class _LetrasConferencias extends StatelessWidget {
               : const EdgeInsets.only(left: 10, top: 10),
           child: Text(
             appLocal.seamosSinceros,
-            style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400, color: blancoText),
+            style: DashboardLabel.h4,
           ),
         ),
         const SizedBox(

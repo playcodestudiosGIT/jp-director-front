@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/constant.dart';
-import 'package:jpdirector_frontend/generated/l10n.dart';
-import 'package:jpdirector_frontend/providers/auth_provider.dart';
-import 'package:jpdirector_frontend/router/router.dart';
-import 'package:jpdirector_frontend/services/navigator_service.dart';
+import 'package:jp_director/constant.dart';
+import 'package:jp_director/generated/l10n.dart';
+import 'package:jp_director/providers/auth_provider.dart';
+import 'package:jp_director/router/router.dart';
+import 'package:jp_director/services/navigator_service.dart';
 import 'package:provider/provider.dart';
 
 import '../../shared/labels/dashboard_label.dart';
@@ -76,7 +76,7 @@ class TycView extends StatelessWidget {
                           ),
                           Text(
                             appLocal.avisoLegal1,
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -184,7 +184,7 @@ class TycView extends StatelessWidget {
                           ),
                           Text(
                             appLocal.propiedadIntelectual,
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -198,7 +198,7 @@ class TycView extends StatelessWidget {
                           ),
                           Text(
                             appLocal.exclusionDeGarant,
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -212,7 +212,7 @@ class TycView extends StatelessWidget {
                           ),
                           Text(
                             appLocal.modificaciones,
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -226,7 +226,7 @@ class TycView extends StatelessWidget {
                           ),
                           Text(
                             appLocal.politicaDeEnlaces,
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -247,7 +247,7 @@ class TycView extends StatelessWidget {
                           ),
                           Text(
                             appLocal.derechoExcl,
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -261,7 +261,7 @@ class TycView extends StatelessWidget {
                           ),
                           Text(
                             appLocal.generalidades,
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -275,7 +275,7 @@ class TycView extends StatelessWidget {
                           ),
                           Text(
                             appLocal.modificacionCond,
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -289,7 +289,7 @@ class TycView extends StatelessWidget {
                           ),
                           Text(
                             appLocal.reclamacionesDudas,
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -303,7 +303,7 @@ class TycView extends StatelessWidget {
                           ),
                           Text(
                             appLocal.condicionesDeVenta,
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -317,7 +317,7 @@ class TycView extends StatelessWidget {
                           ),
                           Text(
                             appLocal.leyAplicable,
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -331,7 +331,7 @@ class TycView extends StatelessWidget {
                           ),
                           Text(
                             appLocal.causasDeDisolucion,
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,

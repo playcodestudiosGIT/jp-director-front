@@ -373,7 +373,15 @@
     "ingresaNewPass": "Ingresa tu nueva clave",
     "graciasPorConfirmar": "Gracias por confirmar tu cuenta",
     "enlaceInvalido": "ENLACE INVALIDO",
-    "pagina404": "Página no encontrada 404"
+    "pagina404": "Página no encontrada 404",
+    "porFavorEspere": "Por favor espere",
+    "leadCreadoConExito": "Lead Creado con exito",
+    "leadActualizadoConExito": "Lead Actualizado con exito",
+    "nuevoLead": "Nuevo Lead",
+    "responder":"Responder",
+    "respuesta":"Respuesta",
+    "fecha": "Fecha",
+    "nuevoForm": "Nuevo Formulario"
     
     
 

@@ -2,9 +2,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
-import 'package:jpdirector_frontend/providers/auth_provider.dart';
-import 'package:jpdirector_frontend/ui/shared/widgets/menu_item_top.dart';
+import 'package:jp_director/providers/all_cursos_provider.dart';
+import 'package:jp_director/providers/auth_provider.dart';
+import 'package:jp_director/ui/shared/widgets/menu_item_top.dart';
 import 'package:provider/provider.dart';
 
 import '../../constant.dart';
@@ -13,6 +13,7 @@ import '../../providers/page_provider.dart';
 import '../../router/router.dart';
 import '../../services/navigator_service.dart';
 import '../shared/botones/custom_button.dart';
+import '../shared/labels/dashboard_label.dart';
 import '../shared/menus/home_app_menu.dart';
 
 class UserPageLayout extends StatefulWidget {
@@ -89,9 +90,7 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                           PageProvider.circleController = controller;
                         },
                         child: const SizedBox(width: 1100, child: Image(image: circulo)))),
-                Container(
-                    constraints: BoxConstraints(maxWidth: wScreen, maxHeight: hScreen),
-                    child: widget.child),
+                Container(constraints: BoxConstraints(maxWidth: wScreen, maxHeight: hScreen), child: widget.child),
                 Container(
                   alignment: Alignment.centerLeft,
                   width: double.infinity,
@@ -101,8 +100,8 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                     margin: const EdgeInsets.symmetric(horizontal: 5),
                     child: Row(
                       children: [
-                        if (wScreen <= 390) const SizedBox(width: 47),
-                        if (wScreen > 390) const SizedBox(width: 30),
+                        // if (wScreen <= 390) const SizedBox(width: 47),
+                        const SizedBox(width: 30),
                         GestureDetector(
                           onTap: () {
                             NavigatorService.replaceTo(Flurorouter.homeRoute);
@@ -111,8 +110,8 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                             cursor: SystemMouseCursors.click,
                             child: Container(
                               alignment: Alignment.centerLeft,
-                              width: (wScreen <= 390) ? 53 : 200,
-                              child: (wScreen <= 390) ? const Image(image: logoIso) : const Image(image: logoJp),
+                              width: 160,
+                              child: const Image(image: logoJp),
                             ),
                           ),
                         ),
@@ -163,14 +162,24 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                       )),
                 if (wScreen <= 480)
                   Positioned(
-                      right: 10,
-                      top: 10,
-                      child: IconButton(
-                        icon: const Icon(Icons.login_outlined, color: azulText),
-                        style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
-                        onPressed: () {
-                          NavigatorService.replaceTo(Flurorouter.loginRoute);
-                        },
+                      right: 20,
+                      top: 12,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () => NavigatorService.replaceTo(Flurorouter.loginRoute),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.login_outlined, color: azulText),
+                              Text(
+                                appLocal.iniciarSesionBtn,
+                                style: const TextStyle(color: azulText, fontSize: 8),
+                              )
+                            ],
+                          ),
+                        ),
                       )),
                 if (wScreen > 480)
                   Positioned(
@@ -183,29 +192,33 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                       },
                       child: Text(
                         appLocal.botonReg,
-                        style: GoogleFonts.roboto(fontSize: 14, color: azulText, fontWeight: FontWeight.w800),
+                        style: DashboardLabel.paragraph.copyWith(color: azulText, fontWeight: FontWeight.w800),
                       ),
                     ),
                   ),
                 if (wScreen <= 480)
                   Positioned(
-                    right: 60,
-                    top: 10,
-                    child: IconButton(
-                      style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
-                      onPressed: () {
-                        NavigatorService.replaceTo(Flurorouter.registerRoute);
-                      },
-                      icon: const Icon(
-                        Icons.app_registration_rounded,
-                        color: azulText,
-                      ), // Navigate to register page
-                      // child: Text(
-                      //   appLocal.botonReg,
-                      //   style: GoogleFonts.roboto(fontSize: 14, color: azulText, fontWeight: FontWeight.w800),
-                      // ),
-                    ),
-                  ),
+                      right: 90,
+                      top: 12,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () {
+                            NavigatorService.replaceTo(Flurorouter.registerRoute);
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.app_registration_rounded, color: azulText),
+                              Text(
+                                appLocal.registrarBtn,
+                                style: const TextStyle(color: azulText, fontSize: 8),
+                              )
+                            ],
+                          ),
+                        ),
+                      )),
               ],
             ),
           ),

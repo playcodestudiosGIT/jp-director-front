@@ -3799,6 +3799,86 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Pease wait`
+  String get porFavorEspere {
+    return Intl.message(
+      'Pease wait',
+      name: 'porFavorEspere',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lead Created successfully`
+  String get leadCreadoConExito {
+    return Intl.message(
+      'Lead Created successfully',
+      name: 'leadCreadoConExito',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lead Updated successfully`
+  String get leadActualizadoConExito {
+    return Intl.message(
+      'Lead Updated successfully',
+      name: 'leadActualizadoConExito',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Lead`
+  String get nuevoLead {
+    return Intl.message(
+      'New Lead',
+      name: 'nuevoLead',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reply`
+  String get responder {
+    return Intl.message(
+      'Reply',
+      name: 'responder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Respond`
+  String get respuesta {
+    return Intl.message(
+      'Respond',
+      name: 'respuesta',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get fecha {
+    return Intl.message(
+      'Date',
+      name: 'fecha',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nuevo Formulario`
+  String get nuevoForm {
+    return Intl.message(
+      'Nuevo Formulario',
+      name: 'nuevoForm',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

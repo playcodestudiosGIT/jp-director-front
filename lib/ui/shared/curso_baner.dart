@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jp_director/ui/shared/widgets/progress_ind.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../constant.dart';
@@ -30,7 +31,7 @@ class CursoBanerView extends StatelessWidget {
                 children: [
                   Container(
                     constraints: const BoxConstraints(maxWidth: 250),
-                    child: (curso.img == '') ? const CircularProgressIndicator() : Image(image: NetworkImage(curso.img)),
+                    child: (curso.img == '') ? const ProgressInd() : Image(image: NetworkImage(curso.img)),
                   ),
                   Positioned(
                       top: 120,
@@ -107,13 +108,7 @@ class CursoBanerView extends StatelessWidget {
                 width: double.infinity,
                 constraints: const BoxConstraints(maxWidth: 800, minHeight: 280),
                 child: (curso.baner == '')
-                    ? const Center(
-                        child: SizedBox(
-                          width: 35,
-                          height: 35,
-                          child: CircularProgressIndicator(),
-                        ),
-                      )
+                    ? const ProgressInd()
                     : Image(
                         image: NetworkImage(curso.baner),
                       ),

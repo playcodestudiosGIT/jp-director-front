@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/constant.dart';
-import 'package:jpdirector_frontend/generated/l10n.dart';
-import 'package:jpdirector_frontend/providers/form_provider.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/title_label.dart';
+import 'package:jp_director/constant.dart';
+import 'package:jp_director/generated/l10n.dart';
+import 'package:jp_director/providers/form_provider.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/shared/labels/title_label.dart';
 
 import 'package:provider/provider.dart';
 

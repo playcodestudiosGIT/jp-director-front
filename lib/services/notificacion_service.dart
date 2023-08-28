@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import '../constant.dart';
+import '../ui/shared/labels/dashboard_label.dart';
 
 
 class NotifServ {
@@ -12,7 +11,7 @@ class NotifServ {
         backgroundColor: color,
         content: Text(
           msg,
-          style: GoogleFonts.roboto(color: blancoText, fontSize: 20),
+          style: DashboardLabel.h4,
         ));
 
     msgKey.currentState!.showSnackBar(snackBar);

@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/constant.dart';
-import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
-import 'package:jpdirector_frontend/providers/auth_provider.dart';
-import 'package:jpdirector_frontend/providers/users_provider.dart';
-import 'package:jpdirector_frontend/services/notificacion_service.dart';
-import 'package:jpdirector_frontend/ui/shared/botones/custom_button.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/constant.dart';
+import 'package:jp_director/providers/all_cursos_provider.dart';
+import 'package:jp_director/providers/auth_provider.dart';
+import 'package:jp_director/providers/users_provider.dart';
+import 'package:jp_director/services/notificacion_service.dart';
+import 'package:jp_director/ui/shared/botones/custom_button.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
 import '../../../generated/l10n.dart';
 import '../../../models/curso.dart';
 import '../../../models/usuario_model.dart';
+import '../labels/inputs_decorations.dart';
 
 class UsersModal extends StatefulWidget {
   final Usuario? user;
@@ -112,32 +113,32 @@ class _UsersModalState extends State<UsersModal> {
                     constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
-                      style: GoogleFonts.roboto(color: Colors.white),
+                      style: DashboardLabel.paragraph,
                       initialValue: widget.user?.nombre ?? '',
                       onChanged: (value) => nombre = value,
-                      decoration: buildInputDecoration(label: appLocal.nombreDeUsuario, icon: Icons.perm_identity_sharp),
+                      decoration: InputDecor.formFieldInputDecoration(label: appLocal.nombreDeUsuario, icon: Icons.perm_identity_sharp),
                     ),
                   ),
                   Container(
                     constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
-                      style: GoogleFonts.roboto(color: Colors.white),
+                      style: DashboardLabel.paragraph,
                       initialValue: widget.user?.apellido ?? '',
                       onChanged: (value) => apellido = value,
-                      decoration: buildInputDecoration(label: appLocal.apellidoDeUsuario, icon: Icons.supervised_user_circle_outlined),
+                      decoration: InputDecor.formFieldInputDecoration(label: appLocal.apellidoDeUsuario, icon: Icons.supervised_user_circle_outlined),
                     ),
                   ),
                   Container(
                     constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
-                      style: GoogleFonts.roboto(color: Colors.white),
+                      style: DashboardLabel.paragraph,
                       initialValue: widget.user?.correo ?? '',
                       onChanged: (value) {
                         correo = value;
                       },
-                      decoration: buildInputDecoration(label: appLocal.correoDeUsuario, icon: Icons.email_outlined),
+                      decoration: InputDecor.formFieldInputDecoration(label: appLocal.correoDeUsuario, icon: Icons.email_outlined),
                     ),
                   ),
                   if (id != null) ...[
@@ -145,59 +146,59 @@ class _UsersModalState extends State<UsersModal> {
                       constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                       child: TextFormField(
                         cursorColor: azulText,
-                        style: GoogleFonts.roboto(color: Colors.white),
+                        style:DashboardLabel.paragraph,
                         initialValue: widget.user?.telf ?? '',
                         onChanged: (value) => telf = value,
-                        decoration: buildInputDecoration(label: appLocal.telefonoDeUsuario, icon: Icons.phone),
+                        decoration: InputDecor.formFieldInputDecoration(label: appLocal.telefonoDeUsuario, icon: Icons.phone),
                       ),
                     ),
                     Container(
                       constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                       child: TextFormField(
                         cursorColor: azulText,
-                        style: GoogleFonts.roboto(color: Colors.white),
+                        style: DashboardLabel.paragraph,
                         initialValue: widget.user?.me ?? appLocal.sobreMi,
                         onChanged: (value) => me = value,
-                        decoration: buildInputDecoration(label: appLocal.sobreMi, icon: Icons.phone),
+                        decoration: InputDecor.formFieldInputDecoration(label: appLocal.sobreMi, icon: Icons.phone),
                       ),
                     ),
                     Container(
                       constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                       child: TextFormField(
                         cursorColor: azulText,
-                        style: GoogleFonts.roboto(color: Colors.white),
+                        style: DashboardLabel.paragraph,
                         initialValue: widget.user?.instagram ?? 'Instagram',
                         onChanged: (value) => instagram = value,
-                        decoration: buildInputDecoration(label: 'Instagram', icon: FontAwesomeIcons.instagram),
+                        decoration: InputDecor.formFieldInputDecoration(label: 'Instagram', icon: FontAwesomeIcons.instagram),
                       ),
                     ),
                     Container(
                       constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                       child: TextFormField(
                         cursorColor: azulText,
-                        style: GoogleFonts.roboto(color: Colors.white),
+                        style: DashboardLabel.paragraph,
                         initialValue: widget.user?.facebook ?? 'Facebook',
                         onChanged: (value) => facebook = value,
-                        decoration: buildInputDecoration(label: 'Facebook', icon: FontAwesomeIcons.facebook),
+                        decoration: InputDecor.formFieldInputDecoration(label: 'Facebook', icon: FontAwesomeIcons.facebook),
                       ),
                     ),
                     Container(
                       constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                       child: TextFormField(
                         cursorColor: azulText,
-                        style: GoogleFonts.roboto(color: Colors.white),
+                        style:DashboardLabel.paragraph,
                         initialValue: widget.user?.tiktok ?? 'Tiktok',
                         onChanged: (value) => tiktok = value,
-                        decoration: buildInputDecoration(label: 'Tiktok', icon: FontAwesomeIcons.tiktok),
+                        decoration: InputDecor.formFieldInputDecoration(label: 'Tiktok', icon: FontAwesomeIcons.tiktok),
                       ),
                     ),
                     Container(
                       constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
                       child: TextFormField(
                         cursorColor: azulText,
-                        style: GoogleFonts.roboto(color: Colors.white),
+                        style: DashboardLabel.paragraph,
                         onChanged: (value) => clave = value,
-                        decoration: buildInputDecoration(label: appLocal.passDeUsuario, icon: Icons.password),
+                        decoration: InputDecor.formFieldInputDecoration(label: appLocal.passDeUsuario, icon: Icons.password),
                       ),
                     ),
                     Container(
@@ -207,7 +208,7 @@ class _UsersModalState extends State<UsersModal> {
                         child: Center(
                           child: DropdownButton(
                             isDense: true,
-                            style: GoogleFonts.roboto(color: Colors.white),
+                            style: DashboardLabel.paragraph,
                             dropdownColor: bgColor,
                             value: rol,
                             underline: Container(),
@@ -224,7 +225,7 @@ class _UsersModalState extends State<UsersModal> {
                                   child: Center(
                                     child: Text(
                                       'ROLE: ${appLocal.usuario}',
-                                      style: GoogleFonts.roboto(color: Colors.white),
+                                      style: DashboardLabel.paragraph,
                                     ),
                                   ),
                                 ),
@@ -236,7 +237,7 @@ class _UsersModalState extends State<UsersModal> {
                                   child: Center(
                                     child: Text(
                                       'ROLE: ADMIN',
-                                      style: GoogleFonts.roboto(color: Colors.white),
+                                      style: DashboardLabel.paragraph,
                                     ),
                                   ),
                                 ),
@@ -503,7 +504,7 @@ class _AddCursoModalState extends State<AddCursoModal> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   CustomButton(
-                    text: 'Agregar',
+                    text: appLocal.agregarBtn,
                     onPress: () {
                       if (!authProvider.user!.cursos.contains(cursoId)) {
                         allCursosProvider.addCursoToUser(context: context, userId: widget.userId);
@@ -557,13 +558,12 @@ class _SquareModuloState extends State<SquareModulo> {
       padding: const EdgeInsets.all(8),
       width: double.infinity,
       height: 60,
-      // color: Colors.white.withOpacity(0.2),
       child: Row(children: [
         Icon(Icons.menu_book_outlined, color: Colors.white.withOpacity(0.3)),
         const SizedBox(width: 10),
         Text(
           widget.curso!.nombre,
-          style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3)),
+          style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
         ),
         const Spacer(),
         IconButton(
@@ -611,18 +611,3 @@ class _SquareModuloState extends State<SquareModulo> {
     );
   }
 }
-
-InputDecoration buildInputDecoration({required String label, required IconData icon, IconData? suffIcon, Function? onPrs}) => InputDecoration(
-    fillColor: blancoText.withOpacity(0.03),
-    filled: true,
-    border: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    focusedBorder: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
-    labelText: label,
-    labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-    prefixIcon: Icon(icon, color: azulText.withOpacity(0.3)),
-    suffixIconColor: azulText.withOpacity(0.3));

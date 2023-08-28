@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/router/router.dart';
+import 'package:jp_director/router/router.dart';
 
 import '../../services/navigator_service.dart';
+import '../shared/labels/dashboard_label.dart';
+import '../shared/widgets/progress_ind.dart';
 import 'white_card_border.dart';
 
 class BuyCursoCard extends StatelessWidget {
@@ -37,7 +39,7 @@ class BuyCursoCard extends StatelessWidget {
           width: 345,
           height: 485,
           child: (name == 'nombre')
-            ? const Center(child: SizedBox(width: 35, height: 35, child: CircularProgressIndicator(color: Colors.white),),)
+            ? const ProgressInd()
             : WhiteCardBorder(
               border: 44,
               child: Column(
@@ -54,14 +56,14 @@ class BuyCursoCard extends StatelessWidget {
                       margin: const EdgeInsets.only(left: 10, right: 10, top: 0),
                       child: Text(
                         name,
-                        style: GoogleFonts.roboto(fontSize: 20, fontWeight: FontWeight.w800),
+                        style: DashboardLabel.h3.copyWith(fontWeight: FontWeight.w800),
                       )),
                   const SizedBox(height: 15),
                   Container(
                       margin: const EdgeInsets.only(left: 10, right: 10, top: 0),
                       child: Text(
                         subtitle,
-                        style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400),
+                        style: DashboardLabel.paragraph,
                       )),
                   Container(
                       margin: const EdgeInsets.only(left: 10, right: 10, top: 11),
@@ -69,9 +71,7 @@ class BuyCursoCard extends StatelessWidget {
                         description,
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.roboto(
-                          fontSize: 14,
-                        ),
+                        style: DashboardLabel.paragraph
                       )),
                   const SizedBox(height: 15),
                   Padding(
@@ -79,17 +79,11 @@ class BuyCursoCard extends StatelessWidget {
                     child: Row(
                       children: [
                         const Icon(Icons.view_module),
-                        // const Text(
-                        //   ' Modulos: ',
-                        //   style: TextStyle(fontSize: 10),
-                        // ),
+        
                         Text(modulos),
                         const SizedBox(width: 30),
                         const Icon(Icons.timer_outlined),
-                        // const Text(
-                        //   ' Duracion: ',
-                        //   style: TextStyle(fontSize: 10),
-                        // ),
+     
                         Text(duration)
                       ],
                     ),

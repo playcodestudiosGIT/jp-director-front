@@ -1,6 +1,6 @@
 // import 'dart:html'L
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/models/certificado.dart';
+import 'package:jp_director/models/certificado.dart';
 
 import 'models/curso.dart';
 import 'models/modulo.dart';
@@ -22,6 +22,7 @@ const NetworkImage planetaF = NetworkImage('https://res.cloudinary.com/dyxt5lhzw
 const NetworkImage circulo = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575764/circulo_mvprhd.png');
 const NetworkImage baseGif = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575766/base_pphf0f.gif');
 const NetworkImage rocketGif = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680631413/rocket_aaqsxb.gif');
+const NetworkImage rocketInd = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680631413/rocket_aaqsxb.gif');
 const NetworkImage ufoGif = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680631408/ufo_k0zbvx.gif');
 const NetworkImage bgContacto = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575765/bgcontact_lxwbfo.png');
 const NetworkImage bgEncargado = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575765/encargadobg_tzl7ci.png');

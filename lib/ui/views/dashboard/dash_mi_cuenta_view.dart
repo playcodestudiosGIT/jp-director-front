@@ -1,9 +1,9 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/providers/users_provider.dart';
-import 'package:jpdirector_frontend/ui/shared/botones/custom_button.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/title_label.dart';
+import 'package:jp_director/providers/users_provider.dart';
+import 'package:jp_director/ui/shared/botones/custom_button.dart';
+import 'package:jp_director/ui/shared/labels/title_label.dart';
 
 import 'package:provider/provider.dart';
 
@@ -16,10 +16,10 @@ import '../../../providers/auth_provider.dart';
 import '../../../services/notificacion_service.dart';
 import '../../cards/white_card.dart';
 import '../../shared/labels/dashboard_label.dart';
+import '../../shared/labels/inputs_decorations.dart';
 
 // ignore: must_be_immutable
 class DashMiCuenta extends StatefulWidget {
-  
   const DashMiCuenta({super.key});
 
   @override
@@ -33,13 +33,13 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
   String reptNewPass = '';
   late String nombreModal;
   late String apellidoModal;
-  late String correoModal ;
-  late String telfModal ;
-  late String meModal ;
-  late String claveModal ;
-  late String facebookModal ;
-  late String instagramModal ;
-  late String tiktokModal ;
+  late String correoModal;
+  late String telfModal;
+  late String meModal;
+  late String claveModal;
+  late String facebookModal;
+  late String instagramModal;
+  late String tiktokModal;
 
   @override
   void initState() {
@@ -77,106 +77,106 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
           spacing: 30,
           runSpacing: 30,
           children: [
-        CircleAvatar(
-          backgroundColor: Colors.transparent,
-          radius: 100,
-          child: Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Image.network(
-                  authProvider.user!.img,
-                  width: 250,
-                ),
-              ),
-              Positioned(
-                right: 0,
-                bottom: 0,
-                child: MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                    onTap: () => pickImage(context, authProvider.user!.uid),
-                    child: Container(
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(color: const Color(0xff021E36), borderRadius: BorderRadius.circular(14)),
-                        width: 57,
-                        height: 44,
-                        child: const Icon(
-                          Icons.flip_camera_ios_outlined,
-                          color: azulText,
-                          size: 35,
-                        )),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(
-          width: 250,
-          height: 200,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Spacer(),
-              Text(
-                '${authProvider.user!.nombre} ${authProvider.user!.apellido}',
-                textAlign: TextAlign.start,
-                style: GoogleFonts.roboto(fontSize: 26, fontWeight: FontWeight.w900, color: blancoText),
-              ),
-              const SizedBox(height: 8),
-              Row(
+            CircleAvatar(
+              backgroundColor: Colors.transparent,
+              radius: 100,
+              child: Stack(
                 children: [
-                  Icon(Icons.email_outlined, color: Colors.white.withOpacity(0.3)),
-                  const SizedBox(width: 8),
-                  Text(
-                    authProvider.user!.correo,
-                    textAlign: TextAlign.start,
-                    style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w300, color: blancoText),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(100),
+                    child: Image.network(
+                      authProvider.user!.img,
+                      width: 250,
+                    ),
+                  ),
+                  Positioned(
+                    right: 0,
+                    bottom: 0,
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: () => pickImage(context, authProvider.user!.uid),
+                        child: Container(
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(color: const Color(0xff021E36), borderRadius: BorderRadius.circular(14)),
+                            width: 57,
+                            height: 44,
+                            child: const Icon(
+                              Icons.flip_camera_ios_outlined,
+                              color: azulText,
+                              size: 35,
+                            )),
+                      ),
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(height: 8),
-              Row(
+            ),
+            SizedBox(
+              width: 250,
+              height: 200,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.phone_outlined, color: Colors.white.withOpacity(0.3)),
-                  const SizedBox(width: 8),
+                  const Spacer(),
                   Text(
-                    authProvider.user!.telf,
+                    '${authProvider.user!.nombre} ${authProvider.user!.apellido}',
                     textAlign: TextAlign.start,
-                    style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w300, color: blancoText),
+                    style: GoogleFonts.roboto(fontSize: 26, fontWeight: FontWeight.w900, color: blancoText),
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Icon(Icons.email_outlined, color: Colors.white.withOpacity(0.3)),
+                      const SizedBox(width: 8),
+                      Text(
+                        authProvider.user!.correo,
+                        textAlign: TextAlign.start,
+                        style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w300, color: blancoText),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Icon(Icons.phone_outlined, color: Colors.white.withOpacity(0.3)),
+                      const SizedBox(width: 8),
+                      Text(
+                        authProvider.user!.telf,
+                        textAlign: TextAlign.start,
+                        style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w300, color: blancoText),
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                ],
+              ),
+            ),
+            Container(
+              constraints: const BoxConstraints(maxWidth: 600, minWidth: 370, minHeight: 130),
+              padding: const EdgeInsets.all(20),
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              height: 150,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(22), color: blancoText.withOpacity(0.1)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    appLocal.sobreMi,
+                    style: const TextStyle(color: blancoText, fontSize: 18),
+                    textAlign: TextAlign.start,
+                  ),
+                  const SizedBox(height: 15),
+                  Text(
+                    authProvider.user!.me,
+                    maxLines: 5,
+                    style: const TextStyle(color: blancoText),
+                    textAlign: TextAlign.start,
                   ),
                 ],
               ),
-              const Spacer(),
-            ],
-          ),
-        ),
-        Container(
-          constraints: const BoxConstraints(maxWidth: 600, minWidth: 370, minHeight: 130),
-          padding: const EdgeInsets.all(20),
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          height: 150,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(22), color: blancoText.withOpacity(0.1)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                appLocal.sobreMi,
-                style: const TextStyle(color: blancoText, fontSize: 18),
-                textAlign: TextAlign.start,
-              ),
-              const SizedBox(height: 15),
-              Text(
-                authProvider.user!.me,
-                maxLines: 5,
-                style: const TextStyle(color: blancoText),
-                textAlign: TextAlign.start,
-              ),
-            ],
-          ),
-        ),
+            ),
           ],
         ),
         const SizedBox(
@@ -195,17 +195,17 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                       text: appLocal.actualizarBtn,
                       onPress: () async {
                         await usersProvider.updateUser(
-                            uid: authProvider.user!.uid,
-                            nombre: nombreModal,
-                            apellido: apellidoModal,
-                            correo: correoModal,
-                            me: meModal,
-                            telf: telfModal,
-                            facebook: facebookModal,
-                            instagram: instagramModal,
-                            tiktok: tiktokModal,
-                            pass: claveModal,
-                            );
+                          uid: authProvider.user!.uid,
+                          nombre: nombreModal,
+                          apellido: apellidoModal,
+                          correo: correoModal,
+                          me: meModal,
+                          telf: telfModal,
+                          facebook: facebookModal,
+                          instagram: instagramModal,
+                          tiktok: tiktokModal,
+                          pass: claveModal,
+                        );
                         if (context.mounted) {
                           setState(() {
                             Navigator.pop(context, true);
@@ -247,8 +247,8 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                               nombreModal = value;
                               authProvider.user!.nombre = value;
                             },
-                            style: GoogleFonts.roboto(color: Colors.white, fontSize: 14),
-                            decoration: buildInputDecoration(icon: FontAwesomeIcons.userAstronaut, label: appLocal.nombreTextField),
+                            style: DashboardLabel.h4,
+                            decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.userAstronaut, label: appLocal.nombreTextField),
                           ),
                         ),
                         const SizedBox(
@@ -263,15 +263,14 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                               apellidoModal = value;
                               authProvider.user!.apellido = value;
                             },
-                            style: GoogleFonts.roboto(color: Colors.white, fontSize: 14),
-                            decoration: buildInputDecoration(icon: FontAwesomeIcons.idCard, label: appLocal.apellidoTextFiel),
+                            style: DashboardLabel.h4,
+                            decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.idCard, label: appLocal.apellidoTextFiel),
                           ),
                         ),
                         const SizedBox(
                           height: 15,
                         ),
                         Container(
-                          
                           constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
                           child: TextFormField(
                             cursorColor: azulText,
@@ -281,8 +280,8 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                               telfModal = value.toString();
                               authProvider.user!.telf = value;
                             },
-                            style: GoogleFonts.roboto(color: Colors.white, fontSize: 14),
-                            decoration: buildInputDecoration(icon: FontAwesomeIcons.phone, label: appLocal.telefonoForm),
+                            style: DashboardLabel.h4,
+                            decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.phone, label: appLocal.telefonoForm),
                           ),
                         ),
                         const SizedBox(
@@ -298,8 +297,8 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                               correoModal = value;
                               authProvider.user!.correo = value;
                             },
-                            style: GoogleFonts.roboto(color: Colors.white, fontSize: 14),
-                            decoration: buildInputDecoration(icon: FontAwesomeIcons.addressCard, label: appLocal.correoTextFiel),
+                            style: DashboardLabel.h4,
+                            decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.addressCard, label: appLocal.correoTextFiel),
                           ),
                         ),
                         const SizedBox(
@@ -315,8 +314,8 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                               meModal = value;
                               authProvider.user!.me = value;
                             },
-                            style: GoogleFonts.roboto(color: Colors.white, fontSize: 14),
-                            decoration: buildInputDecoration(icon: FontAwesomeIcons.circleInfo, label: appLocal.sobreMi),
+                            style: DashboardLabel.h4,
+                            decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.circleInfo, label: appLocal.sobreMi),
                           ),
                         ),
                       ],
@@ -469,7 +468,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                                   authProvider.user!.facebook = value;
                                 },
                                 style: DashboardLabel.paragraph,
-                                decoration: buildInputDecoration(icon: FontAwesomeIcons.facebook, label: 'Facebook'),
+                                decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.facebook, label: 'Facebook'),
                               ),
                             ),
                             const SizedBox(
@@ -485,7 +484,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                                   authProvider.user!.instagram = value;
                                 },
                                 style: DashboardLabel.paragraph,
-                                decoration: buildInputDecoration(icon: FontAwesomeIcons.instagram, label: 'Instagram'),
+                                decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.instagram, label: 'Instagram'),
                               ),
                             ),
                             const SizedBox(
@@ -501,7 +500,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                                   authProvider.user!.tiktok = value.toString();
                                 },
                                 style: DashboardLabel.paragraph,
-                                decoration: buildInputDecoration(icon: FontAwesomeIcons.tiktok, label: 'Tik Tok'),
+                                decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.tiktok, label: 'Tik Tok'),
                               ),
                             ),
                           ],
@@ -580,19 +579,4 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                   ))))),
     );
   }
-
-  InputDecoration buildInputDecoration({required String label, required IconData icon, IconData? suffIcon, Function? onPrs}) => InputDecoration(
-      fillColor: blancoText.withOpacity(0.03),
-      filled: true,
-      border: const OutlineInputBorder(
-        borderSide: BorderSide(color: azulText),
-      ),
-      focusedBorder: const OutlineInputBorder(
-        borderSide: BorderSide(color: azulText),
-      ),
-      enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
-      labelText: label,
-      labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-      prefixIcon: Icon(icon, color: azulText.withOpacity(0.3)),
-      suffixIconColor: azulText.withOpacity(0.3));
 }

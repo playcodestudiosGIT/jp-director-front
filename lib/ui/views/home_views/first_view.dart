@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/generated/l10n.dart';
+import 'package:jp_director/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
 import '../../../providers/auth_provider.dart';
 import '../../../services/navigator_service.dart';
+import '../../shared/labels/dashboard_label.dart';
 
 class FirstView extends StatelessWidget {
   const FirstView({super.key});
@@ -101,19 +102,19 @@ class NormalBody extends StatelessWidget {
                                               children: [
                                                 Text(
                                                   appLocal.buscasAcelerar,
-                                                  style: GoogleFonts.roboto(fontSize: 15, fontWeight: FontWeight.w500, color: blancoText),
+                                                  style: DashboardLabel.h4,
                                                 ),
                                                 Text(
                                                   appLocal.quieresConseguir,
-                                                  style: GoogleFonts.roboto(fontSize: 15, fontWeight: FontWeight.w500, color: blancoText),
+                                                  style: DashboardLabel.h4,
                                                 ),
                                                 Text(
                                                   appLocal.quieresTener,
-                                                  style: GoogleFonts.roboto(fontSize: 15, fontWeight: FontWeight.w500, color: blancoText),
+                                                  style: DashboardLabel.h4,
                                                 ),
                                                 Text(
                                                   appLocal.deseasDejar,
-                                                  style: GoogleFonts.roboto(fontSize: 15, fontWeight: FontWeight.w500, color: blancoText),
+                                                  style: DashboardLabel.h4,
                                                 ),
                                               ],
                                             ),

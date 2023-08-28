@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/constant.dart';
+import 'package:jp_director/constant.dart';
 
 import '../../generated/l10n.dart';
 import 'labels/dashboard_label.dart';

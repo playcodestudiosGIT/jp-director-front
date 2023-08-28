@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/constant.dart';
-import 'package:jpdirector_frontend/models/lead.dart';
-import 'package:jpdirector_frontend/providers/leads_provider.dart';
+import 'package:jp_director/constant.dart';
+import 'package:jp_director/generated/l10n.dart';
+import 'package:jp_director/models/lead.dart';
+import 'package:jp_director/providers/leads_provider.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/shared/labels/inputs_decorations.dart';
 import 'package:provider/provider.dart';
 
 import '../../../services/notificacion_service.dart';
@@ -31,31 +34,29 @@ class _LeadsModalState extends State<LeadsModal> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final leadsProvider = Provider.of<LeadsProvider>(context);
     final size = MediaQuery.of(context).size;
     return Container(
       height: 500,
       width: 300, // expande
-      decoration: buildBoxDecoration(),
+      decoration: InputDecor.buildBoxDecoration(),
       child: ListView(children: [
         Column(
           children: [
             Row(
               children: [
-                if (size.width < 715)
+
                   const SizedBox(
-                    width: 40,
+                    width: 20,
                   ),
-                Text(
-                  (id != null) ? 'Editar: ${widget.lead?.email}' : 'Nuevo Lead',
-                  style: GoogleFonts.roboto(color: Colors.white, fontWeight: FontWeight.w500),
-                ),
+                Text((id != null) ? '${appLocal.editar2puntos} ${widget.lead?.email}' : appLocal.nuevoLead, style: DashboardLabel.h4),
                 const Spacer(),
                 IconButton(
                     onPressed: () => Navigator.of(context).pop(),
                     icon: const Icon(
                       Icons.close,
-                      color: Colors.white,
+                      color: Colors.red,
                     ))
               ],
             ),
@@ -68,24 +69,24 @@ class _LeadsModalState extends State<LeadsModal> {
             Padding(
               padding: (size.width > 580) ? const EdgeInsets.only(left: 25) : const EdgeInsets.only(left: 0),
               child: Wrap(alignment: WrapAlignment.center, spacing: 15 / 2, runSpacing: 15 / 2, children: [
-                SizedBox(
-                  width: 200,
+                Container(
+                  constraints: const BoxConstraints(maxWidth: 400),
                   child: TextFormField(
                     cursorColor: azulText,
-                    style: GoogleFonts.roboto(color: Colors.white),
+                    style: DashboardLabel.h4,
                     initialValue: widget.lead?.email ?? '',
                     onChanged: (value) => email = value,
-                    decoration: buildInputDecoration(label: 'Correo electrónico', icon: Icons.email_outlined),
+                    decoration: InputDecor.formFieldInputDecoration(label: appLocal.correoTextFiel, icon: Icons.email_outlined),
                   ),
                 ),
-                SizedBox(
-                  width: 200,
+                Container(
+                  constraints: const BoxConstraints(maxWidth: 400),
                   child: TextFormField(
                     cursorColor: azulText,
-                    style: GoogleFonts.roboto(color: Colors.white),
+                    style: DashboardLabel.h4,
                     initialValue: widget.lead?.telf ?? '',
                     onChanged: (value) => telf = value,
-                    decoration: buildInputDecoration(label: 'Teléfono', icon: Icons.phone_outlined),
+                    decoration: InputDecor.formFieldInputDecoration(label: appLocal.telefonoForm, icon: Icons.phone_outlined),
                   ),
                 ),
               ]),
@@ -103,18 +104,18 @@ class _LeadsModalState extends State<LeadsModal> {
                       if (id == null) {
                         // Crear
                         await leadsProvider.createLead(email: email!, telf: telf!);
-                        NotifServ.showSnackbarError('Lead Creado con exito', Colors.green);
+                        NotifServ.showSnackbarError(appLocal.leadCreadoConExito, Colors.green);
                       } else {
                         // Actualizar
                         await leadsProvider.updateLead(id: id, email: email!, telf: telf!);
-                        NotifServ.showSnackbarError('Lead actualizado con exito', Colors.green);
+                        NotifServ.showSnackbarError(appLocal.leadActualizadoConExito, Colors.green);
                       }
 
                       if (context.mounted) {
                         Navigator.of(context).pop();
                       }
                     },
-                    text: (widget.lead != null) ? 'Actualizar' : 'Crear',
+                    text: (widget.lead != null) ? appLocal.actualizarBtn : appLocal.crearBtn,
                   ),
                 ),
                 const SizedBox(
@@ -129,7 +130,7 @@ class _LeadsModalState extends State<LeadsModal> {
                     onPress: () {
                       Navigator.of(context).pop();
                     },
-                    text: 'Cancelar',
+                    text: appLocal.cancelarBtn,
                   ),
                 ),
               ],
@@ -139,24 +140,4 @@ class _LeadsModalState extends State<LeadsModal> {
       ]),
     );
   }
-
-  BoxDecoration buildBoxDecoration() => const BoxDecoration(
-      borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-      color: bgColor,
-      boxShadow: [BoxShadow(color: Colors.black)]);
 }
-
-InputDecoration buildInputDecoration({required String label, required IconData icon, IconData? suffIcon, Function? onPrs}) => InputDecoration(
-    fillColor: blancoText.withOpacity(0.03),
-    filled: true,
-    border: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    focusedBorder: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
-    labelText: label,
-    labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-    prefixIcon: Icon(icon, color: azulText.withOpacity(0.3)),
-    suffixIconColor: azulText.withOpacity(0.3));

@@ -290,6 +290,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "ON POINT PRODUCTIONS AGENCY LLC no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier naturaleza que pudieran ocasionar, a título enunciativo: por errores u omisiones en los contenidos, por falta de disponibilidad del sitio web, – el cual realizará paradas periódicas por mantenimientos técnicos – así como por la transmisión de virus o programas maliciosos o lesivos en los contenidos, a pesar de haber adoptado todas las medidas tecnológicas necesarias para evitarlo."),
         "extensionInvalida":
             MessageLookupByLibrary.simpleMessage("Extension Invalida"),
+        "fecha": MessageLookupByLibrary.simpleMessage("Fecha"),
         "felicidadesCert": MessageLookupByLibrary.simpleMessage(
             "Felicidades, tu certificado esta listo!"),
         "finDeLosComentarios":
@@ -381,6 +382,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "La página web https://quieroads.com/ en adelante (LA WEB) proporciona el acceso a artículos, informaciones, servicios y datos (en adelante, “los contenidos”) propiedad de ON POINT PRODUCTIONS AGENCY LLC. El USUARIO asume la responsabilidad del uso de la web.\nEl USUARIO se compromete a hacer un uso adecuado de los contenidos que ofrece a través de su web y con carácter enunciativo pero no limitativo, a no emplearlos para:\n(a) incurrir en actividades ilícitas, ilegales o contrarias a la buena fe y al orden público;\n(b) difundir contenidos o propaganda de carácter racista, xenófobo, pornográfico-ilegal, de apología del terrorismo o atentatorio contra los derechos humanos;\n(c) provocar daños en los sistemas físicos y lógicos de la web, de sus proveedores o de terceras personas, introducir o difundir en la red virus informáticos o cualesquiera otros sistemas físicos o lógicos que sean susceptibles de provocar los daños anteriormente mencionados;\n(d) intentar acceder y, en su caso, utilizar las cuentas de correo electrónico de otros usuarios y modificar o manipular sus mensajes.\nON POINT PRODUCTIONS AGENCY LLC se reserva el derecho de retirar todos aquellos comentarios y aportaciones que vulneren el respeto a la dignidad de la persona, que sean discriminatorios, xenófobos, racistas, pornográficos, que atenten contra la juventud o la infancia, el orden o la seguridad pública o que, a su juicio, no resultaran adecuados para su publicación.\nEn cualquier caso, ON POINT PRODUCTIONS AGENCY LLC no será responsable de las opiniones vertidas por los usuarios a través de cualquier herramientas de participación que puedan crearse, conforme a lo previsto en la normativa de aplicación."),
         "laVentanaDeFormacion": MessageLookupByLibrary.simpleMessage(
             "-La venta de formación y servicios sobre negocios online.\n-Gestionar la lista de suscriptores y usuarios adscritos a la web.\n-Dirigir su red de afiliados y comerciantes así como la gestión de pagos de los mismos."),
+        "leadActualizadoConExito":
+            MessageLookupByLibrary.simpleMessage("Lead Actualizado con exito"),
+        "leadCreadoConExito":
+            MessageLookupByLibrary.simpleMessage("Lead Creado con exito"),
         "leadsMenuBtn": MessageLookupByLibrary.simpleMessage("Leads"),
         "leyAplicable": MessageLookupByLibrary.simpleMessage(
             "11. LEY APLICABLE Y JURISDICCIÓN"),
@@ -454,6 +459,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nombre y Apellido"),
         "nuestra": MessageLookupByLibrary.simpleMessage("nuestra "),
         "nuevoCurso": MessageLookupByLibrary.simpleMessage("Nuevo Curso"),
+        "nuevoForm": MessageLookupByLibrary.simpleMessage("Nuevo Formulario"),
+        "nuevoLead": MessageLookupByLibrary.simpleMessage("Nuevo Lead"),
         "nuevoModulo": MessageLookupByLibrary.simpleMessage("Nuevo modulo"),
         "nuevoUsuario": MessageLookupByLibrary.simpleMessage("Nuevo Usuario"),
         "olvideMiPass":
@@ -478,6 +485,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("POLÍTICAS DE PRIVACIDAD"),
         "politicasRelacionadasConNews": MessageLookupByLibrary.simpleMessage(
             "POLÍTICAS RELACIONADAS CON LA NEWSLETTER\n"),
+        "porFavorEspere":
+            MessageLookupByLibrary.simpleMessage("Por favor espere"),
         "porQueYo": MessageLookupByLibrary.simpleMessage("¿Por qué yo?"),
         "porQueYoResp": MessageLookupByLibrary.simpleMessage(
             "SELECTIVO Y SINCERO\nSer el encargado de tu marca requiere compromiso y responsabilidad, es por eso que antes de comenzar analizaré tu negocio con mucho detalle para concluir si cumples con todos los requerimientos para poder apoyarte.\n\nEn caso de ser un SÍ pondremos un plan de acción eficaz.\n\nEn caso de ser un NO te daré mi feedback sincero para referirte con el especialista o plan que tu negocio necesite.\n\nPRECIO SEGÚN TU MODELO DE NEGOCIO\nAlgo que me caracteriza es que reviso muy a detalle tu negocio antes de comenzar e incluso evaluando en conjunto contigo puedo saber si estás preparado para dar este paso.\n\nMi promesa es que cuando adquieras mi servicio sea un gran alivio y veas resultados.\n\nEXPERIENCIA Y RESULTADOS\nDesde la creación de la estrategia, copywriting, anuncios creativos, segmentación, funnels de conversión de tu web, manejo de presupuesto y análisis de resultados están dentro de mis capacidades para ocupar este puesto"),
@@ -551,6 +560,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "RESIDENTES EN CALIFORNIA, ESTADOS UNIDOS\n"),
         "resolvamosEsto":
             MessageLookupByLibrary.simpleMessage("Resolvamos esto."),
+        "responder": MessageLookupByLibrary.simpleMessage("Responder"),
+        "respuesta": MessageLookupByLibrary.simpleMessage("Respuesta"),
         "resultadosMenuBtn": MessageLookupByLibrary.simpleMessage("Resultados"),
         "seHaEnviadoUnCorreo": MessageLookupByLibrary.simpleMessage(
             "Se ha enviado un correo electrónico con instrucciones, porfavor verifica tu correo electrónico"),

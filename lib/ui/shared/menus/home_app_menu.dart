@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/providers/sidebar_provider.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/providers/sidebar_provider.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 
 import 'package:provider/provider.dart';
 
@@ -151,11 +151,15 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                   if(isOpen)
                     Container(width: wScreen, height: hScreen, color: Colors.transparent,),
                   Container(
-                      color: const Color(0xFF00041C).withOpacity(0.8),
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      width: isOpen ? 200 : 75,
+                    margin: const EdgeInsets.only(left: 20),
+                    alignment: Alignment.center,
+                      color: bgColor,
+                      
+                      width: isOpen ? 200 : 40,
                       height: isOpen ? 310 : 50,
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           _MenuTitle(isOpen: isOpen, controller: controller),
                           if (isOpen) ...[
@@ -266,7 +270,7 @@ class _MenuTitle extends StatelessWidget {
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
 
     return SizedBox(
-      width: 160,
+      // width: 160,
       height: 50,
       child: (authProvider.authStatus == AuthStatus.authenticated)
           ? Row(
@@ -285,24 +289,21 @@ class _MenuTitle extends StatelessWidget {
               ],
             )
           : Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  curve: Curves.easeInOut,
-                  width: 0,
-                ),
-                const SizedBox(
-                  width: 15,
-                ),
-                AnimatedIcon(
-                  size: 30,
-                  icon: AnimatedIcons.menu_close,
-                  progress: controller,
-                  color: azulText,
-                )
-              ],
-            ),
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              AnimatedIcon(
+                size: 30,
+                icon: AnimatedIcons.menu_close,
+                progress: controller,
+                color: azulText,
+              ),
+              if(isOpen)
+              Container(
+                margin: const EdgeInsets.only(left: 11, bottom: 1),
+                child: const Image(image: logoIso, width: 49,))
+            ],
+          ),
     );
   }
 }

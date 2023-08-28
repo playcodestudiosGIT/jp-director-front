@@ -4,11 +4,6 @@ import 'package:provider/provider.dart';
 
 import '../../../../constant.dart';
 import '../../../../providers/auth_provider.dart';
-// import '../../../constant.dart';
-// import '../../../models/baner.dart';
-// import '../../../providers/auth_provider.dart';
-// import '../../../providers/baners_provier.dart';
-// import '../../shared/widgets/cursos_botones.dart';
 
 class NewCursoCheckout extends StatefulWidget {
   const NewCursoCheckout({super.key});

@@ -1,4 +1,4 @@
-# jpdirector_frontend
+# JP Director
 
 A new Flutter project.
 

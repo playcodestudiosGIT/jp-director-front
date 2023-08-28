@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/constant.dart';
-import 'package:jpdirector_frontend/providers/auth_provider.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/constant.dart';
+import 'package:jp_director/providers/auth_provider.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
+
+import '../widgets/progress_ind.dart';
 
 class LoginButton extends StatelessWidget {
   final String text;
@@ -25,13 +27,7 @@ class LoginButton extends StatelessWidget {
           height: 34,
           child: Center(
               child: (authProvider.isLoading)
-                  ? Container(
-                      padding: const EdgeInsets.all(3),
-                      width: 30,
-                      height: 30,
-                      child: const CircularProgressIndicator(
-                        color: blancoText,
-                      ))
+                  ? const ProgressInd()
                   : Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

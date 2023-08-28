@@ -2,10 +2,10 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/api/jp_api.dart';
-import 'package:jpdirector_frontend/constant.dart';
-import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/api/jp_api.dart';
+import 'package:jp_director/constant.dart';
+import 'package:jp_director/providers/all_cursos_provider.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
 import '../generated/l10n.dart';
@@ -82,7 +82,7 @@ class UsersDTS extends DataTableSource {
                       const SizedBox(width: 8),
                       Text(
                         '${user.nombre} ${user.apellido}',
-                        style: GoogleFonts.roboto(fontWeight: FontWeight.bold),
+                        style: DashboardLabel.paragraph.copyWith(fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -95,7 +95,7 @@ class UsersDTS extends DataTableSource {
                         color: blancoText.withOpacity(0.5),
                       ),
                       const SizedBox(width: 8),
-                      Text(user.correo, style: GoogleFonts.roboto()),
+                      Text(user.correo, style: DashboardLabel.paragraph),
                     ],
                   ),
                   const SizedBox(height: 8),
@@ -107,7 +107,7 @@ class UsersDTS extends DataTableSource {
                         color: blancoText.withOpacity(0.5),
                       ),
                       const SizedBox(width: 8),
-                      Text(user.telf, style: GoogleFonts.roboto()),
+                      Text(user.telf, style: DashboardLabel.paragraph),
                     ],
                   ),
                   const SizedBox(height: 8),
@@ -124,7 +124,7 @@ class UsersDTS extends DataTableSource {
                             ? Text(appLocal.activo, style: DashboardLabel.paragraph)
                             : Text(
                                 appLocal.pendiente,
-                                style: GoogleFonts.roboto(color: Colors.white),
+                                style: DashboardLabel.paragraph,
                               ),
                       ),
                     ],
@@ -144,7 +144,7 @@ class UsersDTS extends DataTableSource {
                       width: 200,
                       child: Text(
                         user.me,
-                        style: GoogleFonts.roboto(),
+                        style: DashboardLabel.paragraph,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 5,
                       )),
@@ -161,7 +161,7 @@ class UsersDTS extends DataTableSource {
                     children: [
                       Icon(FontAwesomeIcons.instagram, color: blancoText.withOpacity(0.5)),
                       const SizedBox(width: 10),
-                      Text(user.instagram, style: GoogleFonts.roboto()),
+                      Text(user.instagram, style: DashboardLabel.paragraph),
                     ],
                   ),
                   const SizedBox(height: 8),
@@ -169,7 +169,7 @@ class UsersDTS extends DataTableSource {
                     children: [
                       Icon(FontAwesomeIcons.facebook, color: blancoText.withOpacity(0.5)),
                       const SizedBox(width: 10),
-                      Text(user.facebook, style: GoogleFonts.roboto()),
+                      Text(user.facebook, style: DashboardLabel.paragraph),
                     ],
                   ),
                   const SizedBox(height: 8),
@@ -177,7 +177,7 @@ class UsersDTS extends DataTableSource {
                     children: [
                       Icon(FontAwesomeIcons.tiktok, color: blancoText.withOpacity(0.5)),
                       const SizedBox(width: 10),
-                      Text(user.tiktok, style: GoogleFonts.roboto()),
+                      Text(user.tiktok, style: DashboardLabel.paragraph),
                     ],
                   )
                 ],

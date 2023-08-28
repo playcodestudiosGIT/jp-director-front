@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
-import 'package:jpdirector_frontend/providers/auth_provider.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/title_label.dart';
+import 'package:jp_director/providers/all_cursos_provider.dart';
+import 'package:jp_director/providers/auth_provider.dart';
+import 'package:jp_director/ui/shared/labels/title_label.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';

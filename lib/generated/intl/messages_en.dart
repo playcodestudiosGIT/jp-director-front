@@ -275,6 +275,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "ON POINT PRODUCTIONS AGENCY LLC is not responsible, in any case, for damages of any nature that may be caused, including but not limited to: errors or omissions in the content, lack of availability of the website, - which will carry out Periodic stops for technical maintenance – as well as for the transmission of viruses or malicious or harmful programs in the contents, despite having adopted all the necessary technological measures to avoid it."),
         "extensionInvalida":
             MessageLookupByLibrary.simpleMessage("Invalid Extension"),
+        "fecha": MessageLookupByLibrary.simpleMessage("Date"),
         "felicidadesCert": MessageLookupByLibrary.simpleMessage(
             "Congratulations, your certificate is ready!"),
         "finDeLosComentarios":
@@ -362,6 +363,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "The website https://quieroads.com/ hereinafter (THE WEB) provides access to articles, information, services and data (hereinafter,\"the contents\") owned by ON POINT PRODUCTIONS AGENCY LLC. The USER assumes responsibility for the use of the website.\nThe USER undertakes to make appropriate use of the content offered through its website, including but not limited to, not to use them to:\n(a) incur in illicit, illegal or contrary to good faith and public order activities;\n(b) disseminate content or propaganda of a racist, xenophobic, pornographic-illegal nature, advocating terrorism or an attack on human rights;\n(c ) cause damage to the physical and logical systems of the website, its providers or third parties, introduce or spread computer viruses or any other physical or logical systems that are likely to cause the aforementioned damage;\n(d ) try to access and, where appropriate, use the email accounts of other users and modify or manipulate their messages.\nON POINT PRODUCTIONS AGENCY LLC reserves the right to withdraw all comments and contributions that violate respect for the dignity of the person, that are discriminatory, xenophobic, racist, pornographic, that threaten youth or childhood, order or public safety or that, in his opinion, are not suitable for publication.\nIn any case, ON POINT PRODUCTIONS AGENCY LLC will not be responsible for the opinions expressed by users through any participation tools that may be created, in accordance with the provisions of the applicable regulations."),
         "laVentanaDeFormacion": MessageLookupByLibrary.simpleMessage(
             "-The sale of training and services about online businesses.\n-Manage the list of subscribers and users attached to the web.\n-Direct your network of affiliates and merchants as well as the management of their payments."),
+        "leadActualizadoConExito":
+            MessageLookupByLibrary.simpleMessage("Lead Updated successfully"),
+        "leadCreadoConExito":
+            MessageLookupByLibrary.simpleMessage("Lead Created successfully"),
         "leadsMenuBtn": MessageLookupByLibrary.simpleMessage("Leads"),
         "leyAplicable": MessageLookupByLibrary.simpleMessage(
             "11. APPLICABLE LAW AND JURISDICTION"),
@@ -428,6 +433,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Name and Surname"),
         "nuestra": MessageLookupByLibrary.simpleMessage("our "),
         "nuevoCurso": MessageLookupByLibrary.simpleMessage("New Course"),
+        "nuevoForm": MessageLookupByLibrary.simpleMessage("Nuevo Formulario"),
+        "nuevoLead": MessageLookupByLibrary.simpleMessage("New Lead"),
         "nuevoModulo": MessageLookupByLibrary.simpleMessage("New module"),
         "nuevoUsuario": MessageLookupByLibrary.simpleMessage("New User"),
         "olvideMiPass":
@@ -450,6 +457,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("PRIVACY POLICY"),
         "politicasRelacionadasConNews": MessageLookupByLibrary.simpleMessage(
             "POLICIES RELATED TO THE NEWSLETTER\n"),
+        "porFavorEspere": MessageLookupByLibrary.simpleMessage("Pease wait"),
         "porQueYo": MessageLookupByLibrary.simpleMessage("¿Why me?"),
         "porQueYoResp": MessageLookupByLibrary.simpleMessage(
             "SELECTIVE AND SINCERE\nBeing in charge of your brand requires commitment and responsibility, that is why before starting I will analyze your business in great detail to conclude if you meet all the requirements to be able to support you.\n\nIf it is a YES, we will put an effective action plan.\n\nIf it is a NO, I will give you my sincere feedback to refer you to the specialist or plan that your business needs.\n\nPRICE ACCORDING TO YOUR BUSINESS MODEL\nSomething that characterizes me is that I review very By detailing your business before starting and even evaluating it together with you, I can know if you are ready to take this step.\n\nMy promise is that when you acquire my service it will be a great relief and you will see results.\n\nEXPERIENCE AND RESULTS\nSince The creation of the strategy, copywriting, creative ads, segmentation, conversion funnels for your website, budget management and analysis of results are within my capabilities to occupy this position."),
@@ -522,6 +530,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "RESIDENTS OF CALIFORNIA, UNITED STATES\n"),
         "resolvamosEsto":
             MessageLookupByLibrary.simpleMessage("Let\'s figure this out."),
+        "responder": MessageLookupByLibrary.simpleMessage("Reply"),
+        "respuesta": MessageLookupByLibrary.simpleMessage("Respond"),
         "resultadosMenuBtn": MessageLookupByLibrary.simpleMessage("Results"),
         "seHaEnviadoUnCorreo": MessageLookupByLibrary.simpleMessage(
             "An email with instructions has been sent, please check your email"),

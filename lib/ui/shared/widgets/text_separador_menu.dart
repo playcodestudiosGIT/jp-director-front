@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 
 import '../../../constant.dart';
 
@@ -16,7 +16,7 @@ class SeparadorMenuTexto extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 5),
       child: Text(
         text,
-        style: GoogleFonts.roboto(fontSize: 12, fontWeight: FontWeight.w400, color: blancoText.withOpacity(0.2)),
+        style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.2)),
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/accordion/gf_accordion.dart';
 
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 
 
 import '../../../constant.dart';

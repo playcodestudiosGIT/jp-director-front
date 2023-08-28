@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
+import '../ui/shared/widgets/progress_ind.dart';
 import 'router.dart';
 
-import 'package:jpdirector_frontend/ui/views/ui_views.dart';
+import 'package:jp_director/ui/views/ui_views.dart';
 import '../providers/export_all_providers.dart';
 
 class VisitorHandlers {
@@ -62,7 +63,7 @@ class VisitorHandlers {
         future: Provider.of<AllCursosProvider>(context!, listen: false).getCursosById(id),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return const Center(child: SizedBox(width: 35, height: 35, child: CircularProgressIndicator()));
+            return const ProgressInd();
           }
 
           return LandingCurso(
@@ -200,7 +201,7 @@ class UsersAuthHandlers {
         final curso = snapshot.data;
         Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl('');
         return (curso == null || curso.nombre == 'nombre')
-            ? const Center(child: SizedBox(width: 35, height: 35, child: CircularProgressIndicator()))
+            ? const ProgressInd()
             : CourseView(
                 videoIndex: int.parse(videoIndex),
                 cursoTmp: curso,

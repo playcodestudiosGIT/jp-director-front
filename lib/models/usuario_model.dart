@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:jpdirector_frontend/models/certificado.dart';
-import 'package:jpdirector_frontend/models/progress.dart';
+import 'package:jp_director/models/certificado.dart';
+import 'package:jp_director/models/progress.dart';
 
 class Usuario {
     String nombre;

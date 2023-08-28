@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../constant.dart';
+import '../shared/labels/dashboard_label.dart';
 
 class WhiteCardBorder extends StatelessWidget {
   final String? title;
@@ -26,7 +27,7 @@ class WhiteCardBorder extends StatelessWidget {
               fit: BoxFit.contain,
               child: Text(
                 title!,
-                style: GoogleFonts.roboto(fontSize: 15, fontWeight: FontWeight.bold),
+                style: DashboardLabel.paragraph.copyWith(fontWeight: FontWeight.bold),
               ),
             ),
             const Divider()

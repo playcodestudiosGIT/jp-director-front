@@ -1,12 +1,14 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/ui/shared/politicas_footer.dart';
+import 'package:jp_director/ui/shared/politicas_footer.dart';
 
 import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/botones/custom_button.dart';
+import '../../shared/labels/dashboard_label.dart';
+import '../../shared/labels/inputs_decorations.dart';
 import 'login_page.dart';
 
 class RecoverypassPage extends StatefulWidget {
@@ -19,7 +21,6 @@ class RecoverypassPage extends StatefulWidget {
 class _RecoverypassPageState extends State<RecoverypassPage> {
   @override
   Widget build(BuildContext context) {
-    
     final wScreen = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
@@ -94,6 +95,7 @@ class RecoverypassForm extends StatefulWidget {
 class _RecoverypassFormState extends State<RecoverypassForm> {
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     GlobalKey<FormState> recoveryKey = GlobalKey<FormState>();
     String email = '';
     return Container(
@@ -103,8 +105,8 @@ class _RecoverypassFormState extends State<RecoverypassForm> {
         child: Column(
           children: [
             Text(
-              'RECUPERAR CONTRASEÑA',
-              style: GoogleFonts.roboto(fontSize: 32, color: azulText, fontWeight: FontWeight.w800),
+              appLocal.recuperarPass,
+              style: DashboardLabel.semiGigant.copyWith(color: azulText, fontWeight: FontWeight.w800),
             ),
             const SizedBox(
               height: 30,
@@ -113,25 +115,25 @@ class _RecoverypassFormState extends State<RecoverypassForm> {
               cursorColor: azulText,
               keyboardType: TextInputType.emailAddress,
               autovalidateMode: AutovalidateMode.onUserInteraction,
-              validator: (value) => (EmailValidator.validate(value.toString())) ? null : 'Ingrese su correo',
+              validator: (value) => (EmailValidator.validate(value.toString())) ? null : appLocal.correoTextFiel,
               initialValue: email,
               onChanged: (value) => email = value,
-              style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-              decoration: buildInputDecoration(icon: Icons.email, label: 'Correo Electrónico'),
+              style: DashboardLabel.h4,
+              decoration: InputDecor.formFieldInputDecoration(icon: Icons.email, label: appLocal.correoTextFiel),
             ),
             const SizedBox(
               height: 30,
             ),
             Text(
-              'Recibiras un correo electronico con un link para poder recuperar tu contraseña',
-              style: GoogleFonts.roboto(fontSize: 14, color: blancoText, fontWeight: FontWeight.w400),
+              appLocal.recibirasInstruccionesPass,
+              style: DashboardLabel.h4
             ),
             const SizedBox(
               height: 30,
             ),
             CustomButton(
               width: 80,
-              text: 'ENVIAR',
+              text: appLocal.enviarBtn,
               onPress: () {
                 if (recoveryKey.currentState!.validate()) {
                   // recoverypass
@@ -148,8 +150,8 @@ class _RecoverypassFormState extends State<RecoverypassForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Ir a',
-                  style: GoogleFonts.roboto(fontSize: 14, color: blancoText, fontWeight: FontWeight.w400),
+                  appLocal.irAlLogin,
+                  style: DashboardLabel.h4,
                 ),
                 const SizedBox(
                   width: 4,
@@ -160,8 +162,8 @@ class _RecoverypassFormState extends State<RecoverypassForm> {
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginPage()));
                   }, // Navigate to register page
                   child: Text(
-                    'Iniciar Sesión',
-                    style: GoogleFonts.roboto(fontSize: 14, color: azulText, fontWeight: FontWeight.w800),
+                    appLocal.iniciaSesion,
+                    style: DashboardLabel.h4.copyWith(color: azulText, fontWeight: FontWeight.w800),
                   ),
                 ),
               ],
@@ -171,23 +173,4 @@ class _RecoverypassFormState extends State<RecoverypassForm> {
       ),
     );
   }
-
-  InputDecoration buildInputDecoration({
-    required String label,
-    required IconData icon,
-  }) =>
-      InputDecoration(
-        fillColor: blancoText.withOpacity(0.03),
-        filled: true,
-        border: const OutlineInputBorder(
-          borderSide: BorderSide(color: azulText),
-        ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: azulText),
-        ),
-        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
-        labelText: label,
-        labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-        prefixIcon: Icon(icon, color: azulText.withOpacity(0.3)),
-      );
 }

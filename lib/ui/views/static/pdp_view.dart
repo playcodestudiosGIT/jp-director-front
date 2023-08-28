@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/providers/auth_provider.dart';
-import 'package:jpdirector_frontend/router/router.dart';
+import 'package:jp_director/providers/auth_provider.dart';
+import 'package:jp_director/router/router.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
@@ -115,7 +115,7 @@ class PdpView extends StatelessWidget {
                           ),
                           Text(
                             '${appLocal.formularios}\n',
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w600, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -129,7 +129,7 @@ class PdpView extends StatelessWidget {
                           ),
                           Text(
                             'DERECHOS\n',
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w600, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -143,7 +143,7 @@ class PdpView extends StatelessWidget {
                           ),
                           Text(
                             'ENCARGADOS DEL TRATAMIENTO\n',
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w600, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -157,7 +157,7 @@ class PdpView extends StatelessWidget {
                           ),
                           Text(
                             'POLÍTICAS RELACIONADAS CON LA NEWSLETTER\n',
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w600, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -171,7 +171,7 @@ class PdpView extends StatelessWidget {
                           ),
                           Text(
                             'INTERÉS LEGÍTIMO\n',
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w600, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -185,7 +185,7 @@ class PdpView extends StatelessWidget {
                           ),
                           Text(
                             appLocal.duracionDeTratamiento,
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w600, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,
@@ -199,7 +199,7 @@ class PdpView extends StatelessWidget {
                           ),
                           Text(
                             appLocal.residentesCalifornia,
-                            style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w600, color: const Color(0XFFFFFFFF)),
+                            style: DashboardLabel.h4,
                           ),
                           const SizedBox(
                             height: 8,

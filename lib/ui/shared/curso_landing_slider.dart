@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/ui/shared/diapo_item.dart';
+import 'package:jp_director/ui/shared/diapo_item.dart';
 
 import '../../generated/l10n.dart';
 import 'labels/dashboard_label.dart';

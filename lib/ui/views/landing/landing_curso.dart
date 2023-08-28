@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:jpdirector_frontend/constant.dart';
+import 'package:jp_director/constant.dart';
 
-import 'package:jpdirector_frontend/ui/shared/curso_baner.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
-import 'package:jpdirector_frontend/ui/shared/widgets/acordion.dart';
+import 'package:jp_director/ui/shared/curso_baner.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/shared/widgets/acordion.dart';
 
 import '../../../generated/l10n.dart';
 import '../../../models/curso.dart';

@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../constant.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../providers/form_provider.dart';
+import '../../../../router/router.dart';
+import '../../../../services/navigator_service.dart';
+import '../../botones/botonverde.dart';
+import '../../labels/inputs_decorations.dart';
 
 class FormSVrrss extends StatefulWidget {
   const FormSVrrss({super.key});
@@ -31,182 +37,163 @@ class _FormSVrrssState extends State<FormSVrrss> {
     if (formProvider.rootForm == 'conferencias') {
       title = appLocal.conferencias;
     }
-    return SizedBox(
-      width: double.infinity,
-      child: Stack(children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(title, style: GoogleFonts.roboto(fontSize: (wScreen < 500) ? 30 : 40, fontWeight: FontWeight.w900, color: blancoText)),
-                Container(
-                  width: (wScreen < 500) ? 320 : 400,
-                  height: 5,
-                  decoration: const BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                    bgColor,
-                    azulText,
-                    bgColor,
-                  ])),
-                ),
-              ],
-            ),
-            if (wScreen > 980)
-              const SizedBox(
-                height: 30,
-              ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                if (wScreen > 980) const Image(image: logoGrande),
-                Container(
-                    alignment: Alignment.center,
-                    width: double.infinity,
-                    height: 510,
-                    constraints: const BoxConstraints(maxWidth: 350),
-                    child: Form(
-                      key: formProvider.keyForm3,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          if (wScreen < 980)
-                            const Image(
-                              image: logoGrande,
-                              width: 200,
-                            ),
-                          if (formProvider.rootForm == 'conferencias')
-                            TextFormField(
-                              cursorColor: azulText,
-                              style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                              maxLines: 5,
-                              decoration:
-                                  buildInputDecoration(Text(appLocal.escribeTodasTusEspectativas)),
-                            ),
-                          SizedBox(
-                            height: (wScreen < 980) ? 10 : 30,
-                          ),
-                          Text(appLocal.comoPuedoBuscarteRRSS, style: GoogleFonts.roboto(color: blancoText)),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          Row(
-                            children: [
-                              const Image(
-                                image: iconFb,
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ConstrainedBox(
-                                constraints: const BoxConstraints(maxWidth: 250),
-                                child: TextFormField(
-                                  cursorColor: azulText,
-                                  // validator: ,
-                                  // initialValue: formProvider.facebook,
-                                  onChanged: (value) => formProvider.setFacebook(value),
-                                  style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                                  decoration: buildInputDecoration(const Text('facebook.com/')),
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 15
-                          ),
-                          Row(
-                            children: [
-                              const Image(
-                                width: 35,
-                                image: iconTiktok,
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ConstrainedBox(
-                                constraints: const BoxConstraints(maxWidth: 250),
-                                child: TextFormField(
-                                  cursorColor: azulText,
-                                  onChanged: (value) => formProvider.setTiktok(value),
-                                  style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                                  decoration: buildInputDecoration(const Text('tiktok.com/')),
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 15
-                          ),
-                          Row(
-                            children: [
-                              const Image(
-                                width: 35,
-                                image: iconInsta,
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ConstrainedBox(
-                                constraints: const BoxConstraints(maxWidth: 250),
-                                child: TextFormField(
-                                  cursorColor: azulText,
-                                  onChanged: (value) => formProvider.setInstagram(value),
-                                  style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-                                  decoration: buildInputDecoration(const Text('instagram.com/')),
-                                ),
-                              ),
-                            ],
-                          ),
-                          if (formProvider.rootForm != 'conferencias')
-                            const SizedBox(
-                              height: 20,
-                            ),
-                          if (formProvider.rootForm != 'conferencias')
-                            Text(
-                                appLocal.entiendesQueEsto,
-                                style: GoogleFonts.roboto(color: blancoText)),
-                          if (formProvider.rootForm != 'conferencias')
-                            const SizedBox(
-                              height: 20,
-                            ),
-                          if (formProvider.rootForm != 'conferencias')
-                            DropdownButtonFormField(
-                              validator: (value) => (value != '') ? null : appLocal.seleccioneOpcion,
-                              value: '',
-                              dropdownColor: bgColor,
-                              items: [
-                                DropdownMenuItem(value: '', child: Text(appLocal.seleccioneOpcion, style: GoogleFonts.roboto(color: blancoText))),
-                                DropdownMenuItem(value: 'si', child: Text(appLocal.siEstoyPreparado, style: GoogleFonts.roboto(color: blancoText))),
-                                DropdownMenuItem(
-                                    value: 'no',
-                                    child: Text(appLocal.noEstoyPreparado, style: GoogleFonts.roboto(color: blancoText))),
-                              ],
-                              onChanged: (value) => formProvider.setAgree(value),
-                            )
-                        ],
-                      ),
-                    ))
-              ],
-            )
-          ],
-        )
-      ]),
-    );
-  }
+    late String botonText;
 
-  InputDecoration buildInputDecoration(label) => InputDecoration(
-        label: label,
-        fillColor: blancoText.withOpacity(0.03),
-        filled: true,
-        border: const OutlineInputBorder(
-          borderSide: BorderSide(color: azulText),
-        ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: azulText),
-        ),
-        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
-        labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-      );
+    if (formProvider.getPageIndex() == 0) {
+      botonText = appLocal.siguienteBtn;
+    }
+    if (formProvider.getPageIndex() == 1) {
+      botonText = appLocal.siguienteBtn;
+    }
+    if (formProvider.getPageIndex() == 2) {
+      botonText = appLocal.enviarBtn;
+    }
+    if (formProvider.getPageIndex() == 3) {
+      botonText = appLocal.finalizarBtn;
+    }
+
+    onPressed() async {
+      if (formProvider.getPageIndex() == 0 && formProvider.keyForm.currentState!.validate()) formProvider.formScrollController.nextPage();
+
+      if (formProvider.getPageIndex() == 1 && formProvider.keyForm2.currentState!.validate()) formProvider.formScrollController.nextPage();
+
+      if (formProvider.getPageIndex() == 2 && formProvider.keyForm3.currentState!.validate()) {
+        formProvider.sendForm();
+        formProvider.keyForm.currentState?.dispose();
+        formProvider.keyForm2.currentState?.dispose();
+        formProvider.keyForm3.currentState?.dispose();
+        formProvider.formScrollController.nextPage();
+      }
+
+      if (formProvider.getPageIndex() == 3) {
+        NavigatorService.replaceTo(Flurorouter.homeRoute);
+        formProvider.setCurrentIndex(0);
+      }
+    }
+
+    return SizedBox(
+        width: double.infinity,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(title, style: GoogleFonts.roboto(fontSize: (wScreen < 500) ? 30 : 40, fontWeight: FontWeight.w900, color: blancoText)),
+                  Container(
+                    width: (wScreen < 500) ? 320 : 400,
+                    height: 5,
+                    decoration: const BoxDecoration(
+                        gradient: LinearGradient(colors: [
+                      bgColor,
+                      azulText,
+                      bgColor,
+                    ])),
+                  ),
+                ],
+              ),
+              if (wScreen > 980)
+                const SizedBox(
+                  height: 30,
+                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  if (wScreen > 980) const Image(image: logoGrande),
+                  Container(
+                      alignment: Alignment.center,
+                      width: double.infinity,
+                      // height: 510,
+                      constraints: const BoxConstraints(maxWidth: 350),
+                      child: Form(
+                        key: formProvider.keyForm3,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            if (formProvider.rootForm == 'conferencias')
+                              TextFormField(
+                                cursorColor: azulText,
+                                style: DashboardLabel.paragraph,
+                                maxLines: 5,
+                                decoration: InputDecor.formFieldInputDecoration(label: appLocal.escribeTodasTusEspectativas),
+                              ),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            Text(
+                              appLocal.comoPuedoBuscarteRRSS,
+                              style: DashboardLabel.h4,
+                            ),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: 250),
+                              child: TextFormField(
+                                cursorColor: azulText,
+                                onChanged: (value) => formProvider.setFacebook(value),
+                                style: DashboardLabel.h4,
+                                decoration: InputDecor.formFieldInputDecoration(label: 'facebook.com/', icon: FontAwesomeIcons.facebook),
+                              ),
+                            ),
+                            const SizedBox(height: 15),
+                            ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: 250),
+                              child: TextFormField(
+                                cursorColor: azulText,
+                                onChanged: (value) => formProvider.setTiktok(value),
+                                style: DashboardLabel.h4,
+                                decoration: InputDecor.formFieldInputDecoration(label: 'tiktok.com/', icon: FontAwesomeIcons.tiktok),
+                              ),
+                            ),
+                            const SizedBox(height: 15),
+                            ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: 250),
+                              child: TextFormField(
+                                cursorColor: azulText,
+                                onChanged: (value) => formProvider.setInstagram(value),
+                                style: DashboardLabel.h4,
+                                decoration: InputDecor.formFieldInputDecoration(label: 'instagram.com/', icon: FontAwesomeIcons.instagram),
+                              ),
+                            ),
+                            if (formProvider.rootForm != 'conferencias')
+                              const SizedBox(
+                                height: 20,
+                              ),
+                            if (formProvider.rootForm != 'conferencias') Text(appLocal.entiendesQueEsto, style: DashboardLabel.mini),
+                            if (formProvider.rootForm != 'conferencias')
+                              const SizedBox(
+                                height: 20,
+                              ),
+                            if (formProvider.rootForm != 'conferencias')
+                              DropdownButtonFormField(
+                                validator: (value) => (value != '') ? null : appLocal.seleccioneOpcion,
+                                value: '',
+                                dropdownColor: bgColor,
+                                items: [
+                                  DropdownMenuItem(value: '', child: Text(appLocal.seleccioneOpcion, style: DashboardLabel.paragraph)),
+                                  DropdownMenuItem(value: appLocal.si, child: Text(appLocal.siEstoyPreparado, style: DashboardLabel.paragraph)),
+                                  DropdownMenuItem(value: 'NO', child: Text(appLocal.noEstoyPreparado, style: DashboardLabel.paragraph)),
+                                ],
+                                onChanged: (value) => formProvider.setAgree(value),
+                              )
+                          ],
+                        ),
+                      ))
+                ],
+              ),
+              const SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  BotonVerde(text: botonText, width: 100, onPressed: () => onPressed()),
+                ],
+              ),
+              const SizedBox(height: 100)
+            ],
+          ),
+        ));
+  }
 }

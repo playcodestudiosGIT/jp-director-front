@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/providers/users_provider.dart';
+import 'package:jp_director/providers/users_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../models/usuario_model.dart';

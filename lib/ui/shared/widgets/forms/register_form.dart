@@ -1,6 +1,8 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/shared/labels/inputs_decorations.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../constant.dart';
@@ -42,8 +44,8 @@ class _RegisterFormState extends State<RegisterForm> {
               validator: (value) => (EmailValidator.validate(value.toString())) ? null : appLocal.ingreseSuCorreo,
               initialValue: registerFormProvider.email,
               onChanged: (value) => registerFormProvider.email = value,
-              style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-              decoration: buildInputDecoration(icon: Icons.email, label: appLocal.correoTextFiel),
+              style: DashboardLabel.h4,
+              decoration: InputDecor.formFieldInputDecoration(icon: Icons.email, label: appLocal.correoTextFiel),
             ),
             const SizedBox(
               height: 10,
@@ -54,8 +56,8 @@ class _RegisterFormState extends State<RegisterForm> {
               validator: (value) => (value!.isNotEmpty) ? null : appLocal.ingreseNombreTextField,
               initialValue: registerFormProvider.nombre,
               onChanged: (value) => registerFormProvider.setNombre(value),
-              style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-              decoration: buildInputDecoration(icon: Icons.perm_identity, label: appLocal.nombreTextField),
+              style: DashboardLabel.h4,
+              decoration: InputDecor.formFieldInputDecoration(icon: Icons.perm_identity, label: appLocal.nombreTextField),
             ),
             const SizedBox(
               height: 10,
@@ -66,8 +68,8 @@ class _RegisterFormState extends State<RegisterForm> {
               validator: (value) => (value!.isNotEmpty) ? null : appLocal.ingreseApellidoTextFiel,
               initialValue: registerFormProvider.apellido,
               onChanged: (value) => registerFormProvider.setApellido(value),
-              style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-              decoration: buildInputDecoration(icon: Icons.supervised_user_circle_rounded, label: appLocal.apellidoTextFiel),
+              style: DashboardLabel.h4,
+              decoration: InputDecor.formFieldInputDecoration(icon: Icons.supervised_user_circle_rounded, label: appLocal.apellidoTextFiel),
             ),
             const SizedBox(
               height: 10,
@@ -85,8 +87,8 @@ class _RegisterFormState extends State<RegisterForm> {
               },
               initialValue: registerFormProvider.password1,
               onChanged: (value) => registerFormProvider.password1 = value,
-              style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-              decoration: buildInputDecoration(icon: Icons.password, label: appLocal.contrasenaTextFiel),
+              style: DashboardLabel.h4,
+              decoration: InputDecor.formFieldInputDecoration(icon: Icons.password, label: appLocal.contrasenaTextFiel),
             ),
             const SizedBox(
               height: 10,
@@ -103,8 +105,8 @@ class _RegisterFormState extends State<RegisterForm> {
               },
               initialValue: registerFormProvider.password2,
               onChanged: (value) => registerFormProvider.password2 = value,
-              style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-              decoration: buildInputDecoration(icon: Icons.password, label: appLocal.repitaContrasenaTextFiel),
+              style: DashboardLabel.h4,
+              decoration: InputDecor.formFieldInputDecoration(icon: Icons.password, label: appLocal.repitaContrasenaTextFiel),
             ),
             const SizedBox(
               height: 20,
@@ -136,23 +138,4 @@ class _RegisterFormState extends State<RegisterForm> {
       ),
     );
   }
-
-  InputDecoration buildInputDecoration({
-    required String label,
-    required IconData icon,
-  }) =>
-      InputDecoration(
-        fillColor: blancoText.withOpacity(0.03),
-        filled: true,
-        border: const OutlineInputBorder(
-          borderSide: BorderSide(color: azulText),
-        ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: azulText),
-        ),
-        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
-        labelText: label,
-        labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-        prefixIcon: Icon(icon, color: azulText.withOpacity(0.3)),
-      );
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/constant.dart';
+import 'package:jp_director/constant.dart';
 
 class DashboardLabel {
   static TextStyle gigant =
       GoogleFonts.roboto(fontSize: 36, fontWeight: FontWeight.w800, color: blancoText);
+  static TextStyle semiGigant =
+      GoogleFonts.roboto(fontSize: 32, fontWeight: FontWeight.w800, color: blancoText);
   static TextStyle h1 =
       GoogleFonts.roboto(fontSize: 28, fontWeight: FontWeight.w800, color: blancoText);
   static TextStyle h2 =

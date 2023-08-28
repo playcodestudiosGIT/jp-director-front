@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/models/http/leads_response.dart';
-import 'package:jpdirector_frontend/models/lead.dart';
+import 'package:jp_director/models/http/leads_response.dart';
+import 'package:jp_director/models/lead.dart';
 
 import '../api/jp_api.dart';
 

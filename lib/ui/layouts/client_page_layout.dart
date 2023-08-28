@@ -1,12 +1,12 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:jpdirector_frontend/constant.dart';
-import 'package:jpdirector_frontend/providers/auth_provider.dart';
+import 'package:jp_director/constant.dart';
+import 'package:jp_director/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 
-import 'package:jpdirector_frontend/ui/shared/appbar_top.dart';
-import 'package:jpdirector_frontend/ui/shared/menus/home_app_menu.dart';
+import 'package:jp_director/ui/shared/appbar_top.dart';
+import 'package:jp_director/ui/shared/menus/home_app_menu.dart';
 
 import '../../providers/all_cursos_provider.dart';
 import '../../providers/page_provider.dart';

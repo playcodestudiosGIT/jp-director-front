@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/models/formulario.dart';
+import 'package:jp_director/models/formulario.dart';
 import 'package:provider/provider.dart';
 
 import '../constant.dart';
 import '../generated/l10n.dart';
 import '../providers/form_provider.dart';
 import '../services/notificacion_service.dart';
+import '../ui/shared/labels/dashboard_label.dart';
 import '../ui/shared/modals/form_modal.dart';
 
 class FormsDTS extends DataTableSource {
@@ -30,11 +31,11 @@ class FormsDTS extends DataTableSource {
             children: [
               Text(
                 appLocal.servicios2puntos,
-                style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.bold, color: blancoText.withOpacity(0.5)),
+                style: DashboardLabel.paragraph.copyWith(fontWeight: FontWeight.bold, color: blancoText.withOpacity(0.5)),
               ),
               Text(
                 form.rootform.toUpperCase(),
-                style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.bold),
+                style: DashboardLabel.paragraph.copyWith(fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -42,7 +43,7 @@ class FormsDTS extends DataTableSource {
           const SizedBox(height: 4),
           Row(
             children: [
-              Text('${appLocal.nombreTextField}:  ', style: TextStyle(color: blancoText.withOpacity(0.5)),),
+              Text('${appLocal.nombreTextField}:  ', style: DashboardLabel.paragraph.copyWith(color: blancoText.withOpacity(0.5)),),
               Text(form.nombre),
               
             ],
@@ -51,7 +52,7 @@ class FormsDTS extends DataTableSource {
           const SizedBox(height: 4),
           Row(
             children: [
-              Text('${appLocal.correoTextFiel}:  ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text('${appLocal.correoTextFiel}:  ', style: DashboardLabel.paragraph.copyWith(color: blancoText.withOpacity(0.5))),
               Text(form.email),
               const Spacer(),
               Icon(Icons.copy, size: 15, color: blancoText.withOpacity(0.5),)
@@ -61,7 +62,7 @@ class FormsDTS extends DataTableSource {
           const SizedBox(height: 4),
           Row(
             children: [
-              Text('${appLocal.telefonoForm}:  ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text('${appLocal.telefonoForm}:  ', style: DashboardLabel.paragraph.copyWith(color: blancoText.withOpacity(0.5))),
               Text(form.phone),
             ],
           ),
@@ -69,7 +70,7 @@ class FormsDTS extends DataTableSource {
           const SizedBox(height: 4),
           Row(
             children: [
-              Text('${appLocal.negocio2puntos}:   ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text('${appLocal.negocio2puntos}:   ', style: DashboardLabel.paragraph.copyWith(color: blancoText.withOpacity(0.5))),
               Text(form.business),
             ],
           ),
@@ -77,7 +78,7 @@ class FormsDTS extends DataTableSource {
           const SizedBox(height: 4),
           Row(
             children: [
-              Text(' ${appLocal.cuantosAnosNegAct}:', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text(' ${appLocal.cuantosAnosNegAct}:  ', style: DashboardLabel.paragraph.copyWith(color: blancoText.withOpacity(0.5))),
               Text(form.operationyears),
             ],
           ),
@@ -85,14 +86,14 @@ class FormsDTS extends DataTableSource {
           const SizedBox(height: 4),
           Row(
             children: [
-              Text('${appLocal.advisoryLvl}:   ', style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text('${appLocal.advisoryLvl}:   ', style: DashboardLabel.paragraph.copyWith(color: blancoText.withOpacity(0.5))),
               Text(form.advertisinglevel),
             ],
           ),
           const Divider(),
           Row(
             children: [
-              Text(appLocal.advisoryBefore, style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text('${appLocal.advisoryBefore}:  ', style: DashboardLabel.paragraph.copyWith(color: blancoText.withOpacity(0.5))),
               if(form.advertisingbefore) Text(appLocal.si),
               if(!form.advertisingbefore) const Text('NO')
             ],
@@ -100,8 +101,15 @@ class FormsDTS extends DataTableSource {
           const Divider(),
           Row(
             children: [
-              Text(appLocal.acepto2puntos, style: TextStyle(color: blancoText.withOpacity(0.5))),
+              Text('${appLocal.acepto2puntos}  ', style: DashboardLabel.paragraph.copyWith(color: blancoText.withOpacity(0.5))),
               Text(form.agree.toUpperCase()),
+            ],
+          ),
+          const Divider(),
+          Row(
+            children: [
+              Text('${appLocal.fecha}  ', style: DashboardLabel.paragraph.copyWith(color: blancoText.withOpacity(0.5))),
+              Text('${DateTime.parse(form.createdAt).day}-${DateTime.parse(form.createdAt).month}-${DateTime.parse(form.createdAt).year}'),
             ],
           ),
         ],

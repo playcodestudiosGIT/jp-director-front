@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/ui/shared/botones/botonverde.dart';
+import 'package:jp_director/ui/shared/botones/botonverde.dart';
 
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
+import '../../shared/labels/dashboard_label.dart';
 import '../../shared/widgets/acordion.dart';
 
 class MentoriaPage extends StatelessWidget {
@@ -143,6 +144,7 @@ class LetrasMentoria extends StatelessWidget {
                   child: const Image(
                     image: bgMentoria,
                     width: 400,
+                    height: 400,
                   ),
                 ),
               ),
@@ -164,7 +166,7 @@ class LetrasMentoria extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: Text(
             appLocal.duranteElPrimerMes,
-            style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400, color: blancoText),
+            style: DashboardLabel.h4,
           ),
         ),
         const SizedBox(

@@ -374,7 +374,15 @@
     "ingresaNewPass": "Enter your new password",
     "graciasPorConfirmar": "Thank you for confirm your account",
     "enlaceInvalido": "INVALID LINK",
-    "pagina404": "Page not found 404"
+    "pagina404": "Page not found 404",
+    "porFavorEspere": "Pease wait",
+    "leadCreadoConExito": "Lead Created successfully",
+    "leadActualizadoConExito": "Lead Updated successfully",
+    "nuevoLead": "New Lead",
+    "responder":"Reply",
+    "respuesta":"Respond",
+    "fecha": "Date",
+    "nuevoForm": "Nuevo Formulario"
 
 
 

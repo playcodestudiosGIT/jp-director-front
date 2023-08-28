@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/api/jp_api.dart';
+import 'package:jp_director/api/jp_api.dart';
 
 import '../models/curso.dart';
 import '../models/http/all_users_response.dart';

@@ -3,10 +3,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:jpdirector_frontend/generated/l10n.dart';
+import 'package:jp_director/generated/l10n.dart';
 
-import 'package:jpdirector_frontend/providers/export_all_providers.dart';
-import 'package:jpdirector_frontend/services/local_storage.dart';
+import 'package:jp_director/providers/export_all_providers.dart';
+import 'package:jp_director/services/local_storage.dart';
 
 import 'constant.dart';
 
@@ -17,9 +17,9 @@ import 'router/router.dart';
 import 'services/navigator_service.dart';
 import 'services/notificacion_service.dart';
 
-import 'ui/layouts/splash_layout.dart';
 import 'ui/layouts/client_page_layout.dart';
 import 'ui/layouts/user_page_layout.dart';
+import 'ui/shared/widgets/progress_ind.dart';
 
 void main() async {
   await LocalStorage.configurePrefs();
@@ -78,9 +78,10 @@ class MyAppState extends State<MyApp> {
         navigatorKey: NavigatorService.navigatorKey,
         scaffoldMessengerKey: NotifServ.msgKey,
         builder: ((_, child) {
-          if (authProvider.authStatus == AuthStatus.checking) return const SplashLayout();
+          if (authProvider.authStatus == AuthStatus.checking) return const ProgressInd();
 
           if (authProvider.authStatus == AuthStatus.authenticated) {
+            // return const ProgressInd();
             return ClientPageLayout(
               child: child!,
             );

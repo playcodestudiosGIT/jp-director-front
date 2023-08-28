@@ -15,6 +15,7 @@ class Formulario {
     String nombre;
     String phone;
     String uid;
+    String createdAt;
 
     Formulario({
         required this.business,
@@ -31,6 +32,7 @@ class Formulario {
         required this.nombre,
         required this.phone,
         required this.uid,
+        required this.createdAt,
     });
 
     factory Formulario.fromRawJson(String str) => Formulario.fromJson(json.decode(str));
@@ -52,6 +54,7 @@ class Formulario {
         nombre: json["nombre"],
         phone: json["phone"],
         uid: json["uid"],
+        createdAt: json["createdAt"],
     );
 
     Map<String, dynamic> toJson() => {
@@ -69,5 +72,6 @@ class Formulario {
         "nombre": nombre,
         "phone": phone,
         "uid": uid,
+        "createdAt": createdAt,
     };
 }

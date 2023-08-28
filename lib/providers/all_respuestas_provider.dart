@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/models/resp.dart';
+import 'package:jp_director/models/resp.dart';
 
 import '../api/jp_api.dart';
 import '../models/http/all_respuestas_response.dart';

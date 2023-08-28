@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/providers/auth_provider.dart';
-import 'package:jpdirector_frontend/providers/pay_provider.dart';
+import 'package:jp_director/providers/auth_provider.dart';
+import 'package:jp_director/providers/pay_provider.dart';
+import 'package:jp_director/ui/shared/widgets/progress_ind.dart';
 
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -39,7 +40,7 @@ class _CheckoutThxViewState extends State<CheckoutThxView> {
       future: payProvider.checkPayAndAddCurso(cursoId: widget.cursoId, userId: authProvider.user!.uid, sessionId: authProvider.user!.sessionId),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: SizedBox(width: 30, height: 30, child: CircularProgressIndicator()));
+          return const ProgressInd();
         }
 
         if (snapshot.data == true) {

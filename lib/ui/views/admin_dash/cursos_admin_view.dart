@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/constant.dart';
-import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
-import 'package:jpdirector_frontend/ui/shared/modals/cursos_modal.dart';
+import 'package:jp_director/constant.dart';
+import 'package:jp_director/providers/all_cursos_provider.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/shared/modals/cursos_modal.dart';
 
 import 'package:provider/provider.dart';
 

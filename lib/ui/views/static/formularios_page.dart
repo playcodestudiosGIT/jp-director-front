@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:jpdirector_frontend/ui/shared/botones/botonverde.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
-import '../../../generated/l10n.dart';
+
 import '../../../providers/form_provider.dart';
-import '../../../router/router.dart';
-import '../../../services/navigator_service.dart';
 import '../../shared/widgets/forms/form_sv_id.dart';
 import '../../shared/widgets/forms/form_sv_know.dart';
 import '../../shared/widgets/forms/form_sv_rrss.dart';
@@ -56,44 +53,11 @@ class Slider extends StatefulWidget {
 class _SliderState extends State<Slider> {
   @override
   Widget build(BuildContext context) {
-    final appLocal = AppLocalizations.of(context);
+    final size = MediaQuery.of(context).size;
     final formProvider = Provider.of<FormProvider>(context);
-    late String botonText;
-
-    if (formProvider.getPageIndex() == 0) {
-      botonText = appLocal.siguienteBtn;
-    }
-    if (formProvider.getPageIndex() == 1) {
-      botonText = appLocal.siguienteBtn;
-    }
-    if (formProvider.getPageIndex() == 2) {
-      botonText = appLocal.enviarBtn;
-    }
-    if (formProvider.getPageIndex() == 3) {
-      botonText = appLocal.finalizarBtn;
-    }
-
-    onPressed() async {
-      if (formProvider.getPageIndex() == 0 && formProvider.keyForm.currentState!.validate()) formProvider.formScrollController.nextPage();
-
-      if (formProvider.getPageIndex() == 1 && formProvider.keyForm2.currentState!.validate()) formProvider.formScrollController.nextPage();
-
-      if (formProvider.getPageIndex() == 2 && formProvider.keyForm3.currentState!.validate()) {
-        formProvider.sendForm();
-        formProvider.keyForm.currentState?.dispose();
-        formProvider.keyForm2.currentState?.dispose();
-        formProvider.keyForm3.currentState?.dispose();
-        formProvider.formScrollController.nextPage();
-      }
-
-      if (formProvider.getPageIndex() == 3) {
-        NavigatorService.replaceTo(Flurorouter.homeRoute);
-        formProvider.setCurrentIndex(0);
-      }
-    }
-
     return SizedBox(
       width: double.infinity,
+      height: size.height,
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -135,25 +99,12 @@ class _SliderState extends State<Slider> {
                     formProvider.currentIndex = index;
                     setState(() {});
                   },
+                  height: size.height,
                   reverse: false,
                   scrollPhysics: const NeverScrollableScrollPhysics(),
-                  height: 650,
                   viewportFraction: 1,
                   initialPage: 0,
                 )),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  width: 100,
-                ),
-                BotonVerde(text: botonText, width: 100, onPressed: ()=> onPressed()),
-                
-              ],
-            ),
-            const SizedBox(
-              height: 300,
-            )
           ],
         ),
       ),

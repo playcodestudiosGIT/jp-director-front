@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/constant.dart';
+import 'package:jp_director/constant.dart';
 
 import '../labels/dashboard_label.dart';
 

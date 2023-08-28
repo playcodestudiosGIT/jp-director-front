@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/constant.dart';
-import 'package:jpdirector_frontend/providers/auth_provider.dart';
-import 'package:jpdirector_frontend/router/router.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
-import 'package:jpdirector_frontend/ui/shared/widgets/progreso.dart';
+import 'package:jp_director/constant.dart';
+import 'package:jp_director/providers/auth_provider.dart';
+import 'package:jp_director/router/router.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/shared/widgets/progreso.dart';
+import 'package:jp_director/ui/shared/widgets/progress_ind.dart';
 import 'package:provider/provider.dart';
 
 import '../../generated/l10n.dart';
@@ -40,13 +41,7 @@ class CourseCard extends StatelessWidget {
           width: 250,
           height: (esMio) ? 325 : 440,
           child: (curso.nombre == 'nombre')
-              ? const Center(
-                  child: SizedBox(
-                    width: 35,
-                    height: 35,
-                    child: CircularProgressIndicator(color: Colors.white),
-                  ),
-                )
+              ? const ProgressInd()
               : WhiteCardBorder(
                   border: 5,
                   child: Column(

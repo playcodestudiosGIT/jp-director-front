@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/ui/shared/botones/botonverde.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/shared/botones/botonverde.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
@@ -187,6 +187,7 @@ class _LetrasAsesoria extends StatelessWidget {
                   child: const Image(
                     image: bgEncargado,
                     width: 400,
+                    height: 400,
                   ),
                 ),
               ),
@@ -207,7 +208,7 @@ class _LetrasAsesoria extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Text(
             appLocal.esteServicioEsta,
-            style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400, color: blancoText),
+            style: DashboardLabel.h4,
           ),
         ),
         const SizedBox(

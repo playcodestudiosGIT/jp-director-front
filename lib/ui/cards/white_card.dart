@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/ui/shared/botones/custom_button.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/shared/botones/custom_button.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 
 import '../../constant.dart';
 import '../../generated/l10n.dart';

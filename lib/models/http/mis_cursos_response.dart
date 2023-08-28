@@ -2,7 +2,7 @@
 //
 //     final misCursosResponse = misCursosResponseFromJson(jsonString);
 
-import 'package:jpdirector_frontend/models/curso.dart';
+import 'package:jp_director/models/curso.dart';
 import 'dart:convert';
 
 class MisCursosResponse {

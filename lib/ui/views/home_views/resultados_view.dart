@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jp_director/ui/shared/widgets/progress_ind.dart';
 import 'package:photo_view/photo_view.dart';
 
 import '../../../constant.dart';
@@ -132,12 +133,7 @@ class _ContentDialogState extends State<ContentDialog> {
                     .map((e) => Padding(
                       padding: const EdgeInsets.only(bottom: 40.0),
                       child: PhotoView(
-                          loadingBuilder: (context, event) => const Center(
-                                  child: SizedBox(
-                                width: 35,
-                                height: 35,
-                                child: CircularProgressIndicator(),
-                              )),
+                          loadingBuilder: (context, event) => const ProgressInd(),
                           backgroundDecoration: const BoxDecoration(color: Colors.transparent),
                           imageProvider: NetworkImage(e)),
                     ))

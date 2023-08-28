@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/constant.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/constant.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 
 class Testimonio extends StatelessWidget {
   final String img;

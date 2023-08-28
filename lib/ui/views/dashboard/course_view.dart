@@ -1,8 +1,10 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/models/certificado.dart';
-import 'package:jpdirector_frontend/providers/auth_provider.dart';
+import 'package:jp_director/models/certificado.dart';
+import 'package:jp_director/providers/auth_provider.dart';
+import 'package:jp_director/ui/shared/labels/inputs_decorations.dart';
+import 'package:jp_director/ui/shared/widgets/progress_ind.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
@@ -133,7 +135,7 @@ class _CourseViewState extends State<CourseView> {
     final modulos = curso.modulos.where((m) => m.estado).toList();
 
     return (curso.nombre == '')
-        ? const Center(child: SizedBox(width: 35, height: 35, child: CircularProgressIndicator()))
+        ? const ProgressInd()
         : Scaffold(
             backgroundColor: Colors.transparent,
             endDrawer: CustomEndDrawer(
@@ -193,11 +195,7 @@ class _CourseViewState extends State<CourseView> {
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   crossAxisAlignment: CrossAxisAlignment.center,
                                                   children: [
-                                                    const SizedBox(
-                                                      width: 35,
-                                                      height: 35,
-                                                      child: CircularProgressIndicator(),
-                                                    ),
+                                                    const ProgressInd(),
                                                     const SizedBox(height: 10),
                                                     Text(
                                                       appLocal.generandoCert,
@@ -523,7 +521,7 @@ class _CourseViewState extends State<CourseView> {
                                           height: 400,
                                           // color: Colors.black,
                                           child: (isLoading)
-                                              ? const Center(child: SizedBox(width: 35, height: 35, child: CircularProgressIndicator()))
+                                              ? const ProgressInd()
                                               : Chewie(
                                                   controller: chewieController,
                                                 )),
@@ -568,47 +566,49 @@ class _CourseViewState extends State<CourseView> {
                                 // height: 500,
                                 child: Column(
                                   children: [
-                                    
                                     ...modulos.map((e) {
                                       final user = Provider.of<AuthProvider>(context).user;
                                       int i = curso.modulos.indexOf(e);
                                       final Progress prog = user!.progress.where((element) => element.moduloId == e.id).first;
                                       Provider.of<AllCursosProvider>(context).videoIndex = i;
 
-                                      return (!e.estado) ? Container() : Column(
-                                        children: [
-                                          ListTile(
-                                            minLeadingWidth: 20,
-                                            leading: SizedBox(
-                                                width: 35,
-                                                height: 35,
-                                                child: Checkbox(
-                                                  fillColor: MaterialStateProperty.all(azulText),
-                                                  checkColor: bgColor,
-                                                  value: prog.isComplete,
-                                                  onChanged: (value) async {
-                                                    await Provider.of<AuthProvider>(context, listen: false)
-                                                        .updateProg(moduloId: e.id, marker: videotime, isComplete: !prog.isComplete);
-                                                    if (context.mounted) {
-                                                      setState(() {});
-                                                    }
+                                      return (!e.estado)
+                                          ? Container()
+                                          : Column(
+                                              children: [
+                                                ListTile(
+                                                  minLeadingWidth: 20,
+                                                  leading: SizedBox(
+                                                      width: 35,
+                                                      height: 35,
+                                                      child: Checkbox(
+                                                        fillColor: MaterialStateProperty.all(azulText),
+                                                        checkColor: bgColor,
+                                                        value: prog.isComplete,
+                                                        onChanged: (value) async {
+                                                          await Provider.of<AuthProvider>(context, listen: false)
+                                                              .updateProg(moduloId: e.id, marker: videotime, isComplete: !prog.isComplete);
+                                                          if (context.mounted) {
+                                                            setState(() {});
+                                                          }
+                                                        },
+                                                      )),
+                                                  title: Text(
+                                                    e.nombre,
+                                                    style: DashboardLabel.paragraph,
+                                                  ),
+                                                  subtitle:
+                                                      Text(e.descripcion, style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5))),
+                                                  onTap: () {
+                                                    chewieController.pause();
+                                                    NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/$i');
                                                   },
-                                                )),
-                                            title: Text(
-                                              e.nombre,
-                                              style: DashboardLabel.paragraph,
-                                            ),
-                                            subtitle: Text(e.descripcion, style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5))),
-                                            onTap: () {
-                                              chewieController.pause();
-                                              NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/$i');
-                                            },
-                                          ),
-                                          Divider(
-                                            color: blancoText.withOpacity(0.5),
-                                          ),
-                                        ],
-                                      );
+                                                ),
+                                                Divider(
+                                                  color: blancoText.withOpacity(0.5),
+                                                ),
+                                              ],
+                                            );
                                     }),
                                   ],
                                 ),
@@ -686,14 +686,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                           ]
                         ]),
                       const SizedBox(height: 10),
-                      if (userComent == null)
-                        const Center(
-                            child: SizedBox(
-                                width: 20,
-                                height: 20,
-                                child: CircularProgressIndicator(
-                                  color: Colors.white,
-                                ))),
+                      if (userComent == null) const ProgressInd(),
                       Container(
                         padding: const EdgeInsets.all(4),
                         width: double.infinity,
@@ -852,7 +845,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                             if (value == null || value.isEmpty || value.length < 3) return appLocal.comentarioInvalido;
                             return null;
                           },
-                          decoration: buildInputDecoration(label: appLocal.agregarUnComentario, icon: Icons.comment_outlined),
+                          decoration: InputDecor.formFieldInputDecorationSimple(label: appLocal.agregarUnComentario, icon: Icons.comment_outlined),
                           maxLines: 3,
                           onChanged: (value) {
                             setState(() {
@@ -893,20 +886,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
     );
   }
 
-  InputDecoration buildInputDecoration({required String label, required IconData icon, IconData? suffIcon, Function? onPrs}) => InputDecoration(
-      fillColor: blancoText.withOpacity(0.03),
-      filled: true,
-      border: const OutlineInputBorder(
-        borderSide: BorderSide(color: azulText),
-      ),
-      focusedBorder: const OutlineInputBorder(
-        borderSide: BorderSide(color: azulText),
-      ),
-      enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
-      labelText: label,
-      labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-      prefixIcon: Icon(icon, color: azulText.withOpacity(0.3)),
-      suffixIconColor: azulText.withOpacity(0.3));
+  
 }
 
 class DialogResp extends StatefulWidget {
@@ -921,6 +901,7 @@ class _DialogRespState extends State<DialogResp> {
   String textValue = '';
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     return Center(
       child: Column(
         children: [
@@ -929,11 +910,11 @@ class _DialogRespState extends State<DialogResp> {
             child: TextFormField(
               cursorColor: azulText,
               maxLines: 5,
-              style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
+              style: DashboardLabel.mini.copyWith(color: Colors.white.withOpacity(0.3)),
               initialValue: textValue,
               onChanged: (value) => {textValue = value}, //descripcion = value,
-              decoration: buildInputDecoration(
-                label: 'Respuesta',
+              decoration: InputDecor.formFieldInputDecoration(
+                label: appLocal.respuesta,
                 icon: Icons.question_answer,
               ),
             ),
@@ -942,7 +923,7 @@ class _DialogRespState extends State<DialogResp> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomButton(
-                text: 'Responder',
+                text: appLocal.responder,
                 onPress: () {
                   Provider.of<AllCursosProvider>(context, listen: false).createResp(id: widget.comentId, respuesta: textValue);
                   Navigator.pop(context, true);
@@ -952,7 +933,7 @@ class _DialogRespState extends State<DialogResp> {
               ),
               const SizedBox(width: 10),
               CustomButton(
-                text: 'Cancelar',
+                text: appLocal.cancelarBtn,
                 onPress: () {
                   Navigator.pop(context, false);
                 },
@@ -966,18 +947,3 @@ class _DialogRespState extends State<DialogResp> {
     );
   }
 }
-
-InputDecoration buildInputDecoration({required String label, required IconData icon, IconData? suffIcon, Function? onPrs}) => InputDecoration(
-    fillColor: blancoText.withOpacity(0.03),
-    filled: true,
-    border: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    focusedBorder: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
-    labelText: label,
-    labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-    prefixIcon: Icon(icon, color: azulText.withOpacity(0.3)),
-    suffixIconColor: azulText.withOpacity(0.3));

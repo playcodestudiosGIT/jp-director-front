@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jpdirector_frontend/constant.dart';
-import 'package:jpdirector_frontend/models/modulo.dart';
-import 'package:jpdirector_frontend/providers/all_cursos_provider.dart';
-import 'package:jpdirector_frontend/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/constant.dart';
+import 'package:jp_director/models/modulo.dart';
+import 'package:jp_director/providers/all_cursos_provider.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/shared/labels/inputs_decorations.dart';
+import 'package:jp_director/ui/shared/widgets/progress_ind.dart';
 import 'package:provider/provider.dart';
 
 import '../../../generated/l10n.dart';
@@ -76,48 +78,48 @@ class _CursosModalState extends State<CursosModal> {
                     validator: (value) => (value!.isNotEmpty) ? null : appLocal.imagenDelCurso,
                     initialValue: (curso.id == '') ? '' : curso.nombre,
                     onChanged: (value) => allCursosProvider.nombreCursoModal = value,
-                    style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
-                    decoration: buildInputDecoration(icon: Icons.title_outlined, label: appLocal.nombreDelCurso),
+                    style: DashboardLabel.paragraph.copyWith(color: blancoText.withOpacity(0.3)),
+                    decoration: InputDecor.formFieldInputDecoration(icon: Icons.title_outlined, label: appLocal.nombreDelCurso),
                   ),
                 ),
                 Container(
                   constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                   child: TextFormField(
                     cursorColor: azulText,
-                    style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
+                    style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
                     initialValue: (curso.id == '') ? '' : curso.precio,
                     onChanged: (value) => allCursosProvider.precioCursoModal = value,
-                    decoration: buildInputDecoration(label: appLocal.precioDelCurso, icon: Icons.price_change),
+                    decoration: InputDecor.formFieldInputDecoration(label: appLocal.precioDelCurso, icon: Icons.price_change),
                   ),
                 ),
                 Container(
                   constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                   child: TextFormField(
                     cursorColor: azulText,
-                    style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
+                    style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
                     initialValue: (curso.id == '') ? '' : curso.img,
                     onChanged: (value) => allCursosProvider.imgCursoModal = value,
-                    decoration: buildInputDecoration(label: appLocal.imagenDelCurso, icon: Icons.image_outlined),
+                    decoration: InputDecor.formFieldInputDecoration(label: appLocal.imagenDelCurso, icon: Icons.image_outlined),
                   ),
                 ),
                 Container(
                   constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                   child: TextFormField(
                     cursorColor: azulText,
-                    style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
+                    style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
                     initialValue: (curso.id == '') ? '' : curso.urlImgCert,
                     onChanged: (value) => allCursosProvider.urlImgCert = value,
-                    decoration: buildInputDecoration(label: appLocal.imgCursoCertificado, icon: Icons.image_outlined),
+                    decoration: InputDecor.formFieldInputDecoration(label: appLocal.imgCursoCertificado, icon: Icons.image_outlined),
                   ),
                 ),
                 Container(
                   constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                   child: TextFormField(
                     cursorColor: azulText,
-                    style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
+                    style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
                     initialValue: (curso.id == '') ? '' : curso.baner,
                     onChanged: (value) => allCursosProvider.banerCursoModal = value,
-                    decoration: buildInputDecoration(label: appLocal.banerDelCurso, icon: Icons.image_outlined),
+                    decoration: InputDecor.formFieldInputDecoration(label: appLocal.banerDelCurso, icon: Icons.image_outlined),
                   ),
                 ),
                 Container(
@@ -128,19 +130,19 @@ class _CursosModalState extends State<CursosModal> {
                     validator: (value) => (value!.isNotEmpty) ? null : appLocal.duracionObligatoria,
                     initialValue: (curso.id == '') ? '0 h' : curso.duracion,
                     onChanged: (value) => allCursosProvider.duracionCursoModal = value,
-                    style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
-                    decoration: buildInputDecoration(icon: Icons.timer_outlined, label: appLocal.duracionDelCurso),
+                    style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
+                    decoration: InputDecor.formFieldInputDecoration(icon: Icons.timer_outlined, label: appLocal.duracionDelCurso),
                   ),
                 ),
                 Container(
                   constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                   child: TextFormField(
                     cursorColor: azulText,
-                    style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 14),
+                    style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
                     initialValue: (curso.id == '') ? '' : curso.descripcion,
                     maxLines: 5,
                     onChanged: (value) => allCursosProvider.descripcionCursoModal = value,
-                    decoration: buildInputDecoration(label: appLocal.descripcionDelCurso, icon: Icons.description_outlined),
+                    decoration: InputDecor.formFieldInputDecoration(label: appLocal.descripcionDelCurso, icon: Icons.description_outlined),
                   ),
                 ),
                 Container(
@@ -239,11 +241,7 @@ class _CursosModalState extends State<CursosModal> {
                             const SizedBox(
                               width: 10,
                             ),
-                            const SizedBox(
-                              width: 25,
-                              height: 25,
-                              child: CircularProgressIndicator(),
-                            )
+                            const ProgressInd()
                           ]),
                         if (modulos.isNotEmpty) ...modulos.map((modulo) => SquareModulo(modulo: modulo)).toList()
                       ],
@@ -423,21 +421,6 @@ class _SquareModuloState extends State<SquareModulo> {
   }
 }
 
-InputDecoration buildInputDecoration({required String label, required IconData icon, IconData? suffIcon, Function? onPrs}) => InputDecoration(
-    fillColor: blancoText.withOpacity(0.03),
-    filled: true,
-    border: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    focusedBorder: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
-    labelText: label,
-    labelStyle: GoogleFonts.roboto(color: blancoText, fontSize: 14),
-    prefixIcon: Icon(icon, color: azulText.withOpacity(0.3)),
-    suffixIconColor: azulText.withOpacity(0.3));
-
 BoxDecoration buildBoxDecoration() => const BoxDecoration(
     borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
     color: bgColor,
@@ -502,10 +485,10 @@ class _DialogState extends State<Dialog> {
                     constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
-                      style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
+                      style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
                       initialValue: nombre,
                       onChanged: (value) => nombre = value,
-                      decoration: buildInputDecoration(
+                      decoration: InputDecor.formFieldInputDecoration(
                         label: appLocal.nombreDelModulo,
                         icon: Icons.title_outlined,
                       ),
@@ -517,10 +500,10 @@ class _DialogState extends State<Dialog> {
                     child: TextFormField(
                       cursorColor: azulText,
                       maxLines: 3,
-                      style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
+                      style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
                       initialValue: descripcion,
                       onChanged: (value) => descripcion = value,
-                      decoration: buildInputDecoration(
+                      decoration: InputDecor.formFieldInputDecoration(
                         label: appLocal.descripcionDelModulo,
                         icon: Icons.description_outlined,
                       ),
@@ -531,10 +514,10 @@ class _DialogState extends State<Dialog> {
                     constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
-                      style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
+                      style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
                       initialValue: video,
                       onChanged: (value) => video = value,
-                      decoration: buildInputDecoration(
+                      decoration: InputDecor.formFieldInputDecoration(
                         label: appLocal.urlVideoModulo,
                         icon: Icons.ondemand_video_outlined,
                       ),
@@ -545,10 +528,10 @@ class _DialogState extends State<Dialog> {
                     constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
-                      style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
+                      style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
                       initialValue: idDriveFolder,
                       onChanged: (value) => idDriveFolder = value,
-                      decoration: buildInputDecoration(
+                      decoration: InputDecor.formFieldInputDecoration(
                         label: appLocal.idCarpertaModulo,
                         icon: Icons.folder_outlined,
                       ),
@@ -559,10 +542,10 @@ class _DialogState extends State<Dialog> {
                     constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
-                      style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.3), fontSize: 12),
+                      style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
                       initialValue: idDriveZip,
                       onChanged: (value) => idDriveZip = value,
-                      decoration: buildInputDecoration(
+                      decoration: InputDecor.formFieldInputDecoration(
                         label: appLocal.idZipModulo,
                         icon: Icons.compress_outlined,
                       ),

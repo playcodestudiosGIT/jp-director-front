@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jpdirector_frontend/constant.dart';
-import 'package:jpdirector_frontend/providers/leads_provider.dart';
+import 'package:jp_director/constant.dart';
+import 'package:jp_director/providers/leads_provider.dart';
 
 import 'package:provider/provider.dart';
 
