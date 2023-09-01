@@ -42,9 +42,11 @@ class Flurorouter {
   static String clienteDash = '/user/dashboard';
   static String clienteSeguridadDash = '/user/dashboard/seguridad';
   static String clienteMisCursosDash = '/user/dashboard/miscursos';
-  static String clienteConfiguracionDash = '/user/dashboard/configuracion';
   static String cursoID = '/user/dashboard/:cursoID/:videoIndex';
   static String curso = '/user/dashboard';
+  
+  // comienza aqui
+  static String start = '/user/start';
 
 
   //Cursos Landing
@@ -142,6 +144,11 @@ class Flurorouter {
 
     router.define(curso,
         handler: UsersAuthHandlers.cursoID, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
+
+    // Start here
+
+    router.define(start,
+        handler: UsersAuthHandlers.start, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 
     // Verify USER
 

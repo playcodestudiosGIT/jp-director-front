@@ -20,6 +20,7 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
   @override
   void initState() {
     super.initState();
+    
     Provider.of<AuthProvider>(context, listen: false).isAutenticated();
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
     Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();

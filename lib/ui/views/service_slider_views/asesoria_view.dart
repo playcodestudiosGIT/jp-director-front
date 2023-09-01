@@ -67,19 +67,17 @@ class AsesoriaMain extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      FittedBox(
-                        child: Text(
-                          appLocal.completPers,
-                          textAlign: TextAlign.start,
-                          style: DashboardLabel.h4
-                        ),
+                      Text(
+                        appLocal.completPers,
+                        textAlign: TextAlign.start,
+                        style: DashboardLabel.h4
                       ),
                       const SizedBox(
                         height: 15,
                       ),
                       Text(
                         appLocal.enUnaVideollamada,
-                        style: DashboardLabel.h4.copyWith(
+                        style: DashboardLabel.paragraph.copyWith(
                           
                           color: blancoText.withOpacity(0.5),
                         ),
@@ -89,7 +87,7 @@ class AsesoriaMain extends StatelessWidget {
                       ),
                       Text(
                         appLocal.resolvamosEsto,
-                        style: DashboardLabel.h4.copyWith(
+                        style: DashboardLabel.paragraph.copyWith(
 
                           color: blancoText.withOpacity(0.5),
                         ),

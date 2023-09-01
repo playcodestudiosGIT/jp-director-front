@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html;
-import 'dart:ui' as ui;
+import 'package:universal_html/html.dart' as html;
+import 'dart:ui_web' as ui;
 
 class AgendaPlug extends StatefulWidget {
   const AgendaPlug({super.key});

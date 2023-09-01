@@ -11,7 +11,7 @@ class TitleLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      margin: const EdgeInsets.all(15),
+      margin: const EdgeInsets.only(top: 8, right: 8, bottom: 8),
       alignment: Alignment.centerLeft,
       height: 55,
       decoration: BoxDecoration(color: azulText.withOpacity(0.1), borderRadius: BorderRadius.circular(15)),

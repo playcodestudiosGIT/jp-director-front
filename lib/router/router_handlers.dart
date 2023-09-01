@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
+import 'package:jp_director/ui/views/dashboard/start_here_view.dart';
 import '../ui/shared/widgets/progress_ind.dart';
 import 'router.dart';
 
@@ -214,6 +215,10 @@ class UsersAuthHandlers {
     Provider.of<SideBarProvider>(context!, listen: false).setCurrentPageUrl('');
     return const TycView();
   });
+  static Handler start = Handler(handlerFunc: (context, params) {
+    Provider.of<SideBarProvider>(context!).setCurrentPageUrl(Flurorouter.start);
+    return const StartHereView();
+  });
 
   static Handler doc = Handler(handlerFunc: (context, params) {
     Provider.of<SideBarProvider>(context!, listen: false).setCurrentPageUrl('');
@@ -240,10 +245,9 @@ class UsersAuthHandlers {
     if (authProvider.authStatus == AuthStatus.notAuthenticated) {
       return const LoginPage();
     } else {
-      Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
-      Provider.of<AllCursosProvider>(context, listen: false).obtenerMisCursos(authProvider.user!);
+      
 
-      Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
+      Provider.of<SideBarProvider>(context).setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
       return const DashMisCursosView();
     }
   });

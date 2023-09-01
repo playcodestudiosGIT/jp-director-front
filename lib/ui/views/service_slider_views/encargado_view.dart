@@ -58,17 +58,19 @@ class EncargadoView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          appLocal.soyElResp,
-                          textAlign: TextAlign.start,
-                          style: DashboardLabel.h4
+                        FittedBox(
+                          child: Text(
+                            appLocal.soyElResp,
+                            textAlign: TextAlign.start,
+                            style: DashboardLabel.h4
+                          ),
                         ),
                         const SizedBox(
                           height: 15,
                         ),
                         Text(
                           appLocal.estasEnElMomento,
-                          style: DashboardLabel.h4.copyWith(
+                          style: DashboardLabel.paragraph.copyWith(
                             color: blancoText.withOpacity(0.5),
                           ),
                         ),

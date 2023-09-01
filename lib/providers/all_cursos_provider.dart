@@ -443,16 +443,11 @@ class AllCursosProvider extends ChangeNotifier {
       "testimonio": testimonio,
       "cursoId": curso,
     };
-
-    print(data);
-
     // Petición HTTP
     await JpApi.post('/cursos/add/testimonio/$curso', data).then((json) {
-      print(json);
       notifyListeners();
       NotifServ.showSnackbarError('Testimonio agregado con exito', Colors.green);
     }).catchError((e) {
-      print(e);
       NotifServ.showSnackbarError('Error agregado testimonio', Colors.red);
     });
   }

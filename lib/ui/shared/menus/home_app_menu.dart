@@ -38,10 +38,8 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
     final wScreen = MediaQuery.of(context).size.width;
     final hScreen = MediaQuery.of(context).size.height;
     final authProvider = Provider.of<AuthProvider>(context);
-    final role = authProvider.user?.rol ?? 'USER_ROLE';
     final sideBarProvider = Provider.of<SideBarProvider>(context);
-    final double anothervalue = (wScreen >= 500) ? 435 : 520;
-    final double menuHSize = (role == 'ADMIN_ROLE') ? anothervalue : 220;
+    final double hMenu = (authProvider.user!.rol == 'ADMIN_ROLE') ? 505 : 300;
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -58,21 +56,40 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
           },
           child: (authProvider.authStatus == AuthStatus.authenticated)
               ? Stack(
-                alignment: Alignment.topRight,
-                children: [
-                  if(isOpen)
-                    MouseRegion(
-                      cursor: SystemMouseCursors.noDrop,
-                      child: Container(width: wScreen, height: hScreen, color: Colors.transparent)),
-                  Container(
+                  alignment: Alignment.topRight,
+                  children: [
+                    
+                    if (isOpen)
+                      MouseRegion(cursor: SystemMouseCursors.noDrop, child: Container(width: wScreen, height: hScreen, color: Colors.transparent)),
+                    Container(
                       color: const Color(0xFF00041C),
                       width: isOpen ? 180 : 180,
-                      height: isOpen ? menuHSize : 50,
+                      height: isOpen ? hMenu : 50,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          _MenuTitle(isOpen: isOpen, controller: controller),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: _MenuTitle(isOpen: isOpen, controller: controller),
+                          ),
                           if (isOpen) ...[
+                            MenuItemSide(
+                                text: 'Comienza Aquí',
+                                icon: Icons.start_outlined,
+                                isActive: sideBarProvider.currentPage == Flurorouter.start,
+                                onPress: () {
+                                  NavigatorService.navigateTo(Flurorouter.start);
+                                  isOpen = false;
+                                }),
+                            MenuItemSide(
+                                text: appLocal.misCursosLabel,
+                                icon: Icons.school,
+                                isActive: sideBarProvider.currentPage == Flurorouter.clienteMisCursosDash,
+                                onPress: () {
+                                  NavigatorService.navigateTo(Flurorouter.clienteMisCursosDash);
+                                  isOpen = false;
+                                }),
+                            const SizedBox(height: 15),
                             SeparadorMenuTexto(text: appLocal.configuracionMenuBtn),
                             MenuItemSide(
                                 text: appLocal.miCuentaMenuBtn,
@@ -82,17 +99,8 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                                   NavigatorService.navigateTo(Flurorouter.clienteDash);
                                   isOpen = false;
                                 }),
-                            if (wScreen < 500)
-                              MenuItemSide(
-                                  text: appLocal.misCursosLabel,
-                                  icon: Icons.person_outline,
-                                  isActive: sideBarProvider.currentPage == Flurorouter.clienteMisCursosDash,
-                                  onPress: () {
-                                    NavigatorService.navigateTo(Flurorouter.clienteMisCursosDash);
-                                    isOpen = false;
-                                  }),
                             if (authProvider.user!.rol == 'ADMIN_ROLE') ...[
-                              const SizedBox(height: 30),
+                              const SizedBox(height: 15),
                               const SeparadorMenuTexto(text: 'ADMIN'),
                               MenuItemSide(
                                   text: appLocal.usuariosMenuBtn,
@@ -110,10 +118,9 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                                     NavigatorService.navigateTo(Flurorouter.cursosAdminDash);
                                     isOpen = false;
                                   }),
-                             
                               MenuItemSide(
                                   text: appLocal.formulariosMenuBtn,
-                                  icon: Icons.question_answer,
+                                  icon: Icons.list_alt_sharp,
                                   isActive: sideBarProvider.currentPage == Flurorouter.formsAdminDash,
                                   onPress: () {
                                     NavigatorService.navigateTo(Flurorouter.formsAdminDash);
@@ -129,7 +136,7 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                                   }),
                             ],
                             const SizedBox(
-                              height: 30,
+                              height: 15,
                             ),
                             SeparadorMenuTexto(text: appLocal.logoutLabel),
                             MenuItemSide(
@@ -138,23 +145,25 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                                 isActive: false,
                                 onPress: () {
                                   authProvider.logOut(context);
-                                  
                                 }),
                           ]
                         ],
                       ),
                     ),
-                ],
-              )
+                  ],
+                )
               : Stack(
-                children: [
-                  if(isOpen)
-                    Container(width: wScreen, height: hScreen, color: Colors.transparent,),
-                  Container(
-                    margin: const EdgeInsets.only(left: 20),
-                    alignment: Alignment.center,
+                  children: [
+                    if (isOpen)
+                      Container(
+                        width: wScreen,
+                        height: hScreen,
+                        color: Colors.transparent,
+                      ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 20),
+                      alignment: Alignment.center,
                       color: bgColor,
-                      
                       width: isOpen ? 200 : 40,
                       height: isOpen ? 310 : 50,
                       child: Column(
@@ -248,9 +257,8 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                         ],
                       ),
                     ),
-                    
-                ],
-              )),
+                  ],
+                )),
     );
   }
 }
@@ -289,21 +297,24 @@ class _MenuTitle extends StatelessWidget {
               ],
             )
           : Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              AnimatedIcon(
-                size: 30,
-                icon: AnimatedIcons.menu_close,
-                progress: controller,
-                color: azulText,
-              ),
-              if(isOpen)
-              Container(
-                margin: const EdgeInsets.only(left: 11, bottom: 1),
-                child: const Image(image: logoIso, width: 49,))
-            ],
-          ),
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                AnimatedIcon(
+                  size: 30,
+                  icon: AnimatedIcons.menu_close,
+                  progress: controller,
+                  color: azulText,
+                ),
+                if (isOpen)
+                  Container(
+                      margin: const EdgeInsets.only(left: 11, bottom: 1),
+                      child: const Image(
+                        image: logoIso,
+                        width: 49,
+                      ))
+              ],
+            ),
     );
   }
 }

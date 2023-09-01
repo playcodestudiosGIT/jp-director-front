@@ -23,6 +23,7 @@ class ContactoView extends StatelessWidget {
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
+    final hScreen = MediaQuery.of(context).size.height;
 
     return Container(
         width: double.infinity,
@@ -48,16 +49,20 @@ class ContactoView extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                       
                         Text(
                           '@jpdirector - Jorge Pérez',
-                          style: DashboardLabel.azulTextH1
+                          style: (hScreen < 585) ? DashboardLabel.h3 : DashboardLabel.azulTextH1
                         ),
+                    
+                        
                         const SizedBox(
                           height: 20,
                         ),
+                         if(hScreen > 585)
                         Text(
                           appLocal.contactoLargeText,
-                          style: DashboardLabel.mini,
+                          style: (hScreen < 585) ? DashboardLabel.mini.copyWith(fontSize: 8) : DashboardLabel.mini,
                         ),
                         const SizedBox(
                           height: 20,

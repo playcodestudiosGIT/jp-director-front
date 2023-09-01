@@ -2,6 +2,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:jp_director/constant.dart';
 import 'package:jp_director/providers/auth_provider.dart';
+import 'package:jp_director/router/router.dart';
+import 'package:jp_director/services/navigator_service.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 
 import 'package:jp_director/ui/shared/menus/home_app_menu.dart';
@@ -35,26 +38,49 @@ class _ClientPageLayoutState extends State<ClientPageLayout> with SingleTickerPr
     final wScreen = MediaQuery.of(context).size.width;
     final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.transparent,
-        mini: true,
-        onPressed: () {
-          // asdf
-          if (authProvider.locale == const Locale('es')) {
-            authProvider.setLocale(const Locale('en'));
-          } else {
-            authProvider.setLocale(const Locale('es'));
-          }
-        },
-        child: (authProvider.locale == const Locale('es'))
-            ? const Image(
-                image: NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/es_flag_qbeneh.png'),
-                width: 30,
-              )
-            : const Image(
-                image: NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/en_flag_fyiybd.png'),
-                width: 30,
-              ),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            backgroundColor: Colors.transparent,
+            onPressed: () {
+              NavigatorService.navigateTo('/contacto');
+            },
+            child: Overlay(
+              initialEntries: [
+                OverlayEntry(
+                  builder: (context) => Tooltip(
+                      textStyle: DashboardLabel.mini.copyWith(fontSize: 10),
+                      verticalOffset: 10,
+                      decoration: const BoxDecoration(color: Colors.transparent),
+                      message: 'Soporte',
+                      child: const Icon(Icons.info_outline, color: azulText)),
+                )
+              ],
+            ),
+          ),
+          FloatingActionButton(
+            backgroundColor: Colors.transparent,
+            mini: true,
+            onPressed: () {
+              // asdf
+              if (authProvider.locale == const Locale('es')) {
+                authProvider.setLocale(const Locale('en'));
+              } else {
+                authProvider.setLocale(const Locale('es'));
+              }
+            },
+            child: (authProvider.locale == const Locale('es'))
+                ? const Image(
+                    image: NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/es_flag_qbeneh.png'),
+                    width: 30,
+                  )
+                : const Image(
+                    image: NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/en_flag_fyiybd.png'),
+                    width: 30,
+                  ),
+          ),
+        ],
       ),
       backgroundColor: bgColor,
       body: Row(

@@ -45,13 +45,8 @@ class _CourseViewState extends State<CourseView> {
   late VideoPlayerController videoPlayerController;
   late ChewieController chewieController;
   late Progress prog;
-  late double percent;
-  final ids = [];
-  final List<Progress> progresses = [];
-
   bool isComplete = false;
-  bool isCien = false;
-
+  double percent = 0;
   bool isLoading = false;
 
   int videotime = 0;
@@ -61,19 +56,7 @@ class _CourseViewState extends State<CourseView> {
     curso = Provider.of<AllCursosProvider>(context, listen: false).cursoView;
     final user = Provider.of<AuthProvider>(context, listen: false).user;
     prog = user!.progress.where((element) => element.moduloId == curso.modulos[widget.videoIndex].id).first;
-    final authProvider = Provider.of<AuthProvider>(context, listen: false);
-
-    for (var i in curso.modulos) {
-      ids.add(i.id);
-    }
-
-    for (var i in ids) {
-      progresses.add(authProvider.user!.progress.where((element) => element.moduloId == i).first);
-    }
-
-    final total = progresses.length;
-    final pont = progresses.where((element) => element.isComplete).length;
-    percent = pont / total * 100;
+    isComplete = prog.isComplete;
     Provider.of<AuthProvider>(context, listen: false).isAutenticated();
     final Uri url = Uri.parse(curso.modulos[widget.videoIndex].video);
     videoPlayerController = VideoPlayerController.networkUrl(url,
@@ -92,8 +75,12 @@ class _CourseViewState extends State<CourseView> {
         autoInitialize: true);
 
     videoPlayerController.addListener(() async {
-      if (videotime == videoPlayerController.value.duration.inSeconds && prog.isComplete == false) {
+      if (videotime == videoPlayerController.value.duration.inSeconds && isComplete == false) {
+        isComplete = true;
         Provider.of<AuthProvider>(context, listen: false).updateProg(moduloId: curso.modulos[widget.videoIndex].id, marker: 0, isComplete: true);
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          showDialog(barrierColor: Colors.transparent, context: context, builder: (context) => CongratDialog(cursoNombre: curso.nombre));
+        });
       }
     });
 
@@ -104,12 +91,13 @@ class _CourseViewState extends State<CourseView> {
       }
     });
 
-    videoPlayerController.addListener(() async {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       if (isComplete) {
-        isComplete = false;
-
-        return showDialog(context: context, builder: (context) => CongratDialog(cursoNombre: curso.nombre));
+        showDialog(barrierColor: Colors.transparent, context: context, builder: (context) => CongratDialog(cursoNombre: curso.nombre));
       }
+      setState(() {
+        isComplete = false;
+      });
     });
 
     super.initState();
@@ -129,6 +117,21 @@ class _CourseViewState extends State<CourseView> {
     final wScreen = MediaQuery.of(context).size.width;
     final hScreen = MediaQuery.of(context).size.height;
     final authProvider = Provider.of<AuthProvider>(context);
+    late double percent;
+    final ids = [];
+    final List<Progress> progresses = [];
+
+    for (var i in curso.modulos) {
+      ids.add(i.id);
+    }
+
+    for (var i in ids) {
+      progresses.add(authProvider.user!.progress.where((element) => element.moduloId == i).first);
+    }
+
+    final total = progresses.length;
+    final pont = progresses.where((element) => element.isComplete).length;
+    percent = pont / total * 100;
     final Certificado cert = authProvider.user!.certificados.firstWhere(
       (element) => element.cursoId == curso.id,
       orElse: () => certDummy,
@@ -139,6 +142,7 @@ class _CourseViewState extends State<CourseView> {
         videotime = videoPlayerController.value.position.inSeconds;
       });
     });
+
     return (curso.nombre == '')
         ? const ProgressInd()
         : Scaffold(
@@ -174,7 +178,7 @@ class _CourseViewState extends State<CourseView> {
                           const SizedBox(width: 10),
                           Text(
                             curso.nombre,
-                            style: (wScreen <= 400) ? DashboardLabel.h4.copyWith(color: blancoText) : DashboardLabel.h1.copyWith(color: blancoText),
+                            style: (wScreen <= 500) ? DashboardLabel.h4.copyWith(color: blancoText) : DashboardLabel.h1.copyWith(color: blancoText),
                           ),
                           const Spacer(),
                           Row(
@@ -486,8 +490,9 @@ class _CourseViewState extends State<CourseView> {
                                                         onChanged: (value) async {
                                                           await Provider.of<AuthProvider>(context, listen: false)
                                                               .updateProg(moduloId: e.id, marker: videotime, isComplete: !prog.isComplete);
-                                                          if (context.mounted) {
-                                                            setState(() {});
+                                                          if (!prog.isComplete) {
+                                                            showDialog(
+                                                                context: context, builder: (context) => CongratDialog(cursoNombre: curso.nombre));
                                                           }
                                                         },
                                                       )),
@@ -717,7 +722,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
           ),
         ),
         Positioned(
-            bottom: 40,
+            bottom: 100,
             child: Container(
               color: bgColor,
               width: 250,
@@ -853,58 +858,77 @@ class CongratDialog extends StatelessWidget {
     final wSize = MediaQuery.of(context).size.width;
     final hSize = MediaQuery.of(context).size.height;
     return AlertDialog(
+      shadowColor: Colors.transparent,
       backgroundColor: Colors.transparent,
       content: Stack(
         children: [
+          if(wSize > 500)
           Positioned(
               top: 30,
               right: 0,
               child: FadeInDown(
                   child: Container(
-                width: 110,
+                width: 120,
                 height: 50,
-                decoration: BoxDecoration(border: Border.all(color: azulText)),
+                decoration: BoxDecoration(border: Border.all(color: Colors.amber)),
+              ))),
+          if(wSize < 500)
+          Positioned(
+              top: 30,
+              right: 0,
+              child: FadeInDown(
+                  child: Container(
+                width: 45,
+                height: 50,
+                decoration: BoxDecoration(border: Border.all(color: Colors.amber)),
               ))),
           SizedBox(
             width: wSize,
             height: hSize,
             child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Icon(
-                    FontAwesomeIcons.trophy,
-                    size: 40,
-                    color: Colors.amber,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Text(
-                    'Felicidades por terminar tu curso.',
-                    style: DashboardLabel.h4,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Text(
-                    cursoNombre,
-                    style: DashboardLabel.h2,
-                  ),
-                  const SizedBox(height: 15),
-                  Text(
-                    'Puedes ver tu certificado en el boton de arriba',
-                    style: DashboardLabel.mini,
-                  ),
-                  const SizedBox(height: 30),
-                  CustomButton(
-                      text: 'OK',
-                      onPress: () {
-                        Navigator.pop(context, true);
-                      },
-                      width: 100)
-                ],
+              child: Container(
+                width: 300,
+                height: 400,
+                color: bgColor,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      FontAwesomeIcons.trophy,
+                      size: 40,
+                      color: Colors.amber,
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      'Felicidades por terminar tu curso de.',
+                      textAlign: TextAlign.center,
+                      style: DashboardLabel.h4,
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      cursoNombre,
+                      style: DashboardLabel.h2,
+                    ),
+                    const SizedBox(height: 15),
+                    Text(
+                      'Puedes ver tu certificado en el boton de arriba',
+                      textAlign: TextAlign.center,
+                      style: DashboardLabel.mini,
+                    ),
+                    const SizedBox(height: 30),
+                    CustomButton(
+                        text: 'OK',
+                        onPress: () {
+                          Navigator.pop(context, true);
+                        },
+                        width: 100)
+                  ],
+                ),
               ),
             ),
           ),

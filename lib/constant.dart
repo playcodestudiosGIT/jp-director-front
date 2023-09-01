@@ -35,6 +35,9 @@ const NetworkImage iconTiktok = NetworkImage('https://res.cloudinary.com/dyxt5lh
 const NetworkImage bgHome = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575764/bghome_tnmrqj.png');
 const NetworkImage adsCircle = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575763/ADS_h72ur3.png');
 const NetworkImage arrDown = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575763/arr-down_ywdc5o.png');
+const NetworkImage btnComent = NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1693593488/statics/comments_vggbgq.png');
+const NetworkImage downMaterial = NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1693593811/statics/descMate_ej15xq.png');
+const NetworkImage certfGuiaImg = NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1693593977/statics/certf_gnidpt.png');
 const String noimage = 'https://res.cloudinary.com/dyxt5lhzw/image/upload/v1686363837/noimage_mpl4wc.jpg';
 
 final List<String> resultadosMini = [

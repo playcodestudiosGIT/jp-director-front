@@ -64,7 +64,7 @@ class MentoriaView extends StatelessWidget {
                         ),
                         Text(
                           appLocal.tenerUnMentor,
-                          style: DashboardLabel.h4.copyWith(
+                          style: DashboardLabel.paragraph.copyWith(
                             color: blancoText.withOpacity(0.5),
                           ),
                         ),

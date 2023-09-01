@@ -1,4 +1,6 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:jp_director/router/router.dart';
 
 import '../../../constant.dart';
 import '../../../services/navigator_service.dart';
@@ -21,10 +23,12 @@ class TopAreaBack extends StatelessWidget {
           alignment: Alignment.centerLeft,
           constraints: const BoxConstraints(maxWidth: 1200),
           child: IconButton(
+            splashRadius: 16,
               onPressed: () {
-                NavigatorService.navigateTo('/servicios');
+                NavigatorService.navigateTo(Flurorouter.clienteMisCursosDash);
               },
               icon: const Icon(
+                
                 Icons.arrow_back,
                 color: azulText,
                 size: 16,

@@ -63,55 +63,55 @@ class ResultadosView extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            SingleChildScrollView(
-              child: Center(
-                child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Column(children: [
-                      Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Text(
-                    appLocal.miraloOjos,
-                    style: (wScreen > 580) ?DashboardLabel.gigant : DashboardLabel.h2.copyWith(fontWeight: FontWeight.bold)
-                  ),
+            Center(
+              child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Column(children: [
+                    const SizedBox(height: 100),
+                    Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Text(
+                  appLocal.miraloOjos,
+                  textAlign: TextAlign.center,
+                  style: (wScreen > 580) ?DashboardLabel.gigant : DashboardLabel.h2.copyWith(fontWeight: FontWeight.bold)
                 ),
-                Container(
-                  width: (wScreen > 580) ? 548 : 400,
-                  height: 5,
-                  decoration: const BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                    bgColor,
-                    azulText,
-                    bgColor,
-                  ])),
-                ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 500,
-                        child: PageView(children: [
-                          CarouselSlider(
-                              items: listResultWiget,
-                              options: CarouselOptions(
-                                  height: 300,
-                                  viewportFraction: viewport,
-                                  enlargeFactor: 0.4,
-                                  enlargeCenterPage: true,
-                                  enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                                  pageSnapping: false,
-                                  initialPage: 0,
-                                  enableInfiniteScroll: true,
-                                  autoPlay: true)),
-                        ]),
-                      ),
-                      Center(
-                        child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 5), color: Colors.transparent, child: const Image(image: baseGif)),
-                      )
-                    ])),
               ),
+              Container(
+                width: (wScreen > 580) ? 548 : 400,
+                height: 5,
+                decoration: const BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                  bgColor,
+                  azulText,
+                  bgColor,
+                ])),
+              ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 300,
+                      child: PageView(children: [
+                        CarouselSlider(
+                            items: listResultWiget,
+                            options: CarouselOptions(
+                                height: 300,
+                                viewportFraction: viewport,
+                                enlargeFactor: 0.4,
+                                enlargeCenterPage: true,
+                                enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                                pageSnapping: false,
+                                initialPage: 0,
+                                enableInfiniteScroll: true,
+                                autoPlay: true)),
+                      ]),
+                    ),
+                    Center(
+                      child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 5), color: Colors.transparent, child: const Image(image: baseGif)),
+                    )
+                  ])),
             )
           ],
         ),

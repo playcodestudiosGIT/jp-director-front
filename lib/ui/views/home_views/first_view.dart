@@ -185,35 +185,39 @@ class MobileBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
     final screenData = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      child: SizedBox(
-        width: 430,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(height: 80),
-            Text(
+    return SizedBox(
+      width: 430,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(height: 80),
+          FittedBox(
+            child: Text(
               appLocal.educacionYEstrategia,
               textAlign: (screenData.width < 1150) ? TextAlign.center : TextAlign.start,
-              style: (screenData.width < 450) ? DashboardLabel.especialT2 : DashboardLabel.especialT1
+              style: (screenData.width < 450) ? DashboardLabel.h1 : DashboardLabel.especialT1
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            Padding(
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          FittedBox(
+            child: Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Text(
                 appLocal.llegasteAlMundo,
                 style: (screenData.width < 450) ? DashboardLabel.h2 : DashboardLabel.semiGigant
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: FittedBox(
+              child: Row(
+                
                 children: [
                   Text(
                     appLocal.siu,
@@ -224,34 +228,39 @@ class MobileBody extends StatelessWidget {
                     children: [
                       Text(
                         appLocal.buscasAcelerar,
-                        style: DashboardLabel.paragraph,
+                        style: (screenData.width < 450) ? DashboardLabel.mini : DashboardLabel.paragraph,
                       ),
                       Text(
                         appLocal.quieresConseguir,
-                        style: DashboardLabel.paragraph,
+                        style: (screenData.width < 450) ? DashboardLabel.mini : DashboardLabel.paragraph,
                       ),
                       Text(
                         appLocal.quieresTener,
-                        style: DashboardLabel.paragraph,
+                        style: (screenData.width < 450) ? DashboardLabel.mini : DashboardLabel.paragraph,
                       ),
                       Text(
                         appLocal.deseasDejar,
-                        style: DashboardLabel.paragraph,
+                        style: (screenData.width < 450) ? DashboardLabel.mini : DashboardLabel.paragraph,
                       ),
                     ],
                   )
                 ],
               ),
             ),
-            Image(
+          ),
+          Container(
+            constraints: const BoxConstraints(maxWidth: 375),
+            child: const Image(
+              
               image: bgHome,
-              width: (screenData.width < 450) ? 300 : 500,
-              height: 370,
+              fit: BoxFit.scaleDown,
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            Padding(
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          FittedBox(
+            child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Text(
                 appLocal.descubreComo,
@@ -259,35 +268,36 @@ class MobileBody extends StatelessWidget {
                 style: DashboardLabel.h1.copyWith(color:  azulText),
               ),
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: double.infinity,
-                  constraints: BoxConstraints(maxWidth: screenData.width),
-                  child: GestureDetector(
-                    onTap: () {
-                      NavigatorService.navigateTo('/cursos');
-                    },
-                    child: MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: Container(
-                        alignment: Alignment.center,
-                        child: BounceInDown(
-                          from: 15,
-                          duration: const Duration(seconds: 1),
-                          child: const Image(
-                            image: arrDown,
-                          ),
+          ),
+          if(screenData.height > 585)
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: double.infinity,
+                constraints: BoxConstraints(maxWidth: screenData.width),
+                child: GestureDetector(
+                  onTap: () {
+                    NavigatorService.navigateTo('/cursos');
+                  },
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: BounceInDown(
+                        from: 15,
+                        duration: const Duration(seconds: 1),
+                        child: const Image(
+                          image: arrDown,
                         ),
                       ),
                     ),
                   ),
                 ),
-              ],
-            )
-          ],
-        ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

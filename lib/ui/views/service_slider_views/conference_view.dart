@@ -59,7 +59,7 @@ class ConferenceView extends StatelessWidget {
                       children: [
                         Text(
                           appLocal.contratamePara,
-                          style: DashboardLabel.h4.copyWith(
+                          style: DashboardLabel.paragraph.copyWith(
                             
                             color: blancoText.withOpacity(0.5),
                           ),

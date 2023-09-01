@@ -45,9 +45,11 @@
       event.preventDefault();
     });
   </script>
+
+<script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
   <script>
     window.addEventListener('load', function(ev) {
-      // Download main.dart.js
+
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
