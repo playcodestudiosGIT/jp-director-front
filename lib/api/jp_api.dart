@@ -9,9 +9,8 @@ class JpApi {
 
   static void configureDio() {
     //base Url
-    _dio.options.baseUrl = 
-    // 'https://www.jpdirector.net/api';
-     'http://localhost:8080/api';
+    _dio.options.baseUrl = 'https://www.jpdirector.net/api';
+    //  'http://localhost:8080/api';
 
     //Configure headers
     _dio.options.headers = {'x-token': LocalStorage.prefs.get('token') ?? ''};
@@ -65,11 +64,10 @@ class JpApi {
       final resp = await _dio.put(path, data: formData);
       return resp;
     } on DioException catch (e) {
-
       throw ('PUT-Error ACT IMG USER $e');
     }
   }
-  
+
   static Future editBanerImg(String path, Uint8List bytes) async {
     final formData = FormData.fromMap({'archivo': MultipartFile.fromBytes(bytes)});
 
@@ -77,7 +75,6 @@ class JpApi {
       final resp = await _dio.put(path, data: formData);
       return resp;
     } on DioException catch (e) {
-
       throw ('PUT-Error ACT IMG BANER $e');
     }
   }
