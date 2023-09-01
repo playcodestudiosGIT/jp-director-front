@@ -10,8 +10,6 @@ import '../../generated/l10n.dart';
 import '../../providers/page_provider.dart';
 import '../../router/router.dart';
 import '../../services/navigator_service.dart';
-import '../shared/botones/custom_button.dart';
-import '../shared/labels/dashboard_label.dart';
 import '../shared/menus/home_app_menu.dart';
 
 class UserPageLayout extends StatefulWidget {
@@ -140,28 +138,28 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                               onPress: () {
                                 NavigatorService.navigateTo('/contacto');
                               }),
-                          const SizedBox(width: 245)
+                          const SizedBox(width: 145)
                         ]
                       ],
                     ),
                   ),
                 ),
                 if (wScreen < 850) const Positioned(left: -10, top: 5, child: HomeAppMenu()),
-                if (wScreen > 480)
-                  Positioned(
-                      right: 10,
-                      top: 12,
-                      child: CustomButton(
-                        text: appLocal.botonLogin,
-                        width: 70,
-                        onPress: () {
-                          NavigatorService.replaceTo(Flurorouter.loginRoute);
-                        },
-                      )),
-                if (wScreen <= 480)
+                // if (wScreen > 480)
+                //   Positioned(
+                //       right: 10,
+                //       top: 12,
+                //       child: CustomButton(
+                //         text: appLocal.botonLogin,
+                //         width: 70,
+                //         onPress: () {
+                //           NavigatorService.replaceTo(Flurorouter.loginRoute);
+                //         },
+                //       )),
+                // if (wScreen <= 480)
                   Positioned(
                       right: 20,
-                      top: 12,
+                      top: 15,
                       child: MouseRegion(
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
@@ -170,7 +168,10 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Icon(Icons.login_outlined, color: azulText),
+                              Container(
+                                width: 35,
+                                margin: const EdgeInsets.only(right: 7),
+                                child: const Icon(Icons.login_outlined, color: azulText, size: 16,)),
                               Text(
                                 appLocal.iniciarSesionBtn,
                                 style: const TextStyle(color: azulText, fontSize: 8),
@@ -179,41 +180,44 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                           ),
                         ),
                       )),
-                if (wScreen > 480)
+                // if (wScreen > 480)
+                //   Positioned(
+                //     right: 90,
+                //     top: 15,
+                //     child: TextButton(
+                //       style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
+                //       onPressed: () {
+                //         NavigatorService.replaceTo(Flurorouter.registerRoute);
+                //       },
+                //       child: Text(
+                //         appLocal.botonReg,
+                //         style: DashboardLabel.paragraph.copyWith(color: azulText, fontWeight: FontWeight.w800),
+                //       ),
+                //     ),
+                //   ),
+                // if (wScreen <= 480)
                   Positioned(
-                    right: 90,
-                    top: 15,
-                    child: TextButton(
-                      style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
-                      onPressed: () {
-                        NavigatorService.replaceTo(Flurorouter.registerRoute);
-                      },
-                      child: Text(
-                        appLocal.botonReg,
-                        style: DashboardLabel.paragraph.copyWith(color: azulText, fontWeight: FontWeight.w800),
-                      ),
-                    ),
-                  ),
-                if (wScreen <= 480)
-                  Positioned(
-                      right: 90,
-                      top: 12,
-                      child: MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: GestureDetector(
-                          onTap: () {
-                            NavigatorService.replaceTo(Flurorouter.registerRoute);
-                          },
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.app_registration_rounded, color: azulText),
-                              Text(
-                                appLocal.registrarBtn,
-                                style: const TextStyle(color: azulText, fontSize: 8),
-                              )
-                            ],
+                      right: 70,
+                      top: 15,
+                      child: SizedBox(
+                        width: 42,
+                        child: MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: GestureDetector(
+                            onTap: () {
+                              NavigatorService.replaceTo(Flurorouter.registerRoute);
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Icon(Icons.app_registration_rounded, color: azulText, size: 16,),
+                                Text(
+                                  appLocal.registrarBtn,
+                                  style: const TextStyle(color: azulText, fontSize: 8),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       )),

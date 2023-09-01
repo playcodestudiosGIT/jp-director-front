@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:animate_do/animate_do.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/generated/l10n.dart';
-import 'package:provider/provider.dart';
+
 
 import '../../../constant.dart';
-import '../../../providers/auth_provider.dart';
+
 import '../../../services/navigator_service.dart';
 import '../../shared/labels/dashboard_label.dart';
 
@@ -16,7 +15,7 @@ class FirstView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenData = MediaQuery.of(context).size.width;
-    return (screenData > 850) ? const NormalBody() : const MobileBody();
+    return (screenData > 1150) ? const NormalBody() : const MobileBody();
   }
 }
 
@@ -27,12 +26,9 @@ class NormalBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
     final screenData = MediaQuery.of(context).size;
-    final authProvider = Provider.of<AuthProvider>(context);
-    return SingleChildScrollView(
-      child: Padding(
-        padding: (screenData.width < 715 && authProvider.authStatus == AuthStatus.authenticated)
-            ? const EdgeInsets.only(left: 50)
-            : const EdgeInsets.only(left: 0),
+    return Center(
+      child: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
         child: Stack(
           children: [
             Container(
@@ -45,7 +41,7 @@ class NormalBody extends StatelessWidget {
               child: SlideInLeft(from: 60, duration: const Duration(seconds: 10), child: const Image(width: 160, image: planetaI)),
             ),
             Positioned(
-              top: 400,
+              top: 320,
               left: 0,
               child: SlideInRight(from: 60, duration: const Duration(seconds: 10), child: const Image(width: 200, image: planetaM)),
             ),
@@ -55,9 +51,11 @@ class NormalBody extends StatelessWidget {
               child: SlideInLeft(from: 60, duration: const Duration(seconds: 10), child: const Image(width: 100, image: planetaF)),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: screenData.height,
+                  
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -81,19 +79,17 @@ class NormalBody extends StatelessWidget {
                                       ),
                                       Text(
                                         appLocal.educacionYEstrategia,
-                                        style: GoogleFonts.roboto(
-                                            fontSize: (screenData.width < 450) ? 38 : 48, fontWeight: FontWeight.bold, color: blancoText),
+                                        style: (screenData.width < 450) ? DashboardLabel.especialT2 : DashboardLabel.especialT1
                                       ),
                                       Text(
                                         appLocal.llegasteAlMundo,
-                                        style: GoogleFonts.roboto(
-                                            fontSize: (screenData.width < 450) ? 26 : 32, fontWeight: FontWeight.w500, color: blancoText),
+                                        style: (screenData.width < 450) ? DashboardLabel.h2 : DashboardLabel.semiGigant
                                       ),
                                       Row(
                                         children: [
                                           Text(
                                             appLocal.siu,
-                                            style: GoogleFonts.roboto(fontSize: 86, fontWeight: FontWeight.w500, color: azulText),
+                                            style: DashboardLabel.especial86
                                           ),
                                           FadeInRight(
                                             from: 20,
@@ -102,19 +98,19 @@ class NormalBody extends StatelessWidget {
                                               children: [
                                                 Text(
                                                   appLocal.buscasAcelerar,
-                                                  style: DashboardLabel.h4,
+                                                  style: DashboardLabel.paragraph,
                                                 ),
                                                 Text(
                                                   appLocal.quieresConseguir,
-                                                  style: DashboardLabel.h4,
+                                                  style: DashboardLabel.paragraph,
                                                 ),
                                                 Text(
                                                   appLocal.quieresTener,
-                                                  style: DashboardLabel.h4,
+                                                  style: DashboardLabel.paragraph,
                                                 ),
                                                 Text(
                                                   appLocal.deseasDejar,
-                                                  style: DashboardLabel.h4,
+                                                  style: DashboardLabel.paragraph,
                                                 ),
                                               ],
                                             ),
@@ -123,7 +119,7 @@ class NormalBody extends StatelessWidget {
                                       ),
                                       Text(
                                         appLocal.descubreComo,
-                                        style: GoogleFonts.roboto(fontSize: 29, fontWeight: FontWeight.w500, color: azulText),
+                                        style: DashboardLabel.h1.copyWith(color:  azulText),
                                       ),
                                       Row(
                                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -165,7 +161,7 @@ class NormalBody extends StatelessWidget {
                 ),
                 Expanded(
                   child: Container(
-                    constraints: const BoxConstraints(maxWidth: 800, minWidth: 200),
+                    constraints: const BoxConstraints(maxWidth: 800, minWidth: 490, minHeight: 370 ),
                     alignment: Alignment.center,
                     child: Image(
                         colorBlendMode: (screenData.width < 1300) ? BlendMode.multiply : BlendMode.screen,
@@ -188,107 +184,110 @@ class MobileBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
-    double screenData = MediaQuery.of(context).size.width;
-    return SizedBox(
-      width: 430,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const SizedBox(height: 60),
-          Text(
-            appLocal.educacionYEstrategia,
-            textAlign: (screenData > 550) ? TextAlign.left : TextAlign.center,
-            style: GoogleFonts.roboto(fontSize: (screenData > 550) ? 40 : 28, fontWeight: FontWeight.bold, color: blancoText),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Text(
-              appLocal.llegasteAlMundo,
-              style: GoogleFonts.roboto(fontSize: (screenData > 550) ? 32 : 24, fontWeight: FontWeight.w500, color: blancoText),
+    final screenData = MediaQuery.of(context).size;
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: 430,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(height: 80),
+            Text(
+              appLocal.educacionYEstrategia,
+              textAlign: (screenData.width < 1150) ? TextAlign.center : TextAlign.start,
+              style: (screenData.width < 450) ? DashboardLabel.especialT2 : DashboardLabel.especialT1
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Wrap(
-              crossAxisAlignment: WrapCrossAlignment.center,
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text(
+                appLocal.llegasteAlMundo,
+                style: (screenData.width < 450) ? DashboardLabel.h2 : DashboardLabel.semiGigant
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  Text(
+                    appLocal.siu,
+                    style: DashboardLabel.azulTextH1.copyWith(fontSize: (screenData.width > 550) ? 86 : 54),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        appLocal.buscasAcelerar,
+                        style: DashboardLabel.paragraph,
+                      ),
+                      Text(
+                        appLocal.quieresConseguir,
+                        style: DashboardLabel.paragraph,
+                      ),
+                      Text(
+                        appLocal.quieresTener,
+                        style: DashboardLabel.paragraph,
+                      ),
+                      Text(
+                        appLocal.deseasDejar,
+                        style: DashboardLabel.paragraph,
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Image(
+              image: bgHome,
+              width: (screenData.width < 450) ? 300 : 500,
+              height: 370,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Text(
+                appLocal.descubreComo,
+                textAlign: (screenData.width > 550) ? TextAlign.left : TextAlign.center,
+                style: DashboardLabel.h1.copyWith(color:  azulText),
+              ),
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  appLocal.siu,
-                  style: GoogleFonts.roboto(fontSize: (screenData > 550) ? 86 : 54, fontWeight: FontWeight.w500, color: azulText),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      appLocal.buscasAcelerar,
-                      style: GoogleFonts.roboto(fontSize: (screenData > 550) ? 15 : 10, fontWeight: FontWeight.w500, color: blancoText),
-                    ),
-                    Text(
-                      appLocal.quieresConseguir,
-                      style: GoogleFonts.roboto(fontSize: (screenData > 550) ? 15 : 10, fontWeight: FontWeight.w500, color: blancoText),
-                    ),
-                    Text(
-                      appLocal.quieresTener,
-                      style: GoogleFonts.roboto(fontSize: (screenData > 550) ? 15 : 10, fontWeight: FontWeight.w500, color: blancoText),
-                    ),
-                    Text(
-                      appLocal.deseasDejar,
-                      style: GoogleFonts.roboto(fontSize: (screenData > 550) ? 15 : 10, fontWeight: FontWeight.w500, color: blancoText),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-          Image(
-            image: bgHome,
-            width: (screenData < 450) ? 300 : 500,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Text(
-              appLocal.descubreComo,
-              textAlign: (screenData > 550) ? TextAlign.left : TextAlign.center,
-              style: GoogleFonts.roboto(fontSize: (screenData < 450) ? 20 : 32, fontWeight: FontWeight.w900, color: azulText),
-            ),
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                width: double.infinity,
-                constraints: BoxConstraints(maxWidth: screenData),
-                child: GestureDetector(
-                  onTap: () {
-                    NavigatorService.navigateTo('/cursos');
-                  },
-                  child: MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: BounceInDown(
-                        from: 15,
-                        duration: const Duration(seconds: 1),
-                        child: const Image(
-                          image: arrDown,
+                Container(
+                  width: double.infinity,
+                  constraints: BoxConstraints(maxWidth: screenData.width),
+                  child: GestureDetector(
+                    onTap: () {
+                      NavigatorService.navigateTo('/cursos');
+                    },
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: BounceInDown(
+                          from: 15,
+                          duration: const Duration(seconds: 1),
+                          child: const Image(
+                            image: arrDown,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          )
-        ],
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:jp_director/ui/shared/politicas_footer.dart';
+
 
 import '../../../constant.dart';
 import '../../shared/widgets/forms/login_form.dart';
+import '../../shared/widgets/politicas_footer.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -36,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         Container(
                           alignment: (wScreen < 450) ? Alignment.topCenter:Alignment.center,
-                          constraints: BoxConstraints(maxWidth: 315, minHeight: hScreen),
+                          constraints: BoxConstraints(maxWidth: 1200, minHeight: hScreen),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -51,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  if (wScreen <= 980) const SizedBox(width: 200, child: Image(image: logoGrande)),
+                                  if (wScreen <= 980) const SizedBox(width: 200, height: 136, child: Image(image: logoGrande)),
                                   const SizedBox(width: 315, child: LoginForm()),
                                   if (wScreen <= 980)
                                     const Column(

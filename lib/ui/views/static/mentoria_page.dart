@@ -123,7 +123,7 @@ class LetrasMentoria extends StatelessWidget {
       children: [
         Text(
           appLocal.mentoriaIntensiva,
-          style: GoogleFonts.roboto(fontSize: (wScreen < 600) ? 26 : 32, fontWeight: FontWeight.w900, color: blancoText),
+          style: (wScreen < 600) ? DashboardLabel.h2 : DashboardLabel.semiGigant
         ),
         Container(
           width: 400,

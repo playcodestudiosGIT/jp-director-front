@@ -1,6 +1,5 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:jp_director/ui/shared/labels/inputs_decorations.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +31,7 @@ class _RegisterFormState extends State<RegisterForm> {
           children: [
             Text(
               appLocal.crearCuenta,
-              style: GoogleFonts.roboto(fontSize: 28, color: azulText, fontWeight: FontWeight.w800),
+              style: DashboardLabel.azulTextH1,
             ),
             const SizedBox(
               height: 10,
@@ -44,7 +43,7 @@ class _RegisterFormState extends State<RegisterForm> {
               validator: (value) => (EmailValidator.validate(value.toString())) ? null : appLocal.ingreseSuCorreo,
               initialValue: registerFormProvider.email,
               onChanged: (value) => registerFormProvider.email = value,
-              style: DashboardLabel.h4,
+              style: DashboardLabel.paragraph,
               decoration: InputDecor.formFieldInputDecoration(icon: Icons.email, label: appLocal.correoTextFiel),
             ),
             const SizedBox(
@@ -56,7 +55,7 @@ class _RegisterFormState extends State<RegisterForm> {
               validator: (value) => (value!.isNotEmpty) ? null : appLocal.ingreseNombreTextField,
               initialValue: registerFormProvider.nombre,
               onChanged: (value) => registerFormProvider.setNombre(value),
-              style: DashboardLabel.h4,
+              style: DashboardLabel.paragraph,
               decoration: InputDecor.formFieldInputDecoration(icon: Icons.perm_identity, label: appLocal.nombreTextField),
             ),
             const SizedBox(
@@ -68,7 +67,7 @@ class _RegisterFormState extends State<RegisterForm> {
               validator: (value) => (value!.isNotEmpty) ? null : appLocal.ingreseApellidoTextFiel,
               initialValue: registerFormProvider.apellido,
               onChanged: (value) => registerFormProvider.setApellido(value),
-              style: DashboardLabel.h4,
+              style: DashboardLabel.paragraph,
               decoration: InputDecor.formFieldInputDecoration(icon: Icons.supervised_user_circle_rounded, label: appLocal.apellidoTextFiel),
             ),
             const SizedBox(
@@ -87,7 +86,7 @@ class _RegisterFormState extends State<RegisterForm> {
               },
               initialValue: registerFormProvider.password1,
               onChanged: (value) => registerFormProvider.password1 = value,
-              style: DashboardLabel.h4,
+              style: DashboardLabel.paragraph,
               decoration: InputDecor.formFieldInputDecoration(icon: Icons.password, label: appLocal.contrasenaTextFiel),
             ),
             const SizedBox(
@@ -105,7 +104,7 @@ class _RegisterFormState extends State<RegisterForm> {
               },
               initialValue: registerFormProvider.password2,
               onChanged: (value) => registerFormProvider.password2 = value,
-              style: DashboardLabel.h4,
+              style: DashboardLabel.paragraph,
               decoration: InputDecor.formFieldInputDecoration(icon: Icons.password, label: appLocal.repitaContrasenaTextFiel),
             ),
             const SizedBox(

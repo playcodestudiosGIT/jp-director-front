@@ -71,21 +71,16 @@ class AsesoriaMain extends StatelessWidget {
                         child: Text(
                           appLocal.completPers,
                           textAlign: TextAlign.start,
-                          style: GoogleFonts.roboto(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w900,
-                            color: blancoText,
-                          ),
+                          style: DashboardLabel.h4
                         ),
                       ),
                       const SizedBox(
-                        height: 25,
+                        height: 15,
                       ),
                       Text(
                         appLocal.enUnaVideollamada,
-                        style: GoogleFonts.roboto(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
+                        style: DashboardLabel.h4.copyWith(
+                          
                           color: blancoText.withOpacity(0.5),
                         ),
                       ),
@@ -94,9 +89,8 @@ class AsesoriaMain extends StatelessWidget {
                       ),
                       Text(
                         appLocal.resolvamosEsto,
-                        style: GoogleFonts.roboto(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
+                        style: DashboardLabel.h4.copyWith(
+
                           color: blancoText.withOpacity(0.5),
                         ),
                       ),

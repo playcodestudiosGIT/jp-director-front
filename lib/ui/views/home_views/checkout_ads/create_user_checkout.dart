@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/providers/all_cursos_provider.dart';
 import 'package:jp_director/providers/forms/register_form_provider.dart';
 import 'package:jp_director/ui/cards/curso_card.dart';
-import 'package:jp_director/ui/shared/politicas_footer.dart';
 import 'package:jp_director/ui/shared/widgets/forms/login_form.dart';
 import 'package:jp_director/ui/shared/widgets/forms/register_form.dart';
 import 'package:jp_director/ui/shared/widgets/progress_ind.dart';
@@ -15,6 +13,7 @@ import '../../../../generated/l10n.dart';
 import '../../../../router/router.dart';
 import '../../../../services/navigator_service.dart';
 import '../../../shared/labels/dashboard_label.dart';
+import '../../../shared/widgets/politicas_footer.dart';
 
 class CreateUserCheckout extends StatefulWidget {
   final String cursoId;

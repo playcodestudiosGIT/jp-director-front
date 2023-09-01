@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:jp_director/constant.dart';
 
-import 'package:jp_director/ui/shared/curso_baner.dart';
+
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:jp_director/ui/shared/widgets/acordion.dart';
 
@@ -12,9 +12,11 @@ import '../../../models/usuario_model.dart';
 import '../../../providers/export_all_providers.dart';
 
 import '../../../services/navigator_service.dart';
-import '../../shared/curso_landing_slider.dart';
-import '../../shared/list_testimonios.dart';
+
 import '../../shared/widgets/boton_quiero_ya.dart';
+import '../../shared/widgets/curso_baner.dart';
+import '../../shared/widgets/curso_landing_slider.dart';
+import '../../shared/widgets/list_testimonios.dart';
 import '../../shared/widgets/soy_jpdirector_landing.dart';
 
 class LandingCurso extends StatefulWidget {

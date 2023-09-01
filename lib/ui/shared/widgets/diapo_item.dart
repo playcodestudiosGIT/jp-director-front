@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
 
-import '../../constant.dart';
-import 'labels/dashboard_label.dart';
+import '../../../constant.dart';
+import '../labels/dashboard_label.dart';
+
 
 class DiapoItem extends StatelessWidget {
   final IconData bigIcon;

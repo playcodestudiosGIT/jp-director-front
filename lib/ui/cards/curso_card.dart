@@ -110,11 +110,11 @@ class CourseCard extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Row(
                             children: [
-                              Icon(Icons.view_module, color: blancoText.withOpacity(0.5), size: 20),
+                              Icon(Icons.view_module, color: blancoText.withOpacity(0.5), size: 16),
                               const SizedBox(width: 3),
                               Text(curso.modulos.length.toString(), style: DashboardLabel.paragraph),
                               const SizedBox(width: 30),
-                              Icon(Icons.timer_outlined, color: blancoText.withOpacity(0.5), size: 20),
+                              Icon(Icons.timer_outlined, color: blancoText.withOpacity(0.5), size: 16),
                               Text(curso.duracion, style: DashboardLabel.paragraph)
                             ],
                           ),

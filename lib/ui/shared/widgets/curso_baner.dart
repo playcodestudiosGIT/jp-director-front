@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:jp_director/providers/export_all_providers.dart';
 import 'package:jp_director/ui/shared/widgets/progress_ind.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../constant.dart';
+import '../../../constant.dart';
+import '../../../generated/l10n.dart';
+import '../../../models/curso.dart';
+import '../../../router/router.dart';
+import '../../../services/navigator_service.dart';
+import '../botones/custom_button.dart';
+import '../labels/dashboard_label.dart';
 
-import '../../generated/l10n.dart';
-import '../../models/curso.dart';
-import '../../providers/export_all_providers.dart';
-
-import '../../router/router.dart';
-import '../../services/navigator_service.dart';
-import 'botones/custom_button.dart';
-import 'labels/dashboard_label.dart';
 
 class CursoBanerView extends StatelessWidget {
   final Curso curso;

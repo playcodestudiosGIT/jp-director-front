@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:jp_director/ui/shared/diapo_item.dart';
 
-import '../../generated/l10n.dart';
-import 'labels/dashboard_label.dart';
+import '../../../generated/l10n.dart';
+import '../labels/dashboard_label.dart';
+import 'diapo_item.dart';
+
 
 class CursoLandingSlider extends StatelessWidget {
   final PageController pageController;

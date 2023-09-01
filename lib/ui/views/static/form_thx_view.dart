@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
 import '../../../providers/form_provider.dart';
+import '../../shared/labels/dashboard_label.dart';
 
 
 class FormThxView extends StatefulWidget {
@@ -59,7 +60,7 @@ class LetrasAsesoria extends StatelessWidget {
         children: [
           Text(
             title,
-            style: GoogleFonts.roboto(fontSize: (wScreen < 500) ? 30 : 40, fontWeight: FontWeight.w900, color: blancoText),
+            style: (wScreen < 500) ?DashboardLabel.semiGigant : DashboardLabel.h1 ,
           ),
           Container(
             width: 400,
@@ -77,21 +78,21 @@ class LetrasAsesoria extends StatelessWidget {
           Text(
             appLocal.graciasInfo,
             textAlign: TextAlign.start,
-            style: GoogleFonts.roboto(fontSize: (wScreen < 500) ? 16 : 20, fontWeight: FontWeight.w700, color: blancoText),
+            style: (wScreen < 500) ? DashboardLabel.paragraph : DashboardLabel.h3,
           ),
           const SizedBox(
             height: 30,
           ),
           Text(
             appLocal.estasAunPaso,
-            style: GoogleFonts.roboto(fontSize: (wScreen < 500) ? 16 : 20, fontWeight: FontWeight.w700, color: blancoText),
+            style: (wScreen < 500) ? DashboardLabel.paragraph : DashboardLabel.h3,
           ),
           const SizedBox(
             height: 30,
           ),
           Text(
             appLocal.enElTranscurso,
-            style: GoogleFonts.roboto(fontSize: (wScreen < 500) ? 12 : 16, fontWeight: FontWeight.w400, color: blancoText),
+            style: (wScreen < 500) ? DashboardLabel.mini : DashboardLabel.paragraph,
           ),
           const SizedBox(
             height: 30,
@@ -99,7 +100,7 @@ class LetrasAsesoria extends StatelessWidget {
           Text(
             appLocal.siguemeEnTodas,
             textAlign: TextAlign.center,
-            style: GoogleFonts.roboto(fontSize: (wScreen < 500) ? 16 : 20, fontWeight: FontWeight.w700, color: azulText),
+            style: (wScreen < 500) ? DashboardLabel.paragraph : DashboardLabel.h3,
           ),
           const SizedBox(
             height: 30,
@@ -193,7 +194,7 @@ class ButtomRrss extends StatelessWidget {
               ),
               Text(
                 text,
-                style: GoogleFonts.roboto(fontSize: 16, color: blancoText, fontWeight: FontWeight.w700),
+                style: DashboardLabel.paragraph,
               )
             ],
           ),

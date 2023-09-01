@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/constant.dart';
+import 'package:jp_director/ui/shared/widgets/testimonio_widget.dart';
 
-import '../../generated/l10n.dart';
-import 'labels/dashboard_label.dart';
-import 'widgets/testimonio.dart';
+import '../../../generated/l10n.dart';
+import '../../../models/testimonio.dart';
+import '../labels/dashboard_label.dart';
 
 class ListTestimonios extends StatelessWidget {
   const ListTestimonios({super.key});
@@ -12,27 +13,27 @@ class ListTestimonios extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
-    final List<Widget> listTestimonio = [
-      Testimonio(
+    final List<TestimonioWidget> listTestimonio = [
+      TestimonioWidget(
         img:
             'https://static.wixstatic.com/media/b69ab8_f97ce7c31e2d4208a8c6a3bc7a34f661~mv2.png/v1/fill/w_200,h_200,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/image%204.png',
         nombre: 'Saylin Vazquez de Alltech',
         testimonio: appLocal.testimonioSaylin,
       ),
-      Testimonio(
+      TestimonioWidget(
         img:
             'https://static.wixstatic.com/media/b69ab8_bfb7361501fa4e6cab4a6e7335f5aff5~mv2.png/v1/fill/w_200,h_200,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/image%206.png',
         nombre: 'Anier Cruz',
         testimonio:
             appLocal.testimonioAnier,
       ),
-      Testimonio(
+      TestimonioWidget(
         img:
             'https://static.wixstatic.com/media/b69ab8_cd0d5d47774a490095e8f7fd9243b853~mv2.png/v1/fill/w_200,h_200,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/image%207.png',
         nombre: 'Tania Crespo',
         testimonio: appLocal.testimonioTania,
       ),
-      Testimonio(
+      TestimonioWidget(
         img:
             'https://static.wixstatic.com/media/b69ab8_ce68c5011d4f41a08e14db52ebad8c05~mv2.png/v1/fill/w_200,h_200,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/image%205.png',
         nombre: 'German Gamboa',

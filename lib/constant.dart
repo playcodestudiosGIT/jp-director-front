@@ -53,6 +53,8 @@ final List<String> resultados = [
 ];
 
 Curso cursoDummy = Curso(
+  testimonios: [],
+  totalEstudiantes: '0',
   duracion: '0',
   estado: true,
   publicado: true,

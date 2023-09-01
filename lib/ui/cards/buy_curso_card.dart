@@ -77,11 +77,11 @@ class BuyCursoCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
                       children: [
-                        const Icon(Icons.view_module),
+                        const Icon(Icons.view_module, size: 16,),
         
                         Text(modulos),
                         const SizedBox(width: 30),
-                        const Icon(Icons.timer_outlined),
+                        const Icon(Icons.timer_outlined, size: 16,),
      
                         Text(duration)
                       ],

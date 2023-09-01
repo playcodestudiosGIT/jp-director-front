@@ -1,6 +1,5 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:jp_director/ui/shared/labels/inputs_decorations.dart';
 import 'package:provider/provider.dart';
@@ -81,7 +80,7 @@ class _FormSVidState extends State<FormSVid> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(title, style: GoogleFonts.roboto(fontSize: (wScreen < 500) ? 30 : 40, fontWeight: FontWeight.w900, color: blancoText)),
+                Text(title, style: (wScreen < 500) ? DashboardLabel.h1 : DashboardLabel.gigant),
                 Container(
                   width: (wScreen < 500) ? 320 : 370,
                   height: 5,

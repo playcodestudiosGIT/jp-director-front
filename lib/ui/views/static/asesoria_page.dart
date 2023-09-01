@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/ui/shared/botones/botonverde.dart';
+import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 
 
 import '../../../constant.dart';
@@ -132,7 +133,7 @@ class _LetrasAsesoria extends StatelessWidget {
       children: [
         Text(
           appLocal.asesoria11,
-          style: GoogleFonts.roboto(fontSize: (wScreen < 600) ? 26 : 32, fontWeight: FontWeight.w900, color: blancoText),
+          style: (wScreen < 600) ?DashboardLabel.h1 :  DashboardLabel.semiGigant
         ),
         Container(
           width: 300,
@@ -149,11 +150,11 @@ class _LetrasAsesoria extends StatelessWidget {
         ),
         Text(
           appLocal.videollamada,
-          style: GoogleFonts.roboto(fontSize: 32, fontWeight: FontWeight.w900, color: blancoText),
+          style: DashboardLabel.semiGigant,
         ),
         Text(
           appLocal.conTuNeg,
-          style: GoogleFonts.roboto(fontSize: 32, fontWeight: FontWeight.w900, color: blancoText),
+          style: DashboardLabel.semiGigant,
         ),
         // if (wScreen < 1200)
           Stack(
@@ -177,25 +178,25 @@ class _LetrasAsesoria extends StatelessWidget {
           ),
         Text(
           appLocal.unoAuno,
-          style: GoogleFonts.roboto(fontSize: 32, fontWeight: FontWeight.w900, color: azulText),
+          style: DashboardLabel.azulTextGigant,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               appLocal.precio11,
-              style: GoogleFonts.roboto(fontSize: 32, fontWeight: FontWeight.w900, color: azulText),
+              style: DashboardLabel.azulTextGigant,
             ),
             Text(
               appLocal.usd,
-              style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w900, color: azulText),
+              style: DashboardLabel.paragraph.copyWith(color: azulText)
             ),
             const SizedBox(
               width: 8,
             ),
             Text(
               appLocal.xHora,
-              style: GoogleFonts.roboto(fontSize: 32, fontWeight: FontWeight.w900, color: azulText),
+              style: DashboardLabel.azulTextGigant,
             ),
           ],
         ),

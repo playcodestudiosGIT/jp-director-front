@@ -56,6 +56,7 @@ class _LeadsModalState extends State<LeadsModal> {
                     icon: const Icon(
                       Icons.close,
                       color: Colors.red,
+                      size: 16,
                     ))
               ],
             ),

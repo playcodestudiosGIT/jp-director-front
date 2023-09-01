@@ -97,7 +97,7 @@ class _NewPasswordState extends State<NewPassword> {
                                               obscureText: true,
                                               validator: (value) => (passw1 == passw2) ? null : appLocal.passNoCoinciden,
                                               onChanged: (value) => passw1 = value,
-                                              style: GoogleFonts.roboto(color: blancoText, fontSize: 14),
+                                              style: DashboardLabel.paragraph,
                                               decoration: InputDecor.formFieldInputDecoration(label: appLocal.ingresaNewPass, icon: Icons.email_outlined),
                                             ),
                                             const SizedBox(height: 15),

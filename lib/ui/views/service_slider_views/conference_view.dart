@@ -59,9 +59,8 @@ class ConferenceView extends StatelessWidget {
                       children: [
                         Text(
                           appLocal.contratamePara,
-                          style: GoogleFonts.roboto(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
+                          style: DashboardLabel.h4.copyWith(
+                            
                             color: blancoText.withOpacity(0.5),
                           ),
                         ),

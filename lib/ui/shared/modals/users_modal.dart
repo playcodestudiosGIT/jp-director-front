@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/constant.dart';
 import 'package:jp_director/providers/all_cursos_provider.dart';
 import 'package:jp_director/providers/auth_provider.dart';
@@ -14,6 +13,7 @@ import '../../../generated/l10n.dart';
 import '../../../models/curso.dart';
 import '../../../models/usuario_model.dart';
 import '../labels/inputs_decorations.dart';
+import '../widgets/square_curso.dart';
 
 class UsersModal extends StatefulWidget {
   final Usuario? user;
@@ -92,7 +92,7 @@ class _UsersModalState extends State<UsersModal> {
                     icon: const Icon(
                       Icons.close,
                       color: Colors.red,
-                      size: 25,
+                      size: 16,
                     ))
               ],
             ),
@@ -353,7 +353,7 @@ class _UsersModalState extends State<UsersModal> {
                               ),
                             const SizedBox(height: 15),
                             ...destruct
-                                .map((e) => SquareModulo(
+                                .map((e) => SquareCurso(
                                       userId: widget.user!.uid,
                                       curso: e,
                                     ))
@@ -535,79 +535,4 @@ class _AddCursoModalState extends State<AddCursoModal> {
 
 // ..........................................................................................
 
-class SquareModulo extends StatefulWidget {
-  final Curso? curso;
-  final String userId;
-  const SquareModulo({
-    super.key,
-    this.curso,
-    required this.userId,
-  });
 
-  @override
-  State<SquareModulo> createState() => _SquareModuloState();
-}
-
-class _SquareModuloState extends State<SquareModulo> {
-  @override
-  Widget build(BuildContext context) {
-    final appLocal = AppLocalizations.of(context);
-    return Container(
-      margin: const EdgeInsets.all(8),
-      constraints: const BoxConstraints(maxWidth: 420),
-      padding: const EdgeInsets.all(8),
-      width: double.infinity,
-      height: 60,
-      child: Row(children: [
-        Icon(Icons.menu_book_outlined, color: Colors.white.withOpacity(0.3)),
-        const SizedBox(width: 10),
-        Text(
-          widget.curso!.nombre,
-          style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
-        ),
-        const Spacer(),
-        IconButton(
-            onPressed: () async {
-              final isOk = await showDialog(
-                  barrierDismissible: false,
-                  context: context,
-                  builder: (context) => AlertDialog(
-                        title: Text(appLocal.eliminarCurso),
-                        content: Text('${appLocal.seguroEliminarCurso} ${widget.curso!.nombre}'),
-                        actions: [
-                          CustomButton(
-                            text: appLocal.siBorrar,
-                            onPress: () async {
-                              await Provider.of<AllCursosProvider>(context, listen: false)
-                                  .deleteCursoToUser(userId: widget.userId, cursoId: widget.curso!.id);
-                              if (context.mounted) {
-                                Navigator.pop(context, true);
-                              }
-                            },
-                            width: 100,
-                            color: Colors.red.withOpacity(0.3),
-                          ),
-                          CustomButton(
-                            text: appLocal.cancelarBtn,
-                            onPress: () {
-                              Navigator.pop(context, false);
-                            },
-                            width: 100,
-                          )
-                        ],
-                      ));
-              if (isOk) {
-                if (context.mounted) Navigator.pop(context, true);
-              }
-            },
-            icon: const Center(
-              child: Icon(
-                Icons.delete,
-                color: Colors.red,
-                size: 20,
-              ),
-            ))
-      ]),
-    );
-  }
-}

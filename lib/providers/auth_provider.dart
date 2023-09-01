@@ -178,7 +178,7 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  Future updateProg({required String moduloId, required int marker, required bool isComplete}) async {
+  Future updateProg({required String moduloId, required int marker, bool? isComplete = false}) async {
     final data = {'moduloId': moduloId, 'marker': marker, 'isComplete': isComplete};
     try {
       final json = await JpApi.put('/usuarios/prog/${user!.uid}', data);

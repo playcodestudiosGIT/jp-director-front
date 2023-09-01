@@ -150,7 +150,7 @@
     "ingreseUnaPassValida": "Enter a valid password",
     "laContraDebe6Caracteres": "The password must have more than 6 characters",
     "passNoCoinciden": "Passwords do not match",
-    "registrarBtn": "TO REGISTER",
+    "registrarBtn": "REGISTER",
     "recuperarPass": "RECUPERAR TU CONTRASEÑA",
     "ingresaTuDirEmail": "Enter your email address",
     "recibirasInstruccionesPass": "You will receive an email with instructions to reset your password.",

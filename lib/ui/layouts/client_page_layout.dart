@@ -4,12 +4,12 @@ import 'package:jp_director/constant.dart';
 import 'package:jp_director/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 
-import 'package:jp_director/ui/shared/appbar_top.dart';
 import 'package:jp_director/ui/shared/menus/home_app_menu.dart';
 
 import '../../providers/all_cursos_provider.dart';
 import '../../providers/page_provider.dart';
 import '../../providers/sidebar_provider.dart';
+import '../shared/widgets/appbar_top.dart';
 
 class ClientPageLayout extends StatefulWidget {
   final Widget child;

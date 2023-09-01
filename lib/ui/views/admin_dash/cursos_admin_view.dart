@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import '../../../datatables/cursos_datasource.dart';
 import '../../../generated/l10n.dart';
 import '../../shared/labels/title_label.dart';
+import '../../shared/modals/new_module_dialog.dart';
 
 class CursosAdminView extends StatefulWidget {
   const CursosAdminView({super.key});
@@ -29,18 +30,22 @@ class _CursosAdminViewState extends State<CursosAdminView> {
   @override
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
+    final allCursosProvider = Provider.of<AllCursosProvider>(context);
     final cursos = Provider.of<AllCursosProvider>(context).allCursos;
     final size = MediaQuery.of(context).size;
     return Container(
-      padding: (size.width < 715) ? const EdgeInsets.only(top: 15, left: 15/2, right: 15 / 2) : const EdgeInsets.only(top: 15, left: 15/2, right: 15 / 2),
+      padding: (size.width < 715)
+          ? const EdgeInsets.only(top: 15, left: 15 / 2, right: 15 / 2)
+          : const EdgeInsets.only(top: 15, left: 15 / 2, right: 15 / 2),
       child: ListView(
         physics: const ClampingScrollPhysics(),
         children: [
           const SizedBox(height: 80),
           Padding(
-            padding: const EdgeInsets.only(left: 0.0),
-            child: TitleLabel(texto: appLocal.adminCursos,)
-          ),
+              padding: const EdgeInsets.only(left: 0.0),
+              child: TitleLabel(
+                texto: appLocal.adminCursos,
+              )),
           Theme(
             data: ThemeData.dark().copyWith(cardColor: bgColor),
             child: PaginatedDataTable(
@@ -52,6 +57,22 @@ class _CursosAdminViewState extends State<CursosAdminView> {
                 ),
                 DataColumn(
                   label: Text(appLocal.infoDeCurso, style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
+                ),
+                DataColumn(
+                  label: Row(
+                    children: [
+                      Text('MODULOS', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
+                      
+                    ],
+                  ),
+                ),
+                DataColumn(
+                  label: Row(
+                    children: [
+                      Text('TESTIMONIOS', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
+                      
+                    ],
+                  ),
                 ),
                 DataColumn(
                   label: Text(appLocal.acciones, style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
@@ -86,6 +107,7 @@ class _CursosAdminViewState extends State<CursosAdminView> {
                       Icon(
                         Icons.menu_book_outlined,
                         color: bgColor,
+                        size: 16,
                       ),
                     ],
                   ),

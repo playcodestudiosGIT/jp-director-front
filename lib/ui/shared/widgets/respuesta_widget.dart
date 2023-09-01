@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jp_director/constant.dart';
 
-import 'labels/dashboard_label.dart';
-import 'widgets/progress_ind.dart';
+import '../labels/dashboard_label.dart';
+import 'progress_ind.dart';
 
 class RespuestaWidget extends StatelessWidget {
   final String img;

@@ -123,7 +123,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                   Text(
                     '${authProvider.user!.nombre} ${authProvider.user!.apellido}',
                     textAlign: TextAlign.start,
-                    style: GoogleFonts.roboto(fontSize: 26, fontWeight: FontWeight.w900, color: blancoText),
+                    style: DashboardLabel.azulTextH2.copyWith(color: blancoText),
                   ),
                   const SizedBox(height: 8),
                   Row(
@@ -133,7 +133,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                       Text(
                         authProvider.user!.correo,
                         textAlign: TextAlign.start,
-                        style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w300, color: blancoText),
+                        style: DashboardLabel.paragraph,
                       ),
                     ],
                   ),
@@ -145,7 +145,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                       Text(
                         authProvider.user!.telf,
                         textAlign: TextAlign.start,
-                        style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w300, color: blancoText),
+                        style: DashboardLabel.paragraph,
                       ),
                     ],
                   ),

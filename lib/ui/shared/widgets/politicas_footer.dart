@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 
-import '../../constant.dart';
-import '../../generated/l10n.dart';
+import '../../../constant.dart';
+import '../../../generated/l10n.dart';
+
 
 class PoliticasFooter extends StatelessWidget {
   const PoliticasFooter({super.key});

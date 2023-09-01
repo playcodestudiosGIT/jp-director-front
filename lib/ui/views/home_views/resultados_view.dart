@@ -6,6 +6,7 @@ import 'package:photo_view/photo_view.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
+import '../../shared/labels/dashboard_label.dart';
 
 class ResultadosView extends StatelessWidget {
   final List listMiniPhotos = resultadosMini;
@@ -19,7 +20,8 @@ class ResultadosView extends StatelessWidget {
     final List<Widget> listResultWiget = [
       ...listMiniPhotos.map((image) {
         final i = listMiniPhotos.indexOf(image);
-        return SizedBox(
+        return Container(
+          margin: const EdgeInsets.symmetric(horizontal: 15),
             child: MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
@@ -31,6 +33,30 @@ class ResultadosView extends StatelessWidget {
     ];
 
     final wScreen = MediaQuery.of(context).size.width;
+
+    double viewport = 0.3;
+    if (wScreen < 1000) {
+      viewport = 0.4;
+    }
+    if (wScreen < 730) {
+      viewport = 0.5;
+    }
+    if (wScreen < 590) {
+      viewport = 0.6;
+    }
+    if (wScreen < 490) {
+      viewport = 0.7;
+    }
+    if (wScreen < 420) {
+      viewport = 0.8;
+    }
+    if (wScreen < 370) {
+      viewport = 0.9;
+    }
+    if (wScreen < 330) {
+      viewport = 1;
+    }
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Center(
@@ -43,12 +69,22 @@ class ResultadosView extends StatelessWidget {
                     margin: const EdgeInsets.symmetric(horizontal: 15),
                     child: Column(children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text(
-                          appLocal.miraloOjos,
-                          style: GoogleFonts.roboto(fontSize: (wScreen < 450) ? 18 : 24, fontWeight: FontWeight.w900, color: azulText),
-                        ),
-                      ),
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: Text(
+                    appLocal.miraloOjos,
+                    style: (wScreen > 580) ?DashboardLabel.gigant : DashboardLabel.h2.copyWith(fontWeight: FontWeight.bold)
+                  ),
+                ),
+                Container(
+                  width: (wScreen > 580) ? 548 : 400,
+                  height: 5,
+                  decoration: const BoxDecoration(
+                      gradient: LinearGradient(colors: [
+                    bgColor,
+                    azulText,
+                    bgColor,
+                  ])),
+                ),
                       const SizedBox(
                         height: 10,
                       ),
@@ -59,17 +95,15 @@ class ResultadosView extends StatelessWidget {
                           CarouselSlider(
                               items: listResultWiget,
                               options: CarouselOptions(
-
-                                height: 500,
-                                viewportFraction: (wScreen < 600) ? 0.7 : 0.5,
-                                enlargeFactor: 0.8,
-                                enlargeCenterPage: true,
-                                enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                                pageSnapping: false,
-                                initialPage: 0,
-                                enableInfiniteScroll: true,
-                                autoPlay: true
-                              )),
+                                  height: 300,
+                                  viewportFraction: viewport,
+                                  enlargeFactor: 0.4,
+                                  enlargeCenterPage: true,
+                                  enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                                  pageSnapping: false,
+                                  initialPage: 0,
+                                  enableInfiniteScroll: true,
+                                  autoPlay: true)),
                         ]),
                       ),
                       Center(
@@ -131,12 +165,12 @@ class _ContentDialogState extends State<ContentDialog> {
               children: [
                 ...resultados
                     .map((e) => Padding(
-                      padding: const EdgeInsets.only(bottom: 40.0),
-                      child: PhotoView(
-                          loadingBuilder: (context, event) => const ProgressInd(),
-                          backgroundDecoration: const BoxDecoration(color: Colors.transparent),
-                          imageProvider: NetworkImage(e)),
-                    ))
+                          padding: const EdgeInsets.only(bottom: 40.0),
+                          child: PhotoView(
+                              loadingBuilder: (context, event) => const ProgressInd(),
+                              backgroundDecoration: const BoxDecoration(color: Colors.transparent),
+                              imageProvider: NetworkImage(e)),
+                        ))
                     .toList()
               ],
             ),
@@ -191,7 +225,6 @@ class _ContentDialogState extends State<ContentDialog> {
                               setState(() {});
                             },
                             icon: const Icon(
-
                               Icons.arrow_circle_right_outlined,
                               size: 30,
                               color: azulText,

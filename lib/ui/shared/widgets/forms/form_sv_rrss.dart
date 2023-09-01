@@ -80,7 +80,7 @@ class _FormSVrrssState extends State<FormSVrrss> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(title, style: GoogleFonts.roboto(fontSize: (wScreen < 500) ? 30 : 40, fontWeight: FontWeight.w900, color: blancoText)),
+                  Text(title, style: (wScreen < 500) ? DashboardLabel.h1 : DashboardLabel.especialT2.copyWith(color: Colors.white)),
                   Container(
                     width: (wScreen < 500) ? 320 : 400,
                     height: 5,

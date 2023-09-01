@@ -47,12 +47,12 @@ class EncargadoView extends StatelessWidget {
                           ])),
                         ),
                         const SizedBox(
-                          height: 30,
+                          height: 25,
                         )
                       ],
                     ),
                     const SizedBox(
-                      width: 60,
+                      width: 30,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,20 +61,14 @@ class EncargadoView extends StatelessWidget {
                         Text(
                           appLocal.soyElResp,
                           textAlign: TextAlign.start,
-                          style: GoogleFonts.roboto(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w900,
-                            color: blancoText,
-                          ),
+                          style: DashboardLabel.h4
                         ),
                         const SizedBox(
-                          height: 10,
+                          height: 15,
                         ),
                         Text(
                           appLocal.estasEnElMomento,
-                          style: GoogleFonts.roboto(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
+                          style: DashboardLabel.h4.copyWith(
                             color: blancoText.withOpacity(0.5),
                           ),
                         ),
@@ -83,9 +77,7 @@ class EncargadoView extends StatelessWidget {
                         ),
                         Text(
                           appLocal.cuentaConmigo,
-                          style: GoogleFonts.roboto(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
+                          style: DashboardLabel.h4.copyWith(
                             color: blancoText.withOpacity(0.5),
                           ),
                         ),

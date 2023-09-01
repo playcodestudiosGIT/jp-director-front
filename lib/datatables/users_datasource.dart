@@ -51,7 +51,7 @@ class UsersDTS extends DataTableSource {
                 right: 0,
                 child: Icon(
                   Icons.edit_outlined,
-                  size: 15,
+                  size: 16,
                   color: bgColor,
                 )),
           ],
@@ -75,7 +75,7 @@ class UsersDTS extends DataTableSource {
                     children: [
                       Icon(
                         Icons.person_outline,
-                        size: 20,
+                        size: 16,
                         color: blancoText.withOpacity(0.5),
                       ),
                       const SizedBox(width: 8),
@@ -90,7 +90,7 @@ class UsersDTS extends DataTableSource {
                     children: [
                       Icon(
                         Icons.email_outlined,
-                        size: 20,
+                        size: 16,
                         color: blancoText.withOpacity(0.5),
                       ),
                       const SizedBox(width: 8),
@@ -102,7 +102,7 @@ class UsersDTS extends DataTableSource {
                     children: [
                       Icon(
                         Icons.phone_outlined,
-                        size: 20,
+                        size: 16,
                         color: blancoText.withOpacity(0.5),
                       ),
                       const SizedBox(width: 8),
@@ -158,7 +158,7 @@ class UsersDTS extends DataTableSource {
                 children: [
                   Row(
                     children: [
-                      Icon(FontAwesomeIcons.instagram, color: blancoText.withOpacity(0.5)),
+                      Icon(FontAwesomeIcons.instagram, color: blancoText.withOpacity(0.5), size: 20,),
                       const SizedBox(width: 10),
                       Text(user.instagram, style: DashboardLabel.paragraph),
                     ],
@@ -166,7 +166,7 @@ class UsersDTS extends DataTableSource {
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      Icon(FontAwesomeIcons.facebook, color: blancoText.withOpacity(0.5)),
+                      Icon(FontAwesomeIcons.facebook, color: blancoText.withOpacity(0.5), size: 20,),
                       const SizedBox(width: 10),
                       Text(user.facebook, style: DashboardLabel.paragraph),
                     ],
@@ -174,7 +174,7 @@ class UsersDTS extends DataTableSource {
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      Icon(FontAwesomeIcons.tiktok, color: blancoText.withOpacity(0.5)),
+                      Icon(FontAwesomeIcons.tiktok, color: blancoText.withOpacity(0.5), size: 20,),
                       const SizedBox(width: 10),
                       Text(user.tiktok, style: DashboardLabel.paragraph),
                     ],
@@ -213,6 +213,7 @@ class UsersDTS extends DataTableSource {
       DataCell(Row(
         children: [
           IconButton(
+            splashRadius: 16,
               onPressed: () async {
                 final isAct = await showModalBottomSheet(
                   isDismissible: false,
@@ -231,6 +232,7 @@ class UsersDTS extends DataTableSource {
                 color: azulText,
               )),
           IconButton(
+            splashRadius: 16,
               onPressed: () {
                 
               },
@@ -240,6 +242,7 @@ class UsersDTS extends DataTableSource {
                 color: blancoText,
               )),
           IconButton(
+            splashRadius: 16,
               onPressed: () {
                 final dialog = AlertDialog(
                   title: Text(appLocal.seguroBorrar),

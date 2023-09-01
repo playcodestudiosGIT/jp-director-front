@@ -45,36 +45,26 @@ class MentoriaView extends StatelessWidget {
                           ])),
                         ),
                         const SizedBox(
-                          height: 30,
+                          height: 25,
                         )
                       ],
                     ),
                     const SizedBox(
-                      width: 60,
+                      width: 30,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         FittedBox(
-                          child: Text(
-                            appLocal.inteligenteInv,
-                            textAlign: TextAlign.start,
-                            style: GoogleFonts.roboto(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w900,
-                              color: blancoText,
-                            ),
-                          ),
+                          child: Text(appLocal.inteligenteInv, textAlign: TextAlign.start, style: DashboardLabel.h4),
                         ),
                         const SizedBox(
-                          height: 30,
+                          height: 15,
                         ),
                         Text(
                           appLocal.tenerUnMentor,
-                          style: GoogleFonts.roboto(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
+                          style: DashboardLabel.h4.copyWith(
                             color: blancoText.withOpacity(0.5),
                           ),
                         ),
@@ -90,7 +80,6 @@ class MentoriaView extends StatelessWidget {
                   text: appLocal.masInformacionBtn,
                   onPressed: () => NavigatorService.navigateTo(Flurorouter.mentoriaRoute),
                 ),
-                
               ],
             ),
           )),

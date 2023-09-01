@@ -3,12 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/constant.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 
-class Testimonio extends StatelessWidget {
+class TestimonioWidget extends StatelessWidget {
   final String img;
   final String nombre;
   final String testimonio;
 
-  const Testimonio({
+  const TestimonioWidget({
     super.key,
     required this.img,
     required this.nombre,

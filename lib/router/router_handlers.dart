@@ -181,7 +181,7 @@ class UsersAuthHandlers {
 
   static Handler cursoID = Handler(handlerFunc: (context, params) {
     final cursoID = params['cursoID']!.first;
-    final videoIndex = params['videoIndex']!.first;
+    final videoIndex = params['videoIndex']?.first ?? '0';
 
     if (cursoID.isEmpty) return const DashMisCursosView();
 
@@ -240,7 +240,9 @@ class UsersAuthHandlers {
     if (authProvider.authStatus == AuthStatus.notAuthenticated) {
       return const LoginPage();
     } else {
+      Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
       Provider.of<AllCursosProvider>(context, listen: false).obtenerMisCursos(authProvider.user!);
+
       Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
       return const DashMisCursosView();
     }

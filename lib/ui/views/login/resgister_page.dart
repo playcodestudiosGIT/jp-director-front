@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:jp_director/ui/shared/widgets/politicas_footer.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
@@ -8,7 +8,6 @@ import '../../../providers/forms/register_form_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/labels/dashboard_label.dart';
-import '../../shared/politicas_footer.dart';
 import '../../shared/widgets/forms/register_form.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -75,7 +74,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   }, // Navigate to register page
                                   child: Text(
                                     appLocal.iniciaAqui,
-                                    style: GoogleFonts.roboto(fontSize: 14, color: azulText, fontWeight: FontWeight.w800),
+                                    style: DashboardLabel.botonText.copyWith(color: azulText),
                                   ),
                                 ),
                               ],
@@ -83,12 +82,16 @@ class _RegisterPageState extends State<RegisterPage> {
                             const SizedBox(
                               height: 30,
                             ),
+                            const PoliticasFooter(),
+                            const SizedBox(
+                              height: 100,
+                            ),
                           ],
                         ),
                       ],
                     ),
                   ),
-                  const PoliticasFooter()
+                  
                 ],
               ),
             ],

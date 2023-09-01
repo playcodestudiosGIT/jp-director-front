@@ -521,7 +521,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("RECUPERAR TU CONTRASEÑA"),
         "redesSociales":
             MessageLookupByLibrary.simpleMessage("Social Networks"),
-        "registrarBtn": MessageLookupByLibrary.simpleMessage("TO REGISTER"),
+        "registrarBtn": MessageLookupByLibrary.simpleMessage("REGISTER"),
         "registrateAqui": MessageLookupByLibrary.simpleMessage("sign up here"),
         "repitaContrasenaTextFiel":
             MessageLookupByLibrary.simpleMessage("Repeat password"),

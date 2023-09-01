@@ -93,20 +93,10 @@ class _UsersAdminViewState extends State<UsersAdminView> {
                   child: const Icon(
                     Icons.person_add,
                     color: bgColor,
+                    size: 16,
                   ),
                 ),
-                // ElevatedButton(
-                //   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.transparent)),
-                //   onPressed: () {
-                //     setState(() {
-                      
-                //     });
-                //   },
-                //   child: const Icon(
-                //     Icons.refresh,
-                //     color: azulText,
-                //   ),
-                // )
+       
               ],
             ),
           )

@@ -80,7 +80,7 @@ class _MentoriaBody extends StatelessWidget {
                     child: Text(
                       appLocal.queHablareEvento,
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.roboto(fontSize: 26, fontWeight: FontWeight.w900, color: azulText),
+                      style: DashboardLabel.azulTextH1
                     ),
                   ),
                   const SizedBox(
@@ -155,7 +155,7 @@ class _LetrasConferencias extends StatelessWidget {
       children: [
         Text(
           appLocal.conferencias,
-          style: GoogleFonts.roboto(fontSize: (wScreen < 600) ? 32 : 40, fontWeight: FontWeight.w900, color: blancoText),
+          style: (wScreen < 600) ? DashboardLabel.semiGigant : DashboardLabel.t1
         ),
         Container(
           width: 300,

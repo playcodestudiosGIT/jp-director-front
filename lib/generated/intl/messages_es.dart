@@ -348,8 +348,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "iniciaAqui":
             MessageLookupByLibrary.simpleMessage("Inicia sesión aquí"),
         "iniciaSesion": MessageLookupByLibrary.simpleMessage("INICIA SESIÓN"),
-        "iniciarSesionBtn":
-            MessageLookupByLibrary.simpleMessage("INICIAR SESIÓN"),
+        "iniciarSesionBtn": MessageLookupByLibrary.simpleMessage("ENTRAR"),
         "inicioMenuBtn": MessageLookupByLibrary.simpleMessage("Inicio"),
         "inteligenteInv":
             MessageLookupByLibrary.simpleMessage("INTELIGENTE INVERSIÓN"),

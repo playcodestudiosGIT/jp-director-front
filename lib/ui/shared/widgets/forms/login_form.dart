@@ -13,6 +13,7 @@ import '../../../../services/navigator_service.dart';
 import '../../../views/login/resgister_page.dart';
 import '../../botones/custom_login_button.dart';
 import '../../labels/dashboard_label.dart';
+import '../../labels/inputs_decorations.dart';
 
 class LoginForm extends StatefulWidget {
   final bool isBuying;
@@ -49,7 +50,7 @@ class _LoginFormState extends State<LoginForm> {
               children: [
                 Text(
                   appLocal.iniciaSesion,
-                  style: GoogleFonts.roboto(fontSize: 32, color: azulText, fontWeight: FontWeight.w800),
+                  style: DashboardLabel.azulTextGigant,
                 ),
                 const SizedBox(
                   height: 30,
@@ -61,7 +62,7 @@ class _LoginFormState extends State<LoginForm> {
                   validator: (value) => (EmailValidator.validate(value.toString())) ? null : appLocal.ingreseSuCorreo,
                   onChanged: (value) => loginFormProvider.setEmail(value),
                   style: DashboardLabel.paragraph,
-                  decoration: buildInputDecoration(icon: Icons.email, label: appLocal.correoTextFiel),
+                  decoration: InputDecor.formFieldInputDecoration(icon: Icons.email, label: appLocal.correoTextFiel),
                 ),
                 const SizedBox(
                   height: 15,
@@ -77,7 +78,7 @@ class _LoginFormState extends State<LoginForm> {
                   },
                   onChanged: (value) => loginFormProvider.setPassword(value),
                   style: DashboardLabel.paragraph,
-                  decoration: buildInputDecoration(icon: Icons.password, label: appLocal.contrasenaTextFiel, suffIcon: Icons.remove_red_eye_outlined, onPrs: () {}),
+                  decoration: InputDecor.formFieldInputDecoration(icon: Icons.password, label: appLocal.contrasenaTextFiel, suffIcon: Icons.remove_red_eye_outlined, onPrs: () {}),
                 ),
                 const SizedBox(
                   height: 10,
@@ -106,12 +107,12 @@ class _LoginFormState extends State<LoginForm> {
                             ? Icon(
                                 FontAwesomeIcons.eyeSlash,
                                 color: blancoText.withOpacity(0.4),
-                                size: 14,
+                                size: 16,
                               )
                             : const Icon(
                                 FontAwesomeIcons.eye,
                                 color: blancoText,
-                                size: 14,
+                                size: 16,
                               )),
                   ],
                 ),
@@ -203,19 +204,3 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 }
-
-InputDecoration buildInputDecoration({required String label, required IconData icon, IconData? suffIcon, Function? onPrs}) => InputDecoration(
-    fillColor: blancoText.withOpacity(0.03),
-    filled: true,
-    border: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    focusedBorder: const OutlineInputBorder(
-      borderSide: BorderSide(color: azulText),
-    ),
-    
-    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: azulText.withOpacity(0.3))),
-    labelText: label,
-    labelStyle: DashboardLabel.h4,
-    prefixIcon: Icon(icon, color: azulText.withOpacity(0.3)),
-    suffixIconColor: azulText.withOpacity(0.3));

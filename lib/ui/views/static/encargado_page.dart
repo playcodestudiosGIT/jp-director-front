@@ -166,7 +166,7 @@ class _LetrasAsesoria extends StatelessWidget {
       children: [
         Text(
           appLocal.serElEncargado,
-          style: GoogleFonts.roboto(fontSize: (wScreen < 600) ? 26 : 32, fontWeight: FontWeight.w900, color: blancoText),
+          style: (wScreen < 600)?DashboardLabel.h2: DashboardLabel.semiGigant,
         ),
         Container(
           width: 320,
@@ -216,7 +216,7 @@ class _LetrasAsesoria extends StatelessWidget {
         ),
         Text(
           appLocal.como,
-          style: GoogleFonts.roboto(fontSize: 36, fontWeight: FontWeight.w900, color: azulText),
+          style: DashboardLabel.azulTextGigant,
         ),
         GestureDetector(
           onTap: () {},

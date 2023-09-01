@@ -30,7 +30,8 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
     final wSize = MediaQuery.of(context).size.width;
-    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    final authProvider = Provider.of<AuthProvider>(context);
+    Provider.of<AllCursosProvider>(context, listen: false).obtenerMisCursos(authProvider.user!);
     List<Widget> cursoDestruct = [];
     for (var curso in Provider.of<AllCursosProvider>(context).allCursos) {
       if (!authProvider.user!.cursos.contains(curso.id)) {

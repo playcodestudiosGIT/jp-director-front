@@ -80,7 +80,7 @@ class _FormSVknowState extends State<FormSVknow> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(title, style: GoogleFonts.roboto(fontSize: (wScreen < 500) ? 30 : 40, fontWeight: FontWeight.w900, color: blancoText)),
+                  Text(title, style: (wScreen < 500) ? DashboardLabel.h1 : DashboardLabel.especialT2.copyWith(color: Colors.white)),
                   Container(
                     width: 400,
                     height: 5,

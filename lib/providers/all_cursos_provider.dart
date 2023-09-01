@@ -21,6 +21,8 @@ class AllCursosProvider extends ChangeNotifier {
   Curso _curso = cursoDummy;
   Curso _cursoView = cursoDummy;
 
+  Certificado _newCert = certDummy;
+
   String _nombreCursoModal = '';
   String _precioCursoModal = '';
   String _descripcionCursoModal = '';
@@ -31,6 +33,13 @@ class AllCursosProvider extends ChangeNotifier {
   bool _publicadoCursoModal = true;
 
   // --------------------------------- //
+  Certificado get newCert => _newCert;
+
+  set newCert(Certificado value) {
+    _newCert = value;
+    notifyListeners();
+  }
+
   bool get publicadoCursoModal => _publicadoCursoModal;
 
   set publicadoCursoModal(bool value) {
@@ -313,7 +322,6 @@ class AllCursosProvider extends ChangeNotifier {
 
     // Petición HTTP
     await JpApi.post('/modulos', data).then((json) {
-      // getAllCursos();
       notifyListeners();
       NotifServ.showSnackbarError('Modulo agregado con exito', Colors.green);
     }).catchError((e) {
@@ -411,16 +419,82 @@ class AllCursosProvider extends ChangeNotifier {
     }
   }
 
-  Future<Certificado> generarCert({required String userId, required String cursoId}) async {
+  Future generarCert({required String userId, required String cursoId}) async {
     final data = {"userId": userId, "cursoId": cursoId};
 
     try {
       final res = await JpApi.post('/uploads/certificados/gen', data);
-
-      return Certificado.fromJson(res["cert"]);
+      _newCert = Certificado.fromJson(res["cert"]);
+      notifyListeners();
     } catch (e) {
-      return Certificado(
-          id: 'id', urlPdf: 'urlPdf', cursoId: 'cursoId', usuarioId: 'usuarioId', createdAt: DateTime.now(), updatedAt: DateTime.now());
+      return;
+    }
+  }
+
+  Future createTestimonio({
+    required String nombre,
+    required String img,
+    required String testimonio,
+    required String curso,
+  }) async {
+    final data = {
+      "nombre": nombre,
+      "img": img,
+      "testimonio": testimonio,
+      "cursoId": curso,
+    };
+
+    print(data);
+
+    // Petición HTTP
+    await JpApi.post('/cursos/add/testimonio/$curso', data).then((json) {
+      print(json);
+      notifyListeners();
+      NotifServ.showSnackbarError('Testimonio agregado con exito', Colors.green);
+    }).catchError((e) {
+      print(e);
+      NotifServ.showSnackbarError('Error agregado testimonio', Colors.red);
+    });
+  }
+
+  Future updateTestimonio({
+    required String id,
+    required String nombre,
+    required String img,
+    required String testimonio,
+    required String curso,
+  }) async {
+    final data = {
+      "nombre": nombre,
+      "img": img,
+      "testimonio": testimonio,
+      "cursoId": curso,
+    };
+
+    try {
+      await JpApi.put('/cursos/testimonio/$id', data);
+
+      notifyListeners();
+      NotifServ.showSnackbarError('Testimonio Actualizado con exito', Colors.green);
+    } catch (e) {
+      NotifServ.showSnackbarError('Error actualizando testimonio', Colors.red);
+      // throw Exception('Error Actualizando modulo.');
+    }
+  }
+
+  Future deleteTestimonio(String id) async {
+    try {
+      await JpApi.delete('/cursos/testimonio/$id', {});
+
+      // await getCursoModal(id);
+
+      _cursoModal.testimonios.removeWhere((element) => element.id == id);
+      getAllCursos();
+      notifyListeners();
+      NotifServ.showSnackbarError('Testimonio borrado con exito', Colors.green);
+      return true;
+    } catch (e) {
+      NotifServ.showSnackbarError('Error borrando testimonio', Colors.red);
     }
   }
 }

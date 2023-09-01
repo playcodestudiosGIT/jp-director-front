@@ -1,6 +1,8 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:jp_director/models/certificado.dart';
 import 'package:jp_director/providers/auth_provider.dart';
 import 'package:jp_director/ui/shared/labels/inputs_decorations.dart';
@@ -22,7 +24,8 @@ import '../../cards/white_card.dart';
 import '../../shared/botones/boton_icon_redondo.dart';
 import '../../shared/botones/custom_button.dart';
 import '../../shared/labels/dashboard_label.dart';
-import '../../shared/respuesta_widget.dart';
+import '../../shared/widgets/gen_cert_dialog.dart';
+import '../../shared/widgets/respuesta_widget.dart';
 
 class CourseView extends StatefulWidget {
   final int videoIndex;
@@ -42,7 +45,14 @@ class _CourseViewState extends State<CourseView> {
   late VideoPlayerController videoPlayerController;
   late ChewieController chewieController;
   late Progress prog;
-  bool isLoading = true;
+  late double percent;
+  final ids = [];
+  final List<Progress> progresses = [];
+
+  bool isComplete = false;
+  bool isCien = false;
+
+  bool isLoading = false;
 
   int videotime = 0;
 
@@ -51,45 +61,57 @@ class _CourseViewState extends State<CourseView> {
     curso = Provider.of<AllCursosProvider>(context, listen: false).cursoView;
     final user = Provider.of<AuthProvider>(context, listen: false).user;
     prog = user!.progress.where((element) => element.moduloId == curso.modulos[widget.videoIndex].id).first;
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+
+    for (var i in curso.modulos) {
+      ids.add(i.id);
+    }
+
+    for (var i in ids) {
+      progresses.add(authProvider.user!.progress.where((element) => element.moduloId == i).first);
+    }
+
+    final total = progresses.length;
+    final pont = progresses.where((element) => element.isComplete).length;
+    percent = pont / total * 100;
     Provider.of<AuthProvider>(context, listen: false).isAutenticated();
     final Uri url = Uri.parse(curso.modulos[widget.videoIndex].video);
     videoPlayerController = VideoPlayerController.networkUrl(url,
-        videoPlayerOptions: VideoPlayerOptions(webOptions: const VideoPlayerWebOptions(allowContextMenu: false, allowRemotePlayback: true)))
-      ..initialize().then((_) {
-        isLoading = false;
-        setState(() {});
-      });
+        videoPlayerOptions: VideoPlayerOptions(webOptions: const VideoPlayerWebOptions(allowContextMenu: false, allowRemotePlayback: true)));
+    if (percent == 100) isComplete = true;
     chewieController = ChewieController(
-      startAt: Duration(seconds: prog.marker),
-      placeholder: Container(decoration: const BoxDecoration(image: DecorationImage(image: logoGrande))),
-      hideControlsTimer: const Duration(milliseconds: 1000),
-      materialProgressColors: ChewieProgressColors(bufferedColor: azulText.withOpacity(0.3), playedColor: azulText, backgroundColor: bgColor),
-      cupertinoProgressColors: ChewieProgressColors(bufferedColor: bgColor, backgroundColor: bgColor),
-      videoPlayerController: videoPlayerController,
-      autoPlay: false,
-      looping: false,
-      aspectRatio: 16 / 9,
-    );
+        startAt: Duration(seconds: prog.marker),
+        placeholder: Container(decoration: const BoxDecoration(image: DecorationImage(image: logoGrande))),
+        hideControlsTimer: const Duration(milliseconds: 1000),
+        materialProgressColors: ChewieProgressColors(bufferedColor: azulText.withOpacity(0.3), playedColor: azulText, backgroundColor: bgColor),
+        cupertinoProgressColors: ChewieProgressColors(bufferedColor: bgColor, backgroundColor: bgColor),
+        videoPlayerController: videoPlayerController,
+        autoPlay: false,
+        looping: false,
+        aspectRatio: 16 / 9,
+        autoInitialize: true);
 
     videoPlayerController.addListener(() async {
-      if (videotime > videoPlayerController.value.duration.inSeconds - 15) {
-        videotime = 0;
-        int index = widget.videoIndex;
-        if (index >= widget.cursoTmp.modulos.length - 1) {
-          index = 0;
-        } else {
-          index++;
-        }
-      }
-      if (videotime == videoPlayerController.value.duration.inSeconds && !prog.isComplete) {
-        await Provider.of<AuthProvider>(context, listen: false).updateProg(moduloId: prog.moduloId, marker: videotime, isComplete: true);
-      }
-      if (videotime == prog.marker + 15) {
-        if (context.mounted) {
-          await Provider.of<AuthProvider>(context, listen: false).updateProg(moduloId: prog.moduloId, marker: videotime, isComplete: prog.isComplete);
-        }
+      if (videotime == videoPlayerController.value.duration.inSeconds && prog.isComplete == false) {
+        Provider.of<AuthProvider>(context, listen: false).updateProg(moduloId: curso.modulos[widget.videoIndex].id, marker: 0, isComplete: true);
       }
     });
+
+    videoPlayerController.addListener(() async {
+      if (videotime == prog.marker + 30) {
+        Provider.of<AuthProvider>(context, listen: false).updateProg(moduloId: prog.moduloId, marker: videotime - 1, isComplete: prog.isComplete);
+        prog.marker = videotime;
+      }
+    });
+
+    videoPlayerController.addListener(() async {
+      if (isComplete) {
+        isComplete = false;
+
+        return showDialog(context: context, builder: (context) => CongratDialog(cursoNombre: curso.nombre));
+      }
+    });
+
     super.initState();
   }
 
@@ -102,38 +124,21 @@ class _CourseViewState extends State<CourseView> {
 
   @override
   Widget build(BuildContext context) {
+    curso = Provider.of<AllCursosProvider>(context).cursoView;
     final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
     final hScreen = MediaQuery.of(context).size.height;
+    final authProvider = Provider.of<AuthProvider>(context);
+    final Certificado cert = authProvider.user!.certificados.firstWhere(
+      (element) => element.cursoId == curso.id,
+      orElse: () => certDummy,
+    );
+    final modulos = curso.modulos.where((m) => m.estado).toList();
     videoPlayerController.addListener(() {
       setState(() {
         videotime = videoPlayerController.value.position.inSeconds;
       });
     });
-    final authProvider = Provider.of<AuthProvider>(context);
-    final ids = [];
-    final List<Progress> progresses = [];
-
-    for (var i in curso.modulos) {
-      ids.add(i.id);
-    }
-
-    for (var i in ids) {
-      progresses.add(authProvider.user!.progress.where((element) => element.moduloId == i).first);
-    }
-
-    final total = progresses.length;
-    final pont = progresses.where((element) => element.isComplete).length;
-
-    final percent = pont / total * 100;
-
-    final Certificado cert = authProvider.user!.certificados.firstWhere(
-      (element) => element.cursoId == curso.id,
-      orElse: () => certDummy,
-    );
-
-    final modulos = curso.modulos.where((m) => m.estado).toList();
-
     return (curso.nombre == '')
         ? const ProgressInd()
         : Scaffold(
@@ -164,6 +169,7 @@ class _CourseViewState extends State<CourseView> {
                               icon: const Icon(
                                 Icons.arrow_back,
                                 color: blancoText,
+                                size: 16,
                               )),
                           const SizedBox(width: 10),
                           Text(
@@ -179,122 +185,14 @@ class _CourseViewState extends State<CourseView> {
                                 TextButton(
                                     style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
                                     onPressed: () async {
-                                      final dialog = AlertDialog(
-                                          backgroundColor: Colors.transparent,
-                                          content: FutureBuilder(
-                                            future: Provider.of<AllCursosProvider>(context, listen: false)
-                                                .generarCert(userId: authProvider.user!.uid, cursoId: curso.id),
-                                            builder: (context, snapshot) {
-                                              late final Certificado? newCert;
-
-                                              if (snapshot.hasData) {
-                                                newCert = snapshot.data;
-                                              }
-                                              if (snapshot.connectionState == ConnectionState.waiting) {
-                                                return Column(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                                  children: [
-                                                    const ProgressInd(),
-                                                    const SizedBox(height: 10),
-                                                    Text(
-                                                      appLocal.generandoCert,
-                                                      style: DashboardLabel.h3,
-                                                    )
-                                                  ],
-                                                );
-                                              } else {
-                                                return Container(
-                                                  padding: const EdgeInsets.all(5),
-                                                  color: bgColor,
-                                                  width: double.infinity,
-                                                  height: double.infinity,
-                                                  constraints: const BoxConstraints(maxWidth: 300, maxHeight: 350),
-                                                  child: Center(
-                                                    child: Stack(
-                                                      alignment: Alignment.topCenter,
-                                                      children: [
-                                                        Column(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                                          children: [
-                                                            Row(
-                                                              mainAxisAlignment: MainAxisAlignment.end,
-                                                              children: [
-                                                                MouseRegion(
-                                                                  cursor: SystemMouseCursors.click,
-                                                                  child: GestureDetector(
-                                                                      onTap: () {
-                                                                        Navigator.pop(context, true);
-                                                                      },
-                                                                      child: const CircleAvatar(
-                                                                        backgroundColor: Colors.red,
-                                                                        radius: 15,
-                                                                        child: Center(
-                                                                            child: Icon(
-                                                                          Icons.clear,
-                                                                          color: blancoText,
-                                                                        )),
-                                                                      )),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            const Icon(
-                                                              Icons.check_circle_outline_outlined,
-                                                              color: Colors.green,
-                                                              size: 200,
-                                                            ),
-                                                            SizedBox(
-                                                              width: 280,
-                                                              child: Text(
-                                                                appLocal.felicidadesCert,
-                                                                textAlign: TextAlign.center,
-                                                                style: DashboardLabel.h4,
-                                                              ),
-                                                            ),
-                                                            const SizedBox(
-                                                              height: 15,
-                                                            ),
-                                                            Row(
-                                                              crossAxisAlignment: CrossAxisAlignment.end,
-                                                              mainAxisAlignment: MainAxisAlignment.end,
-                                                              children: [
-                                                                TextButton.icon(
-                                                                  style: ButtonStyle(
-                                                                      backgroundColor: MaterialStatePropertyAll(azulText.withOpacity(0.1))),
-                                                                  onPressed: () {
-                                                                    final Uri url = Uri.parse(newCert!.urlPdf);
-                                                                    launchUrl(url);
-                                                                  },
-                                                                  icon: const Icon(
-                                                                    Icons.remove_red_eye,
-                                                                    color: azulText,
-                                                                  ),
-                                                                  label: Text(
-                                                                    appLocal.ver,
-                                                                    style: DashboardLabel.h4.copyWith(color: azulText),
-                                                                  ),
-                                                                ),
-                                                                const SizedBox(
-                                                                  width: 10,
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                );
-                                              }
-                                            },
-                                          ));
-
-                                      await showDialog(context: context, builder: (context) => dialog);
+                                      await showDialog(context: context, builder: (context) => const GenCertDialog());
                                       authProvider.isAutenticated();
                                     },
                                     child: (wScreen < 500)
-                                        ? const Icon(Icons.workspace_premium_outlined)
+                                        ? const Icon(
+                                            Icons.workspace_premium_outlined,
+                                            size: 16,
+                                          )
                                         : Text(
                                             appLocal.certificadoBtn,
                                             style: DashboardLabel.paragraph.copyWith(color: azulText),
@@ -308,7 +206,7 @@ class _CourseViewState extends State<CourseView> {
                                         launchUrl(url);
                                       },
                                       child: Text(
-                                        appLocal.verCertificadoBtn,
+                                        appLocal.certificadoBtn,
                                         style: DashboardLabel.paragraph.copyWith(color: azulText),
                                       )),
                                 if (wScreen < 400)
@@ -357,7 +255,7 @@ class _CourseViewState extends State<CourseView> {
                                     width: (wScreen < 325) ? 20 : 30,
                                     height: (wScreen < 325) ? 20 : 30,
                                     child: CircularProgressIndicator(
-                                      value: pont / total,
+                                      value: percent,
 
                                       color: (percent == 100.0) ? Colors.green : azulText,
                                       backgroundColor: Colors.white.withOpacity(0.3),
@@ -463,8 +361,8 @@ class _CourseViewState extends State<CourseView> {
                                                           width: 35,
                                                           height: 35,
                                                           child: Checkbox(
-                                                            fillColor: MaterialStateProperty.all(azulText),
-                                                            checkColor: bgColor,
+                                                            fillColor: MaterialStateProperty.all(azulText.withOpacity(0.1)),
+                                                            checkColor: azulText,
                                                             value: prog.isComplete,
                                                             onChanged: (value) async {
                                                               await Provider.of<AuthProvider>(context, listen: false)
@@ -579,11 +477,11 @@ class _CourseViewState extends State<CourseView> {
                                                 ListTile(
                                                   minLeadingWidth: 20,
                                                   leading: SizedBox(
-                                                      width: 35,
-                                                      height: 35,
+                                                      width: 50,
+                                                      height: 50,
                                                       child: Checkbox(
-                                                        fillColor: MaterialStateProperty.all(azulText),
-                                                        checkColor: bgColor,
+                                                        fillColor: MaterialStateProperty.all(azulText.withOpacity(0.1)),
+                                                        checkColor: azulText,
                                                         value: prog.isComplete,
                                                         onChanged: (value) async {
                                                           await Provider.of<AuthProvider>(context, listen: false)
@@ -819,7 +717,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
           ),
         ),
         Positioned(
-            bottom: 0,
+            bottom: 40,
             child: Container(
               color: bgColor,
               width: 250,
@@ -885,8 +783,6 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
       ],
     );
   }
-
-  
 }
 
 class DialogResp extends StatefulWidget {
@@ -942,6 +838,76 @@ class _DialogRespState extends State<DialogResp> {
               ),
             ],
           )
+        ],
+      ),
+    );
+  }
+}
+
+class CongratDialog extends StatelessWidget {
+  final String cursoNombre;
+  const CongratDialog({super.key, required this.cursoNombre});
+
+  @override
+  Widget build(BuildContext context) {
+    final wSize = MediaQuery.of(context).size.width;
+    final hSize = MediaQuery.of(context).size.height;
+    return AlertDialog(
+      backgroundColor: Colors.transparent,
+      content: Stack(
+        children: [
+          Positioned(
+              top: 30,
+              right: 0,
+              child: FadeInDown(
+                  child: Container(
+                width: 110,
+                height: 50,
+                decoration: BoxDecoration(border: Border.all(color: azulText)),
+              ))),
+          SizedBox(
+            width: wSize,
+            height: hSize,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Icon(
+                    FontAwesomeIcons.trophy,
+                    size: 40,
+                    color: Colors.amber,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    'Felicidades por terminar tu curso.',
+                    style: DashboardLabel.h4,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    cursoNombre,
+                    style: DashboardLabel.h2,
+                  ),
+                  const SizedBox(height: 15),
+                  Text(
+                    'Puedes ver tu certificado en el boton de arriba',
+                    style: DashboardLabel.mini,
+                  ),
+                  const SizedBox(height: 30),
+                  CustomButton(
+                      text: 'OK',
+                      onPress: () {
+                        Navigator.pop(context, true);
+                      },
+                      width: 100)
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

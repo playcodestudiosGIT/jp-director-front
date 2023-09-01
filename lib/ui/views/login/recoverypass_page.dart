@@ -1,6 +1,5 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:jp_director/ui/shared/politicas_footer.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
@@ -9,6 +8,7 @@ import '../../../services/navigator_service.dart';
 import '../../shared/botones/custom_button.dart';
 import '../../shared/labels/dashboard_label.dart';
 import '../../shared/labels/inputs_decorations.dart';
+import '../../shared/widgets/politicas_footer.dart';
 import 'login_page.dart';
 
 class RecoverypassPage extends StatefulWidget {

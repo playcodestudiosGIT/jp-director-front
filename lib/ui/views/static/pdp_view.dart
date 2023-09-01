@@ -67,11 +67,11 @@ class PdpView extends StatelessWidget {
                           const SizedBox(height: 90),
                           Text(
                             appLocal.politicaDePrivacidad,
-                            style: GoogleFonts.roboto(fontSize: 24, fontWeight: FontWeight.w700, color: azulText),
+                            style: DashboardLabel.azulTextH2
                           ),
                           Text(
                             appLocal.actualizacionTyC,
-                            style: GoogleFonts.roboto(fontSize: 10, fontWeight: FontWeight.w400, color: const Color(0XFFFFFFFF).withOpacity(0.6)),
+                            style: DashboardLabel.mini.copyWith(fontSize: 10, fontWeight: FontWeight.w400, color: const Color(0XFFFFFFFF).withOpacity(0.6)),
                           ),
                           const SizedBox(
                             height: 20,

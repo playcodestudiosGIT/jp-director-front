@@ -78,7 +78,7 @@ class LetrasAsesoria extends StatelessWidget {
         children: [
           Text(
             '${appLocal.nuevoCurso}: ${curso.nombre}',
-            style: GoogleFonts.roboto(fontSize: (wScreen < 500) ? 30 : 40, fontWeight: FontWeight.w900, color: blancoText),
+            style: (wScreen < 500) ?DashboardLabel.semiGigant : DashboardLabel.t1,
           ),
           Container(
             width: 400,
@@ -211,7 +211,7 @@ class ButtomRrss extends StatelessWidget {
               ),
               Text(
                 text,
-                style: GoogleFonts.roboto(fontSize: 16, color: blancoText, fontWeight: FontWeight.w700),
+                style: DashboardLabel.paragraph,
               )
             ],
           ),

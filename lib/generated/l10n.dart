@@ -1560,10 +1560,10 @@ class AppLocalizations {
     );
   }
 
-  /// `TO REGISTER`
+  /// `REGISTER`
   String get registrarBtn {
     return Intl.message(
-      'TO REGISTER',
+      'REGISTER',
       name: 'registrarBtn',
       desc: '',
       args: [],

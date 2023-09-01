@@ -1,10 +1,8 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/services/notificacion_service.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:jp_director/ui/shared/labels/inputs_decorations.dart';
-import 'package:jp_director/ui/shared/politicas_footer.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
@@ -13,6 +11,7 @@ import '../../../providers/auth_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/botones/custom_button.dart';
+import '../../shared/widgets/politicas_footer.dart';
 
 class ResetPass extends StatefulWidget {
   const ResetPass({super.key});
@@ -28,7 +27,6 @@ class _ResetPassState extends State<ResetPass> {
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
-    final hScreen = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -40,8 +38,6 @@ class _ResetPassState extends State<ResetPass> {
             alignment: Alignment.center,
             children: [
               SizedBox(
-                width: wScreen,
-                height: hScreen,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +45,6 @@ class _ResetPassState extends State<ResetPass> {
                     const SizedBox(
                       height: 100,
                     ),
-                    const Spacer(),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -89,10 +84,7 @@ class _ResetPassState extends State<ResetPass> {
                                         Column(
                                           children: [
                                             if (wScreen <= 980) const SizedBox(width: 200, child: Image(image: logoGrande)),
-                                            Text(
-                                              appLocal.recuperarPass,
-                                              style: GoogleFonts.roboto(fontSize: 32, color: azulText, fontWeight: FontWeight.w800),
-                                            ),
+                                            Text(appLocal.recuperarPass, style: DashboardLabel.azulTextGigant),
                                             const SizedBox(height: 30),
                                             Text(
                                               appLocal.ingresaTuDirEmail,
@@ -105,7 +97,8 @@ class _ResetPassState extends State<ResetPass> {
                                               cursorColor: azulText,
                                               validator: (value) => (EmailValidator.validate(value.toString())) ? null : appLocal.ingreseSuCorreo,
                                               style: DashboardLabel.h4,
-                                              decoration: InputDecor.formFieldInputDecoration(label: appLocal.correoTextFiel, icon: Icons.email_outlined),
+                                              decoration:
+                                                  InputDecor.formFieldInputDecoration(label: appLocal.correoTextFiel, icon: Icons.email_outlined),
                                               onChanged: (value) => email = value,
                                             ),
                                             const SizedBox(
@@ -164,12 +157,14 @@ class _ResetPassState extends State<ResetPass> {
                             const SizedBox(
                               height: 30,
                             ),
+                            const PoliticasFooter(),
+                            const SizedBox(
+                              height: 100,
+                            ),
                           ],
                         ),
                       ],
                     ),
-                    const Spacer(),
-                    const PoliticasFooter()
                   ],
                 ),
               ),

@@ -54,7 +54,7 @@ class FormsDTS extends DataTableSource {
               Text('${appLocal.correoTextFiel}:  ', style: DashboardLabel.paragraph.copyWith(color: blancoText.withOpacity(0.5))),
               Text(form.email),
               const Spacer(),
-              Icon(Icons.copy, size: 15, color: blancoText.withOpacity(0.5),)
+              Icon(Icons.copy, size: 16, color: blancoText.withOpacity(0.5),)
             ],
           ),
           const Divider(),
@@ -119,7 +119,7 @@ class FormsDTS extends DataTableSource {
           const SizedBox(height: 8),
           Row(
             children: [
-              Icon(FontAwesomeIcons.facebook, color: blancoText.withOpacity(0.5),),
+              Icon(FontAwesomeIcons.facebook, color: blancoText.withOpacity(0.5), size: 20,),
               const SizedBox(width: 15), 
               Text(form.facebookurl),
             ],
@@ -127,7 +127,7 @@ class FormsDTS extends DataTableSource {
           const Divider(),
           Row(
             children: [
-              Icon(FontAwesomeIcons.instagram, color: blancoText.withOpacity(0.5),),
+              Icon(FontAwesomeIcons.instagram, color: blancoText.withOpacity(0.5), size: 20,),
               const SizedBox(width: 15), 
               Text(form.instagramurl),
             ],
@@ -135,7 +135,7 @@ class FormsDTS extends DataTableSource {
           const Divider(),
           Row(
             children: [
-              Icon(FontAwesomeIcons.tiktok, color: blancoText.withOpacity(0.5),),
+              Icon(FontAwesomeIcons.tiktok, color: blancoText.withOpacity(0.5), size: 20,),
               const SizedBox(width: 15), 
               Text(form.tiktokurl),
             ],

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../constant.dart';
-import '../../services/navigator_service.dart';
+import '../../../constant.dart';
+import '../../../services/navigator_service.dart';
+
 
 class TopAreaBack extends StatelessWidget {
   const TopAreaBack({super.key});
@@ -26,7 +27,7 @@ class TopAreaBack extends StatelessWidget {
               icon: const Icon(
                 Icons.arrow_back,
                 color: azulText,
-                size: 30,
+                size: 16,
               )),
         ),
       ],

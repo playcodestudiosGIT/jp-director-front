@@ -15,9 +15,8 @@ class CursoImagen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final wScreen = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: GestureDetector(
         onTap: () {
           NavigatorService.navigateTo('${Flurorouter.cursoLanding}/${curso.id}');
@@ -28,10 +27,10 @@ class CursoImagen extends StatelessWidget {
               decoration: buildBoxDecoration(),
               child: Stack(
                 children: [
-                  Image(width: (wScreen < 580) ? 180 : 250, image: NetworkImage(curso.img)),
+                  Image(width:250, image: NetworkImage(curso.img)),
                   Container(
-                    width: (wScreen < 580) ? 180 : 250,
-                    height: (wScreen < 580) ? 180 : 250,
+                    width:250,
+                    height:250,
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
                             colors: [Colors.transparent, bgColor.withOpacity(1)],

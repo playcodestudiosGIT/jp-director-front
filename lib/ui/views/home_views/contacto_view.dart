@@ -1,12 +1,12 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:jp_director/providers/leads_provider.dart';
 import 'package:jp_director/ui/shared/botones/custom_button.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:jp_director/ui/shared/labels/inputs_decorations.dart';
-import 'package:jp_director/ui/shared/logotop.dart';
+
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -14,6 +14,7 @@ import '../../../constant.dart';
 import '../../../generated/l10n.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
+import '../../shared/widgets/logotop.dart';
 
 class ContactoView extends StatelessWidget {
   const ContactoView({super.key});
@@ -49,7 +50,7 @@ class ContactoView extends StatelessWidget {
                       children: [
                         Text(
                           '@jpdirector - Jorge Pérez',
-                          style: GoogleFonts.roboto(fontSize: 24, fontWeight: FontWeight.w700, color: azulText),
+                          style: DashboardLabel.azulTextH1
                         ),
                         const SizedBox(
                           height: 20,
@@ -74,7 +75,7 @@ class ContactoView extends StatelessWidget {
                                 child: TextButton(
                                   child: Text(
                                     appLocal.descargaRegaloBtn,
-                                    style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w700, color: blancoText),
+                                    style: DashboardLabel.paragraph,
                                   ),
                                   onPressed: () {
                                     showDialog(
@@ -320,7 +321,7 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                                 return null;
                               },
                               style: DashboardLabel.h4,
-                              decoration: InputDecor.formFieldInputDecoration(icon: Icons.email, label: telf),
+                              decoration: InputDecor.formFieldInputDecoration(icon: Icons.phone, label: telf),
                               onChanged: (value) {
                                 telf = value;
                               }),
@@ -337,7 +338,7 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                           width: 270,
                           child: Text(
                             appLocal.alHacerClickHeLeido,
-                            style: GoogleFonts.roboto(color: Colors.white.withOpacity(0.5), fontSize: 10),
+                            style: DashboardLabel.mini,
                           ),
                         ),
                       ],
