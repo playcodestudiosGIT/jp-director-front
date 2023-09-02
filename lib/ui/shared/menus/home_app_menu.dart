@@ -39,7 +39,7 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
     final hScreen = MediaQuery.of(context).size.height;
     final authProvider = Provider.of<AuthProvider>(context);
     final sideBarProvider = Provider.of<SideBarProvider>(context);
-    final double hMenu = (authProvider.user!.rol == 'ADMIN_ROLE') ? 505 : 300;
+    final double hMenu = (authProvider.user?.rol == 'ADMIN_ROLE') ? 505 : 300;
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -58,7 +58,6 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
               ? Stack(
                   alignment: Alignment.topRight,
                   children: [
-                    
                     if (isOpen)
                       MouseRegion(cursor: SystemMouseCursors.noDrop, child: Container(width: wScreen, height: hScreen, color: Colors.transparent)),
                     Container(

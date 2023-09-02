@@ -9,7 +9,8 @@ class JpApi {
 
   static void configureDio() {
     //base Url
-    _dio.options.baseUrl = 'https://www.jpdirector.net/api';
+    _dio.options.baseUrl = 
+    'https://www.jpdirector.net/api';
     //  'http://localhost:8080/api';
 
     //Configure headers
