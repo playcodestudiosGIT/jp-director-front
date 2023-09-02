@@ -94,6 +94,38 @@ class CursosDTS extends DataTableSource {
                   Row(
                     children: [
                       Text(
+                        appLocal.duracion2puntos,
+                        style: DashboardLabel.mini,
+                      ),
+                      Text(curso.duracion),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Text(appLocal.publicado2puntos),
+                      if (curso.publicado) const Icon(Icons.visibility, color: Colors.green, size: 16),
+                      if (!curso.publicado)
+                        const Icon(
+                          Icons.visibility_off,
+                          color: Colors.red,
+                          size: 16,
+                        )
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Text(
+                        'Students: ',
+                        style: DashboardLabel.mini,
+                      ),
+                      Text(curso.totalEstudiantes),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text(
                         'ID: ${curso.id}',
                         style: DashboardLabel.mini,
                       ),
@@ -108,30 +140,6 @@ class CursosDTS extends DataTableSource {
                             size: 16,
                             color: Colors.white.withOpacity(0.5),
                           ))
-                    ],
-                  ),
-                  // const Spacer(),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Text(
-                        appLocal.duracion2puntos,
-                        style: DashboardLabel.mini,
-                      ),
-                      Text(curso.duracion),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Text(appLocal.publicado2puntos),
-                      if (curso.publicado) const Icon(Icons.visibility, color: Colors.green, size: 16),
-                      if (!curso.publicado)
-                        const Icon(
-                          Icons.visibility_off,
-                          color: Colors.red,
-                          size: 16,
-                        )
                     ],
                   ),
                   const SizedBox(height: 30),

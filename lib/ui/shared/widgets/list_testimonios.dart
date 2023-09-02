@@ -4,73 +4,47 @@ import 'package:jp_director/constant.dart';
 import 'package:jp_director/ui/shared/widgets/testimonio_widget.dart';
 
 import '../../../generated/l10n.dart';
-import '../../../models/testimonio.dart';
 import '../labels/dashboard_label.dart';
 
 class ListTestimonios extends StatelessWidget {
-  const ListTestimonios({super.key});
+  final List testimonios;
+  final String numeroEst;
+  const ListTestimonios({super.key, required this.numeroEst, required this.testimonios});
 
   @override
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
-    final List<TestimonioWidget> listTestimonio = [
-      TestimonioWidget(
-        img:
-            'https://static.wixstatic.com/media/b69ab8_f97ce7c31e2d4208a8c6a3bc7a34f661~mv2.png/v1/fill/w_200,h_200,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/image%204.png',
-        nombre: 'Saylin Vazquez de Alltech',
-        testimonio: appLocal.testimonioSaylin,
-      ),
-      TestimonioWidget(
-        img:
-            'https://static.wixstatic.com/media/b69ab8_bfb7361501fa4e6cab4a6e7335f5aff5~mv2.png/v1/fill/w_200,h_200,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/image%206.png',
-        nombre: 'Anier Cruz',
-        testimonio:
-            appLocal.testimonioAnier,
-      ),
-      TestimonioWidget(
-        img:
-            'https://static.wixstatic.com/media/b69ab8_cd0d5d47774a490095e8f7fd9243b853~mv2.png/v1/fill/w_200,h_200,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/image%207.png',
-        nombre: 'Tania Crespo',
-        testimonio: appLocal.testimonioTania,
-      ),
-      TestimonioWidget(
-        img:
-            'https://static.wixstatic.com/media/b69ab8_ce68c5011d4f41a08e14db52ebad8c05~mv2.png/v1/fill/w_200,h_200,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/image%205.png',
-        nombre: 'German Gamboa',
-        testimonio:
-            appLocal.testimonioGerman,
-      ),
-    ];
+    final List <TestimonioWidget> listTestimonio = testimonios.map((e) => TestimonioWidget(img: e.img, nombre: e.nombre, testimonio: e.testimonio),).toList();
     return Column(
-      children: [
-        Text(appLocal.ellosVivieronMision, style: DashboardLabel.h1),
-        Text(appLocal.quieroAds, style: DashboardLabel.h1),
-        Container(
-            constraints: const BoxConstraints(maxWidth: 800),
-            child: Column(children: [
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text('+', style: DashboardLabel.gigant.copyWith(fontSize: 80, color: const Color(0xffFFEF98))),
-                Text(
-                  '250',
-                  style: GoogleFonts.raleway(fontSize: 85, fontWeight: FontWeight.bold, color: blancoText),
-                )
-              ])
-            ])),
-        Text(appLocal.estudiantes, style: DashboardLabel.h1.copyWith(color: const Color(0xffFFEF98))),
-        const SizedBox(height: 60),
-        Container(
-          constraints: const BoxConstraints(maxWidth: 1200),
-          child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: listTestimonio,
-              )),
-        ),
-      ],
+      children: (numeroEst == '0')
+          ? []
+          : [
+              Text(appLocal.ellosVivieronMision, style: DashboardLabel.h1),
+              Text(appLocal.quieroAds, style: DashboardLabel.h1),
+              Container(
+                  constraints: const BoxConstraints(maxWidth: 800),
+                  child: Column(children: [
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      Text('+', style: DashboardLabel.gigant.copyWith(fontSize: 80, color: const Color(0xffFFEF98))),
+                      Text(
+                        numeroEst,
+                        style: GoogleFonts.raleway(fontSize: 85, fontWeight: FontWeight.bold, color: blancoText),
+                      )
+                    ])
+                  ])),
+              Text(appLocal.estudiantes, style: DashboardLabel.h1.copyWith(color: const Color(0xffFFEF98))),
+              const SizedBox(height: 60),
+              if (listTestimonio.isNotEmpty)
+                Container(
+                  constraints: const BoxConstraints(maxWidth: 1200),
+                  child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: listTestimonio,
+                      )),
+                ),
+            ],
     );
   }
-  
 }
-
-

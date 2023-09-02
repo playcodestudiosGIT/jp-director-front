@@ -31,8 +31,16 @@ class AllCursosProvider extends ChangeNotifier {
   String _duracionCursoModal = '';
   String _urlImgCert = '';
   bool _publicadoCursoModal = true;
+  String _estudiantesCursoModal = '0';
 
   // --------------------------------- //
+  String get estudiantesCursoModal => _estudiantesCursoModal;
+
+  set estudiantesCursoModal(String value) {
+    _estudiantesCursoModal = value;
+    notifyListeners();
+  }
+
   Certificado get newCert => _newCert;
 
   set newCert(Certificado value) {
@@ -167,6 +175,7 @@ class AllCursosProvider extends ChangeNotifier {
       _duracionCursoModal = curso.duracion;
       _nombreCursoModal = curso.nombre;
       _urlImgCert = curso.urlImgCert;
+      _estudiantesCursoModal = curso.totalEstudiantes;
 
       notifyListeners();
     } catch (e) {
@@ -198,6 +207,7 @@ class AllCursosProvider extends ChangeNotifier {
       "duracion": _duracionCursoModal,
       "urlImgCert": _urlImgCert,
       "publicado": _publicadoCursoModal,
+      "totalEstudiantes": _estudiantesCursoModal,
     };
 
     JpApi.post('/cursos', data).then((json) {
@@ -266,6 +276,7 @@ class AllCursosProvider extends ChangeNotifier {
       "duracion": _duracionCursoModal,
       "urlImgCert": _urlImgCert,
       "publicado": _publicadoCursoModal,
+      "totalEstudiantes": _estudiantesCursoModal,
     };
 
     try {

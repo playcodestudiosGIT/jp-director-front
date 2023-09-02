@@ -207,7 +207,7 @@ class _WebBodyState extends State<WebBody> {
         const SizedBox(height: 30),
         Container(constraints: const BoxConstraints(maxWidth: 800), child: Column(children: modulos)),
         const SizedBox(height: 100),
-        const ListTestimonios(),
+        ListTestimonios(numeroEst: widget.curso.totalEstudiantes, testimonios: widget.curso.testimonios),
         const SizedBox(height: 60),
         const SoyJpdirectorLanding(),
         BotonQuieroYa(curso: widget.curso),

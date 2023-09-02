@@ -515,7 +515,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pubOnlineResp": MessageLookupByLibrary.simpleMessage(
             "La importancia de estar presentes y maneras de lograr el éxito con casos reales."),
         "publicado2puntos":
-            MessageLookupByLibrary.simpleMessage("PUBLICADO:  "),
+            MessageLookupByLibrary.simpleMessage("Publicado:  "),
         "puedoGatantizarte": MessageLookupByLibrary.simpleMessage(
             "Puedo garantizarte que te encuentras en un espacio 100 % seguro, para ello debes saber:\n\n1.1. DATOS IDENTIFICATIVOS DEL RESPONSABLE\nTal y como recoge la normativa vigente, le informo que:"),
         "queHablareEvento": MessageLookupByLibrary.simpleMessage(

@@ -107,7 +107,7 @@ class _AdsViewState extends State<AdsView> {
                 ),
                 Row(
                   children: [
-                    const SizedBox(width: 20),
+                    const SizedBox(width: 60),
                     Text(
                       appLocal.cursos,
                       style: DashboardLabel.h1,

@@ -40,6 +40,8 @@ class _CursosModalState extends State<CursosModal> {
       decoration: buildBoxDecoration(),
       child: ListView(children: [
         Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(
               children: [
@@ -66,7 +68,7 @@ class _CursosModalState extends State<CursosModal> {
             ),
             Padding(
               padding: (size.width > 580) ? const EdgeInsets.only(left: 25) : const EdgeInsets.only(left: 0),
-              child: Wrap(alignment: WrapAlignment.center, spacing: 15 / 2, runSpacing: 15 / 2, children: [
+              child: Column( children: [
                 Container(
                   constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                   child: TextFormField(
@@ -79,15 +81,29 @@ class _CursosModalState extends State<CursosModal> {
                     decoration: InputDecor.formFieldInputDecoration(icon: Icons.title_outlined, label: appLocal.nombreDelCurso),
                   ),
                 ),
-                Container(
-                  constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
-                  child: TextFormField(
-                    cursorColor: azulText,
-                    style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
-                    initialValue: (curso.id == '') ? '' : curso.precio,
-                    onChanged: (value) => allCursosProvider.precioCursoModal = value,
-                    decoration: InputDecor.formFieldInputDecoration(label: appLocal.precioDelCurso, icon: Icons.price_change),
-                  ),
+                Wrap(
+                  children: [
+                    Container(
+                      constraints: const BoxConstraints(maxWidth: 250, minWidth: 150),
+                      child: TextFormField(
+                        cursorColor: azulText,
+                        style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
+                        initialValue: (curso.id == '') ? '' : curso.precio,
+                        onChanged: (value) => allCursosProvider.precioCursoModal = value,
+                        decoration: InputDecor.formFieldInputDecoration(label: appLocal.precioDelCurso, icon: Icons.price_change),
+                      ),
+                    ),
+                    Container(
+                      constraints: const BoxConstraints(maxWidth: 250, minWidth: 150),
+                      child: TextFormField(
+                        cursorColor: azulText,
+                        style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
+                        initialValue: (curso.id == '') ? '' : curso.totalEstudiantes,
+                        onChanged: (value) => allCursosProvider.estudiantesCursoModal = value,
+                        decoration: InputDecor.formFieldInputDecoration(label: 'Students', icon: Icons.group),
+                      ),
+                    ),
+                  ],
                 ),
                 Container(
                   constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
