@@ -71,10 +71,12 @@ class _FormSVknowState extends State<FormSVknow> {
       }
     }
 
-    return SizedBox(
-        width: double.infinity,
+    return Container(
+      constraints: const BoxConstraints(maxWidth: 800),
+      child: Center(
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Column(
@@ -99,7 +101,7 @@ class _FormSVknowState extends State<FormSVknow> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  if (wScreen > 980) const Image(image: logoGrande),
+                  // if (wScreen > 980) const Image(image: logoGrande),
                   Container(
                       constraints: const BoxConstraints(maxWidth: 350),
                       child: Form(
@@ -173,12 +175,25 @@ class _FormSVknowState extends State<FormSVknow> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                TextButton(onPressed: (){
+          
+                  if(formProvider.currentIndex != 0){
+                    formProvider.formScrollController.previousPage();
+                    setState(() {
+                      
+                    });
+                  }
+          
+                  
+                }, child: Text('regresar', style: DashboardLabel.paragraph,)),
                   BotonVerde(text: botonText, width: 100, onPressed: () => onPressed()),
                 ],
               ),
               const SizedBox(height: 100)
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

@@ -92,6 +92,7 @@ class MyAppState extends State<MyApp> {
           }
         }),
         theme: ThemeData(
+          splashColor: azulText.withOpacity(0.1),
           scaffoldBackgroundColor: bgColor,
         ),
         locale: authProvider.locale,

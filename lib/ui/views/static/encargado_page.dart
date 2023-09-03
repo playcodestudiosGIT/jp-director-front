@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/ui/shared/botones/botonverde.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/shared/widgets/top_area_back.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
@@ -46,23 +47,7 @@ class _EncargadoBody extends StatelessWidget {
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(
-                    height: 80,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(left: 20),
-                    alignment: Alignment.centerLeft,
-                    constraints: const BoxConstraints(maxWidth: 1200),
-                    child: IconButton(
-                        onPressed: () {
-                          NavigatorService.navigateTo('/servicios');
-                        },
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          color: azulText,
-                          size: 30,
-                        )),
-                  ),
+                  TopAreaBack(onPress: ()=> NavigatorService.navigateTo('/servicios')),
                   Wrap(
                     alignment: WrapAlignment.spaceBetween,
                     children: [

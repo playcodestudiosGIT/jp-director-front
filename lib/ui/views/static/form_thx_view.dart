@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jp_director/services/navigator_service.dart';
+import 'package:jp_director/ui/shared/botones/botonverde.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
 import '../../../providers/form_provider.dart';
+import '../../../router/router.dart';
 import '../../shared/labels/dashboard_label.dart';
-
 
 class FormThxView extends StatefulWidget {
   const FormThxView({super.key});
@@ -20,16 +22,14 @@ class FormThxView extends StatefulWidget {
 class _FormThxViewState extends State<FormThxView> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 600, maxHeight: 600),
-            child: const LetrasAsesoria(),
-          ),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 600, maxHeight: 600),
+          child: const LetrasAsesoria(),
+        ),
+      ],
     );
   }
 }
@@ -60,7 +60,7 @@ class LetrasAsesoria extends StatelessWidget {
         children: [
           Text(
             title,
-            style: (wScreen < 500) ?DashboardLabel.semiGigant : DashboardLabel.h1 ,
+            style: (wScreen < 500) ? DashboardLabel.semiGigant : DashboardLabel.h1,
           ),
           Container(
             width: 400,
@@ -123,11 +123,25 @@ class LetrasAsesoria extends StatelessWidget {
               ButtomRrss(
                 route: 'Tiktok',
                 text: '@jpdirector',
-                icon: iconFb,
+                icon: iconTiktok,
               ),
             ],
           ),
           const Image(image: baseGif),
+          const SizedBox(height: 30),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              BotonVerde(
+                  text: 'Finalizar',
+                  onPressed: () {
+                    formProvider.setResetForm();
+                    
+                    NavigatorService.navigateTo(Flurorouter.homeRoute);
+                  },
+                  width: 80)
+            ],
+          )
         ],
       ),
     );

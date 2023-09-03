@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:jp_director/ui/shared/widgets/top_area_back.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
@@ -61,17 +62,8 @@ class _SliderState extends State<Slider> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(
-              height: 80,
-            ),
-            Container(
-              alignment: Alignment.centerLeft,
-              constraints: const BoxConstraints(maxWidth: 1200),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: IconButton(
-                    onPressed: () {
-                      if (widget.index == 1) {
+            TopAreaBack(onPress: (){
+              if (widget.index == 1) {
                         Navigator.pushReplacementNamed(context, '/v/mentoria');
                       }
                       if (widget.index == 2) {
@@ -83,13 +75,7 @@ class _SliderState extends State<Slider> {
                       if (widget.index == 0) {
                         Navigator.pushReplacementNamed(context, '/v/asesoria');
                       }
-                    },
-                    icon: const Icon(
-                      Icons.arrow_back,
-                      color: azulText,
-                      size: 30,
-                    )),
-              ),
+                    }
             ),
             CarouselSlider(
                 carouselController: formProvider.formScrollController,

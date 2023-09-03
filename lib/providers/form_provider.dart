@@ -30,13 +30,17 @@ class FormProvider extends ChangeNotifier {
   String instagram = '';
   String tiktok = '';
   String lvlpub = 'cero';
+  String espectativas = '';
   bool isOnlineConference = true;
   String agree = '';
 
   List<Formulario> _allForms = [];
   int _totalForms = 0;
-
-
+  
+  setespectativas(String value) {
+      espectativas = value;
+      notifyListeners();
+  }
 
   int get totalForms => _totalForms;
 
@@ -49,6 +53,26 @@ class FormProvider extends ChangeNotifier {
 
   set allForms(List<Formulario> value) {
     _allForms = value;
+    notifyListeners();
+  }
+
+  setResetForm() {
+    print('set reset form');
+    rootForm = '';
+    rootForm = '';
+    email = '';
+    nombre = '';
+    telefono = '';
+    negocio = '';
+    opYear = '';
+    pubBefore = false;
+    facebook = '';
+    espectativas = '';
+    instagram = '';
+    tiktok = '';
+    lvlpub = 'cero';
+    isOnlineConference = true;
+    agree = '';
     notifyListeners();
   }
 

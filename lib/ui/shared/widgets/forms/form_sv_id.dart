@@ -25,6 +25,7 @@ class _FormSVidState extends State<FormSVid> {
     final wScreen = MediaQuery.of(context).size.width;
     final hScreen = MediaQuery.of(context).size.height;
     final formProvider = Provider.of<FormProvider>(context);
+
     late String title = formProvider.rootForm;
 
     if (formProvider.rootForm == 'mentoria') {
@@ -71,108 +72,116 @@ class _FormSVidState extends State<FormSVid> {
       }
     }
 
-    return SizedBox(
+    return Container(
+      constraints: const BoxConstraints(maxWidth: 800),
       width: double.infinity,
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(title, style: (wScreen < 500) ? DashboardLabel.h1 : DashboardLabel.gigant),
-                Container(
-                  width: (wScreen < 500) ? 320 : 370,
-                  height: 5,
-                  decoration: const BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                    bgColor,
-                    azulText,
-                    bgColor,
-                  ])),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            if (wScreen > 980)
-              const Image(
-                image: logoGrande,
-                width: 200,
-                height: 200,
-              ),
-            Container(
-                // height: 510,
-                constraints: const BoxConstraints(maxWidth: 350),
-                child: Form(
-                  key: formProvider.keyForm,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        if (wScreen < 980 && hScreen > 800)
-                          const Image(
-                            image: logoGrande,
-                            width: 200,
-                          ),
-                        TextFormField(
-                          cursorColor: azulText,
-                          keyboardType: TextInputType.emailAddress,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) => EmailValidator.validate(value!) ? null : appLocal.ingreseCorreoValido,
-                          onChanged: (value) => formProvider.setEmail(value),
-                          style: DashboardLabel.paragraph,
-                          decoration: InputDecor.formFieldInputDecoration(icon: Icons.email, label: appLocal.correoTextFiel),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        TextFormField(
-                          cursorColor: azulText,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) => (value!.isNotEmpty) ? null : appLocal.nombreyapellidoForm,
-                          onChanged: (value) => formProvider.setNombre(value),
-                          style: DashboardLabel.paragraph,
-                          decoration:
-                              InputDecor.formFieldInputDecoration(icon: Icons.supervised_user_circle_sharp, label: appLocal.nombreyapellidoForm),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        TextFormField(
-                          cursorColor: azulText,
-                          keyboardType: TextInputType.phone,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          onChanged: (value) => formProvider.setTelefono(value),
-                          style: DashboardLabel.paragraph,
-                          decoration: InputDecor.formFieldInputDecoration(icon: Icons.local_phone, label: appLocal.telefonoForm),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        TextFormField(
-                          cursorColor: azulText,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) => (value!.isNotEmpty) ? null : appLocal.requerido,
-                          onChanged: (value) => formProvider.setNegocio(value),
-                          style: DashboardLabel.paragraph,
-                          decoration: InputDecor.formFieldInputDecoration(icon: Icons.business, label: appLocal.deQueSector),
-                        ),
-                      ],
-                    ),
+      child: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(title, style: (wScreen < 500) ? DashboardLabel.h1 : DashboardLabel.gigant),
+                  Container(
+                    width: (wScreen < 500) ? 320 : 370,
+                    height: 5,
+                    decoration: const BoxDecoration(
+                        gradient: LinearGradient(colors: [
+                      bgColor,
+                      azulText,
+                      bgColor,
+                    ])),
                   ),
-                )),
-            const SizedBox(height: 30),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                BotonVerde(text: botonText, width: 100, onPressed: () => onPressed()),
-              ],
-            ),
-            const SizedBox(height: 100)
-          ],
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              if (wScreen > 980)
+                const Image(
+                  image: logoGrande,
+                  width: 200,
+                  height: 200,
+                ),
+              Container(
+                  // height: 510,
+                  constraints: const BoxConstraints(maxWidth: 350),
+                  child: Form(
+                    key: formProvider.keyForm,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          if (wScreen < 980 && hScreen > 800)
+                            const Image(
+                              image: logoGrande,
+                              width: 200,
+                            ),
+                          TextFormField(
+                            initialValue: formProvider.email,
+                            cursorColor: azulText,
+                            keyboardType: TextInputType.emailAddress,
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            validator: (value) => EmailValidator.validate(value!) ? null : appLocal.ingreseCorreoValido,
+                            onChanged: (value) => formProvider.setEmail(value),
+                            style: DashboardLabel.paragraph,
+                            decoration: InputDecor.formFieldInputDecoration(icon: Icons.email, label: appLocal.correoTextFiel),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          TextFormField(
+                            initialValue: formProvider.nombre,
+                            cursorColor: azulText,
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            validator: (value) => (value!.isNotEmpty) ? null : appLocal.nombreyapellidoForm,
+                            onChanged: (value) => formProvider.setNombre(value),
+                            style: DashboardLabel.paragraph,
+                            decoration:
+                                InputDecor.formFieldInputDecoration(icon: Icons.supervised_user_circle_sharp, label: appLocal.nombreyapellidoForm),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          TextFormField(
+                            initialValue: formProvider.telefono,
+                            cursorColor: azulText,
+                            keyboardType: TextInputType.phone,
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            onChanged: (value) => formProvider.setTelefono(value),
+                            style: DashboardLabel.paragraph,
+                            decoration: InputDecor.formFieldInputDecoration(icon: Icons.local_phone, label: appLocal.telefonoForm),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          TextFormField(
+                            initialValue: formProvider.negocio,
+                            cursorColor: azulText,
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            validator: (value) => (value!.isNotEmpty) ? null : appLocal.requerido,
+                            onChanged: (value) => formProvider.setNegocio(value),
+                            style: DashboardLabel.paragraph,
+                            decoration: InputDecor.formFieldInputDecoration(icon: Icons.business, label: appLocal.deQueSector),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )),
+              const SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  
+                  BotonVerde(text: botonText, width: 100, onPressed: () => onPressed()),
+                ],
+              ),
+              const SizedBox(height: 100)
+            ],
+          ),
         ),
       ),
     );

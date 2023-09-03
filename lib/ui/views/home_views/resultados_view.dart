@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/ui/shared/widgets/progress_ind.dart';
 import 'package:photo_view/photo_view.dart';
 
@@ -66,7 +65,9 @@ class ResultadosView extends StatelessWidget {
             Center(
               child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Column(children: [
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
                     const SizedBox(height: 100),
                     Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),

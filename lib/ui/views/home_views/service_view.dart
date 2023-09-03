@@ -207,6 +207,7 @@ class _ServicesViewState extends State<ServicesView> {
                 SizedBox(
                   width: 50,
                   child: IconButton(
+                    splashRadius: 16,
                     onPressed: () => setState(() {
                       sliderController.previousPage();
                       if (index == 0) {
@@ -244,6 +245,7 @@ class _ServicesViewState extends State<ServicesView> {
                 SizedBox(
                   width: 50,
                   child: IconButton(
+                    splashRadius: 16,
                     onPressed: () => setState(() {
                       sliderController.nextPage();
                       if (index == 3) {

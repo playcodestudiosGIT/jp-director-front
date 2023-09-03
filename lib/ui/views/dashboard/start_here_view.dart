@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:jp_director/generated/l10n.dart';
-import 'package:jp_director/providers/auth_provider.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:jp_director/ui/shared/labels/title_label.dart';
 import 'package:jp_director/ui/shared/widgets/top_area_back.dart';
 
 import '../../../constant.dart';
 import '../../../providers/export_all_providers.dart';
+import '../../../router/router.dart';
+import '../../../services/navigator_service.dart';
 import '../../shared/botones/boton_icon_redondo.dart';
 import '../../shared/botones/custom_button.dart';
 
@@ -28,7 +29,7 @@ class StartHereView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const TopAreaBack(),
+                  TopAreaBack(onPress: ()=> NavigatorService.navigateTo(Flurorouter.clienteMisCursosDash),),
                   const SizedBox(height: 30),
                   const TitleLabel(texto: 'Comienza aquí'),
                   const SizedBox(height: 30),

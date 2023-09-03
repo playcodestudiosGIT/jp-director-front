@@ -7,6 +7,7 @@ class Flurorouter {
   static final FluroRouter router = FluroRouter();
 
 //root
+  // static String root = '/';
   static String rootRoute = '/:page';
 //home
   static String homeRoute = '/home';
@@ -75,6 +76,8 @@ class Flurorouter {
 
   static void configureRoutes() {
 // def de rutas
+    // router.define(root,
+    //     handler: VisitorHandlers.home, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
     router.define(rootRoute,
         handler: VisitorHandlers.home, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 

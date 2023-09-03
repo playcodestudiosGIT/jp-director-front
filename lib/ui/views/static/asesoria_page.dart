@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/ui/shared/botones/botonverde.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
-
+import 'package:jp_director/ui/shared/widgets/top_area_back.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
@@ -48,23 +47,9 @@ class _AsesoriaBody extends StatelessWidget {
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(
-                    height: 80,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(left: 20),
-                    alignment: Alignment.centerLeft,
-                    constraints: const BoxConstraints(maxWidth: 1200),
-                    child: IconButton(
-                        onPressed: () {
-                          NavigatorService.navigateTo('/servicios');
-                        },
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          color: azulText,
-                          size: 30,
-                        )),
-                  ),
+                  TopAreaBack(onPress: () {
+                    NavigatorService.navigateTo('/servicios');
+                  }),
                   Wrap(
                     alignment: WrapAlignment.spaceBetween,
                     children: [
@@ -88,23 +73,16 @@ class _AsesoriaBody extends StatelessWidget {
                           children: [
                             Acordeon(
                               title: appLocal.xdondeComenzar,
-                              content:
-                                  appLocal.xdondeComenzarResp,
+                              content: appLocal.xdondeComenzarResp,
                             ),
                             const SizedBox(
                               height: 30,
                             ),
-                            Acordeon(
-                                title: appLocal.queHablaremos,
-                                content:
-                                    appLocal.queHablaremosResp),
+                            Acordeon(title: appLocal.queHablaremos, content: appLocal.queHablaremosResp),
                             const SizedBox(
                               height: 30,
                             ),
-                            Acordeon(
-                                title: appLocal.preguntasfrecuentes,
-                                content:
-                                    appLocal.preguntasfrecuentesResp),
+                            Acordeon(title: appLocal.preguntasfrecuentes, content: appLocal.preguntasfrecuentesResp),
                           ],
                         ),
                       ),
@@ -131,10 +109,7 @@ class _LetrasAsesoria extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          appLocal.asesoria11,
-          style: (wScreen < 600) ?DashboardLabel.h1 :  DashboardLabel.semiGigant
-        ),
+        Text(appLocal.asesoria11, style: (wScreen < 600) ? DashboardLabel.h1 : DashboardLabel.semiGigant),
         Container(
           width: 300,
           height: 5,
@@ -157,25 +132,25 @@ class _LetrasAsesoria extends StatelessWidget {
           style: DashboardLabel.semiGigant,
         ),
         // if (wScreen < 1200)
-          Stack(
-            children: [
-              const Image(
-                image: bgAsesoria,
-                width: 400,
-                height: 400,
+        Stack(
+          children: [
+            const Image(
+              image: bgAsesoria,
+              width: 400,
+              height: 400,
+            ),
+            Positioned(
+              top: 220,
+              right: 160,
+              child: Image(
+                image: adsCircle,
+                color: (wScreen < 1200) ? blancoText.withOpacity(0.3) : blancoText,
+                colorBlendMode: BlendMode.modulate,
+                width: 80,
               ),
-              Positioned(
-                top: 220,
-                right: 160,
-                child: Image(
-                  image: adsCircle,
-                  color: (wScreen < 1200) ? blancoText.withOpacity(0.3) : blancoText,
-                  colorBlendMode: BlendMode.modulate,
-                  width: 80,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
+        ),
         Text(
           appLocal.unoAuno,
           style: DashboardLabel.azulTextGigant,
@@ -187,10 +162,7 @@ class _LetrasAsesoria extends StatelessWidget {
               appLocal.precio11,
               style: DashboardLabel.azulTextGigant,
             ),
-            Text(
-              appLocal.usd,
-              style: DashboardLabel.paragraph.copyWith(color: azulText)
-            ),
+            Text(appLocal.usd, style: DashboardLabel.paragraph.copyWith(color: azulText)),
             const SizedBox(
               width: 8,
             ),
@@ -205,7 +177,7 @@ class _LetrasAsesoria extends StatelessWidget {
         ),
         BotonVerde(
           text: appLocal.agendarBtn,
-          onPressed: () => Navigator.pushNamed(context, Flurorouter.agendarRoute),
+          onPressed: () => NavigatorService.navigateTo(Flurorouter.agendarRoute),
           width: 100,
         ),
         SizedBox(

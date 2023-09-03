@@ -29,6 +29,7 @@ class Acordeon extends StatelessWidget {
             color: azulText,
             size: 16,
           ),
+          
           expandedIcon: const Icon(
             Icons.arrow_upward,
             color: azulText,

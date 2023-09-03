@@ -71,128 +71,153 @@ class _FormSVrrssState extends State<FormSVrrss> {
       }
     }
 
-    return SizedBox(
+    return Container(
+        constraints: const BoxConstraints(maxWidth: 800),
         width: double.infinity,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(title, style: (wScreen < 500) ? DashboardLabel.h1 : DashboardLabel.especialT2.copyWith(color: Colors.white)),
-                  Container(
-                    width: (wScreen < 500) ? 320 : 400,
-                    height: 5,
-                    decoration: const BoxDecoration(
-                        gradient: LinearGradient(colors: [
-                      bgColor,
-                      azulText,
-                      bgColor,
-                    ])),
-                  ),
-                ],
-              ),
-              if (wScreen > 980)
-                const SizedBox(
-                  height: 30,
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(title, style: (wScreen < 500) ? DashboardLabel.h1 : DashboardLabel.especialT2.copyWith(color: Colors.white)),
+                    Container(
+                      width: (wScreen < 500) ? 320 : 400,
+                      height: 5,
+                      decoration: const BoxDecoration(
+                          gradient: LinearGradient(colors: [
+                        bgColor,
+                        azulText,
+                        bgColor,
+                      ])),
+                    ),
+                  ],
                 ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  if (wScreen > 980) const Image(image: logoGrande),
-                  Container(
-                      alignment: Alignment.center,
-                      width: double.infinity,
-                      // height: 510,
-                      constraints: const BoxConstraints(maxWidth: 350),
-                      child: Form(
-                        key: formProvider.keyForm3,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            if (formProvider.rootForm == 'conferencias')
-                              TextFormField(
-                                cursorColor: azulText,
-                                style: DashboardLabel.paragraph,
-                                maxLines: 5,
-                                decoration: InputDecor.formFieldInputDecoration(label: appLocal.escribeTodasTusEspectativas),
-                              ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            Text(
-                              appLocal.comoPuedoBuscarteRRSS,
-                              style: DashboardLabel.h4,
-                            ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            ConstrainedBox(
-                              constraints: const BoxConstraints(maxWidth: 250),
-                              child: TextFormField(
-                                cursorColor: azulText,
-                                onChanged: (value) => formProvider.setFacebook(value),
-                                style: DashboardLabel.h4,
-                                decoration: InputDecor.formFieldInputDecoration(label: 'facebook.com/', icon: FontAwesomeIcons.facebook),
-                              ),
-                            ),
-                            const SizedBox(height: 15),
-                            ConstrainedBox(
-                              constraints: const BoxConstraints(maxWidth: 250),
-                              child: TextFormField(
-                                cursorColor: azulText,
-                                onChanged: (value) => formProvider.setTiktok(value),
-                                style: DashboardLabel.h4,
-                                decoration: InputDecor.formFieldInputDecoration(label: 'tiktok.com/', icon: FontAwesomeIcons.tiktok),
-                              ),
-                            ),
-                            const SizedBox(height: 15),
-                            ConstrainedBox(
-                              constraints: const BoxConstraints(maxWidth: 250),
-                              child: TextFormField(
-                                cursorColor: azulText,
-                                onChanged: (value) => formProvider.setInstagram(value),
-                                style: DashboardLabel.h4,
-                                decoration: InputDecor.formFieldInputDecoration(label: 'instagram.com/', icon: FontAwesomeIcons.instagram),
-                              ),
-                            ),
-                            if (formProvider.rootForm != 'conferencias')
+                if (wScreen > 980)
+                  const SizedBox(
+                    height: 30,
+                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    // if (wScreen > 980) const Image(image: logoGrande),
+                    Container(
+                        alignment: Alignment.center,
+                        width: double.infinity,
+                        // height: 510,
+                        constraints: const BoxConstraints(maxWidth: 350),
+                        child: Form(
+                          key: formProvider.keyForm3,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              if (formProvider.rootForm == 'conferencias')
+                                TextFormField(
+                                  initialValue: formProvider.espectativas,
+                                  onChanged: (value) => formProvider.setespectativas(value),
+                                  cursorColor: azulText,
+                                  style: DashboardLabel.paragraph,
+                                  maxLines: 5,
+                                  decoration: InputDecor.formFieldInputDecoration(label: appLocal.escribeTodasTusEspectativas),
+                                ),
                               const SizedBox(
-                                height: 20,
+                                height: 30,
                               ),
-                            if (formProvider.rootForm != 'conferencias') Text(appLocal.entiendesQueEsto, style: DashboardLabel.mini),
-                            if (formProvider.rootForm != 'conferencias')
+                              Text(
+                                appLocal.comoPuedoBuscarteRRSS,
+                                style: DashboardLabel.h4,
+                              ),
                               const SizedBox(
-                                height: 20,
+                                height: 30,
                               ),
-                            if (formProvider.rootForm != 'conferencias')
-                              DropdownButtonFormField(
-                                validator: (value) => (value != '') ? null : appLocal.seleccioneOpcion,
-                                value: '',
-                                dropdownColor: bgColor,
-                                items: [
-                                  DropdownMenuItem(value: '', child: Text(appLocal.seleccioneOpcion, style: DashboardLabel.paragraph)),
-                                  DropdownMenuItem(value: appLocal.si, child: Text(appLocal.siEstoyPreparado, style: DashboardLabel.paragraph)),
-                                  DropdownMenuItem(value: 'NO', child: Text(appLocal.noEstoyPreparado, style: DashboardLabel.paragraph)),
-                                ],
-                                onChanged: (value) => formProvider.setAgree(value),
-                              )
-                          ],
-                        ),
-                      ))
-                ],
-              ),
-              const SizedBox(height: 30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  BotonVerde(text: botonText, width: 100, onPressed: () => onPressed()),
-                ],
-              ),
-              const SizedBox(height: 100)
-            ],
+                              ConstrainedBox(
+                                constraints: const BoxConstraints(maxWidth: 250),
+                                child: TextFormField(
+                                  initialValue: formProvider.facebook,
+                                  cursorColor: azulText,
+                                  onChanged: (value) => formProvider.setFacebook(value),
+                                  style: DashboardLabel.h4,
+                                  decoration: InputDecor.formFieldInputDecoration(label: 'facebook.com/', icon: FontAwesomeIcons.facebook),
+                                ),
+                              ),
+                              const SizedBox(height: 15),
+                              ConstrainedBox(
+                                constraints: const BoxConstraints(maxWidth: 250),
+                                child: TextFormField(
+                                  initialValue: formProvider.tiktok,
+                                  cursorColor: azulText,
+                                  onChanged: (value) => formProvider.setTiktok(value),
+                                  style: DashboardLabel.h4,
+                                  decoration: InputDecor.formFieldInputDecoration(label: 'tiktok.com/', icon: FontAwesomeIcons.tiktok),
+                                ),
+                              ),
+                              const SizedBox(height: 15),
+                              ConstrainedBox(
+                                constraints: const BoxConstraints(maxWidth: 250),
+                                child: TextFormField(
+                                  initialValue: formProvider.instagram,
+                                  cursorColor: azulText,
+                                  onChanged: (value) => formProvider.setInstagram(value),
+                                  style: DashboardLabel.h4,
+                                  decoration: InputDecor.formFieldInputDecoration(label: 'instagram.com/', icon: FontAwesomeIcons.instagram),
+                                ),
+                              ),
+                              if (formProvider.rootForm != 'conferencias')
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                              if (formProvider.rootForm != 'conferencias') Text(appLocal.entiendesQueEsto, style: DashboardLabel.mini),
+                              if (formProvider.rootForm != 'conferencias')
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                              if (formProvider.rootForm != 'conferencias')
+                                DropdownButtonFormField(
+                                  validator: (value) => (value != '') ? null : appLocal.seleccioneOpcion,
+                                  value: '',
+                                  dropdownColor: bgColor,
+                                  items: [
+                                    DropdownMenuItem(value: '', child: Text(appLocal.seleccioneOpcion, style: DashboardLabel.paragraph)),
+                                    DropdownMenuItem(value: appLocal.si, child: Text(appLocal.siEstoyPreparado, style: DashboardLabel.paragraph)),
+                                    DropdownMenuItem(value: 'NO', child: Text(appLocal.noEstoyPreparado, style: DashboardLabel.paragraph)),
+                                  ],
+                                  onChanged: (value) => formProvider.setAgree(value),
+                                )
+                            ],
+                          ),
+                        ))
+                  ],
+                ),
+                const SizedBox(height: 30),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          if (formProvider.currentIndex != 0) {
+                            formProvider.formScrollController.previousPage();
+                            setState(() {});
+                          }
+                        },
+                        child: Text(
+                          'regresar',
+                          style: DashboardLabel.paragraph,
+                        )),
+                    BotonVerde(
+                        text: botonText,
+                        width: 100,
+                        onPressed: () {
+                          
+                          onPressed();
+                        }),
+                  ],
+                ),
+                const SizedBox(height: 100)
+              ],
+            ),
           ),
         ));
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:jp_director/services/navigator_service.dart';
 
-import '../../shared/widgets/asesoria_slider/agenda_cita.dart';
+import 'package:jp_director/services/mobileui.dart' if (dart.library.html) 'package:jp_director/services/webui.dart' as multiplatform;
 import '../../shared/widgets/top_area_back.dart';
 
 class AsesoriaAgendarPage extends StatelessWidget {
@@ -9,20 +10,16 @@ class AsesoriaAgendarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final hSize = MediaQuery.of(context).size.height;
-    return SafeArea(
-      child: Stack(
-        children: [
-          SingleChildScrollView(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const TopAreaBack(),
-              const SizedBox(height: 15),
-              Container(constraints: BoxConstraints(maxHeight: hSize, maxWidth: 800), child: const Agenda()),
-            ],
-          )),
-        ],
-      ),
+    return Stack(
+      children: [
+        Column(
+          children: [
+            TopAreaBack(onPress: () => NavigatorService.navigateTo('/servicios')),
+            const SizedBox(height: 15),
+            Container(constraints: BoxConstraints(maxHeight: hSize, maxWidth: 800), child: const multiplatform.AgendaPlug()),
+          ],
+        ),
+      ],
     );
   }
 }
