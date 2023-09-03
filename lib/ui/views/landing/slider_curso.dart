@@ -66,7 +66,7 @@ class _SliderCursoState extends State<SliderCurso> {
                                 child: Icon(
                                   Icons.arrow_circle_left_outlined,
                                   color: azulText,
-                                  size: 16,
+                                  size: 18,
                                 ))),
                       ),
                     ],
@@ -99,7 +99,7 @@ class _SliderCursoState extends State<SliderCurso> {
                               child: Icon(
                                 Icons.arrow_circle_right_outlined,
                                 color: azulText,
-                                size: 16,
+                                size: 18,
                               ),
                             )),
                       ),

@@ -20,12 +20,12 @@ class TopAreaBack extends StatelessWidget {
           alignment: Alignment.centerLeft,
           constraints: const BoxConstraints(maxWidth: 800),
           child: IconButton(
-              splashRadius: 16,
+              splashRadius: 18,
               onPressed: ()=> onPress(),
               icon: const Icon(
                 Icons.arrow_back,
                 color: azulText,
-                size: 16,
+                size: 18,
               )),
         ),
       ],

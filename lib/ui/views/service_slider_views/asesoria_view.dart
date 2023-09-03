@@ -31,7 +31,7 @@ class AsesoriaMain extends StatelessWidget {
         width: double.infinity,
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Wrap(
                 alignment: WrapAlignment.start,

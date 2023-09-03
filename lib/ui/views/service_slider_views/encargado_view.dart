@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/ui/shared/botones/botonverde.dart';
 
 import '../../../constant.dart';
@@ -23,7 +22,7 @@ class EncargadoView extends StatelessWidget {
           height: 500,
           child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Wrap(
                   alignment: WrapAlignment.start,

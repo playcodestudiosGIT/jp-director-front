@@ -104,12 +104,12 @@ class CursosDTS extends DataTableSource {
                   Row(
                     children: [
                       Text(appLocal.publicado2puntos),
-                      if (curso.publicado) const Icon(Icons.visibility, color: Colors.green, size: 16),
+                      if (curso.publicado) const Icon(Icons.visibility, color: Colors.green, size: 18),
                       if (!curso.publicado)
                         const Icon(
                           Icons.visibility_off,
                           color: Colors.red,
-                          size: 16,
+                          size: 18,
                         )
                     ],
                   ),
@@ -130,14 +130,14 @@ class CursosDTS extends DataTableSource {
                         style: DashboardLabel.mini,
                       ),
                       IconButton(
-                          splashRadius: 16,
+                          splashRadius: 18,
                           onPressed: () async {
                             await Clipboard.setData(ClipboardData(text: curso.id));
                             // copied successfully
                           },
                           icon: Icon(
                             Icons.copy_outlined,
-                            size: 16,
+                            size: 18,
                             color: Colors.white.withOpacity(0.5),
                           ))
                     ],
@@ -156,7 +156,7 @@ class CursosDTS extends DataTableSource {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                    splashRadius: 16,
+                    splashRadius: 18,
                     onPressed: () async {
                       final created = await showDialog(
                           barrierDismissible: false,
@@ -173,7 +173,7 @@ class CursosDTS extends DataTableSource {
                     icon: const Icon(
                       Icons.add_box_outlined,
                       color: azulText,
-                      size: 16,
+                      size: 18,
                     )),
                 const SizedBox(width: 15)
               ],
@@ -196,7 +196,7 @@ class CursosDTS extends DataTableSource {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                    splashRadius: 16,
+                    splashRadius: 18,
                     onPressed: () async {
                       final created = await showDialog(
                           barrierDismissible: false,
@@ -213,7 +213,7 @@ class CursosDTS extends DataTableSource {
                     icon: const Icon(
                       Icons.add_box_outlined,
                       color: azulText,
-                      size: 16,
+                      size: 18,
                     )),
                 const SizedBox(width: 15)
               ],
@@ -352,7 +352,7 @@ class CursosDTS extends DataTableSource {
               },
               icon: Icon(
                 Icons.delete_outline,
-                size: 16,
+                size: 18,
                 color: Colors.red.withOpacity(0.8),
               )),
         ],

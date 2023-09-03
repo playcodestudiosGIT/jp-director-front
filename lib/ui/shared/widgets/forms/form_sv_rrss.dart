@@ -195,22 +195,23 @@ class _FormSVrrssState extends State<FormSVrrss> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    TextButton(
+                    IconButton(
+                        splashRadius: 18,
                         onPressed: () {
                           if (formProvider.currentIndex != 0) {
                             formProvider.formScrollController.previousPage();
                             setState(() {});
                           }
                         },
-                        child: Text(
-                          'regresar',
-                          style: DashboardLabel.paragraph,
+                        icon: const Icon(
+                          Icons.arrow_circle_left_outlined,
+                          color: azulText,
+                          size: 18,
                         )),
                     BotonVerde(
                         text: botonText,
                         width: 100,
                         onPressed: () {
-                          
                           onPressed();
                         }),
                   ],

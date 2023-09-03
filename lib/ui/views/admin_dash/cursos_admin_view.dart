@@ -107,7 +107,7 @@ class _CursosAdminViewState extends State<CursosAdminView> {
                       Icon(
                         Icons.menu_book_outlined,
                         color: bgColor,
-                        size: 16,
+                        size: 18,
                       ),
                     ],
                   ),

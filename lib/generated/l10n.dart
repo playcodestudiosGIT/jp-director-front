@@ -2650,10 +2650,10 @@ class AppLocalizations {
     );
   }
 
-  /// `Return to Home`
+  /// `Return to Login`
   String get irAlLogin {
     return Intl.message(
-      'Return to Home',
+      'Return to Login',
       name: 'irAlLogin',
       desc: '',
       args: [],

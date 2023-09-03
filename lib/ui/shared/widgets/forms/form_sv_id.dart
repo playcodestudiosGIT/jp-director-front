@@ -177,9 +177,11 @@ class _FormSVidState extends State<FormSVid> {
                 children: [
                   
                   BotonVerde(text: botonText, width: 100, onPressed: () => onPressed()),
+                  const SizedBox(width: 40)
                 ],
               ),
-              const SizedBox(height: 100)
+                  const SizedBox(height: 100)
+             
             ],
           ),
         ),

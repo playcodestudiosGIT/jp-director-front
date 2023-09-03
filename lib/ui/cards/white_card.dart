@@ -50,7 +50,7 @@ class WhiteCard extends StatelessWidget {
                      
                       onPressed: (){
                       Scaffold.of(context).openEndDrawer();
-                    }, icon: const Icon(Icons.comment_outlined, color: azulText, size: 16,)),)
+                    }, icon: const Icon(Icons.comment_outlined, color: azulText, size: 18,)),)
                   ],
                 )
               ],

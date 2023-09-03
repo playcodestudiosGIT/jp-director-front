@@ -19,7 +19,7 @@ class DiapoItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(width: 200, height: 200, child: Image(image: image)),
+            SizedBox(width: 175, height: 175, child: Image(image: image)),
             const SizedBox(height: 15),
             Text(bigText, style: DashboardLabel.h2),
             const SizedBox(height: 15),

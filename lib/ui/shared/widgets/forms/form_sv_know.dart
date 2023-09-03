@@ -173,23 +173,28 @@ class _FormSVknowState extends State<FormSVknow> {
               ),
               const SizedBox(height: 30),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                // mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                TextButton(onPressed: (){
-          
-                  if(formProvider.currentIndex != 0){
-                    formProvider.formScrollController.previousPage();
-                    setState(() {
-                      
-                    });
-                  }
-          
-                  
-                }, child: Text('regresar', style: DashboardLabel.paragraph,)),
+                  const SizedBox(width: 40),
+                  IconButton(
+                      splashRadius: 18,
+                      onPressed: () {
+                        if (formProvider.currentIndex != 0) {
+                          formProvider.formScrollController.previousPage();
+                          setState(() {});
+                        }
+                      },
+                      icon: const Icon(
+                        Icons.arrow_circle_left_outlined,
+                        color: azulText,
+                        size: 18,
+                      )),
+                  const Spacer(),
                   BotonVerde(text: botonText, width: 100, onPressed: () => onPressed()),
+                  const SizedBox(width: 40)
                 ],
               ),
-              const SizedBox(height: 100)
+              const SizedBox(height: 100),
             ],
           ),
         ),

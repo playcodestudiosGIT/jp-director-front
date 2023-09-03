@@ -23,7 +23,7 @@ class MentoriaView extends StatelessWidget {
           height: 500,
           child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Wrap(
                   alignment: WrapAlignment.start,

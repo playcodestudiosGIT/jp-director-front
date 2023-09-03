@@ -97,41 +97,50 @@ class ContactoView extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   Container(
+                    constraints: const BoxConstraints(maxWidth: 550),
                     color: bgColor.withOpacity(0.7),
                     padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                     width: double.infinity,
                     // height: ,
-                    child: Wrap(
-                      alignment: WrapAlignment.center,
-                      crossAxisAlignment: WrapCrossAlignment.center,
+                    child: Row(
                       children: [
-                        Text(
-                          appLocal.siTienesDudas,
-                          style: DashboardLabel.paragraph,
-                        ),
-                        MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: GestureDetector(
-                            onTap: () {
-                              final Uri url = Uri.parse('https://wa.me/12142265941?text=from:%20Web%20contact.%20Need%20information%20about');
-                              launchUrl(url);
-                            },
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                      FontAwesomeIcons.whatsapp,
-                                      color: verdeBorde,
-                                    )),
-                                Text(
-                                  'Whatsapp',
-                                  style: DashboardLabel.paragraph.copyWith(color: azulText),
+                        const SizedBox(width: 100, height: 100, child: Center(child: Icon(Icons.info_outline, color: azulText),),),
+                        Container(
+                          constraints: const BoxConstraints(maxWidth: 400),
+                          child: Wrap(
+                            alignment: WrapAlignment.center,
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [
+                              Text(
+                                appLocal.siTienesDudas,
+                                style: DashboardLabel.paragraph,
+                              ),
+                              MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    final Uri url = Uri.parse('https://wa.me/12142265941?text=from:%20Web%20contact.%20Need%20information%20about');
+                                    launchUrl(url);
+                                  },
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(
+                                            FontAwesomeIcons.whatsapp,
+                                            color: verdeBorde,
+                                          )),
+                                      Text(
+                                        'Whatsapp',
+                                        style: DashboardLabel.paragraph.copyWith(color: azulText),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ],

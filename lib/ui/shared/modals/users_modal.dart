@@ -92,7 +92,7 @@ class _UsersModalState extends State<UsersModal> {
                     icon: const Icon(
                       Icons.close,
                       color: Colors.red,
-                      size: 16,
+                      size: 18,
                     ))
               ],
             ),
@@ -293,7 +293,7 @@ class _UsersModalState extends State<UsersModal> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
+                        // constraints: const BoxConstraints(maxWidth: 200, minWidth: 100),
                         child: Column(
                           children: [
                             if (id != null)
@@ -302,10 +302,11 @@ class _UsersModalState extends State<UsersModal> {
                                 children: [
                                   Text(
                                     appLocal.cursos,
-                                    style: DashboardLabel.h4,
+                                    style: DashboardLabel.h3,
                                   ),
                                 ],
                               ),
+                              const SizedBox(height: 15),
                             if (id != null)
                               Row(
                                 children: [
@@ -336,7 +337,7 @@ class _UsersModalState extends State<UsersModal> {
                                           const Icon(
                                             Icons.add_box_outlined,
                                             color: azulText,
-                                            size: 16,
+                                            size: 18,
                                           ),
                                           const SizedBox(
                                             width: 10,

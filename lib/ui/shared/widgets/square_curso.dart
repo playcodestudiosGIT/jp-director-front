@@ -75,7 +75,7 @@ class _SquareCursoState extends State<SquareCurso> {
               child: Icon(
                 Icons.delete,
                 color: Colors.red,
-                size: 16,
+                size: 18,
               ),
             ))
       ]),

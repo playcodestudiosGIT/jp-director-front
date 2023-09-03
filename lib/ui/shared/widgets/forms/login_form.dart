@@ -107,12 +107,12 @@ class _LoginFormState extends State<LoginForm> {
                             ? Icon(
                                 FontAwesomeIcons.eyeSlash,
                                 color: blancoText.withOpacity(0.4),
-                                size: 16,
+                                size: 18,
                               )
                             : const Icon(
                                 FontAwesomeIcons.eye,
                                 color: blancoText,
-                                size: 16,
+                                size: 18,
                               )),
                   ],
                 ),

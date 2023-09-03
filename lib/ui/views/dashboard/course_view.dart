@@ -167,13 +167,14 @@ class _CourseViewState extends State<CourseView> {
                           if (wScreen > 325) const SizedBox(width: 10),
                           if (wScreen <= 325) const SizedBox(width: 5),
                           IconButton(
+                            splashRadius: 18,
                               onPressed: () {
                                 NavigatorService.replaceTo(Flurorouter.clienteMisCursosDash);
                               },
                               icon: const Icon(
                                 Icons.arrow_back,
-                                color: blancoText,
-                                size: 16,
+                                color: azulText,
+                                size: 18,
                               )),
                           const SizedBox(width: 10),
                           Text(
@@ -195,7 +196,7 @@ class _CourseViewState extends State<CourseView> {
                                     child: (wScreen < 500)
                                         ? const Icon(
                                             Icons.workspace_premium_outlined,
-                                            size: 16,
+                                            size: 18,
                                           )
                                         : Text(
                                             appLocal.certificadoBtn,
@@ -431,10 +432,12 @@ class _CourseViewState extends State<CourseView> {
                                     const SizedBox(
                                       height: 15,
                                     ),
+                                    
                                     Padding(
                                         padding: const EdgeInsets.symmetric(horizontal: 15),
                                         child: Row(
                                           children: [
+                                            if(curso.modulos[widget.videoIndex].idDriveFolder != '')
                                             CustomButton(
                                               text: appLocal.verMaterialBtn,
                                               onPress: () {
@@ -446,6 +449,7 @@ class _CourseViewState extends State<CourseView> {
                                               icon: Icons.download_outlined,
                                             ),
                                             const SizedBox(width: 15),
+                                            if(curso.modulos[widget.videoIndex].idDriveZip != '')
                                             BotonRedondoIcono(
                                                 fillColor: azulText,
                                                 iconColor: bgColor,

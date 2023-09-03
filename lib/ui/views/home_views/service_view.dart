@@ -207,7 +207,7 @@ class _ServicesViewState extends State<ServicesView> {
                 SizedBox(
                   width: 50,
                   child: IconButton(
-                    splashRadius: 16,
+                    splashRadius: 18,
                     onPressed: () => setState(() {
                       sliderController.previousPage();
                       if (index == 0) {
@@ -218,7 +218,7 @@ class _ServicesViewState extends State<ServicesView> {
                     }),
                     icon: const Icon(
                       Icons.arrow_circle_left_outlined,
-                      size: 16,
+                      size: 18,
                     ),
                     color: azulText,
                   ),
@@ -245,7 +245,7 @@ class _ServicesViewState extends State<ServicesView> {
                 SizedBox(
                   width: 50,
                   child: IconButton(
-                    splashRadius: 16,
+                    splashRadius: 18,
                     onPressed: () => setState(() {
                       sliderController.nextPage();
                       if (index == 3) {
@@ -256,7 +256,7 @@ class _ServicesViewState extends State<ServicesView> {
                     }),
                     icon: const Icon(
                       Icons.arrow_circle_right_outlined,
-                      size: 16,
+                      size: 18,
                     ),
                     color: azulText,
                   ),

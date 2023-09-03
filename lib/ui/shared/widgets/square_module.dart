@@ -35,7 +35,7 @@ class _SquareModuloState extends State<SquareModulo> {
         Icon(
           Icons.view_module,
           color: Colors.white.withOpacity(0.3),
-          size: 16,
+          size: 18,
         ),
         const SizedBox(width: 10),
         Column(
@@ -51,11 +51,11 @@ class _SquareModuloState extends State<SquareModulo> {
                     style: DashboardLabel.h4,
                   ),
                   const SizedBox(width: 15),
-                  Icon(Icons.videocam_sharp, color: (widget.modulo!.video.isEmpty) ? Colors.red : Colors.green, size: 16),
+                  Icon(Icons.videocam_sharp, color: (widget.modulo!.video.isEmpty) ? Colors.red : Colors.green, size: 18),
                   const SizedBox(width: 5),
-                  Icon(Icons.folder_copy_sharp, color: (widget.modulo!.idDriveFolder.isEmpty) ? Colors.red : Colors.green, size: 16),
+                  Icon(Icons.folder_copy_sharp, color: (widget.modulo!.idDriveFolder.isEmpty) ? Colors.red : Colors.green, size: 18),
                   const SizedBox(width: 5),
-                  Icon(Icons.download_sharp, color: (widget.modulo!.idDriveZip.isEmpty) ? Colors.red : Colors.green, size: 16),
+                  Icon(Icons.download_sharp, color: (widget.modulo!.idDriveZip.isEmpty) ? Colors.red : Colors.green, size: 18),
                   const SizedBox(width: 5),
                   const Spacer(),
                 ],
@@ -73,7 +73,7 @@ class _SquareModuloState extends State<SquareModulo> {
         ),
         const Spacer(),
         IconButton(
-            splashRadius: 16,
+            splashRadius: 18,
             onPressed: () async {
               final isok = await showDialog(
                   context: context,
@@ -88,10 +88,10 @@ class _SquareModuloState extends State<SquareModulo> {
             icon: const Icon(
               Icons.edit,
               color: azulText,
-              size: 16,
+              size: 18,
             )),
         IconButton(
-            splashRadius: 16,
+            splashRadius: 18,
             onPressed: () async {
               await showDialog(
                   barrierDismissible: false,
@@ -126,7 +126,7 @@ class _SquareModuloState extends State<SquareModulo> {
             icon: const Icon(
               Icons.clear,
               color: Colors.red,
-              size: 16,
+              size: 18,
             ))
       ]),
     );

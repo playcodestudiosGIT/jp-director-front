@@ -171,7 +171,7 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                               Container(
                                 width: 35,
                                 margin: const EdgeInsets.only(right: 7),
-                                child: const Icon(Icons.login_outlined, color: azulText, size: 16,)),
+                                child: const Icon(Icons.login_outlined, color: azulText, size: 18,)),
                               Text(
                                 appLocal.iniciarSesionBtn,
                                 style: const TextStyle(color: azulText, fontSize: 8),
@@ -200,7 +200,7 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                       right: 70,
                       top: 15,
                       child: SizedBox(
-                        width: 42,
+                        width: 50,
                         child: MouseRegion(
                           cursor: SystemMouseCursors.click,
                           child: GestureDetector(
@@ -211,7 +211,7 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                const Icon(Icons.app_registration_rounded, color: azulText, size: 16,),
+                                const Icon(Icons.app_registration_rounded, color: azulText, size: 18,),
                                 Text(
                                   appLocal.registrarBtn,
                                   style: const TextStyle(color: azulText, fontSize: 8),

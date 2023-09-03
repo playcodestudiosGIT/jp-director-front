@@ -93,7 +93,7 @@ class _UsersAdminViewState extends State<UsersAdminView> {
                   child: const Icon(
                     Icons.person_add,
                     color: bgColor,
-                    size: 16,
+                    size: 18,
                   ),
                 ),
        

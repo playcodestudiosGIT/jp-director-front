@@ -355,7 +355,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "interesLegitimo":
             MessageLookupByLibrary.simpleMessage("INTERÉS LEGÍTIMO\n"),
         "intermedio": MessageLookupByLibrary.simpleMessage("Intermedio"),
-        "irAlLogin": MessageLookupByLibrary.simpleMessage("Regresar al inicio"),
+        "irAlLogin": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
         "irAlLoginBtn": MessageLookupByLibrary.simpleMessage("Ir al Login"),
         "jpCompartira": MessageLookupByLibrary.simpleMessage(
             "JPDIRECTOR compartirá con terceros los datos que posee, solo para cumplir con los servicios contratados por algún usuario, enviar la newsletter, cumplir con exigencias legales o para la administración del sitio web. A este efecto, se proporcionarán los debidos acuerdos de confidencialidad entre las partes.\n"),

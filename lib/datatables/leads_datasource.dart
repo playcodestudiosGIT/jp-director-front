@@ -51,10 +51,10 @@ class LeadsDTS extends DataTableSource {
               },
               icon: const Icon(
                 Icons.edit_outlined,
-                size: 16,
+                size: 18,
                 color: azulText,
               )),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.email_outlined, color: blancoText, size: 16,)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.email_outlined, color: blancoText, size: 18,)),
           IconButton(
               onPressed: () {
                 final dialog = AlertDialog(
@@ -88,7 +88,7 @@ class LeadsDTS extends DataTableSource {
               },
               icon: Icon(
                 Icons.delete_outline,
-                size: 16,
+                size: 18,
                 color: Colors.red.withOpacity(0.8),
               )),
         ],

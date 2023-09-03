@@ -51,7 +51,7 @@ class UsersDTS extends DataTableSource {
                 right: 0,
                 child: Icon(
                   Icons.edit_outlined,
-                  size: 16,
+                  size: 18,
                   color: bgColor,
                 )),
           ],
@@ -75,7 +75,7 @@ class UsersDTS extends DataTableSource {
                     children: [
                       Icon(
                         Icons.person_outline,
-                        size: 16,
+                        size: 18,
                         color: blancoText.withOpacity(0.5),
                       ),
                       const SizedBox(width: 8),
@@ -90,7 +90,7 @@ class UsersDTS extends DataTableSource {
                     children: [
                       Icon(
                         Icons.email_outlined,
-                        size: 16,
+                        size: 18,
                         color: blancoText.withOpacity(0.5),
                       ),
                       const SizedBox(width: 8),
@@ -102,7 +102,7 @@ class UsersDTS extends DataTableSource {
                     children: [
                       Icon(
                         Icons.phone_outlined,
-                        size: 16,
+                        size: 18,
                         color: blancoText.withOpacity(0.5),
                       ),
                       const SizedBox(width: 8),
@@ -213,7 +213,7 @@ class UsersDTS extends DataTableSource {
       DataCell(Row(
         children: [
           IconButton(
-            splashRadius: 16,
+            splashRadius: 18,
               onPressed: () async {
                 final isAct = await showModalBottomSheet(
                   isDismissible: false,
@@ -228,21 +228,21 @@ class UsersDTS extends DataTableSource {
               },
               icon: const Icon(
                 Icons.edit_outlined,
-                size: 16,
+                size: 18,
                 color: azulText,
               )),
           IconButton(
-            splashRadius: 16,
+            splashRadius: 18,
               onPressed: () {
                 
               },
               icon: const Icon(
                 Icons.email_outlined,
-                size: 16,
+                size: 18,
                 color: blancoText,
               )),
           IconButton(
-            splashRadius: 16,
+            splashRadius: 18,
               onPressed: () {
                 final dialog = AlertDialog(
                   title: Text(appLocal.seguroBorrar),
@@ -277,7 +277,7 @@ class UsersDTS extends DataTableSource {
               },
               icon: Icon(
                 Icons.delete_outline,
-                size: 16,
+                size: 18,
                 color: Colors.red.withOpacity(0.8),
               )),
         ],

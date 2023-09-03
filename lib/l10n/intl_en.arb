@@ -259,7 +259,7 @@
     "seguroBorrarComent": "Are you sure you want to delete the comment?",
     "comentarioInvalido": "Invalid Comment",
     "progreso2puntos": "Progress: ",
-    "irAlLogin": "Return to Home",
+    "irAlLogin": "Return to Login",
     "telfSinCaracteres": "Telephone without special characters (12223334455)",
     "telfDebeCodArea": "Must include international code + area code",
     "telfSoloNumeros": "It should only contain numbers. (12223334455)",

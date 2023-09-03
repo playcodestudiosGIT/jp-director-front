@@ -15,6 +15,7 @@ class SoyJpdirectorLanding extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: 800),
           child: Wrap(children: [
             Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
               constraints: const BoxConstraints(maxWidth: 400, minWidth: 300),
               child: Column(
                 children: [

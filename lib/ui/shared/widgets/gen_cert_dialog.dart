@@ -67,7 +67,7 @@ class GenCertDialog extends StatelessWidget {
                                           child: Icon(
                                         Icons.clear,
                                         color: blancoText,
-                                        size: 16,
+                                        size: 18,
                                       )),
                                     )),
                               ),
@@ -102,7 +102,7 @@ class GenCertDialog extends StatelessWidget {
                                 icon: const Icon(
                                   Icons.remove_red_eye,
                                   color: azulText,
-                                  size: 16,
+                                  size: 18,
                                 ),
                                 label: Text(
                                   appLocal.ver,

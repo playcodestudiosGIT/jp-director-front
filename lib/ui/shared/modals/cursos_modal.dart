@@ -56,7 +56,7 @@ class _CursosModalState extends State<CursosModal> {
                     icon: const Icon(
                       Icons.close,
                       color: Colors.red,
-                      size: 16,
+                      size: 18,
                     ))
               ],
             ),

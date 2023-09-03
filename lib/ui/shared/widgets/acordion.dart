@@ -27,13 +27,13 @@ class Acordeon extends StatelessWidget {
           collapsedIcon: const Icon(
             Icons.arrow_downward,
             color: azulText,
-            size: 16,
+            size: 18,
           ),
           
           expandedIcon: const Icon(
             Icons.arrow_upward,
             color: azulText,
-            size: 16,
+            size: 18,
           ),
           contentPadding: const EdgeInsets.all(30),
         ),

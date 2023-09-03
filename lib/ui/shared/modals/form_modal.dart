@@ -64,7 +64,7 @@ class _FormsModalState extends State<FormsModal> {
                     icon: const Icon(
                       Icons.close,
                       color: Colors.red,
-                      size: 16
+                      size: 18
                     ))
               ],
             ),

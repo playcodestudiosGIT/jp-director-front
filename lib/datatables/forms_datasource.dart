@@ -54,7 +54,7 @@ class FormsDTS extends DataTableSource {
               Text('${appLocal.correoTextFiel}:  ', style: DashboardLabel.paragraph.copyWith(color: blancoText.withOpacity(0.5))),
               Text(form.email),
               const Spacer(),
-              Icon(Icons.copy, size: 16, color: blancoText.withOpacity(0.5),)
+              Icon(Icons.copy, size: 18, color: blancoText.withOpacity(0.5),)
             ],
           ),
           const Divider(),
@@ -155,7 +155,7 @@ class FormsDTS extends DataTableSource {
               },
               icon: const Icon(
                 Icons.edit_outlined,
-                size: 16,
+                size: 18,
                 color: azulText,
               )),
           IconButton(
@@ -186,7 +186,7 @@ class FormsDTS extends DataTableSource {
               },
               icon: Icon(
                 Icons.delete_outline,
-                size: 16,
+                size: 18,
                 color: Colors.red.withOpacity(0.8),
               )),
         ],

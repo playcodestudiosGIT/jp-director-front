@@ -258,7 +258,7 @@
     "seguroBorrarComent": "Seguro que desea borrar el comentario?",
     "comentarioInvalido": "Comentario Invalido",
     "progreso2puntos": "Progreso: ",
-    "irAlLogin": "Regresar al inicio",
+    "irAlLogin": "Iniciar sesión",
     "telfSinCaracteres": "Teléfono sin caractéres especiales (12223334455)",
     "telfDebeCodArea": "Debe incluir cod intenacional + cod de área",
     "telfSoloNumeros": "Solo debe contener números. (12223334455)",
