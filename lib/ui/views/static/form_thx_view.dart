@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/services/navigator_service.dart';
 import 'package:jp_director/ui/shared/botones/botonverde.dart';
 import 'package:provider/provider.dart';

@@ -4,7 +4,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:jp_director/ui/shared/widgets/top_area_back.dart';
 import 'package:provider/provider.dart';
 
-import '../../../constant.dart';
 
 import '../../../providers/form_provider.dart';
 import '../../shared/widgets/forms/form_sv_id.dart';

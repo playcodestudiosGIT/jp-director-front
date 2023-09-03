@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/constant.dart';
 import 'package:jp_director/generated/l10n.dart';
 import 'package:jp_director/providers/auth_provider.dart';

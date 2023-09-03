@@ -9,7 +9,6 @@ import 'package:provider/provider.dart';
 import '../../../datatables/cursos_datasource.dart';
 import '../../../generated/l10n.dart';
 import '../../shared/labels/title_label.dart';
-import '../../shared/modals/new_module_dialog.dart';
 
 class CursosAdminView extends StatefulWidget {
   const CursosAdminView({super.key});
@@ -30,7 +29,6 @@ class _CursosAdminViewState extends State<CursosAdminView> {
   @override
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
-    final allCursosProvider = Provider.of<AllCursosProvider>(context);
     final cursos = Provider.of<AllCursosProvider>(context).allCursos;
     final size = MediaQuery.of(context).size;
     return Container(

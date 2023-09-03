@@ -135,7 +135,6 @@ class UsersAuthHandlers {
     if (authProvider.authStatus == AuthStatus.notAuthenticated) {
       return const LoginPage();
     } else {
-      // Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
       Provider.of<AllCursosProvider>(context, listen: false).obtenerMisCursos(authProvider.user!);
       Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
       return const DashMisCursosView();
@@ -184,7 +183,10 @@ class UsersAuthHandlers {
     final cursoID = params['cursoID']!.first;
     final videoIndex = params['videoIndex']?.first ?? '0';
 
-    if (cursoID.isEmpty) return const DashMisCursosView();
+    if (cursoID.isEmpty) {
+      Provider.of<SideBarProvider>(context!, listen: false).setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
+      return const DashMisCursosView();
+    }
 
     final authProvider = Provider.of<AuthProvider>(context!, listen: false);
 
@@ -247,7 +249,7 @@ class UsersAuthHandlers {
     } else {
       
 
-      Provider.of<SideBarProvider>(context).setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
+      Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
       return const DashMisCursosView();
     }
   });

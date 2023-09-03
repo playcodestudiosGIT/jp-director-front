@@ -1,9 +1,11 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/providers/users_provider.dart';
+import 'package:jp_director/router/router.dart';
+import 'package:jp_director/services/navigator_service.dart';
 import 'package:jp_director/ui/shared/botones/custom_button.dart';
 import 'package:jp_director/ui/shared/labels/title_label.dart';
+import 'package:jp_director/ui/shared/widgets/top_area_back.dart';
 
 import 'package:provider/provider.dart';
 
@@ -65,9 +67,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
     return ListView(
       physics: const ClampingScrollPhysics(),
       children: [
-        const SizedBox(
-          height: 80,
-        ),
+        TopAreaBack(onPress: () => NavigatorService.navigateTo(Flurorouter.clienteMisCursosDash)),
         TitleLabel(texto: appLocal.miCuentaMenuBtn),
         const SizedBox(
           height: 10,
@@ -113,7 +113,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
               ),
             ),
             SizedBox(
-              width: 250,
+              width: 315,
               height: 200,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -158,7 +158,6 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
               padding: const EdgeInsets.all(20),
               margin: const EdgeInsets.symmetric(horizontal: 20),
               height: 150,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(22), color: blancoText.withOpacity(0.1)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -186,54 +185,24 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
           children: [
             CustomButton(
               text: appLocal.actInfoBtn,
-              width: 200,
+              width: 220,
               onPress: () async {
                 final dialog = AlertDialog(
                   backgroundColor: bgColor,
-                  actions: [
-                    CustomButton(
-                      text: appLocal.actualizarBtn,
-                      onPress: () async {
-                        await usersProvider.updateUser(
-                          uid: authProvider.user!.uid,
-                          nombre: nombreModal,
-                          apellido: apellidoModal,
-                          correo: correoModal,
-                          me: meModal,
-                          telf: telfModal,
-                          facebook: facebookModal,
-                          instagram: instagramModal,
-                          tiktok: tiktokModal,
-                          pass: claveModal,
-                        );
-                        if (context.mounted) {
-                          setState(() {
-                            Navigator.pop(context, true);
-                          });
-                        }
-                      },
-                      width: 100,
-                      color: Colors.green,
-                    ),
-                    CustomButton(
-                      text: appLocal.cancelarBtn,
-                      onPress: () {
-                        Navigator.pop(context, false);
-                      },
-                      width: 100,
-                      color: Colors.red,
-                    ),
-                  ],
                   content: Container(
+                    constraints: const BoxConstraints(minWidth: 360),
                     color: Colors.transparent,
                     margin: const EdgeInsets.only(left: 10),
-                    height: 406,
-                    width: 320,
+                    height: 452,
+                    
                     child: Column(
                       children: [
-                        Text(
-                          appLocal.actInfo,
-                          style: DashboardLabel.h1,
+                        // if (size.width < 575) const SizedBox(height: 80),
+                        FittedBox(
+                          child: Text(
+                            appLocal.actInfo,
+                            style: DashboardLabel.h2,
+                          ),
                         ),
                         const SizedBox(
                           height: 15,
@@ -308,7 +277,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                           constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
                           child: TextFormField(
                             cursorColor: azulText,
-                            maxLines: 4,
+                            maxLines: 2,
                             initialValue: authProvider.user!.me,
                             onChanged: (value) {
                               meModal = value;
@@ -318,6 +287,46 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                             decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.circleInfo, label: appLocal.sobreMi),
                           ),
                         ),
+                        const SizedBox(height: 30),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            CustomButton(
+                              text: appLocal.actualizarBtn,
+                              onPress: () async {
+                                await usersProvider.updateUser(
+                                  uid: authProvider.user!.uid,
+                                  nombre: nombreModal,
+                                  apellido: apellidoModal,
+                                  correo: correoModal,
+                                  me: meModal,
+                                  telf: telfModal,
+                                  facebook: facebookModal,
+                                  instagram: instagramModal,
+                                  tiktok: tiktokModal,
+                                  pass: claveModal,
+                                );
+                                if (context.mounted) {
+                                  setState(() {
+                                    Navigator.pop(context, true);
+                                  });
+                                }
+                              },
+                              width: 100,
+                              color: Colors.green,
+                            ),
+                            const SizedBox(width: 10),
+                            CustomButton(
+                              text: appLocal.cancelarBtn,
+                              onPress: () {
+                                Navigator.pop(context, false);
+                              },
+                              width: 100,
+                              color: Colors.red,
+                            ),
+                          ],
+                        ),
+                        
                       ],
                     ),
                   ),
@@ -350,7 +359,6 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                   height: 25,
                 ),
                 Container(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(22), color: blancoText.withOpacity(0.1)),
                     padding: const EdgeInsets.all(15),
                     constraints: const BoxConstraints(maxWidth: 400, minWidth: 320),
                     child: Row(
@@ -373,7 +381,6 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                 ),
                 Container(
                     padding: const EdgeInsets.all(15),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(22), color: blancoText.withOpacity(0.1)),
                     constraints: const BoxConstraints(maxWidth: 400, minWidth: 320),
                     child: Row(
                       children: [
@@ -391,7 +398,6 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                   height: 15,
                 ),
                 Container(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(22), color: blancoText.withOpacity(0.1)),
                     padding: const EdgeInsets.all(15),
                     constraints: const BoxConstraints(maxWidth: 400, minWidth: 320),
                     child: Row(
@@ -415,39 +421,9 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                   onPress: () {
                     final dialog = AlertDialog(
                       backgroundColor: bgColor,
-                      actions: [
-                        CustomButton(
-                          text: appLocal.actualizarBtn,
-                          onPress: () {
-                            usersProvider.updateUser(
-                                uid: authProvider.user!.uid,
-                                nombre: nombreModal,
-                                apellido: apellidoModal,
-                                correo: correoModal,
-                                me: meModal,
-                                telf: telfModal,
-                                facebook: facebookModal,
-                                instagram: instagramModal,
-                                tiktok: tiktokModal,
-                                pass: claveModal,
-                                rol: 'USER_ROLE');
-                            setState(() {});
-                            Navigator.pop(context);
-                          },
-                          width: 100,
-                          color: Colors.green,
-                        ),
-                        CustomButton(
-                            text: appLocal.cancelarBtn,
-                            onPress: () {
-                              Navigator.pop(context);
-                            },
-                            width: 100,
-                            color: Colors.red)
-                      ],
                       content: Container(
                         margin: const EdgeInsets.only(left: 10),
-                        height: 240,
+                        height: 320,
                         width: 320,
                         child: Column(
                           children: [
@@ -503,6 +479,41 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                                 decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.tiktok, label: 'Tik Tok'),
                               ),
                             ),
+                            const SizedBox(height: 30),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                CustomButton(
+                                  text: appLocal.actualizarBtn,
+                                  onPress: () {
+                                    usersProvider.updateUser(
+                                        uid: authProvider.user!.uid,
+                                        nombre: nombreModal,
+                                        apellido: apellidoModal,
+                                        correo: correoModal,
+                                        me: meModal,
+                                        telf: telfModal,
+                                        facebook: facebookModal,
+                                        instagram: instagramModal,
+                                        tiktok: tiktokModal,
+                                        pass: claveModal,
+                                        rol: 'USER_ROLE');
+                                    setState(() {});
+                                    Navigator.pop(context);
+                                  },
+                                  width: 100,
+                                  color: Colors.green,
+                                ),
+                                const SizedBox(width: 10),
+                                CustomButton(
+                                    text: appLocal.cancelarBtn,
+                                    onPress: () {
+                                      Navigator.pop(context);
+                                    },
+                                    width: 100,
+                                    color: Colors.red)
+                              ],
+                            )
                           ],
                         ),
                       ),

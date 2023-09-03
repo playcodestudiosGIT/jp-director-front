@@ -292,75 +292,72 @@ class _UsersModalState extends State<UsersModal> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        // constraints: const BoxConstraints(maxWidth: 200, minWidth: 100),
-                        child: Column(
-                          children: [
-                            if (id != null)
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    appLocal.cursos,
-                                    style: DashboardLabel.h3,
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 15),
-                            if (id != null)
-                              Row(
-                                children: [
-                                  MouseRegion(
-                                    cursor: SystemMouseCursors.click,
-                                    child: GestureDetector(
-                                      onTap: () async {
-                                        AlertDialog dialog = AlertDialog(
-                                          elevation: 0,
-                                          backgroundColor: Colors.transparent,
-                                          content: AddCursoModal(
-                                            userId: id!,
-                                          ),
-                                        );
-
-                                        final isAdd = await showDialog(context: context, builder: (context) => dialog);
-                                        if (isAdd) {
-                                          setState(() {
-                                            Navigator.pop(context, true);
-                                            Provider.of<UsersProvider>(context, listen: false).getPaginatedUsers();
-                                          });
-                                        }
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.end,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          const Icon(
-                                            Icons.add_box_outlined,
-                                            color: azulText,
-                                            size: 18,
-                                          ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text(
-                                            appLocal.anadirCurso,
-                                            style: DashboardLabel.mini.copyWith(color: azulText),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
+                      Column(
+                        children: [
+                          if (id != null)
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  appLocal.cursos,
+                                  style: DashboardLabel.h3,
+                                ),
+                              ],
+                            ),
                             const SizedBox(height: 15),
-                            ...destruct
-                                .map((e) => SquareCurso(
-                                      userId: widget.user!.uid,
-                                      curso: e,
-                                    ))
-                                .toList()
-                          ],
-                        ),
+                          if (id != null)
+                            Row(
+                              children: [
+                                MouseRegion(
+                                  cursor: SystemMouseCursors.click,
+                                  child: GestureDetector(
+                                    onTap: () async {
+                                      AlertDialog dialog = AlertDialog(
+                                        elevation: 0,
+                                        backgroundColor: Colors.transparent,
+                                        content: AddCursoModal(
+                                          userId: id!,
+                                        ),
+                                      );
+
+                                      final isAdd = await showDialog(context: context, builder: (context) => dialog);
+                                      if (isAdd) {
+                                        setState(() {
+                                          Navigator.pop(context, true);
+                                          Provider.of<UsersProvider>(context, listen: false).getPaginatedUsers();
+                                        });
+                                      }
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        const Icon(
+                                          Icons.add_box_outlined,
+                                          color: azulText,
+                                          size: 18,
+                                        ),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          appLocal.anadirCurso,
+                                          style: DashboardLabel.mini.copyWith(color: azulText),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          const SizedBox(height: 15),
+                          ...destruct
+                              .map((e) => SquareCurso(
+                                    userId: widget.user!.uid,
+                                    curso: e,
+                                  ))
+                              .toList()
+                        ],
                       )
                     ],
                   ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jp_director/providers/auth_provider.dart';
 import 'package:jp_director/router/router.dart';
 import 'package:provider/provider.dart';

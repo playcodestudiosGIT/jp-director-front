@@ -57,7 +57,6 @@ class FormProvider extends ChangeNotifier {
   }
 
   setResetForm() {
-    print('set reset form');
     rootForm = '';
     rootForm = '';
     email = '';

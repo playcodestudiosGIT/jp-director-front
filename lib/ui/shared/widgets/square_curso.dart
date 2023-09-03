@@ -25,7 +25,7 @@ class _SquareCursoState extends State<SquareCurso> {
     final appLocal = AppLocalizations.of(context);
     return Container(
       margin: const EdgeInsets.all(8),
-      constraints: const BoxConstraints(maxWidth: 420),
+      constraints: const BoxConstraints(maxWidth: 280),
       padding: const EdgeInsets.all(8),
       width: double.infinity,
       height: 60,

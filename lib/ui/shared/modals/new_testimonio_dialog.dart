@@ -3,7 +3,6 @@ import 'package:jp_director/models/testimonio.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
-import '../../../models/modulo.dart';
 import '../../../providers/export_all_providers.dart';
 import '../botones/custom_button.dart';
 import '../labels/dashboard_label.dart';

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:jp_director/providers/all_cursos_provider.dart';
 import 'package:jp_director/providers/auth_provider.dart';
+import 'package:jp_director/providers/sidebar_provider.dart';
 import 'package:jp_director/ui/shared/labels/title_label.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
+import '../../../router/router.dart';
 import '../../cards/curso_card.dart';
 import '../../shared/labels/dashboard_label.dart';
 
@@ -20,7 +22,7 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
   @override
   void initState() {
     super.initState();
-    
+    Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
     Provider.of<AuthProvider>(context, listen: false).isAutenticated();
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
     Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();

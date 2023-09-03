@@ -102,48 +102,45 @@ class ContactoView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                     width: double.infinity,
                     // height: ,
-                    child: Row(
-                      children: [
-                        const SizedBox(width: 100, height: 100, child: Center(child: Icon(Icons.info_outline, color: azulText),),),
-                        Container(
-                          constraints: const BoxConstraints(maxWidth: 400),
-                          child: Wrap(
-                            alignment: WrapAlignment.center,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              Text(
-                                appLocal.siTienesDudas,
-                                style: DashboardLabel.paragraph,
-                              ),
-                              MouseRegion(
-                                cursor: SystemMouseCursors.click,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    final Uri url = Uri.parse('https://wa.me/12142265941?text=from:%20Web%20contact.%20Need%20information%20about');
-                                    launchUrl(url);
-                                  },
-                                  child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      IconButton(
-                                          onPressed: () {},
-                                          icon: const Icon(
-                                            FontAwesomeIcons.whatsapp,
-                                            color: verdeBorde,
-                                          )),
-                                      Text(
-                                        'Whatsapp',
-                                        style: DashboardLabel.paragraph.copyWith(color: azulText),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
+                    child: Container(
+                      constraints: const BoxConstraints(maxWidth: 400),
+                      child: Wrap(
+                        runSpacing: 10,
+                        alignment: WrapAlignment.center,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                           const SizedBox(child: Center(child: Icon(Icons.info_outline, color: azulText),),),
+                          Text(
+                            appLocal.siTienesDudas,
+                            style: DashboardLabel.paragraph,
                           ),
-                        ),
-                      ],
+                          MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: GestureDetector(
+                              onTap: () {
+                                final Uri url = Uri.parse('https://wa.me/12142265941?text=from:%20Web%20contact.%20Need%20information%20about');
+                                launchUrl(url);
+                              },
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        FontAwesomeIcons.whatsapp,
+                                        color: verdeBorde,
+                                      )),
+                                  Text(
+                                    'Whatsapp',
+                                    style: DashboardLabel.paragraph.copyWith(color: azulText),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
