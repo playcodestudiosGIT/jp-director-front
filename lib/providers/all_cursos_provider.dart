@@ -435,6 +435,7 @@ class AllCursosProvider extends ChangeNotifier {
       final res = await JpApi.post('/uploads/certificados/gen', data);
       _newCert = Certificado.fromJson(res["cert"]);
       notifyListeners();
+      return;
     } catch (e) {
       return;
     }

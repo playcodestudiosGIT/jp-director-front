@@ -32,7 +32,11 @@ class GenCertDialog extends StatelessWidget {
                   const SizedBox(height: 10),
                   Text(
                     appLocal.generandoCert,
-                    style: DashboardLabel.h3,
+                    style: DashboardLabel.h4,
+                  ),
+                  Text(
+                    'please wait...',
+                    style: DashboardLabel.mini,
                   )
                 ],
               );

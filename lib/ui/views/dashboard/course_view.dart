@@ -357,7 +357,7 @@ class _CourseViewState extends State<CourseView> {
                                       )),
                                       SizedBox(
                                         // constraints: const BoxConstraints(minWidth: 250),
-                                        width: wScreen * 0.16,
+                                        width: wScreen * 0.2,
 
                                         child: SingleChildScrollView(
                                           child: Column(
@@ -371,7 +371,7 @@ class _CourseViewState extends State<CourseView> {
                                                   // crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
                                                     ListTile(
-                                                      minLeadingWidth: 20,
+                                                      minLeadingWidth: 0,
                                                       leading: SizedBox(
                                                           width: 35,
                                                           height: 35,
@@ -382,6 +382,7 @@ class _CourseViewState extends State<CourseView> {
                                                             onChanged: (value) async {
                                                               await Provider.of<AuthProvider>(context, listen: false)
                                                                   .updateProg(moduloId: e.id, marker: videotime, isComplete: !prog.isComplete);
+                                                                  
                                                               if (context.mounted) {
                                                                 setState(() {});
                                                               }
@@ -504,10 +505,9 @@ class _CourseViewState extends State<CourseView> {
                                                         onChanged: (value) async {
                                                           await Provider.of<AuthProvider>(context, listen: false)
                                                               .updateProg(moduloId: e.id, marker: videotime, isComplete: !prog.isComplete);
-                                                          if (!prog.isComplete) {
-                                                            showDialog(
-                                                                context: context, builder: (context) => CongratDialog(cursoNombre: curso.nombre));
-                                                          }
+                                                          if (context.mounted) {
+                                                                setState(() {});
+                                                              }
                                                         },
                                                       )),
                                                   title: Text(
