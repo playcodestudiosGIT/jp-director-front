@@ -45,7 +45,6 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => RegisterFormProvider()),
         ChangeNotifierProvider(create: (_) => PageProvider()),
         ChangeNotifierProvider(create: (_) => UsersProvider()),
-        ChangeNotifierProvider(create: (_) => TargetaCreditoProvider()),
         ChangeNotifierProvider(lazy: false, create: (_) => SideBarProvider()),
         ChangeNotifierProvider(lazy: false, create: (_) => AuthProvider()),
       ],
@@ -67,8 +66,8 @@ class MyAppState extends State<MyApp> {
     final authProvider = Provider.of<AuthProvider>(context);
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: bgColor, // <-- SEE HERE
-      statusBarIconBrightness: Brightness.light, //<-- For Android SEE HERE (dark icons)
-      statusBarBrightness: Brightness.light, //<-- For iOS SEE HERE (dark icons)
+      statusBarIconBrightness: Brightness.dark, //<-- For Android SEE HERE (dark icons)
+      statusBarBrightness: Brightness.dark, //<-- For iOS SEE HERE (dark icons)
     ));
     return MaterialApp(
         scrollBehavior: MyCustomScrollBehavior(),

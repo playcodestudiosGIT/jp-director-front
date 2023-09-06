@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:jp_director/generated/l10n.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
@@ -29,7 +30,9 @@ class StartHereView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TopAreaBack(onPress: ()=> NavigatorService.navigateTo(Flurorouter.clienteMisCursosDash),),
+                  TopAreaBack(
+                    onPress: () => NavigatorService.navigateTo(Flurorouter.clienteMisCursosDash),
+                  ),
                   const SizedBox(height: 30),
                   const TitleLabel(texto: 'Comienza aquí'),
                   const SizedBox(height: 30),
@@ -54,7 +57,7 @@ class StartHereView extends StatelessWidget {
                               height: 100,
                               child: Center(
                                 child: Text(
-                                  '1.	Cada curso cuenta con su barra de comentarios  (Colocar imagen) - puedes dejarnos todas tus preguntas y nuestro equipo estará contestándolas',
+                                  '1.	Cada curso cuenta con su barra de comentarios - puedes dejarnos todas tus preguntas y nuestro equipo estará contestándolas',
                                   style: DashboardLabel.mini,
                                 ),
                               ),
@@ -66,7 +69,7 @@ class StartHereView extends StatelessWidget {
                                 child: Center(
                                   child: CustomButton(
                                     text: appLocal.comentariosBtn,
-                                    onPress: (){},
+                                    onPress: () {},
                                     width: 160,
                                   ),
                                 )),
@@ -94,7 +97,7 @@ class StartHereView extends StatelessWidget {
                                   children: [
                                     CustomButton(
                                       text: appLocal.verMaterialBtn,
-                                      onPress: (){},
+                                      onPress: () {},
                                       width: 200,
                                       icon: Icons.download_outlined,
                                     ),
@@ -103,7 +106,7 @@ class StartHereView extends StatelessWidget {
                                       fillColor: azulText,
                                       iconColor: bgColor,
                                       icon: Icons.file_download,
-                                      onTap: (){},
+                                      onTap: () {},
                                     ),
                                   ],
                                 ))),
@@ -176,9 +179,15 @@ class StartHereView extends StatelessWidget {
                               width: 315,
                               height: 100,
                               child: Center(
-                                child: Text(
-                                  '4.	Si tienes alguna pregunta más especifica contamos con un centro de soporte (este debe ser un link la palabra) de donde te brindaremos una respuesta en el transcurso de 48 hora',
-                                  style: DashboardLabel.mini,
+                                child: RichText(
+                                  text: TextSpan(style: DashboardLabel.mini, children: [
+                                    const TextSpan(text: '4.	Si tienes alguna pregunta más especifica contamos con un '),
+                                    TextSpan(
+                                        text: 'Centro de Ayuda y Soporte ',
+                                        style: DashboardLabel.mini.copyWith(color: azulText, fontStyle: FontStyle.italic),
+                                        recognizer: TapGestureRecognizer()..onTap = () => print('Tap Here onTap')),
+                                    const TextSpan(text: 'de donde te brindaremos una respuesta en el transcurso de 48 hora'),
+                                  ]),
                                 ),
                               ),
                             ),
@@ -196,7 +205,9 @@ class StartHereView extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 100,)
+                  const SizedBox(
+                    height: 100,
+                  )
                 ],
               ),
             ),

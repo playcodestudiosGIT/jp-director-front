@@ -5,6 +5,7 @@ import 'package:jp_director/api/jp_api.dart';
 import 'package:jp_director/constant.dart';
 import 'package:jp_director/providers/all_cursos_provider.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/views/system/email_modal.dart';
 import 'package:provider/provider.dart';
 
 import '../generated/l10n.dart';
@@ -158,7 +159,11 @@ class UsersDTS extends DataTableSource {
                 children: [
                   Row(
                     children: [
-                      Icon(FontAwesomeIcons.instagram, color: blancoText.withOpacity(0.5), size: 20,),
+                      Icon(
+                        FontAwesomeIcons.instagram,
+                        color: blancoText.withOpacity(0.5),
+                        size: 20,
+                      ),
                       const SizedBox(width: 10),
                       Text(user.instagram, style: DashboardLabel.paragraph),
                     ],
@@ -166,7 +171,11 @@ class UsersDTS extends DataTableSource {
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      Icon(FontAwesomeIcons.facebook, color: blancoText.withOpacity(0.5), size: 20,),
+                      Icon(
+                        FontAwesomeIcons.facebook,
+                        color: blancoText.withOpacity(0.5),
+                        size: 20,
+                      ),
                       const SizedBox(width: 10),
                       Text(user.facebook, style: DashboardLabel.paragraph),
                     ],
@@ -174,7 +183,11 @@ class UsersDTS extends DataTableSource {
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      Icon(FontAwesomeIcons.tiktok, color: blancoText.withOpacity(0.5), size: 20,),
+                      Icon(
+                        FontAwesomeIcons.tiktok,
+                        color: blancoText.withOpacity(0.5),
+                        size: 20,
+                      ),
                       const SizedBox(width: 10),
                       Text(user.tiktok, style: DashboardLabel.paragraph),
                     ],
@@ -213,7 +226,7 @@ class UsersDTS extends DataTableSource {
       DataCell(Row(
         children: [
           IconButton(
-            splashRadius: 18,
+              splashRadius: 18,
               onPressed: () async {
                 final isAct = await showModalBottomSheet(
                   isDismissible: false,
@@ -232,9 +245,16 @@ class UsersDTS extends DataTableSource {
                 color: azulText,
               )),
           IconButton(
-            splashRadius: 18,
-              onPressed: () {
-                
+              splashRadius: 18,
+              onPressed: () async {
+                final dialog = AlertDialog(
+                  backgroundColor: bgColor,
+                  content: EmailModalContent(
+                    usuario: user,
+                  ),
+                );
+
+                await showDialog(context: context, builder: (context) => dialog);
               },
               icon: const Icon(
                 Icons.email_outlined,
@@ -242,7 +262,7 @@ class UsersDTS extends DataTableSource {
                 color: blancoText,
               )),
           IconButton(
-            splashRadius: 18,
+              splashRadius: 18,
               onPressed: () {
                 final dialog = AlertDialog(
                   title: Text(appLocal.seguroBorrar),

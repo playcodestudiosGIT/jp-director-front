@@ -10,5 +10,4 @@ export 'leads_provider.dart';
 export 'page_provider.dart';
 export 'pay_provider.dart';
 export 'sidebar_provider.dart';
-export 'tarjeta_credito_provider.dart';
 export 'users_provider.dart';

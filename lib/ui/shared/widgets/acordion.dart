@@ -20,7 +20,7 @@ class Acordeon extends StatelessWidget {
         GFAccordion(
           title: title,
           content: content,
-          contentBackgroundColor: blancoText,
+          contentBackgroundColor: bgColor,
           collapsedTitleBackgroundColor: bgColor.withOpacity(0.5),
           expandedTitleBackgroundColor: bgColor.withOpacity(0.5),
           textStyle: (wScreen < 1200) ? DashboardLabel.h2 : DashboardLabel.h1,

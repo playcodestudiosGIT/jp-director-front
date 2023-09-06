@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../constant.dart';
-import '../../generated/l10n.dart';
+import '../../../constant.dart';
+import '../../../generated/l10n.dart';
 
 class NoPageFound extends StatelessWidget {
   const NoPageFound({super.key});

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jp_director/providers/leads_provider.dart';
+import 'package:jp_director/ui/views/system/email_modal_lead.dart';
 import 'package:provider/provider.dart';
 
 import '../constant.dart';
@@ -8,6 +9,7 @@ import '../models/lead.dart';
 import '../services/notificacion_service.dart';
 import '../ui/shared/labels/dashboard_label.dart';
 import '../ui/shared/modals/leads_modal.dart';
+import '../ui/views/system/email_modal.dart';
 
 class LeadsDTS extends DataTableSource {
   List<Lead> leads;
@@ -54,7 +56,16 @@ class LeadsDTS extends DataTableSource {
                 size: 18,
                 color: azulText,
               )),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.email_outlined, color: blancoText, size: 18,)),
+          IconButton(onPressed: () async {
+                final dialog = AlertDialog(
+                  backgroundColor: bgColor,
+                  content: EmailModalLead(
+                    correo: lead.email,
+                  ),
+                );
+
+                await showDialog(context: context, builder: (context) => dialog);
+              }, icon: const Icon(Icons.email_outlined, color: blancoText, size: 18,)),
           IconButton(
               onPressed: () {
                 final dialog = AlertDialog(

@@ -370,15 +370,13 @@ class AllCursosProvider extends ChangeNotifier {
   Future deleteModulo(String id) async {
     try {
       await JpApi.delete('/modulos/$id', {});
-
-      // await getCursoModal(id);
-
       _cursoModal.modulos.removeWhere((element) => element.id == id);
       getAllCursos();
       notifyListeners();
       NotifServ.showSnackbarError('Modulo borrado con exito', Colors.green);
       return true;
     } catch (e) {
+      print(e);
       NotifServ.showSnackbarError('Error borrando modulo', Colors.red);
     }
   }

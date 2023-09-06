@@ -48,7 +48,7 @@ class _CursosAdminViewState extends State<CursosAdminView> {
             data: ThemeData.dark().copyWith(cardColor: bgColor),
             child: PaginatedDataTable(
               dataRowMinHeight: 150,
-              dataRowMaxHeight: 270,
+              dataRowMaxHeight: 305,
               columns: [
                 DataColumn(
                   label: Text(appLocal.imgDeCurso, style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),

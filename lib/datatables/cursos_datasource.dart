@@ -26,7 +26,7 @@ class CursosDTS extends DataTableSource {
     List<Curso> cursos = Provider.of<AllCursosProvider>(context).allCursos;
     final curso = cursos[index];
 
-    // final modulos = curso.modulos.where((modulo) => modulo.estado).toList();
+    final modulos = curso.modulos.where((modulo) => modulo.estado == true).toList();
 
     return DataRow(cells: [
       DataCell(Center(
@@ -142,7 +142,6 @@ class CursosDTS extends DataTableSource {
                           ))
                     ],
                   ),
-                  const SizedBox(height: 30),
                 ],
               ),
             ),
@@ -151,7 +150,10 @@ class CursosDTS extends DataTableSource {
       )),
       DataCell(SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(width: 270),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -178,11 +180,13 @@ class CursosDTS extends DataTableSource {
                 const SizedBox(width: 15)
               ],
             ),
-            ...curso.modulos.map((e) => SquareModulo(
-                  cursoID: curso.id,
-                  modulo: e,
-                )),
-            if (curso.modulos.isEmpty) const SizedBox(height: 100),
+            ...modulos.map((e) {
+              return SquareModulo(
+                cursoID: curso.id,
+                modulo: e,
+              );
+            }),
+            if (modulos.isEmpty) const SizedBox(height: 100),
             const SizedBox(height: 150)
           ],
         ),
@@ -265,8 +269,14 @@ class CursosDTS extends DataTableSource {
                                     context: context,
                                     builder: (context) => AlertDialog(
                                           backgroundColor: bgColor,
-                                          title: Text('Eliminar Testimonio', style: DashboardLabel.paragraph,),
-                                          content: Text(e.nombre, style: DashboardLabel.paragraph,),
+                                          title: Text(
+                                            'Eliminar Testimonio',
+                                            style: DashboardLabel.paragraph,
+                                          ),
+                                          content: Text(
+                                            e.nombre,
+                                            style: DashboardLabel.paragraph,
+                                          ),
                                           actions: [
                                             CustomButton(
                                               text: appLocal.siBorrar,

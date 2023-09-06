@@ -188,4 +188,38 @@ class AuthProvider extends ChangeNotifier {
       NotifServ.showSnackbarError('Ocurrio algun error', Colors.red);
     }
   }
+
+  Future sendEmailSupport({
+    required String nombre,
+    required String apellido,
+    required String correo,
+    required String mensaje,
+  }) async {
+    final data = {"nombre": nombre, "apellido": apellido, "correo": correo, "mensaje": mensaje};
+    try {
+      await JpApi.post('/usuarios/support', data);
+      NotifServ.showSnackbarError('Correo enviado a soporte', Colors.green);
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+  Future sendEmailToUser({
+    required String nombre,
+    required String apellido,
+    required String correo,
+    required String mensaje,
+  }) async {
+    final data = {"nombre": nombre, "apellido": apellido, "correo": correo, "mensaje": mensaje};
+    try {
+      await JpApi.post('/usuarios/contact-email', data);
+      NotifServ.showSnackbarError('Correo enviado a usuario', Colors.green);
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
 }

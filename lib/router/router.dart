@@ -11,6 +11,7 @@ class Flurorouter {
   static String rootRoute = '/:page';
 //home
   static String homeRoute = '/home';
+
   // rutas asesorias
   static String asesoriaRoute = '/v/asesoria';
   static String agendarRoute = '/form/agendar';
@@ -45,10 +46,9 @@ class Flurorouter {
   static String clienteMisCursosDash = '/user/dashboard/miscursos';
   static String cursoID = '/user/dashboard/:cursoID/:videoIndex';
   static String curso = '/user/dashboard';
-  
+
   // comienza aqui
   static String start = '/user/start';
-
 
   //Cursos Landing
   static String cursoLandingId = '/user/land/:cursoId';
@@ -94,6 +94,7 @@ class Flurorouter {
     //Cursos landing
     router.define(cursoLandingId,
         handler: VisitorHandlers.cursoLanding, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
+
     router.define(cursoLanding,
         handler: VisitorHandlers.cursoLanding, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 
@@ -125,19 +126,19 @@ class Flurorouter {
 
 // users route
 
+    
+
     router.define(loginRoute,
         handler: UsersAuthHandlers.login, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 
     router.define(registerRoute,
         handler: UsersAuthHandlers.register, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 
-
     router.define(clienteDash,
         handler: UsersAuthHandlers.clientDashboard, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
 
     router.define(clienteMisCursosDash,
         handler: UsersAuthHandlers.clienteMisCursosDash, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));
-
 
     router.define(checksession,
         handler: UsersAuthHandlers.checksession, transitionType: TransitionType.none, transitionDuration: const Duration(milliseconds: 100));

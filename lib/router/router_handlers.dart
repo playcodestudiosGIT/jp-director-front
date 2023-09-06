@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:jp_director/ui/views/dashboard/start_here_view.dart';
 import '../ui/shared/widgets/progress_ind.dart';
+import '../ui/views/system/soporte_view.dart';
 import 'router.dart';
 
 import 'package:jp_director/ui/views/ui_views.dart';
@@ -106,6 +107,9 @@ class VisitorHandlers {
 
     if (page == '/') {
       return const HomeBody(index: 0);
+    }
+    if (page == 'support') {
+      return const SoporteView();
     }
     if (page == 'home') {
       return const HomeBody(index: 0);
@@ -247,8 +251,6 @@ class UsersAuthHandlers {
     if (authProvider.authStatus == AuthStatus.notAuthenticated) {
       return const LoginPage();
     } else {
-      
-
       Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
       return const DashMisCursosView();
     }

@@ -4,7 +4,7 @@ export '/ui/views/dashboard/dash_mis_cursos_view.dart';
 export '/ui/views/home_views/checkout_ads/create_user_checkout.dart';
 export '/ui/views/login/login_page.dart';
 export '/ui/views/login/resgister_page.dart';
-export '/ui/views/no_page_found.dart';
+export 'system/no_page_found.dart';
 export '/ui/views/static/asesoria_agendar_page.dart';
 export '/ui/views/static/conferencias_page.dart';
 export '/ui/views/static/formularios_page.dart';
