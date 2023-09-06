@@ -24,12 +24,6 @@ class _SoporteViewState extends State<SoporteView> {
   bool isLoading = false;
 
   @override
-  void dispose() {
-    formKey.currentState!.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     String nombre = '';
     String apellido = '';

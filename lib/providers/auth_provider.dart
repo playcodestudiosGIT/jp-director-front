@@ -117,10 +117,10 @@ class AuthProvider extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
     final data = {'nombre': nombre, 'apellido': apellido, 'correo': correo, 'password': password, 'telf': telf};
-
     JpApi.post('/usuarios', data).then((json) {
       isLoading = true;
       final authResponse = AuthResponse.fromJson(json);
+
       user = authResponse.usuario;
       _token = authResponse.token;
 

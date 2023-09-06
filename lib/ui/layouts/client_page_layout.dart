@@ -111,7 +111,7 @@ class _ClientPageLayoutState extends State<ClientPageLayout> with SingleTickerPr
                           PageProvider.circleController = controller;
                         },
                         child: const SizedBox(width: 1100, child: Image(image: circulo)))),
-                Container(constraints: const BoxConstraints(maxWidth: 1280), child: widget.child),
+                Container(constraints: const BoxConstraints(maxWidth: 1920), child: widget.child),
                 const AppbarTop(),
                 const Positioned(
                     right: 0,

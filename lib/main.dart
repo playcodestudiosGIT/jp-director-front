@@ -92,7 +92,7 @@ class MyAppState extends State<MyApp> {
         }),
         theme: ThemeData(
           scrollbarTheme: ScrollbarThemeData(
-            thumbColor: MaterialStateProperty.all(azulText.withOpacity(0.3)),
+            thumbColor: MaterialStateProperty.all(azulText.withOpacity(0.1)),
           ),
           colorScheme: const ColorScheme.dark().copyWith(primary: azulText),
           splashColor: azulText.withOpacity(0.1),

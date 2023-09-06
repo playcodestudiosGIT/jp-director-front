@@ -33,6 +33,7 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
     final wSize = MediaQuery.of(context).size.width;
+    final hSize = MediaQuery.of(context).size.height;
     final authProvider = Provider.of<AuthProvider>(context);
     Provider.of<AllCursosProvider>(context, listen: false).obtenerMisCursos(authProvider.user!);
     List<Widget> cursoDestruct = [];
@@ -55,81 +56,90 @@ class _DashMisCursosViewState extends State<DashMisCursosView> {
             esMio: true,
           ),
         ));
-    return Container(
-        color: Colors.transparent,
-        child: Stack(
-          children: [
-            Positioned(
-                top: 90,
-                right: 230,
-                child: Transform.rotate(
-                  angle: 16,
-                  child: const Opacity(
-                    opacity: 0.1,
-                    child: Image(
-                      image: rocketGif,
-                      width: 280,
-                    ),
-                  ),
-                )),
-            ListView(physics: const ClampingScrollPhysics(), children: [
-              const SizedBox(
-                height: 80,
-              ),
-              TitleLabel(texto: appLocal.misCursosLabel),
-              const SizedBox(
-                height: 10,
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: Center(
-                  child: Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    alignment: WrapAlignment.center, children: [
-                    if (destruct.isEmpty)
-                      Text(
-                        appLocal.noTienesCursos,
-                        style: DashboardLabel.paragraph,
-                      ),
-                    if (destruct.isNotEmpty) ...destruct,
-                    if (wSize > 500)
-                    const SizedBox(width: 85, height: 10),
-                  ]
 
-                      //  ,
+
+    return Column(
+      children: [
+        Container(
+          height: hSize,
+          width: double.infinity,
+          constraints: const BoxConstraints(maxWidth: 1280),
+          child: Stack(
+            children: [
+              Positioned(
+                  top: 90,
+                  right: 230,
+                  child: Transform.rotate(
+                    angle: 16,
+                    child: const Opacity(
+                      opacity: 0.1,
+                      child: Image(
+                        image: rocketGif,
+                        width: 280,
                       ),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              TitleLabel(texto: appLocal.cursosDisponibles),
-              SizedBox(
-                  height: 435,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        if (cursoDestruct.isEmpty)
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 60),
-                            child: Text(
-                              appLocal.yaTienesTodos,
-                              style: DashboardLabel.paragraph,
-                            ),
-                          ),
-                        if (cursoDestruct.isNotEmpty) ...cursoDestruct,
-                        const SizedBox(width: 85, height: 10)
-                      ],
                     ),
                   )),
-              const SizedBox(
-                height: 20,
-              ),
-            ]),
-          ],
-        ));
+              ListView(physics: const ClampingScrollPhysics(), children: [
+                const SizedBox(
+                  height: 80,
+                ),
+                TitleLabel(texto: appLocal.misCursosLabel),
+                const SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: Center(
+                    child: Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      alignment: WrapAlignment.center, children: [
+                      if (destruct.isEmpty)
+                        Text(
+                          appLocal.noTienesCursos,
+                          style: DashboardLabel.paragraph,
+                        ),
+                      if (destruct.isNotEmpty) ...destruct,
+                      if (wSize > 500)
+                      const SizedBox(width: 85, height: 10),
+                    ]
+        
+                        //  ,
+                        ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TitleLabel(texto: appLocal.cursosDisponibles),
+                SizedBox(
+                    height: 435,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          if (cursoDestruct.isEmpty)
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 60),
+                              child: Text(
+                                appLocal.yaTienesTodos,
+                                style: DashboardLabel.paragraph,
+                              ),
+                            ),
+                          if (cursoDestruct.isNotEmpty) ...cursoDestruct,
+                          const SizedBox(width: 85, height: 10)
+                        ],
+                      ),
+                    )),
+                const SizedBox(
+                  height: 20,
+                ),
+              ]),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }

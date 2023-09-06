@@ -63,430 +63,245 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
     final appLocal = AppLocalizations.of(context);
     final authProvider = Provider.of<AuthProvider>(context);
     final usersProvider = Provider.of<UsersProvider>(context);
+    final hSize = MediaQuery.of(context).size.height;
 
-    return ListView(
-      physics: const ClampingScrollPhysics(),
+    return Column(
       children: [
-        TopAreaBack(onPress: () => NavigatorService.navigateTo(Flurorouter.clienteMisCursosDash)),
-        TitleLabel(texto: appLocal.miCuentaMenuBtn),
-        const SizedBox(
-          height: 10,
-        ),
-        Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 30,
-          runSpacing: 30,
-          children: [
-            CircleAvatar(
-              backgroundColor: Colors.transparent,
-              radius: 100,
-              child: Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: Image.network(
-                      authProvider.user!.img,
-                      width: 250,
-                    ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    bottom: 0,
-                    child: MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: GestureDetector(
-                        onTap: () => pickImage(context, authProvider.user!.uid),
-                        child: Container(
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(color: const Color(0xff021E36), borderRadius: BorderRadius.circular(14)),
-                            width: 57,
-                            height: 44,
-                            child: const Icon(
-                              Icons.flip_camera_ios_outlined,
-                              color: azulText,
-                              size: 35,
-                            )),
-                      ),
-                    ),
-                  ),
-                ],
+        Container(
+          width: double.infinity,
+          height: hSize,
+          constraints: const BoxConstraints(maxWidth: 800),
+          child: ListView(
+            physics: const ClampingScrollPhysics(),
+            children: [
+              TopAreaBack(onPress: () => NavigatorService.navigateTo(Flurorouter.clienteMisCursosDash)),
+              TitleLabel(texto: appLocal.miCuentaMenuBtn),
+              const SizedBox(
+                height: 10,
               ),
-            ),
-            SizedBox(
-              width: 315,
-              height: 200,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Wrap(
+                alignment: WrapAlignment.center,
+                spacing: 30,
+                runSpacing: 30,
                 children: [
-                  const Spacer(),
-                  Text(
-                    '${authProvider.user!.nombre} ${authProvider.user!.apellido}',
-                    textAlign: TextAlign.start,
-                    style: DashboardLabel.azulTextH2.copyWith(color: blancoText),
-                  ),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      Icon(Icons.email_outlined, color: Colors.white.withOpacity(0.3)),
-                      const SizedBox(width: 8),
-                      Text(
-                        authProvider.user!.correo,
-                        textAlign: TextAlign.start,
-                        style: DashboardLabel.paragraph,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      Icon(Icons.phone_outlined, color: Colors.white.withOpacity(0.3)),
-                      const SizedBox(width: 8),
-                      Text(
-                        authProvider.user!.telf,
-                        textAlign: TextAlign.start,
-                        style: DashboardLabel.paragraph,
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                ],
-              ),
-            ),
-            Container(
-              constraints: const BoxConstraints(maxWidth: 600, minWidth: 370, minHeight: 130),
-              padding: const EdgeInsets.all(20),
-              margin: const EdgeInsets.symmetric(horizontal: 20),
-              height: 150,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    appLocal.sobreMi,
-                    style: const TextStyle(color: blancoText, fontSize: 18),
-                    textAlign: TextAlign.start,
-                  ),
-                  const SizedBox(height: 15),
-                  Text(
-                    authProvider.user!.me,
-                    maxLines: 5,
-                    style: const TextStyle(color: blancoText),
-                    textAlign: TextAlign.start,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 15,
-        ),
-        Column(
-          children: [
-            CustomButton(
-              text: appLocal.actInfoBtn,
-              width: 220,
-              onPress: () async {
-                final dialog = AlertDialog(
-                  backgroundColor: bgColor,
-                  content: Container(
-                    constraints: const BoxConstraints(minWidth: 360),
-                    color: Colors.transparent,
-                    margin: const EdgeInsets.only(left: 10),
-                    height: 452,
-                    
-                    child: Column(
+                  CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    radius: 100,
+                    child: Stack(
                       children: [
-                        // if (size.width < 575) const SizedBox(height: 80),
-                        FittedBox(
-                          child: Text(
-                            appLocal.actInfo,
-                            style: DashboardLabel.h2,
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: Image.network(
+                            authProvider.user!.img,
+                            width: 250,
                           ),
                         ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Container(
-                          constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
-                          child: TextFormField(
-                            cursorColor: azulText,
-                            initialValue: authProvider.user!.nombre,
-                            onChanged: (value) {
-                              nombreModal = value;
-                              authProvider.user!.nombre = value;
-                            },
-                            style: DashboardLabel.h4,
-                            decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.userAstronaut, label: appLocal.nombreTextField),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Container(
-                          constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
-                          child: TextFormField(
-                            cursorColor: azulText,
-                            initialValue: authProvider.user!.apellido,
-                            onChanged: (value) {
-                              apellidoModal = value;
-                              authProvider.user!.apellido = value;
-                            },
-                            style: DashboardLabel.h4,
-                            decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.idCard, label: appLocal.apellidoTextFiel),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Container(
-                          constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
-                          child: TextFormField(
-                            cursorColor: azulText,
-                            keyboardType: TextInputType.phone,
-                            initialValue: authProvider.user!.telf,
-                            onChanged: (value) {
-                              telfModal = value.toString();
-                              authProvider.user!.telf = value;
-                            },
-                            style: DashboardLabel.h4,
-                            decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.phone, label: appLocal.telefonoForm),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Container(
-                          constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
-                          child: TextFormField(
-                            cursorColor: azulText,
-                            keyboardType: TextInputType.emailAddress,
-                            initialValue: authProvider.user!.correo,
-                            onChanged: (value) {
-                              correoModal = value;
-                              authProvider.user!.correo = value;
-                            },
-                            style: DashboardLabel.h4,
-                            decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.addressCard, label: appLocal.correoTextFiel),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Container(
-                          constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
-                          child: TextFormField(
-                            cursorColor: azulText,
-                            maxLines: 2,
-                            initialValue: authProvider.user!.me,
-                            onChanged: (value) {
-                              meModal = value;
-                              authProvider.user!.me = value;
-                            },
-                            style: DashboardLabel.h4,
-                            decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.circleInfo, label: appLocal.sobreMi),
-                          ),
-                        ),
-                        const SizedBox(height: 30),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            CustomButton(
-                              text: appLocal.actualizarBtn,
-                              onPress: () async {
-                                await usersProvider.updateUser(
-                                  uid: authProvider.user!.uid,
-                                  nombre: nombreModal,
-                                  apellido: apellidoModal,
-                                  correo: correoModal,
-                                  me: meModal,
-                                  telf: telfModal,
-                                  facebook: facebookModal,
-                                  instagram: instagramModal,
-                                  tiktok: tiktokModal,
-                                  pass: claveModal,
-                                );
-                                if (context.mounted) {
-                                  setState(() {
-                                    Navigator.pop(context, true);
-                                  });
-                                }
-                              },
-                              width: 100,
-                              color: Colors.green,
+                        Positioned(
+                          right: 0,
+                          bottom: 0,
+                          child: MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: GestureDetector(
+                              onTap: () => pickImage(context, authProvider.user!.uid),
+                              child: Container(
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(color: const Color(0xff021E36), borderRadius: BorderRadius.circular(14)),
+                                  width: 57,
+                                  height: 44,
+                                  child: const Icon(
+                                    Icons.flip_camera_ios_outlined,
+                                    color: azulText,
+                                    size: 35,
+                                  )),
                             ),
-                            const SizedBox(width: 10),
-                            CustomButton(
-                              text: appLocal.cancelarBtn,
-                              onPress: () {
-                                Navigator.pop(context, false);
-                              },
-                              width: 100,
-                              color: Colors.red,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 315,
+                    height: 200,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Spacer(),
+                        Text(
+                          '${authProvider.user!.nombre} ${authProvider.user!.apellido}',
+                          textAlign: TextAlign.start,
+                          style: DashboardLabel.azulTextH2.copyWith(color: blancoText),
+                        ),
+                        const SizedBox(height: 8),
+                        Row(
+                          children: [
+                            Icon(Icons.email_outlined, color: Colors.white.withOpacity(0.3)),
+                            const SizedBox(width: 8),
+                            Text(
+                              authProvider.user!.correo,
+                              textAlign: TextAlign.start,
+                              style: DashboardLabel.paragraph,
                             ),
                           ],
                         ),
-                        
+                        const SizedBox(height: 8),
+                        Row(
+                          children: [
+                            Icon(Icons.phone_outlined, color: Colors.white.withOpacity(0.3)),
+                            const SizedBox(width: 8),
+                            Text(
+                              authProvider.user!.telf,
+                              textAlign: TextAlign.start,
+                              style: DashboardLabel.paragraph,
+                            ),
+                          ],
+                        ),
+                        const Spacer(),
                       ],
                     ),
                   ),
-                );
-
-                final ifAct = await showDialog(
-                  barrierDismissible: false,
-                  context: context,
-                  builder: (context) => dialog,
-                );
-
-                if (ifAct) {
-                  setState(() {});
-                }
-              },
-            )
-          ],
-        ),
-        const SizedBox(
-          height: 60,
-        ),
-        Form(
-          key: formKey1,
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 15),
-            child: Column(
-              children: [
-                TitleLabel(texto: appLocal.redesSociales),
-                const SizedBox(
-                  height: 25,
-                ),
-                Container(
-                    padding: const EdgeInsets.all(15),
-                    constraints: const BoxConstraints(maxWidth: 400, minWidth: 320),
-                    child: Row(
+                  Container(
+                    constraints: const BoxConstraints(maxWidth: 600, minWidth: 370, minHeight: 130),
+                    padding: const EdgeInsets.all(20),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    height: 150,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Icon(
-                          FontAwesomeIcons.facebook,
-                          color: blancoText,
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
                         Text(
-                          authProvider.user!.facebook,
+                          appLocal.sobreMi,
+                          style: const TextStyle(color: blancoText, fontSize: 18),
+                          textAlign: TextAlign.start,
+                        ),
+                        const SizedBox(height: 15),
+                        Text(
+                          authProvider.user!.me,
+                          maxLines: 5,
                           style: const TextStyle(color: blancoText),
-                        )
+                          textAlign: TextAlign.start,
+                        ),
                       ],
-                    )),
-                const SizedBox(
-                  height: 15,
-                ),
-                Container(
-                    padding: const EdgeInsets.all(15),
-                    constraints: const BoxConstraints(maxWidth: 400, minWidth: 320),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          FontAwesomeIcons.instagram,
-                          color: blancoText,
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        Text(authProvider.user!.instagram, style: const TextStyle(color: blancoText))
-                      ],
-                    )),
-                const SizedBox(
-                  height: 15,
-                ),
-                Container(
-                    padding: const EdgeInsets.all(15),
-                    constraints: const BoxConstraints(maxWidth: 400, minWidth: 320),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          FontAwesomeIcons.tiktok,
-                          color: blancoText,
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        Text(authProvider.user!.tiktok, style: const TextStyle(color: blancoText))
-                      ],
-                    )),
-                const SizedBox(
-                  height: 15,
-                ),
-                CustomButton(
-                  text: appLocal.actRrssBtn,
-                  width: 215,
-                  onPress: () {
-                    final dialog = AlertDialog(
-                      backgroundColor: bgColor,
-                      content: Container(
-                        margin: const EdgeInsets.only(left: 10),
-                        height: 320,
-                        width: 320,
-                        child: Column(
-                          children: [
-                            Text(
-                              appLocal.actRrssBtn,
-                              style: DashboardLabel.h2,
-                            ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            Container(
-                              constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
-                              child: TextFormField(
-                                cursorColor: azulText,
-                                initialValue: authProvider.user!.facebook,
-                                onChanged: (value) {
-                                  facebookModal = value;
-                                  authProvider.user!.facebook = value;
-                                },
-                                style: DashboardLabel.paragraph,
-                                decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.facebook, label: 'Facebook'),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Column(
+                children: [
+                  CustomButton(
+                    text: appLocal.actInfoBtn,
+                    width: 220,
+                    onPress: () async {
+                      final dialog = AlertDialog(
+                        backgroundColor: bgColor,
+                        content: Container(
+                          constraints: const BoxConstraints(minWidth: 360),
+                          color: Colors.transparent,
+                          margin: const EdgeInsets.only(left: 10),
+                          height: 452,
+                          child: Column(
+                            children: [
+                              // if (size.width < 575) const SizedBox(height: 80),
+                              FittedBox(
+                                child: Text(
+                                  appLocal.actInfo,
+                                  style: DashboardLabel.h2,
+                                ),
                               ),
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
-                              child: TextFormField(
-                                cursorColor: azulText,
-                                initialValue: authProvider.user!.instagram,
-                                onChanged: (value) {
-                                  instagramModal = value;
-                                  authProvider.user!.instagram = value;
-                                },
-                                style: DashboardLabel.paragraph,
-                                decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.instagram, label: 'Instagram'),
+                              const SizedBox(
+                                height: 15,
                               ),
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
-                              child: TextFormField(
-                                cursorColor: azulText,
-                                initialValue: authProvider.user!.tiktok,
-                                onChanged: (value) {
-                                  tiktokModal = value;
-                                  authProvider.user!.tiktok = value.toString();
-                                },
-                                style: DashboardLabel.paragraph,
-                                decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.tiktok, label: 'Tik Tok'),
+                              Container(
+                                constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
+                                child: TextFormField(
+                                  cursorColor: azulText,
+                                  initialValue: authProvider.user!.nombre,
+                                  onChanged: (value) {
+                                    nombreModal = value;
+                                    authProvider.user!.nombre = value;
+                                  },
+                                  style: DashboardLabel.h4,
+                                  decoration:
+                                      InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.userAstronaut, label: appLocal.nombreTextField),
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 30),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                CustomButton(
-                                  text: appLocal.actualizarBtn,
-                                  onPress: () {
-                                    usersProvider.updateUser(
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              Container(
+                                constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
+                                child: TextFormField(
+                                  cursorColor: azulText,
+                                  initialValue: authProvider.user!.apellido,
+                                  onChanged: (value) {
+                                    apellidoModal = value;
+                                    authProvider.user!.apellido = value;
+                                  },
+                                  style: DashboardLabel.h4,
+                                  decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.idCard, label: appLocal.apellidoTextFiel),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              Container(
+                                constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
+                                child: TextFormField(
+                                  cursorColor: azulText,
+                                  keyboardType: TextInputType.phone,
+                                  initialValue: authProvider.user!.telf,
+                                  onChanged: (value) {
+                                    telfModal = value.toString();
+                                    authProvider.user!.telf = value;
+                                  },
+                                  style: DashboardLabel.h4,
+                                  decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.phone, label: appLocal.telefonoForm),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              Container(
+                                constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
+                                child: TextFormField(
+                                  cursorColor: azulText,
+                                  keyboardType: TextInputType.emailAddress,
+                                  initialValue: authProvider.user!.correo,
+                                  onChanged: (value) {
+                                    correoModal = value;
+                                    authProvider.user!.correo = value;
+                                  },
+                                  style: DashboardLabel.h4,
+                                  decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.addressCard, label: appLocal.correoTextFiel),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              Container(
+                                constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
+                                child: TextFormField(
+                                  cursorColor: azulText,
+                                  maxLines: 2,
+                                  initialValue: authProvider.user!.me,
+                                  onChanged: (value) {
+                                    meModal = value;
+                                    authProvider.user!.me = value;
+                                  },
+                                  style: DashboardLabel.h4,
+                                  decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.circleInfo, label: appLocal.sobreMi),
+                                ),
+                              ),
+                              const SizedBox(height: 30),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  CustomButton(
+                                    text: appLocal.actualizarBtn,
+                                    onPress: () async {
+                                      await usersProvider.updateUser(
                                         uid: authProvider.user!.uid,
                                         nombre: nombreModal,
                                         apellido: apellidoModal,
@@ -497,44 +312,238 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                                         instagram: instagramModal,
                                         tiktok: tiktokModal,
                                         pass: claveModal,
-                                        rol: 'USER_ROLE');
-                                    setState(() {});
-                                    Navigator.pop(context);
-                                  },
-                                  width: 100,
-                                  color: Colors.green,
-                                ),
-                                const SizedBox(width: 10),
-                                CustomButton(
-                                    text: appLocal.cancelarBtn,
-                                    onPress: () {
-                                      Navigator.pop(context);
+                                      );
+                                      if (context.mounted) {
+                                        setState(() {
+                                          Navigator.pop(context, true);
+                                        });
+                                      }
                                     },
                                     width: 100,
-                                    color: Colors.red)
-                              ],
-                            )
-                          ],
+                                    color: Colors.green,
+                                  ),
+                                  const SizedBox(width: 10),
+                                  CustomButton(
+                                    text: appLocal.cancelarBtn,
+                                    onPress: () {
+                                      Navigator.pop(context, false);
+                                    },
+                                    width: 100,
+                                    color: Colors.red,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    );
+                      );
 
-                    showDialog(
-                      context: context,
-                      builder: (context) => dialog,
-                    );
-                  },
-                )
-              ],
-            ),
+                      final ifAct = await showDialog(
+                        barrierDismissible: false,
+                        context: context,
+                        builder: (context) => dialog,
+                      );
+
+                      if (ifAct) {
+                        setState(() {});
+                      }
+                    },
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 60,
+              ),
+              Form(
+                key: formKey1,
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Column(
+                    children: [
+                      TitleLabel(texto: appLocal.redesSociales),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      Container(
+                          padding: const EdgeInsets.all(15),
+                          constraints: const BoxConstraints(maxWidth: 400, minWidth: 320),
+                          child: Row(
+                            children: [
+                              const Icon(
+                                FontAwesomeIcons.facebook,
+                                color: blancoText,
+                              ),
+                              const SizedBox(
+                                width: 15,
+                              ),
+                              Text(
+                                authProvider.user!.facebook,
+                                style: const TextStyle(color: blancoText),
+                              )
+                            ],
+                          )),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                          padding: const EdgeInsets.all(15),
+                          constraints: const BoxConstraints(maxWidth: 400, minWidth: 320),
+                          child: Row(
+                            children: [
+                              const Icon(
+                                FontAwesomeIcons.instagram,
+                                color: blancoText,
+                              ),
+                              const SizedBox(
+                                width: 15,
+                              ),
+                              Text(authProvider.user!.instagram, style: const TextStyle(color: blancoText))
+                            ],
+                          )),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                          padding: const EdgeInsets.all(15),
+                          constraints: const BoxConstraints(maxWidth: 400, minWidth: 320),
+                          child: Row(
+                            children: [
+                              const Icon(
+                                FontAwesomeIcons.tiktok,
+                                color: blancoText,
+                              ),
+                              const SizedBox(
+                                width: 15,
+                              ),
+                              Text(authProvider.user!.tiktok, style: const TextStyle(color: blancoText))
+                            ],
+                          )),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      CustomButton(
+                        text: appLocal.actRrssBtn,
+                        width: 215,
+                        onPress: () {
+                          final dialog = AlertDialog(
+                            backgroundColor: bgColor,
+                            content: Container(
+                              margin: const EdgeInsets.only(left: 10),
+                              height: 320,
+                              width: 320,
+                              child: Column(
+                                children: [
+                                  Text(
+                                    appLocal.actRrssBtn,
+                                    style: DashboardLabel.h2,
+                                  ),
+                                  const SizedBox(
+                                    height: 30,
+                                  ),
+                                  Container(
+                                    constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
+                                    child: TextFormField(
+                                      cursorColor: azulText,
+                                      initialValue: authProvider.user!.facebook,
+                                      onChanged: (value) {
+                                        facebookModal = value;
+                                        authProvider.user!.facebook = value;
+                                      },
+                                      style: DashboardLabel.paragraph,
+                                      decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.facebook, label: 'Facebook'),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  Container(
+                                    constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
+                                    child: TextFormField(
+                                      cursorColor: azulText,
+                                      initialValue: authProvider.user!.instagram,
+                                      onChanged: (value) {
+                                        instagramModal = value;
+                                        authProvider.user!.instagram = value;
+                                      },
+                                      style: DashboardLabel.paragraph,
+                                      decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.instagram, label: 'Instagram'),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  Container(
+                                    constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
+                                    child: TextFormField(
+                                      cursorColor: azulText,
+                                      initialValue: authProvider.user!.tiktok,
+                                      onChanged: (value) {
+                                        tiktokModal = value;
+                                        authProvider.user!.tiktok = value.toString();
+                                      },
+                                      style: DashboardLabel.paragraph,
+                                      decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.tiktok, label: 'Tik Tok'),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 30),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      CustomButton(
+                                        text: appLocal.actualizarBtn,
+                                        onPress: () {
+                                          usersProvider.updateUser(
+                                              uid: authProvider.user!.uid,
+                                              nombre: nombreModal,
+                                              apellido: apellidoModal,
+                                              correo: correoModal,
+                                              me: meModal,
+                                              telf: telfModal,
+                                              facebook: facebookModal,
+                                              instagram: instagramModal,
+                                              tiktok: tiktokModal,
+                                              pass: claveModal,
+                                              rol: 'USER_ROLE');
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                        },
+                                        width: 100,
+                                        color: Colors.green,
+                                      ),
+                                      const SizedBox(width: 10),
+                                      CustomButton(
+                                          text: appLocal.cancelarBtn,
+                                          onPress: () {
+                                            Navigator.pop(context);
+                                          },
+                                          width: 100,
+                                          color: Colors.red)
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+
+                          showDialog(
+                            context: context,
+                            builder: (context) => dialog,
+                          );
+                        },
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 60,
+              ),
+              const SizedBox(
+                height: 80,
+              )
+            ],
           ),
         ),
-        const SizedBox(
-          height: 60,
-        ),
-        const SizedBox(
-          height: 80,
-        )
       ],
     );
   }

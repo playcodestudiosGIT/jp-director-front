@@ -222,7 +222,7 @@ class UsersAuthHandlers {
     return const TycView();
   });
   static Handler start = Handler(handlerFunc: (context, params) {
-    Provider.of<SideBarProvider>(context!).setCurrentPageUrl(Flurorouter.start);
+    Provider.of<SideBarProvider>(context!, listen: false).setCurrentPageUrl(Flurorouter.start);
     return const StartHereView();
   });
 
