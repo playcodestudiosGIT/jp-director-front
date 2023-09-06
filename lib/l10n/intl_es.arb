@@ -390,7 +390,15 @@
     "unaVezFinalices": "3. Una vez finalices el curso podrás descargar tu certificado de finalización en el botón que aparecerá en la parte superior derecha de cada curso.",
     "siTienesAlgunaDuda": "4. Si tienes alguna pregunta más especifica contamos con un ",
     "centroSoporte" : "Centro de Ayuda y Soporte",
-    "dondeTeBrindaremos":"donde te brindaremos una respuesta en el transcurso de 48 hora"
+    "dondeTeBrindaremos":"donde te brindaremos una respuesta en el transcurso de 48 hora",
+    "enviarEmaila": "Enviar email a:",
+    "escribeComentario": "Escribe tu comentario",
+    "continuaMensaje": "continua el mensaje...",
+    "mensajeEnviado": "Mensaje enviado con exito",
+    "envianosComentario" : "Envianos tus comentarios, en menos de 48h te brindaremos una respuesta",
+    "enQueAyudarte":"En que podemos ayudarte",
+    "graciasPorComunicarte": "Gracias por comunicarte, en menos de 48 horas te brindaremos una respuesta a tu correo electrónico",
+    "comienzaAqui": "Comienza Aquí"
     
     
     

@@ -65,9 +65,11 @@ class _SoporteViewState extends State<SoporteView> {
                               key: formKey,
                               child: Column(
                                 children: [
-                                  Text(
-                                    'AYUDA Y SOPORTE',
-                                    style: DashboardLabel.azulTextH1,
+                                  FittedBox(
+                                    child: Text(
+                                      appLocal.centroSoporte,
+                                      style: DashboardLabel.azulTextH1,
+                                    ),
                                   ),
                                   const SizedBox(
                                     height: 15,
@@ -76,7 +78,7 @@ class _SoporteViewState extends State<SoporteView> {
                                     Column(
                                       children: [
                                         Text(
-                                          'Envianos tus comentarios, en menos de 48h te brindaremos una respuesta',
+                                          appLocal.envianosComentario,
                                           style: DashboardLabel.mini,
                                         ),
                                         const SizedBox(
@@ -124,12 +126,12 @@ class _SoporteViewState extends State<SoporteView> {
                                           initialValue: mensaje,
                                           cursorColor: azulText,
                                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                                          validator: (value) => (value!.isNotEmpty) ? null : 'Escribe tu comentario',
+                                          validator: (value) => (value!.isNotEmpty) ? null : appLocal.escribeComentario,
                                           maxLines: 5,
                                           onChanged: (value) => mensaje = value,
                                           style: DashboardLabel.paragraph,
                                           decoration: InputDecor.formFieldInputDecoration(
-                                              icon: Icons.contact_support_rounded, label: 'En que podemos ayudarte'),
+                                              icon: Icons.contact_support_rounded, label: appLocal.enQueAyudarte),
                                         ),
                                         const SizedBox(
                                           height: 10,
@@ -142,7 +144,7 @@ class _SoporteViewState extends State<SoporteView> {
                                           children: [
                                             CustomButton(
                                               width: 140,
-                                              text: 'ENVIAR',
+                                              text: appLocal.enviarBtn,
                                               onPress: (isLoading)
                                                   ? null
                                                   : () async {
@@ -183,7 +185,7 @@ class _SoporteViewState extends State<SoporteView> {
                                         children: [
                                           const Icon(Icons.check, color: Colors.green),
                                           Text(
-                                            'Gracias por comunicarte, en menos de 48 horas te brindaremos una respuesta a tu correo electrónico',
+                                            appLocal.graciasPorComunicarte,
                                             style: DashboardLabel.mini,
                                           ),
                                         ],

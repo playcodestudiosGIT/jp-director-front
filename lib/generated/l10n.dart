@@ -3900,10 +3900,10 @@ class AppLocalizations {
     );
   }
 
-  /// `We explain 👇 everything you need to know: `
+  /// `We explain  👇  everything you need to know: `
   String get teExplicamos {
     return Intl.message(
-      'We explain 👇 everything you need to know: ',
+      'We explain  👇  everything you need to know: ',
       name: 'teExplicamos',
       desc: '',
       args: [],
@@ -3965,6 +3965,86 @@ class AppLocalizations {
     return Intl.message(
       'where we will give you an answer within 48 hours',
       name: 'dondeTeBrindaremos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send email to:`
+  String get enviarEmaila {
+    return Intl.message(
+      'Send email to:',
+      name: 'enviarEmaila',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write your comment`
+  String get escribeComentario {
+    return Intl.message(
+      'Write your comment',
+      name: 'escribeComentario',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `continue the message...`
+  String get continuaMensaje {
+    return Intl.message(
+      'continue the message...',
+      name: 'continuaMensaje',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Message sent succesfully`
+  String get mensajeEnviado {
+    return Intl.message(
+      'Message sent succesfully',
+      name: 'mensajeEnviado',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send us your comments, in less than 48 hours we will give you an answer`
+  String get envianosComentario {
+    return Intl.message(
+      'Send us your comments, in less than 48 hours we will give you an answer',
+      name: 'envianosComentario',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How can we help you?`
+  String get enQueAyudarte {
+    return Intl.message(
+      'How can we help you?',
+      name: 'enQueAyudarte',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thank you for contacting us, in less than 48 hours we will give you an answer to your email`
+  String get graciasPorComunicarte {
+    return Intl.message(
+      'Thank you for contacting us, in less than 48 hours we will give you an answer to your email',
+      name: 'graciasPorComunicarte',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start here`
+  String get comienzaAqui {
+    return Intl.message(
+      'Start here',
+      name: 'comienzaAqui',
       desc: '',
       args: [],
     );

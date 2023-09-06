@@ -385,13 +385,21 @@
     "nuevoForm": "Nuevo Formulario",
     "hola": "Hi,",
     "bienvenidoAlosProg": "Welcome to the most complete digital advertising programs. We thank you and a big hug for trusting our formations; we are excited to see you grow on this new path of success.",
-    "teExplicamos": "We explain 👇 everything you need to know: ",
+    "teExplicamos": "We explain  👇  everything you need to know: ",
     "cadaCursoCuenta": "1. Each course has its comment bar - you can leave us all your questions and our team will be answering them",
     "podrasDescargar": "2. You will be able to download in each module a complementary material of the class you are learning",
     "unaVezFinalices": "3. Once you finish the course you will be able to download your certificate of completion in the button that will appear at the top right of each course.",
     "siTienesAlgunaDuda": "4. If you have any more specific questions, we have a ",
     "centroSoporte" : "Help and Support Center",
-    "dondeTeBrindaremos" : "where we will give you an answer within 48 hours"
+    "dondeTeBrindaremos" : "where we will give you an answer within 48 hours",
+    "enviarEmaila": "Send email to:",
+    "escribeComentario": "Write your comment",
+    "continuaMensaje": "continue the message...",
+    "mensajeEnviado": "Message sent succesfully",
+    "envianosComentario" : "Send us your comments, in less than 48 hours we will give you an answer",
+    "enQueAyudarte":"How can we help you?",
+    "graciasPorComunicarte": "Thank you for contacting us, in less than 48 hours we will give you an answer to your email",
+    "comienzaAqui": "Start here"
 
 
 

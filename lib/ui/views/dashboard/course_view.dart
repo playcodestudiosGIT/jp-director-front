@@ -56,12 +56,12 @@ class _CourseViewState extends State<CourseView> {
     curso = Provider.of<AllCursosProvider>(context, listen: false).cursoView;
     final user = Provider.of<AuthProvider>(context, listen: false).user;
     prog = user!.progress.where((element) => element.moduloId == curso.modulos[widget.videoIndex].id).first;
-    isComplete = prog.isComplete;
+    // isComplete = prog.isComplete;
     Provider.of<AuthProvider>(context, listen: false).isAutenticated();
     final Uri url = Uri.parse(curso.modulos[widget.videoIndex].video);
     videoPlayerController = VideoPlayerController.networkUrl(url,
         videoPlayerOptions: VideoPlayerOptions(webOptions: const VideoPlayerWebOptions(allowContextMenu: false, allowRemotePlayback: true)));
-    if (percent == 100) isComplete = true;
+    
     chewieController = ChewieController(
         startAt: Duration(seconds: prog.marker),
         placeholder: Container(decoration: const BoxDecoration(image: DecorationImage(image: logoGrande))),
@@ -84,6 +84,12 @@ class _CourseViewState extends State<CourseView> {
       }
     });
 
+    videoPlayerController.addListener(() async {
+      if (videotime == prog.marker + 30) {
+        Provider.of<AuthProvider>(context, listen: false).updateProg(moduloId: prog.moduloId, marker: videotime - 1, isComplete: prog.isComplete);
+        prog.marker = videotime;
+      }
+    });
     videoPlayerController.addListener(() async {
       if (videotime == prog.marker + 30) {
         Provider.of<AuthProvider>(context, listen: false).updateProg(moduloId: prog.moduloId, marker: videotime - 1, isComplete: prog.isComplete);
@@ -142,6 +148,8 @@ class _CourseViewState extends State<CourseView> {
         videotime = videoPlayerController.value.position.inSeconds;
       });
     });
+
+    if (percent == 100) isComplete = true;
 
     return (curso.nombre == '')
         ? const ProgressInd()
@@ -260,7 +268,7 @@ class _CourseViewState extends State<CourseView> {
                                     width: (wScreen < 325) ? 20 : 30,
                                     height: (wScreen < 325) ? 20 : 30,
                                     child: CircularProgressIndicator(
-                                      value: percent,
+                                      value: percent / 100,
 
                                       color: (percent == 100.0) ? Colors.green : azulText,
                                       backgroundColor: Colors.white.withOpacity(0.3),
@@ -318,6 +326,7 @@ class _CourseViewState extends State<CourseView> {
                                               padding: const EdgeInsets.symmetric(horizontal: 15),
                                               child: Row(
                                                 children: [
+                                                  if(curso.modulos[widget.videoIndex].idDriveFolder != '')
                                                   CustomButton(
                                                     text: appLocal.verMaterialBtn,
                                                     onPress: () {
@@ -329,6 +338,7 @@ class _CourseViewState extends State<CourseView> {
                                                     icon: Icons.download_outlined,
                                                   ),
                                                   const SizedBox(width: 15),
+                                                  if(curso.modulos[widget.videoIndex].idDriveZip != '')
                                                   BotonRedondoIcono(
                                                       fillColor: azulText,
                                                       iconColor: bgColor,
@@ -387,7 +397,7 @@ class _CourseViewState extends State<CourseView> {
                                                       ),
                                                       onTap: () {
                                                         chewieController.togglePause();
-                                                        NavigatorService.replaceTo('${Flurorouter.curso}${curso.id}/$i');
+                                                        NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/$i');
                                                       },
                                                     ),
                                                     Divider(

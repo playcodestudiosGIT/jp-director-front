@@ -115,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "comentarioInvalido":
             MessageLookupByLibrary.simpleMessage("Comentario Invalido"),
         "comentariosBtn": MessageLookupByLibrary.simpleMessage("COMENTARIOS"),
+        "comienzaAqui": MessageLookupByLibrary.simpleMessage("Comienza Aquí"),
         "como": MessageLookupByLibrary.simpleMessage("¿Cómo?"),
         "comoPuedoBuscarteRRSS": MessageLookupByLibrary.simpleMessage(
             "¿Cómo te puedo buscar en redes sociales?"),
@@ -148,6 +149,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "contactoLargeText": MessageLookupByLibrary.simpleMessage(
             "Desde hace 5 años estoy comprometido en potenciar y educar con estrategias publicitarias efectivas que dan en el punto.\nCon un recorrido de \$4.000.000 USD invertidos y un retorno de + \$30.000.000 USD en campañas publicitarias en Facebook, Instagram y Tiktok, afirmo que el éxito de los negocios consiste en: \n1. Una excelente estrategia publicitaria\n2. Analizar y optimizar los datos\n3. Contar con un profesional con experiencia \nMi misión es ser el encargado o mentor acompañándote al éxito en todo el proceso publicitario."),
         "contactoMenuBtn": MessageLookupByLibrary.simpleMessage("Contacto"),
+        "continuaMensaje":
+            MessageLookupByLibrary.simpleMessage("continua el mensaje..."),
         "continuar": MessageLookupByLibrary.simpleMessage("CONTINUAR"),
         "contrasenaTextFiel":
             MessageLookupByLibrary.simpleMessage("Contraseña"),
@@ -254,6 +257,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "En el caso de los datos personales suministrados para facturación y compra de productos o servicios, serán guardados por el tiempo legalmente aplicable.\nEn el caso de los datos personales suministrados para boletines comerciales electrónicos y comentarios en el blog, será por el tiempo que el titular de los datos desee permanecer en la lista de suscripción, por lo que podrá darse de baja en el momento que así lo desee, de forma automática como se indica en cada boletín, o escribiendo al soporte@quieroads.com\n"),
         "enElTranscurso": MessageLookupByLibrary.simpleMessage(
             "En el transcurso de 2 a 3 días me estaré comunicando contigo para explicarte los siguientes pasos."),
+        "enQueAyudarte":
+            MessageLookupByLibrary.simpleMessage("En que podemos ayudarte"),
         "enQueNivel": MessageLookupByLibrary.simpleMessage(
             "¿En qué nivel de conocimiento se encuentra tu equipo referente a la publicidad digital?"),
         "enUnaVideollamada": MessageLookupByLibrary.simpleMessage(
@@ -264,7 +269,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ENLACE INVALIDO"),
         "entiendesQueEsto": MessageLookupByLibrary.simpleMessage(
             "¿Entiendes que esto es un proceso en el que debes estarcomprometido y tener un modelo de negocio establecido con diferentes requerimientos?"),
+        "envianosComentario": MessageLookupByLibrary.simpleMessage(
+            "Envianos tus comentarios, en menos de 48h te brindaremos una respuesta"),
         "enviarBtn": MessageLookupByLibrary.simpleMessage("ENVIAR"),
+        "enviarEmaila": MessageLookupByLibrary.simpleMessage("Enviar email a:"),
         "enviaremosUnEmail": MessageLookupByLibrary.simpleMessage(
             "Ingresa tus datos y recibe mi nueva GUÍA\nsin costo para ti ❤️"),
         "eresNuevo": MessageLookupByLibrary.simpleMessage("¿Eres Nuevo?"),
@@ -274,6 +282,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error eliminado lead"),
         "errorEliminadoUsuario":
             MessageLookupByLibrary.simpleMessage("Error eliminado usuario"),
+        "escribeComentario":
+            MessageLookupByLibrary.simpleMessage("Escribe tu comentario"),
         "escribeTodasTusEspectativas": MessageLookupByLibrary.simpleMessage(
             "Escribe todas tus expectativas y temas que quieres que exponga para tu empresa"),
         "estaMision":
@@ -317,6 +327,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Generando Certificado"),
         "graciasInfo": MessageLookupByLibrary.simpleMessage(
             "¡Gracias por brindarnos tu información!"),
+        "graciasPorComunicarte": MessageLookupByLibrary.simpleMessage(
+            "Gracias por comunicarte, en menos de 48 horas te brindaremos una respuesta a tu correo electrónico"),
         "graciasPorConfirmar": MessageLookupByLibrary.simpleMessage(
             "Gracias por confirmar tu cuenta"),
         "hasHechoPubAntes": MessageLookupByLibrary.simpleMessage(
@@ -419,6 +431,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Más Información"),
         "menosde6meses":
             MessageLookupByLibrary.simpleMessage("Menos de 6 meses"),
+        "mensajeEnviado":
+            MessageLookupByLibrary.simpleMessage("Mensaje enviado con exito"),
         "mentoria": MessageLookupByLibrary.simpleMessage("MENTORIA"),
         "mentoriaIntensiva":
             MessageLookupByLibrary.simpleMessage("MENTORÍA INTENSIVA"),

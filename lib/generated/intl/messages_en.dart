@@ -110,6 +110,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "comentarioInvalido":
             MessageLookupByLibrary.simpleMessage("Invalid Comment"),
         "comentariosBtn": MessageLookupByLibrary.simpleMessage("COMMENTS"),
+        "comienzaAqui": MessageLookupByLibrary.simpleMessage("Start here"),
         "como": MessageLookupByLibrary.simpleMessage("¿How?"),
         "comoPuedoBuscarteRRSS": MessageLookupByLibrary.simpleMessage(
             "How can I find you on social networks?"),
@@ -141,6 +142,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "contactoLargeText": MessageLookupByLibrary.simpleMessage(
             "For 4 years I have been committed to educating and empowering businesses with effective advertising strategies that hit the mark.\nWith a journey of more than \$1,000,000 USD invested and a return of \$15,000,000 USD in a large number of advertising campaigns with countless tests on Facebook, Instagram and TikTok ADS, I affirm that success in business is achieved with:\n. An excellent advertising strategy\n. Analyzing data\n. Having a professional with experience\nMy mission is to be your mentor or the manager of your brand and accompany you throughout the process."),
         "contactoMenuBtn": MessageLookupByLibrary.simpleMessage("Contact"),
+        "continuaMensaje":
+            MessageLookupByLibrary.simpleMessage("continue the message..."),
         "continuar": MessageLookupByLibrary.simpleMessage("CONTINUE"),
         "contrasenaTextFiel": MessageLookupByLibrary.simpleMessage("Password"),
         "contratamePara": MessageLookupByLibrary.simpleMessage(
@@ -240,6 +243,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "In the case of personal data provided for billing and purchase of products or services, they will be kept for the legally applicable time.\nIn the case of personal data provided for electronic commercial newsletters and comments on the blog, it will be for the time that the The owner of the data wishes to remain on the subscription list, so he can unsubscribe at any time, automatically as indicated in each newsletter, or by writing to soporte@quieroads.com\n"),
         "enElTranscurso": MessageLookupByLibrary.simpleMessage(
             "In the course of 2 to 3 days I will be communicating with you to explain the next steps."),
+        "enQueAyudarte":
+            MessageLookupByLibrary.simpleMessage("How can we help you?"),
         "enQueNivel": MessageLookupByLibrary.simpleMessage(
             "At what level of knowledge is your team regarding digital advertising?"),
         "enUnaVideollamada": MessageLookupByLibrary.simpleMessage(
@@ -249,7 +254,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "enlaceInvalido": MessageLookupByLibrary.simpleMessage("INVALID LINK"),
         "entiendesQueEsto": MessageLookupByLibrary.simpleMessage(
             "Do you understand that this is a process in which you must be committed and have an established business model with different requirements?"),
+        "envianosComentario": MessageLookupByLibrary.simpleMessage(
+            "Send us your comments, in less than 48 hours we will give you an answer"),
         "enviarBtn": MessageLookupByLibrary.simpleMessage("SEND"),
+        "enviarEmaila": MessageLookupByLibrary.simpleMessage("Send email to:"),
         "enviaremosUnEmail": MessageLookupByLibrary.simpleMessage(
             "Enter your data and receive my new GUIDE\nat no cost to you ❤️"),
         "eresNuevo": MessageLookupByLibrary.simpleMessage("You are new?"),
@@ -259,6 +267,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error deleting lead"),
         "errorEliminadoUsuario":
             MessageLookupByLibrary.simpleMessage("Error deleting user"),
+        "escribeComentario":
+            MessageLookupByLibrary.simpleMessage("Write your comment"),
         "escribeTodasTusEspectativas": MessageLookupByLibrary.simpleMessage(
             "Write all your expectations and topics that you want me to expose for your company"),
         "estaMision":
@@ -300,6 +310,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Generating Certificate"),
         "graciasInfo": MessageLookupByLibrary.simpleMessage(
             "Thank you for providing us with your information!"),
+        "graciasPorComunicarte": MessageLookupByLibrary.simpleMessage(
+            "Thank you for contacting us, in less than 48 hours we will give you an answer to your email"),
         "graciasPorConfirmar": MessageLookupByLibrary.simpleMessage(
             "Thank you for confirm your account"),
         "hasHechoPubAntes":
@@ -397,6 +409,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("More information"),
         "menosde6meses":
             MessageLookupByLibrary.simpleMessage("less than 6 months"),
+        "mensajeEnviado":
+            MessageLookupByLibrary.simpleMessage("Message sent succesfully"),
         "mentoria": MessageLookupByLibrary.simpleMessage("MENTORSHIP"),
         "mentoriaIntensiva":
             MessageLookupByLibrary.simpleMessage("INTENSIVE MENTORING"),
@@ -587,7 +601,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "soyJpDir": MessageLookupByLibrary.simpleMessage("I am JP Director"),
         "tamanoInvalido": MessageLookupByLibrary.simpleMessage("Invalid size"),
         "teExplicamos": MessageLookupByLibrary.simpleMessage(
-            "We explain 👇 everything you need to know: "),
+            "We explain  👇  everything you need to know: "),
         "telefonoDeUsuario": MessageLookupByLibrary.simpleMessage("User phone"),
         "telefonoForm": MessageLookupByLibrary.simpleMessage("Phone number"),
         "telfDebeCodArea": MessageLookupByLibrary.simpleMessage(

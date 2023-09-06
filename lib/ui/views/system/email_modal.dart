@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jp_director/generated/l10n.dart';
 import 'package:jp_director/providers/export_all_providers.dart';
 
 import '../../../constant.dart';
@@ -31,7 +32,7 @@ class _EmailModalContentState extends State<EmailModalContent> {
   @override
   Widget build(BuildContext context) {
     String mensaje = '';
-
+    final appLocal = AppLocalizations.of(context);
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
 
     return SizedBox(
@@ -58,7 +59,7 @@ class _EmailModalContentState extends State<EmailModalContent> {
                         child: Column(
                           children: [
                             Text(
-                              'Enviar email a:',
+                              appLocal.enviarEmaila,
                               style: DashboardLabel.azulTextH1,
                             ),
                             Text(
@@ -69,30 +70,29 @@ class _EmailModalContentState extends State<EmailModalContent> {
                               height: 30,
                             ),
                             if (!enviado)
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Hola, ${widget.usuario.nombre} ${widget.usuario.apellido}',
-                                  style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5)),
-                                ),
-                              ],
-                            ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '${appLocal.hola} ${widget.usuario.nombre} ${widget.usuario.apellido}',
+                                    style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5)),
+                                  ),
+                                ],
+                              ),
                             const SizedBox(height: 10),
                             if (!enviado)
                               Column(
                                 children: [
-                            
                                   TextFormField(
                                     initialValue: mensaje,
                                     cursorColor: azulText,
                                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                                    validator: (value) => (value!.isNotEmpty) ? null : 'Escribe tu comentario',
+                                    validator: (value) => (value!.isNotEmpty) ? null : appLocal.escribeComentario,
                                     maxLines: 5,
                                     onChanged: (value) => mensaje = value,
                                     style: DashboardLabel.paragraph,
                                     decoration:
-                                        InputDecor.formFieldInputDecoration(icon: Icons.contact_support_rounded, label: 'continua el mensaje...'),
+                                        InputDecor.formFieldInputDecoration(icon: Icons.contact_support_rounded, label: appLocal.continuaMensaje),
                                   ),
                                   const SizedBox(
                                     height: 10,
@@ -103,23 +103,16 @@ class _EmailModalContentState extends State<EmailModalContent> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      
-                                      
-                                      CustomButton(
-                                        width: 100,
-                                        text: 'CANCELAR',
-                                        color: Colors.red,
-                                        onPress: ()=> Navigator.pop(context, false)
-                                      ),
+                                      CustomButton(width: 100, text: appLocal.cancelarBtn, color: Colors.red, onPress: () => Navigator.pop(context, false)),
                                       const SizedBox(width: 10),
                                       CustomButton(
                                         width: 100,
                                         color: Colors.green,
-                                        text: 'ENVIAR',
+                                        text: appLocal.enviarBtn,
                                         onPress: (isLoading)
                                             ? null
                                             : () async {
-                                                final String realMensaje = 'Hola ${widget.usuario.nombre}, ${widget.usuario.apellido}\n$mensaje';
+                                                final String realMensaje = '${appLocal.hola} ${widget.usuario.nombre}, ${widget.usuario.apellido}\n$mensaje';
                                                 isLoading = true;
                                                 final isValid = formKeyModalEmail.currentState!.validate();
                                                 if (!isValid) return;
@@ -134,7 +127,6 @@ class _EmailModalContentState extends State<EmailModalContent> {
                                                     enviado = true;
                                                     formKeyModalEmail.currentState!.reset();
                                                     mensaje = '';
-
                                                   });
                                                 }
                                               },
@@ -155,11 +147,16 @@ class _EmailModalContentState extends State<EmailModalContent> {
                                   children: [
                                     const Icon(Icons.check, color: Colors.green),
                                     Text(
-                                      'Mensaje enviado con exito',
+                                      appLocal.mensajeEnviado,
                                       style: DashboardLabel.mini,
                                     ),
                                     const SizedBox(height: 30),
-                                    CustomButton(text: 'CERRAR', onPress: ()=> Navigator.pop(context, false), width: 100, color: Colors.red,)
+                                    CustomButton(
+                                      text: 'OK',
+                                      onPress: () => Navigator.pop(context, false),
+                                      width: 100,
+                                      color: Colors.green,
+                                    )
                                   ],
                                 )),
                               ),
