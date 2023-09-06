@@ -55,6 +55,7 @@ class _LoginFormState extends State<LoginForm> {
                   height: 30,
                 ),
                 TextFormField(
+                  initialValue: (loginFormProvider.remember) ? loginFormProvider.email : '',
                   cursorColor: azulText,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.emailAddress,
@@ -67,6 +68,7 @@ class _LoginFormState extends State<LoginForm> {
                   height: 15,
                 ),
                 TextFormField(
+                  initialValue: (loginFormProvider.remember) ? loginFormProvider.pass : '',
                   cursorColor: azulText,
                   obscureText: loginFormProvider.obscureText,
                   keyboardType: TextInputType.visiblePassword,
@@ -92,7 +94,7 @@ class _LoginFormState extends State<LoginForm> {
                     Checkbox(
                       activeColor: azulText,
                       side: const BorderSide(color: azulText),
-                      checkColor: blancoText,
+                      checkColor: bgColor,
                       value: loginFormProvider.remember,
                       onChanged: (value) {
                         loginFormProvider.setRemember();

@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
+import 'package:jp_director/ui/shared/widgets/politicas_footer.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
@@ -85,12 +86,7 @@ class _VerifyUserPageState extends State<VerifyUserPage> {
                                             NavigatorService.navigateTo(Flurorouter.loginRoute);
                                           },
                                         ),
-                                        const SizedBox(
-                                          height: 30,
-                                        ),
-                                        const SizedBox(
-                                          height: 60,
-                                        )
+                              
                                       ],
                                     ),
                                   )),
@@ -102,47 +98,7 @@ class _VerifyUserPageState extends State<VerifyUserPage> {
                         ],
                       ),
                       const Spacer(),
-                      Center(
-                        child: Container(
-                            padding: const EdgeInsets.all(10),
-                            constraints: const BoxConstraints(maxWidth: 580),
-                            child: Wrap(
-                              alignment: WrapAlignment.center,
-                              children: [
-                                Text(
-                                  appLocal.alIniciarSesion,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
-                                ),
-                                InkWell(
-                                  onTap: () => NavigatorService.navigateTo(Flurorouter.tycRoute),
-                                  child: Text(
-                                    appLocal.terminoDeUso,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
-                                  ),
-                                ),
-                                Text(
-                                  appLocal.yReconocesQue,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
-                                ),
-                                Text(
-                                  appLocal.nuestra,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
-                                ),
-                                InkWell(
-                                  onTap: () => NavigatorService.navigateTo(Flurorouter.pdpRoute),
-                                  child: Text(
-                                    appLocal.politicaDePrivacidad,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(color: azulText, fontSize: 16, fontWeight: FontWeight.w400),
-                                  ),
-                                ),
-                              ],
-                            )),
-                      )
+                      const PoliticasFooter()
                     ],
                   ),
                 ]),

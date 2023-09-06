@@ -150,10 +150,10 @@ class AppLocalizations {
     );
   }
 
-  /// `Get customers who want to buy your product or service using the tool you came here for: Instagram - Facebook - Tik Tok`
+  /// `Get customers who want to buy your product or service\nusing the tool you came here for:\nInstagram - Facebook - Tik Tok`
   String get consigueClientesQueQuieran {
     return Intl.message(
-      'Get customers who want to buy your product or service using the tool you came here for: Instagram - Facebook - Tik Tok',
+      'Get customers who want to buy your product or service\nusing the tool you came here for:\nInstagram - Facebook - Tik Tok',
       name: 'consigueClientesQueQuieran',
       desc: '',
       args: [],
@@ -220,10 +220,10 @@ class AppLocalizations {
     );
   }
 
-  /// `For 4 years I have been committed to educating and empowering businesses with effective advertising strategies that hit the mark.\n\nWith a journey of more than $1,000,000 USD invested and a return of $15,000,000 USD in a large number of advertising campaigns with countless tests on Facebook, Instagram and TikTok ADS, I affirm that success in business is achieved with:\n\n. An excellent advertising strategy\n. Analyzing data\n. Having a professional with experience\n\nMy mission is to be your mentor or the manager of your brand and accompany you throughout the process.`
+  /// `For 4 years I have been committed to educating and empowering businesses with effective advertising strategies that hit the mark.\nWith a journey of more than $1,000,000 USD invested and a return of $15,000,000 USD in a large number of advertising campaigns with countless tests on Facebook, Instagram and TikTok ADS, I affirm that success in business is achieved with:\n. An excellent advertising strategy\n. Analyzing data\n. Having a professional with experience\nMy mission is to be your mentor or the manager of your brand and accompany you throughout the process.`
   String get contactoLargeText {
     return Intl.message(
-      'For 4 years I have been committed to educating and empowering businesses with effective advertising strategies that hit the mark.\n\nWith a journey of more than \$1,000,000 USD invested and a return of \$15,000,000 USD in a large number of advertising campaigns with countless tests on Facebook, Instagram and TikTok ADS, I affirm that success in business is achieved with:\n\n. An excellent advertising strategy\n. Analyzing data\n. Having a professional with experience\n\nMy mission is to be your mentor or the manager of your brand and accompany you throughout the process.',
+      'For 4 years I have been committed to educating and empowering businesses with effective advertising strategies that hit the mark.\nWith a journey of more than \$1,000,000 USD invested and a return of \$15,000,000 USD in a large number of advertising campaigns with countless tests on Facebook, Instagram and TikTok ADS, I affirm that success in business is achieved with:\n. An excellent advertising strategy\n. Analyzing data\n. Having a professional with experience\nMy mission is to be your mentor or the manager of your brand and accompany you throughout the process.',
       name: 'contactoLargeText',
       desc: '',
       args: [],
@@ -360,10 +360,10 @@ class AppLocalizations {
     );
   }
 
-  /// `Let's figure this out.`
+  /// `Let's figure this out`
   String get resolvamosEsto {
     return Intl.message(
-      'Let\'s figure this out.',
+      'Let\'s figure this out',
       name: 'resolvamosEsto',
       desc: '',
       args: [],
@@ -400,10 +400,10 @@ class AppLocalizations {
     );
   }
 
-  /// `Having a mentor dramatically accelerates the success of your business. For 3 months I will be with you hand in hand preparing your advertising plan and teaching you how to do it yourself.`
+  /// `Having a mentor dramatically accelerates the success of your business. For 2 months I will be with you hand in hand preparing your advertising plan and teaching you how to do it yourself.`
   String get tenerUnMentor {
     return Intl.message(
-      'Having a mentor dramatically accelerates the success of your business. For 3 months I will be with you hand in hand preparing your advertising plan and teaching you how to do it yourself.',
+      'Having a mentor dramatically accelerates the success of your business. For 2 months I will be with you hand in hand preparing your advertising plan and teaching you how to do it yourself.',
       name: 'tenerUnMentor',
       desc: '',
       args: [],
@@ -430,10 +430,10 @@ class AppLocalizations {
     );
   }
 
-  /// `Are you at the moment to hire a specialist that increases your customer flow, reach and visits to the business?`
+  /// `Do you need to hire a specialist to increase your customer flow, business visits and SALES?`
   String get estasEnElMomento {
     return Intl.message(
-      'Are you at the moment to hire a specialist that increases your customer flow, reach and visits to the business?',
+      'Do you need to hire a specialist to increase your customer flow, business visits and SALES?',
       name: 'estasEnElMomento',
       desc: '',
       args: [],
@@ -460,10 +460,10 @@ class AppLocalizations {
     );
   }
 
-  /// `Hire me to expose the importance of online advertising focused on the area you want Insurance, Lawyers, Real Estate, Doctors, Beauty Salons, Coaching, Restaurants and all businesses or ventures that need to know real examples to advertise.`
+  /// `Hire me to expose the importance of online advertising focused on the area you want: Insurance, Lawyers, Real Estate, Doctors, Beauty Salons, Coaching, Restaurants and all businesses or ventures that need to know real examples to advertise.`
   String get contratamePara {
     return Intl.message(
-      'Hire me to expose the importance of online advertising focused on the area you want Insurance, Lawyers, Real Estate, Doctors, Beauty Salons, Coaching, Restaurants and all businesses or ventures that need to know real examples to advertise.',
+      'Hire me to expose the importance of online advertising focused on the area you want: Insurance, Lawyers, Real Estate, Doctors, Beauty Salons, Coaching, Restaurants and all businesses or ventures that need to know real examples to advertise.',
       name: 'contratamePara',
       desc: '',
       args: [],
@@ -600,10 +600,10 @@ class AppLocalizations {
     );
   }
 
-  /// `During the first month, I will teach you everything I know and we will elaborate - jointly launch your advertising plan where you will learn the correct way to grow your business.\n\nThe following two months we will have several sessions of analysis of results with the plan that we developed , and we will progressively optimize all your campaigns.\n\nYou will understand as if you were seeing a traffic light; advance or stop depending on the color it shows.`
+  /// `During the first month, I will teach you everything I know and we will elaborate - jointly launch your advertising plan where you will learn the correct way to grow your business.\n\nIn the following month we will have several sessions of analysis of results with the plan that we developed and we will progressively optimize your advertising.`
   String get duranteElPrimerMes {
     return Intl.message(
-      'During the first month, I will teach you everything I know and we will elaborate - jointly launch your advertising plan where you will learn the correct way to grow your business.\n\nThe following two months we will have several sessions of analysis of results with the plan that we developed , and we will progressively optimize all your campaigns.\n\nYou will understand as if you were seeing a traffic light; advance or stop depending on the color it shows.',
+      'During the first month, I will teach you everything I know and we will elaborate - jointly launch your advertising plan where you will learn the correct way to grow your business.\n\nIn the following month we will have several sessions of analysis of results with the plan that we developed and we will progressively optimize your advertising.',
       name: 'duranteElPrimerMes',
       desc: '',
       args: [],
@@ -620,10 +620,10 @@ class AppLocalizations {
     );
   }
 
-  /// `What will we see during these 3 months?`
+  /// `What will we see during these 2 months?`
   String get queVeremos3m {
     return Intl.message(
-      'What will we see during these 3 months?',
+      'What will we see during these 2 months?',
       name: 'queVeremos3m',
       desc: '',
       args: [],
@@ -640,10 +640,10 @@ class AppLocalizations {
     );
   }
 
-  /// `Should I have a high budget to invest in my campaigns?\nThis is very relative and depends on your product or service, what you have to take into account is that you have at least $1000 USD to be able to do as many tests as possible and let's do a good analysis of results during this time.\n\nI understand a lot but I want more details\nSince this service is specialized, we will have a 20-minute video call to find out if your business is prepared and committed.\nIn the call I will explain more to detail all your doubts.\n\nWhat is the price of intensive mentoring?\nThe price is between $6000 - $12,000 USD depends on multiple factors that we will be discussing in the video call.\n\nIt is not a question, I want May you be my mentor!\nCalm down, let's talk first and see if you are prepared and have the requirements, if you are reading this, you already have the first one: You win.`
+  /// `1. Should I have a high budget to invest in my campaigns?\nThis is very relative and depends on your product or service, what you do have to take into account is that you have at least $3,000 USD to be able to do as many tests as possible and let's do a good analysis of results during this time.\n\n2. I understand much of it but I want more details\nSince this service is specialized, we will have a 20-minute video call to find out if your business is prepared and committed.\nIn the call I will explain all your doubts in more detail.\n\n3. What is the price of intensive mentoring?\nThe price is $12,000 USD depending on multiple factors that we will be discussing in the video call.\n\n4. It's not a question, I want you to be my mentor!\nCalm down, let's talk first and see if you are prepared and have the requirements, if you are reading this, you already have the first one: You win.`
   String get preguntasfrecuentes1Resp {
     return Intl.message(
-      'Should I have a high budget to invest in my campaigns?\nThis is very relative and depends on your product or service, what you have to take into account is that you have at least \$1000 USD to be able to do as many tests as possible and let\'s do a good analysis of results during this time.\n\nI understand a lot but I want more details\nSince this service is specialized, we will have a 20-minute video call to find out if your business is prepared and committed.\nIn the call I will explain more to detail all your doubts.\n\nWhat is the price of intensive mentoring?\nThe price is between \$6000 - \$12,000 USD depends on multiple factors that we will be discussing in the video call.\n\nIt is not a question, I want May you be my mentor!\nCalm down, let\'s talk first and see if you are prepared and have the requirements, if you are reading this, you already have the first one: You win.',
+      '1. Should I have a high budget to invest in my campaigns?\nThis is very relative and depends on your product or service, what you do have to take into account is that you have at least \$3,000 USD to be able to do as many tests as possible and let\'s do a good analysis of results during this time.\n\n2. I understand much of it but I want more details\nSince this service is specialized, we will have a 20-minute video call to find out if your business is prepared and committed.\nIn the call I will explain all your doubts in more detail.\n\n3. What is the price of intensive mentoring?\nThe price is \$12,000 USD depending on multiple factors that we will be discussing in the video call.\n\n4. It\'s not a question, I want you to be my mentor!\nCalm down, let\'s talk first and see if you are prepared and have the requirements, if you are reading this, you already have the first one: You win.',
       name: 'preguntasfrecuentes1Resp',
       desc: '',
       args: [],
@@ -750,10 +750,10 @@ class AppLocalizations {
     );
   }
 
-  /// `What is the average cost for you to be in charge of advertising my business?\nThe price starts from $4000 and up, it depends on many factors and the objectives you have as a business, that is why I take the time to analyze previously and know if I can take on the project.\n\nWill I see results immediately?\nThis question is very common, and this depends on how the strategy is embodied, your product, price and value perceived by your audience.\n\nThe The correct answer is that I will make sure that you impact your target audience in an intelligent way.\n\nOnce you fill out the form, what will happen?\nIn the course of 2 to 3 days I will contact you to give you all the details and we will have a meeting that will last 30 minutes to understand your needs and numbers 100%.`
+  /// `What is the average cost for you to be in charge of advertising my business?\nThe price starts from $000 and up, it depends on many factors and the objectives you have as a business, that is why I take the time to analyze previously and know if I can take on the project.\n\nWill I see results immediately?\nThis question is very common, and this depends on how the strategy is embodied, your product, price and value perceived by your audience.\n\nThe The correct answer is that I will make sure that you impact your target audience in an intelligent way.\n\nOnce you fill out the form, what will happen?\nIn the course of 2 to 3 days I will contact you to give you all the details and we will have a meeting that will last 30 minutes to understand your needs and numbers 100%.`
   String get preguntasfrecuentes2Resp {
     return Intl.message(
-      'What is the average cost for you to be in charge of advertising my business?\nThe price starts from \$4000 and up, it depends on many factors and the objectives you have as a business, that is why I take the time to analyze previously and know if I can take on the project.\n\nWill I see results immediately?\nThis question is very common, and this depends on how the strategy is embodied, your product, price and value perceived by your audience.\n\nThe The correct answer is that I will make sure that you impact your target audience in an intelligent way.\n\nOnce you fill out the form, what will happen?\nIn the course of 2 to 3 days I will contact you to give you all the details and we will have a meeting that will last 30 minutes to understand your needs and numbers 100%.',
+      'What is the average cost for you to be in charge of advertising my business?\nThe price starts from \$000 and up, it depends on many factors and the objectives you have as a business, that is why I take the time to analyze previously and know if I can take on the project.\n\nWill I see results immediately?\nThis question is very common, and this depends on how the strategy is embodied, your product, price and value perceived by your audience.\n\nThe The correct answer is that I will make sure that you impact your target audience in an intelligent way.\n\nOnce you fill out the form, what will happen?\nIn the course of 2 to 3 days I will contact you to give you all the details and we will have a meeting that will last 30 minutes to understand your needs and numbers 100%.',
       name: 'preguntasfrecuentes2Resp',
       desc: '',
       args: [],
@@ -1270,10 +1270,10 @@ class AppLocalizations {
     );
   }
 
-  /// `We will send an email with the download link`
+  /// `Enter your data and receive my new GUIDE\nat no cost to you ❤️`
   String get enviaremosUnEmail {
     return Intl.message(
-      'We will send an email with the download link',
+      'Enter your data and receive my new GUIDE\nat no cost to you ❤️',
       name: 'enviaremosUnEmail',
       desc: '',
       args: [],
@@ -1290,10 +1290,10 @@ class AppLocalizations {
     );
   }
 
-  /// `By clicking accept, I confirm that I have read and accept all the policies and conditions`
+  /// `By clicking SUBMIT, you confirm that you have read and accepted all the policies and conditions`
   String get alHacerClickHeLeido {
     return Intl.message(
-      'By clicking accept, I confirm that I have read and accept all the policies and conditions',
+      'By clicking SUBMIT, you confirm that you have read and accepted all the policies and conditions',
       name: 'alHacerClickHeLeido',
       desc: '',
       args: [],
@@ -2650,10 +2650,10 @@ class AppLocalizations {
     );
   }
 
-  /// `Return to Login`
+  /// `Login`
   String get irAlLogin {
     return Intl.message(
-      'Return to Login',
+      'Login',
       name: 'irAlLogin',
       desc: '',
       args: [],
@@ -3875,6 +3875,96 @@ class AppLocalizations {
     return Intl.message(
       'Nuevo Formulario',
       name: 'nuevoForm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hi,`
+  String get hola {
+    return Intl.message(
+      'Hi,',
+      name: 'hola',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to the most complete digital advertising programs. We thank you and a big hug for trusting our formations; we are excited to see you grow on this new path of success.`
+  String get bienvenidoAlosProg {
+    return Intl.message(
+      'Welcome to the most complete digital advertising programs. We thank you and a big hug for trusting our formations; we are excited to see you grow on this new path of success.',
+      name: 'bienvenidoAlosProg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We explain 👇 everything you need to know: `
+  String get teExplicamos {
+    return Intl.message(
+      'We explain 👇 everything you need to know: ',
+      name: 'teExplicamos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1. Each course has its comment bar - you can leave us all your questions and our team will be answering them`
+  String get cadaCursoCuenta {
+    return Intl.message(
+      '1. Each course has its comment bar - you can leave us all your questions and our team will be answering them',
+      name: 'cadaCursoCuenta',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `2. You will be able to download in each module a complementary material of the class you are learning`
+  String get podrasDescargar {
+    return Intl.message(
+      '2. You will be able to download in each module a complementary material of the class you are learning',
+      name: 'podrasDescargar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `3. Once you finish the course you will be able to download your certificate of completion in the button that will appear at the top right of each course.`
+  String get unaVezFinalices {
+    return Intl.message(
+      '3. Once you finish the course you will be able to download your certificate of completion in the button that will appear at the top right of each course.',
+      name: 'unaVezFinalices',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `4. If you have any more specific questions, we have a `
+  String get siTienesAlgunaDuda {
+    return Intl.message(
+      '4. If you have any more specific questions, we have a ',
+      name: 'siTienesAlgunaDuda',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help and Support Center`
+  String get centroSoporte {
+    return Intl.message(
+      'Help and Support Center',
+      name: 'centroSoporte',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `where we will give you an answer within 48 hours`
+  String get dondeTeBrindaremos {
+    return Intl.message(
+      'where we will give you an answer within 48 hours',
+      name: 'dondeTeBrindaremos',
       desc: '',
       args: [],
     );

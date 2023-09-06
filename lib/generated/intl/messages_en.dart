@@ -58,7 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Add a comment"),
         "agregarUnModulo": MessageLookupByLibrary.simpleMessage("Add module"),
         "alHacerClickHeLeido": MessageLookupByLibrary.simpleMessage(
-            "By clicking accept, I confirm that I have read and accept all the policies and conditions"),
+            "By clicking SUBMIT, you confirm that you have read and accepted all the policies and conditions"),
         "alIniciarSesion": MessageLookupByLibrary.simpleMessage(
             "By logging in you agree to our "),
         "anadirCurso":
@@ -77,6 +77,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Legal Notice and Terms of Use of the Site"),
         "banerDelCurso": MessageLookupByLibrary.simpleMessage("Course baner"),
         "basico": MessageLookupByLibrary.simpleMessage("Essential"),
+        "bienvenidoAlosProg": MessageLookupByLibrary.simpleMessage(
+            "Welcome to the most complete digital advertising programs. We thank you and a big hug for trusting our formations; we are excited to see you grow on this new path of success."),
         "borrarDefinitivo":
             MessageLookupByLibrary.simpleMessage("Permanently delete the user"),
         "borrarForm": MessageLookupByLibrary.simpleMessage("Clear form"),
@@ -86,6 +88,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "botonReg": MessageLookupByLibrary.simpleMessage("Register"),
         "buscasAcelerar": MessageLookupByLibrary.simpleMessage(
             "You want to accelerate your business with advertising"),
+        "cadaCursoCuenta": MessageLookupByLibrary.simpleMessage(
+            "1. Each course has its comment bar - you can leave us all your questions and our team will be answering them"),
         "cancelarBtn": MessageLookupByLibrary.simpleMessage("CANCEL"),
         "capturaDeInf1_4_2":
             MessageLookupByLibrary.simpleMessage("1.4.2 INFORMATION CAPTURE"),
@@ -98,6 +102,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "12. CAUSES FOR DISSOLUTION OF THE CONTRACT"),
         "causasDeDisolucionText": MessageLookupByLibrary.simpleMessage(
             "The dissolution of the service contract can occur at any time by either party.\nYou are not bound by conditions of permanence with ON POINT PRODUCTIONS AGENCY LLC.\nON POINT PRODUCTIONS AGENCY LLC may terminate or suspend any and all contracted Services immediately , without prior notice or responsibility, in the event that you do not comply with the conditions set forth herein.\nUpon the dissolution of the contract, your right to use the Services will cease immediately.\nThe following will be causes for dissolution of the contract:"),
+        "centroSoporte":
+            MessageLookupByLibrary.simpleMessage("Help and Support Center"),
         "cero": MessageLookupByLibrary.simpleMessage("Zero"),
         "certificadoBtn": MessageLookupByLibrary.simpleMessage("CERTIFICATE"),
         "comentar": MessageLookupByLibrary.simpleMessage("COMMENT"),
@@ -127,18 +133,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "conoceloQue":
             MessageLookupByLibrary.simpleMessage("Know what you will learn"),
         "consigueClientesQueQuieran": MessageLookupByLibrary.simpleMessage(
-            "Get customers who want to buy your product or service using the tool you came here for: Instagram - Facebook - Tik Tok"),
+            "Get customers who want to buy your product or service\nusing the tool you came here for:\nInstagram - Facebook - Tik Tok"),
         "consultEspec":
             MessageLookupByLibrary.simpleMessage("Consultants or Specialists"),
         "consultEspecText": MessageLookupByLibrary.simpleMessage(
             "EYou are a doctor, coach, realtor, lawyer or nutritionist and your services are highly sought after on social networks, so all that remains is to expose yourself in the correct way in advertising."),
         "contactoLargeText": MessageLookupByLibrary.simpleMessage(
-            "For 4 years I have been committed to educating and empowering businesses with effective advertising strategies that hit the mark.\n\nWith a journey of more than \$1,000,000 USD invested and a return of \$15,000,000 USD in a large number of advertising campaigns with countless tests on Facebook, Instagram and TikTok ADS, I affirm that success in business is achieved with:\n\n. An excellent advertising strategy\n. Analyzing data\n. Having a professional with experience\n\nMy mission is to be your mentor or the manager of your brand and accompany you throughout the process."),
+            "For 4 years I have been committed to educating and empowering businesses with effective advertising strategies that hit the mark.\nWith a journey of more than \$1,000,000 USD invested and a return of \$15,000,000 USD in a large number of advertising campaigns with countless tests on Facebook, Instagram and TikTok ADS, I affirm that success in business is achieved with:\n. An excellent advertising strategy\n. Analyzing data\n. Having a professional with experience\nMy mission is to be your mentor or the manager of your brand and accompany you throughout the process."),
         "contactoMenuBtn": MessageLookupByLibrary.simpleMessage("Contact"),
         "continuar": MessageLookupByLibrary.simpleMessage("CONTINUE"),
         "contrasenaTextFiel": MessageLookupByLibrary.simpleMessage("Password"),
         "contratamePara": MessageLookupByLibrary.simpleMessage(
-            "Hire me to expose the importance of online advertising focused on the area you want Insurance, Lawyers, Real Estate, Doctors, Beauty Salons, Coaching, Restaurants and all businesses or ventures that need to know real examples to advertise."),
+            "Hire me to expose the importance of online advertising focused on the area you want: Insurance, Lawyers, Real Estate, Doctors, Beauty Salons, Coaching, Restaurants and all businesses or ventures that need to know real examples to advertise."),
         "correoDeUsuario": MessageLookupByLibrary.simpleMessage("User mail"),
         "correoForm": MessageLookupByLibrary.simpleMessage("Email"),
         "correoTextFiel": MessageLookupByLibrary.simpleMessage("Email"),
@@ -190,6 +196,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "disenoEstrat": MessageLookupByLibrary.simpleMessage("Strategy Design"),
         "disenoEstratResp": MessageLookupByLibrary.simpleMessage(
             "I will develop clear and precise strategies with defined times, prioritizing your different ideal clients with all the study that is needed to be able to impact them persuasively."),
+        "dondeTeBrindaremos": MessageLookupByLibrary.simpleMessage(
+            "where we will give you an answer within 48 hours"),
         "dosy": MessageLookupByLibrary.simpleMessage("2 Years"),
         "duenosNegocios":
             MessageLookupByLibrary.simpleMessage("Business Owners"),
@@ -203,7 +211,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "duracionObligatoria": MessageLookupByLibrary.simpleMessage(
             "The duration of the course is required"),
         "duranteElPrimerMes": MessageLookupByLibrary.simpleMessage(
-            "During the first month, I will teach you everything I know and we will elaborate - jointly launch your advertising plan where you will learn the correct way to grow your business.\n\nThe following two months we will have several sessions of analysis of results with the plan that we developed , and we will progressively optimize all your campaigns.\n\nYou will understand as if you were seeing a traffic light; advance or stop depending on the color it shows."),
+            "During the first month, I will teach you everything I know and we will elaborate - jointly launch your advertising plan where you will learn the correct way to grow your business.\n\nIn the following month we will have several sessions of analysis of results with the plan that we developed and we will progressively optimize your advertising."),
         "editar2puntos": MessageLookupByLibrary.simpleMessage("Edit:"),
         "editarModulo": MessageLookupByLibrary.simpleMessage("Edit module"),
         "educacionYEstrategia":
@@ -243,7 +251,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Do you understand that this is a process in which you must be committed and have an established business model with different requirements?"),
         "enviarBtn": MessageLookupByLibrary.simpleMessage("SEND"),
         "enviaremosUnEmail": MessageLookupByLibrary.simpleMessage(
-            "We will send an email with the download link"),
+            "Enter your data and receive my new GUIDE\nat no cost to you ❤️"),
         "eresNuevo": MessageLookupByLibrary.simpleMessage("You are new?"),
         "errorEliminadoCurso":
             MessageLookupByLibrary.simpleMessage("Error deleting course"),
@@ -261,7 +269,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "estasAunPaso": MessageLookupByLibrary.simpleMessage(
             "You are one step away from success to make a difference, welcome to this mission!"),
         "estasEnElMomento": MessageLookupByLibrary.simpleMessage(
-            "Are you at the moment to hire a specialist that increases your customer flow, reach and visits to the business?"),
+            "Do you need to hire a specialist to increase your customer flow, business visits and SALES?"),
         "estasPoliticasSeEntenderan": MessageLookupByLibrary.simpleMessage(
             "These policies will be understood at all times as a complementary part of the terms and conditions displayed on the website, both being equally applicable at the time of a dispute. The privacy and intellectual property policy applied will be the same as that set forth in the terms and conditions of the website.\nA “newsletter” shall be understood as the digital bulletin that JPDIRECTOR publishes periodically and that it sends to its subscribers through an external email service provider, to which the user has voluntarily subscribed.\nJPDIRECTOR is not obliged to send the newsletter in defined periods of time, so it is totally free to do so when it deems appropriate. The user may at any time exercise their rights of access, rectification, cancellation or opposition by following the instructions found in the footer of the newsletter.\nThe user must not share their content with third parties, as this would violate copyright by JPDIRECTOR. The only possible distribution channel is the one managed and/or authorized by JPDIRECTOR.\nJPDIRECTOR will not be responsible for the content of third parties exposed in the newsletter, any controversy that arises must be dealt with directly with the person or company from which it is made. mention.\nAll the material that is exposed in the newsletter is protected by copyright in favor of JPDIRECTOR, and in the case of belonging to third parties, it will be understood that JPDIRECTOR has the proper authorization to use it as agreed with the author. \n"),
         "esteServicioEsta": MessageLookupByLibrary.simpleMessage(
@@ -296,6 +304,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Thank you for confirm your account"),
         "hasHechoPubAntes":
             MessageLookupByLibrary.simpleMessage("Have you advertised before?"),
+        "hola": MessageLookupByLibrary.simpleMessage("Hi,"),
         "idCarpertaModulo":
             MessageLookupByLibrary.simpleMessage("Module ID folder"),
         "idZipModulo": MessageLookupByLibrary.simpleMessage("Module ID Zip"),
@@ -337,7 +346,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "interesLegitimo":
             MessageLookupByLibrary.simpleMessage("LEGITIMATE INTEREST\n"),
         "intermedio": MessageLookupByLibrary.simpleMessage("Intermediate"),
-        "irAlLogin": MessageLookupByLibrary.simpleMessage("Return to Login"),
+        "irAlLogin": MessageLookupByLibrary.simpleMessage("Login"),
         "irAlLoginBtn": MessageLookupByLibrary.simpleMessage("Go to login"),
         "jpCompartira": MessageLookupByLibrary.simpleMessage(
             "JPDIRECTOR will share the data it has with third parties, only to comply with the services contracted by a user, send the newsletter, comply with legal requirements or for the administration of the website. For this purpose, the appropriate confidentiality agreements between the parties will be provided.\n"),
@@ -447,6 +456,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "passNoCoinciden":
             MessageLookupByLibrary.simpleMessage("Passwords do not match"),
         "pendiente": MessageLookupByLibrary.simpleMessage("PENDING"),
+        "podrasDescargar": MessageLookupByLibrary.simpleMessage(
+            "2. You will be able to download in each module a complementary material of the class you are learning"),
         "politicaDeEnlaces":
             MessageLookupByLibrary.simpleMessage("5. LINK POLICY"),
         "politicaDeEnlacesText": MessageLookupByLibrary.simpleMessage(
@@ -466,9 +477,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "preguntasfrecuentes":
             MessageLookupByLibrary.simpleMessage("Frequent questions"),
         "preguntasfrecuentes1Resp": MessageLookupByLibrary.simpleMessage(
-            "Should I have a high budget to invest in my campaigns?\nThis is very relative and depends on your product or service, what you have to take into account is that you have at least \$1000 USD to be able to do as many tests as possible and let\'s do a good analysis of results during this time.\n\nI understand a lot but I want more details\nSince this service is specialized, we will have a 20-minute video call to find out if your business is prepared and committed.\nIn the call I will explain more to detail all your doubts.\n\nWhat is the price of intensive mentoring?\nThe price is between \$6000 - \$12,000 USD depends on multiple factors that we will be discussing in the video call.\n\nIt is not a question, I want May you be my mentor!\nCalm down, let\'s talk first and see if you are prepared and have the requirements, if you are reading this, you already have the first one: You win."),
+            "1. Should I have a high budget to invest in my campaigns?\nThis is very relative and depends on your product or service, what you do have to take into account is that you have at least \$3,000 USD to be able to do as many tests as possible and let\'s do a good analysis of results during this time.\n\n2. I understand much of it but I want more details\nSince this service is specialized, we will have a 20-minute video call to find out if your business is prepared and committed.\nIn the call I will explain all your doubts in more detail.\n\n3. What is the price of intensive mentoring?\nThe price is \$12,000 USD depending on multiple factors that we will be discussing in the video call.\n\n4. It\'s not a question, I want you to be my mentor!\nCalm down, let\'s talk first and see if you are prepared and have the requirements, if you are reading this, you already have the first one: You win."),
         "preguntasfrecuentes2Resp": MessageLookupByLibrary.simpleMessage(
-            "What is the average cost for you to be in charge of advertising my business?\nThe price starts from \$4000 and up, it depends on many factors and the objectives you have as a business, that is why I take the time to analyze previously and know if I can take on the project.\n\nWill I see results immediately?\nThis question is very common, and this depends on how the strategy is embodied, your product, price and value perceived by your audience.\n\nThe The correct answer is that I will make sure that you impact your target audience in an intelligent way.\n\nOnce you fill out the form, what will happen?\nIn the course of 2 to 3 days I will contact you to give you all the details and we will have a meeting that will last 30 minutes to understand your needs and numbers 100%."),
+            "What is the average cost for you to be in charge of advertising my business?\nThe price starts from \$000 and up, it depends on many factors and the objectives you have as a business, that is why I take the time to analyze previously and know if I can take on the project.\n\nWill I see results immediately?\nThis question is very common, and this depends on how the strategy is embodied, your product, price and value perceived by your audience.\n\nThe The correct answer is that I will make sure that you impact your target audience in an intelligent way.\n\nOnce you fill out the form, what will happen?\nIn the course of 2 to 3 days I will contact you to give you all the details and we will have a meeting that will last 30 minutes to understand your needs and numbers 100%."),
         "preguntasfrecuentes3Resp": MessageLookupByLibrary.simpleMessage(
             "How does the process for scheduling the date work?\nEmail me at hola@jpdirector.net to check if that day is available, if it is the case, you can make a two-part payment of 50% of the conference price and the other 50% it must be canceled five days before the event.\n\nCan you attend any state within the United States?\nOf course, we just have to coordinate the plane tickets, lodging and per diems."),
         "preguntasfrecuentesResp": MessageLookupByLibrary.simpleMessage(
@@ -496,7 +507,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "queHablaremosResp": MessageLookupByLibrary.simpleMessage(
             "Business plan\nI will analyze if your proposal will give you profitability with the services or products that you want to market online.\n\nCampaigns\nCreated or not created I will review its structure and strategy strategically.\n\nWebsite\nI will examine the entire structure and I will give you the way so that you can sell more through your website.\n\nSales Method\nDepending on the methodology, we will improve the way you close with your clients."),
         "queVeremos3m": MessageLookupByLibrary.simpleMessage(
-            "What will we see during these 3 months?"),
+            "What will we see during these 2 months?"),
         "queVeremos3mResp": MessageLookupByLibrary.simpleMessage(
             "-From level zero to 100 all the factors and tools necessary for your advertising strategy.\n\n-All the education on Instagram - Facebook - Tik Tok to carry out profitable advertising campaigns.\n\n-Strategy and analysis of results such as optimization decisions."),
         "quieresConseguir": MessageLookupByLibrary.simpleMessage(
@@ -529,7 +540,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "residentesCalifornia": MessageLookupByLibrary.simpleMessage(
             "RESIDENTS OF CALIFORNIA, UNITED STATES\n"),
         "resolvamosEsto":
-            MessageLookupByLibrary.simpleMessage("Let\'s figure this out."),
+            MessageLookupByLibrary.simpleMessage("Let\'s figure this out"),
         "responder": MessageLookupByLibrary.simpleMessage("Reply"),
         "respuesta": MessageLookupByLibrary.simpleMessage("Respond"),
         "resultadosMenuBtn": MessageLookupByLibrary.simpleMessage("Results"),
@@ -560,6 +571,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "siBorrar": MessageLookupByLibrary.simpleMessage("Yes, Delete"),
         "siEstoyPreparado":
             MessageLookupByLibrary.simpleMessage("Yes i\'m ready"),
+        "siTienesAlgunaDuda": MessageLookupByLibrary.simpleMessage(
+            "4. If you have any more specific questions, we have a "),
         "siTienesDudas": MessageLookupByLibrary.simpleMessage(
             "If you have any questions, contact me via "),
         "siguemeEnTodas": MessageLookupByLibrary.simpleMessage(
@@ -573,6 +586,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "I AM RESPONSIBLE FOR YOUR SUCCESS"),
         "soyJpDir": MessageLookupByLibrary.simpleMessage("I am JP Director"),
         "tamanoInvalido": MessageLookupByLibrary.simpleMessage("Invalid size"),
+        "teExplicamos": MessageLookupByLibrary.simpleMessage(
+            "We explain 👇 everything you need to know: "),
         "telefonoDeUsuario": MessageLookupByLibrary.simpleMessage("User phone"),
         "telefonoForm": MessageLookupByLibrary.simpleMessage("Phone number"),
         "telfDebeCodArea": MessageLookupByLibrary.simpleMessage(
@@ -582,7 +597,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "telfSoloNumeros": MessageLookupByLibrary.simpleMessage(
             "It should only contain numbers. (12223334455)"),
         "tenerUnMentor": MessageLookupByLibrary.simpleMessage(
-            "Having a mentor dramatically accelerates the success of your business. For 3 months I will be with you hand in hand preparing your advertising plan and teaching you how to do it yourself."),
+            "Having a mentor dramatically accelerates the success of your business. For 2 months I will be with you hand in hand preparing your advertising plan and teaching you how to do it yourself."),
         "terminoDeUso": MessageLookupByLibrary.simpleMessage("Terms of use "),
         "terminosYCondiciones":
             MessageLookupByLibrary.simpleMessage("TERMS AND CONDITIONS"),
@@ -605,6 +620,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "tresy": MessageLookupByLibrary.simpleMessage("3 Years"),
         "unAdmRespondera": MessageLookupByLibrary.simpleMessage(
             "An Administrator will answer your question"),
+        "unaVezFinalices": MessageLookupByLibrary.simpleMessage(
+            "3. Once you finish the course you will be able to download your certificate of completion in the button that will appear at the top right of each course."),
         "unoAuno": MessageLookupByLibrary.simpleMessage("ONE BY ONE"),
         "uny": MessageLookupByLibrary.simpleMessage("1 Year"),
         "urlVideoModulo":

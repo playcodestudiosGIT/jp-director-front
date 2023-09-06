@@ -42,13 +42,13 @@ class StartHereView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text('Hola ${authProvider.user!.nombre} ${authProvider.user!.apellido}', style: DashboardLabel.h1),
+                        Text('"${appLocal.hola} ${authProvider.user!.nombre} ${authProvider.user!.apellido}', style: DashboardLabel.h1),
                         const SizedBox(height: 15),
                         Text(
-                            'Bienvenido a los programas más completos de publicidad digital. Te damos las gracias y un gran abrazo por confiar en nuestras formaciones; estamos emocionados de verte crecer en este nuevo camino de éxito.',
+                            appLocal.bienvenidoAlosProg,
                             style: DashboardLabel.paragraph),
                         const SizedBox(height: 15),
-                        Text('Te explicamos (emoji dedo hacia abajo) todo lo que debes saber: ', style: DashboardLabel.paragraph),
+                        Text(appLocal.teExplicamos, style: DashboardLabel.paragraph),
                         const SizedBox(height: 30),
                         Wrap(
                           children: [
@@ -57,7 +57,7 @@ class StartHereView extends StatelessWidget {
                               height: 100,
                               child: Center(
                                 child: Text(
-                                  '1.	Cada curso cuenta con su barra de comentarios - puedes dejarnos todas tus preguntas y nuestro equipo estará contestándolas',
+                                  appLocal.cadaCursoCuenta,
                                   style: DashboardLabel.mini,
                                 ),
                               ),
@@ -83,7 +83,7 @@ class StartHereView extends StatelessWidget {
                               height: 100,
                               child: Center(
                                 child: Text(
-                                  '2.	Podrás descargar en cada módulo un material complementario de la clase que estés aprendiendo',
+                                  appLocal.podrasDescargar,
                                   style: DashboardLabel.mini,
                                 ),
                               ),
@@ -120,7 +120,7 @@ class StartHereView extends StatelessWidget {
                               height: 100,
                               child: Center(
                                 child: Text(
-                                  '3.	Una vez finalices el curso podrás descargar tu certificado de finalización en el botón que aparecerá en la parte superior derecha de cada curso.',
+                                  appLocal.unaVezFinalices,
                                   style: DashboardLabel.mini,
                                 ),
                               ),
@@ -181,12 +181,12 @@ class StartHereView extends StatelessWidget {
                               child: Center(
                                 child: RichText(
                                   text: TextSpan(style: DashboardLabel.mini, children: [
-                                    const TextSpan(text: '4.	Si tienes alguna pregunta más especifica contamos con un '),
+                                    TextSpan(text: appLocal.siTienesAlgunaDuda),
                                     TextSpan(
-                                        text: 'Centro de Ayuda y Soporte ',
+                                        text: '${appLocal.centroSoporte} ',
                                         style: DashboardLabel.mini.copyWith(color: azulText, fontStyle: FontStyle.italic),
-                                        recognizer: TapGestureRecognizer()..onTap = () => print('Tap Here onTap')),
-                                    const TextSpan(text: 'de donde te brindaremos una respuesta en el transcurso de 48 hora'),
+                                        recognizer: TapGestureRecognizer()..onTap = () => NavigatorService.navigateTo('/support')),
+                                    TextSpan(text: appLocal.dondeTeBrindaremos),
                                   ]),
                                 ),
                               ),

@@ -86,9 +86,11 @@ class _AdsViewState extends State<AdsView> {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Text(
-                    appLocal.aprendeTodoAds,
-                    style: (wScreen > 580) ?DashboardLabel.gigant : DashboardLabel.h2.copyWith(fontWeight: FontWeight.bold)
+                  child: FittedBox(
+                    child: Text(
+                      appLocal.aprendeTodoAds,
+                      style: (wScreen > 580) ?DashboardLabel.gigant : DashboardLabel.h2.copyWith(fontWeight: FontWeight.bold)
+                    ),
                   ),
                 ),
                 Container(

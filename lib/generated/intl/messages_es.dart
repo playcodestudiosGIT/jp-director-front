@@ -60,7 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "agregarUnModulo":
             MessageLookupByLibrary.simpleMessage("Agregar Modulo"),
         "alHacerClickHeLeido": MessageLookupByLibrary.simpleMessage(
-            "Al hacer click en aceptar, confirmo que he leido y acepto todas las políticas y condiciones"),
+            "Al hacer clic en ENVIAR, confirmas que has leído y aceptado todas las políticas y condiciones"),
         "alIniciarSesion": MessageLookupByLibrary.simpleMessage(
             "Al iniciar sesión aceptas nuestros "),
         "anadirCurso":
@@ -81,6 +81,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "banerDelCurso":
             MessageLookupByLibrary.simpleMessage("Baner del curso"),
         "basico": MessageLookupByLibrary.simpleMessage("Básico"),
+        "bienvenidoAlosProg": MessageLookupByLibrary.simpleMessage(
+            "Bienvenido a los programas más completos de publicidad digital. Te damos las gracias y un gran abrazo por confiar en nuestras formaciones; estamos emocionados de verte crecer en este nuevo camino de éxito."),
         "borrarDefinitivo": MessageLookupByLibrary.simpleMessage(
             "Borrar definitivamente el usuario"),
         "borrarForm": MessageLookupByLibrary.simpleMessage("Borrar formulario"),
@@ -90,6 +92,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "botonReg": MessageLookupByLibrary.simpleMessage("Registrate"),
         "buscasAcelerar": MessageLookupByLibrary.simpleMessage(
             "Buscas acelerar tu negocio con publicidad"),
+        "cadaCursoCuenta": MessageLookupByLibrary.simpleMessage(
+            "1. Cada curso cuenta con su barra de comentarios - puedes dejarnos todas tus preguntas y nuestro equipo estará contestándolas"),
         "cancelarBtn": MessageLookupByLibrary.simpleMessage("CANCELAR"),
         "capturaDeInf1_4_2": MessageLookupByLibrary.simpleMessage(
             "1.4.2 CAPTURA DE INFORMACIÓN"),
@@ -103,6 +107,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "12. CAUSAS DE DISOLUCIÓN DEL CONTRATO"),
         "causasDeDisolucionText": MessageLookupByLibrary.simpleMessage(
             "La disolución del contrato de servicios puede ocurrir en cualquier momento por cualquiera de las dos partes.\nNo estás obligado a condiciones de permanencia con ON POINT PRODUCTIONS AGENCY LLC.\nON POINT PRODUCTIONS AGENCY LLC puede terminar o suspender cualquier y todos los Servicios contratados inmediatamente, sin previo aviso o responsabilidad, en caso de que tú no cumplas con las condiciones aquí expuestas.\nA la disolución del contrato, tu derecho a utilizar los Servicios cesará inmediatamente.\nSerán causas de disolución de contrato:"),
+        "centroSoporte":
+            MessageLookupByLibrary.simpleMessage("Centro de Ayuda y Soporte"),
         "cero": MessageLookupByLibrary.simpleMessage("Cero"),
         "certificadoBtn": MessageLookupByLibrary.simpleMessage("CERTIFICADO"),
         "comentar": MessageLookupByLibrary.simpleMessage("COMENTAR"),
@@ -134,19 +140,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "conoceloQue":
             MessageLookupByLibrary.simpleMessage("Conoce lo que aprenderás"),
         "consigueClientesQueQuieran": MessageLookupByLibrary.simpleMessage(
-            "Consigue clientes que quieran comprar tu producto o servicio utilizando la herramienta por la que llegaste aqui: Instagram - Facebook - Tik Tok"),
+            "Consigue clientes que quieran comprar tu producto o servicio\nutilizando la herramienta por la que llegaste aqui:\nInstagram - Facebook - Tik Tok"),
         "consultEspec":
             MessageLookupByLibrary.simpleMessage("Consultores o Especialistas"),
         "consultEspecText": MessageLookupByLibrary.simpleMessage(
             "Eres médico, coach, realtor, abogado o nutricionista y tus servicios son altamente buscados en las redes sociales, por lo que solo falta exponerte de la manera correcta en publicidad."),
         "contactoLargeText": MessageLookupByLibrary.simpleMessage(
-            "Desde hace 4 años estoy comprometido a educar y potenciar negocios con estrategias efectivas en publicidad que dan el punto.\n\nCon un recorrido de mas de \$1.000.000 USD invertidos y un retorno de \$15.000.000 USD en gran cantidad de campañas publicitarias con inumerables pruebas en Facebook, Instagram y TikTok ADS, afirmo que el éxito en los negocios se consigue con:\n\n1.Una excelente estrategia publicitaria\n2.Analizar los datos\n3.Contar con un profesional con experiencia\n\nMi misión es ser tu mentor o el encargado de tu marca y acompañarte en todo el proceso."),
+            "Desde hace 5 años estoy comprometido en potenciar y educar con estrategias publicitarias efectivas que dan en el punto.\nCon un recorrido de \$4.000.000 USD invertidos y un retorno de + \$30.000.000 USD en campañas publicitarias en Facebook, Instagram y Tiktok, afirmo que el éxito de los negocios consiste en: \n1. Una excelente estrategia publicitaria\n2. Analizar y optimizar los datos\n3. Contar con un profesional con experiencia \nMi misión es ser el encargado o mentor acompañándote al éxito en todo el proceso publicitario."),
         "contactoMenuBtn": MessageLookupByLibrary.simpleMessage("Contacto"),
         "continuar": MessageLookupByLibrary.simpleMessage("CONTINUAR"),
         "contrasenaTextFiel":
             MessageLookupByLibrary.simpleMessage("Contraseña"),
         "contratamePara": MessageLookupByLibrary.simpleMessage(
-            "Contrátame para exponer la importancia de publicidad online enfocada en el rubro que desees Seguros, Abogados, Real Estate, Médicos, Salones de Belleza, Coaching, Restaurantes y todos los negocios o emprendimientos que necesiten conocer ejemplos reales para hacer publicidad."),
+            "Contrátame para exponer la importancia de publicidad online enfocada en el rubro que desees: Seguros, Abogados, Real Estate, Médicos, Salones de Belleza, Coaching, Restaurantes y todos los negocios o emprendimientos que necesiten conocer ejemplos reales para hacer publicidad."),
         "correoDeUsuario":
             MessageLookupByLibrary.simpleMessage("Correo de usuario"),
         "correoForm":
@@ -203,6 +209,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Diseño de Estrategias"),
         "disenoEstratResp": MessageLookupByLibrary.simpleMessage(
             "Desarrollaré las estrategias claras y precisas con tiempos definidos poniendo en prioridad a tus distintos clientes ideales con todo el estudio que se necesita para poder impactarlos de manera persuasiva."),
+        "dondeTeBrindaremos": MessageLookupByLibrary.simpleMessage(
+            "donde te brindaremos una respuesta en el transcurso de 48 hora"),
         "dosy": MessageLookupByLibrary.simpleMessage("2 Años"),
         "duenosNegocios":
             MessageLookupByLibrary.simpleMessage("Dueños de Negocios"),
@@ -216,7 +224,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "duracionObligatoria": MessageLookupByLibrary.simpleMessage(
             "La duracion del curso es requerida"),
         "duranteElPrimerMes": MessageLookupByLibrary.simpleMessage(
-            "Durante el primer mes, te enseñaré todo lo que sé y elaboraremos - lanzaremos en conjunto tu plan de publicidad donde aprenderás la forma correcta de crecer tu negocio.\n\nLos siguientes dos meses tendremos varias sesiones de análisis de resultados con el plan que desarrollamos, y progresivamente optimizaremos todas tus campañas.\n\nEntenderás como si estuvieras viendo un semáforo; avanzar o parar dependiendo del color que muestre."),
+            "Durante el primer mes, te enseñaré todo lo que sé y elaboraremos - lanzaremos en conjunto tu plan de publicidad donde aprenderás la forma correcta de crecer tu negocio.\n\nEn el siguiente mes tendremos varias sesiones de análisis de resultados con el plan que desarrollamos y progresivamente optimizaremos tu publicidad."),
         "editar2puntos": MessageLookupByLibrary.simpleMessage("Editar:"),
         "editarModulo": MessageLookupByLibrary.simpleMessage("Editar modulo"),
         "educacionYEstrategia": MessageLookupByLibrary.simpleMessage(
@@ -258,7 +266,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "¿Entiendes que esto es un proceso en el que debes estarcomprometido y tener un modelo de negocio establecido con diferentes requerimientos?"),
         "enviarBtn": MessageLookupByLibrary.simpleMessage("ENVIAR"),
         "enviaremosUnEmail": MessageLookupByLibrary.simpleMessage(
-            "Enviaremos un correo electrónico con el enlace de descarga"),
+            "Ingresa tus datos y recibe mi nueva GUÍA\nsin costo para ti ❤️"),
         "eresNuevo": MessageLookupByLibrary.simpleMessage("¿Eres Nuevo?"),
         "errorEliminadoCurso":
             MessageLookupByLibrary.simpleMessage("Error eliminado curso"),
@@ -276,7 +284,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "estasAunPaso": MessageLookupByLibrary.simpleMessage(
             "¡Estás a un paso del éxito para marcar la diferencia, bienvenido a esta misión!"),
         "estasEnElMomento": MessageLookupByLibrary.simpleMessage(
-            "¿Estás en el momento de contratar a un especialista que aumente tu flujo de clientes, alcance y visitas al negocio?"),
+            "¿Necesitas contratar a un especialista que aumente tu flujo de clientes, visitas al negocio y VENTAS?"),
         "estasPoliticasSeEntenderan": MessageLookupByLibrary.simpleMessage(
             "Estas políticas se entenderán en todo momento como parte complementaria de los términos y condiciones expuestos en el sitio web, siendo ambos de igual aplicación al momento de una controversia. La política de privacidad y de propiedad intelectual aplicada será la misma que se expone en los términos y condiciones del sitio web.\nSe entenderá como “newsletter” al boletín digital que JPDIRECTOR realiza de forma periódica y que hace llegar a sus suscriptores a través de un proveedor de servicios de correo electrónico externo, al cual el usuario se ha suscrito de manera voluntaria.\nJPDIRECTOR no está en la obligación de enviar en períodos de tiempo definidos la newsletter, por lo que es totalmente libre de hacerlo cuando lo estime conveniente. El usuario podrá en todo momento ejercer sus derechos de acceso, rectificación, cancelación u oposición siguiendo las instrucciones que encontrará en el pie de página de la newsletter.\nEl usuario no deberá compartir su contenido con terceros, ya que esto violaría los derechos de autor de JPDIRECTOR. El único canal de distribución posible es el administrado y/o autorizado por JPDIRECTOR.\nJPDIRECTOR no se hará responsable por el contenido de terceros expuesto en la newsletter, cualquier controversia que surja deberá ser tratada directamente con la persona o empresa de la cual se hace mención.\nTodo el material que se expone en la newsletter está protegido por derechos de autor a favor de JPDIRECTOR, y en el caso de pertenecer a terceros, se entenderá que JPDIRECTOR tiene la debida autorización para utilizarlo como se haya convenido con el autor.\n"),
         "esteServicioEsta": MessageLookupByLibrary.simpleMessage(
@@ -313,6 +321,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Gracias por confirmar tu cuenta"),
         "hasHechoPubAntes": MessageLookupByLibrary.simpleMessage(
             "¿Has hecho publicidad antes?"),
+        "hola": MessageLookupByLibrary.simpleMessage("Hola,"),
         "idCarpertaModulo":
             MessageLookupByLibrary.simpleMessage("Id de carpeta"),
         "idZipModulo": MessageLookupByLibrary.simpleMessage("Id de Zip"),
@@ -474,6 +483,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "passNoCoinciden": MessageLookupByLibrary.simpleMessage(
             "Las contraseñas no coinciden"),
         "pendiente": MessageLookupByLibrary.simpleMessage("PENDIENTE"),
+        "podrasDescargar": MessageLookupByLibrary.simpleMessage(
+            "2. Podrás descargar en cada módulo un material complementario de la clase que estés aprendiendo"),
         "politicaDeEnlaces":
             MessageLookupByLibrary.simpleMessage("5. POLÍTICA DE ENLACES"),
         "politicaDeEnlacesText": MessageLookupByLibrary.simpleMessage(
@@ -495,9 +506,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "preguntasfrecuentes":
             MessageLookupByLibrary.simpleMessage("Preguntas frecuentes"),
         "preguntasfrecuentes1Resp": MessageLookupByLibrary.simpleMessage(
-            "¿Debo tener un presupuesto alto para invertir en mis campañas?\nEsto es muy relativo y depende de tu producto o servicio, lo que si tienes que tener en cuenta es que como mínimo tengas \$1000 USD para poder hacer la mayor cantidad de pruebas y hagamos un buen análisis de resultados durante este tiempo.\n\nEntiendo gran parte pero quiero más detalles\nCómo este servicio es especializado, tendremos una videollamada de 20 minutos para saber si tu negocio está preparado y comprometido.\nEn la llamada te explicaré más a detalle todas tus dudas.\n\n¿Cuál es el precio de la mentoría intensiva?\nEl precio ronda entre los \$6000 - \$12.000 USD depende de múltiples factores que estaremos conversando en la video llamada.\n\nNo es una pregunta, quiero que seas mi mentor!\nCalma, primero conversemos y veamos si estás preparado y tienes los requisitos, si estás leyendo esto, ya tienes el primero: Ganas."),
+            "1. ¿Debo tener un presupuesto alto para invertir en mis campañas?\nEsto es muy relativo y depende de tu producto o servicio, lo que si tienes que tener en cuenta es que como mínimo tengas \$3000 USD para poder hacer la mayor cantidad de pruebas y hagamos un buen análisis de resultados durante este tiempo.\n\n2. Entiendo gran parte pero quiero más detalles\nCómo este servicio es especializado, tendremos una videollamada de 20 minutos para saber si tu negocio está preparado y comprometido.\nEn la llamada te explicaré más a detalle todas tus dudas.\n\n3. ¿Cuál es el precio de la mentoría intensiva?\nEl precio es de \$12.000 USD depende de múltiples factores que estaremos conversando en la video llamada.\n\n4. No es una pregunta, quiero que seas mi mentor!\nCalma, primero conversemos y veamos si estás preparado y tienes los requisitos, si estás leyendo esto, ya tienes el primero: Ganas."),
         "preguntasfrecuentes2Resp": MessageLookupByLibrary.simpleMessage(
-            "¿Cuál es el costo promedio para que seas el encargado de la publicidad de mi negocio?\nEl precio comienza desde los \$4000 en adelante, depende de muchos factores y los objetivos que tengas como negocio es por eso que me tomo el tiempo de analizar previamente y saber si puedo asumir el proyecto.\n\n¿Veré resultados de inmediato?\nEsta pregunta es muy común, y esto depende de como está plasmada la estrategia, tu producto, precio y valor percibido por tu audiencia.\n\nLa respuesta correcta es que me encargaré de que impactes a tu público objetivo de una manera inteligente.\n\nUna vez rellene el formulario ¿Qué sucederá?\nEn el transcurso de  2 a 3 días me comunicaré contigo para darte todos los detalles y tendremos una reunión que durará 30 minutos para entender tus necesidades y números al 100%."),
+            "¿Cuál es el costo promedio para que seas el encargado de la publicidad de mi negocio?\nEl precio comienza desde los \$6000 en adelante, depende de muchos factores y los objetivos que tengas como negocio es por eso que me tomo el tiempo de analizar previamente y saber si puedo asumir el proyecto.\n\n¿Veré resultados de inmediato?\nEsta pregunta es muy común, y esto depende de como está plasmada la estrategia, tu producto, precio y valor percibido por tu audiencia.\n\nLa respuesta correcta es que me encargaré de que impactes a tu público objetivo de una manera inteligente.\n\nUna vez rellene el formulario ¿Qué sucederá?\nEn el transcurso de  2 a 3 días me comunicaré contigo para darte todos los detalles y tendremos una reunión que durará 30 minutos para entender tus necesidades y números al 100%."),
         "preguntasfrecuentes3Resp": MessageLookupByLibrary.simpleMessage(
             "¿Cómo funciona el proceso para agendar la fecha?\nEscríbeme a hola@jpdirector.net para chequear si ese día  está disponible, si es el caso,  puedes hacer un pago de dos partes 50% del precio de la conferencia y el otro 50% debe ser cancelado cinco días antes del evento.\n\n¿Puedes asistir a cualquier estado dentro de los Estados Unidos?\nClaro, solo debemos coordinar los boletos de avión, hospedaje y viáticos."),
         "preguntasfrecuentesResp": MessageLookupByLibrary.simpleMessage(
@@ -525,7 +536,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "queHablaremosResp": MessageLookupByLibrary.simpleMessage(
             "Plan de negocio\nAnalizaré si tu propuesta te dará rentabilidad con los servicios o productos que quieres comercializar por internet.\n\nCampañas\nCreadas o no creadas revisaré su estructura y estrategia de manera estratégica.\n\nSitio Web\nExaminaré toda la estructura y te daré la vía para que puedas vender más por tu web.\n\nMétodo de Ventas\nDependiendo de la metodología mejoraremos la manera en la que cierras con tus clientes."),
         "queVeremos3m": MessageLookupByLibrary.simpleMessage(
-            "¿Qué veremos durante estos 3 meses?"),
+            "¿Qué veremos durante estos 2 meses?"),
         "queVeremos3mResp": MessageLookupByLibrary.simpleMessage(
             "-De nivel cero a 100 todos los factores y herramientas necesarias para tu estrategia de publicidad.\n\n-Toda la educación en Instagram - Facebook - Tik Tok para realizar campañas publicitarias rentables.\n\n-Estrategia y análisis de resultados como decisiones de optimización."),
         "quieresConseguir": MessageLookupByLibrary.simpleMessage(
@@ -558,7 +569,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "residentesCalifornia": MessageLookupByLibrary.simpleMessage(
             "RESIDENTES EN CALIFORNIA, ESTADOS UNIDOS\n"),
         "resolvamosEsto":
-            MessageLookupByLibrary.simpleMessage("Resolvamos esto."),
+            MessageLookupByLibrary.simpleMessage("Resolvamos esto"),
         "responder": MessageLookupByLibrary.simpleMessage("Responder"),
         "respuesta": MessageLookupByLibrary.simpleMessage("Respuesta"),
         "resultadosMenuBtn": MessageLookupByLibrary.simpleMessage("Resultados"),
@@ -589,6 +600,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "siBorrar": MessageLookupByLibrary.simpleMessage("Si, Borrar"),
         "siEstoyPreparado":
             MessageLookupByLibrary.simpleMessage("Si, estoy preparado"),
+        "siTienesAlgunaDuda": MessageLookupByLibrary.simpleMessage(
+            "4. Si tienes alguna pregunta más especifica contamos con un "),
         "siTienesDudas": MessageLookupByLibrary.simpleMessage(
             "Si tienes alguna duda, comunícate conmigo vía "),
         "siguemeEnTodas": MessageLookupByLibrary.simpleMessage(
@@ -603,6 +616,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "soyJpDir": MessageLookupByLibrary.simpleMessage("Soy JP Director"),
         "tamanoInvalido":
             MessageLookupByLibrary.simpleMessage("Tamaño inválido"),
+        "teExplicamos": MessageLookupByLibrary.simpleMessage(
+            "Te explicamos 👇 todo lo que debes saber: "),
         "telefonoDeUsuario":
             MessageLookupByLibrary.simpleMessage("Teléfono de usuario"),
         "telefonoForm": MessageLookupByLibrary.simpleMessage("Teléfono"),
@@ -613,7 +628,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "telfSoloNumeros": MessageLookupByLibrary.simpleMessage(
             "Solo debe contener números. (12223334455)"),
         "tenerUnMentor": MessageLookupByLibrary.simpleMessage(
-            "Tener un mentor acelera drásticamente el éxito de tu negocio. Durante 3 meses estaré contigo mano a mano elaborando tu plan de publicidad y enseñándote cómo hacerlo por ti mismo."),
+            "Tener un mentor acelera drásticamente el éxito de tu negocio. Durante 2 meses estaré contigo mano a mano elaborando tu plan de publicidad y enseñándote cómo hacerlo por ti mismo."),
         "terminoDeUso":
             MessageLookupByLibrary.simpleMessage("Términos de Uso "),
         "terminosYCondiciones":
@@ -638,6 +653,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "tresy": MessageLookupByLibrary.simpleMessage("3 Años"),
         "unAdmRespondera": MessageLookupByLibrary.simpleMessage(
             "Un Administrado responderá tu pregunta"),
+        "unaVezFinalices": MessageLookupByLibrary.simpleMessage(
+            "3. Una vez finalices el curso podrás descargar tu certificado de finalización en el botón que aparecerá en la parte superior derecha de cada curso."),
         "unoAuno": MessageLookupByLibrary.simpleMessage("UNO A UNO"),
         "uny": MessageLookupByLibrary.simpleMessage("1 Año"),
         "urlVideoModulo": MessageLookupByLibrary.simpleMessage("Url del video"),

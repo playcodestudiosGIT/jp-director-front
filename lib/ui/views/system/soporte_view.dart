@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:jp_director/providers/export_all_providers.dart';
+import 'package:jp_director/ui/shared/widgets/top_area_back.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
@@ -43,9 +44,9 @@ class _SoporteViewState extends State<SoporteView> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(
-                  height: 80,
-                ),
+                TopAreaBack(onPress: () {
+                  Navigator.pop(context);
+                }),
                 Container(
                   alignment: Alignment.center,
                   constraints: BoxConstraints(maxWidth: 1200, minHeight: hScreen),
@@ -210,8 +211,8 @@ class _SoporteViewState extends State<SoporteView> {
                                     NavigatorService.replaceTo(Flurorouter.loginRoute);
                                   }, // Navigate to register page
                                   child: Text(
-                                    'ir a Mis Cursos',
-                                    style: DashboardLabel.botonText.copyWith(color: azulText),
+                                    appLocal.misCursosMenuBtn,
+                                    style: DashboardLabel.mini.copyWith(color: azulText),
                                   ),
                                 ),
                               ],

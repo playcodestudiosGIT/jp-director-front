@@ -34,8 +34,11 @@ class LoginFormProvider extends ChangeNotifier {
 
   void read() async {
     email = await _storage.read(key: "KEY_MAIL") ?? '';
+    print(email);
     pass = await _storage.read(key: "KEY_PASS") ?? '';
+    print(pass);
     final rmmb = await _storage.read(key: "KEY_RMMB") ?? 'false';
+    print(rmmb);
     if (rmmb == 'true') {
       remember = true;
     }

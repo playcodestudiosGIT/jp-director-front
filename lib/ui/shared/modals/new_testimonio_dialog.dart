@@ -66,7 +66,7 @@ class _NewTestimonioDialogState extends State<NewTestimonioDialog> {
                       initialValue: nombre,
                       onChanged: (value) => nombre = value,
                       decoration: InputDecor.formFieldInputDecoration(
-                        label: appLocal.nombreDelModulo,
+                        label: 'Name',
                         icon: Icons.title_outlined,
                       ),
                     ),
@@ -76,7 +76,7 @@ class _NewTestimonioDialogState extends State<NewTestimonioDialog> {
                     constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
-                      maxLines: 3,
+                      
                       style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
                       initialValue: img,
                       onChanged: (value) => img = value,
@@ -91,6 +91,7 @@ class _NewTestimonioDialogState extends State<NewTestimonioDialog> {
                     constraints: const BoxConstraints(maxWidth: 500, minWidth: 315),
                     child: TextFormField(
                       cursorColor: azulText,
+                      maxLines: 3,
                       style: DashboardLabel.paragraph.copyWith(color: Colors.white.withOpacity(0.3)),
                       initialValue: testimonio,
                       onChanged: (value) => testimonio = value,

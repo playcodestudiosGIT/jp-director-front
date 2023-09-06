@@ -50,9 +50,11 @@ class ContactoView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                        
-                        Text(
-                          '@jpdirector - Jorge Pérez',
-                          style: (hScreen < 585) ? DashboardLabel.h3 : DashboardLabel.azulTextH1
+                        FittedBox(
+                          child: Text(
+                            '@jpdirector - Jorge Pérez',
+                            style: (hScreen < 585) ? DashboardLabel.h3 : DashboardLabel.azulTextH1
+                          ),
                         ),
                     
                         
@@ -62,7 +64,8 @@ class ContactoView extends StatelessWidget {
                          if(hScreen > 585)
                         Text(
                           appLocal.contactoLargeText,
-                          style: (hScreen < 585) ? DashboardLabel.mini.copyWith(fontSize: 8) : DashboardLabel.mini,
+                          
+                          style: (hScreen < 585) ? DashboardLabel.mini.copyWith(fontSize: 8, height: 12) : DashboardLabel.mini,
                         ),
                         const SizedBox(
                           height: 20,
@@ -112,7 +115,7 @@ class ContactoView extends StatelessWidget {
                            const SizedBox(child: Center(child: Icon(Icons.info_outline, color: azulText),),),
                           Text(
                             appLocal.siTienesDudas,
-                            style: DashboardLabel.paragraph,
+                            style: DashboardLabel.mini,
                           ),
                           MouseRegion(
                             cursor: SystemMouseCursors.click,
@@ -259,15 +262,15 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
     final GlobalKey<FormState> formController = GlobalKey();
-    String email = 'youremail@email.com';
-    String telf = '12223334455';
+    String email = appLocal.correoTextFiel;
+    String telf = 'WhatsApp';
     bool isOk = Provider.of<LeadsProvider>(context).isOk;
 
     return AlertDialog(
       backgroundColor: Colors.transparent,
       content: Center(
           child: Container(
-        width: 300,
+        width: 320,
         height: 420,
         decoration: BoxDecoration(color: bgColor, borderRadius: BorderRadius.circular(25)),
         child: Column(
@@ -294,7 +297,8 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                     child: Text(
                       
                       appLocal.enviaremosUnEmail,
-                      style: DashboardLabel.h4,
+                      textAlign: TextAlign.center,
+                      style: DashboardLabel.mini,
                     ),
                   ),
                   const SizedBox(height: 15),
@@ -332,7 +336,7 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                                 return null;
                               },
                               style: DashboardLabel.h4,
-                              decoration: InputDecor.formFieldInputDecoration(icon: Icons.phone, label: telf),
+                              decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.whatsapp, label: telf),
                               onChanged: (value) {
                                 telf = value;
                               }),
@@ -349,6 +353,7 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                           width: 270,
                           child: Text(
                             appLocal.alHacerClickHeLeido,
+                            // textAlign: TextAlign.center,
                             style: DashboardLabel.mini,
                           ),
                         ),
