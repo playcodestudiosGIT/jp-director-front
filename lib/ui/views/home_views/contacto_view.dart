@@ -121,9 +121,10 @@ class ContactoView extends StatelessWidget {
                             cursor: SystemMouseCursors.click,
                             child: GestureDetector(
                               onTap: () {
-                                final Uri url = Uri.parse('https://wa.me/12142265941?text=from:%20Web%20contact.%20Need%20information%20about');
+                                final Uri url = Uri.parse('https://wa.me/12142265941?text=Hola%20Jp%20-%20Necesito%20apoyo%20con%20mi%20publicidad');
                                 launchUrl(url);
                               },
+
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,

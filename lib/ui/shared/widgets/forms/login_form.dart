@@ -35,13 +35,13 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
-    final wSize = MediaQuery.of(context).size.width;
+
     final loginFormProvider = Provider.of<LoginFormProvider>(context);
     return Builder(
       builder: (context) {
         return Container(
           width: double.infinity,
-          height: (wSize < 740) ? 455 : 520,
+          height: 520,
           padding: const EdgeInsets.only(top: 20, left: 30, right: 30),
           child: Form(
             key: keyLoginForm,
@@ -193,9 +193,9 @@ class _LoginFormState extends State<LoginForm> {
                         )),
                   )
                 ]),
-                if (wSize > 740)
+     
                 const SizedBox(
-                  height: 60,
+                  height: 45,
                 )
               ],
             ),

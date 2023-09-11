@@ -104,7 +104,7 @@ class _SquareModuloState extends State<SquareModulo> {
                           CustomButton(
                             text: appLocal.siBorrar,
                             onPress: () async {
-                              await Provider.of<AllCursosProvider>(context, listen: false).deleteModulo(widget.modulo!.id);
+                              await Provider.of<AllCursosProvider>(context, listen: false).deleteModulo(context: context, id: widget.modulo!.id);
                               if (context.mounted) {
                                 Navigator.pop(context, true);
                               }

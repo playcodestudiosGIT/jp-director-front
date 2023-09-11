@@ -17,7 +17,7 @@ class FormProvider extends ChangeNotifier {
   bool isLoading = false;
 
   final List<String> _pages = ['formp1', 'formp2', 'formp3', 'gracias'];
-  int currentIndex = 0;
+  int _currentIndex = 0;
 
   String rootForm = '';
   String email = '';
@@ -36,10 +36,10 @@ class FormProvider extends ChangeNotifier {
 
   List<Formulario> _allForms = [];
   int _totalForms = 0;
-  
+
   setespectativas(String value) {
-      espectativas = value;
-      notifyListeners();
+    espectativas = value;
+    notifyListeners();
   }
 
   int get totalForms => _totalForms;
@@ -133,11 +133,16 @@ class FormProvider extends ChangeNotifier {
   }
 
   setCurrentIndex(index) {
-    currentIndex = index;
+    _currentIndex = index;
+  }
+
+  setServicesIndex(index) {
+    _currentIndex = index;
+    notifyListeners();
   }
 
   int getPageIndex() {
-    return currentIndex;
+    return _currentIndex;
   }
 
   goTo(int index) {
@@ -179,11 +184,11 @@ class FormProvider extends ChangeNotifier {
 
       isLoading = false;
       notifyListeners();
-      NotifServ.showSnackbarError('Formulario enviado', Colors.green);
+      NotifServ.showSnackbarError('Submitted form', Colors.green);
     } catch (e) {
       isLoading = false;
       notifyListeners();
-      NotifServ.showSnackbarError('error al enviar el form $e', Colors.red);
+      NotifServ.showSnackbarError('error sending form', Colors.red);
     }
   }
 
@@ -196,10 +201,10 @@ class FormProvider extends ChangeNotifier {
       );
 
       notifyListeners();
-      NotifServ.showSnackbarError('Formulario borrado con exito', Colors.green);
+      NotifServ.showSnackbarError('Form deleted', Colors.green);
       return true;
     } catch (e) {
-      NotifServ.showSnackbarError('Error borrando formulario', Colors.red);
+      NotifServ.showSnackbarError('Error deleting form', Colors.red);
       throw Exception('Error en el delete form');
     }
   }

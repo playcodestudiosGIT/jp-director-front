@@ -81,8 +81,8 @@ class _SliderState extends State<Slider> {
                 items: const [FormSVid(), FormSVknow(), FormSVrrss(), FormThxView()],
                 options: CarouselOptions(
                   onPageChanged: (index, reason) {
-                    formProvider.currentIndex = index;
-                    setState(() {});
+                    formProvider.setServicesIndex(index);
+           
                   },
                   height: size.height,
                   reverse: false,

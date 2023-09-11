@@ -72,6 +72,7 @@ class _FormSVidState extends State<FormSVid> {
       }
     }
 
+    print(formProvider.getPageIndex());
     return Container(
       constraints: const BoxConstraints(maxWidth: 800),
       width: double.infinity,
@@ -174,14 +175,9 @@ class _FormSVidState extends State<FormSVid> {
               const SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  
-                  BotonVerde(text: botonText, width: 100, onPressed: () => onPressed()),
-                  const SizedBox(width: 40)
-                ],
+                children: [BotonVerde(text: botonText, width: 100, onPressed: () => onPressed()), const SizedBox(width: 40)],
               ),
-                  const SizedBox(height: 100)
-             
+              const SizedBox(height: 100)
             ],
           ),
         ),

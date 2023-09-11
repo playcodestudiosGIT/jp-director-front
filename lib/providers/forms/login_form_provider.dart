@@ -34,11 +34,8 @@ class LoginFormProvider extends ChangeNotifier {
 
   void read() async {
     email = await _storage.read(key: "KEY_MAIL") ?? '';
-    print(email);
     pass = await _storage.read(key: "KEY_PASS") ?? '';
-    print(pass);
     final rmmb = await _storage.read(key: "KEY_RMMB") ?? 'false';
-    print(rmmb);
     if (rmmb == 'true') {
       remember = true;
     }
@@ -61,7 +58,7 @@ class LoginFormProvider extends ChangeNotifier {
       } else {
         await _storage.deleteAll();
       }
-      await authProvider.login(email, pass);
+      await authProvider.login(context: context, email: email, password: pass);
 
       notifyListeners();
       return true;

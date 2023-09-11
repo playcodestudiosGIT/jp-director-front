@@ -4,6 +4,7 @@ import 'package:jp_director/models/curso.dart';
 import 'package:jp_director/router/router.dart';
 import 'package:jp_director/services/navigator_service.dart';
 
+import '../../../generated/l10n.dart';
 import '../labels/dashboard_label.dart';
 
 class CursoImagen extends StatelessWidget {
@@ -15,6 +16,7 @@ class CursoImagen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: GestureDetector(
@@ -46,7 +48,7 @@ class CursoImagen extends StatelessWidget {
                             onPressed: () {
                               NavigatorService.navigateTo('${Flurorouter.cursoLanding}/${curso.id}');
                             },
-                            child: Text('VER MAS', style: DashboardLabel.mini.copyWith(color: azulText)))
+                            child: Text(appLocal.verMas, style: DashboardLabel.mini.copyWith(color: azulText)))
                       ],
                     ),
                   ),

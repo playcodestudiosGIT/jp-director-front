@@ -70,6 +70,7 @@ class _FormSVrrssState extends State<FormSVrrss> {
       }
     }
 
+    print(formProvider.getPageIndex());
     return Container(
         constraints: const BoxConstraints(maxWidth: 800),
         width: double.infinity,
@@ -94,14 +95,12 @@ class _FormSVrrssState extends State<FormSVrrss> {
                     ),
                   ],
                 ),
-                if (wScreen > 980)
-                  const SizedBox(
-                    height: 30,
-                  ),
+                const SizedBox(
+                  height: 30,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    // if (wScreen > 980) const Image(image: logoGrande),
                     Container(
                         alignment: Alignment.center,
                         width: double.infinity,
@@ -197,7 +196,7 @@ class _FormSVrrssState extends State<FormSVrrss> {
                     IconButton(
                         splashRadius: 18,
                         onPressed: () {
-                          if (formProvider.currentIndex != 0) {
+                          if (formProvider.getPageIndex() != 0) {
                             formProvider.formScrollController.previousPage();
                             setState(() {});
                           }

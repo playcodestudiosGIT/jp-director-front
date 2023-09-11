@@ -226,9 +226,11 @@ class _ServicesViewState extends State<ServicesView> {
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 1000, minWidth: 350),
                   child: CarouselSlider(
+
                       carouselController: sliderController,
                       items: [...sliders],
                       options: CarouselOptions(
+                        scrollPhysics: const NeverScrollableScrollPhysics(),
                         onPageChanged: (index, reason) {
                           setState(() {
                             index = index;

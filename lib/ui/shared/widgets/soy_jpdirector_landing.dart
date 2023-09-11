@@ -36,8 +36,7 @@ class SoyJpdirectorLanding extends StatelessWidget {
             Container(
                 constraints: const BoxConstraints(maxWidth: 400, minWidth: 300),
                 child: const Image(
-                    image: NetworkImage(
-                        'https://static.wixstatic.com/media/b69ab8_f5760d9dc3e54e7497e4c4d419c95cd2~mv2.png/v1/fill/w_508,h_674,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/DSC032987.png')))
+                    image: fotoJorgeCursos))
           ]),
         ),
         const SizedBox(height: 60),

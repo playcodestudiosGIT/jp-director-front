@@ -53,8 +53,8 @@ class _VerifyUserPageState extends State<VerifyUserPage> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Container(
-                                  decoration: BoxDecoration(color: const Color(0xff021E36), borderRadius: BorderRadius.circular(80)),
+                              SizedBox(
+                                 
                                   width: 340,
                                   // height: 550,
                                   child: Container(

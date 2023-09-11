@@ -50,7 +50,7 @@ class _SquareCursoState extends State<SquareCurso> {
                             text: appLocal.siBorrar,
                             onPress: () async {
                               await Provider.of<AllCursosProvider>(context, listen: false)
-                                  .deleteCursoToUser(userId: widget.userId, cursoId: widget.curso!.id);
+                                  .deleteCursoToUser(context: context, userId: widget.userId, cursoId: widget.curso!.id);
                               if (context.mounted) {
                                 Navigator.pop(context, true);
                               }

@@ -120,6 +120,7 @@ class _RegisterFormState extends State<RegisterForm> {
                     final isValid = registerFormProvider.validateForm();
                     if (!isValid) return;
                     authProvider.register(
+                      context: context,
                       nombre: registerFormProvider.nombre,
                       apellido: registerFormProvider.apellido,
                       correo: registerFormProvider.email,

@@ -93,10 +93,14 @@ class ResultadosView extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       height: 300,
-                      child: PageView(children: [
+                      child: PageView(
+                        
+                        children: [
                         CarouselSlider(
+                            
                             items: listResultWiget,
                             options: CarouselOptions(
+                              scrollPhysics: const NeverScrollableScrollPhysics(),
                                 height: 300,
                                 viewportFraction: viewport,
                                 enlargeFactor: 0.4,

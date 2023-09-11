@@ -41,7 +41,7 @@ class LetrasAsesoria extends StatelessWidget {
     final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
     final formProvider = Provider.of<FormProvider>(context);
-    late String title;
+    String title = '';
     if (formProvider.rootForm == 'mentoria') {
       title = appLocal.mentoriaIntensiva;
     }

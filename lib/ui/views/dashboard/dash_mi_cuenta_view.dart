@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:jp_director/providers/users_provider.dart';
@@ -200,7 +201,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                           constraints: const BoxConstraints(minWidth: 360),
                           color: Colors.transparent,
                           margin: const EdgeInsets.only(left: 10),
-                          height: 452,
+                          height: 480,
                           child: Column(
                             children: [
                               // if (size.width < 575) const SizedBox(height: 80),
@@ -266,6 +267,8 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                               Container(
                                 constraints: const BoxConstraints(maxWidth: 500, minWidth: 360),
                                 child: TextFormField(
+                                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                                  validator: (value) => (EmailValidator.validate(value.toString())) ? null : appLocal.ingreseSuCorreo,
                                   cursorColor: azulText,
                                   keyboardType: TextInputType.emailAddress,
                                   initialValue: authProvider.user!.correo,
@@ -507,7 +510,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                                           setState(() {});
                                           Navigator.pop(context);
                                         },
-                                        width: 100,
+                                        width: 120,
                                         color: Colors.green,
                                       ),
                                       const SizedBox(width: 10),
@@ -556,10 +559,10 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
       PlatformFile file = result.files.first;
 
       if (file.extension!.toLowerCase() != 'jpg' && file.extension!.toLowerCase() != 'jpeg' && file.extension!.toLowerCase() != 'png') {
-        alertaDeDialogo(title: appLocal.extensionInvalida, dubtitle: appLocal.laExtensionDebe, textButton: 'OK');
+        return alertaDeDialogo(title: appLocal.extensionInvalida, dubtitle: appLocal.laExtensionDebe, textButton: 'OK');
       }
-      if (file.size > 1000000) {
-        alertaDeDialogo(title: appLocal.tamanoInvalido, dubtitle: appLocal.debePesarMenos, textButton: 'OK');
+      if (file.size > 3000000) {
+        return alertaDeDialogo(title: appLocal.tamanoInvalido, dubtitle: appLocal.debePesarMenos, textButton: 'OK');
       }
 
       final img = await JpApi.editUserImg('/uploads/usuarios/$id', file.bytes!);
@@ -576,18 +579,24 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
 
   alertaDeDialogo({required String title, required String dubtitle, required String textButton}) {
     return showDialog(
+      
       context: context,
       builder: (context) => Center(
-          child: SizedBox(
-              width: 200,
-              height: 200,
-              child: WhiteCard(
-                  // isDrag: false,
-                  title: title,
-                  child: Center(
-                      child: Column(
-                    children: [
-                      Text(dubtitle),
+          child: Container(
+            padding: const EdgeInsets.all(8),
+            color: bgColor,
+              width: 300,
+              height: 300,
+              child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(title, style: DashboardLabel.h4),
+                  const SizedBox(
+                        height: 30,
+                      ),
+                  Text(dubtitle, style: DashboardLabel.paragraph,),
                       const SizedBox(
                         height: 60,
                       ),
@@ -595,8 +604,8 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [ElevatedButton(onPressed: () => Navigator.pop(context), child: Text(textButton))],
                       )
-                    ],
-                  ))))),
+                ],
+              )))),
     );
   }
 }

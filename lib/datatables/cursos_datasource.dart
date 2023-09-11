@@ -281,7 +281,7 @@ class CursosDTS extends DataTableSource {
                                             CustomButton(
                                               text: appLocal.siBorrar,
                                               onPress: () async {
-                                                await Provider.of<AllCursosProvider>(context, listen: false).deleteTestimonio(e.id);
+                                                await Provider.of<AllCursosProvider>(context, listen: false).deleteTestimonio(context: context, id: e.id);
                                                 if (context.mounted) {
                                                   Navigator.pop(context, true);
                                                 }
@@ -343,7 +343,7 @@ class CursosDTS extends DataTableSource {
                     TextButton(
                         onPressed: () async {
                           //BORRAR USUARIO
-                          final isDelete = await Provider.of<AllCursosProvider>(context, listen: false).deleteCurso(curso.id);
+                          final isDelete = await Provider.of<AllCursosProvider>(context, listen: false).deleteCurso(context: context, id: curso.id);
                           if (isDelete != null && context.mounted) {
                             Navigator.pop(context, true);
                             NotifServ.showSnackbarError('Lead "${curso.nombre}" ${appLocal.eliminado}', Colors.green);
@@ -352,7 +352,7 @@ class CursosDTS extends DataTableSource {
                             NotifServ.showSnackbarError(appLocal.errorEliminadoCurso, Colors.red);
                           }
                         },
-                        child: const Text('Si, Borrar'))
+                        child: Text(appLocal.borrar))
                   ],
                 );
                 showDialog(

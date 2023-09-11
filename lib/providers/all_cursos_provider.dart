@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jp_director/constant.dart';
+import 'package:jp_director/generated/l10n.dart';
 import 'package:jp_director/models/certificado.dart';
 import 'package:jp_director/services/notificacion_service.dart';
 
@@ -9,6 +10,7 @@ import '../models/http/all_cursos_response.dart';
 import '../models/usuario_model.dart';
 
 class AllCursosProvider extends ChangeNotifier {
+  
   List<Curso> _allCursos = [];
   List<Curso> _misCursos = [];
 
@@ -197,7 +199,8 @@ class AllCursosProvider extends ChangeNotifier {
     }
   }
 
-  createCurso() {
+  createCurso(BuildContext context) {
+    final appLocal = AppLocalizations.of(context);
     final data = {
       "nombre": _nombreCursoModal,
       "precio": _precioCursoModal,
@@ -214,9 +217,9 @@ class AllCursosProvider extends ChangeNotifier {
       final curso = Curso.fromJson(json);
       _allCursos.add(curso);
       notifyListeners();
-      NotifServ.showSnackbarError('Curso Creado con exito', Colors.green);
+      NotifServ.showSnackbarError(appLocal.cursoCreado, Colors.green);
     }).catchError((e) {
-      NotifServ.showSnackbarError('Error creando curso', Colors.red);
+      NotifServ.showSnackbarError(appLocal.errorCursoCreado, Colors.red);
     });
   }
 
@@ -243,22 +246,24 @@ class AllCursosProvider extends ChangeNotifier {
   }
 
   Future addCursoToUser({required BuildContext context, required String userId}) async {
+    final appLocal = AppLocalizations.of(context);
     final resp = await JpApi.put('/usuarios/add/$userId', {"cursoId": cursoSelected});
     if (resp['msg'] != null) {
       // NotificationServices.showSnackbarError(resp['msg'], Colors.red);
       return;
     } else {
-      NotifServ.showSnackbarError('Curso agregado', Colors.green);
+      NotifServ.showSnackbarError(appLocal.cursoAgregado, Colors.green);
       notifyListeners();
     }
   }
 
-  Future deleteCursoToUser({required String userId, required String cursoId}) async {
+  Future deleteCursoToUser({required BuildContext context, required String userId, required String cursoId}) async {
+    final appLocal = AppLocalizations.of(context);
     try {
       await JpApi.put('/usuarios/remove/$userId', {"cursoId": cursoId});
       _cursosUserModalTemp.removeWhere((element) => element.id == cursoId);
       notifyListeners();
-      NotifServ.showSnackbarError('Curso Borrado', Colors.green);
+      NotifServ.showSnackbarError(appLocal.cursoBorrado, Colors.green);
     } catch (e) {
       throw 'error $e';
     }
@@ -266,7 +271,9 @@ class AllCursosProvider extends ChangeNotifier {
 
   Future updateCurso({
     required String uid,
+    required BuildContext context
   }) async {
+    final appLocal = AppLocalizations.of(context);
     final data = {
       "nombre": _nombreCursoModal,
       "precio": _precioCursoModal,
@@ -291,14 +298,15 @@ class AllCursosProvider extends ChangeNotifier {
       _allCursos.add(curso);
 
       notifyListeners();
-      NotifServ.showSnackbarError('Curso Actualizado con exito', Colors.green);
+      NotifServ.showSnackbarError(appLocal.cursoActualizado, Colors.green);
     } catch (e) {
-      NotifServ.showSnackbarError('Error actualizando curso', Colors.red);
+      NotifServ.showSnackbarError(appLocal.errorCursoActualizado, Colors.red);
       throw Exception('Error Actualizando usuario.');
     }
   }
 
-  Future deleteCurso(String id) async {
+  Future deleteCurso({required BuildContext context, required String id}) async {
+    final appLocal = AppLocalizations.of(context);
     try {
       await JpApi.delete('/cursos/$id', {});
 
@@ -307,14 +315,15 @@ class AllCursosProvider extends ChangeNotifier {
       );
 
       notifyListeners();
-      NotifServ.showSnackbarError('Curso borrado con exito', Colors.green);
+      NotifServ.showSnackbarError(appLocal.cursoBorrado, Colors.green);
       return true;
     } catch (e) {
-      NotifServ.showSnackbarError('Error borrando curso', Colors.red);
+      NotifServ.showSnackbarError(appLocal.errorEliminadoCurso, Colors.red);
     }
   }
 
   Future createModulo({
+    required BuildContext context,
     required String nombre,
     required String video,
     required String descripcion,
@@ -322,6 +331,7 @@ class AllCursosProvider extends ChangeNotifier {
     required String idDriveZip,
     required String curso,
   }) async {
+    final appLocal = AppLocalizations.of(context);
     final data = {
       "nombre": nombre,
       "descripcion": descripcion,
@@ -334,13 +344,14 @@ class AllCursosProvider extends ChangeNotifier {
     // Petición HTTP
     await JpApi.post('/modulos', data).then((json) {
       notifyListeners();
-      NotifServ.showSnackbarError('Modulo agregado con exito', Colors.green);
+      NotifServ.showSnackbarError(appLocal.moduloAgregado, Colors.green);
     }).catchError((e) {
-      NotifServ.showSnackbarError('Error agregado modulo', Colors.red);
+      NotifServ.showSnackbarError(appLocal.errorModuloAgregado, Colors.red);
     });
   }
 
   Future updateModulo({
+    required BuildContext context,
     required String uid,
     required String nombreModulo,
     required String descripcionModulo,
@@ -348,6 +359,7 @@ class AllCursosProvider extends ChangeNotifier {
     required String idDriveFolder,
     required String idDriveZip,
   }) async {
+    final appLocal = AppLocalizations.of(context);
     final data = {
       "nombre": nombreModulo,
       "descripcion": descripcionModulo,
@@ -360,41 +372,45 @@ class AllCursosProvider extends ChangeNotifier {
       await JpApi.put('/modulos/$uid', data);
 
       notifyListeners();
-      NotifServ.showSnackbarError('Modulo Actualizado con exito', Colors.green);
+      NotifServ.showSnackbarError(appLocal.moduloActualizado, Colors.green);
     } catch (e) {
-      NotifServ.showSnackbarError('Error actualizando modulo', Colors.red);
+      NotifServ.showSnackbarError(appLocal.errorActualizandoModulo, Colors.red);
       // throw Exception('Error Actualizando modulo.');
     }
   }
 
-  Future deleteModulo(String id) async {
+  Future deleteModulo({required BuildContext context, required String id}) async {
+    final appLocal = AppLocalizations.of(context);
+    
     try {
       await JpApi.delete('/modulos/$id', {});
       _cursoModal.modulos.removeWhere((element) => element.id == id);
       getAllCursos();
       notifyListeners();
-      NotifServ.showSnackbarError('Modulo borrado con exito', Colors.green);
+      NotifServ.showSnackbarError(appLocal.moduloBorrado, Colors.green);
       return true;
     } catch (e) {
       print(e);
-      NotifServ.showSnackbarError('Error borrando modulo', Colors.red);
+      NotifServ.showSnackbarError(appLocal.errorBorrandoModulo, Colors.red);
     }
   }
 
   Future createComent({
+    required BuildContext context,
     required String comentario,
     required String cursoId,
     required String moduloId,
   }) async {
+    final appLocal = AppLocalizations.of(context);
     final data = {"comentario": comentario, "cursoId": cursoId, "moduloId": moduloId};
 
     // Petición HTTP
     await JpApi.post('/modulos/coments/add', data).then((json) {
       // getAllCursos();
       notifyListeners();
-      NotifServ.showSnackbarError('Comentario agregado con exito', Colors.green);
+      NotifServ.showSnackbarError(appLocal.comentarioAgregado, Colors.green);
     }).catchError((e) {
-      NotifServ.showSnackbarError('Error agregado comentario', Colors.red);
+      NotifServ.showSnackbarError(appLocal.errorAgregandoComentario, Colors.red);
     });
   }
 
@@ -442,11 +458,13 @@ class AllCursosProvider extends ChangeNotifier {
   }
 
   Future createTestimonio({
+    required BuildContext context,
     required String nombre,
     required String img,
     required String testimonio,
     required String curso,
   }) async {
+    final appLocal = AppLocalizations.of(context);
     final data = {
       "nombre": nombre,
       "img": img,
@@ -456,19 +474,21 @@ class AllCursosProvider extends ChangeNotifier {
     // Petición HTTP
     await JpApi.post('/cursos/add/testimonio/$curso', data).then((json) {
       notifyListeners();
-      NotifServ.showSnackbarError('Testimonio agregado con exito', Colors.green);
+      NotifServ.showSnackbarError(appLocal.testimonioAgregado, Colors.green);
     }).catchError((e) {
-      NotifServ.showSnackbarError('Error agregado testimonio', Colors.red);
+      NotifServ.showSnackbarError(appLocal.errorTestimonioAgregado, Colors.red);
     });
   }
 
   Future updateTestimonio({
+    required BuildContext context,
     required String id,
     required String nombre,
     required String img,
     required String testimonio,
     required String curso,
   }) async {
+    final appLocal = AppLocalizations.of(context);
     final data = {
       "nombre": nombre,
       "img": img,
@@ -480,14 +500,15 @@ class AllCursosProvider extends ChangeNotifier {
       await JpApi.put('/cursos/testimonio/$id', data);
 
       notifyListeners();
-      NotifServ.showSnackbarError('Testimonio Actualizado con exito', Colors.green);
+      NotifServ.showSnackbarError(appLocal.testimonioActualizado, Colors.green);
     } catch (e) {
-      NotifServ.showSnackbarError('Error actualizando testimonio', Colors.red);
+      NotifServ.showSnackbarError(appLocal.errorTestimonioActualizado, Colors.red);
       // throw Exception('Error Actualizando modulo.');
     }
   }
 
-  Future deleteTestimonio(String id) async {
+  Future deleteTestimonio({required BuildContext context, required String id}) async {
+    final appLocal = AppLocalizations.of(context);
     try {
       await JpApi.delete('/cursos/testimonio/$id', {});
 
@@ -496,10 +517,10 @@ class AllCursosProvider extends ChangeNotifier {
       _cursoModal.testimonios.removeWhere((element) => element.id == id);
       getAllCursos();
       notifyListeners();
-      NotifServ.showSnackbarError('Testimonio borrado con exito', Colors.green);
+      NotifServ.showSnackbarError(appLocal.testimonioBorrado, Colors.green);
       return true;
     } catch (e) {
-      NotifServ.showSnackbarError('Error borrando testimonio', Colors.red);
+      NotifServ.showSnackbarError(appLocal.errorTestimonioBorrado, Colors.red);
     }
   }
 }

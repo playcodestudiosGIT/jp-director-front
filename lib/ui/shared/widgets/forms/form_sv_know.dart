@@ -178,7 +178,7 @@ class _FormSVknowState extends State<FormSVknow> {
                   IconButton(
                       splashRadius: 18,
                       onPressed: () {
-                        if (formProvider.currentIndex != 0) {
+                        if (formProvider.getPageIndex() != 0) {
                           formProvider.formScrollController.previousPage();
                           setState(() {});
                         }

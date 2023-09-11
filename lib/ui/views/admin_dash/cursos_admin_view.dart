@@ -59,7 +59,7 @@ class _CursosAdminViewState extends State<CursosAdminView> {
                 DataColumn(
                   label: Row(
                     children: [
-                      Text('MODULOS', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
+                      Text(appLocal.modulos, style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                       
                     ],
                   ),
@@ -67,7 +67,7 @@ class _CursosAdminViewState extends State<CursosAdminView> {
                 DataColumn(
                   label: Row(
                     children: [
-                      Text('TESTIMONIOS', style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
+                      Text(appLocal.testimonios, style: DashboardLabel.h4.copyWith(color: blancoText.withOpacity(0.5))),
                       
                     ],
                   ),

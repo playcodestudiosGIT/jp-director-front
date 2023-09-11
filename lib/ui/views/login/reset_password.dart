@@ -136,7 +136,7 @@ class _ResetPassState extends State<ResetPass> {
                                                   cursor: SystemMouseCursors.click,
                                                   child: GestureDetector(
                                                     onTap: () {
-                                                      NavigatorService.navigateTo(Flurorouter.homeRoute);
+                                                      NavigatorService.navigateTo(Flurorouter.loginRoute);
                                                     },
                                                     child: Text(
                                                       appLocal.irAlLogin,

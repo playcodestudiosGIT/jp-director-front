@@ -29,7 +29,7 @@ class PayProvider extends ChangeNotifier {
       });
       return _url;
     } catch (e) {
-      NotifServ.showSnackbarError('$e', Colors.red);
+      NotifServ.showSnackbarError('Error in session', Colors.red);
       return _url;
     }
   }

@@ -126,6 +126,9 @@ class VisitorHandlers {
     if (page == 'contacto') {
       return const HomeBody(index: 4);
     }
+    if (page == 'checkout') {
+      return const DashMisCursosView();
+    }
     if (page != '/') {
       return const NoPageFound();
     }

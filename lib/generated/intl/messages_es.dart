@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "A pesar de lo anterior, los usuarios podrán darse de baja en cualquier momento de los servicios prestados por ON POINT PRODUCTIONS AGENCY LLC o datos aportados por el USUARIO dando cumplimiento a la normativa vigente sobre Protección de Datos. Asimismo, tanto al suscribirse a esta página web, como al realizar algún comentario o realizar una compra en cualquiera de sus páginas y/o entradas, el usuario consiente:"),
         "acciones": MessageLookupByLibrary.simpleMessage("ACCIONES"),
         "acepto2puntos": MessageLookupByLibrary.simpleMessage("De acuerdo:"),
+        "actInfo":
+            MessageLookupByLibrary.simpleMessage("Actualizar Información"),
         "actInfoBtn":
             MessageLookupByLibrary.simpleMessage("ACTUALIZAR INFORMACIÓN"),
         "actRapidez": MessageLookupByLibrary.simpleMessage(
@@ -83,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "basico": MessageLookupByLibrary.simpleMessage("Básico"),
         "bienvenidoAlosProg": MessageLookupByLibrary.simpleMessage(
             "Bienvenido a los programas más completos de publicidad digital. Te damos las gracias y un gran abrazo por confiar en nuestras formaciones; estamos emocionados de verte crecer en este nuevo camino de éxito."),
+        "borrar": MessageLookupByLibrary.simpleMessage("Borrar"),
         "borrarDefinitivo": MessageLookupByLibrary.simpleMessage(
             "Borrar definitivamente el usuario"),
         "borrarForm": MessageLookupByLibrary.simpleMessage("Borrar formulario"),
@@ -112,6 +115,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cero": MessageLookupByLibrary.simpleMessage("Cero"),
         "certificadoBtn": MessageLookupByLibrary.simpleMessage("CERTIFICADO"),
         "comentar": MessageLookupByLibrary.simpleMessage("COMENTAR"),
+        "comentarioAgregado": MessageLookupByLibrary.simpleMessage(
+            "Comentario agregado con exito"),
         "comentarioInvalido":
             MessageLookupByLibrary.simpleMessage("Comentario Invalido"),
         "comentariosBtn": MessageLookupByLibrary.simpleMessage("COMENTARIOS"),
@@ -147,7 +152,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "consultEspecText": MessageLookupByLibrary.simpleMessage(
             "Eres médico, coach, realtor, abogado o nutricionista y tus servicios son altamente buscados en las redes sociales, por lo que solo falta exponerte de la manera correcta en publicidad."),
         "contactoLargeText": MessageLookupByLibrary.simpleMessage(
-            "Desde hace 5 años estoy comprometido en potenciar y educar con estrategias publicitarias efectivas que dan en el punto.\nCon un recorrido de \$4.000.000 USD invertidos y un retorno de + \$30.000.000 USD en campañas publicitarias en Facebook, Instagram y Tiktok, afirmo que el éxito de los negocios consiste en: \n1. Una excelente estrategia publicitaria\n2. Analizar y optimizar los datos\n3. Contar con un profesional con experiencia \nMi misión es ser el encargado o mentor acompañándote al éxito en todo el proceso publicitario."),
+            "Desde hace 5 años estoy comprometido en potenciar y educar con estrategias publicitarias efectivas que dan en el punto.\nCon un recorrido de \$4.000.000 USD invertidos y un retorno de + \$30.000.000 USD en campañas publicitarias en Facebook, Instagram y Tiktok, afirmo que el éxito de los negocios consiste en: \n1. Una excelente estrategia publicitaria.\n2. Analizar y optimizar los datos.\n3. Contar con un profesional con experiencia.\nMi misión es ser el encargado o mentor acompañándote al éxito en todo el proceso publicitario."),
         "contactoMenuBtn": MessageLookupByLibrary.simpleMessage("Contacto"),
         "continuaMensaje":
             MessageLookupByLibrary.simpleMessage("continua el mensaje..."),
@@ -162,14 +167,24 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Correo Electrónico"),
         "correoTextFiel":
             MessageLookupByLibrary.simpleMessage("Correo Electrónico"),
+        "correoYaExiste": MessageLookupByLibrary.simpleMessage(
+            "Correo ya existe. ir al Log in"),
         "crearBtn": MessageLookupByLibrary.simpleMessage("CREAR"),
         "crearCuenta": MessageLookupByLibrary.simpleMessage("CREAR CUENTA"),
+        "credencialesInvalidas":
+            MessageLookupByLibrary.simpleMessage("Credenciales Invalidas"),
         "cuandoSeRealice": MessageLookupByLibrary.simpleMessage(
             "Cuando se realice un lanzamiento de productos o servicios nuevos, o promociones especiales por tiempo determinado, se recogerá el nombre y correo electrónico de los usuarios del sitio web mediante un formulario. Este tratamiento de datos personales se hará con base en el interés legítimo que posee JPDIRECTOR para aumentar sus ventas, dar a conocer sus productos o servicios y cumplir con la finalidad de enviarle al titular de los datos la información prometida en el sitio web.\nEste tratamiento será realizado mientras perdure el interés legítimo de JPDIRECTOR. Para aumentar las garantías y respeto a la privacidad, se ofrece la posibilidad de la exclusión voluntaria de esta publicidad mediante un método fácil y de ejecución inmediata, ubicado en la parte inferior de los correos electrónicos que reciba.\nPara saber si este interés es proporcionado y respetuoso con los derechos de los titulares de los datos, se ha realizado una ponderación que puede ser solicitada en cualquier momento escribiendo al correo electrónico hola@jpdirector.net\n"),
         "cuantosAnosNegAct": MessageLookupByLibrary.simpleMessage(
             "¿Cuántos años tiene tu negocio operativo?"),
         "cuatroy": MessageLookupByLibrary.simpleMessage("+4 Años"),
         "cuentaConmigo": MessageLookupByLibrary.simpleMessage("Cuenta Conmigo"),
+        "cursoActualizado":
+            MessageLookupByLibrary.simpleMessage("Curso Actualizado con exito"),
+        "cursoAgregado": MessageLookupByLibrary.simpleMessage("Curso agregado"),
+        "cursoBorrado": MessageLookupByLibrary.simpleMessage("Curso borrado"),
+        "cursoCreado":
+            MessageLookupByLibrary.simpleMessage("Curso Creado con exito"),
         "cursoMayus": MessageLookupByLibrary.simpleMessage("CURSOS"),
         "cursoRepetido":
             MessageLookupByLibrary.simpleMessage("Curso ya existe"),
@@ -184,7 +199,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "deQueSector": MessageLookupByLibrary.simpleMessage(
             "¿De qué sector o ciudad es tu negocio?"),
         "debePesarMenos": MessageLookupByLibrary.simpleMessage(
-            "La imagen debe pesar menos de 1 MB"),
+            "La imagen debe pesar menos de 3 MB"),
+        "debeVerificar": MessageLookupByLibrary.simpleMessage(
+            "Debe verificar su cuenta, Revise su correo Electrónico"),
         "dequesededicaForm": MessageLookupByLibrary.simpleMessage(
             "¿De qué sector o ciudad es tu negocio?"),
         "derechoExcl":
@@ -203,7 +220,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "descubreComo": MessageLookupByLibrary.simpleMessage(
             "Descubre cómo impulsar tu negocio"),
         "desdeHace4": MessageLookupByLibrary.simpleMessage(
-            "Desde hace 4 años me dedico a potenciar marcas y negocios con estrategias efectivas en ads que dan en el punto. \n\nEn todo el proceso he manejado una cantidad de \$1.000.000 USD en campañas publicitarias, logrando \$15.000.000 USD en ventas por internet. Luego de innumerables pruebas, análisis y educación, decidí realizar esta experiencia grupal para enseñarle a emprendedores, dueños de negocio o equipos de marketing a entender el motor que es realizar campañas publicitarias."),
+            "Desde hace 5 años me dedico a potenciar marcas y negocios con estrategias efectivas en ads que dan en el punto. \n\nEn todo el proceso he manejado una cantidad de \$4.000.000 USD en campañas publicitarias, logrando \$30.000.000 USD en ventas por internet. Luego de innumerables pruebas, análisis y educación, decidí realizar esta experiencia grupal para enseñarle a emprendedores, dueños de negocio o equipos de marketing a entender el motor que es realizar campañas publicitarias."),
         "deseasDejar": MessageLookupByLibrary.simpleMessage(
             "Deseas dejar de sentir angustia por resultados que no convierten"),
         "deseasQueLaConf": MessageLookupByLibrary.simpleMessage(
@@ -213,7 +230,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "disenoEstratResp": MessageLookupByLibrary.simpleMessage(
             "Desarrollaré las estrategias claras y precisas con tiempos definidos poniendo en prioridad a tus distintos clientes ideales con todo el estudio que se necesita para poder impactarlos de manera persuasiva."),
         "dondeTeBrindaremos": MessageLookupByLibrary.simpleMessage(
-            "donde te brindaremos una respuesta en el transcurso de 48 hora"),
+            "donde te brindaremos una respuesta en el transcurso de 48 horas"),
         "dosy": MessageLookupByLibrary.simpleMessage("2 Años"),
         "duenosNegocios":
             MessageLookupByLibrary.simpleMessage("Dueños de Negocios"),
@@ -268,7 +285,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enlaceInvalido":
             MessageLookupByLibrary.simpleMessage("ENLACE INVALIDO"),
         "entiendesQueEsto": MessageLookupByLibrary.simpleMessage(
-            "¿Entiendes que esto es un proceso en el que debes estarcomprometido y tener un modelo de negocio establecido con diferentes requerimientos?"),
+            "¿Entiendes que esto es un proceso en el que debes estar comprometido y tener un modelo de negocio establecido con diferentes requerimientos?"),
         "envianosComentario": MessageLookupByLibrary.simpleMessage(
             "Envianos tus comentarios, en menos de 48h te brindaremos una respuesta"),
         "enviarBtn": MessageLookupByLibrary.simpleMessage("ENVIAR"),
@@ -276,16 +293,36 @@ class MessageLookup extends MessageLookupByLibrary {
         "enviaremosUnEmail": MessageLookupByLibrary.simpleMessage(
             "Ingresa tus datos y recibe mi nueva GUÍA\nsin costo para ti ❤️"),
         "eresNuevo": MessageLookupByLibrary.simpleMessage("¿Eres Nuevo?"),
+        "errorActualizandoModulo":
+            MessageLookupByLibrary.simpleMessage("Error actualizando modulo"),
+        "errorAgregandoComentario":
+            MessageLookupByLibrary.simpleMessage("Error agregado comentario"),
+        "errorAuth": MessageLookupByLibrary.simpleMessage(
+            "Ocurrió problema con tu autenticación"),
+        "errorBorrandoModulo":
+            MessageLookupByLibrary.simpleMessage("Error borrando modulo"),
+        "errorCursoActualizado":
+            MessageLookupByLibrary.simpleMessage("Error actualizando curso"),
+        "errorCursoCreado":
+            MessageLookupByLibrary.simpleMessage("Error creando curso"),
         "errorEliminadoCurso":
             MessageLookupByLibrary.simpleMessage("Error eliminado curso"),
         "errorEliminadoLead":
             MessageLookupByLibrary.simpleMessage("Error eliminado lead"),
         "errorEliminadoUsuario":
             MessageLookupByLibrary.simpleMessage("Error eliminado usuario"),
+        "errorModuloAgregado":
+            MessageLookupByLibrary.simpleMessage("Error agregado modulo"),
+        "errorTestimonioActualizado": MessageLookupByLibrary.simpleMessage(
+            "Error actualizando testimonio"),
+        "errorTestimonioAgregado":
+            MessageLookupByLibrary.simpleMessage("Error agregado testimonio"),
+        "errorTestimonioBorrado":
+            MessageLookupByLibrary.simpleMessage("Error borrando testimonio"),
         "escribeComentario":
             MessageLookupByLibrary.simpleMessage("Escribe tu comentario"),
         "escribeTodasTusEspectativas": MessageLookupByLibrary.simpleMessage(
-            "Escribe todas tus expectativas y temas que quieres que exponga para tu empresa"),
+            "Escribe todas tus expectativas y temas que\nquieres que exponga para tu empresa"),
         "estaMision":
             MessageLookupByLibrary.simpleMessage("Esta misión es para ti"),
         "estaPolitica": MessageLookupByLibrary.simpleMessage(
@@ -331,6 +368,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Gracias por comunicarte, en menos de 48 horas te brindaremos una respuesta a tu correo electrónico"),
         "graciasPorConfirmar": MessageLookupByLibrary.simpleMessage(
             "Gracias por confirmar tu cuenta"),
+        "graciasPorRegistrarte": MessageLookupByLibrary.simpleMessage(
+            "Gracias por registrarte, revisa tu correo para verificar tu cuenta"),
         "hasHechoPubAntes": MessageLookupByLibrary.simpleMessage(
             "¿Has hecho publicidad antes?"),
         "hola": MessageLookupByLibrary.simpleMessage("Hola,"),
@@ -451,6 +490,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("4. MODIFICACIONES"),
         "modificacionesText": MessageLookupByLibrary.simpleMessage(
             "ON POINT PRODUCTIONS AGENCY LLC se reserva el derecho de efectuar sin previo aviso las modificaciones que considere oportunas en su web, pudiendo cambiar, suprimir o añadir tanto los contenidos y servicios que se presten a través de la misma como la forma en la que éstos aparezcan presentados o localizados en su web."),
+        "moduloActualizado": MessageLookupByLibrary.simpleMessage(
+            "Modulo Actualizado con exito"),
+        "moduloAgregado":
+            MessageLookupByLibrary.simpleMessage("Modulo agregado con exito"),
+        "moduloBorrado":
+            MessageLookupByLibrary.simpleMessage("Modulo borrado con exito"),
+        "modulos": MessageLookupByLibrary.simpleMessage("MODULOS"),
         "modulos2puntos": MessageLookupByLibrary.simpleMessage("Modulos: "),
         "modulosDelCurso":
             MessageLookupByLibrary.simpleMessage("Modulos del curso"),
@@ -563,16 +609,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "quieroYaBtn":
             MessageLookupByLibrary.simpleMessage("QUIERO ESTE CURSO YA"),
         "recibirasInstruccionesPass": MessageLookupByLibrary.simpleMessage(
-            "recibiras un correo electrónico con instrucciones para reestablecer tu contraseña"),
+            "Recibiras un correo electrónico con instrucciones para reestablecer tu contraseña"),
         "reclamacionesDudas":
             MessageLookupByLibrary.simpleMessage("9. RECLAMACIONES Y DUDAS"),
         "reclamacionesDudasText": MessageLookupByLibrary.simpleMessage(
             "ON POINT PRODUCTIONS AGENCY LLC informa que existen hojas de reclamación a disposición de usuarios y clientes pudiendo remitir un correo a hola@jpdirector.net  indicando su nombre y apellidos, el servicio o producto adquirido y exponiendo los motivos de su reclamación.\nTambién puede dirigir su reclamación por correo postal dirigido a: ON POINT PRODUCTIONS AGENCY LLC, 4020 N MacArthur Blvd Suite 122, Irving, Texas 75038, Estados Unidos de América."),
         "recuerdaPrimero": MessageLookupByLibrary.simpleMessage(
-            "Recuerda: Primero. conversaremos para hacer el checklist de tu negocio y analizar qué es lo que más necesitas en este momento."),
+            "Recuerda: Primero, conversaremos para hacer el checklist de tu negocio y analizar qué es lo que más necesitas en este momento."),
         "recuerdame": MessageLookupByLibrary.simpleMessage("Recuérdame"),
         "recuperarPass":
-            MessageLookupByLibrary.simpleMessage("RECUPERAR TU CONTRASEÑA"),
+            MessageLookupByLibrary.simpleMessage("RECUPERA TU CONTRASEÑA"),
         "redesSociales": MessageLookupByLibrary.simpleMessage("Redes sociales"),
         "registrarBtn": MessageLookupByLibrary.simpleMessage("REGISTRAR"),
         "registrateAqui":
@@ -647,14 +693,21 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Términos de Uso "),
         "terminosYCondiciones":
             MessageLookupByLibrary.simpleMessage("TÉRMINOS Y CONDICIONES"),
+        "testimonioActualizado": MessageLookupByLibrary.simpleMessage(
+            "Testimonio Actualizado con exito"),
+        "testimonioAgregado": MessageLookupByLibrary.simpleMessage(
+            "Testimonio agregado con exito"),
         "testimonioAnier": MessageLookupByLibrary.simpleMessage(
             "“Estudié informática y un montón de educación. Luego de ver el curso no solo recuperé mi inversión sino que además puedo correr mis propia publicidad, gracias JP”."),
+        "testimonioBorrado": MessageLookupByLibrary.simpleMessage(
+            "Testimonio borrado con exito"),
         "testimonioGerman": MessageLookupByLibrary.simpleMessage(
             "“En 1 mes logré tener más de 100 clientes potenciales con mis campañas de publicidad. A todo el que quiera aprender le recomiendo este curso.”"),
         "testimonioSaylin": MessageLookupByLibrary.simpleMessage(
             "“Me ha encantado, es muy completo y un mundo de conocimiento. Para mi negocio este curso logró un antes y un después”."),
         "testimonioTania": MessageLookupByLibrary.simpleMessage(
             "Tengo ideas y planes para desarrollar por 6 meses gracias a este curso. Todo el que lo vea entenderá luego de aprender con JP”"),
+        "testimonios": MessageLookupByLibrary.simpleMessage("TESTIMONIOS"),
         "todoListoDescarga": MessageLookupByLibrary.simpleMessage(
             "Todo listo, ya puedes descargar tu regalo haciendo click en el enlace que hemos enviado a tu correo electrónico"),
         "todosLosDerechosRes": MessageLookupByLibrary.simpleMessage(
@@ -668,7 +721,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "unAdmRespondera": MessageLookupByLibrary.simpleMessage(
             "Un Administrado responderá tu pregunta"),
         "unaVezFinalices": MessageLookupByLibrary.simpleMessage(
-            "3. Una vez finalices el curso podrás descargar tu certificado de finalización en el botón que aparecerá en la parte superior derecha de cada curso."),
+            "3. Una vez finalices el curso podrás descargar tu certificado de finalización en el botón que aparecerá en la parte superior derecha"),
         "unoAuno": MessageLookupByLibrary.simpleMessage("UNO A UNO"),
         "uny": MessageLookupByLibrary.simpleMessage("1 Año"),
         "urlVideoModulo": MessageLookupByLibrary.simpleMessage("Url del video"),

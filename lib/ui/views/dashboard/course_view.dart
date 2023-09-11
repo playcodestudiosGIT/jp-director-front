@@ -779,7 +779,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                         onPress: () => setState(() {
                           if (keyform.currentState!.validate()) {
                             Provider.of<AllCursosProvider>(context, listen: false)
-                                .createComent(comentario: comentario, cursoId: curso.id, moduloId: curso.modulos[widget.videoIndex].id);
+                                .createComent(context: context, comentario: comentario, cursoId: curso.id, moduloId: curso.modulos[widget.videoIndex].id);
                             comentario = '';
                             Navigator.pop(context);
                           }
@@ -901,6 +901,7 @@ class CongratDialog extends StatelessWidget {
             height: hSize,
             child: Center(
               child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 width: 300,
                 height: 400,
                 color: bgColor,

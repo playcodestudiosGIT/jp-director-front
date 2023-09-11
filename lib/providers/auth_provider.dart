@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../api/jp_api.dart';
+import '../generated/l10n.dart';
 import '../models/curso.dart';
 import '../models/http/auth_response.dart';
 import '../models/usuario_model.dart';
@@ -46,14 +47,16 @@ class AuthProvider extends ChangeNotifier {
 
   // ------------ //
 
-  login(String email, String password) async {
+  login({required BuildContext context, required String email, required String password}) async {
+    final appLocal = AppLocalizations.of(context);
     isLoading = true;
     final data = {'correo': email, 'password': password};
+    
 
     JpApi.post('/auth/login', data).then((json) {
       final authResponse = AuthResponse.fromJson(json);
       if (!authResponse.usuario.estado) {
-        NotifServ.showSnackbarError('Debe verificar su cuenta, Revise su correo Electrónico', Colors.red);
+        NotifServ.showSnackbarError(appLocal.debeVerificar, Colors.red);
         NavigatorService.replaceTo(Flurorouter.loginRoute);
         isLoading = false;
         notifyListeners();
@@ -70,12 +73,13 @@ class AuthProvider extends ChangeNotifier {
       notifyListeners();
     }).catchError((e) {
       isLoading = false;
-      NotifServ.showSnackbarError('Credenciales Invalidas', Colors.red);
+      NotifServ.showSnackbarError(appLocal.credencialesInvalidas, Colors.red);
       notifyListeners();
     });
   }
 
   Future<bool> isAutenticated() async {
+
     isLoading = true;
 
     final token = LocalStorage.prefs.getString('token');
@@ -97,7 +101,7 @@ class AuthProvider extends ChangeNotifier {
       notifyListeners();
       return true;
     } catch (e) {
-      NotifServ.showSnackbarError('Hubo un problema con tu autenticación', Colors.red);
+      NotifServ.showSnackbarError('Error in Auth. contact admin', Colors.red);
       authStatus = AuthStatus.notAuthenticated;
       isLoading = false;
       notifyListeners();
@@ -113,7 +117,8 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  register({required String correo, required String password, required String nombre, required String apellido, String telf = 'no value'}) async {
+  register({required BuildContext context, required String correo, required String password, required String nombre, required String apellido, String telf = 'no value'}) async {
+    final appLocal = AppLocalizations.of(context);
     isLoading = true;
     notifyListeners();
     final data = {'nombre': nombre, 'apellido': apellido, 'correo': correo, 'password': password, 'telf': telf};
@@ -125,7 +130,7 @@ class AuthProvider extends ChangeNotifier {
       _token = authResponse.token;
 
       if (!user!.estado) {
-        NotifServ.showSnackbarError('Gracias por registrarte, revisa tu correo para verificar tu cuenta', Colors.green);
+        NotifServ.showSnackbarError(appLocal.graciasPorRegistrarte, Colors.green);
         NavigatorService.navigateTo(Flurorouter.loginRoute);
         isLoading = false;
         notifyListeners();
@@ -140,7 +145,7 @@ class AuthProvider extends ChangeNotifier {
     }).catchError((e) {
       isLoading = false;
       notifyListeners();
-      NotifServ.showSnackbarError('Correo ya existe. ir al Log in', Colors.red);
+      NotifServ.showSnackbarError(appLocal.correoYaExiste, Colors.red);
     });
   }
 
@@ -185,7 +190,7 @@ class AuthProvider extends ChangeNotifier {
       user = Usuario.fromJson(json);
       notifyListeners();
     } catch (e) {
-      NotifServ.showSnackbarError('Ocurrio algun error', Colors.red);
+      NotifServ.showSnackbarError('Error: contact admin', Colors.red);
     }
   }
 
@@ -198,7 +203,7 @@ class AuthProvider extends ChangeNotifier {
     final data = {"nombre": nombre, "apellido": apellido, "correo": correo, "mensaje": mensaje};
     try {
       await JpApi.post('/usuarios/support', data);
-      NotifServ.showSnackbarError('Correo enviado a soporte', Colors.green);
+      NotifServ.showSnackbarError('Email sent to support', Colors.green);
       return true;
     } catch (e) {
       print(e);
@@ -215,7 +220,7 @@ class AuthProvider extends ChangeNotifier {
     final data = {"nombre": nombre, "apellido": apellido, "correo": correo, "mensaje": mensaje};
     try {
       await JpApi.post('/usuarios/contact-email', data);
-      NotifServ.showSnackbarError('Correo enviado a usuario', Colors.green);
+      NotifServ.showSnackbarError('Email sent to user', Colors.green);
       return true;
     } catch (e) {
       print(e);

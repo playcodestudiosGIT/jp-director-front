@@ -16,7 +16,7 @@ const Color verdeBorde = Color(0xff9BCB6C);
 const NetworkImage pc = NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1693706534/statics/pc_kksp4q.png');
 const NetworkImage monitor = NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1693706640/statics/monitor_wsusvi.png');
 const NetworkImage tablet = NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1693705764/statics/tablet_zjxxfi.png');
-const NetworkImage telf = NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1693707962/statics/teldf_wknfqc.png');
+const NetworkImage telf = NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1694401353/statics/telf_dmhygj.png');
 const NetworkImage satelite = NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1693708131/statics/satellite_vyiytt.png');
 const NetworkImage logoIso = NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1694014366/statics/logo_iso_rg1wm0.png');
 const NetworkImage logoGrande = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/image/upload/v1680575762/logogrande_s3thla.png');
@@ -43,6 +43,7 @@ const NetworkImage arrDown = NetworkImage('https://res.cloudinary.com/dyxt5lhzw/
 const NetworkImage btnComent = NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1693593488/statics/comments_vggbgq.png');
 const NetworkImage downMaterial = NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1693593811/statics/descMate_ej15xq.png');
 const NetworkImage certfGuiaImg = NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1693593977/statics/certf_gnidpt.png');
+const NetworkImage fotoJorgeCursos = NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1694402626/statics/jorgecursos_zkzkv7.png');
 const String noimage = 'https://res.cloudinary.com/dyxt5lhzw/image/upload/v1686363837/noimage_mpl4wc.jpg';
 
 final List<String> resultadosMini = [

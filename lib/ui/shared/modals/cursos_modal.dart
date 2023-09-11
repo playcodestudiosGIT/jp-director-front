@@ -203,11 +203,12 @@ class _CursosModalState extends State<CursosModal> {
                     onPress: () async {
                       if (widget.uid == '') {
                         // Crear
-                        await allCursosProvider.createCurso();
+                        await allCursosProvider.createCurso(context);
                       } else {
                         // Actualizar
 
                         await allCursosProvider.updateCurso(
+                          context: context,
                           uid: widget.uid,
                         );
                       }

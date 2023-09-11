@@ -71,80 +71,83 @@ class LetrasAsesoria extends StatelessWidget {
     final wScreen = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            '${appLocal.nuevoCurso}: ${curso.nombre}',
-            style: (wScreen < 500) ?DashboardLabel.semiGigant : DashboardLabel.t1,
-          ),
-          Container(
-            width: 400,
-            height: 5,
-            decoration: const BoxDecoration(
-                gradient: LinearGradient(colors: [
-              bgColor,
-              azulText,
-              bgColor,
-            ])),
-          ),
-          const SizedBox(
-            height: 70,
-          ),
-          Text(appLocal.estasAunPaso, style: DashboardLabel.h2),
-          const SizedBox(
-            height: 30,
-          ),
-          Text(
-            appLocal.siguemeEnTodas,
-            textAlign: TextAlign.center,
-            style: DashboardLabel.azulTextH1,
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          Wrap(
-            spacing: 10,
-            runSpacing: 10,
-            alignment: (wScreen < 550) ? WrapAlignment.center : WrapAlignment.spaceBetween,
-            children: const [
-              ButtomRrss(
-                route: 'Instagram',
-                text: '@jpdirector',
-                icon: iconInsta,
-              ),
-              ButtomRrss(
-                route: 'Facebook',
-                text: '@jpdirector',
-                icon: iconFb,
-              ),
-              ButtomRrss(
-                route: 'Tiktok',
-                text: '@jpdirector',
-                icon: iconTiktok,
-              ),
-            ],
-          ),
-          Image.asset(
-            'images/base.gif',
-            colorBlendMode: BlendMode.modulate,
-            color: blancoText.withOpacity(0.4),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              TextButton(
-                  onPressed: () {
-                    NavigatorService.replaceTo(Flurorouter.homeRoute);
-                  },
-                  child: Text(appLocal.finalizarBtn, style: DashboardLabel.paragraph)),
-            ],
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(height: 80),
+            Text(
+              '${appLocal.nuevoCurso}: ${curso.nombre}',
+              style: (wScreen < 500) ?DashboardLabel.semiGigant : DashboardLabel.t1,
+            ),
+            Container(
+              width: 400,
+              height: 5,
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                bgColor,
+                azulText,
+                bgColor,
+              ])),
+            ),
+            const SizedBox(
+              height: 70,
+            ),
+            Text(appLocal.estasAunPaso, style: DashboardLabel.h4),
+            const SizedBox(
+              height: 30,
+            ),
+            Text(
+              appLocal.siguemeEnTodas,
+              textAlign: TextAlign.center,
+              style: DashboardLabel.azulTextH2,
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Wrap(
+              spacing: 10,
+              runSpacing: 10,
+              alignment: (wScreen < 550) ? WrapAlignment.center : WrapAlignment.spaceBetween,
+              children: const [
+                ButtomRrss(
+                  route: 'Instagram',
+                  text: '@jpdirector',
+                  icon: iconInsta,
+                ),
+                ButtomRrss(
+                  route: 'Facebook',
+                  text: '@jpdirector',
+                  icon: iconFb,
+                ),
+                ButtomRrss(
+                  route: 'Tiktok',
+                  text: '@jpdirector',
+                  icon: iconTiktok,
+                ),
+              ],
+            ),
+            Image.asset(
+              'images/base.gif',
+              colorBlendMode: BlendMode.modulate,
+              color: blancoText.withOpacity(0.4),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                    onPressed: () {
+                      NavigatorService.replaceTo(Flurorouter.clienteMisCursosDash);
+                    },
+                    child: Text(appLocal.misCursosMenuBtn, style: DashboardLabel.paragraph)),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

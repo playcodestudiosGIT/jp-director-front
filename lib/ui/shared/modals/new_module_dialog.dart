@@ -144,6 +144,7 @@ class _NewModuleDialogState extends State<NewModuleDialog> {
                         onPress: () async {
                           if (id == '') {
                             await Provider.of<AllCursosProvider>(context, listen: false).createModulo(
+                              context: context,
                               nombre: nombre,
                               video: video,
                               descripcion: descripcion,
@@ -153,6 +154,7 @@ class _NewModuleDialogState extends State<NewModuleDialog> {
                             );
                           } else {
                             await Provider.of<AllCursosProvider>(context, listen: false).updateModulo(
+                              context: context,
                               uid: id,
                               nombreModulo: nombre,
                               urlVideo: video,

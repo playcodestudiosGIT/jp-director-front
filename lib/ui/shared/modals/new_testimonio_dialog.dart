@@ -110,10 +110,10 @@ class _NewTestimonioDialogState extends State<NewTestimonioDialog> {
                         onPress: () async {
                           if (id == '') {
                             await Provider.of<AllCursosProvider>(context, listen: false)
-                                .createTestimonio(nombre: nombre, img: img, testimonio: testimonio, curso: curso);
+                                .createTestimonio( context: context, nombre: nombre, img: img, testimonio: testimonio, curso: curso);
                           } else {
                             await Provider.of<AllCursosProvider>(context, listen: false)
-                                .updateTestimonio(nombre: nombre, id: id, img: img, testimonio: testimonio, curso: curso);
+                                .updateTestimonio(context: context, nombre: nombre, id: id, img: img, testimonio: testimonio, curso: curso);
                           }
                           if (context.mounted) {
                             Navigator.pop(context, true);
