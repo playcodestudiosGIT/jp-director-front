@@ -16,7 +16,7 @@ class SeparadorMenuTexto extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 5),
       child: Text(
         text,
-        style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.2)),
+        style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5)),
       ),
     );
   }

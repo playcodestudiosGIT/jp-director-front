@@ -197,8 +197,9 @@ class StartHereView extends StatelessWidget {
                                 height: 100,
                                 child: Center(
                                     child: Icon(
-                                  Icons.info_outline,
+                                  Icons.support_agent,
                                   color: azulText,
+                                  size: 60,
                                 ))),
                           ],
                         ),

@@ -42,9 +42,9 @@ class _MenuItemSideState extends State<MenuItemSide> {
                     widget.icon,
                     color: widget.isActive
                         ? isHovered
-                            ? blancoText.withOpacity(0.1)
+                            ? blancoText
                             : const Color(0xff111111)
-                        : blancoText.withOpacity(0.3),
+                        : blancoText,
                   ),
                   const SizedBox(
                     width: 10,
@@ -55,9 +55,9 @@ class _MenuItemSideState extends State<MenuItemSide> {
             
                       color: widget.isActive
                           ? isHovered
-                              ? blancoText.withOpacity(0.1)
+                              ? blancoText
                               : const Color(0xff111111)
-                          : blancoText.withOpacity(0.3),
+                          : blancoText,
                     ),
                   )
                 ],

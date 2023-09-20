@@ -112,7 +112,7 @@ class ContactoView extends StatelessWidget {
                         alignment: WrapAlignment.center,
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
-                           const SizedBox(child: Center(child: Icon(Icons.info_outline, color: azulText),),),
+                           const SizedBox(child: Center(child: Icon(Icons.support_agent, color: azulText),),),
                           Text(
                             appLocal.siTienesDudas,
                             style: DashboardLabel.mini,
