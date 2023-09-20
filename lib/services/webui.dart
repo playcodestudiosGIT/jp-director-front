@@ -23,11 +23,11 @@ class AgendaPlugState extends State<AgendaPlug> {
         (int viewId) => html.IFrameElement()
           ..style.width = '100%' //'800'
           ..style.height = '100%' //'400'
-          ..style.overflow = 'hidden'
+          ..style.overflowY = 'hidden'
+
           // ..style.scrollBehavior = 'none'
           ..srcdoc = """<!-- Principio del widget integrado de Calendly -->
-    
-                      <div class="calendly-inline-widget" data-url="https://calendly.com/jp-director/asesoria-1-1?background_color=00041c&text_color=ffffff&primary_color=15e0fb" style="min-width:300px; max-width:800px; height:100vh; overflow:hidden;"></div>
+                      <div class="calendly-inline-widget" data-url="https://calendly.com/jp-director/asesoria-1-1?background_color=00041c&text_color=ffffff&primary_color=15e0fb" style="height:100vh; overflow:hidden;"></div>
                       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                   
                       <!-- Final del widget integrado de Calendly -->"""

@@ -13,10 +13,12 @@ class AsesoriaAgendarPage extends StatelessWidget {
     return Stack(
       children: [
         Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TopAreaBack(onPress: () => NavigatorService.navigateTo('/servicios')),
             const SizedBox(height: 15),
-            const Expanded(child: multiplatform.AgendaPlug()),
+            const Expanded(child: SizedBox( width: 800, child: multiplatform.AgendaPlug())),
           ],
         ),
       ],
