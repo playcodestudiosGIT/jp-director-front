@@ -9,7 +9,6 @@ import '../models/lead.dart';
 import '../services/notificacion_service.dart';
 import '../ui/shared/labels/dashboard_label.dart';
 import '../ui/shared/modals/leads_modal.dart';
-import '../ui/views/system/email_modal.dart';
 
 class LeadsDTS extends DataTableSource {
   List<Lead> leads;

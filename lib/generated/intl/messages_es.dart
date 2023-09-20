@@ -472,7 +472,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Menos de 6 meses"),
         "mensajeEnviado":
             MessageLookupByLibrary.simpleMessage("Mensaje enviado con exito"),
-        "mentoria": MessageLookupByLibrary.simpleMessage("MENTORIA"),
+        "mentoria": MessageLookupByLibrary.simpleMessage("MENTORÍA"),
         "mentoriaIntensiva":
             MessageLookupByLibrary.simpleMessage("MENTORÍA INTENSIVA"),
         "miCuentaMenuBtn": MessageLookupByLibrary.simpleMessage("Mi Cuenta"),
@@ -755,6 +755,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "yaTienesEsteCurso":
             MessageLookupByLibrary.simpleMessage("Ya tienes este Curso"),
         "yaTienesTodos":
-            MessageLookupByLibrary.simpleMessage("Ya tienes todos los cursos")
+            MessageLookupByLibrary.simpleMessage("Ya tienes todos los cursos"),
+        "soporte": MessageLookupByLibrary.simpleMessage("Soporte"),
       };
 }

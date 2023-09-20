@@ -740,7 +740,7 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
             child: Container(
               color: bgColor,
               width: 250,
-              height: 170,
+              height: 190,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

@@ -9,9 +9,9 @@ class JpApi {
 
   static void configureDio() {
     //base Url
-    _dio.options.baseUrl = 
-    'https://www.jpdirector.net/api';
-    //  'http://localhost:8080/api';
+    _dio.options.baseUrl =
+        // 'https://www.jpdirector.net/api';
+        'http://localhost:8080/api';
 
     //Configure headers
     _dio.options.headers = {'x-token': LocalStorage.prefs.get('token') ?? ''};
@@ -59,7 +59,8 @@ class JpApi {
   }
 
   static Future editUserImg(String path, Uint8List bytes) async {
-    final formData = FormData.fromMap({'archivo': MultipartFile.fromBytes(bytes)});
+    final formData =
+        FormData.fromMap({'archivo': MultipartFile.fromBytes(bytes)});
 
     try {
       final resp = await _dio.put(path, data: formData);
@@ -70,7 +71,8 @@ class JpApi {
   }
 
   static Future editBanerImg(String path, Uint8List bytes) async {
-    final formData = FormData.fromMap({'archivo': MultipartFile.fromBytes(bytes)});
+    final formData =
+        FormData.fromMap({'archivo': MultipartFile.fromBytes(bytes)});
 
     try {
       final resp = await _dio.put(path, data: formData);

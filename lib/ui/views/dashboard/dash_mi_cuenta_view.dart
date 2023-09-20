@@ -17,7 +17,6 @@ import '../../../constant.dart';
 import '../../../generated/l10n.dart';
 import '../../../providers/auth_provider.dart';
 import '../../../services/notificacion_service.dart';
-import '../../cards/white_card.dart';
 import '../../shared/labels/dashboard_label.dart';
 import '../../shared/labels/inputs_decorations.dart';
 
@@ -193,14 +192,14 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                 children: [
                   CustomButton(
                     text: appLocal.actInfoBtn,
-                    width: 220,
+                    width: 280,
                     onPress: () async {
                       final dialog = AlertDialog(
                         backgroundColor: bgColor,
                         content: Container(
+                          width: double.infinity,
                           constraints: const BoxConstraints(minWidth: 360),
                           color: Colors.transparent,
-                          margin: const EdgeInsets.only(left: 10),
                           height: 480,
                           child: Column(
                             children: [
@@ -322,7 +321,7 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                                         });
                                       }
                                     },
-                                    width: 100,
+                                    width: 110,
                                     color: Colors.green,
                                   ),
                                   const SizedBox(width: 10),
@@ -341,15 +340,12 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
                         ),
                       );
 
-                      final ifAct = await showDialog(
-                        barrierDismissible: false,
+                      await showDialog(
                         context: context,
                         builder: (context) => dialog,
                       );
 
-                      if (ifAct) {
-                        setState(() {});
-                      }
+                      setState(() {});
                     },
                   )
                 ],
@@ -579,31 +575,33 @@ class _DashMiCuentaState extends State<DashMiCuenta> {
 
   alertaDeDialogo({required String title, required String dubtitle, required String textButton}) {
     return showDialog(
-      
       context: context,
       builder: (context) => Center(
           child: Container(
-            padding: const EdgeInsets.all(8),
-            color: bgColor,
+              padding: const EdgeInsets.all(8),
+              color: bgColor,
               width: 300,
               height: 300,
               child: Center(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(title, style: DashboardLabel.h4),
                   const SizedBox(
-                        height: 30,
-                      ),
-                  Text(dubtitle, style: DashboardLabel.paragraph,),
-                      const SizedBox(
-                        height: 60,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [ElevatedButton(onPressed: () => Navigator.pop(context), child: Text(textButton))],
-                      )
+                    height: 30,
+                  ),
+                  Text(
+                    dubtitle,
+                    style: DashboardLabel.paragraph,
+                  ),
+                  const SizedBox(
+                    height: 60,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [ElevatedButton(onPressed: () => Navigator.pop(context), child: Text(textButton))],
+                  )
                 ],
               )))),
     );

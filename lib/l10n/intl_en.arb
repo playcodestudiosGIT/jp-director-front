@@ -426,5 +426,6 @@
     "errorAuth": "There was an issue with your authentication.",
     "graciasPorRegistrarte": "Thank you for registering; please check your email to verify your account.",
     "correoYaExiste": "Email already exists. Go to Log in.",
-    "actInfo": "Update Information"
+    "actInfo": "Update Information",
+    "soporte": "Support",
 }

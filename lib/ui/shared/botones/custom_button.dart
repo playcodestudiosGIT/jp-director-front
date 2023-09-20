@@ -27,7 +27,7 @@ class CustomButton extends StatelessWidget {
                 child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(text.toUpperCase(), style: DashboardLabel.paragraph.copyWith(color: bgColor, fontWeight: FontWeight.bold)),
+                        FittedBox(child: Text(text.toUpperCase(), style: DashboardLabel.paragraph.copyWith(color: bgColor, fontWeight: FontWeight.bold))),
                       ],
                     ),
               )),

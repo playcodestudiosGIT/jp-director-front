@@ -4329,6 +4329,16 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Support`
+  String get soporte {
+    return Intl.message(
+      'Support',
+      name: 'soporte',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

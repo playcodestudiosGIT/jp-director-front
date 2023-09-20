@@ -3,7 +3,6 @@ import 'package:jp_director/providers/export_all_providers.dart';
 
 import '../../../constant.dart';
 
-import '../../../models/usuario_model.dart';
 import '../../shared/botones/custom_button.dart';
 import '../../shared/labels/dashboard_label.dart';
 import '../../shared/labels/inputs_decorations.dart';

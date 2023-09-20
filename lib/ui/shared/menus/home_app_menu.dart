@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jp_director/providers/sidebar_provider.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 
@@ -21,7 +22,8 @@ class HomeAppMenu extends StatefulWidget {
   _HomeAppMenuState createState() => _HomeAppMenuState();
 }
 
-class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStateMixin {
+class _HomeAppMenuState extends State<HomeAppMenu>
+    with SingleTickerProviderStateMixin {
   bool isOpen = false;
   late AnimationController controller;
 
@@ -29,7 +31,8 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
   void initState() {
     super.initState();
 
-    controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 200));
+    controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 200));
   }
 
   @override
@@ -39,7 +42,7 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
     final hScreen = MediaQuery.of(context).size.height;
     final authProvider = Provider.of<AuthProvider>(context);
     final sideBarProvider = Provider.of<SideBarProvider>(context);
-    final double hMenu = (authProvider.user?.rol == 'ADMIN_ROLE') ? 505 : 300;
+    final double hMenu = (authProvider.user?.rol == 'ADMIN_ROLE') ? 550 : 340;
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -59,7 +62,12 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                   alignment: Alignment.topRight,
                   children: [
                     if (isOpen)
-                      MouseRegion(cursor: SystemMouseCursors.noDrop, child: Container(width: wScreen, height: hScreen, color: Colors.transparent)),
+                      MouseRegion(
+                          cursor: SystemMouseCursors.noDrop,
+                          child: Container(
+                              width: wScreen,
+                              height: hScreen,
+                              color: Colors.transparent)),
                     Container(
                       color: const Color(0xFF00041C),
                       width: isOpen ? 180 : 180,
@@ -69,33 +77,51 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(left: 8.0),
-                            child: _MenuTitle(isOpen: isOpen, controller: controller),
+                            child: _MenuTitle(
+                                isOpen: isOpen, controller: controller),
                           ),
                           if (isOpen) ...[
                             MenuItemSide(
-                                text: 'Comienza Aquí',
-                                icon: Icons.start_outlined,
-                                isActive: sideBarProvider.currentPage == Flurorouter.start,
+                                text: appLocal.comienzaAqui,
+                                icon: FontAwesomeIcons.flagCheckered,
+                                isActive: sideBarProvider.currentPage ==
+                                    Flurorouter.start,
                                 onPress: () {
-                                  NavigatorService.navigateTo(Flurorouter.start);
+                                  NavigatorService.navigateTo(
+                                      Flurorouter.start);
                                   isOpen = false;
                                 }),
                             MenuItemSide(
                                 text: appLocal.misCursosLabel,
                                 icon: Icons.school,
-                                isActive: sideBarProvider.currentPage == Flurorouter.clienteMisCursosDash,
+                                isActive: sideBarProvider.currentPage ==
+                                    Flurorouter.clienteMisCursosDash,
                                 onPress: () {
-                                  NavigatorService.navigateTo(Flurorouter.clienteMisCursosDash);
+                                  NavigatorService.navigateTo(
+                                      Flurorouter.clienteMisCursosDash);
                                   isOpen = false;
                                 }),
                             const SizedBox(height: 15),
-                            SeparadorMenuTexto(text: appLocal.configuracionMenuBtn),
+                            SeparadorMenuTexto(
+                                text: appLocal.configuracionMenuBtn),
                             MenuItemSide(
                                 text: appLocal.miCuentaMenuBtn,
                                 icon: Icons.person_outline,
-                                isActive: sideBarProvider.currentPage == Flurorouter.clienteDash,
+                                isActive: sideBarProvider.currentPage ==
+                                    Flurorouter.clienteDash,
                                 onPress: () {
-                                  NavigatorService.navigateTo(Flurorouter.clienteDash);
+                                  NavigatorService.navigateTo(
+                                      Flurorouter.clienteDash);
+                                  isOpen = false;
+                                }),
+                            MenuItemSide(
+                                text: appLocal.soporte,
+                                icon: Icons.support_agent,
+                                isActive: sideBarProvider.currentPage ==
+                                    Flurorouter.supportRoute,
+                                onPress: () {
+                                  NavigatorService.navigateTo(
+                                      Flurorouter.supportRoute);
                                   isOpen = false;
                                 }),
                             if (authProvider.user!.rol == 'ADMIN_ROLE') ...[
@@ -104,33 +130,41 @@ class _HomeAppMenuState extends State<HomeAppMenu> with SingleTickerProviderStat
                               MenuItemSide(
                                   text: appLocal.usuariosMenuBtn,
                                   icon: Icons.people_alt_outlined,
-                                  isActive: sideBarProvider.currentPage == Flurorouter.usersAdminDash,
+                                  isActive: sideBarProvider.currentPage ==
+                                      Flurorouter.usersAdminDash,
                                   onPress: () {
-                                    NavigatorService.navigateTo(Flurorouter.usersAdminDash);
+                                    NavigatorService.navigateTo(
+                                        Flurorouter.usersAdminDash);
                                     isOpen = false;
                                   }),
                               MenuItemSide(
                                   text: appLocal.cursos,
                                   icon: Icons.menu_book_outlined,
-                                  isActive: sideBarProvider.currentPage == Flurorouter.cursosAdminDash,
+                                  isActive: sideBarProvider.currentPage ==
+                                      Flurorouter.cursosAdminDash,
                                   onPress: () {
-                                    NavigatorService.navigateTo(Flurorouter.cursosAdminDash);
+                                    NavigatorService.navigateTo(
+                                        Flurorouter.cursosAdminDash);
                                     isOpen = false;
                                   }),
                               MenuItemSide(
                                   text: appLocal.formulariosMenuBtn,
                                   icon: Icons.list_alt_sharp,
-                                  isActive: sideBarProvider.currentPage == Flurorouter.formsAdminDash,
+                                  isActive: sideBarProvider.currentPage ==
+                                      Flurorouter.formsAdminDash,
                                   onPress: () {
-                                    NavigatorService.navigateTo(Flurorouter.formsAdminDash);
+                                    NavigatorService.navigateTo(
+                                        Flurorouter.formsAdminDash);
                                     isOpen = false;
                                   }),
                               MenuItemSide(
                                   text: appLocal.leadsMenuBtn,
                                   icon: Icons.card_giftcard,
-                                  isActive: sideBarProvider.currentPage == Flurorouter.leadsAdminDash,
+                                  isActive: sideBarProvider.currentPage ==
+                                      Flurorouter.leadsAdminDash,
                                   onPress: () {
-                                    NavigatorService.navigateTo(Flurorouter.leadsAdminDash);
+                                    NavigatorService.navigateTo(
+                                        Flurorouter.leadsAdminDash);
                                     isOpen = false;
                                   }),
                             ],
@@ -291,8 +325,11 @@ class _MenuTitle extends StatelessWidget {
                 const SizedBox(width: 10),
                 SizedBox(
                     width: 115,
-                    child: Text('${authProvider.user!.nombre} ${authProvider.user!.apellido}',
-                        style: DashboardLabel.paragraph.copyWith(color: azulText), overflow: TextOverflow.ellipsis))
+                    child: Text(
+                        '${authProvider.user!.nombre} ${authProvider.user!.apellido}',
+                        style:
+                            DashboardLabel.paragraph.copyWith(color: azulText),
+                        overflow: TextOverflow.ellipsis))
               ],
             )
           : Row(

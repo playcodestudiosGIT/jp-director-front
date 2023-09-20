@@ -1,8 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:jp_director/constant.dart';
+import 'package:jp_director/generated/l10n.dart';
 import 'package:jp_director/providers/auth_provider.dart';
-import 'package:jp_director/router/router.dart';
 import 'package:jp_director/services/navigator_service.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
@@ -23,20 +23,24 @@ class ClientPageLayout extends StatefulWidget {
   State<ClientPageLayout> createState() => _ClientPageLayoutState();
 }
 
-class _ClientPageLayoutState extends State<ClientPageLayout> with SingleTickerProviderStateMixin {
+class _ClientPageLayoutState extends State<ClientPageLayout>
+    with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
     Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
-    Provider.of<AllCursosProvider>(context, listen: false).obtenerMisCursos(authProvider.user!);
-    SideBarProvider.menuController = AnimationController(vsync: this, duration: const Duration(milliseconds: 300));
+    Provider.of<AllCursosProvider>(context, listen: false)
+        .obtenerMisCursos(authProvider.user!);
+    SideBarProvider.menuController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 300));
   }
 
   @override
   Widget build(BuildContext context) {
     final wScreen = MediaQuery.of(context).size.width;
     final authProvider = Provider.of<AuthProvider>(context);
+    final appLocal = AppLocalizations.of(context);
     return Scaffold(
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -52,9 +56,10 @@ class _ClientPageLayoutState extends State<ClientPageLayout> with SingleTickerPr
                   builder: (context) => Tooltip(
                       textStyle: DashboardLabel.mini.copyWith(fontSize: 10),
                       verticalOffset: 10,
-                      decoration: const BoxDecoration(color: Colors.transparent),
-                      message: 'Soporte',
-                      child: const Icon(Icons.info_outline, color: azulText)),
+                      decoration:
+                          const BoxDecoration(color: Colors.transparent),
+                      message: appLocal.soporte,
+                      child: const Icon(Icons.support_agent, color: azulText)),
                 )
               ],
             ),
@@ -72,11 +77,13 @@ class _ClientPageLayoutState extends State<ClientPageLayout> with SingleTickerPr
             },
             child: (authProvider.locale == const Locale('es'))
                 ? const Image(
-                    image: NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/es_flag_qbeneh.png'),
+                    image: NetworkImage(
+                        'https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/es_flag_qbeneh.png'),
                     width: 30,
                   )
                 : const Image(
-                    image: NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/en_flag_fyiybd.png'),
+                    image: NetworkImage(
+                        'https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/en_flag_fyiybd.png'),
                     width: 30,
                   ),
           ),
@@ -100,7 +107,8 @@ class _ClientPageLayoutState extends State<ClientPageLayout> with SingleTickerPr
                         controller: (controller) {
                           PageProvider.circleController = controller;
                         },
-                        child: const SizedBox(width: 300, child: Image(image: circulo)))),
+                        child: const SizedBox(
+                            width: 300, child: Image(image: circulo)))),
                 Positioned(
                     top: 0,
                     left: -500,
@@ -110,8 +118,11 @@ class _ClientPageLayoutState extends State<ClientPageLayout> with SingleTickerPr
                         controller: (controller) {
                           PageProvider.circleController = controller;
                         },
-                        child: const SizedBox(width: 1100, child: Image(image: circulo)))),
-                Container(constraints: const BoxConstraints(maxWidth: 1920), child: widget.child),
+                        child: const SizedBox(
+                            width: 1100, child: Image(image: circulo)))),
+                Container(
+                    constraints: const BoxConstraints(maxWidth: 1920),
+                    child: widget.child),
                 const AppbarTop(),
                 const Positioned(
                     right: 0,

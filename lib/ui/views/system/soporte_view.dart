@@ -49,18 +49,21 @@ class _SoporteViewState extends State<SoporteView> {
                 }),
                 Container(
                   alignment: Alignment.center,
-                  constraints: BoxConstraints(maxWidth: 1200, minHeight: hScreen),
+                  constraints:
+                      BoxConstraints(maxWidth: 1200, minHeight: hScreen),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const SizedBox(width: 200, child: Image(image: logoGrande)),
+                          const SizedBox(
+                              width: 200, child: Image(image: logoGrande)),
                           Container(
                             constraints: const BoxConstraints(maxWidth: 400),
                             width: double.infinity,
-                            padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
+                            padding: const EdgeInsets.only(
+                                top: 10, left: 30, right: 30),
                             child: Form(
                               key: formKey,
                               child: Column(
@@ -86,13 +89,23 @@ class _SoporteViewState extends State<SoporteView> {
                                         ),
                                         TextFormField(
                                           cursorColor: azulText,
-                                          keyboardType: TextInputType.emailAddress,
-                                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                                          validator: (value) => (EmailValidator.validate(value.toString())) ? null : appLocal.ingreseCorreoValido,
+                                          keyboardType:
+                                              TextInputType.emailAddress,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
+                                          validator: (value) => (EmailValidator
+                                                  .validate(value.toString()))
+                                              ? null
+                                              : appLocal.ingreseCorreoValido,
                                           initialValue: correo,
-                                          onChanged: (value) => correo = value.toString(),
+                                          onChanged: (value) =>
+                                              correo = value.toString(),
                                           style: DashboardLabel.paragraph,
-                                          decoration: InputDecor.formFieldInputDecoration(icon: Icons.email, label: appLocal.correoTextFiel),
+                                          decoration: InputDecor
+                                              .formFieldInputDecoration(
+                                                  icon: Icons.email,
+                                                  label:
+                                                      appLocal.correoTextFiel),
                                         ),
                                         const SizedBox(
                                           height: 10,
@@ -100,11 +113,19 @@ class _SoporteViewState extends State<SoporteView> {
                                         TextFormField(
                                           initialValue: nombre,
                                           cursorColor: azulText,
-                                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                                          validator: (value) => (value!.isNotEmpty) ? null : appLocal.nombreTextField,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
+                                          validator: (value) =>
+                                              (value!.isNotEmpty)
+                                                  ? null
+                                                  : appLocal.nombreTextField,
                                           onChanged: (value) => nombre = value,
                                           style: DashboardLabel.paragraph,
-                                          decoration: InputDecor.formFieldInputDecoration(icon: Icons.perm_identity, label: appLocal.nombreTextField),
+                                          decoration: InputDecor
+                                              .formFieldInputDecoration(
+                                                  icon: Icons.perm_identity,
+                                                  label:
+                                                      appLocal.nombreTextField),
                                         ),
                                         const SizedBox(
                                           height: 10,
@@ -112,12 +133,21 @@ class _SoporteViewState extends State<SoporteView> {
                                         TextFormField(
                                           initialValue: apellido,
                                           cursorColor: azulText,
-                                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                                          validator: (value) => (value!.isNotEmpty) ? null : appLocal.apellidoTextFiel,
-                                          onChanged: (value) => apellido = value,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
+                                          validator: (value) =>
+                                              (value!.isNotEmpty)
+                                                  ? null
+                                                  : appLocal.apellidoTextFiel,
+                                          onChanged: (value) =>
+                                              apellido = value,
                                           style: DashboardLabel.paragraph,
-                                          decoration: InputDecor.formFieldInputDecoration(
-                                              icon: Icons.supervised_user_circle_rounded, label: appLocal.apellidoTextFiel),
+                                          decoration: InputDecor
+                                              .formFieldInputDecoration(
+                                                  icon: Icons
+                                                      .supervised_user_circle_rounded,
+                                                  label: appLocal
+                                                      .apellidoTextFiel),
                                         ),
                                         const SizedBox(
                                           height: 10,
@@ -125,13 +155,21 @@ class _SoporteViewState extends State<SoporteView> {
                                         TextFormField(
                                           initialValue: mensaje,
                                           cursorColor: azulText,
-                                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                                          validator: (value) => (value!.isNotEmpty) ? null : appLocal.escribeComentario,
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
+                                          validator: (value) =>
+                                              (value!.isNotEmpty)
+                                                  ? null
+                                                  : appLocal.escribeComentario,
                                           maxLines: 5,
                                           onChanged: (value) => mensaje = value,
                                           style: DashboardLabel.paragraph,
-                                          decoration: InputDecor.formFieldInputDecoration(
-                                              icon: Icons.contact_support_rounded, label: appLocal.enQueAyudarte),
+                                          decoration: InputDecor
+                                              .formFieldInputDecoration(
+                                                  icon: Icons
+                                                      .contact_support_rounded,
+                                                  label:
+                                                      appLocal.enQueAyudarte),
                                         ),
                                         const SizedBox(
                                           height: 10,
@@ -140,7 +178,8 @@ class _SoporteViewState extends State<SoporteView> {
                                           height: 20,
                                         ),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
                                             CustomButton(
                                               width: 140,
@@ -149,9 +188,13 @@ class _SoporteViewState extends State<SoporteView> {
                                                   ? null
                                                   : () async {
                                                       isLoading = true;
-                                                      final isValid = formKey.currentState!.validate();
+                                                      final isValid = formKey
+                                                          .currentState!
+                                                          .validate();
                                                       if (!isValid) return;
-                                                      final isOk = await authProvider.sendEmailSupport(
+                                                      final isOk =
+                                                          await authProvider
+                                                              .sendEmailSupport(
                                                         nombre: nombre,
                                                         apellido: apellido,
                                                         correo: correo,
@@ -160,7 +203,8 @@ class _SoporteViewState extends State<SoporteView> {
                                                       if (isOk) {
                                                         setState(() {
                                                           enviado = true;
-                                                          formKey.currentState!.reset();
+                                                          formKey.currentState!
+                                                              .reset();
                                                           nombre = '';
                                                           apellido = '';
                                                           correo = '';
@@ -175,15 +219,19 @@ class _SoporteViewState extends State<SoporteView> {
                                     ),
                                   if (enviado)
                                     Container(
-                                      constraints: const BoxConstraints(maxWidth: 340, maxHeight: 408),
+                                      constraints: const BoxConstraints(
+                                          maxWidth: 340, maxHeight: 408),
                                       width: double.infinity,
                                       height: double.infinity,
                                       child: Center(
                                           child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         children: [
-                                          const Icon(Icons.check, color: Colors.green),
+                                          const Icon(Icons.check,
+                                              color: Colors.green),
                                           Text(
                                             appLocal.graciasPorComunicarte,
                                             style: DashboardLabel.mini,
@@ -208,13 +256,17 @@ class _SoporteViewState extends State<SoporteView> {
                               children: [
                                 const Spacer(),
                                 TextButton(
-                                  style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
+                                  style: ButtonStyle(
+                                      backgroundColor: MaterialStatePropertyAll(
+                                          blancoText.withOpacity(0.1))),
                                   onPressed: () {
-                                    NavigatorService.replaceTo(Flurorouter.loginRoute);
+                                    NavigatorService.replaceTo(
+                                        Flurorouter.loginRoute);
                                   }, // Navigate to register page
                                   child: Text(
                                     appLocal.misCursosMenuBtn,
-                                    style: DashboardLabel.mini.copyWith(color: azulText),
+                                    style: DashboardLabel.mini
+                                        .copyWith(color: azulText),
                                   ),
                                 ),
                               ],

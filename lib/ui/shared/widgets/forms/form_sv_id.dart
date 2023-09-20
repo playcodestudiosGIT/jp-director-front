@@ -54,11 +54,18 @@ class _FormSVidState extends State<FormSVid> {
     }
 
     onPressed() async {
-      if (formProvider.getPageIndex() == 0 && formProvider.keyForm.currentState!.validate()) formProvider.formScrollController.nextPage();
+      if (formProvider.getPageIndex() == 0 &&
+          formProvider.keyForm.currentState!.validate()) {
+        formProvider.formScrollController.nextPage();
+      }
 
-      if (formProvider.getPageIndex() == 1 && formProvider.keyForm2.currentState!.validate()) formProvider.formScrollController.nextPage();
+      if (formProvider.getPageIndex() == 1 &&
+          formProvider.keyForm2.currentState!.validate()) {
+        formProvider.formScrollController.nextPage();
+      }
 
-      if (formProvider.getPageIndex() == 2 && formProvider.keyForm3.currentState!.validate()) {
+      if (formProvider.getPageIndex() == 2 &&
+          formProvider.keyForm3.currentState!.validate()) {
         formProvider.sendForm();
         formProvider.keyForm.currentState?.dispose();
         formProvider.keyForm2.currentState?.dispose();
@@ -72,7 +79,6 @@ class _FormSVidState extends State<FormSVid> {
       }
     }
 
-    print(formProvider.getPageIndex());
     return Container(
       constraints: const BoxConstraints(maxWidth: 800),
       width: double.infinity,
@@ -84,7 +90,10 @@ class _FormSVidState extends State<FormSVid> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(title, style: (wScreen < 500) ? DashboardLabel.h1 : DashboardLabel.gigant),
+                  Text(title,
+                      style: (wScreen < 500)
+                          ? DashboardLabel.h1
+                          : DashboardLabel.gigant),
                   Container(
                     width: (wScreen < 500) ? 320 : 370,
                     height: 5,
@@ -125,11 +134,17 @@ class _FormSVidState extends State<FormSVid> {
                             initialValue: formProvider.email,
                             cursorColor: azulText,
                             keyboardType: TextInputType.emailAddress,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            validator: (value) => EmailValidator.validate(value!) ? null : appLocal.ingreseCorreoValido,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            validator: (value) =>
+                                EmailValidator.validate(value!)
+                                    ? null
+                                    : appLocal.ingreseCorreoValido,
                             onChanged: (value) => formProvider.setEmail(value),
                             style: DashboardLabel.paragraph,
-                            decoration: InputDecor.formFieldInputDecoration(icon: Icons.email, label: appLocal.correoTextFiel),
+                            decoration: InputDecor.formFieldInputDecoration(
+                                icon: Icons.email,
+                                label: appLocal.correoTextFiel),
                           ),
                           const SizedBox(
                             height: 15,
@@ -137,12 +152,16 @@ class _FormSVidState extends State<FormSVid> {
                           TextFormField(
                             initialValue: formProvider.nombre,
                             cursorColor: azulText,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            validator: (value) => (value!.isNotEmpty) ? null : appLocal.nombreyapellidoForm,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            validator: (value) => (value!.isNotEmpty)
+                                ? null
+                                : appLocal.nombreyapellidoForm,
                             onChanged: (value) => formProvider.setNombre(value),
                             style: DashboardLabel.paragraph,
-                            decoration:
-                                InputDecor.formFieldInputDecoration(icon: Icons.supervised_user_circle_sharp, label: appLocal.nombreyapellidoForm),
+                            decoration: InputDecor.formFieldInputDecoration(
+                                icon: Icons.supervised_user_circle_sharp,
+                                label: appLocal.nombreyapellidoForm),
                           ),
                           const SizedBox(
                             height: 15,
@@ -151,10 +170,14 @@ class _FormSVidState extends State<FormSVid> {
                             initialValue: formProvider.telefono,
                             cursorColor: azulText,
                             keyboardType: TextInputType.phone,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            onChanged: (value) => formProvider.setTelefono(value),
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            onChanged: (value) =>
+                                formProvider.setTelefono(value),
                             style: DashboardLabel.paragraph,
-                            decoration: InputDecor.formFieldInputDecoration(icon: Icons.local_phone, label: appLocal.telefonoForm),
+                            decoration: InputDecor.formFieldInputDecoration(
+                                icon: Icons.local_phone,
+                                label: appLocal.telefonoForm),
                           ),
                           const SizedBox(
                             height: 15,
@@ -162,11 +185,16 @@ class _FormSVidState extends State<FormSVid> {
                           TextFormField(
                             initialValue: formProvider.negocio,
                             cursorColor: azulText,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            validator: (value) => (value!.isNotEmpty) ? null : appLocal.requerido,
-                            onChanged: (value) => formProvider.setNegocio(value),
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            validator: (value) =>
+                                (value!.isNotEmpty) ? null : appLocal.requerido,
+                            onChanged: (value) =>
+                                formProvider.setNegocio(value),
                             style: DashboardLabel.paragraph,
-                            decoration: InputDecor.formFieldInputDecoration(icon: Icons.business, label: appLocal.deQueSector),
+                            decoration: InputDecor.formFieldInputDecoration(
+                                icon: Icons.business,
+                                label: appLocal.deQueSector),
                           ),
                         ],
                       ),
@@ -175,7 +203,13 @@ class _FormSVidState extends State<FormSVid> {
               const SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: [BotonVerde(text: botonText, width: 100, onPressed: () => onPressed()), const SizedBox(width: 40)],
+                children: [
+                  BotonVerde(
+                      text: botonText,
+                      width: 100,
+                      onPressed: () => onPressed()),
+                  const SizedBox(width: 40)
+                ],
               ),
               const SizedBox(height: 100)
             ],

@@ -724,6 +724,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "yaTienesEsteCurso": MessageLookupByLibrary.simpleMessage(
             "You Already Have This Course"),
         "yaTienesTodos": MessageLookupByLibrary.simpleMessage(
-            "You Already Have All the Courses")
+            "You Already Have All the Courses"),
+        "soporte": MessageLookupByLibrary.simpleMessage("Support"),
       };
 }

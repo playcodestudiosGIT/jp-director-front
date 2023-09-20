@@ -149,7 +149,8 @@ class FormProvider extends ChangeNotifier {
     // final routeName = _pages[index];
     html.window.history.pushState(null, 'none', '#/${_pages[index]}');
 
-    formScrollController.animateToPage(index, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+    formScrollController.animateToPage(index,
+        duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
   }
 
   getForms() async {
@@ -183,6 +184,7 @@ class FormProvider extends ChangeNotifier {
       await JpApi.post('/forms/', data);
 
       isLoading = false;
+      setResetForm();
       notifyListeners();
       NotifServ.showSnackbarError('Submitted form', Colors.green);
     } catch (e) {

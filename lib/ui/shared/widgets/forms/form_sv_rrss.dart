@@ -52,11 +52,18 @@ class _FormSVrrssState extends State<FormSVrrss> {
     }
 
     onPressed() async {
-      if (formProvider.getPageIndex() == 0 && formProvider.keyForm.currentState!.validate()) formProvider.formScrollController.nextPage();
+      if (formProvider.getPageIndex() == 0 &&
+          formProvider.keyForm.currentState!.validate()) {
+        formProvider.formScrollController.nextPage();
+      }
 
-      if (formProvider.getPageIndex() == 1 && formProvider.keyForm2.currentState!.validate()) formProvider.formScrollController.nextPage();
+      if (formProvider.getPageIndex() == 1 &&
+          formProvider.keyForm2.currentState!.validate()) {
+        formProvider.formScrollController.nextPage();
+      }
 
-      if (formProvider.getPageIndex() == 2 && formProvider.keyForm3.currentState!.validate()) {
+      if (formProvider.getPageIndex() == 2 &&
+          formProvider.keyForm3.currentState!.validate()) {
         formProvider.sendForm();
         formProvider.keyForm.currentState?.dispose();
         formProvider.keyForm2.currentState?.dispose();
@@ -70,7 +77,6 @@ class _FormSVrrssState extends State<FormSVrrss> {
       }
     }
 
-    print(formProvider.getPageIndex());
     return Container(
         constraints: const BoxConstraints(maxWidth: 800),
         width: double.infinity,
@@ -82,7 +88,11 @@ class _FormSVrrssState extends State<FormSVrrss> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(title, style: (wScreen < 500) ? DashboardLabel.h1 : DashboardLabel.especialT2.copyWith(color: Colors.white)),
+                    Text(title,
+                        style: (wScreen < 500)
+                            ? DashboardLabel.h1
+                            : DashboardLabel.especialT2
+                                .copyWith(color: Colors.white)),
                     Container(
                       width: (wScreen < 500) ? 320 : 400,
                       height: 5,
@@ -115,11 +125,15 @@ class _FormSVrrssState extends State<FormSVrrss> {
                               if (formProvider.rootForm == 'conferencias')
                                 TextFormField(
                                   initialValue: formProvider.espectativas,
-                                  onChanged: (value) => formProvider.setespectativas(value),
+                                  onChanged: (value) =>
+                                      formProvider.setespectativas(value),
                                   cursorColor: azulText,
                                   style: DashboardLabel.paragraph,
                                   maxLines: 5,
-                                  decoration: InputDecor.formFieldInputDecoration(label: appLocal.escribeTodasTusEspectativas),
+                                  decoration:
+                                      InputDecor.formFieldInputDecoration(
+                                          label: appLocal
+                                              .escribeTodasTusEspectativas),
                                 ),
                               const SizedBox(
                                 height: 30,
@@ -132,57 +146,86 @@ class _FormSVrrssState extends State<FormSVrrss> {
                                 height: 30,
                               ),
                               ConstrainedBox(
-                                constraints: const BoxConstraints(maxWidth: 250),
+                                constraints:
+                                    const BoxConstraints(maxWidth: 250),
                                 child: TextFormField(
                                   initialValue: formProvider.facebook,
                                   cursorColor: azulText,
-                                  onChanged: (value) => formProvider.setFacebook(value),
+                                  onChanged: (value) =>
+                                      formProvider.setFacebook(value),
                                   style: DashboardLabel.h4,
-                                  decoration: InputDecor.formFieldInputDecoration(label: 'facebook.com/', icon: FontAwesomeIcons.facebook),
+                                  decoration:
+                                      InputDecor.formFieldInputDecoration(
+                                          label: 'facebook.com/',
+                                          icon: FontAwesomeIcons.facebook),
                                 ),
                               ),
                               const SizedBox(height: 15),
                               ConstrainedBox(
-                                constraints: const BoxConstraints(maxWidth: 250),
+                                constraints:
+                                    const BoxConstraints(maxWidth: 250),
                                 child: TextFormField(
                                   initialValue: formProvider.tiktok,
                                   cursorColor: azulText,
-                                  onChanged: (value) => formProvider.setTiktok(value),
+                                  onChanged: (value) =>
+                                      formProvider.setTiktok(value),
                                   style: DashboardLabel.h4,
-                                  decoration: InputDecor.formFieldInputDecoration(label: 'tiktok.com/', icon: FontAwesomeIcons.tiktok),
+                                  decoration:
+                                      InputDecor.formFieldInputDecoration(
+                                          label: 'tiktok.com/',
+                                          icon: FontAwesomeIcons.tiktok),
                                 ),
                               ),
                               const SizedBox(height: 15),
                               ConstrainedBox(
-                                constraints: const BoxConstraints(maxWidth: 250),
+                                constraints:
+                                    const BoxConstraints(maxWidth: 250),
                                 child: TextFormField(
                                   initialValue: formProvider.instagram,
                                   cursorColor: azulText,
-                                  onChanged: (value) => formProvider.setInstagram(value),
+                                  onChanged: (value) =>
+                                      formProvider.setInstagram(value),
                                   style: DashboardLabel.h4,
-                                  decoration: InputDecor.formFieldInputDecoration(label: 'instagram.com/', icon: FontAwesomeIcons.instagram),
+                                  decoration:
+                                      InputDecor.formFieldInputDecoration(
+                                          label: 'instagram.com/',
+                                          icon: FontAwesomeIcons.instagram),
                                 ),
                               ),
                               if (formProvider.rootForm != 'conferencias')
                                 const SizedBox(
                                   height: 20,
                                 ),
-                              if (formProvider.rootForm != 'conferencias') Text(appLocal.entiendesQueEsto, style: DashboardLabel.mini),
+                              if (formProvider.rootForm != 'conferencias')
+                                Text(appLocal.entiendesQueEsto,
+                                    style: DashboardLabel.mini),
                               if (formProvider.rootForm != 'conferencias')
                                 const SizedBox(
                                   height: 20,
                                 ),
                               if (formProvider.rootForm != 'conferencias')
                                 DropdownButtonFormField(
-                                  validator: (value) => (value != '') ? null : appLocal.seleccioneOpcion,
+                                  validator: (value) => (value != '')
+                                      ? null
+                                      : appLocal.seleccioneOpcion,
                                   value: '',
                                   dropdownColor: bgColor,
                                   items: [
-                                    DropdownMenuItem(value: '', child: Text(appLocal.seleccioneOpcion, style: DashboardLabel.paragraph)),
-                                    DropdownMenuItem(value: appLocal.si, child: Text(appLocal.siEstoyPreparado, style: DashboardLabel.paragraph)),
-                                    DropdownMenuItem(value: 'NO', child: Text(appLocal.noEstoyPreparado, style: DashboardLabel.paragraph)),
+                                    DropdownMenuItem(
+                                        value: '',
+                                        child: Text(appLocal.seleccioneOpcion,
+                                            style: DashboardLabel.paragraph)),
+                                    DropdownMenuItem(
+                                        value: appLocal.si,
+                                        child: Text(appLocal.siEstoyPreparado,
+                                            style: DashboardLabel.paragraph)),
+                                    DropdownMenuItem(
+                                        value: 'NO',
+                                        child: Text(appLocal.noEstoyPreparado,
+                                            style: DashboardLabel.paragraph)),
                                   ],
-                                  onChanged: (value) => formProvider.setAgree(value),
+                                  onChanged: (value) =>
+                                      formProvider.setAgree(value),
                                 )
                             ],
                           ),

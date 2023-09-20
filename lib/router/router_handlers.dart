@@ -62,7 +62,8 @@ class VisitorHandlers {
     handlerFunc: (context, params) {
       final id = params['cursoId']?.first ?? '';
       return FutureBuilder(
-        future: Provider.of<AllCursosProvider>(context!, listen: false).getCursosById(id),
+        future: Provider.of<AllCursosProvider>(context!, listen: false)
+            .getCursosById(id),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const ProgressInd();
@@ -85,7 +86,8 @@ class VisitorHandlers {
       if (cursoId.isEmpty) return const LoginPage();
 
       if (authProvider.authStatus == AuthStatus.notAuthenticated) {
-        Provider.of<AllCursosProvider>(context, listen: false).getCursosById(cursoId);
+        Provider.of<AllCursosProvider>(context, listen: false)
+            .getCursosById(cursoId);
 
         return CreateUserCheckout(cursoId: cursoId, state: state);
       } else {
@@ -100,7 +102,8 @@ class VisitorHandlers {
   static Handler home = Handler(handlerFunc: (context, params) {
     final page = params['page']!.first;
 
-    Provider.of<SideBarProvider>(context!, listen: false).setCurrentPageUrl(Flurorouter.rootRoute);
+    Provider.of<SideBarProvider>(context!, listen: false)
+        .setCurrentPageUrl(Flurorouter.rootRoute);
     if (page.isEmpty) {
       return const HomeBody(index: 0);
     }
@@ -109,6 +112,8 @@ class VisitorHandlers {
       return const HomeBody(index: 0);
     }
     if (page == 'support') {
+      Provider.of<SideBarProvider>(context, listen: false)
+          .setCurrentPageUrl(Flurorouter.supportRoute);
       return const SoporteView();
     }
     if (page == 'home') {
@@ -142,8 +147,10 @@ class UsersAuthHandlers {
     if (authProvider.authStatus == AuthStatus.notAuthenticated) {
       return const LoginPage();
     } else {
-      Provider.of<AllCursosProvider>(context, listen: false).obtenerMisCursos(authProvider.user!);
-      Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
+      Provider.of<AllCursosProvider>(context, listen: false)
+          .obtenerMisCursos(authProvider.user!);
+      Provider.of<SideBarProvider>(context, listen: false)
+          .setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
       return const DashMisCursosView();
     }
   });
@@ -170,7 +177,8 @@ class UsersAuthHandlers {
     if (authProvider.authStatus == AuthStatus.notAuthenticated) {
       return const RegisterPage();
     } else {
-      Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
+      Provider.of<SideBarProvider>(context, listen: false)
+          .setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
       return const DashMisCursosView();
     }
   });
@@ -191,13 +199,16 @@ class UsersAuthHandlers {
     final videoIndex = params['videoIndex']?.first ?? '0';
 
     if (cursoID.isEmpty) {
-      Provider.of<SideBarProvider>(context!, listen: false).setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
+      Provider.of<SideBarProvider>(context!, listen: false)
+          .setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
       return const DashMisCursosView();
     }
 
     final authProvider = Provider.of<AuthProvider>(context!, listen: false);
 
-    if (authProvider.authStatus == AuthStatus.notAuthenticated) return const LoginPage();
+    if (authProvider.authStatus == AuthStatus.notAuthenticated) {
+      return const LoginPage();
+    }
 
     if (!authProvider.user!.cursos.contains(cursoID)) {
       return LandingCurso(
@@ -206,10 +217,12 @@ class UsersAuthHandlers {
     }
 
     return FutureBuilder(
-      future: Provider.of<AllCursosProvider>(context, listen: false).getCursosById(cursoID),
+      future: Provider.of<AllCursosProvider>(context, listen: false)
+          .getCursosById(cursoID),
       builder: (context, snapshot) {
         final curso = snapshot.data;
-        Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl('');
+        Provider.of<SideBarProvider>(context, listen: false)
+            .setCurrentPageUrl('');
         return (curso == null || curso.nombre == 'nombre')
             ? const ProgressInd()
             : CourseView(
@@ -225,7 +238,8 @@ class UsersAuthHandlers {
     return const TycView();
   });
   static Handler start = Handler(handlerFunc: (context, params) {
-    Provider.of<SideBarProvider>(context!, listen: false).setCurrentPageUrl(Flurorouter.start);
+    Provider.of<SideBarProvider>(context!, listen: false)
+        .setCurrentPageUrl(Flurorouter.start);
     return const StartHereView();
   });
 
@@ -244,8 +258,11 @@ class UsersAuthHandlers {
   static Handler clientDashboard = Handler(handlerFunc: (context, params) {
     final authProvider = Provider.of<AuthProvider>(context!, listen: false);
 
-    if (authProvider.authStatus == AuthStatus.notAuthenticated) return const LoginPage();
-    Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.clienteDash);
+    if (authProvider.authStatus == AuthStatus.notAuthenticated) {
+      return const LoginPage();
+    }
+    Provider.of<SideBarProvider>(context, listen: false)
+        .setCurrentPageUrl(Flurorouter.clienteDash);
     return const DashMiCuenta();
   });
 
@@ -254,7 +271,8 @@ class UsersAuthHandlers {
     if (authProvider.authStatus == AuthStatus.notAuthenticated) {
       return const LoginPage();
     } else {
-      Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
+      Provider.of<SideBarProvider>(context, listen: false)
+          .setCurrentPageUrl(Flurorouter.clienteMisCursosDash);
       return const DashMisCursosView();
     }
   });
@@ -263,39 +281,47 @@ class UsersAuthHandlers {
 class AdminHandlers {
   static Handler usersAdminDash = Handler(handlerFunc: (context, params) {
     final authProvider = Provider.of<AuthProvider>(context!, listen: false);
-    if (authProvider.authStatus == AuthStatus.notAuthenticated || authProvider.user!.rol != 'ADMIN_ROLE') {
+    if (authProvider.authStatus == AuthStatus.notAuthenticated ||
+        authProvider.user!.rol != 'ADMIN_ROLE') {
       return const HomeBody();
     } else {
-      Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.usersAdminDash);
+      Provider.of<SideBarProvider>(context, listen: false)
+          .setCurrentPageUrl(Flurorouter.usersAdminDash);
       return const UsersAdminView();
     }
   });
 
   static Handler leadsAdminDash = Handler(handlerFunc: (context, params) {
     final authProvider = Provider.of<AuthProvider>(context!, listen: false);
-    if (authProvider.authStatus == AuthStatus.notAuthenticated || authProvider.user!.rol != 'ADMIN_ROLE') {
+    if (authProvider.authStatus == AuthStatus.notAuthenticated ||
+        authProvider.user!.rol != 'ADMIN_ROLE') {
       return const HomeBody();
     } else {
-      Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.leadsAdminDash);
+      Provider.of<SideBarProvider>(context, listen: false)
+          .setCurrentPageUrl(Flurorouter.leadsAdminDash);
       Provider.of<LeadsProvider>(context, listen: false).getLeads();
       return const LeadsAdminView();
     }
   });
   static Handler cursosAdminDash = Handler(handlerFunc: (context, params) {
     final authProvider = Provider.of<AuthProvider>(context!, listen: false);
-    if (authProvider.authStatus == AuthStatus.notAuthenticated || authProvider.user!.rol != 'ADMIN_ROLE') {
+    if (authProvider.authStatus == AuthStatus.notAuthenticated ||
+        authProvider.user!.rol != 'ADMIN_ROLE') {
       return const HomeBody();
     } else {
-      Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.cursosAdminDash);
+      Provider.of<SideBarProvider>(context, listen: false)
+          .setCurrentPageUrl(Flurorouter.cursosAdminDash);
       return const CursosAdminView();
     }
   });
   static Handler formsAdminDash = Handler(handlerFunc: (context, params) {
     final authProvider = Provider.of<AuthProvider>(context!, listen: false);
-    if (authProvider.authStatus == AuthStatus.notAuthenticated || authProvider.user!.rol != 'ADMIN_ROLE') {
+    if (authProvider.authStatus == AuthStatus.notAuthenticated ||
+        authProvider.user!.rol != 'ADMIN_ROLE') {
       return const HomeBody();
     } else {
-      Provider.of<SideBarProvider>(context, listen: false).setCurrentPageUrl(Flurorouter.formsAdminDash);
+      Provider.of<SideBarProvider>(context, listen: false)
+          .setCurrentPageUrl(Flurorouter.formsAdminDash);
       return const FormAdminView();
     }
   });

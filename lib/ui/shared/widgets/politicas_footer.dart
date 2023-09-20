@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jp_director/router/router.dart';
+import 'package:jp_director/services/navigator_service.dart';
 
 
 import '../../../constant.dart';
@@ -23,7 +25,9 @@ class PoliticasFooter extends StatelessWidget {
                 style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  NavigatorService.navigateTo(Flurorouter.tycRoute);
+                },
                 child: Text(
                   appLocal.terminoDeUso,
                   textAlign: TextAlign.center,
@@ -41,7 +45,9 @@ class PoliticasFooter extends StatelessWidget {
                 style: const TextStyle(color: blancoText, fontSize: 16, fontWeight: FontWeight.w400),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  NavigatorService.navigateTo(Flurorouter.pdpRoute);
+                },
                 child: Text(
                   appLocal.politicaDePrivacidad,
                   textAlign: TextAlign.center,

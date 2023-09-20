@@ -99,7 +99,8 @@ class _UsersAdminViewState extends State<UsersAdminView> {
        
               ],
             ),
-          )
+          ),
+          const SizedBox(height: 100)
         ],
       ),
     );

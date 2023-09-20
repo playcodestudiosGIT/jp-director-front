@@ -31,7 +31,6 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
   Widget build(BuildContext context) {
     final appLocal = AppLocalizations.of(context);
     double hScreen = MediaQuery.of(context).size.height;
-    double wScreen = MediaQuery.of(context).size.width;
 
     return FutureBuilder(
       future: Future.delayed(const Duration(milliseconds: 100)),
@@ -43,7 +42,9 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
         return Scaffold(
             backgroundColor: Colors.transparent,
             body: ListView(
+              
               children: [
+                const SizedBox(height: 60),
                 Stack(
                   alignment: Alignment.center,
                   children: [
@@ -51,21 +52,15 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (wScreen < 740)
-                          const SizedBox(
-                            height: 100,
-                          ),
-                        if (wScreen >= 740)
-                          const SizedBox(
-                            height: 200,
-                          ),
                         Stack(
                           alignment: Alignment.center,
                           children: [
                             Container(
-                              alignment: Alignment.topCenter,
+                    
+                              alignment: Alignment.center,
                               constraints: BoxConstraints(maxWidth: 1200, minHeight: hScreen - 200),
                               child: Wrap(
+                                
                                 crossAxisAlignment: WrapCrossAlignment.center,
                                 alignment: WrapAlignment.center,
                                 runSpacing: 20,
@@ -134,8 +129,9 @@ class _CreateUserCheckoutState extends State<CreateUserCheckout> {
                                             return CourseCard(esMio: false, curso: curso);
                                           },
                                         ),
-                                        const SizedBox(height: 30),
-                                        const PoliticasFooter(),
+                                        if (hScreen > 625)
+                                        ...[const SizedBox(height: 30),
+                                        const PoliticasFooter(),],
                                         const SizedBox(height: 100)
                                       ],
                                     ),

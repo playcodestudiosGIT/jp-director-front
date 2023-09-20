@@ -12,7 +12,7 @@
     "consigueClientesQueQuieran": "Consigue clientes que quieran comprar tu producto o servicio\nutilizando la herramienta por la que llegaste aqui:\nInstagram - Facebook - Tik Tok",
     "servicios": "SERVICIOS",
     "asesoria11": "ASESORÍA 1:1",
-    "mentoria": "MENTORIA",
+    "mentoria": "MENTORÍA",
     "serElEncargado": "SER EL ENCARGADO",
     "conferencias": "CONFERENCIAS",
     "miraloOjos": "MÍRALO CON TUS PROPIOS OJOS",
@@ -427,5 +427,8 @@
     "graciasPorRegistrarte": "Gracias por registrarte, revisa tu correo para verificar tu cuenta",
     "correoYaExiste": "Correo ya existe. ir al Log in",
     "actInfo": "Actualizar Información"
+    "soporte": "Soporte",
+
+
     
 }

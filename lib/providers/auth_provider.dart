@@ -47,11 +47,13 @@ class AuthProvider extends ChangeNotifier {
 
   // ------------ //
 
-  login({required BuildContext context, required String email, required String password}) async {
+  login(
+      {required BuildContext context,
+      required String email,
+      required String password}) async {
     final appLocal = AppLocalizations.of(context);
     isLoading = true;
     final data = {'correo': email, 'password': password};
-    
 
     JpApi.post('/auth/login', data).then((json) {
       final authResponse = AuthResponse.fromJson(json);
@@ -79,7 +81,6 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<bool> isAutenticated() async {
-
     isLoading = true;
 
     final token = LocalStorage.prefs.getString('token');
@@ -117,11 +118,23 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  register({required BuildContext context, required String correo, required String password, required String nombre, required String apellido, String telf = 'no value'}) async {
+  register(
+      {required BuildContext context,
+      required String correo,
+      required String password,
+      required String nombre,
+      required String apellido,
+      String telf = 'no value'}) async {
     final appLocal = AppLocalizations.of(context);
     isLoading = true;
     notifyListeners();
-    final data = {'nombre': nombre, 'apellido': apellido, 'correo': correo, 'password': password, 'telf': telf};
+    final data = {
+      'nombre': nombre,
+      'apellido': apellido,
+      'correo': correo,
+      'password': password,
+      'telf': telf
+    };
     JpApi.post('/usuarios', data).then((json) {
       isLoading = true;
       final authResponse = AuthResponse.fromJson(json);
@@ -130,7 +143,8 @@ class AuthProvider extends ChangeNotifier {
       _token = authResponse.token;
 
       if (!user!.estado) {
-        NotifServ.showSnackbarError(appLocal.graciasPorRegistrarte, Colors.green);
+        NotifServ.showSnackbarError(
+            appLocal.graciasPorRegistrarte, Colors.green);
         NavigatorService.navigateTo(Flurorouter.loginRoute);
         isLoading = false;
         notifyListeners();
@@ -159,7 +173,8 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  Future<bool> resetPass({required String token, required String newPass}) async {
+  Future<bool> resetPass(
+      {required String token, required String newPass}) async {
     final data = {"newPass": newPass};
     try {
       final resp = await JpApi.post('/auth/resetpass/$token', data);
@@ -183,8 +198,15 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  Future updateProg({required String moduloId, required int marker, bool? isComplete = false}) async {
-    final data = {'moduloId': moduloId, 'marker': marker, 'isComplete': isComplete};
+  Future updateProg(
+      {required String moduloId,
+      required int marker,
+      bool? isComplete = false}) async {
+    final data = {
+      'moduloId': moduloId,
+      'marker': marker,
+      'isComplete': isComplete
+    };
     try {
       final json = await JpApi.put('/usuarios/prog/${user!.uid}', data);
       user = Usuario.fromJson(json);
@@ -200,13 +222,17 @@ class AuthProvider extends ChangeNotifier {
     required String correo,
     required String mensaje,
   }) async {
-    final data = {"nombre": nombre, "apellido": apellido, "correo": correo, "mensaje": mensaje};
+    final data = {
+      "nombre": nombre,
+      "apellido": apellido,
+      "correo": correo,
+      "mensaje": mensaje
+    };
     try {
       await JpApi.post('/usuarios/support', data);
       NotifServ.showSnackbarError('Email sent to support', Colors.green);
       return true;
     } catch (e) {
-      print(e);
       return false;
     }
   }
@@ -217,13 +243,17 @@ class AuthProvider extends ChangeNotifier {
     required String correo,
     required String mensaje,
   }) async {
-    final data = {"nombre": nombre, "apellido": apellido, "correo": correo, "mensaje": mensaje};
+    final data = {
+      "nombre": nombre,
+      "apellido": apellido,
+      "correo": correo,
+      "mensaje": mensaje
+    };
     try {
       await JpApi.post('/usuarios/contact-email', data);
       NotifServ.showSnackbarError('Email sent to user', Colors.green);
       return true;
     } catch (e) {
-      print(e);
       return false;
     }
   }

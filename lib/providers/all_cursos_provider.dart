@@ -10,7 +10,6 @@ import '../models/http/all_cursos_response.dart';
 import '../models/usuario_model.dart';
 
 class AllCursosProvider extends ChangeNotifier {
-  
   List<Curso> _allCursos = [];
   List<Curso> _misCursos = [];
 
@@ -229,7 +228,6 @@ class AllCursosProvider extends ChangeNotifier {
       final cursosResponse = AllCursosResponse.fromJson(resp);
       _total = cursosResponse.total;
       _allCursos = cursosResponse.cursos;
-
       notifyListeners();
     } catch (e) {
       throw 'error $e';
@@ -238,16 +236,19 @@ class AllCursosProvider extends ChangeNotifier {
 
   Curso obtenerCurso(String id) {
     try {
-      final Curso newCurso = _allCursos.firstWhere((element) => element.id == id, orElse: () => curso);
+      final Curso newCurso = _allCursos
+          .firstWhere((element) => element.id == id, orElse: () => curso);
       return newCurso;
     } catch (e) {
       rethrow;
     }
   }
 
-  Future addCursoToUser({required BuildContext context, required String userId}) async {
+  Future addCursoToUser(
+      {required BuildContext context, required String userId}) async {
     final appLocal = AppLocalizations.of(context);
-    final resp = await JpApi.put('/usuarios/add/$userId', {"cursoId": cursoSelected});
+    final resp =
+        await JpApi.put('/usuarios/add/$userId', {"cursoId": cursoSelected});
     if (resp['msg'] != null) {
       // NotificationServices.showSnackbarError(resp['msg'], Colors.red);
       return;
@@ -257,7 +258,10 @@ class AllCursosProvider extends ChangeNotifier {
     }
   }
 
-  Future deleteCursoToUser({required BuildContext context, required String userId, required String cursoId}) async {
+  Future deleteCursoToUser(
+      {required BuildContext context,
+      required String userId,
+      required String cursoId}) async {
     final appLocal = AppLocalizations.of(context);
     try {
       await JpApi.put('/usuarios/remove/$userId', {"cursoId": cursoId});
@@ -269,10 +273,8 @@ class AllCursosProvider extends ChangeNotifier {
     }
   }
 
-  Future updateCurso({
-    required String uid,
-    required BuildContext context
-  }) async {
+  Future updateCurso(
+      {required String uid, required BuildContext context}) async {
     final appLocal = AppLocalizations.of(context);
     final data = {
       "nombre": _nombreCursoModal,
@@ -305,7 +307,8 @@ class AllCursosProvider extends ChangeNotifier {
     }
   }
 
-  Future deleteCurso({required BuildContext context, required String id}) async {
+  Future deleteCurso(
+      {required BuildContext context, required String id}) async {
     final appLocal = AppLocalizations.of(context);
     try {
       await JpApi.delete('/cursos/$id', {});
@@ -346,6 +349,7 @@ class AllCursosProvider extends ChangeNotifier {
       notifyListeners();
       NotifServ.showSnackbarError(appLocal.moduloAgregado, Colors.green);
     }).catchError((e) {
+      print(e);
       NotifServ.showSnackbarError(appLocal.errorModuloAgregado, Colors.red);
     });
   }
@@ -379,9 +383,10 @@ class AllCursosProvider extends ChangeNotifier {
     }
   }
 
-  Future deleteModulo({required BuildContext context, required String id}) async {
+  Future deleteModulo(
+      {required BuildContext context, required String id}) async {
     final appLocal = AppLocalizations.of(context);
-    
+
     try {
       await JpApi.delete('/modulos/$id', {});
       _cursoModal.modulos.removeWhere((element) => element.id == id);
@@ -390,7 +395,6 @@ class AllCursosProvider extends ChangeNotifier {
       NotifServ.showSnackbarError(appLocal.moduloBorrado, Colors.green);
       return true;
     } catch (e) {
-      print(e);
       NotifServ.showSnackbarError(appLocal.errorBorrandoModulo, Colors.red);
     }
   }
@@ -402,7 +406,11 @@ class AllCursosProvider extends ChangeNotifier {
     required String moduloId,
   }) async {
     final appLocal = AppLocalizations.of(context);
-    final data = {"comentario": comentario, "cursoId": cursoId, "moduloId": moduloId};
+    final data = {
+      "comentario": comentario,
+      "cursoId": cursoId,
+      "moduloId": moduloId
+    };
 
     // Petición HTTP
     await JpApi.post('/modulos/coments/add', data).then((json) {
@@ -410,7 +418,8 @@ class AllCursosProvider extends ChangeNotifier {
       notifyListeners();
       NotifServ.showSnackbarError(appLocal.comentarioAgregado, Colors.green);
     }).catchError((e) {
-      NotifServ.showSnackbarError(appLocal.errorAgregandoComentario, Colors.red);
+      NotifServ.showSnackbarError(
+          appLocal.errorAgregandoComentario, Colors.red);
     });
   }
 
@@ -419,7 +428,8 @@ class AllCursosProvider extends ChangeNotifier {
     final List<Curso> misNewCursos = [];
 
     for (var e in user.cursos) {
-      Curso? cursotmp = allCursos.where((element) => element.id == e).firstOrNull;
+      Curso? cursotmp =
+          allCursos.where((element) => element.id == e).firstOrNull;
 
       if (cursotmp != null) {
         misNewCursos.add(cursotmp);
@@ -436,7 +446,8 @@ class AllCursosProvider extends ChangeNotifier {
     }
   }
 
-  Future deleteComent({required String comentId, required String moduloId}) async {
+  Future deleteComent(
+      {required String comentId, required String moduloId}) async {
     try {
       await JpApi.delete('/modulos/coments/$comentId', {"moduloId": moduloId});
     } catch (e) {
@@ -502,12 +513,14 @@ class AllCursosProvider extends ChangeNotifier {
       notifyListeners();
       NotifServ.showSnackbarError(appLocal.testimonioActualizado, Colors.green);
     } catch (e) {
-      NotifServ.showSnackbarError(appLocal.errorTestimonioActualizado, Colors.red);
+      NotifServ.showSnackbarError(
+          appLocal.errorTestimonioActualizado, Colors.red);
       // throw Exception('Error Actualizando modulo.');
     }
   }
 
-  Future deleteTestimonio({required BuildContext context, required String id}) async {
+  Future deleteTestimonio(
+      {required BuildContext context, required String id}) async {
     final appLocal = AppLocalizations.of(context);
     try {
       await JpApi.delete('/cursos/testimonio/$id', {});
