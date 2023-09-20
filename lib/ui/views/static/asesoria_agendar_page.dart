@@ -16,7 +16,7 @@ class AsesoriaAgendarPage extends StatelessWidget {
           children: [
             TopAreaBack(onPress: () => NavigatorService.navigateTo('/servicios')),
             const SizedBox(height: 15),
-            Container(constraints: BoxConstraints(maxHeight: hSize, maxWidth: 800), child: const multiplatform.AgendaPlug()),
+            const Expanded(child: multiplatform.AgendaPlug()),
           ],
         ),
       ],
