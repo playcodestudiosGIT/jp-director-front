@@ -91,6 +91,8 @@ class _WebBodyState extends State<WebBody> {
         ListTestimonios(numeroEst: widget.curso.totalEstudiantes, testimonios: widget.curso.testimonios),
         const SizedBox(height: 60),
         const SoyJpdirectorLanding(),
+        const SizedBox(height: 15),
+        if(!widget.curso.preorder)
         BotonQuieroYa(curso: widget.curso),
         const SizedBox(height: 100),
       ],

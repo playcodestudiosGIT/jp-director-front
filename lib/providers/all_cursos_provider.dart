@@ -32,6 +32,7 @@ class AllCursosProvider extends ChangeNotifier {
   String _duracionCursoModal = '';
   String _urlImgCert = '';
   bool _publicadoCursoModal = true;
+  bool _preorderCursoModal = false;
   String _estudiantesCursoModal = '0';
 
   // --------------------------------- //
@@ -46,6 +47,13 @@ class AllCursosProvider extends ChangeNotifier {
 
   set newCert(Certificado value) {
     _newCert = value;
+    notifyListeners();
+  }
+
+  bool get preorderCursoModal => _preorderCursoModal;
+
+  set preorderCursoModal(bool value) {
+    _preorderCursoModal = value;
     notifyListeners();
   }
 
@@ -177,6 +185,8 @@ class AllCursosProvider extends ChangeNotifier {
       _nombreCursoModal = curso.nombre;
       _urlImgCert = curso.urlImgCert;
       _estudiantesCursoModal = curso.totalEstudiantes;
+      _publicadoCursoModal = curso.publicado;
+      _preorderCursoModal = curso.preorder;
 
       notifyListeners();
     } catch (e) {
@@ -209,6 +219,7 @@ class AllCursosProvider extends ChangeNotifier {
       "duracion": _duracionCursoModal,
       "urlImgCert": _urlImgCert,
       "publicado": _publicadoCursoModal,
+      "preorder": _preorderCursoModal,
       "totalEstudiantes": _estudiantesCursoModal,
     };
 
@@ -285,6 +296,7 @@ class AllCursosProvider extends ChangeNotifier {
       "duracion": _duracionCursoModal,
       "urlImgCert": _urlImgCert,
       "publicado": _publicadoCursoModal,
+      "preorder": _preorderCursoModal,
       "totalEstudiantes": _estudiantesCursoModal,
     };
 
@@ -349,7 +361,6 @@ class AllCursosProvider extends ChangeNotifier {
       notifyListeners();
       NotifServ.showSnackbarError(appLocal.moduloAgregado, Colors.green);
     }).catchError((e) {
-      print(e);
       NotifServ.showSnackbarError(appLocal.errorModuloAgregado, Colors.red);
     });
   }

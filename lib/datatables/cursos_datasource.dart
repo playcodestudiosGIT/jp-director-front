@@ -116,6 +116,15 @@ class CursosDTS extends DataTableSource {
                   const SizedBox(height: 4),
                   Row(
                     children: [
+                      const Text('Available: '),
+                      if (curso.preorder) Text('Pre-Order', style: DashboardLabel.mini.copyWith(color: Colors.orange),),
+                      if (!curso.preorder)
+                        Text('Available', style: DashboardLabel.mini.copyWith(color: Colors.green),)
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
                       Text(
                         'Students: ',
                         style: DashboardLabel.mini,

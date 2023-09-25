@@ -9,7 +9,6 @@ class AsesoriaAgendarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hSize = MediaQuery.of(context).size.height;
     return Stack(
       children: [
         Column(

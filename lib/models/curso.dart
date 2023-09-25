@@ -18,6 +18,7 @@ class Curso {
     final DateTime createdAt;
     final DateTime updatedAt;
     final bool publicado;
+    final bool preorder;
     final List<Testimonio> testimonios;
     final String totalEstudiantes;
 
@@ -36,6 +37,7 @@ class Curso {
         required this.createdAt,
         required this.updatedAt,
         required this.publicado,
+        required this.preorder,
         required this.testimonios,
         required this.totalEstudiantes,
     });
@@ -59,6 +61,7 @@ class Curso {
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
         publicado: json["publicado"],
+        preorder: json["preorder"],
         testimonios: List<Testimonio>.from(json["testimonios"].map((x) => Testimonio.fromJson(x))),
         totalEstudiantes: json["totalEstudiantes"],
     );
@@ -78,6 +81,7 @@ class Curso {
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt.toIso8601String(),
         "publicado": publicado,
+        "preorder": preorder,
         "testimonios": List<dynamic>.from(testimonios.map((x) => x.toJson())),
         "totalEstudiantes": totalEstudiantes,
     };

@@ -43,10 +43,8 @@ class AgendaPlugState extends State<AgendaPlug> {
 
   @override
   Widget build(BuildContext context) {
-    final hSize = MediaQuery.of(context).size.height;
     return Container(
       alignment: Alignment.center,
-      // margin: const EdgeInsets.symmetric(horizontal: 30),
       child: Stack(
         children: [
           const Positioned(child: ProgressInd()),

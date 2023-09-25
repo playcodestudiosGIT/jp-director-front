@@ -165,6 +165,7 @@ class CursoBanerView extends StatelessWidget {
                                 },
                                 width: 250),
                           if (!esMio)
+                            if(!curso.preorder)
                             CustomButton(
                                 text: appLocal.comprarBtn,
                                 onPress: () async {
@@ -183,6 +184,8 @@ class CursoBanerView extends StatelessWidget {
                                   }
                                 },
                                 width: 250),
+                            if(curso.preorder)
+                            const CustomButton(text: 'PROXIMAMENTE', onPress: null, width: 140, color: Colors.orange,)
                         ],
                       ),
                     ),
