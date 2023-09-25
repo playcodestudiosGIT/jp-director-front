@@ -72,7 +72,7 @@ class Flurorouter {
   static String docRoute = '/doc';
 
   // rutas stripe
-  static String successUrl = '/checkout/success/:email/:date';
+  static String successUrl = '/checkout/success';
   static String checksession = '/checkout/checksession';
 
   static void configureRoutes() {
@@ -88,6 +88,7 @@ class Flurorouter {
         handler: VisitorHandlers.home,
         transitionType: TransitionType.none,
         transitionDuration: const Duration(milliseconds: 100));
+
     router.define(supportRoute,
         handler: VisitorHandlers.home,
         transitionType: TransitionType.none,
@@ -156,6 +157,11 @@ class Flurorouter {
 
     router.define(conferenciasFormRoute,
         handler: VisitorHandlers.conferenciasForm,
+        transitionType: TransitionType.none,
+        transitionDuration: const Duration(milliseconds: 100));
+
+    router.define(successUrl,
+        handler: VisitorHandlers.successUrl,
         transitionType: TransitionType.none,
         transitionDuration: const Duration(milliseconds: 100));
 

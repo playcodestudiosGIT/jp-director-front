@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:jp_director/ui/views/dashboard/start_here_view.dart';
 import '../ui/shared/widgets/progress_ind.dart';
+import '../ui/views/static/asesoria_thx_view.dart';
 import '../ui/views/system/soporte_view.dart';
 import 'router.dart';
 
@@ -94,6 +95,16 @@ class VisitorHandlers {
         // return const NewCursoCheckout();
         return const Placeholder();
       }
+    },
+  );
+
+  static Handler successUrl = Handler(
+    handlerFunc: (context, params) {
+      final name = params['invitee_full_name']?.first;
+      final fecha = params['event_start_time']?.first;
+      print(name);
+      print(fecha);
+      return AsesoriaThxView(nombre: name.toString(), fecha: fecha.toString(),);
     },
   );
 
