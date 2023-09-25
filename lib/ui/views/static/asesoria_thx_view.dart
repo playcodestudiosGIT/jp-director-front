@@ -46,7 +46,6 @@ class LetrasAsesoria extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(nombre);
     final appLocal = AppLocalizations.of(context);
     final wScreen = MediaQuery.of(context).size.width;
     final formProvider = Provider.of<FormProvider>(context);
