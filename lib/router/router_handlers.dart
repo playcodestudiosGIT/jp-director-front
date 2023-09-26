@@ -98,25 +98,8 @@ class VisitorHandlers {
     },
   );
 
-  static Handler successUrl = Handler(
-    handlerFunc: (context, params) {
-      final name = params['event_start_time'];
-
-      print(name);
-
-      return AsesoriaThxView(
-        nombre: '',
-        fecha: '',
-      );
-    },
-  );
-
-//   // static nav
-
   static Handler home = Handler(handlerFunc: (context, params) {
     final page = params['page']!.first;
-
-    print(page);
 
     Provider.of<SideBarProvider>(context!, listen: false)
         .setCurrentPageUrl(Flurorouter.rootRoute);

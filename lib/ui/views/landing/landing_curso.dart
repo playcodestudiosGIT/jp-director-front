@@ -13,6 +13,7 @@ import '../../../providers/export_all_providers.dart';
 
 import '../../../services/navigator_service.dart';
 
+import '../../shared/botones/custom_button.dart';
 import '../../shared/widgets/boton_quiero_ya.dart';
 import '../../shared/widgets/list_testimonios.dart';
 import '../../shared/widgets/soy_jpdirector_landing.dart';
@@ -94,6 +95,13 @@ class _WebBodyState extends State<WebBody> {
         const SizedBox(height: 15),
         if(!widget.curso.preorder)
         BotonQuieroYa(curso: widget.curso),
+        if(widget.curso.preorder)
+        const CustomButton(
+                    text: 'PROXIMAMENTE',
+                    onPress: null,
+                    width: 250,
+                    color: Colors.orange,
+                  ),
         const SizedBox(height: 100),
       ],
     );

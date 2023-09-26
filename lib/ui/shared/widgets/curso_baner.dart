@@ -11,7 +11,6 @@ import '../../../services/navigator_service.dart';
 import '../botones/custom_button.dart';
 import '../labels/dashboard_label.dart';
 
-
 class CursoBanerView extends StatelessWidget {
   final Curso curso;
   final bool esMio;
@@ -30,7 +29,9 @@ class CursoBanerView extends StatelessWidget {
                 children: [
                   Container(
                     constraints: const BoxConstraints(maxWidth: 250),
-                    child: (curso.img == '') ? const ProgressInd() : Image(image: NetworkImage(curso.img)),
+                    child: (curso.img == '')
+                        ? const ProgressInd()
+                        : Image(image: NetworkImage(curso.img)),
                   ),
                   Positioned(
                       top: 120,
@@ -57,7 +58,9 @@ class CursoBanerView extends StatelessWidget {
                         const Spacer(),
                         Text(
                           '\$${curso.precio}',
-                          style: DashboardLabel.gigant.copyWith(color: const Color(0xffFFEF98), fontWeight: FontWeight.bold),
+                          style: DashboardLabel.gigant.copyWith(
+                              color: const Color(0xffFFEF98),
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -73,29 +76,45 @@ class CursoBanerView extends StatelessWidget {
                 CustomButton(
                     text: appLocal.continuar,
                     onPress: () async {
-                      NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/0');
+                      NavigatorService.replaceTo(
+                          '${Flurorouter.curso}/${curso.id}/0');
                     },
                     width: 250),
               ],
               if (!esMio) ...[
-                CustomButton(
-                    text: appLocal.comprarBtn,
-                    onPress: () async {
-                      if (authProvider.authStatus == AuthStatus.notAuthenticated) {
-                        NavigatorService.replaceTo('${Flurorouter.payNewUserRouteAlt}/${curso.id}/login');
-                      }
-                      if (authProvider.authStatus == AuthStatus.authenticated) {
-                        final resp = await Provider.of<PayProvider>(context, listen: false)
-                            .createSession(price: int.parse(curso.precio), cursoId: curso.id, userEmail: authProvider.user!.correo);
-                        if (resp != '') {
-                          final Uri urluri = Uri.parse(resp);
-                          if (!await launchUrl(urluri)) {
-                            throw Exception('Could not launch $urluri');
+                if (!curso.preorder)
+                  CustomButton(
+                      text: appLocal.comprarBtn,
+                      onPress: () async {
+                        if (authProvider.authStatus ==
+                            AuthStatus.notAuthenticated) {
+                          NavigatorService.replaceTo(
+                              '${Flurorouter.payNewUserRouteAlt}/${curso.id}/login');
+                        }
+                        if (authProvider.authStatus ==
+                            AuthStatus.authenticated) {
+                          final resp = await Provider.of<PayProvider>(context,
+                                  listen: false)
+                              .createSession(
+                                  price: int.parse(curso.precio),
+                                  cursoId: curso.id,
+                                  userEmail: authProvider.user!.correo);
+                          if (resp != '') {
+                            final Uri urluri = Uri.parse(resp);
+                            if (!await launchUrl(urluri)) {
+                              throw Exception('Could not launch $urluri');
+                            }
                           }
                         }
-                      }
-                    },
-                    width: 250),
+                      },
+                      width: 250),
+                if (curso.preorder)
+                  const CustomButton(
+                    text: 'PROXIMAMENTE',
+                    onPress: null,
+                    width: 250,
+                    color: Colors.orange,
+                  )
               ],
               const SizedBox(height: 30),
             ],
@@ -105,7 +124,8 @@ class CursoBanerView extends StatelessWidget {
             children: [
               Container(
                 width: double.infinity,
-                constraints: const BoxConstraints(maxWidth: 800, minHeight: 280),
+                constraints:
+                    const BoxConstraints(maxWidth: 800, minHeight: 280),
                 child: (curso.baner == '')
                     ? const ProgressInd()
                     : Image(
@@ -113,7 +133,8 @@ class CursoBanerView extends StatelessWidget {
                       ),
               ),
               Container(
-                constraints: const BoxConstraints(maxWidth: 800, minHeight: 280),
+                constraints:
+                    const BoxConstraints(maxWidth: 800, minHeight: 280),
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [bgColor, Colors.transparent],
@@ -124,7 +145,8 @@ class CursoBanerView extends StatelessWidget {
                 ),
               ),
               Container(
-                constraints: const BoxConstraints(maxWidth: 800, minHeight: 280),
+                constraints:
+                    const BoxConstraints(maxWidth: 800, minHeight: 280),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -143,11 +165,15 @@ class CursoBanerView extends StatelessWidget {
                               children: [
                                 Text(
                                   '\$',
-                                  style: DashboardLabel.gigant.copyWith(color: const Color(0xffFFEF98), fontWeight: FontWeight.bold),
+                                  style: DashboardLabel.gigant.copyWith(
+                                      color: const Color(0xffFFEF98),
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 Text(
                                   curso.precio,
-                                  style: DashboardLabel.gigant.copyWith(color: const Color(0xffFFEF98), fontWeight: FontWeight.bold),
+                                  style: DashboardLabel.gigant.copyWith(
+                                      color: const Color(0xffFFEF98),
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -161,31 +187,48 @@ class CursoBanerView extends StatelessWidget {
                             CustomButton(
                                 text: appLocal.continuar,
                                 onPress: () {
-                                  NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/0');
+                                  NavigatorService.replaceTo(
+                                      '${Flurorouter.curso}/${curso.id}/0');
                                 },
                                 width: 250),
                           if (!esMio)
-                            if(!curso.preorder)
-                            CustomButton(
-                                text: appLocal.comprarBtn,
-                                onPress: () async {
-                                  if (authProvider.authStatus == AuthStatus.notAuthenticated) {
-                                    NavigatorService.replaceTo('${Flurorouter.payNewUserRouteAlt}/${curso.id}/login');
-                                  }
-                                  if (authProvider.authStatus == AuthStatus.authenticated) {
-                                    final resp = await Provider.of<PayProvider>(context, listen: false)
-                                        .createSession(price: int.parse(curso.precio), cursoId: curso.id, userEmail: authProvider.user!.correo);
-                                    if (resp != '') {
-                                      final Uri urluri = Uri.parse(resp);
-                                      if (!await launchUrl(urluri)) {
-                                        throw Exception('Could not launch $urluri');
+                            if (!curso.preorder)
+                              CustomButton(
+                                  text: appLocal.comprarBtn,
+                                  onPress: () async {
+                                    if (authProvider.authStatus ==
+                                        AuthStatus.notAuthenticated) {
+                                      NavigatorService.replaceTo(
+                                          '${Flurorouter.payNewUserRouteAlt}/${curso.id}/login');
+                                    }
+                                    if (authProvider.authStatus ==
+                                        AuthStatus.authenticated) {
+                                      final resp = await Provider.of<
+                                                  PayProvider>(context,
+                                              listen: false)
+                                          .createSession(
+                                              price: int.parse(curso.precio),
+                                              cursoId: curso.id,
+                                              userEmail:
+                                                  authProvider.user!.correo);
+                                      if (resp != '') {
+                                        final Uri urluri = Uri.parse(resp);
+                                        if (!await launchUrl(urluri)) {
+                                          throw Exception(
+                                              'Could not launch $urluri');
+                                        }
                                       }
                                     }
-                                  }
-                                },
-                                width: 250),
-                            if(curso.preorder)
-                            const CustomButton(text: 'PROXIMAMENTE', onPress: null, width: 140, color: Colors.orange,)
+                                  },
+                                  width: 250),
+                          if (curso.preorder)
+                            const CustomButton(
+                              
+                              text: 'PROXIMAMENTE',
+                              onPress: null,
+                              width: 140,
+                              color: Colors.orange,
+                            )
                         ],
                       ),
                     ),

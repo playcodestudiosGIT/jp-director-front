@@ -72,7 +72,6 @@ class Flurorouter {
   static String docRoute = '/doc';
 
   // rutas stripe
-  static String successUrl = '/checkout/success';
   static String checksession = '/checkout/checksession';
 
   static void configureRoutes() {
@@ -157,11 +156,6 @@ class Flurorouter {
 
     router.define(conferenciasFormRoute,
         handler: VisitorHandlers.conferenciasForm,
-        transitionType: TransitionType.none,
-        transitionDuration: const Duration(milliseconds: 100));
-
-    router.define(successUrl,
-        handler: VisitorHandlers.successUrl,
         transitionType: TransitionType.none,
         transitionDuration: const Duration(milliseconds: 100));
 

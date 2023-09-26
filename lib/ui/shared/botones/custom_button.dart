@@ -14,9 +14,9 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onPress!(),
+      onTap: (onPress != null) ? ()=> onPress!() : null,
       child: MouseRegion(
-        cursor: SystemMouseCursors.click,
+        cursor: (onPress != null) ? SystemMouseCursors.click : SystemMouseCursors.basic,
         child: Container(
           decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(12)),
           width: width,
