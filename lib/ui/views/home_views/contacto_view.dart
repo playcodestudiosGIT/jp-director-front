@@ -12,6 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
+import '../../../providers/meta_event_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/widgets/logotop.dart';
@@ -30,7 +31,11 @@ class ContactoView extends StatelessWidget {
         decoration: BoxDecoration(
           color: bgColor,
           image: DecorationImage(
-              image: bgContacto, opacity: 0.2, alignment: (wScreen < 700) ? const Alignment(0.3, 0) : Alignment.center, fit: BoxFit.cover),
+              image: bgContacto,
+              opacity: 0.2,
+              alignment:
+                  (wScreen < 700) ? const Alignment(0.3, 0) : Alignment.center,
+              fit: BoxFit.cover),
           backgroundBlendMode: BlendMode.darken,
         ),
         child: Column(
@@ -49,24 +54,23 @@ class ContactoView extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                       
                         FittedBox(
-                          child: Text(
-                            '@jpdirector - Jorge Pérez',
-                            style: (hScreen < 585) ? DashboardLabel.h3 : DashboardLabel.azulTextH1
-                          ),
+                          child: Text('@jpdirector - Jorge Pérez',
+                              style: (hScreen < 585)
+                                  ? DashboardLabel.h3
+                                  : DashboardLabel.azulTextH1),
                         ),
-                    
-                        
                         const SizedBox(
                           height: 20,
                         ),
-                         if(hScreen > 585)
-                        Text(
-                          appLocal.contactoLargeText,
-                          
-                          style: (hScreen < 585) ? DashboardLabel.mini.copyWith(fontSize: 8, height: 12) : DashboardLabel.mini,
-                        ),
+                        if (hScreen > 585)
+                          Text(
+                            appLocal.contactoLargeText,
+                            style: (hScreen < 585)
+                                ? DashboardLabel.mini
+                                    .copyWith(fontSize: 8, height: 12)
+                                : DashboardLabel.mini,
+                          ),
                         const SizedBox(
                           height: 20,
                         ),
@@ -78,7 +82,10 @@ class ContactoView extends StatelessWidget {
                                 height: 55,
                                 width: 250,
                                 decoration: BoxDecoration(
-                                    border: Border.all(color: verdeBorde, width: 4, style: BorderStyle.solid),
+                                    border: Border.all(
+                                        color: verdeBorde,
+                                        width: 4,
+                                        style: BorderStyle.solid),
                                     borderRadius: BorderRadius.circular(15)),
                                 child: TextButton(
                                   child: Text(
@@ -88,7 +95,8 @@ class ContactoView extends StatelessWidget {
                                   onPressed: () {
                                     showDialog(
                                       context: context,
-                                      builder: (context) => const CustomAlertDialogGift(),
+                                      builder: (context) =>
+                                          const CustomAlertDialogGift(),
                                     );
                                   },
                                 )),
@@ -102,7 +110,8 @@ class ContactoView extends StatelessWidget {
                   Container(
                     constraints: const BoxConstraints(maxWidth: 550),
                     color: bgColor.withOpacity(0.7),
-                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                     width: double.infinity,
                     // height: ,
                     child: Container(
@@ -112,7 +121,11 @@ class ContactoView extends StatelessWidget {
                         alignment: WrapAlignment.center,
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
-                           const SizedBox(child: Center(child: Icon(Icons.support_agent, color: azulText),),),
+                          const SizedBox(
+                            child: Center(
+                              child: Icon(Icons.support_agent, color: azulText),
+                            ),
+                          ),
                           Text(
                             appLocal.siTienesDudas,
                             style: DashboardLabel.mini,
@@ -121,10 +134,10 @@ class ContactoView extends StatelessWidget {
                             cursor: SystemMouseCursors.click,
                             child: GestureDetector(
                               onTap: () {
-                                final Uri url = Uri.parse('https://wa.me/12142265941?text=Hola%20Jp%20-%20Necesito%20apoyo%20con%20mi%20publicidad');
+                                final Uri url = Uri.parse(
+                                    'https://wa.me/12142265941?text=Hola%20Jp%20-%20Necesito%20apoyo%20con%20mi%20publicidad');
                                 launchUrl(url);
                               },
-
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -137,7 +150,8 @@ class ContactoView extends StatelessWidget {
                                       )),
                                   Text(
                                     'Whatsapp',
-                                    style: DashboardLabel.paragraph.copyWith(color: azulText),
+                                    style: DashboardLabel.paragraph
+                                        .copyWith(color: azulText),
                                   ),
                                 ],
                               ),
@@ -149,100 +163,105 @@ class ContactoView extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   if (MediaQuery.of(context).size.height > 715)
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    width: double.infinity,
-                    color: bgColor.withOpacity(0.8),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                            bottom: wScreen < 500 ? 0 : 8,
-                          ),
-                          child: Text(
-                            'JP DIRECTOR | QUIERO ADS',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: blancoText,
-                              fontWeight: FontWeight.w700,
-                              fontSize: wScreen < 500 ? 10 : 10,
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      width: double.infinity,
+                      color: bgColor.withOpacity(0.8),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(
+                              bottom: wScreen < 500 ? 0 : 8,
+                            ),
+                            child: Text(
+                              'JP DIRECTOR | QUIERO ADS',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: blancoText,
+                                fontWeight: FontWeight.w700,
+                                fontSize: wScreen < 500 ? 10 : 10,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: wScreen < 500 ? 0 : 8),
-                          child: Text(
-                            appLocal.derechosReservados,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: blancoText,
-                              fontWeight: FontWeight.w700,
-                              fontSize: wScreen < 500 ? 10 : 10,
+                          Padding(
+                            padding:
+                                EdgeInsets.only(bottom: wScreen < 500 ? 0 : 8),
+                            child: Text(
+                              appLocal.derechosReservados,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: blancoText,
+                                fontWeight: FontWeight.w700,
+                                fontSize: wScreen < 500 ? 10 : 10,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: wScreen < 500 ? 8 : 8),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              GestureDetector(
-                                onTap: () => NavigatorService.navigateTo(Flurorouter.pdpRoute),
-                                child: MouseRegion(
-                                  cursor: SystemMouseCursors.click,
-                                  child: Text(
-                                    appLocal.politicasDeProivacidad,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: azulText,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: wScreen < 500 ? 10 : 10,
+                          Padding(
+                            padding:
+                                EdgeInsets.only(bottom: wScreen < 500 ? 8 : 8),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                GestureDetector(
+                                  onTap: () => NavigatorService.navigateTo(
+                                      Flurorouter.pdpRoute),
+                                  child: MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    child: Text(
+                                      appLocal.politicasDeProivacidad,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: azulText,
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: wScreen < 500 ? 10 : 10,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              Text(
-                                ' -  ',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: blancoText,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: wScreen < 500 ? 10 : 10,
+                                Text(
+                                  ' -  ',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: blancoText,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: wScreen < 500 ? 10 : 10,
+                                  ),
                                 ),
-                              ),
-                              GestureDetector(
-                                onTap: () => NavigatorService.navigateTo(Flurorouter.tycRoute),
-                                child: MouseRegion(
-                                  cursor: SystemMouseCursors.click,
-                                  child: Text(
-                                    appLocal.terminosYCondiciones,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: azulText,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: wScreen < 500 ? 10 : 10,
+                                GestureDetector(
+                                  onTap: () => NavigatorService.navigateTo(
+                                      Flurorouter.tycRoute),
+                                  child: MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    child: Text(
+                                      appLocal.terminosYCondiciones,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: azulText,
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: wScreen < 500 ? 10 : 10,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: wScreen < 500 ? 8 : 8),
-                          child: Text(
-                            'This site is not part of Meta website or Meta Inc.\nThis site is not part of the Tik Tok website or Tik Tok inc.\nThis site is NOT endorsed by Meta or Tik Tok in any way.\n\nMeta is a trademark of Meta and Tik Tok is a trademark of Tik Tok Inc',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: blancoText.withOpacity(0.6),
-                              fontWeight: FontWeight.w300,
-                              fontSize: 11,
+                              ],
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  )
+                          Padding(
+                            padding:
+                                EdgeInsets.only(bottom: wScreen < 500 ? 8 : 8),
+                            child: Text(
+                              'This site is not part of Meta website or Meta Inc.\nThis site is not part of the Tik Tok website or Tik Tok inc.\nThis site is NOT endorsed by Meta or Tik Tok in any way.\n\nMeta is a trademark of Meta and Tik Tok is a trademark of Tik Tok Inc',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: blancoText.withOpacity(0.6),
+                                fontWeight: FontWeight.w300,
+                                fontSize: 11,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
                 ],
               ),
             ),
@@ -273,7 +292,8 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
           child: Container(
         width: 320,
         height: 420,
-        decoration: BoxDecoration(color: bgColor, borderRadius: BorderRadius.circular(25)),
+        decoration: BoxDecoration(
+            color: bgColor, borderRadius: BorderRadius.circular(25)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -296,7 +316,6 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Text(
-                      
                       appLocal.enviaremosUnEmail,
                       textAlign: TextAlign.center,
                       style: DashboardLabel.mini,
@@ -311,18 +330,24 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                         children: [
                           TextFormField(
                               cursorColor: azulText,
-                              autovalidateMode: AutovalidateMode.onUserInteraction,
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
                               keyboardType: TextInputType.emailAddress,
-                              validator: (value) => (EmailValidator.validate(value.toString())) ? null : appLocal.correoTextFiel,
+                              validator: (value) =>
+                                  (EmailValidator.validate(value.toString()))
+                                      ? null
+                                      : appLocal.correoTextFiel,
                               style: DashboardLabel.h4,
-                              decoration: InputDecor.formFieldInputDecoration(icon: Icons.email, label: email),
+                              decoration: InputDecor.formFieldInputDecoration(
+                                  icon: Icons.email, label: email),
                               onChanged: (value) {
                                 email = value;
                               }),
                           const SizedBox(height: 10),
                           TextFormField(
                               cursorColor: azulText,
-                              autovalidateMode: AutovalidateMode.onUserInteraction,
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
                               keyboardType: TextInputType.phone,
                               validator: (value) {
                                 if (value!.isEmpty || value.length <= 6) {
@@ -337,7 +362,8 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                                 return null;
                               },
                               style: DashboardLabel.h4,
-                              decoration: InputDecor.formFieldInputDecoration(icon: FontAwesomeIcons.whatsapp, label: telf),
+                              decoration: InputDecor.formFieldInputDecoration(
+                                  icon: FontAwesomeIcons.whatsapp, label: telf),
                               onChanged: (value) {
                                 telf = value;
                               }),
@@ -372,7 +398,11 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                     text: appLocal.enviarBtn,
                     onPress: () async {
                       if (formController.currentState!.validate()) {
-                        await Provider.of<LeadsProvider>(context, listen: false).createLead(email: email, telf: telf);
+                        await Provider.of<LeadsProvider>(context, listen: false)
+                            .createLead(email: email, telf: telf);
+                        await Provider.of<MetaEventProvider>(context,
+                                listen: false)
+                            .regaloEvent(email: email, phone: telf);
                       }
                     },
                     width: 100,

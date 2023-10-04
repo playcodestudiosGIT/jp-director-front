@@ -118,7 +118,7 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  register(
+  Future<void> register(
       {required BuildContext context,
       required String correo,
       required String password,

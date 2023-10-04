@@ -12,6 +12,7 @@ import 'constant.dart';
 
 import 'api/jp_api.dart';
 
+import 'providers/meta_event_provider.dart';
 import 'router/router.dart';
 
 import 'services/navigator_service.dart';
@@ -43,6 +44,7 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => LeadsProvider()),
         ChangeNotifierProvider(create: (_) => LoginFormProvider()),
         ChangeNotifierProvider(create: (_) => RegisterFormProvider()),
+        ChangeNotifierProvider(create: (_) => MetaEventProvider()),
         ChangeNotifierProvider(create: (_) => PageProvider()),
         ChangeNotifierProvider(create: (_) => UsersProvider()),
         ChangeNotifierProvider(lazy: false, create: (_) => SideBarProvider()),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:jp_director/constant.dart';
 import 'package:jp_director/models/curso.dart';
+import 'package:jp_director/providers/meta_event_provider.dart';
 import 'package:jp_director/router/router.dart';
 import 'package:jp_director/services/navigator_service.dart';
+import 'package:provider/provider.dart';
 
 import '../../../generated/l10n.dart';
 import '../labels/dashboard_label.dart';
@@ -20,8 +22,11 @@ class CursoImagen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: GestureDetector(
-        onTap: () {
-          NavigatorService.navigateTo('${Flurorouter.cursoLanding}/${curso.id}');
+        onTap: () async {
+          await Provider.of<MetaEventProvider>(context, listen: false)
+              .clickEvent(source: 'Click Curso', description: curso.id);
+          NavigatorService.navigateTo(
+              '${Flurorouter.cursoLanding}/${curso.id}');
         },
         child: MouseRegion(
             cursor: SystemMouseCursors.click,
@@ -29,13 +34,16 @@ class CursoImagen extends StatelessWidget {
               decoration: buildBoxDecoration(),
               child: Stack(
                 children: [
-                  Image(width:250, image: NetworkImage(curso.img)),
+                  Image(width: 250, image: NetworkImage(curso.img)),
                   Container(
-                    width:250,
-                    height:250,
+                    width: 250,
+                    height: 250,
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
-                            colors: [Colors.transparent, bgColor.withOpacity(1)],
+                            colors: [
+                              Colors.transparent,
+                              bgColor.withOpacity(1)
+                            ],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                             stops: const [0.6, 1])),
@@ -44,11 +52,16 @@ class CursoImagen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         TextButton(
-                            style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStatePropertyAll(
+                                    blancoText.withOpacity(0.1))),
                             onPressed: () {
-                              NavigatorService.navigateTo('${Flurorouter.cursoLanding}/${curso.id}');
+                              NavigatorService.navigateTo(
+                                  '${Flurorouter.cursoLanding}/${curso.id}');
                             },
-                            child: Text(appLocal.verMas, style: DashboardLabel.mini.copyWith(color: azulText)))
+                            child: Text(appLocal.verMas,
+                                style: DashboardLabel.mini
+                                    .copyWith(color: azulText)))
                       ],
                     ),
                   ),
@@ -59,11 +72,14 @@ class CursoImagen extends StatelessWidget {
     );
   }
 
-  BoxDecoration buildBoxDecoration() => BoxDecoration(color: bgColor.withOpacity(0.7), borderRadius: BorderRadius.circular(0), boxShadow: [
-        BoxShadow(
-          color: azulText.withOpacity(0.08),
-          blurRadius: 20,
-          offset: const Offset(0, 0),
-        )
-      ]);
+  BoxDecoration buildBoxDecoration() => BoxDecoration(
+          color: bgColor.withOpacity(0.7),
+          borderRadius: BorderRadius.circular(0),
+          boxShadow: [
+            BoxShadow(
+              color: azulText.withOpacity(0.08),
+              blurRadius: 20,
+              offset: const Offset(0, 0),
+            )
+          ]);
 }
