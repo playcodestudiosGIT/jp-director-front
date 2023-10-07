@@ -24,7 +24,7 @@ class CursoImagen extends StatelessWidget {
       child: GestureDetector(
         onTap: () async {
           await Provider.of<MetaEventProvider>(context, listen: false)
-              .clickEvent(source: 'Click Curso', description: curso.id);
+              .clickEvent(title: 'Click Curso', source: curso.id, description: curso.nombre);
           NavigatorService.navigateTo(
               '${Flurorouter.cursoLanding}/${curso.id}');
         },

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:jp_director/ui/shared/botones/botonverde.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
+import '../../../providers/meta_event_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/labels/dashboard_label.dart';
@@ -33,7 +35,9 @@ class EncargadoView extends StatelessWidget {
                       children: [
                         Text(
                           appLocal.serElEncargado,
-                          style: (wScreen < 550) ? DashboardLabel.h1 : DashboardLabel.gigant,
+                          style: (wScreen < 550)
+                              ? DashboardLabel.h1
+                              : DashboardLabel.gigant,
                         ),
                         Container(
                           width: 300,
@@ -58,11 +62,9 @@ class EncargadoView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         FittedBox(
-                          child: Text(
-                            appLocal.soyElResp,
-                            textAlign: TextAlign.start,
-                            style: DashboardLabel.h4
-                          ),
+                          child: Text(appLocal.soyElResp,
+                              textAlign: TextAlign.start,
+                              style: DashboardLabel.h4),
                         ),
                         const SizedBox(
                           height: 15,
@@ -89,7 +91,16 @@ class EncargadoView extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                BotonVerde(text: appLocal.agendarLlamadaBtn, onPressed: () => NavigatorService.navigateTo(Flurorouter.encargadoRoute), width: 200)
+                BotonVerde(
+                    text: appLocal.agendarLlamadaBtn,
+                    onPressed: () {
+                      Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                        source: '/servicios - Slider ENCARGADO',
+                        description: 'Click en Agendar una llamada',
+                        title: 'Servicio Encargado');
+                      NavigatorService.navigateTo(Flurorouter.encargadoRoute);
+                    },
+                    width: 200)
               ],
             ),
           )),

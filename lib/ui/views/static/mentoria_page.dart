@@ -68,6 +68,7 @@ class _MentoriaBody extends StatelessWidget {
                         child: Column(
                           children: [
                             Acordeon(
+                              service: 'Encargado',
                               title: appLocal.queVeremos3m,
                               content:
                                   appLocal.queVeremos3mResp,
@@ -76,6 +77,7 @@ class _MentoriaBody extends StatelessWidget {
                               height: 30,
                             ),
                             Acordeon(
+                              service: 'Encargado',
                                 title: appLocal.preguntasfrecuentes,
                                 content:
                                     appLocal.preguntasfrecuentes1Resp),

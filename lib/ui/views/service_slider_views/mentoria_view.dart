@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:jp_director/ui/shared/botones/botonverde.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
+import '../../../providers/meta_event_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/labels/dashboard_label.dart';
@@ -31,7 +33,9 @@ class MentoriaView extends StatelessWidget {
                       children: [
                         Text(
                           appLocal.mentoriaIntensiva,
-                          style: (wScreen < 550) ? DashboardLabel.h1 : DashboardLabel.gigant,
+                          style: (wScreen < 550)
+                              ? DashboardLabel.h1
+                              : DashboardLabel.gigant,
                         ),
                         Container(
                           width: 360,
@@ -56,7 +60,9 @@ class MentoriaView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         FittedBox(
-                          child: Text(appLocal.inteligenteInv, textAlign: TextAlign.start, style: DashboardLabel.h4),
+                          child: Text(appLocal.inteligenteInv,
+                              textAlign: TextAlign.start,
+                              style: DashboardLabel.h4),
                         ),
                         const SizedBox(
                           height: 15,
@@ -75,10 +81,15 @@ class MentoriaView extends StatelessWidget {
                   height: 30,
                 ),
                 BotonVerde(
-                  width: 200,
-                  text: appLocal.masInformacionBtn,
-                  onPressed: () => NavigatorService.navigateTo(Flurorouter.mentoriaRoute),
-                ),
+                    width: 200,
+                    text: appLocal.masInformacionBtn,
+                    onPressed: () {
+                      Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                        source: '/servicios - Slider MENTORIA',
+                        description: 'Click en Mas Información',
+                        title: 'Servicio Mentoria');
+                      NavigatorService.navigateTo(Flurorouter.mentoriaRoute);
+                    }),
               ],
             ),
           )),

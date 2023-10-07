@@ -2,9 +2,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:jp_director/ui/shared/widgets/progress_ind.dart';
 import 'package:photo_view/photo_view.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
+import '../../../providers/meta_event_provider.dart';
 import '../../shared/labels/dashboard_label.dart';
 
 class ResultadosView extends StatelessWidget {
@@ -24,7 +26,9 @@ class ResultadosView extends StatelessWidget {
             child: MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
-                    onTap: () {
+                    onTap: () async {
+                      await Provider.of<MetaEventProvider>(context, listen: false)
+              .clickEvent(title: 'Click Resultados mini', source: '/resultados', description: 'click en mini imagen $i');
                       _dialogBuilder(context: context, i: i);
                     },
                     child: Image(image: NetworkImage(image)))));

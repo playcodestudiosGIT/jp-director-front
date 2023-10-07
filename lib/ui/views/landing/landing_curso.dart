@@ -75,7 +75,7 @@ class _WebBodyState extends State<WebBody> {
     }
 
     final List<Widget> modulos = widget.curso.modulos.map((e) {
-      return Acordeon(title: e.nombre, content: e.descripcion);
+      return Acordeon(title: e.nombre, content: e.descripcion, service: '',);
     }).toList();
 
     return Column(

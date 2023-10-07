@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:jp_director/providers/meta_event_provider.dart';
 import 'package:jp_director/ui/shared/botones/botonverde.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
+import '../../../providers/export_all_providers.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 
@@ -41,7 +43,9 @@ class AsesoriaMain extends StatelessWidget {
                       if (hScreen > 624) ...[
                         Text(
                           appLocal.asesoria11,
-                          style: (wScreen < 550) ? DashboardLabel.h1 : DashboardLabel.gigant,
+                          style: (wScreen < 550)
+                              ? DashboardLabel.h1
+                              : DashboardLabel.gigant,
                         ),
                         Container(
                           width: 300,
@@ -66,18 +70,14 @@ class AsesoriaMain extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        appLocal.completPers,
-                        textAlign: TextAlign.start,
-                        style: DashboardLabel.h4
-                      ),
+                      Text(appLocal.completPers,
+                          textAlign: TextAlign.start, style: DashboardLabel.h4),
                       const SizedBox(
                         height: 15,
                       ),
                       Text(
                         appLocal.enUnaVideollamada,
                         style: DashboardLabel.paragraph.copyWith(
-                          
                           color: blancoText.withOpacity(0.5),
                         ),
                       ),
@@ -87,7 +87,6 @@ class AsesoriaMain extends StatelessWidget {
                       Text(
                         appLocal.resolvamosEsto,
                         style: DashboardLabel.paragraph.copyWith(
-
                           color: blancoText.withOpacity(0.5),
                         ),
                       ),
@@ -98,7 +97,16 @@ class AsesoriaMain extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              BotonVerde(text: appLocal.quieroMiAsesoriaBtn, onPressed: () => NavigatorService.navigateTo(Flurorouter.asesoriaRoute), width: 200)
+              BotonVerde(
+                  text: appLocal.quieroMiAsesoriaBtn,
+                  onPressed: () {
+                    Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                        source: '/servicios - Slider ASESORIA',
+                        description: 'Click en Quiero mi asesoria',
+                        title: 'Servicio Asesoria');
+                    NavigatorService.navigateTo(Flurorouter.asesoriaRoute);
+                  },
+                  width: 200)
             ],
           ),
         ));

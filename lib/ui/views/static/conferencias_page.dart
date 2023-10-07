@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
 import '../../../providers/auth_provider.dart';
+import '../../../providers/meta_event_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/labels/dashboard_label.dart';
@@ -49,7 +50,8 @@ class _MentoriaBody extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  TopAreaBack(onPress: ()=> NavigatorService.navigateTo('/servicios')),
+                  TopAreaBack(
+                      onPress: () => NavigatorService.navigateTo('/servicios')),
                   Wrap(
                     alignment: WrapAlignment.spaceBetween,
                     children: [
@@ -61,11 +63,9 @@ class _MentoriaBody extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(
-                      appLocal.queHablareEvento,
-                      textAlign: TextAlign.center,
-                      style: DashboardLabel.azulTextH1
-                    ),
+                    child: Text(appLocal.queHablareEvento,
+                        textAlign: TextAlign.center,
+                        style: DashboardLabel.azulTextH1),
                   ),
                   const SizedBox(
                     height: 30,
@@ -75,41 +75,86 @@ class _MentoriaBody extends StatelessWidget {
                     child: Center(
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
-                        constraints: const BoxConstraints(minWidth: 300, maxWidth: 900),
+                        constraints:
+                            const BoxConstraints(minWidth: 300, maxWidth: 900),
                         child: Column(
                           children: [
-                            Acordeon(
-                              title: appLocal.pubOnline,
-                              content: appLocal.pubOnlineResp,
+                            GestureDetector(
+                              onTap: () async {
+                                
+                              },
+                              child: Acordeon(
+                                title: appLocal.pubOnline,
+                                content: appLocal.pubOnlineResp, service: 'conferencias',
+                              ),
                             ),
                             const SizedBox(
                               height: 30,
                             ),
-                            Acordeon(
-                                title: appLocal.actRapidez,
-                                content:
-                                    appLocal.actRapidezResp),
+                            GestureDetector(
+                              onTap: () => Provider.of<MetaEventProvider>(
+                                      context,
+                                      listen: false)
+                                  .clickEvent(
+                                      source: 'v/conferencias',
+                                      description:
+                                          'Click en Actualizaciones y rapidez de la tecnologia',
+                                      title: 'Servicio Conferencia'),
+                              child: Acordeon(
+                                service: 'conferencias',
+                                  title: appLocal.actRapidez,
+                                  content: appLocal.actRapidezResp),
+                            ),
                             const SizedBox(
                               height: 30,
                             ),
-                            Acordeon(
-                                title: appLocal.motivacion,
-                                content:
-                                    appLocal.motivacionResp),
+                            GestureDetector(
+                              onTap: () => Provider.of<MetaEventProvider>(
+                                      context,
+                                      listen: false)
+                                  .clickEvent(
+                                      source: 'v/conferencias',
+                                      description: 'Click en Motivacion',
+                                      title: 'Servicio Conferencia'),
+                              child: Acordeon(
+                                service: 'conferencias',
+                                  title: appLocal.motivacion,
+                                  content: appLocal.motivacionResp),
+                            ),
                             const SizedBox(
                               height: 30,
                             ),
-                            Acordeon(
-                                title: appLocal.casosEsp,
-                                content:
-                                    appLocal.casosEspResp),
+                            GestureDetector(
+                              onTap: () => Provider.of<MetaEventProvider>(
+                                      context,
+                                      listen: false)
+                                  .clickEvent(
+                                      source: 'v/conferencias',
+                                      description:
+                                          'Click en Casos especializados',
+                                      title: 'Servicio Conferencia'),
+                              child: Acordeon(
+                                service: 'conferencias',
+                                  title: appLocal.casosEsp,
+                                  content: appLocal.casosEspResp),
+                            ),
                             const SizedBox(
                               height: 30,
                             ),
-                            Acordeon(
-                                title: appLocal.preguntasfrecuentes,
-                                content:
-                                    appLocal.preguntasfrecuentes3Resp),
+                            GestureDetector(
+                              onTap: () => Provider.of<MetaEventProvider>(
+                                      context,
+                                      listen: false)
+                                  .clickEvent(
+                                      source: 'v/conferencias',
+                                      description:
+                                          'Click en Preguntas frecuentes',
+                                      title: 'Servicio Conferencia'),
+                              child: Acordeon(
+                                service: 'conferencias',
+                                  title: appLocal.preguntasfrecuentes,
+                                  content: appLocal.preguntasfrecuentes3Resp),
+                            ),
                           ],
                         ),
                       ),
@@ -137,10 +182,10 @@ class _LetrasConferencias extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(
-          appLocal.conferencias,
-          style: (wScreen < 600) ? DashboardLabel.semiGigant : DashboardLabel.t1
-        ),
+        Text(appLocal.conferencias,
+            style: (wScreen < 600)
+                ? DashboardLabel.semiGigant
+                : DashboardLabel.t1),
         Container(
           width: 300,
           height: 5,
@@ -190,7 +235,13 @@ class _LetrasConferencias extends StatelessWidget {
         ),
         BotonVerde(
           text: appLocal.estoyListoBtn,
-          onPressed: () => Navigator.pushNamed(context, Flurorouter.conferenciasFormRoute),
+          onPressed: () {
+            Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                source: '/servicios - Pagina CONFERENCIA',
+                description: 'Click en Estoy listo, comencemos',
+                title: 'Servicio Conferencia');
+            Navigator.pushNamed(context, Flurorouter.conferenciasFormRoute);
+          },
           width: 200,
         ),
         const SizedBox(height: 50),

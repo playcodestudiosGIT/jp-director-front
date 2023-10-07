@@ -26,8 +26,7 @@ class LoginButton extends StatelessWidget {
     final authProvider = Provider.of<AuthProvider>(context);
     return GestureDetector(
       onTap: () async {
-        Provider.of<MetaEventProvider>(context, listen: false)
-            .clickEvent(source: 'Login Button', description: 'Usuarios que inician sesión');
+        
         onPress!();
       },
       child: MouseRegion(

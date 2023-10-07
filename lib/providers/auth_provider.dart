@@ -74,6 +74,7 @@ class AuthProvider extends ChangeNotifier {
       isLoading = false;
       notifyListeners();
     }).catchError((e) {
+      print(e);
       isLoading = false;
       NotifServ.showSnackbarError(appLocal.credencialesInvalidas, Colors.red);
       notifyListeners();

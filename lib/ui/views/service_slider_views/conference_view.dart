@@ -4,6 +4,8 @@ import 'package:jp_director/ui/shared/botones/botonverde.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
+import '../../../providers/export_all_providers.dart';
+import '../../../providers/meta_event_provider.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/labels/dashboard_label.dart';
 
@@ -32,7 +34,9 @@ class ConferenceView extends StatelessWidget {
                       children: [
                         Text(
                           appLocal.conferencias,
-                          style: (wScreen < 550) ? DashboardLabel.h1 : DashboardLabel.gigant,
+                          style: (wScreen < 550)
+                              ? DashboardLabel.h1
+                              : DashboardLabel.gigant,
                         ),
                         Container(
                           width: 300,
@@ -59,7 +63,6 @@ class ConferenceView extends StatelessWidget {
                         Text(
                           appLocal.contratamePara,
                           style: DashboardLabel.paragraph.copyWith(
-                            
                             color: blancoText.withOpacity(0.5),
                           ),
                         ),
@@ -70,7 +73,17 @@ class ConferenceView extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                BotonVerde(text: appLocal.agendarBtn, onPressed: ()=> NavigatorService.navigateTo(Flurorouter.conferenciasRoute), width: 100)
+                BotonVerde(
+                    text: appLocal.agendarBtn,
+                    onPressed: () {
+                      Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                        source: '/servicios - Slider CONFERENCIA',
+                        description: 'Click en Agendar',
+                        title: 'Servicio Conferencia');
+                      NavigatorService.navigateTo(
+                          Flurorouter.conferenciasRoute);
+                    },
+                    width: 100)
               ],
             ),
           )),

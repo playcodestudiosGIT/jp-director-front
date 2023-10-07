@@ -100,7 +100,7 @@ class VisitorHandlers {
 
   static Handler home = Handler(handlerFunc: (context, params) {
     final page = params['page']!.first;
-
+    print(page);
     Provider.of<SideBarProvider>(context!, listen: false)
         .setCurrentPageUrl(Flurorouter.rootRoute);
     if (page.isEmpty) {

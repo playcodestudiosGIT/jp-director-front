@@ -44,7 +44,6 @@ dependencies:
     sdk: flutter
   flutter_secure_storage: ^8.0.0
   font_awesome_flutter: ^10.4.0
-  getwidget: ^3.1.1
   google_fonts: ^5.1.0
   http: ^1.1.0
   intl: ^0.18.1

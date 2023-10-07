@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:jp_director/ui/shared/botones/botonverde.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:jp_director/ui/shared/widgets/top_area_back.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
+import '../../../providers/meta_event_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/widgets/acordion.dart';
@@ -74,15 +76,16 @@ class _AsesoriaBody extends StatelessWidget {
                             Acordeon(
                               title: appLocal.xdondeComenzar,
                               content: appLocal.xdondeComenzarResp,
+                              service: 'Asesoria',
                             ),
                             const SizedBox(
                               height: 30,
                             ),
-                            Acordeon(title: appLocal.queHablaremos, content: appLocal.queHablaremosResp),
+                            Acordeon(title: appLocal.queHablaremos, content: appLocal.queHablaremosResp, service: 'Asesoria',),
                             const SizedBox(
                               height: 30,
                             ),
-                            Acordeon(title: appLocal.preguntasfrecuentes, content: appLocal.preguntasfrecuentesResp),
+                            Acordeon(title: appLocal.preguntasfrecuentes, content: appLocal.preguntasfrecuentesResp, service: 'Asesoria',),
                           ],
                         ),
                       ),
@@ -177,7 +180,11 @@ class _LetrasAsesoria extends StatelessWidget {
         ),
         BotonVerde(
           text: appLocal.agendarBtn,
-          onPressed: () => NavigatorService.navigateTo(Flurorouter.agendarRoute),
+          onPressed: ()async  {
+            await Provider.of<MetaEventProvider>(context, listen: false)
+              .clickEvent(title: 'Click Asesoria Agendar', source: '/v/asesoria', description: 'Click en boton agendar asesoria');
+          NavigatorService.navigateTo(Flurorouter.agendarRoute);
+          } ,
           width: 100,
         ),
         SizedBox(

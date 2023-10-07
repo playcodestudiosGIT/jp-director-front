@@ -92,7 +92,9 @@ class ContactoView extends StatelessWidget {
                                     appLocal.descargaRegaloBtn,
                                     style: DashboardLabel.paragraph,
                                   ),
-                                  onPressed: () {
+                                  onPressed: ()async  {
+                                    await Provider.of<MetaEventProvider>(context, listen: false)
+              .clickEvent(title: 'Click Descarga RegaLo', source: '/contacto', description: 'Click en descarga regalo sin llenar datos');
                                     showDialog(
                                       context: context,
                                       builder: (context) =>

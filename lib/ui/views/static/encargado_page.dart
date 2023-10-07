@@ -68,6 +68,7 @@ class _EncargadoBody extends StatelessWidget {
                         child: Column(
                           children: [
                             Acordeon(
+                              service: 'Encargado',
                               title: appLocal.disenoEstrat,
                               content:
                                   appLocal.disenoEstratResp,
@@ -76,6 +77,7 @@ class _EncargadoBody extends StatelessWidget {
                               height: 30,
                             ),
                             Acordeon(
+                              service: 'Encargado',
                                 title: appLocal.confCampanas,
                                 content:
                                     appLocal.confCampanasResp),
@@ -83,6 +85,7 @@ class _EncargadoBody extends StatelessWidget {
                               height: 30,
                             ),
                             Acordeon(
+                              service: 'Encargado',
                                 title: appLocal.optimizacion,
                                 content:
                                     appLocal.optimizacionResp),
@@ -90,6 +93,7 @@ class _EncargadoBody extends StatelessWidget {
                               height: 30,
                             ),
                             Acordeon(
+                              service: 'Encargado',
                                 title: appLocal.porQueYo,
                                 content:
                                     appLocal.porQueYoResp),
@@ -97,6 +101,7 @@ class _EncargadoBody extends StatelessWidget {
                               height: 30,
                             ),
                             Acordeon(
+                              service: 'Encargado',
                                 title: appLocal.preguntasfrecuentes,
                                 content:
                                     appLocal.preguntasfrecuentes2Resp),
