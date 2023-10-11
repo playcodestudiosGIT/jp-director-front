@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:jp_director/ui/shared/botones/botonverde.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:jp_director/ui/shared/widgets/top_area_back.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
+import '../../../providers/meta_event_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/widgets/acordion.dart';
@@ -46,12 +48,14 @@ class _EncargadoBody extends StatelessWidget {
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TopAreaBack(onPress: ()=> NavigatorService.navigateTo('/servicios')),
+                  TopAreaBack(
+                      onPress: () => NavigatorService.navigateTo('/servicios')),
                   Wrap(
                     alignment: WrapAlignment.spaceBetween,
                     children: [
                       ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 600, maxHeight: 912),
+                        constraints:
+                            const BoxConstraints(maxWidth: 600, maxHeight: 912),
                         child: const _LetrasAsesoria(),
                       ),
                     ],
@@ -64,47 +68,43 @@ class _EncargadoBody extends StatelessWidget {
                     child: Center(
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
-                        constraints: const BoxConstraints(minWidth: 300, maxWidth: 900),
+                        constraints:
+                            const BoxConstraints(minWidth: 300, maxWidth: 900),
                         child: Column(
                           children: [
                             Acordeon(
                               service: 'Encargado',
                               title: appLocal.disenoEstrat,
-                              content:
-                                  appLocal.disenoEstratResp,
+                              content: appLocal.disenoEstratResp,
                             ),
                             const SizedBox(
                               height: 30,
                             ),
                             Acordeon(
-                              service: 'Encargado',
+                                service: 'Encargado',
                                 title: appLocal.confCampanas,
-                                content:
-                                    appLocal.confCampanasResp),
+                                content: appLocal.confCampanasResp),
                             const SizedBox(
                               height: 30,
                             ),
                             Acordeon(
-                              service: 'Encargado',
+                                service: 'Encargado',
                                 title: appLocal.optimizacion,
-                                content:
-                                    appLocal.optimizacionResp),
+                                content: appLocal.optimizacionResp),
                             const SizedBox(
                               height: 30,
                             ),
                             Acordeon(
-                              service: 'Encargado',
+                                service: 'Encargado',
                                 title: appLocal.porQueYo,
-                                content:
-                                    appLocal.porQueYoResp),
+                                content: appLocal.porQueYoResp),
                             const SizedBox(
                               height: 30,
                             ),
                             Acordeon(
-                              service: 'Encargado',
+                                service: 'Encargado',
                                 title: appLocal.preguntasfrecuentes,
-                                content:
-                                    appLocal.preguntasfrecuentes2Resp),
+                                content: appLocal.preguntasfrecuentes2Resp),
                           ],
                         ),
                       ),
@@ -114,7 +114,8 @@ class _EncargadoBody extends StatelessWidget {
                     height: 30,
                   ),
                   Container(
-                    constraints: const BoxConstraints(maxHeight: 100, maxWidth: 980),
+                    constraints:
+                        const BoxConstraints(maxHeight: 100, maxWidth: 980),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 40, right: 20),
                       child: Text(
@@ -129,7 +130,15 @@ class _EncargadoBody extends StatelessWidget {
                   ),
                   BotonVerde(
                     text: appLocal.empezamosBtn,
-                    onPressed: () => Navigator.pushNamed(context, Flurorouter.encargadoFormRoute),
+                    onPressed: () {
+                      Provider.of<MetaEventProvider>(context, listen: false)
+                          .clickEvent(
+                              source: '/v/encargado - Ser el encargado',
+                              description: 'Click en Empezamos?',
+                              title: 'Servicio Ser el encargado');
+                      Navigator.pushNamed(
+                          context, Flurorouter.encargadoFormRoute);
+                    },
                     width: 120,
                   ),
                   const SizedBox(
@@ -155,7 +164,8 @@ class _LetrasAsesoria extends StatelessWidget {
       children: [
         Text(
           appLocal.serElEncargado,
-          style: (wScreen < 600)?DashboardLabel.h2: DashboardLabel.semiGigant,
+          style:
+              (wScreen < 600) ? DashboardLabel.h2 : DashboardLabel.semiGigant,
         ),
         Container(
           width: 320,
@@ -168,28 +178,28 @@ class _LetrasAsesoria extends StatelessWidget {
           ])),
         ),
         // if (wScreen < 1200)
-          Stack(
-            children: [
-              Positioned(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 500),
-                  child: const Image(
-                    image: bgEncargado,
-                    width: 400,
-                    height: 400,
-                  ),
+        Stack(
+          children: [
+            Positioned(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 500),
+                child: const Image(
+                  image: bgEncargado,
+                  width: 400,
+                  height: 400,
                 ),
               ),
-              const Positioned(
-                top: 100,
-                right: 40,
-                child: Image(
-                  image: adsCircle,
-                  width: 100,
-                ),
+            ),
+            const Positioned(
+              top: 100,
+              right: 40,
+              child: Image(
+                image: adsCircle,
+                width: 100,
               ),
-            ],
-          ),
+            ),
+          ],
+        ),
         const SizedBox(
           height: 30,
         ),
@@ -224,7 +234,13 @@ class _LetrasAsesoria extends StatelessWidget {
         ),
         BotonVerde(
           text: appLocal.estoyListoBtn,
-          onPressed: () => NavigatorService.navigateTo(Flurorouter.encargadoFormRoute),
+          onPressed: () {
+            Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                source: '/v/encargado - Ser el encargado',
+                description: 'Click en Estoy listo, comencemos.',
+                title: 'Servicio Ser el encargado');
+            NavigatorService.navigateTo(Flurorouter.encargadoFormRoute);
+          },
           width: 200,
         ),
         Image(

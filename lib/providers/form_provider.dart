@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:jp_director/models/formulario.dart';
 import 'package:jp_director/models/http/forms_response.dart';
+import 'package:jp_director/providers/meta_event_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:universal_html/html.dart' as html;
 
 import '../api/jp_api.dart';
@@ -164,7 +166,7 @@ class FormProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> sendForm() async {
+  Future<void> sendForm(BuildContext context) async {
     final data = {
       "rootform": rootForm,
       "email": email,
@@ -181,6 +183,11 @@ class FormProvider extends ChangeNotifier {
       "agree": agree
     };
     try {
+      Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+          source: '/form/$rootForm',
+          description:
+              'nombre: $nombre - correo: $email - telefono: $telefono - business: $negocio - operationyears: $opYear - facebook: $facebook - tiktok: $tiktok - isOnline: $isOnlineConference',
+          title: 'Formulario $rootForm Completado');
       await JpApi.post('/forms/', data);
 
       isLoading = false;

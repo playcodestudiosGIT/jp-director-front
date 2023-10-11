@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:jp_director/ui/views/dashboard/start_here_view.dart';
+import 'package:jp_director/ui/views/static/calendly_redirect.dart';
 import '../ui/shared/widgets/progress_ind.dart';
-import '../ui/views/static/asesoria_thx_view.dart';
 import '../ui/views/system/soporte_view.dart';
 import 'router.dart';
 
@@ -51,6 +51,7 @@ class VisitorHandlers {
       return const ConferenciasPage();
     },
   );
+
   static Handler conferenciasForm = Handler(
     handlerFunc: (context, params) {
       return const FormulariosPage(
@@ -98,9 +99,25 @@ class VisitorHandlers {
     },
   );
 
+  static Handler redirectCalendly = Handler(
+    handlerFunc: (context, params) {
+      final title = params['event_type_name']?.first ?? '';
+      final String? startTime = params['event_start_time']?.first;
+      final name = params['invitee_full_name']?.first ?? '';
+      final email = params['invitee_email']?.first ?? '';
+      final phone = params['text_reminder_number']?.first ?? '';
+      return CalendlyRedirect(
+        date: DateTime.parse(startTime ?? '1900-10-19'),
+        email: email,
+        fullname: name,
+        title: title,
+        phone: phone
+      );
+    },
+  );
+
   static Handler home = Handler(handlerFunc: (context, params) {
     final page = params['page']!.first;
-    print(page);
     Provider.of<SideBarProvider>(context!, listen: false)
         .setCurrentPageUrl(Flurorouter.rootRoute);
     if (page.isEmpty) {

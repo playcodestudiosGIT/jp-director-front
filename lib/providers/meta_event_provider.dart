@@ -5,8 +5,7 @@ class MetaEventProvider extends ChangeNotifier {
   Future<bool> regaloEvent(
       {required String email, required String phone}) async {
     try {
-      final resp =
-          await JpApi.post('/events/regalo', {"email": email, "phone": phone});
+      await JpApi.post('/events/regalo', {"email": email, "phone": phone});
           print('evento creado');
       return true;
     } catch (e) {
@@ -19,7 +18,7 @@ class MetaEventProvider extends ChangeNotifier {
       required String name,
       required String lastname}) async {
     try {
-      final resp = await JpApi.post('/events/registro',
+      await JpApi.post('/events/registro',
           {"email": email, "name": name, "lastname": lastname});
       print('evento creado');
       return true;
@@ -31,11 +30,11 @@ class MetaEventProvider extends ChangeNotifier {
   Future<bool> clickEvent(
       {required String source,
       required String description,
-      required String title}) async {
+      required String title, String email = 'visitor@visitor.com'}) async {
 
     try {
-      final resp = await JpApi.post('/events/click',
-          {"source": source, "description": description, "title": title});
+      await JpApi.post('/events/click',
+          {"source": source, "description": description, "title": title, "email": email});
           
       print('evento creado');
       return true;

@@ -16,6 +16,7 @@ import '../../../generated/l10n.dart';
 import '../../../models/curso.dart';
 import '../../../models/progress.dart';
 import '../../../providers/all_cursos_provider.dart';
+import '../../../providers/meta_event_provider.dart';
 import '../../../providers/users_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
@@ -55,19 +56,30 @@ class _CourseViewState extends State<CourseView> {
   void initState() {
     curso = Provider.of<AllCursosProvider>(context, listen: false).cursoView;
     final user = Provider.of<AuthProvider>(context, listen: false).user;
-    prog = user!.progress.where((element) => element.moduloId == curso.modulos[widget.videoIndex].id).first;
+    prog = user!.progress
+        .where((element) =>
+            element.moduloId == curso.modulos[widget.videoIndex].id)
+        .first;
     // isComplete = prog.isComplete;
     Provider.of<AuthProvider>(context, listen: false).isAutenticated();
     final Uri url = Uri.parse(curso.modulos[widget.videoIndex].video);
     videoPlayerController = VideoPlayerController.networkUrl(url,
-        videoPlayerOptions: VideoPlayerOptions(webOptions: const VideoPlayerWebOptions(allowContextMenu: false, allowRemotePlayback: true)));
-    
+        videoPlayerOptions: VideoPlayerOptions(
+            webOptions: const VideoPlayerWebOptions(
+                allowContextMenu: false, allowRemotePlayback: true)));
+
     chewieController = ChewieController(
         startAt: Duration(seconds: prog.marker),
-        placeholder: Container(decoration: const BoxDecoration(image: DecorationImage(image: logoGrande))),
+        placeholder: Container(
+            decoration:
+                const BoxDecoration(image: DecorationImage(image: logoGrande))),
         hideControlsTimer: const Duration(milliseconds: 1000),
-        materialProgressColors: ChewieProgressColors(bufferedColor: azulText.withOpacity(0.3), playedColor: azulText, backgroundColor: bgColor),
-        cupertinoProgressColors: ChewieProgressColors(bufferedColor: bgColor, backgroundColor: bgColor),
+        materialProgressColors: ChewieProgressColors(
+            bufferedColor: azulText.withOpacity(0.3),
+            playedColor: azulText,
+            backgroundColor: bgColor),
+        cupertinoProgressColors: ChewieProgressColors(
+            bufferedColor: bgColor, backgroundColor: bgColor),
         videoPlayerController: videoPlayerController,
         autoPlay: false,
         looping: false,
@@ -75,31 +87,47 @@ class _CourseViewState extends State<CourseView> {
         autoInitialize: true);
 
     videoPlayerController.addListener(() async {
-      if (videotime == videoPlayerController.value.duration.inSeconds && isComplete == false) {
+      if (videotime == videoPlayerController.value.duration.inSeconds &&
+          isComplete == false) {
         isComplete = true;
-        Provider.of<AuthProvider>(context, listen: false).updateProg(moduloId: curso.modulos[widget.videoIndex].id, marker: 0, isComplete: true);
+        Provider.of<AuthProvider>(context, listen: false).updateProg(
+            moduloId: curso.modulos[widget.videoIndex].id,
+            marker: 0,
+            isComplete: true);
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          showDialog(barrierColor: Colors.transparent, context: context, builder: (context) => CongratDialog(cursoNombre: curso.nombre));
+          showDialog(
+              barrierColor: Colors.transparent,
+              context: context,
+              builder: (context) => CongratDialog(cursoNombre: curso.nombre));
         });
       }
     });
 
     videoPlayerController.addListener(() async {
       if (videotime == prog.marker + 30) {
-        Provider.of<AuthProvider>(context, listen: false).updateProg(moduloId: prog.moduloId, marker: videotime - 1, isComplete: prog.isComplete);
+        Provider.of<AuthProvider>(context, listen: false).updateProg(
+            moduloId: prog.moduloId,
+            marker: videotime - 1,
+            isComplete: prog.isComplete);
         prog.marker = videotime;
       }
     });
     videoPlayerController.addListener(() async {
       if (videotime == prog.marker + 30) {
-        Provider.of<AuthProvider>(context, listen: false).updateProg(moduloId: prog.moduloId, marker: videotime - 1, isComplete: prog.isComplete);
+        Provider.of<AuthProvider>(context, listen: false).updateProg(
+            moduloId: prog.moduloId,
+            marker: videotime - 1,
+            isComplete: prog.isComplete);
         prog.marker = videotime;
       }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (isComplete) {
-        showDialog(barrierColor: Colors.transparent, context: context, builder: (context) => CongratDialog(cursoNombre: curso.nombre));
+        showDialog(
+            barrierColor: Colors.transparent,
+            context: context,
+            builder: (context) => CongratDialog(cursoNombre: curso.nombre));
       }
       setState(() {
         isComplete = false;
@@ -132,7 +160,9 @@ class _CourseViewState extends State<CourseView> {
     }
 
     for (var i in ids) {
-      progresses.add(authProvider.user!.progress.where((element) => element.moduloId == i).first);
+      progresses.add(authProvider.user!.progress
+          .where((element) => element.moduloId == i)
+          .first);
     }
 
     final total = progresses.length;
@@ -163,7 +193,9 @@ class _CourseViewState extends State<CourseView> {
                 width: wScreen,
                 height: hScreen,
                 // color: bgColor,
-                padding: (wScreen < 715) ? const EdgeInsets.only(left: 0) : const EdgeInsets.only(left: 10),
+                padding: (wScreen < 715)
+                    ? const EdgeInsets.only(left: 0)
+                    : const EdgeInsets.only(left: 10),
                 child: ListView(children: [
                   Column(children: [
                     const SizedBox(
@@ -175,9 +207,10 @@ class _CourseViewState extends State<CourseView> {
                           if (wScreen > 325) const SizedBox(width: 10),
                           if (wScreen <= 325) const SizedBox(width: 5),
                           IconButton(
-                            splashRadius: 18,
+                              splashRadius: 18,
                               onPressed: () {
-                                NavigatorService.replaceTo(Flurorouter.clienteMisCursosDash);
+                                NavigatorService.replaceTo(
+                                    Flurorouter.clienteMisCursosDash);
                               },
                               icon: const Icon(
                                 Icons.arrow_back,
@@ -187,7 +220,9 @@ class _CourseViewState extends State<CourseView> {
                           const SizedBox(width: 10),
                           Text(
                             curso.nombre,
-                            style: (wScreen <= 500) ? DashboardLabel.h4.copyWith(color: blancoText) : DashboardLabel.h1.copyWith(color: blancoText),
+                            style: (wScreen <= 500)
+                                ? DashboardLabel.h4.copyWith(color: blancoText)
+                                : DashboardLabel.h1.copyWith(color: blancoText),
                           ),
                           const Spacer(),
                           Row(
@@ -196,9 +231,15 @@ class _CourseViewState extends State<CourseView> {
                               const SizedBox(width: 8),
                               if (percent == 100.0 && cert.urlPdf == 'urlPdf')
                                 TextButton(
-                                    style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
+                                    style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStatePropertyAll(
+                                                blancoText.withOpacity(0.1))),
                                     onPressed: () async {
-                                      await showDialog(context: context, builder: (context) => const GenCertDialog());
+                                      await showDialog(
+                                          context: context,
+                                          builder: (context) =>
+                                              const GenCertDialog());
                                       authProvider.isAutenticated();
                                     },
                                     child: (wScreen < 500)
@@ -208,19 +249,36 @@ class _CourseViewState extends State<CourseView> {
                                           )
                                         : Text(
                                             appLocal.certificadoBtn,
-                                            style: DashboardLabel.paragraph.copyWith(color: azulText),
+                                            style: DashboardLabel.paragraph
+                                                .copyWith(color: azulText),
                                           )),
-                              if (percent == 100.0 && cert.urlPdf != 'urlPdf') ...[
+                              if (percent == 100.0 &&
+                                  cert.urlPdf != 'urlPdf') ...[
                                 if (wScreen >= 400)
                                   TextButton(
-                                      style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
+                                      style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStatePropertyAll(
+                                                  blancoText.withOpacity(0.1))),
                                       onPressed: () {
+                                        Provider.of<MetaEventProvider>(context,
+                                                listen: false)
+                                            .clickEvent(
+                                                email:
+                                                    authProvider.user!.correo,
+                                                source:
+                                                    'user/dashboard/${curso.id}',
+                                                description:
+                                                    'Click en Certificado',
+                                                title:
+                                                    'Generó Certificado ${curso.nombre} - ${curso.modulos[widget.videoIndex].nombre}');
                                         final Uri url = Uri.parse(cert.urlPdf);
                                         launchUrl(url);
                                       },
                                       child: Text(
                                         appLocal.certificadoBtn,
-                                        style: DashboardLabel.paragraph.copyWith(color: azulText),
+                                        style: DashboardLabel.paragraph
+                                            .copyWith(color: azulText),
                                       )),
                                 if (wScreen < 400)
                                   BotonRedondoIcono(
@@ -228,6 +286,16 @@ class _CourseViewState extends State<CourseView> {
                                     iconColor: bgColor,
                                     icon: Icons.workspace_premium_outlined,
                                     onTap: () {
+                                      Provider.of<MetaEventProvider>(context,
+                                              listen: false)
+                                          .clickEvent(
+                                              email: authProvider.user!.correo,
+                                              source:
+                                                  'user/dashboard/${curso.id}',
+                                              description:
+                                                  'Click en Certificado',
+                                              title:
+                                                  'Generó Certificado ${curso.nombre} - ${curso.modulos[widget.videoIndex].nombre}');
                                       final Uri url = Uri.parse(cert.urlPdf);
                                       launchUrl(url);
                                     },
@@ -247,18 +315,41 @@ class _CourseViewState extends State<CourseView> {
                                                 size: 20,
                                               )
                                             : Column(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
                                                 children: [
                                                   const SizedBox(width: 20),
                                                   Row(
-                                                    mainAxisAlignment: MainAxisAlignment.center,
-                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
                                                     children: [
-                                                      Text(percent.toStringAsFixed(0),
-                                                          textAlign: TextAlign.center,
-                                                          style: DashboardLabel.mini.copyWith(color: blancoText, fontSize: 10)),
-                                                      Text('%', textAlign: TextAlign.center, style: DashboardLabel.mini.copyWith(color: blancoText)),
+                                                      Text(
+                                                          percent
+                                                              .toStringAsFixed(
+                                                                  0),
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: DashboardLabel
+                                                              .mini
+                                                              .copyWith(
+                                                                  color:
+                                                                      blancoText,
+                                                                  fontSize:
+                                                                      10)),
+                                                      Text('%',
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: DashboardLabel
+                                                              .mini
+                                                              .copyWith(
+                                                                  color:
+                                                                      blancoText)),
                                                     ],
                                                   ),
                                                 ],
@@ -270,8 +361,11 @@ class _CourseViewState extends State<CourseView> {
                                     child: CircularProgressIndicator(
                                       value: percent / 100,
 
-                                      color: (percent == 100.0) ? Colors.green : azulText,
-                                      backgroundColor: Colors.white.withOpacity(0.3),
+                                      color: (percent == 100.0)
+                                          ? Colors.green
+                                          : azulText,
+                                      backgroundColor:
+                                          Colors.white.withOpacity(0.3),
 
                                       // valueColor: ,
                                     ),
@@ -294,28 +388,35 @@ class _CourseViewState extends State<CourseView> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            constraints: const BoxConstraints(maxWidth: 1200, minWidth: 1000),
+                            constraints: const BoxConstraints(
+                                maxWidth: 1200, minWidth: 1000),
                             height: hScreen - 150,
                             child: SingleChildScrollView(
                               child: WhiteCard(
-                                  title: curso.modulos[widget.videoIndex].nombre,
+                                  title:
+                                      curso.modulos[widget.videoIndex].nombre,
                                   child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Expanded(
                                           child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           AspectRatio(
                                               aspectRatio: 16 / 9,
                                               child: Container(
-                                                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                                                  margin: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 15),
                                                   width: double.infinity,
                                                   // height: 400,                                          // color: Colors.black,
                                                   child: Builder(
                                                     builder: (context) {
                                                       return Chewie(
-                                                        controller: chewieController,
+                                                        controller:
+                                                            chewieController,
                                                       );
                                                     },
                                                   ))),
@@ -323,31 +424,44 @@ class _CourseViewState extends State<CourseView> {
                                             height: 15,
                                           ),
                                           Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 15),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 15),
                                               child: Row(
                                                 children: [
-                                                  if(curso.modulos[widget.videoIndex].idDriveFolder != '')
-                                                  CustomButton(
-                                                    text: appLocal.verMaterialBtn,
-                                                    onPress: () {
-                                                      final url = Uri.parse(
-                                                          'https://drive.google.com/drive/folders/${curso.modulos[widget.videoIndex].idDriveFolder}?usp=sharing');
-                                                      launchUrl(url);
-                                                    },
-                                                    width: 200,
-                                                    icon: Icons.download_outlined,
-                                                  ),
-                                                  const SizedBox(width: 15),
-                                                  if(curso.modulos[widget.videoIndex].idDriveZip != '')
-                                                  BotonRedondoIcono(
-                                                      fillColor: azulText,
-                                                      iconColor: bgColor,
-                                                      icon: Icons.file_download,
-                                                      onTap: () {
+                                                  if (curso
+                                                          .modulos[
+                                                              widget.videoIndex]
+                                                          .idDriveFolder !=
+                                                      '')
+                                                    CustomButton(
+                                                      text: appLocal
+                                                          .verMaterialBtn,
+                                                      onPress: () {
                                                         final url = Uri.parse(
-                                                            'https://drive.google.com/uc?id=${curso.modulos[widget.videoIndex].idDriveZip}&export=download');
+                                                            'https://drive.google.com/drive/folders/${curso.modulos[widget.videoIndex].idDriveFolder}?usp=sharing');
                                                         launchUrl(url);
-                                                      }),
+                                                      },
+                                                      width: 200,
+                                                      icon: Icons
+                                                          .download_outlined,
+                                                    ),
+                                                  const SizedBox(width: 15),
+                                                  if (curso
+                                                          .modulos[
+                                                              widget.videoIndex]
+                                                          .idDriveZip !=
+                                                      '')
+                                                    BotonRedondoIcono(
+                                                        fillColor: azulText,
+                                                        iconColor: bgColor,
+                                                        icon:
+                                                            Icons.file_download,
+                                                        onTap: () {
+                                                          final url = Uri.parse(
+                                                              'https://drive.google.com/uc?id=${curso.modulos[widget.videoIndex].idDriveZip}&export=download');
+                                                          launchUrl(url);
+                                                        }),
                                                 ],
                                               )),
                                           const SizedBox(
@@ -363,10 +477,19 @@ class _CourseViewState extends State<CourseView> {
                                           child: Column(
                                             children: [
                                               ...modulos.map((e) {
-                                                final user = Provider.of<AuthProvider>(context).user;
-                                                int i = curso.modulos.indexOf(e);
+                                                final user =
+                                                    Provider.of<AuthProvider>(
+                                                            context)
+                                                        .user;
+                                                int i =
+                                                    curso.modulos.indexOf(e);
 
-                                                final Progress prog = user!.progress.where((element) => element.moduloId == e.id).first;
+                                                final Progress prog = user!
+                                                    .progress
+                                                    .where((element) =>
+                                                        element.moduloId ==
+                                                        e.id)
+                                                    .first;
                                                 return Column(
                                                   // crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
@@ -376,33 +499,74 @@ class _CourseViewState extends State<CourseView> {
                                                           width: 35,
                                                           height: 35,
                                                           child: Checkbox(
-                                                            fillColor: MaterialStateProperty.all(azulText.withOpacity(0.1)),
-                                                            checkColor: azulText,
-                                                            value: prog.isComplete,
-                                                            onChanged: (value) async {
-                                                              await Provider.of<AuthProvider>(context, listen: false)
-                                                                  .updateProg(moduloId: e.id, marker: videotime, isComplete: !prog.isComplete);
-                                                                  
-                                                              if (context.mounted) {
+                                                            fillColor: MaterialStateProperty
+                                                                .all(azulText
+                                                                    .withOpacity(
+                                                                        0.1)),
+                                                            checkColor:
+                                                                azulText,
+                                                            value:
+                                                                prog.isComplete,
+                                                            onChanged:
+                                                                (value) async {
+                                                              await Provider.of<
+                                                                          AuthProvider>(
+                                                                      context,
+                                                                      listen:
+                                                                          false)
+                                                                  .updateProg(
+                                                                      moduloId:
+                                                                          e.id,
+                                                                      marker:
+                                                                          videotime,
+                                                                      isComplete:
+                                                                          !prog
+                                                                              .isComplete);
+
+                                                              if (context
+                                                                  .mounted) {
                                                                 setState(() {});
                                                               }
                                                             },
                                                           )),
                                                       title: Text(
                                                         e.nombre,
-                                                        style: DashboardLabel.paragraph,
+                                                        style: DashboardLabel
+                                                            .paragraph,
                                                       ),
                                                       subtitle: Text(
                                                         e.descripcion,
-                                                        style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5)),
+                                                        style: DashboardLabel
+                                                            .mini
+                                                            .copyWith(
+                                                                color: blancoText
+                                                                    .withOpacity(
+                                                                        0.5)),
                                                       ),
                                                       onTap: () {
-                                                        chewieController.togglePause();
-                                                        NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/$i');
+                                                        chewieController
+                                                            .togglePause();
+                                                        Provider.of<MetaEventProvider>(
+                                                                context,
+                                                                listen: false)
+                                                            .clickEvent(
+                                                                email:
+                                                                    authProvider
+                                                                        .user!
+                                                                        .correo,
+                                                                source:
+                                                                    'user/dashboard/${curso.id}',
+                                                                description:
+                                                                    'Click en Modulo ${curso.modulos[i].nombre} de ${curso.nombre}',
+                                                                title:
+                                                                    'Click en Modulo ${curso.nombre} - ${curso.modulos[i].nombre}');
+                                                        NavigatorService.replaceTo(
+                                                            '${Flurorouter.curso}/${curso.id}/$i');
                                                       },
                                                     ),
                                                     Divider(
-                                                      color: blancoText.withOpacity(0.5),
+                                                      color: blancoText
+                                                          .withOpacity(0.5),
                                                     ),
                                                   ],
                                                 );
@@ -430,7 +594,10 @@ class _CourseViewState extends State<CourseView> {
                                     GestureDetector(
                                       onSecondaryTap: () {},
                                       child: Container(
-                                          margin: (wScreen < 390) ? const EdgeInsets.only(left: 0) : const EdgeInsets.symmetric(horizontal: 15),
+                                          margin: (wScreen < 390)
+                                              ? const EdgeInsets.only(left: 0)
+                                              : const EdgeInsets.symmetric(
+                                                  horizontal: 15),
                                           width: double.infinity,
                                           height: 400,
                                           // color: Colors.black,
@@ -443,33 +610,61 @@ class _CourseViewState extends State<CourseView> {
                                     const SizedBox(
                                       height: 15,
                                     ),
-                                    
                                     Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 15),
                                         child: Row(
                                           children: [
-                                            if(curso.modulos[widget.videoIndex].idDriveFolder != '')
-                                            CustomButton(
-                                              text: appLocal.verMaterialBtn,
-                                              onPress: () {
-                                                final url = Uri.parse(
-                                                    'https://drive.google.com/drive/folders/${curso.modulos[widget.videoIndex].idDriveFolder}?usp=sharing');
-                                                launchUrl(url);
-                                              },
-                                              width: 200,
-                                              icon: Icons.download_outlined,
-                                            ),
-                                            const SizedBox(width: 15),
-                                            if(curso.modulos[widget.videoIndex].idDriveZip != '')
-                                            BotonRedondoIcono(
-                                                fillColor: azulText,
-                                                iconColor: bgColor,
-                                                icon: Icons.file_download,
-                                                onTap: () {
+                                            if (curso.modulos[widget.videoIndex]
+                                                    .idDriveFolder !=
+                                                '')
+                                              CustomButton(
+                                                text: appLocal.verMaterialBtn,
+                                                onPress: () {
+                                                  Provider.of<MetaEventProvider>(
+                                                          context,
+                                                          listen: false)
+                                                      .clickEvent(
+                                                          email: authProvider
+                                                              .user!.correo,
+                                                          source:
+                                                              'user/dashboard/${curso.id}',
+                                                          description:
+                                                              'Click en Ver Material',
+                                                          title:
+                                                              'Vió Material ${curso.nombre} - ${curso.modulos[widget.videoIndex].nombre}');
                                                   final url = Uri.parse(
-                                                      'https://drive.google.com/uc?id=${curso.modulos[widget.videoIndex].idDriveZip}&export=download');
+                                                      'https://drive.google.com/drive/folders/${curso.modulos[widget.videoIndex].idDriveFolder}?usp=sharing');
                                                   launchUrl(url);
-                                                }),
+                                                },
+                                                width: 200,
+                                                icon: Icons.download_outlined,
+                                              ),
+                                            const SizedBox(width: 15),
+                                            if (curso.modulos[widget.videoIndex]
+                                                    .idDriveZip !=
+                                                '')
+                                              BotonRedondoIcono(
+                                                  fillColor: azulText,
+                                                  iconColor: bgColor,
+                                                  icon: Icons.file_download,
+                                                  onTap: () {
+                                                    Provider.of<MetaEventProvider>(
+                                                            context,
+                                                            listen: false)
+                                                        .clickEvent(
+                                                            email: authProvider
+                                                                .user!.correo,
+                                                            source:
+                                                                'user/dashboard/${curso.id}',
+                                                            description:
+                                                                'Click en Descargar Material',
+                                                            title:
+                                                                'Descargó Material ${curso.nombre} - ${curso.modulos[widget.videoIndex].nombre}');
+                                                    final url = Uri.parse(
+                                                        'https://drive.google.com/uc?id=${curso.modulos[widget.videoIndex].idDriveZip}&export=download');
+                                                    launchUrl(url);
+                                                  }),
                                           ],
                                         )),
                                     const SizedBox(
@@ -484,10 +679,16 @@ class _CourseViewState extends State<CourseView> {
                                 child: Column(
                                   children: [
                                     ...modulos.map((e) {
-                                      final user = Provider.of<AuthProvider>(context).user;
+                                      final user =
+                                          Provider.of<AuthProvider>(context)
+                                              .user;
                                       int i = curso.modulos.indexOf(e);
-                                      final Progress prog = user!.progress.where((element) => element.moduloId == e.id).first;
-                                      Provider.of<AllCursosProvider>(context).videoIndex = i;
+                                      final Progress prog = user!.progress
+                                          .where((element) =>
+                                              element.moduloId == e.id)
+                                          .first;
+                                      Provider.of<AllCursosProvider>(context)
+                                          .videoIndex = i;
 
                                       return (!e.estado)
                                           ? Container()
@@ -499,30 +700,65 @@ class _CourseViewState extends State<CourseView> {
                                                       width: 50,
                                                       height: 50,
                                                       child: Checkbox(
-                                                        fillColor: MaterialStateProperty.all(azulText.withOpacity(0.1)),
+                                                        fillColor:
+                                                            MaterialStateProperty
+                                                                .all(azulText
+                                                                    .withOpacity(
+                                                                        0.1)),
                                                         checkColor: azulText,
                                                         value: prog.isComplete,
-                                                        onChanged: (value) async {
-                                                          await Provider.of<AuthProvider>(context, listen: false)
-                                                              .updateProg(moduloId: e.id, marker: videotime, isComplete: !prog.isComplete);
+                                                        onChanged:
+                                                            (value) async {
+                                                          await Provider.of<
+                                                                      AuthProvider>(
+                                                                  context,
+                                                                  listen: false)
+                                                              .updateProg(
+                                                                  moduloId:
+                                                                      e.id,
+                                                                  marker:
+                                                                      videotime,
+                                                                  isComplete: !prog
+                                                                      .isComplete);
                                                           if (context.mounted) {
-                                                                setState(() {});
-                                                              }
+                                                            setState(() {});
+                                                          }
                                                         },
                                                       )),
                                                   title: Text(
                                                     e.nombre,
-                                                    style: DashboardLabel.paragraph,
+                                                    style: DashboardLabel
+                                                        .paragraph,
                                                   ),
-                                                  subtitle:
-                                                      Text(e.descripcion, style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5))),
+                                                  subtitle: Text(e.descripcion,
+                                                      style: DashboardLabel.mini
+                                                          .copyWith(
+                                                              color: blancoText
+                                                                  .withOpacity(
+                                                                      0.5))),
                                                   onTap: () {
                                                     chewieController.pause();
-                                                    NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/$i');
+                                                    Provider.of<MetaEventProvider>(
+                                                                  context,
+                                                                  listen: false)
+                                                              .clickEvent(
+                                                                  email:
+                                                                      authProvider
+                                                                          .user!
+                                                                          .correo,
+                                                                  source:
+                                                                      'user/dashboard/${curso.id}',
+                                                                  description:
+                                                                      'Click en Modulo ${curso.modulos[i].nombre} de ${curso.nombre}',
+                                                                  title:
+                                                                      'Click en Modulo ${curso.nombre} - ${curso.modulos[i].nombre}');
+                                                    NavigatorService.replaceTo(
+                                                        '${Flurorouter.curso}/${curso.id}/$i');
                                                   },
                                                 ),
                                                 Divider(
-                                                  color: blancoText.withOpacity(0.5),
+                                                  color: blancoText
+                                                      .withOpacity(0.5),
                                                 ),
                                               ],
                                             );
@@ -541,7 +777,8 @@ class _CourseViewState extends State<CourseView> {
 class CustomEndDrawer extends StatefulWidget {
   final int videoIndex;
   final String cursoID;
-  const CustomEndDrawer({super.key, required this.videoIndex, required this.cursoID});
+  const CustomEndDrawer(
+      {super.key, required this.videoIndex, required this.cursoID});
 
   @override
   State<CustomEndDrawer> createState() => _CustomEndDrawerState();
@@ -555,7 +792,8 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
   void initState() {
     super.initState();
     Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
-    Provider.of<AllCursosProvider>(context, listen: false).getCursosById(widget.cursoID);
+    Provider.of<AllCursosProvider>(context, listen: false)
+        .getCursosById(widget.cursoID);
     Provider.of<UsersProvider>(context, listen: false).getPaginatedUsers();
   }
 
@@ -578,7 +816,8 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
               Divider(color: Colors.white.withOpacity(0.5)),
               const SizedBox(height: 15),
               ...curso.modulos[widget.videoIndex].coments.map((comentario) {
-                final userComent = UserServices.getUserInfo(context, comentario.usuario);
+                final userComent =
+                    UserServices.getUserInfo(context, comentario.usuario);
                 return ListTile(
                   title: Column(
                     children: [
@@ -608,7 +847,9 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                         padding: const EdgeInsets.all(4),
                         width: double.infinity,
                         constraints: const BoxConstraints(minHeight: 25),
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(25), color: Colors.white.withOpacity(0.1)),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25),
+                            color: Colors.white.withOpacity(0.1)),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
@@ -620,7 +861,8 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                       if (comentario.resp.isNotEmpty)
                         ...comentario.resp.map(
                           (resp) {
-                            final userResp = UserServices.getUserInfo(context, resp.usuario);
+                            final userResp =
+                                UserServices.getUserInfo(context, resp.usuario);
 
                             return ListTile(
                               title: RespuestaWidget(
@@ -637,23 +879,33 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          if (Provider.of<AuthProvider>(context, listen: false).user!.rol == 'ADMIN_ROLE') ...[
+                          if (Provider.of<AuthProvider>(context, listen: false)
+                                  .user!
+                                  .rol ==
+                              'ADMIN_ROLE') ...[
                             IconButton(
                               onPressed: () async {
                                 final isOk = await showDialog(
                                     context: context,
                                     builder: (context) {
-                                      final moduloId = curso.modulos[widget.videoIndex].id;
+                                      final moduloId =
+                                          curso.modulos[widget.videoIndex].id;
                                       return AlertDialog(
-                                        actionsPadding: const EdgeInsets.only(bottom: 20),
+                                        actionsPadding:
+                                            const EdgeInsets.only(bottom: 20),
                                         backgroundColor: bgColor,
                                         content: Container(
-                                            constraints: const BoxConstraints(maxWidth: 320, maxHeight: 140),
-                                            child: DialogResp(comentId: comentario.id, moduloId: moduloId)),
+                                            constraints: const BoxConstraints(
+                                                maxWidth: 320, maxHeight: 140),
+                                            child: DialogResp(
+                                                comentId: comentario.id,
+                                                moduloId: moduloId)),
                                       );
                                     });
                                 if (isOk && context.mounted) {
-                                  Provider.of<AllCursosProvider>(context, listen: false).getCursosById(widget.cursoID);
+                                  Provider.of<AllCursosProvider>(context,
+                                          listen: false)
+                                      .getCursosById(widget.cursoID);
                                 }
                               },
                               icon: const Icon(
@@ -667,7 +919,8 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                                 final dialog = AlertDialog(
                                   backgroundColor: bgColor,
                                   content: Container(
-                                    constraints: const BoxConstraints(maxHeight: 90),
+                                    constraints:
+                                        const BoxConstraints(maxHeight: 90),
                                     child: Column(
                                       children: [
                                         Text(
@@ -676,14 +929,21 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                                         ),
                                         const SizedBox(height: 30),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
                                           children: [
                                             CustomButton(
                                               text: appLocal.siBorrar,
                                               onPress: () {
-                                                final moduloId = curso.modulos[widget.videoIndex].id;
-                                                Provider.of<AllCursosProvider>(context, listen: false)
-                                                    .deleteComent(comentId: comentario.id, moduloId: moduloId);
+                                                final moduloId = curso
+                                                    .modulos[widget.videoIndex]
+                                                    .id;
+                                                Provider.of<AllCursosProvider>(
+                                                        context,
+                                                        listen: false)
+                                                    .deleteComent(
+                                                        comentId: comentario.id,
+                                                        moduloId: moduloId);
                                                 Navigator.pop(context, true);
                                               },
                                               width: 100,
@@ -709,7 +969,9 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                                 );
 
                                 if (isOk && context.mounted) {
-                                  Provider.of<AllCursosProvider>(context, listen: false).getCursosById(widget.cursoID);
+                                  Provider.of<AllCursosProvider>(context,
+                                          listen: false)
+                                      .getCursosById(widget.cursoID);
                                 }
                               },
                               icon: const Icon(
@@ -730,7 +992,9 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                 );
               }),
               const SizedBox(height: 15),
-              Center(child: Text(appLocal.finDeLosComentarios, style: DashboardLabel.mini)),
+              Center(
+                  child: Text(appLocal.finDeLosComentarios,
+                      style: DashboardLabel.mini)),
               const SizedBox(height: 250)
             ],
           ),
@@ -752,17 +1016,23 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                         width: double.infinity,
                         // constraints: const BoxConstraints(minHeight: 90),
 
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 8),
                         // decoration: BoxDecoration(color: Colors.white.withOpacity(0.1), borderRadius: BorderRadius.circular(25)),
                         child: TextFormField(
                           cursorColor: azulText,
                           initialValue: comentario,
                           style: DashboardLabel.mini,
                           validator: (value) {
-                            if (value == null || value.isEmpty || value.length < 3) return appLocal.comentarioInvalido;
+                            if (value == null ||
+                                value.isEmpty ||
+                                value.length < 3)
+                              return appLocal.comentarioInvalido;
                             return null;
                           },
-                          decoration: InputDecor.formFieldInputDecorationSimple(label: appLocal.agregarUnComentario, icon: Icons.comment_outlined),
+                          decoration: InputDecor.formFieldInputDecorationSimple(
+                              label: appLocal.agregarUnComentario,
+                              icon: Icons.comment_outlined),
                           maxLines: 3,
                           onChanged: (value) {
                             setState(() {
@@ -778,8 +1048,14 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                         text: appLocal.comentar,
                         onPress: () => setState(() {
                           if (keyform.currentState!.validate()) {
-                            Provider.of<AllCursosProvider>(context, listen: false)
-                                .createComent(context: context, comentario: comentario, cursoId: curso.id, moduloId: curso.modulos[widget.videoIndex].id);
+                            Provider.of<AllCursosProvider>(context,
+                                    listen: false)
+                                .createComent(
+                                    context: context,
+                                    comentario: comentario,
+                                    cursoId: curso.id,
+                                    moduloId:
+                                        curso.modulos[widget.videoIndex].id);
                             comentario = '';
                             Navigator.pop(context);
                           }
@@ -793,7 +1069,9 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                   const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.only(left: 10.0),
-                    child: Text(appLocal.unAdmRespondera, style: DashboardLabel.mini.copyWith(color: blancoText.withOpacity(0.5))),
+                    child: Text(appLocal.unAdmRespondera,
+                        style: DashboardLabel.mini
+                            .copyWith(color: blancoText.withOpacity(0.5))),
                   ),
                   const SizedBox(height: 10)
                 ],
@@ -806,7 +1084,8 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
 
 class DialogResp extends StatefulWidget {
   final String comentId;
-  const DialogResp({super.key, required this.comentId, required String moduloId});
+  const DialogResp(
+      {super.key, required this.comentId, required String moduloId});
 
   @override
   State<DialogResp> createState() => _DialogRespState();
@@ -825,7 +1104,8 @@ class _DialogRespState extends State<DialogResp> {
             child: TextFormField(
               cursorColor: azulText,
               maxLines: 5,
-              style: DashboardLabel.mini.copyWith(color: Colors.white.withOpacity(0.3)),
+              style: DashboardLabel.mini
+                  .copyWith(color: Colors.white.withOpacity(0.3)),
               initialValue: textValue,
               onChanged: (value) => {textValue = value}, //descripcion = value,
               decoration: InputDecor.formFieldInputDecoration(
@@ -840,7 +1120,8 @@ class _DialogRespState extends State<DialogResp> {
               CustomButton(
                 text: appLocal.responder,
                 onPress: () {
-                  Provider.of<AllCursosProvider>(context, listen: false).createResp(id: widget.comentId, respuesta: textValue);
+                  Provider.of<AllCursosProvider>(context, listen: false)
+                      .createResp(id: widget.comentId, respuesta: textValue);
                   Navigator.pop(context, true);
                 },
                 width: 100,
@@ -876,26 +1157,28 @@ class CongratDialog extends StatelessWidget {
       backgroundColor: Colors.transparent,
       content: Stack(
         children: [
-          if(wSize > 500)
-          Positioned(
-              top: 30,
-              right: 0,
-              child: FadeInDown(
-                  child: Container(
-                width: 120,
-                height: 50,
-                decoration: BoxDecoration(border: Border.all(color: Colors.amber)),
-              ))),
-          if(wSize < 500)
-          Positioned(
-              top: 30,
-              right: 0,
-              child: FadeInDown(
-                  child: Container(
-                width: 45,
-                height: 50,
-                decoration: BoxDecoration(border: Border.all(color: Colors.amber)),
-              ))),
+          if (wSize > 500)
+            Positioned(
+                top: 30,
+                right: 0,
+                child: FadeInDown(
+                    child: Container(
+                  width: 120,
+                  height: 50,
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.amber)),
+                ))),
+          if (wSize < 500)
+            Positioned(
+                top: 30,
+                right: 0,
+                child: FadeInDown(
+                    child: Container(
+                  width: 45,
+                  height: 50,
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.amber)),
+                ))),
           SizedBox(
             width: wSize,
             height: hSize,

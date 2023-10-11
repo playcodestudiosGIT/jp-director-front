@@ -188,10 +188,24 @@ class _LoginFormState extends State<LoginForm> {
                                 blancoText.withOpacity(0.1))),
                         onPressed: (widget.cursoId != '')
                             ? () {
+                                Provider.of<MetaEventProvider>(context,
+                                        listen: false)
+                                    .clickEvent(
+                                        source: '/${widget.cursoId}',
+                                        description:
+                                            'Usuario que llega al registro por medio de un curso',
+                                        title: 'Curso/Registro');
                                 Navigator.pushReplacementNamed(context,
                                     '${Flurorouter.payNewUserRouteAlt}/${widget.cursoId}/register');
                               }
                             : () {
+                                Provider.of<MetaEventProvider>(context,
+                                        listen: false)
+                                    .clickEvent(
+                                        source: '/login',
+                                        description:
+                                            'Click en Registrate Aqui desde el login',
+                                        title: 'Login - Registro');
                                 Navigator.pushReplacementNamed(
                                     context, Flurorouter.registerRoute);
                               }, // Navigate to register page
@@ -211,8 +225,16 @@ class _LoginFormState extends State<LoginForm> {
                   MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: GestureDetector(
-                        onTap: () => NavigatorService.navigateTo(
-                            Flurorouter.resetPassRoute),
+                        onTap: () {
+                          Provider.of<MetaEventProvider>(context, listen: false)
+                              .clickEvent(
+                                  source: '/login',
+                                  description:
+                                      'Click en Olvide mi contraseña',
+                                  title: 'Click en Olvide mi contraseña');
+                          NavigatorService.navigateTo(
+                              Flurorouter.resetPassRoute);
+                        },
                         child: Text(
                           appLocal.olvideMiPass,
                           style: DashboardLabel.mini.copyWith(color: azulText),

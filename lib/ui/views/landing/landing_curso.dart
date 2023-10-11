@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:jp_director/constant.dart';
+import 'package:jp_director/router/router.dart';
 
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:jp_director/ui/shared/widgets/acordion.dart';
@@ -31,7 +32,8 @@ class LandingCurso extends StatefulWidget {
 class _LandingCursoState extends State<LandingCurso> {
   @override
   void initState() {
-    Provider.of<AllCursosProvider>(context, listen: false).getCursosById(widget.cursoID);
+    Provider.of<AllCursosProvider>(context, listen: false)
+        .getCursosById(widget.cursoID);
     super.initState();
   }
 
@@ -57,14 +59,12 @@ class WebBody extends StatefulWidget {
 }
 
 class _WebBodyState extends State<WebBody> {
-  
-  
-
   @override
   Widget build(BuildContext context) {
     bool esMio = false;
     final appLocal = AppLocalizations.of(context);
-    final Usuario user = Provider.of<AuthProvider>(context).user ?? usuarioDummy;
+    final Usuario user =
+        Provider.of<AuthProvider>(context).user ?? usuarioDummy;
 
     if (user.nombre == '') {
       esMio = false;
@@ -75,33 +75,48 @@ class _WebBodyState extends State<WebBody> {
     }
 
     final List<Widget> modulos = widget.curso.modulos.map((e) {
-      return Acordeon(title: e.nombre, content: e.descripcion, service: '',);
+      return Acordeon(
+        title: e.nombre,
+        content: e.descripcion,
+        service: '',
+      );
     }).toList();
+
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
 
     return Column(
       children: [
-        TopAreaBack(onPress: () => NavigatorService.navigateTo('/cursos')),
+        TopAreaBack(onPress: () {
+          if (authProvider.authStatus == AuthStatus.authenticated) {
+            NavigatorService.navigateTo(Flurorouter.clienteMisCursosDash);
+          } else {
+            NavigatorService.navigateTo('/cursos');
+          }
+        }),
         CursoInfoTopArea(curso: widget.curso, esMio: esMio),
         const SizedBox(height: 80),
         SliderCurso(curso: widget.curso),
         const SizedBox(height: 60),
         Text(appLocal.conoceloQue, style: DashboardLabel.h1),
         const SizedBox(height: 30),
-        Container(constraints: const BoxConstraints(maxWidth: 800), child: Column(children: modulos)),
+        Container(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: Column(children: modulos)),
         const SizedBox(height: 100),
-        ListTestimonios(numeroEst: widget.curso.totalEstudiantes, testimonios: widget.curso.testimonios),
+        ListTestimonios(
+            numeroEst: widget.curso.totalEstudiantes,
+            testimonios: widget.curso.testimonios),
         const SizedBox(height: 60),
         const SoyJpdirectorLanding(),
         const SizedBox(height: 15),
-        if(!widget.curso.preorder)
-        BotonQuieroYa(curso: widget.curso),
-        if(widget.curso.preorder)
-        const CustomButton(
-                    text: 'PROXIMAMENTE',
-                    onPress: null,
-                    width: 250,
-                    color: Colors.orange,
-                  ),
+        if (!widget.curso.preorder) BotonQuieroYa(curso: widget.curso),
+        if (widget.curso.preorder)
+          const CustomButton(
+            text: 'PROXIMAMENTE',
+            onPress: null,
+            width: 250,
+            color: Colors.orange,
+          ),
         const SizedBox(height: 100),
       ],
     );

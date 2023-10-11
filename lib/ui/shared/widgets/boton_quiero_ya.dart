@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../generated/l10n.dart';
 import '../../../models/curso.dart';
 import '../../../providers/export_all_providers.dart';
+import '../../../providers/meta_event_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../botones/custom_button.dart';
@@ -25,6 +26,14 @@ class BotonQuieroYa extends StatelessWidget {
               text: appLocal.quieroYaBtn,
               onPress: () async {
                 if (authProvider.authStatus == AuthStatus.notAuthenticated) {
+                  Provider.of<MetaEventProvider>(context,
+                                              listen: false)
+                                          .clickEvent(
+                                              source: 'land/${curso.id}',
+                                              description:
+                                                  'Curso ID: ${curso.id}, Nombre Curso: ${curso.nombre}, precio: ${curso.precio}',
+                                              title:
+                                                  'Click Quiero este curso Ya ${curso.nombre}');
                   NavigatorService.replaceTo('${Flurorouter.payNewUserRouteAlt}/${curso.id}/login');
                 }
                 if (authProvider.authStatus == AuthStatus.authenticated) {

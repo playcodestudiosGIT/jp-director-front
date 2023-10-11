@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import '../../generated/l10n.dart';
 import '../../models/curso.dart';
 import '../../providers/all_cursos_provider.dart';
+import '../../providers/meta_event_provider.dart';
 import '../../services/navigator_service.dart';
 import 'white_card_border.dart';
 
@@ -17,7 +18,8 @@ class CourseCard extends StatelessWidget {
   final Curso curso;
   final bool esMio;
 
-  const CourseCard({Key? key, required this.esMio, required this.curso}) : super(key: key);
+  const CourseCard({Key? key, required this.esMio, required this.curso})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +29,40 @@ class CourseCard extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: (!esMio)
-            ? () => NavigatorService.replaceTo('${Flurorouter.cursoLanding}/${curso.id}')
+            ? () {
+                Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                    email: authProvider.user!.correo,
+                    source: 'user/dashboard/miscursos',
+                    description:
+                        'user: ${authProvider.user!.uid} Curso ID: ${curso.id}, Nombre Curso: ${curso.nombre}, precio: ${curso.precio}',
+                    title: 'Click Tarjeta de curso: ${curso.nombre}');
+                NavigatorService.replaceTo(
+                    '${Flurorouter.cursoLanding}/${curso.id}');
+              }
             : () async {
-                await Provider.of<AllCursosProvider>(context, listen: false).getAllCursos();
+                await Provider.of<AllCursosProvider>(context, listen: false)
+                    .getAllCursos();
 
-                if (authProvider.authStatus == AuthStatus.authenticated && context.mounted) {
-                  NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/0');
+                if (authProvider.authStatus == AuthStatus.authenticated &&
+                    context.mounted) {
+                      Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                    email: authProvider.user!.correo,
+                    source: 'user/dashboard/miscursos',
+                    description:
+                        'user: ${authProvider.user!.uid} Curso ID: ${curso.id}, Nombre Curso: ${curso.nombre}, precio: ${curso.precio}',
+                    title: '${authProvider.user!.nombre} Entro a ver el curso: ${curso.nombre}');
+                  NavigatorService.replaceTo(
+                    
+                      '${Flurorouter.curso}/${curso.id}/0');
                 } else {
-                  NavigatorService.replaceTo('${Flurorouter.cursoLanding}/${curso.id}');
+                  Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                    email: authProvider.user!.correo,
+                    source: 'user/dashboard/miscursos',
+                    description:
+                        'user: ${authProvider.user!.uid} Curso ID: ${curso.id}, Nombre Curso: ${curso.nombre}, precio: ${curso.precio}',
+                    title: '${authProvider.user!.nombre} le intereza el curso ${curso.nombre}');
+                  NavigatorService.replaceTo(
+                      '${Flurorouter.cursoLanding}/${curso.id}');
                 }
               },
         child: SizedBox(
@@ -59,7 +87,10 @@ class CourseCard extends StatelessWidget {
                             height: 230,
                             decoration: BoxDecoration(
                                 gradient: LinearGradient(
-                                    colors: [Colors.transparent, bgColor.withOpacity(1)],
+                                    colors: [
+                                      Colors.transparent,
+                                      bgColor.withOpacity(1)
+                                    ],
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     stops: const [0.6, 1])),
@@ -68,13 +99,31 @@ class CourseCard extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 TextButton(
-                                    style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(blancoText.withOpacity(0.1))),
+                                    style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStatePropertyAll(
+                                                blancoText.withOpacity(0.1))),
                                     onPressed: () {
-                                      NavigatorService.replaceTo('${Flurorouter.curso}/${curso.id}/0');
+                                      Provider.of<MetaEventProvider>(context,
+                                              listen: false)
+                                          .clickEvent(
+                                              email: authProvider.user!.correo,
+                                              source:
+                                                  'user/dashboard/miscursos',
+                                              description:
+                                                  'usuario: ${authProvider.user?.uid} Click en curso ${curso.id}',
+                                              title:
+                                                  'Click en Terminos de uso');
+                                      NavigatorService.replaceTo(
+                                          '${Flurorouter.curso}/${curso.id}/0');
                                     },
                                     child: (esMio)
-                                        ? Text(appLocal.continuar, style: DashboardLabel.mini.copyWith(color: azulText))
-                                        : Text(appLocal.verMas, style: DashboardLabel.mini.copyWith(color: azulText)))
+                                        ? Text(appLocal.continuar,
+                                            style: DashboardLabel.mini
+                                                .copyWith(color: azulText))
+                                        : Text(appLocal.verMas,
+                                            style: DashboardLabel.mini
+                                                .copyWith(color: azulText)))
                               ],
                             ),
                           ),
@@ -82,7 +131,8 @@ class CourseCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Container(
-                          margin: const EdgeInsets.only(left: 5, right: 5, top: 0),
+                          margin:
+                              const EdgeInsets.only(left: 5, right: 5, top: 0),
                           child: Text(
                             curso.nombre,
                             style: DashboardLabel.h4,
@@ -90,32 +140,44 @@ class CourseCard extends StatelessWidget {
                       if (!esMio) ...[
                         const SizedBox(height: 5),
                         Container(
-                            margin: const EdgeInsets.only(left: 5, right: 5, top: 0),
+                            margin: const EdgeInsets.only(
+                                left: 5, right: 5, top: 0),
                             child: Text(
                               '\$ ${curso.precio}.00',
                               style: DashboardLabel.h4,
                             )),
                         Container(
                             height: 90,
-                            margin: const EdgeInsets.only(left: 5, right: 5, top: 5),
+                            margin: const EdgeInsets.only(
+                                left: 5, right: 5, top: 5),
                             child: Text(curso.descripcion,
                                 maxLines: 5,
                                 overflow: TextOverflow.ellipsis,
-                                style: DashboardLabel.paragraph.copyWith(color: blancoText.withOpacity(0.5)))),
+                                style: DashboardLabel.paragraph.copyWith(
+                                    color: blancoText.withOpacity(0.5)))),
                       ],
                       const SizedBox(height: 10),
-                      if (esMio) ...[SizedBox(width: 220, height: 30, child: MiProgreso(curso: curso))],
+                      if (esMio) ...[
+                        SizedBox(
+                            width: 220,
+                            height: 30,
+                            child: MiProgreso(curso: curso))
+                      ],
                       if (!esMio) ...[
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Row(
                             children: [
-                              Icon(Icons.view_module, color: blancoText.withOpacity(0.5), size: 18),
+                              Icon(Icons.view_module,
+                                  color: blancoText.withOpacity(0.5), size: 18),
                               const SizedBox(width: 3),
-                              Text(curso.modulos.length.toString(), style: DashboardLabel.paragraph),
+                              Text(curso.modulos.length.toString(),
+                                  style: DashboardLabel.paragraph),
                               const SizedBox(width: 30),
-                              Icon(Icons.timer_outlined, color: blancoText.withOpacity(0.5), size: 18),
-                              Text(curso.duracion, style: DashboardLabel.paragraph)
+                              Icon(Icons.timer_outlined,
+                                  color: blancoText.withOpacity(0.5), size: 18),
+                              Text(curso.duracion,
+                                  style: DashboardLabel.paragraph)
                             ],
                           ),
                         )

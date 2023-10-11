@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:jp_director/ui/shared/menus/home_app_menu.dart';
 
 import '../../providers/all_cursos_provider.dart';
+import '../../providers/meta_event_provider.dart';
 import '../../providers/page_provider.dart';
 import '../../providers/sidebar_provider.dart';
 import '../shared/widgets/appbar_top.dart';
@@ -48,6 +49,12 @@ class _ClientPageLayoutState extends State<ClientPageLayout>
           FloatingActionButton(
             backgroundColor: Colors.transparent,
             onPressed: () async {
+              Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                    email: authProvider.user!.correo,
+                    source: 'Anywhere',
+                    description:
+                        'Click en el Floating action Button Soporte',
+                    title: 'Click en soporte');
               NavigatorService.navigateTo('/support');
             },
             child: Overlay(

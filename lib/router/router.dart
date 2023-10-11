@@ -16,6 +16,7 @@ class Flurorouter {
   // rutas asesorias
   static String asesoriaRoute = '/v/asesoria';
   static String agendarRoute = '/form/agendar';
+  static String redirectCalendlyRoute = '/form/agendar/calendly';
 //rutas mentorias
   static String mentoriaRoute = '/v/mentoria';
   static String mentoriaFormRoute = '/form/mentoriaform';
@@ -90,6 +91,11 @@ class Flurorouter {
 
     router.define(supportRoute,
         handler: VisitorHandlers.home,
+        transitionType: TransitionType.none,
+        transitionDuration: const Duration(milliseconds: 100));
+
+    router.define(redirectCalendlyRoute,
+        handler: VisitorHandlers.redirectCalendly,
         transitionType: TransitionType.none,
         transitionDuration: const Duration(milliseconds: 100));
 

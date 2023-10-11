@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:jp_director/ui/shared/botones/botonverde.dart';
 import 'package:jp_director/ui/shared/widgets/top_area_back.dart';
-
+import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
+import '../../../providers/meta_event_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/labels/dashboard_label.dart';
@@ -46,12 +47,14 @@ class _MentoriaBody extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TopAreaBack(onPress: () => NavigatorService.navigateTo('/servicios')),
+                  TopAreaBack(
+                      onPress: () => NavigatorService.navigateTo('/servicios')),
                   Wrap(
                     alignment: WrapAlignment.spaceBetween,
                     children: [
                       ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 600, maxHeight: 880),
+                        constraints:
+                            const BoxConstraints(maxWidth: 600, maxHeight: 880),
                         child: const LetrasMentoria(),
                       ),
                     ],
@@ -64,23 +67,22 @@ class _MentoriaBody extends StatelessWidget {
                     child: Center(
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
-                        constraints: const BoxConstraints(minWidth: 300, maxWidth: 900),
+                        constraints:
+                            const BoxConstraints(minWidth: 300, maxWidth: 900),
                         child: Column(
                           children: [
                             Acordeon(
                               service: 'Encargado',
                               title: appLocal.queVeremos3m,
-                              content:
-                                  appLocal.queVeremos3mResp,
+                              content: appLocal.queVeremos3mResp,
                             ),
                             const SizedBox(
                               height: 30,
                             ),
                             Acordeon(
-                              service: 'Encargado',
+                                service: 'Encargado',
                                 title: appLocal.preguntasfrecuentes,
-                                content:
-                                    appLocal.preguntasfrecuentes1Resp),
+                                content: appLocal.preguntasfrecuentes1Resp),
                           ],
                         ),
                       ),
@@ -107,10 +109,10 @@ class LetrasMentoria extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          appLocal.mentoriaIntensiva,
-          style: (wScreen < 600) ? DashboardLabel.h2 : DashboardLabel.semiGigant
-        ),
+        Text(appLocal.mentoriaIntensiva,
+            style: (wScreen < 600)
+                ? DashboardLabel.h2
+                : DashboardLabel.semiGigant),
         Container(
           width: 400,
           height: 5,
@@ -122,28 +124,28 @@ class LetrasMentoria extends StatelessWidget {
           ])),
         ),
         // if (wScreen < 1300)
-          Stack(
-            children: [
-              Positioned(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 700, minWidth: 300),
-                  child: const Image(
-                    image: bgMentoria,
-                    width: 400,
-                    height: 400,
-                  ),
+        Stack(
+          children: [
+            Positioned(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 700, minWidth: 300),
+                child: const Image(
+                  image: bgMentoria,
+                  width: 400,
+                  height: 400,
                 ),
               ),
-              const Positioned(
-                top: 260,
-                right: 150,
-                child: Image(
-                  image: adsCircle,
-                  width: 100,
-                ),
+            ),
+            const Positioned(
+              top: 260,
+              right: 150,
+              child: Image(
+                image: adsCircle,
+                width: 100,
               ),
-            ],
-          ),
+            ),
+          ],
+        ),
         if (wScreen > 1300)
           const SizedBox(
             height: 30,
@@ -160,7 +162,13 @@ class LetrasMentoria extends StatelessWidget {
         ),
         BotonVerde(
           text: appLocal.estoyListoBtn,
-          onPressed: () => Navigator.pushNamed(context, Flurorouter.mentoriaFormRoute),
+          onPressed: () {
+            Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                        source: '/v/mentoria - Mentoria intensiva',
+                        description: 'Click en Estoy listo, comencemos.',
+                        title: 'Servicio Mentoria Intensiva');
+            Navigator.pushNamed(context, Flurorouter.mentoriaFormRoute);
+          },
           width: 200,
         ),
         SizedBox(

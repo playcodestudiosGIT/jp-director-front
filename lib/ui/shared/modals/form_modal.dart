@@ -196,7 +196,7 @@ class _FormsModalState extends State<FormsModal> {
                     onPress: () async {
                       if (id == '') {
                         // Crear
-                        await formProvider.sendForm();
+                        await formProvider.sendForm(context);
                       } else {
                         // Actualizar
                         await formProvider.updateForm(id);

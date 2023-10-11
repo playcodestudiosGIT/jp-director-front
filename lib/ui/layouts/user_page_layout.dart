@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../constant.dart';
 import '../../generated/l10n.dart';
+import '../../providers/meta_event_provider.dart';
 import '../../providers/page_provider.dart';
 import '../../router/router.dart';
 import '../../services/navigator_service.dart';
@@ -42,18 +43,28 @@ class _UserPageLayoutState extends State<UserPageLayout> {
         onPressed: () {
           // asdf
           if (authProvider.locale == const Locale('es')) {
+            Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                source: 'Anywhere',
+                description: 'Cambio idioma a ingles',
+                title: 'Click lenguaje a Ingles');
             authProvider.setLocale(const Locale('en'));
           } else {
+            Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                source: 'Anywhere',
+                description: 'Cambio idioma a Español',
+                title: 'Click lenguaje a Español');
             authProvider.setLocale(const Locale('es'));
           }
         },
         child: (authProvider.locale == const Locale('es'))
             ? const Image(
-                image: NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/es_flag_qbeneh.png'),
+                image: NetworkImage(
+                    'https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/es_flag_qbeneh.png'),
                 width: 30,
               )
             : const Image(
-                image: NetworkImage('https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/en_flag_fyiybd.png'),
+                image: NetworkImage(
+                    'https://res.cloudinary.com/dqiwrcosz/image/upload/v1692677994/statics/en_flag_fyiybd.png'),
                 width: 30,
               ),
       ),
@@ -75,7 +86,8 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                         controller: (controller) {
                           PageProvider.circleController = controller;
                         },
-                        child: const SizedBox(width: 300, child: Image(image: circulo)))),
+                        child: const SizedBox(
+                            width: 300, child: Image(image: circulo)))),
                 Positioned(
                     top: 0,
                     left: -500,
@@ -85,8 +97,12 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                         controller: (controller) {
                           PageProvider.circleController = controller;
                         },
-                        child: const SizedBox(width: 1100, child: Image(image: circulo)))),
-                Container(constraints: BoxConstraints(maxWidth: wScreen, maxHeight: hScreen), child: widget.child),
+                        child: const SizedBox(
+                            width: 1100, child: Image(image: circulo)))),
+                Container(
+                    constraints:
+                        BoxConstraints(maxWidth: wScreen, maxHeight: hScreen),
+                    child: widget.child),
                 Container(
                   alignment: Alignment.centerLeft,
                   width: double.infinity,
@@ -100,6 +116,12 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                         const SizedBox(width: 30),
                         GestureDetector(
                           onTap: () {
+                            Provider.of<MetaEventProvider>(context,
+                                    listen: false)
+                                .clickEvent(
+                                    source: 'Anywhere',
+                                    description: 'Click en MAIN LOGO',
+                                    title: 'MAINLOGO');
                             NavigatorService.replaceTo(Flurorouter.homeRoute);
                           },
                           child: MouseRegion(
@@ -118,24 +140,48 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                               text: appLocal.topBotonCursos,
                               isActive: false,
                               onPress: () {
+                                Provider.of<MetaEventProvider>(context,
+                                        listen: false)
+                                    .clickEvent(
+                                        source: 'home/',
+                                        description: 'Click en Menu Cursos',
+                                        title: 'Menu - Cursos');
                                 NavigatorService.navigateTo('/cursos');
                               }),
                           MenuItemTop(
                               text: appLocal.topBotonServicios,
                               isActive: false,
                               onPress: () {
+                                Provider.of<MetaEventProvider>(context,
+                                        listen: false)
+                                    .clickEvent(
+                                        source: 'home/',
+                                        description: 'Click en Menu Servicios',
+                                        title: 'Menu - Servicios');
                                 NavigatorService.navigateTo('/servicios');
                               }),
                           MenuItemTop(
                               text: appLocal.topBotonResultados,
                               isActive: false,
                               onPress: () {
+                                Provider.of<MetaEventProvider>(context,
+                                        listen: false)
+                                    .clickEvent(
+                                        source: 'home/',
+                                        description: 'Click en Menu Resultados',
+                                        title: 'Menu - Resultados');
                                 NavigatorService.navigateTo('/resultados');
                               }),
                           MenuItemTop(
                               text: appLocal.topBotonContacto,
                               isActive: false,
                               onPress: () {
+                                Provider.of<MetaEventProvider>(context,
+                                        listen: false)
+                                    .clickEvent(
+                                        source: 'home/',
+                                        description: 'Click en Menu Contacto',
+                                        title: 'Menu - Contacto');
                                 NavigatorService.navigateTo('/contacto');
                               }),
                           const SizedBox(width: 145)
@@ -144,7 +190,8 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                     ),
                   ),
                 ),
-                if (wScreen < 850) const Positioned(left: -10, top: 5, child: HomeAppMenu()),
+                if (wScreen < 850)
+                  const Positioned(left: -10, top: 5, child: HomeAppMenu()),
                 // if (wScreen > 480)
                 //   Positioned(
                 //       right: 10,
@@ -157,29 +204,42 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                 //         },
                 //       )),
                 // if (wScreen <= 480)
-                  Positioned(
-                      right: 20,
-                      top: 15,
-                      child: MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: GestureDetector(
-                          onTap: () => NavigatorService.replaceTo(Flurorouter.loginRoute),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
+                Positioned(
+                    right: 20,
+                    top: 15,
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: () {
+                          Provider.of<MetaEventProvider>(context, listen: false)
+                              .clickEvent(
+                                  source: 'Anywhere',
+                                  description:
+                                      'Click en el boton Entrar Appbar',
+                                  title: 'Click en Login');
+                          NavigatorService.replaceTo(Flurorouter.loginRoute);
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
                                 width: 35,
                                 margin: const EdgeInsets.only(right: 7),
-                                child: const Icon(Icons.login_outlined, color: azulText, size: 18,)),
-                              Text(
-                                appLocal.iniciarSesionBtn,
-                                style: const TextStyle(color: azulText, fontSize: 8),
-                              )
-                            ],
-                          ),
+                                child: const Icon(
+                                  Icons.login_outlined,
+                                  color: azulText,
+                                  size: 18,
+                                )),
+                            Text(
+                              appLocal.iniciarSesionBtn,
+                              style:
+                                  const TextStyle(color: azulText, fontSize: 8),
+                            )
+                          ],
                         ),
-                      )),
+                      ),
+                    )),
                 // if (wScreen > 480)
                 //   Positioned(
                 //     right: 90,
@@ -196,31 +256,43 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                 //     ),
                 //   ),
                 // if (wScreen <= 480)
-                  Positioned(
-                      right: 70,
-                      top: 15,
-                      child: SizedBox(
-                        width: 50,
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: GestureDetector(
-                            onTap: () {
-                              NavigatorService.replaceTo(Flurorouter.registerRoute);
-                            },
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                const Icon(Icons.app_registration_rounded, color: azulText, size: 18,),
-                                Text(
-                                  appLocal.registrarBtn,
-                                  style: const TextStyle(color: azulText, fontSize: 8),
-                                )
-                              ],
-                            ),
+                Positioned(
+                    right: 70,
+                    top: 15,
+                    child: SizedBox(
+                      width: 50,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () {
+                            Provider.of<MetaEventProvider>(context,
+                                    listen: false)
+                                .clickEvent(
+                                    source: 'Anywhere',
+                                    description: 'Click en Registrar',
+                                    title: 'Click en el boton registrar');
+                            NavigatorService.replaceTo(
+                                Flurorouter.registerRoute);
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Icons.app_registration_rounded,
+                                color: azulText,
+                                size: 18,
+                              ),
+                              Text(
+                                appLocal.registrarBtn,
+                                style: const TextStyle(
+                                    color: azulText, fontSize: 8),
+                              )
+                            ],
                           ),
                         ),
-                      )),
+                      ),
+                    )),
               ],
             ),
           ),
@@ -230,10 +302,15 @@ class _UserPageLayoutState extends State<UserPageLayout> {
   }
 
   BoxDecoration buildBoxDecoration() => const BoxDecoration(
-      gradient: LinearGradient(colors: [bgColor, bgColor], begin: Alignment.topCenter, end: Alignment.bottomCenter, stops: [0.5, 0.5]));
+      gradient: LinearGradient(
+          colors: [bgColor, bgColor],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          stops: [0.5, 0.5]));
 
-  BoxDecoration buildBoxDecorationAppbar() =>
-      const BoxDecoration(color: Color(0xFF00041C), boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 5)]);
+  BoxDecoration buildBoxDecorationAppbar() => const BoxDecoration(
+      color: Color(0xFF00041C),
+      boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 5)]);
 }
 
 

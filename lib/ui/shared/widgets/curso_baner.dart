@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
 import '../../../models/curso.dart';
+import '../../../providers/meta_event_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../botones/custom_button.dart';
@@ -198,11 +199,20 @@ class CursoBanerView extends StatelessWidget {
                                   onPress: () async {
                                     if (authProvider.authStatus ==
                                         AuthStatus.notAuthenticated) {
+                                      Provider.of<MetaEventProvider>(context,
+                                              listen: false)
+                                          .clickEvent(
+                                              source: 'land/${curso.id}',
+                                              description:
+                                                  'Curso ID: ${curso.id}, Nombre Curso: ${curso.nombre}, precio: ${curso.precio}',
+                                              title:
+                                                  'Click Comprar ${curso.nombre}');
                                       NavigatorService.replaceTo(
                                           '${Flurorouter.payNewUserRouteAlt}/${curso.id}/login');
                                     }
                                     if (authProvider.authStatus ==
                                         AuthStatus.authenticated) {
+                                        
                                       final resp = await Provider.of<
                                                   PayProvider>(context,
                                               listen: false)
@@ -211,6 +221,17 @@ class CursoBanerView extends StatelessWidget {
                                               cursoId: curso.id,
                                               userEmail:
                                                   authProvider.user!.correo);
+                                      
+                                      Provider.of<MetaEventProvider>(context,
+                                              listen: false)
+                                          .clickEvent(
+                                              email: authProvider.user!.correo,
+                                              source: 'land/${curso.id}',
+                                              description:
+                                                  'user: ${authProvider.user!.uid} Curso ID: ${curso.id}, Nombre Curso: ${curso.nombre}, precio: ${curso.precio}',
+                                              title:
+                                                  'Click Comprar ${curso.nombre}');
+                                      
                                       if (resp != '') {
                                         final Uri urluri = Uri.parse(resp);
                                         if (!await launchUrl(urluri)) {
@@ -223,7 +244,6 @@ class CursoBanerView extends StatelessWidget {
                                   width: 250),
                           if (curso.preorder)
                             const CustomButton(
-                              
                               text: 'PROXIMAMENTE',
                               onPress: null,
                               width: 140,

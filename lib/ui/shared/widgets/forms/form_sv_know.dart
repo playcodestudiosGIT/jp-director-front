@@ -57,7 +57,7 @@ class _FormSVknowState extends State<FormSVknow> {
       if (formProvider.getPageIndex() == 1 && formProvider.keyForm2.currentState!.validate()) formProvider.formScrollController.nextPage();
 
       if (formProvider.getPageIndex() == 2 && formProvider.keyForm3.currentState!.validate()) {
-        formProvider.sendForm();
+        formProvider.sendForm(context);
         formProvider.keyForm.currentState?.dispose();
         formProvider.keyForm2.currentState?.dispose();
         formProvider.keyForm3.currentState?.dispose();

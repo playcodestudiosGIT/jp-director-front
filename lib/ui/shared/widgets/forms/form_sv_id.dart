@@ -66,7 +66,7 @@ class _FormSVidState extends State<FormSVid> {
 
       if (formProvider.getPageIndex() == 2 &&
           formProvider.keyForm3.currentState!.validate()) {
-        formProvider.sendForm();
+        formProvider.sendForm(context);
         formProvider.keyForm.currentState?.dispose();
         formProvider.keyForm2.currentState?.dispose();
         formProvider.keyForm3.currentState?.dispose();

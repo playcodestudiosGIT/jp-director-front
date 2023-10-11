@@ -215,13 +215,13 @@ class ContactoView extends StatelessWidget {
                                       style: TextStyle(
                                         color: azulText,
                                         fontWeight: FontWeight.w700,
-                                        fontSize: wScreen < 500 ? 10 : 10,
+                                        fontSize: wScreen < 500 ? 8 : 10,
                                       ),
                                     ),
                                   ),
                                 ),
                                 Text(
-                                  ' -  ',
+                                  ' - ',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: blancoText,
@@ -240,7 +240,7 @@ class ContactoView extends StatelessWidget {
                                       style: TextStyle(
                                         color: azulText,
                                         fontWeight: FontWeight.w700,
-                                        fontSize: wScreen < 500 ? 10 : 10,
+                                        fontSize: wScreen < 500 ? 8 : 10,
                                       ),
                                     ),
                                   ),
