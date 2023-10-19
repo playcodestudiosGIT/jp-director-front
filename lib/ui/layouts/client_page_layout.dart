@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:jp_director/ui/shared/menus/home_app_menu.dart';
 
 import '../../providers/all_cursos_provider.dart';
-import '../../providers/meta_event_provider.dart';
+import '../../providers/events_provider.dart';
 import '../../providers/page_provider.dart';
 import '../../providers/sidebar_provider.dart';
 import '../shared/widgets/appbar_top.dart';
@@ -49,12 +49,13 @@ class _ClientPageLayoutState extends State<ClientPageLayout>
           FloatingActionButton(
             backgroundColor: Colors.transparent,
             onPressed: () async {
-              Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+              Provider.of<EventsProvider>(context, listen: false).clickEvent(
+                    uid: authProvider.user!.uid,
                     email: authProvider.user!.correo,
                     source: 'Anywhere',
                     description:
                         'Click en el Floating action Button Soporte',
-                    title: 'Click en soporte');
+                    title: 'click-en-soporte');
               NavigatorService.navigateTo('/support');
             },
             child: Overlay(
@@ -77,8 +78,16 @@ class _ClientPageLayoutState extends State<ClientPageLayout>
             onPressed: () {
               // asdf
               if (authProvider.locale == const Locale('es')) {
+                Provider.of<EventsProvider>(context, listen: false).clickEvent(
+                source: 'Anywhere',
+                description: 'Cambio idioma a ingles',
+                title: 'click-lenguaje-ingles');
                 authProvider.setLocale(const Locale('en'));
               } else {
+                Provider.of<EventsProvider>(context, listen: false).clickEvent(
+                source: 'Anywhere',
+                description: 'Cambio idioma a Espanol',
+                title: 'click-lenguaje-espanil');
                 authProvider.setLocale(const Locale('es'));
               }
             },

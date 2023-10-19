@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -18,20 +19,23 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Cursos de publicidad oline, configura tu campaña en Facebook, Instagram y Tiktok y obten tus propios resultados">
+  <meta name="description"
+    content="Cursos de publicidad oline, configura tu campaña en Facebook, Instagram y Tiktok y obten tus propios resultados">
   <meta name="author" content="Playcode Studios" />
-  <meta name="robots" content="index"/>
-  <meta name="copyright" content="Playcodestudios © 2023 - all rights reserved"  />
+  <meta name="robots" content="index" />
+  <meta name="copyright" content="Playcodestudios © 2023 - all rights reserved" />
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="keywords" content="cursos, publicidad, online, facebook ads, instagram ads, tiktok ads, ads, quieroads, tiktokads, meta, meta ads, aumenta tus ventas, mejor curso de publicidad online, publicidad online, aprende ads, aprende publicidad online, quiero, ads, aprender"/>
+  <meta name="keywords"
+    content="cursos, publicidad, online, facebook ads, instagram ads, tiktok ads, ads, quieroads, tiktokads, meta, meta ads, aumenta tus ventas, mejor curso de publicidad online, publicidad online, aprende ads, aprende publicidad online, quiero, ads, aprender" />
   <meta name="apple-mobile-web-app-status-bar-style" content="#00041C">
   <meta name="apple-mobile-web-app-title" content="Aprende todo sobre ADS | JP Director">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
   <!-- <meta http-equiv="cache-control" content="no-cache"/> -->
   <!-- <meta http-equiv="expires" content="43200"/> -->
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dqiwrcosz/image/upload/v1693710701/favicon_q3qxyf.png"/>
+  <link rel="icon" type="image/png"
+    href="https://res.cloudinary.com/dqiwrcosz/image/upload/v1697414185/statics/favicon_kjlljt.png" />
 
   <title>JP Director</title>
   <link rel="manifest" href="manifest.json">
@@ -43,23 +47,25 @@
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
   <!-- Meta Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1320110688873582');
-  fbq('track', 'PageView');
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1320110688873582');
+    fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1320110688873582&ev=PageView&noscript=1"
-  /></noscript>
-</head>
-<body>
+      src="https://www.facebook.com/tr?id=1320110688873582&ev=PageView&noscript=1" />
+  </noscript>
+
   <script>
     document.body.addEventListener('contextmenu', (event) => {
       event.preventDefault();
@@ -67,14 +73,33 @@
   </script>
 
   <script>
-    window.addEventListener('load', function(ev) {
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject = t; var ttq = w[t] = w[t] || []; ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie", "disableCookie"], ttq.setAndDefer = function (t, e) { t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } }; for (var i = 0; i < ttq.methods.length; i++)ttq.setAndDefer(ttq, ttq.methods[i]); ttq.instance = function (t) { for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++)ttq.setAndDefer(e, ttq.methods[n]); return e }, ttq.load = function (e, n) { var i = "https://analytics.tiktok.com/i18n/pixel/events.js"; ttq._i = ttq._i || {}, ttq._i[e] = [], ttq._i[e]._u = i, ttq._t = ttq._t || {}, ttq._t[e] = +new Date, ttq._o = ttq._o || {}, ttq._o[e] = n || {}; var o = document.createElement("script"); o.type = "text/javascript", o.async = !0, o.src = i + "?sdkid=" + e + "&lib=" + t; var a = document.getElementsByTagName("script")[0]; a.parentNode.insertBefore(o, a) };
+
+      ttq.load('CKK9FR3C77U7REM9P5CG');
+      ttq.page();
+      ttq.track('ViewContent', {
+        contents: [
+          {
+            content_id: PUBLIC_URL,
+          }],
+        content_type: 'Content-view',
+      });
+    }(window, document, 'ttq');
+  </script>
+  <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+  <script>
+    window.addEventListener('load', function (ev) {
 
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
+        onEntrypointLoaded: function (engineInitializer) {
+          engineInitializer.initializeEngine().then(function (appRunner) {
             appRunner.runApp();
           });
         }
@@ -82,4 +107,5 @@
     });
   </script>
 </body>
+
 </html>

@@ -5,7 +5,7 @@ import 'package:jp_director/services/navigator_service.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
-import '../../../providers/meta_event_provider.dart';
+import '../../../providers/events_provider.dart';
 
 class PoliticasFooter extends StatelessWidget {
   const PoliticasFooter({super.key});
@@ -29,7 +29,7 @@ class PoliticasFooter extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  Provider.of<MetaEventProvider>(context, listen: false)
+                  Provider.of<EventsProvider>(context, listen: false)
                       .clickEvent(
                           source: '/Footer',
                           description:
@@ -64,7 +64,7 @@ class PoliticasFooter extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  Provider.of<MetaEventProvider>(context, listen: false)
+                  Provider.of<EventsProvider>(context, listen: false)
                       .clickEvent(
                           source: '/Footer',
                           description:

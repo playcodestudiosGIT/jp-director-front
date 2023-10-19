@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
-import '../../../providers/meta_event_provider.dart';
+import '../../../providers/events_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/labels/dashboard_label.dart';
@@ -84,7 +84,7 @@ class MentoriaView extends StatelessWidget {
                     width: 200,
                     text: appLocal.masInformacionBtn,
                     onPressed: () {
-                      Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                      Provider.of<EventsProvider>(context, listen: false).clickEvent(
                         source: '/servicios - Slider MENTORIA',
                         description: 'Click en Mas Información',
                         title: 'Servicio Mentoria');

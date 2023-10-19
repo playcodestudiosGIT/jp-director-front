@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:jp_director/generated/l10n.dart';
+import 'package:jp_director/providers/events_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
 
@@ -311,6 +313,10 @@ class MobileBody extends StatelessWidget {
                   constraints: BoxConstraints(maxWidth: screenData.width),
                   child: GestureDetector(
                     onTap: () {
+                      Provider.of<EventsProvider>(context, listen: false).clickEvent(
+                          source: '/home',
+                          description: 'flecha abajo',
+                          title: 'click');
                       NavigatorService.navigateTo('/cursos');
                     },
                     child: MouseRegion(

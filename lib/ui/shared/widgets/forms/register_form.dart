@@ -8,7 +8,7 @@ import '../../../../constant.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../providers/auth_provider.dart';
 import '../../../../providers/forms/register_form_provider.dart';
-import '../../../../providers/meta_event_provider.dart';
+import '../../../../providers/events_provider.dart';
 import '../../botones/custom_button.dart';
 
 class RegisterForm extends StatefulWidget {
@@ -89,8 +89,9 @@ class _RegisterFormState extends State<RegisterForm> {
               validator: (value) {
                 if (value!.isEmpty) return appLocal.ingreseUnaPassValida;
                 if (value.length < 6) return appLocal.laContraDebe6Caracteres;
-                if (value != registerFormProvider.password2)
+                if (value != registerFormProvider.password2) {
                   return appLocal.passNoCoinciden;
+                }
                 return null;
               },
               initialValue: registerFormProvider.password1,
@@ -109,8 +110,9 @@ class _RegisterFormState extends State<RegisterForm> {
               validator: (value) {
                 if (value!.isEmpty) return appLocal.ingreseUnaPassValida;
                 if (value.length < 6) return appLocal.laContraDebe6Caracteres;
-                if (value != registerFormProvider.password1)
+                if (value != registerFormProvider.password1) {
                   return appLocal.passNoCoinciden;
+                }
                 return null;
               },
               initialValue: registerFormProvider.password2,
@@ -141,7 +143,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       correo: registerFormProvider.email,
                       password: registerFormProvider.password1,
                     ),
-                    Provider.of<MetaEventProvider>(context, listen: false).registroEvent(
+                    Provider.of<EventsProvider>(context, listen: false).metaRegistroEvent(
                         email: registerFormProvider.email,
                         lastname: registerFormProvider.apellido,
                         name: registerFormProvider.nombre)

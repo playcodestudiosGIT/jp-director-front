@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:jp_director/models/formulario.dart';
 import 'package:jp_director/models/http/forms_response.dart';
-import 'package:jp_director/providers/meta_event_provider.dart';
+import 'package:jp_director/providers/events_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:universal_html/html.dart' as html;
 
@@ -183,7 +183,8 @@ class FormProvider extends ChangeNotifier {
       "agree": agree
     };
     try {
-      Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+      Provider.of<EventsProvider>(context, listen: false).clickEvent(
+        email: email,
           source: '/form/$rootForm',
           description:
               'nombre: $nombre - correo: $email - telefono: $telefono - business: $negocio - operationyears: $opYear - facebook: $facebook - tiktok: $tiktok - isOnline: $isOnlineConference',

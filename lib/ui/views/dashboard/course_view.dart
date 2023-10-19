@@ -16,7 +16,7 @@ import '../../../generated/l10n.dart';
 import '../../../models/curso.dart';
 import '../../../models/progress.dart';
 import '../../../providers/all_cursos_provider.dart';
-import '../../../providers/meta_event_provider.dart';
+import '../../../providers/events_provider.dart';
 import '../../../providers/users_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
@@ -261,9 +261,10 @@ class _CourseViewState extends State<CourseView> {
                                               MaterialStatePropertyAll(
                                                   blancoText.withOpacity(0.1))),
                                       onPressed: () {
-                                        Provider.of<MetaEventProvider>(context,
+                                        Provider.of<EventsProvider>(context,
                                                 listen: false)
                                             .clickEvent(
+                                                uid: authProvider.user!.uid,
                                                 email:
                                                     authProvider.user!.correo,
                                                 source:
@@ -286,9 +287,10 @@ class _CourseViewState extends State<CourseView> {
                                     iconColor: bgColor,
                                     icon: Icons.workspace_premium_outlined,
                                     onTap: () {
-                                      Provider.of<MetaEventProvider>(context,
+                                      Provider.of<EventsProvider>(context,
                                               listen: false)
                                           .clickEvent(
+                                              uid: authProvider.user!.uid,
                                               email: authProvider.user!.correo,
                                               source:
                                                   'user/dashboard/${curso.id}',
@@ -546,10 +548,12 @@ class _CourseViewState extends State<CourseView> {
                                                       onTap: () {
                                                         chewieController
                                                             .togglePause();
-                                                        Provider.of<MetaEventProvider>(
+                                                        Provider.of<EventsProvider>(
                                                                 context,
                                                                 listen: false)
                                                             .clickEvent(
+                                                                uid: authProvider
+                                                                    .user!.uid,
                                                                 email:
                                                                     authProvider
                                                                         .user!
@@ -621,10 +625,12 @@ class _CourseViewState extends State<CourseView> {
                                               CustomButton(
                                                 text: appLocal.verMaterialBtn,
                                                 onPress: () {
-                                                  Provider.of<MetaEventProvider>(
+                                                  Provider.of<EventsProvider>(
                                                           context,
                                                           listen: false)
                                                       .clickEvent(
+                                                          uid: authProvider
+                                                              .user!.uid,
                                                           email: authProvider
                                                               .user!.correo,
                                                           source:
@@ -649,10 +655,12 @@ class _CourseViewState extends State<CourseView> {
                                                   iconColor: bgColor,
                                                   icon: Icons.file_download,
                                                   onTap: () {
-                                                    Provider.of<MetaEventProvider>(
+                                                    Provider.of<EventsProvider>(
                                                             context,
                                                             listen: false)
                                                         .clickEvent(
+                                                            uid: authProvider
+                                                                .user!.uid,
                                                             email: authProvider
                                                                 .user!.correo,
                                                             source:
@@ -738,20 +746,20 @@ class _CourseViewState extends State<CourseView> {
                                                                       0.5))),
                                                   onTap: () {
                                                     chewieController.pause();
-                                                    Provider.of<MetaEventProvider>(
-                                                                  context,
-                                                                  listen: false)
-                                                              .clickEvent(
-                                                                  email:
-                                                                      authProvider
-                                                                          .user!
-                                                                          .correo,
-                                                                  source:
-                                                                      'user/dashboard/${curso.id}',
-                                                                  description:
-                                                                      'Click en Modulo ${curso.modulos[i].nombre} de ${curso.nombre}',
-                                                                  title:
-                                                                      'Click en Modulo ${curso.nombre} - ${curso.modulos[i].nombre}');
+                                                    Provider.of<EventsProvider>(
+                                                            context,
+                                                            listen: false)
+                                                        .clickEvent(
+                                                            uid: authProvider
+                                                                .user!.uid,
+                                                            email: authProvider
+                                                                .user!.correo,
+                                                            source:
+                                                                'user/dashboard/${curso.id}',
+                                                            description:
+                                                                'Click en Modulo ${curso.modulos[i].nombre} de ${curso.nombre}',
+                                                            title:
+                                                                'Click en Modulo ${curso.nombre} - ${curso.modulos[i].nombre}');
                                                     NavigatorService.replaceTo(
                                                         '${Flurorouter.curso}/${curso.id}/$i');
                                                   },
@@ -1026,8 +1034,9 @@ class _CustomEndDrawerState extends State<CustomEndDrawer> {
                           validator: (value) {
                             if (value == null ||
                                 value.isEmpty ||
-                                value.length < 3)
+                                value.length < 3) {
                               return appLocal.comentarioInvalido;
+                            }
                             return null;
                           },
                           decoration: InputDecor.formFieldInputDecorationSimple(

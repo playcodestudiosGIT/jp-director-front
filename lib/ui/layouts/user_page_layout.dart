@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../constant.dart';
 import '../../generated/l10n.dart';
-import '../../providers/meta_event_provider.dart';
+import '../../providers/events_provider.dart';
 import '../../providers/page_provider.dart';
 import '../../router/router.dart';
 import '../../services/navigator_service.dart';
@@ -43,16 +43,16 @@ class _UserPageLayoutState extends State<UserPageLayout> {
         onPressed: () {
           // asdf
           if (authProvider.locale == const Locale('es')) {
-            Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+            Provider.of<EventsProvider>(context, listen: false).clickEvent(
                 source: 'Anywhere',
                 description: 'Cambio idioma a ingles',
-                title: 'Click lenguaje a Ingles');
+                title: 'click-lenguaje-ingles');
             authProvider.setLocale(const Locale('en'));
           } else {
-            Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+            Provider.of<EventsProvider>(context, listen: false).clickEvent(
                 source: 'Anywhere',
                 description: 'Cambio idioma a Español',
-                title: 'Click lenguaje a Español');
+                title: 'click-lenguaje-espanol');
             authProvider.setLocale(const Locale('es'));
           }
         },
@@ -116,12 +116,12 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                         const SizedBox(width: 30),
                         GestureDetector(
                           onTap: () {
-                            Provider.of<MetaEventProvider>(context,
+                            Provider.of<EventsProvider>(context,
                                     listen: false)
                                 .clickEvent(
                                     source: 'Anywhere',
                                     description: 'Click en MAIN LOGO',
-                                    title: 'MAINLOGO');
+                                    title: 'main-logo');
                             NavigatorService.replaceTo(Flurorouter.homeRoute);
                           },
                           child: MouseRegion(
@@ -140,48 +140,48 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                               text: appLocal.topBotonCursos,
                               isActive: false,
                               onPress: () {
-                                Provider.of<MetaEventProvider>(context,
+                                Provider.of<EventsProvider>(context,
                                         listen: false)
                                     .clickEvent(
                                         source: 'home/',
                                         description: 'Click en Menu Cursos',
-                                        title: 'Menu - Cursos');
+                                        title: 'menu-cursos');
                                 NavigatorService.navigateTo('/cursos');
                               }),
                           MenuItemTop(
                               text: appLocal.topBotonServicios,
                               isActive: false,
                               onPress: () {
-                                Provider.of<MetaEventProvider>(context,
+                                Provider.of<EventsProvider>(context,
                                         listen: false)
                                     .clickEvent(
                                         source: 'home/',
                                         description: 'Click en Menu Servicios',
-                                        title: 'Menu - Servicios');
+                                        title: 'menu-servicios');
                                 NavigatorService.navigateTo('/servicios');
                               }),
                           MenuItemTop(
                               text: appLocal.topBotonResultados,
                               isActive: false,
                               onPress: () {
-                                Provider.of<MetaEventProvider>(context,
+                                Provider.of<EventsProvider>(context,
                                         listen: false)
                                     .clickEvent(
                                         source: 'home/',
                                         description: 'Click en Menu Resultados',
-                                        title: 'Menu - Resultados');
+                                        title: 'menu-resultados');
                                 NavigatorService.navigateTo('/resultados');
                               }),
                           MenuItemTop(
                               text: appLocal.topBotonContacto,
                               isActive: false,
                               onPress: () {
-                                Provider.of<MetaEventProvider>(context,
+                                Provider.of<EventsProvider>(context,
                                         listen: false)
                                     .clickEvent(
                                         source: 'home/',
                                         description: 'Click en Menu Contacto',
-                                        title: 'Menu - Contacto');
+                                        title: 'menu-contacto');
                                 NavigatorService.navigateTo('/contacto');
                               }),
                           const SizedBox(width: 145)
@@ -211,12 +211,12 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
                         onTap: () {
-                          Provider.of<MetaEventProvider>(context, listen: false)
+                          Provider.of<EventsProvider>(context, listen: false)
                               .clickEvent(
                                   source: 'Anywhere',
                                   description:
                                       'Click en el boton Entrar Appbar',
-                                  title: 'Click en Login');
+                                  title: 'click-login');
                           NavigatorService.replaceTo(Flurorouter.loginRoute);
                         },
                         child: Column(
@@ -265,12 +265,12 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            Provider.of<MetaEventProvider>(context,
+                            Provider.of<EventsProvider>(context,
                                     listen: false)
                                 .clickEvent(
                                     source: 'Anywhere',
                                     description: 'Click en Registrar',
-                                    title: 'Click en el boton registrar');
+                                    title: 'click-registrar');
                             NavigatorService.replaceTo(
                                 Flurorouter.registerRoute);
                           },

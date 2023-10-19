@@ -12,7 +12,7 @@ import 'constant.dart';
 
 import 'api/jp_api.dart';
 
-import 'providers/meta_event_provider.dart';
+import 'providers/events_provider.dart';
 import 'router/router.dart';
 
 import 'services/navigator_service.dart';
@@ -44,7 +44,7 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => LeadsProvider()),
         ChangeNotifierProvider(create: (_) => LoginFormProvider()),
         ChangeNotifierProvider(create: (_) => RegisterFormProvider()),
-        ChangeNotifierProvider(create: (_) => MetaEventProvider()),
+        ChangeNotifierProvider(create: (_) => EventsProvider()),
         ChangeNotifierProvider(create: (_) => PageProvider()),
         ChangeNotifierProvider(create: (_) => UsersProvider()),
         ChangeNotifierProvider(lazy: false, create: (_) => SideBarProvider()),
@@ -66,9 +66,11 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
+    Provider.of<AuthProvider>(context, listen: false).platform = Theme.of(context).platform;
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: bgColor, // <-- SEE HERE
-      statusBarIconBrightness: Brightness.dark, //<-- For Android SEE HERE (dark icons)
+      statusBarIconBrightness:
+          Brightness.dark, //<-- For Android SEE HERE (dark icons)
       statusBarBrightness: Brightness.dark, //<-- For iOS SEE HERE (dark icons)
     ));
     return MaterialApp(
@@ -79,7 +81,9 @@ class MyAppState extends State<MyApp> {
         navigatorKey: NavigatorService.navigatorKey,
         scaffoldMessengerKey: NotifServ.msgKey,
         builder: ((_, child) {
-          if (authProvider.authStatus == AuthStatus.checking) return const ProgressInd();
+          if (authProvider.authStatus == AuthStatus.checking) {
+            return const ProgressInd();
+          }
 
           if (authProvider.authStatus == AuthStatus.authenticated) {
             // return const ProgressInd();

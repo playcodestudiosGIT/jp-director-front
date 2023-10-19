@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jp_director/constant.dart';
 import 'package:jp_director/models/curso.dart';
-import 'package:jp_director/providers/meta_event_provider.dart';
+import 'package:jp_director/providers/events_provider.dart';
 import 'package:jp_director/router/router.dart';
 import 'package:jp_director/services/navigator_service.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +23,7 @@ class CursoImagen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: GestureDetector(
         onTap: () async {
-          await Provider.of<MetaEventProvider>(context, listen: false)
+          await Provider.of<EventsProvider>(context, listen: false)
               .clickEvent(title: 'Click Curso', source: curso.id, description: curso.nombre);
           NavigatorService.navigateTo(
               '${Flurorouter.cursoLanding}/${curso.id}');

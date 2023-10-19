@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:jp_director/providers/export_all_providers.dart';
+import 'package:jp_director/providers/events_provider.dart';
 import 'package:jp_director/ui/shared/widgets/top_area_back.dart';
 
 import '../../../constant.dart';
@@ -188,10 +189,24 @@ class _SoporteViewState extends State<SoporteView> {
                                                   ? null
                                                   : () async {
                                                       isLoading = true;
+
                                                       final isValid = formKey
                                                           .currentState!
                                                           .validate();
                                                       if (!isValid) return;
+                                                      Provider.of<EventsProvider>(
+                                                              context,
+                                                              listen: false)
+                                                          .clickEvent(
+                                                              uid: authProvider
+                                                                  .user!.uid,
+                                                              email: correo,
+                                                              source:
+                                                                  '/support',
+                                                              description:
+                                                                  'Envio formulario de soporte',
+                                                              title:
+                                                                  'Click en Enviar soporte');
                                                       final isOk =
                                                           await authProvider
                                                               .sendEmailSupport(

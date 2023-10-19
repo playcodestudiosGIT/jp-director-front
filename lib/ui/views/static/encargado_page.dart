@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
-import '../../../providers/meta_event_provider.dart';
+import '../../../providers/events_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/widgets/acordion.dart';
@@ -131,7 +131,7 @@ class _EncargadoBody extends StatelessWidget {
                   BotonVerde(
                     text: appLocal.empezamosBtn,
                     onPressed: () {
-                      Provider.of<MetaEventProvider>(context, listen: false)
+                      Provider.of<EventsProvider>(context, listen: false)
                           .clickEvent(
                               source: '/v/encargado - Ser el encargado',
                               description: 'Click en Empezamos?',
@@ -235,7 +235,7 @@ class _LetrasAsesoria extends StatelessWidget {
         BotonVerde(
           text: appLocal.estoyListoBtn,
           onPressed: () {
-            Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+            Provider.of<EventsProvider>(context, listen: false).clickEvent(
                 source: '/v/encargado - Ser el encargado',
                 description: 'Click en Estoy listo, comencemos.',
                 title: 'Servicio Ser el encargado');

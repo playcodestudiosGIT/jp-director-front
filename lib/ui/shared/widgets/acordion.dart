@@ -3,7 +3,7 @@ import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 
 import '../../../constant.dart';
 import '../../../providers/export_all_providers.dart';
-import '../../../providers/meta_event_provider.dart';
+import '../../../providers/events_provider.dart';
 
 class Acordeon extends StatefulWidget {
   final String title;
@@ -43,7 +43,7 @@ class _AcordeonState extends State<Acordeon> {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: () => setState(() {
-          Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+          Provider.of<EventsProvider>(context, listen: false).clickEvent(
               source: '/v/${widget.service} - ACORDEON',
               description: '$estado ${widget.title}',
               title: widget.title);
@@ -61,7 +61,7 @@ class _AcordeonState extends State<Acordeon> {
                 children: [
                   const SizedBox(width: 20),
                   Text(widget.title, style: DashboardLabel.h4),
-                  Spacer(),
+                  const Spacer(),
                   if (!isExpanded) const Icon(Icons.arrow_downward, size: 20),
                   if (isExpanded) const Icon(Icons.arrow_upward, size: 20),
                   const SizedBox(width: 20)

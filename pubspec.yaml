@@ -32,6 +32,7 @@ dependencies:
   carousel_slider: ^4.2.1
   chewie: ^1.4.0
   cupertino_icons: ^1.0.2
+  device_info_plus: ^9.1.0
   dio: ^5.1.2
   email_validator: ^2.1.17
   file_picker: ^5.2.4

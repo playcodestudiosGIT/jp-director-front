@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import '../../../../constant.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../providers/forms/login_form_provider.dart';
-import '../../../../providers/meta_event_provider.dart';
+import '../../../../providers/events_provider.dart';
 import '../../../../router/router.dart';
 import '../../../../services/navigator_service.dart';
 import '../../../views/login/resgister_page.dart';
@@ -82,8 +82,9 @@ class _LoginFormState extends State<LoginForm> {
                   keyboardType: TextInputType.visiblePassword,
                   validator: (value) {
                     if (value!.isEmpty) return appLocal.ingreseUnaPassValida;
-                    if (value.length < 6)
+                    if (value.length < 6) {
                       return appLocal.laContraDebe6Caracteres;
+                    }
                     return null;
                   },
                   onChanged: (value) => loginFormProvider.setPassword(value),
@@ -188,7 +189,7 @@ class _LoginFormState extends State<LoginForm> {
                                 blancoText.withOpacity(0.1))),
                         onPressed: (widget.cursoId != '')
                             ? () {
-                                Provider.of<MetaEventProvider>(context,
+                                Provider.of<EventsProvider>(context,
                                         listen: false)
                                     .clickEvent(
                                         source: '/${widget.cursoId}',
@@ -199,7 +200,7 @@ class _LoginFormState extends State<LoginForm> {
                                     '${Flurorouter.payNewUserRouteAlt}/${widget.cursoId}/register');
                               }
                             : () {
-                                Provider.of<MetaEventProvider>(context,
+                                Provider.of<EventsProvider>(context,
                                         listen: false)
                                     .clickEvent(
                                         source: '/login',
@@ -226,7 +227,7 @@ class _LoginFormState extends State<LoginForm> {
                     cursor: SystemMouseCursors.click,
                     child: GestureDetector(
                         onTap: () {
-                          Provider.of<MetaEventProvider>(context, listen: false)
+                          Provider.of<EventsProvider>(context, listen: false)
                               .clickEvent(
                                   source: '/login',
                                   description:

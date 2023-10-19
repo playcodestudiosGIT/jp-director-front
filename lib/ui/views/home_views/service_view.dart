@@ -6,7 +6,7 @@ import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
 import '../../../providers/export_all_providers.dart';
-import '../../../providers/meta_event_provider.dart';
+import '../../../providers/events_provider.dart';
 import '../service_slider_views/asesoria_view.dart';
 import '../service_slider_views/conference_view.dart';
 import '../service_slider_views/encargado_view.dart';
@@ -100,7 +100,7 @@ class _ServicesViewState extends State<ServicesView> {
                                   children: [
                                     TextButton(
                                         onPressed: () {
-                                          Provider.of<MetaEventProvider>(context,
+                                          Provider.of<EventsProvider>(context,
                                           listen: false)
                                       .clickEvent(
                                     
@@ -135,7 +135,7 @@ class _ServicesViewState extends State<ServicesView> {
                               padding: const EdgeInsets.only(left: 8.0),
                               child: TextButton(
                                   onPressed: () {
-                                    Provider.of<MetaEventProvider>(context,
+                                    Provider.of<EventsProvider>(context,
                                             listen: false)
                                         .clickEvent(
                                             source: 'home/servicios',
@@ -172,7 +172,7 @@ class _ServicesViewState extends State<ServicesView> {
                               padding: const EdgeInsets.only(left: 8.0),
                               child: TextButton(
                                   onPressed: () {
-                                    Provider.of<MetaEventProvider>(context,
+                                    Provider.of<EventsProvider>(context,
                                             listen: false)
                                         .clickEvent(
                                             source: 'home/servicios',
@@ -209,7 +209,7 @@ class _ServicesViewState extends State<ServicesView> {
                               padding: const EdgeInsets.only(left: 8.0),
                               child: TextButton(
                                   onPressed: () {
-                                    Provider.of<MetaEventProvider>(context,
+                                    Provider.of<EventsProvider>(context,
                                             listen: false)
                                         .clickEvent(
                                             source: 'home/servicios',

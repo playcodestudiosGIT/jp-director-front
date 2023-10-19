@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
 import '../../../providers/auth_provider.dart';
-import '../../../providers/meta_event_provider.dart';
+import '../../../providers/events_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/labels/dashboard_label.dart';
@@ -92,7 +92,7 @@ class _MentoriaBody extends StatelessWidget {
                               height: 30,
                             ),
                             GestureDetector(
-                              onTap: () => Provider.of<MetaEventProvider>(
+                              onTap: () => Provider.of<EventsProvider>(
                                       context,
                                       listen: false)
                                   .clickEvent(
@@ -109,7 +109,7 @@ class _MentoriaBody extends StatelessWidget {
                               height: 30,
                             ),
                             GestureDetector(
-                              onTap: () => Provider.of<MetaEventProvider>(
+                              onTap: () => Provider.of<EventsProvider>(
                                       context,
                                       listen: false)
                                   .clickEvent(
@@ -125,7 +125,7 @@ class _MentoriaBody extends StatelessWidget {
                               height: 30,
                             ),
                             GestureDetector(
-                              onTap: () => Provider.of<MetaEventProvider>(
+                              onTap: () => Provider.of<EventsProvider>(
                                       context,
                                       listen: false)
                                   .clickEvent(
@@ -142,7 +142,7 @@ class _MentoriaBody extends StatelessWidget {
                               height: 30,
                             ),
                             GestureDetector(
-                              onTap: () => Provider.of<MetaEventProvider>(
+                              onTap: () => Provider.of<EventsProvider>(
                                       context,
                                       listen: false)
                                   .clickEvent(
@@ -236,7 +236,7 @@ class _LetrasConferencias extends StatelessWidget {
         BotonVerde(
           text: appLocal.estoyListoBtn,
           onPressed: () {
-            Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+            Provider.of<EventsProvider>(context, listen: false).clickEvent(
                 source: '/servicios - Pagina CONFERENCIA',
                 description: 'Click en Estoy listo, comencemos',
                 title: 'Servicio Conferencia');

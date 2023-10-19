@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
-import '../../../providers/meta_event_provider.dart';
+import '../../../providers/events_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/widgets/acordion.dart';
@@ -181,7 +181,7 @@ class _LetrasAsesoria extends StatelessWidget {
         BotonVerde(
           text: appLocal.agendarBtn,
           onPressed: ()async  {
-            await Provider.of<MetaEventProvider>(context, listen: false)
+            await Provider.of<EventsProvider>(context, listen: false)
               .clickEvent(title: 'Click Asesoria Agendar', source: '/v/asesoria', description: 'Click en boton agendar asesoria');
           NavigatorService.navigateTo(Flurorouter.agendarRoute);
           } ,

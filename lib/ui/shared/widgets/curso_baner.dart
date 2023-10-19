@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
 import '../../../models/curso.dart';
-import '../../../providers/meta_event_provider.dart';
+import '../../../providers/events_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../botones/custom_button.dart';
@@ -199,7 +199,7 @@ class CursoBanerView extends StatelessWidget {
                                   onPress: () async {
                                     if (authProvider.authStatus ==
                                         AuthStatus.notAuthenticated) {
-                                      Provider.of<MetaEventProvider>(context,
+                                      Provider.of<EventsProvider>(context,
                                               listen: false)
                                           .clickEvent(
                                               source: 'land/${curso.id}',
@@ -222,9 +222,10 @@ class CursoBanerView extends StatelessWidget {
                                               userEmail:
                                                   authProvider.user!.correo);
                                       
-                                      Provider.of<MetaEventProvider>(context,
+                                      Provider.of<EventsProvider>(context,
                                               listen: false)
                                           .clickEvent(
+                                              uid: authProvider.user!.uid,
                                               email: authProvider.user!.correo,
                                               source: 'land/${curso.id}',
                                               description:

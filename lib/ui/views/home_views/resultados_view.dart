@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
-import '../../../providers/meta_event_provider.dart';
+import '../../../providers/events_provider.dart';
 import '../../shared/labels/dashboard_label.dart';
 
 class ResultadosView extends StatelessWidget {
@@ -27,7 +27,7 @@ class ResultadosView extends StatelessWidget {
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
                     onTap: () async {
-                      await Provider.of<MetaEventProvider>(context, listen: false)
+                      await Provider.of<EventsProvider>(context, listen: false)
               .clickEvent(title: 'Click Resultados mini', source: '/resultados', description: 'click en mini imagen $i');
                       _dialogBuilder(context: context, i: i);
                     },

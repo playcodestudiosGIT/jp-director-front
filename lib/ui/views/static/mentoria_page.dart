@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
-import '../../../providers/meta_event_provider.dart';
+import '../../../providers/events_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/labels/dashboard_label.dart';
@@ -163,7 +163,7 @@ class LetrasMentoria extends StatelessWidget {
         BotonVerde(
           text: appLocal.estoyListoBtn,
           onPressed: () {
-            Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+            Provider.of<EventsProvider>(context, listen: false).clickEvent(
                         source: '/v/mentoria - Mentoria intensiva',
                         description: 'Click en Estoy listo, comencemos.',
                         title: 'Servicio Mentoria Intensiva');

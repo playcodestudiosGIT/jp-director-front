@@ -5,7 +5,7 @@ import 'package:jp_director/ui/shared/botones/botonverde.dart';
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
 import '../../../providers/export_all_providers.dart';
-import '../../../providers/meta_event_provider.dart';
+import '../../../providers/events_provider.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/labels/dashboard_label.dart';
 
@@ -76,7 +76,7 @@ class ConferenceView extends StatelessWidget {
                 BotonVerde(
                     text: appLocal.agendarBtn,
                     onPressed: () {
-                      Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                      Provider.of<EventsProvider>(context, listen: false).clickEvent(
                         source: '/servicios - Slider CONFERENCIA',
                         description: 'Click en Agendar',
                         title: 'Servicio Conferencia');

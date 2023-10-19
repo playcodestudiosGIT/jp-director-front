@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
 import '../../../providers/auth_provider.dart';
-import '../../../providers/meta_event_provider.dart';
+import '../../../providers/events_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../widgets/menu_item_side.dart';
@@ -88,14 +88,15 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                 isActive: sideBarProvider.currentPage ==
                                     Flurorouter.start,
                                 onPress: () {
-                                  Provider.of<MetaEventProvider>(context,
+                                  Provider.of<EventsProvider>(context,
                                           listen: false)
                                       .clickEvent(
+                                          uid: authProvider.user!.uid,
                                           email: authProvider.user!.correo,
                                           source: 'User Menu',
                                           description:
                                               'Click en el Comienza Aqui',
-                                          title: 'Menu - Comienza aqui');
+                                          title: 'menu-comienza-aqui');
                                   NavigatorService.navigateTo(
                                       Flurorouter.start);
                                   isOpen = false;
@@ -106,13 +107,14 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                 isActive: sideBarProvider.currentPage ==
                                     Flurorouter.clienteMisCursosDash,
                                 onPress: () {
-                                  Provider.of<MetaEventProvider>(context,
+                                  Provider.of<EventsProvider>(context,
                                           listen: false)
                                       .clickEvent(
+                                          uid: authProvider.user!.uid,
                                           email: authProvider.user!.correo,
                                           source: 'User Menu',
                                           description: 'Click en Mis Cursos',
-                                          title: 'Menu - Mis Cursos');
+                                          title: 'menu-mis-cursos');
                                   NavigatorService.navigateTo(
                                       Flurorouter.clienteMisCursosDash);
                                   isOpen = false;
@@ -126,13 +128,14 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                 isActive: sideBarProvider.currentPage ==
                                     Flurorouter.clienteDash,
                                 onPress: () {
-                                  Provider.of<MetaEventProvider>(context,
+                                  Provider.of<EventsProvider>(context,
                                           listen: false)
                                       .clickEvent(
+                                        uid: authProvider.user!.uid,
                                           email: authProvider.user!.correo,
                                           source: 'User Menu',
                                           description: 'Click en Mi Cuenta',
-                                          title: 'Menu - Mi Cuenta');
+                                          title: 'menu-mi-cuenta');
                                   NavigatorService.navigateTo(
                                       Flurorouter.clienteDash);
                                   isOpen = false;
@@ -143,13 +146,14 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                 isActive: sideBarProvider.currentPage ==
                                     Flurorouter.supportRoute,
                                 onPress: () {
-                                  Provider.of<MetaEventProvider>(context,
+                                  Provider.of<EventsProvider>(context,
                                           listen: false)
                                       .clickEvent(
+                                        uid: authProvider.user!.uid,
                                           email: authProvider.user!.correo,
                                           source: 'User Menu',
                                           description: 'Click en Soporte',
-                                          title: 'Menu - Soporte');
+                                          title: 'menu-soporte');
                                   NavigatorService.navigateTo(
                                       Flurorouter.supportRoute);
                                   isOpen = false;
@@ -163,13 +167,14 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                   isActive: sideBarProvider.currentPage ==
                                       Flurorouter.usersAdminDash,
                                   onPress: () {
-                                    Provider.of<MetaEventProvider>(context,
+                                    Provider.of<EventsProvider>(context,
                                             listen: false)
                                         .clickEvent(
+                                          uid: authProvider.user!.uid,
                                             email: authProvider.user!.correo,
                                             source: 'Admin Menu',
                                             description: 'Click en Usuarios',
-                                            title: 'Menu - Usuarios');
+                                            title: 'menu-usuarios');
                                     NavigatorService.navigateTo(
                                         Flurorouter.usersAdminDash);
                                     isOpen = false;
@@ -180,13 +185,14 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                   isActive: sideBarProvider.currentPage ==
                                       Flurorouter.cursosAdminDash,
                                   onPress: () {
-                                    Provider.of<MetaEventProvider>(context,
+                                    Provider.of<EventsProvider>(context,
                                             listen: false)
                                         .clickEvent(
+                                          uid: authProvider.user!.uid,
                                             email: authProvider.user!.correo,
                                             source: 'Admin Menu',
                                             description: 'Click en Cursos',
-                                            title: 'Menu - Cursos');
+                                            title: 'menu-cursos');
                                     NavigatorService.navigateTo(
                                         Flurorouter.cursosAdminDash);
                                     isOpen = false;
@@ -197,13 +203,14 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                   isActive: sideBarProvider.currentPage ==
                                       Flurorouter.formsAdminDash,
                                   onPress: () {
-                                    Provider.of<MetaEventProvider>(context,
+                                    Provider.of<EventsProvider>(context,
                                             listen: false)
                                         .clickEvent(
+                                          uid: authProvider.user!.uid,
                                             email: authProvider.user!.correo,
                                             source: 'Admin Menu',
                                             description: 'Click en Formularios',
-                                            title: 'Menu - Formularios');
+                                            title: 'menu-formularios');
                                     NavigatorService.navigateTo(
                                         Flurorouter.formsAdminDash);
                                     isOpen = false;
@@ -214,13 +221,14 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                   isActive: sideBarProvider.currentPage ==
                                       Flurorouter.leadsAdminDash,
                                   onPress: () {
-                                    Provider.of<MetaEventProvider>(context,
+                                    Provider.of<EventsProvider>(context,
                                             listen: false)
                                         .clickEvent(
+                                          uid: authProvider.user!.uid,
                                             email: authProvider.user!.correo,
                                             source: 'Admin Menu',
                                             description: 'Click en Leads',
-                                            title: 'Menu - Leads');
+                                            title: 'menu-leads');
                                     NavigatorService.navigateTo(
                                         Flurorouter.leadsAdminDash);
                                     isOpen = false;
@@ -235,13 +243,14 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                 icon: Icons.logout_rounded,
                                 isActive: false,
                                 onPress: () {
-                                  Provider.of<MetaEventProvider>(context,
+                                  Provider.of<EventsProvider>(context,
                                           listen: false)
                                       .clickEvent(
+                                        uid: authProvider.user!.uid,
                                           email: authProvider.user!.correo,
                                           source: 'Admin Menu',
                                           description: 'Click en Log Out',
-                                          title: 'Menu - Log Out');
+                                          title: 'menu-logout');
                                   authProvider.logOut(context);
                                 }),
                           ]
@@ -283,12 +292,13 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                   }
                                   setState(() {
                                     isOpen = !isOpen;
-                                    Provider.of<MetaEventProvider>(context,
+                                    Provider.of<EventsProvider>(context,
                                             listen: false)
                                         .clickEvent(
+                                        
                                             source: 'Mobile User Menu',
                                             description: 'Click en Inicio',
-                                            title: 'Menu - Inicio');
+                                            title: 'menu-inicio');
                                     NavigatorService.navigateTo('/home');
                                   });
                                 }),
@@ -305,12 +315,13 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                   }
                                   setState(() {
                                     isOpen = !isOpen;
-                                    Provider.of<MetaEventProvider>(context,
+                                    Provider.of<EventsProvider>(context,
                                             listen: false)
                                         .clickEvent(
+            
                                             source: 'Mobile User Menu',
                                             description: 'Click en Cursos',
-                                            title: 'Menu - Cursos');
+                                            title: 'menu-cursos');
                                     NavigatorService.navigateTo('/cursos');
                                   });
                                 }),
@@ -327,12 +338,12 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                   }
                                   setState(() {
                                     isOpen = !isOpen;
-                                    Provider.of<MetaEventProvider>(context,
+                                    Provider.of<EventsProvider>(context,
                                             listen: false)
                                         .clickEvent(
                                             source: 'Mobile User Menu',
                                             description: 'Click en Servicios',
-                                            title: 'Menu - Servicios');
+                                            title: 'menu-servicios');
                                     NavigatorService.navigateTo('/servicios');
                                   });
                                 }),
@@ -348,12 +359,12 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                     controller.forward();
                                   }
                                   setState(() {
-                                    Provider.of<MetaEventProvider>(context,
+                                    Provider.of<EventsProvider>(context,
                                             listen: false)
                                         .clickEvent(
                                             source: 'Mobile User Menu',
                                             description: 'Click en Resultados',
-                                            title: 'Menu - Resultados');
+                                            title: 'menu-resultados');
                                     isOpen = !isOpen;
                                     NavigatorService.navigateTo('/resultados');
                                   });
@@ -371,12 +382,12 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                   }
                                   setState(() {
                                     isOpen = !isOpen;
-                                    Provider.of<MetaEventProvider>(context,
+                                    Provider.of<EventsProvider>(context,
                                             listen: false)
                                         .clickEvent(
                                             source: 'Mobile User Menu',
                                             description: 'Click en Contacto',
-                                            title: 'Menu - Contacto');
+                                            title: 'menu contacto');
                                     NavigatorService.navigateTo('/contacto');
                                   });
                                 }),

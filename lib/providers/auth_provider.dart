@@ -15,6 +15,7 @@ enum AuthStatus { checking, authenticated, notAuthenticated }
 class AuthProvider extends ChangeNotifier {
   // ignore: unused_field
   late String? _token;
+  late TargetPlatform _platform;
   AuthStatus authStatus = AuthStatus.checking;
   Usuario? user;
 
@@ -30,6 +31,11 @@ class AuthProvider extends ChangeNotifier {
   }
 
 // ------------------//
+
+  TargetPlatform get platform => _platform;
+  set platform(TargetPlatform value) {
+    _platform = value;
+  }
 
   Locale _locale = const Locale('es');
   Locale get locale => _locale;
@@ -74,7 +80,6 @@ class AuthProvider extends ChangeNotifier {
       isLoading = false;
       notifyListeners();
     }).catchError((e) {
-      print(e);
       isLoading = false;
       NotifServ.showSnackbarError(appLocal.credencialesInvalidas, Colors.red);
       notifyListeners();

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jp_director/providers/meta_event_provider.dart';
+import 'package:jp_director/providers/events_provider.dart';
 import 'package:jp_director/ui/shared/botones/botonverde.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 
@@ -100,7 +100,7 @@ class AsesoriaMain extends StatelessWidget {
               BotonVerde(
                   text: appLocal.quieroMiAsesoriaBtn,
                   onPressed: () {
-                    Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                    Provider.of<EventsProvider>(context, listen: false).clickEvent(
                         source: '/servicios - Slider ASESORIA',
                         description: 'Click en Quiero mi asesoria',
                         title: 'Servicio Asesoria');

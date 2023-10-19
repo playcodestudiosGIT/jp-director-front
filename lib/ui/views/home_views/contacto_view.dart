@@ -12,7 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constant.dart';
 import '../../../generated/l10n.dart';
-import '../../../providers/meta_event_provider.dart';
+import '../../../providers/events_provider.dart';
 import '../../../router/router.dart';
 import '../../../services/navigator_service.dart';
 import '../../shared/widgets/logotop.dart';
@@ -92,9 +92,14 @@ class ContactoView extends StatelessWidget {
                                     appLocal.descargaRegaloBtn,
                                     style: DashboardLabel.paragraph,
                                   ),
-                                  onPressed: ()async  {
-                                    await Provider.of<MetaEventProvider>(context, listen: false)
-              .clickEvent(title: 'Click Descarga RegaLo', source: '/contacto', description: 'Click en descarga regalo sin llenar datos');
+                                  onPressed: () async {
+                                    Provider.of<EventsProvider>(context,
+                                            listen: false)
+                                        .clickEvent(
+                                            title: 'Click Descarga RegaLo',
+                                            source: '/contacto',
+                                            description:
+                                                'Click en descarga regalo sin llenar datos');
                                     showDialog(
                                       context: context,
                                       builder: (context) =>
@@ -138,6 +143,13 @@ class ContactoView extends StatelessWidget {
                               onTap: () {
                                 final Uri url = Uri.parse(
                                     'https://wa.me/12142265941?text=Hola%20Jp%20-%20Necesito%20apoyo%20con%20mi%20publicidad');
+                                Provider.of<EventsProvider>(context,
+                                        listen: false)
+                                    .clickEvent(
+                                        title: 'Click Whatsapp',
+                                        source: '/contacto',
+                                        description:
+                                            'Click en Whatsapp - contacto');
                                 launchUrl(url);
                               },
                               child: Row(
@@ -145,7 +157,18 @@ class ContactoView extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        final Uri url = Uri.parse(
+                                            'https://wa.me/12142265941?text=Hola%20Jp%20-%20Necesito%20apoyo%20con%20mi%20publicidad');
+                                        Provider.of<EventsProvider>(context,
+                                                listen: false)
+                                            .clickEvent(
+                                                title: 'Click Whatsapp',
+                                                source: '/contacto',
+                                                description:
+                                                    'Click en Whatsapp - contacto');
+                                        launchUrl(url);
+                                      },
                                       icon: const Icon(
                                         FontAwesomeIcons.whatsapp,
                                         color: verdeBorde,
@@ -205,8 +228,18 @@ class ContactoView extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 GestureDetector(
-                                  onTap: () => NavigatorService.navigateTo(
-                                      Flurorouter.pdpRoute),
+                                  onTap: () {
+                                    Provider.of<EventsProvider>(context,
+                                            listen: false)
+                                        .clickEvent(
+                                            source: '/contacto - Home',
+                                            description:
+                                                'Click en Politicas de Privacidad home',
+                                            title:
+                                                'Click en Politicas de privacidad');
+                                    NavigatorService.navigateTo(
+                                        Flurorouter.pdpRoute);
+                                  },
                                   child: MouseRegion(
                                     cursor: SystemMouseCursors.click,
                                     child: Text(
@@ -230,8 +263,18 @@ class ContactoView extends StatelessWidget {
                                   ),
                                 ),
                                 GestureDetector(
-                                  onTap: () => NavigatorService.navigateTo(
-                                      Flurorouter.tycRoute),
+                                  onTap: () {
+                                    Provider.of<EventsProvider>(context,
+                                            listen: false)
+                                        .clickEvent(
+                                            source: '/contacto - Home',
+                                            description:
+                                                'Click en Terminos y condiciones - home',
+                                            title:
+                                                'Click en Terminos y condiciones');
+                                    NavigatorService.navigateTo(
+                                        Flurorouter.tycRoute);
+                                  },
                                   child: MouseRegion(
                                     cursor: SystemMouseCursors.click,
                                     child: Text(
@@ -402,9 +445,9 @@ class _CustomAlertDialogGiftState extends State<CustomAlertDialogGift> {
                       if (formController.currentState!.validate()) {
                         await Provider.of<LeadsProvider>(context, listen: false)
                             .createLead(email: email, telf: telf);
-                        await Provider.of<MetaEventProvider>(context,
+                        await Provider.of<EventsProvider>(context,
                                 listen: false)
-                            .regaloEvent(email: email, phone: telf);
+                            .metaRegaloEvent(email: email, phone: telf);
                       }
                     },
                     width: 100,

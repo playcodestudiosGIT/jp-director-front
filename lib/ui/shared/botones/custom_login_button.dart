@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jp_director/constant.dart';
 import 'package:jp_director/providers/auth_provider.dart';
-import 'package:jp_director/providers/meta_event_provider.dart';
+import 'package:jp_director/providers/events_provider.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
 

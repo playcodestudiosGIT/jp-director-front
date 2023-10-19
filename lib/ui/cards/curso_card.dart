@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import '../../generated/l10n.dart';
 import '../../models/curso.dart';
 import '../../providers/all_cursos_provider.dart';
-import '../../providers/meta_event_provider.dart';
+import '../../providers/events_provider.dart';
 import '../../services/navigator_service.dart';
 import 'white_card_border.dart';
 
@@ -30,12 +30,13 @@ class CourseCard extends StatelessWidget {
       child: GestureDetector(
         onTap: (!esMio)
             ? () {
-                Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
+                Provider.of<EventsProvider>(context, listen: false).clickEvent(
+                    uid: authProvider.user!.uid,
                     email: authProvider.user!.correo,
                     source: 'user/dashboard/miscursos',
                     description:
                         'user: ${authProvider.user!.uid} Curso ID: ${curso.id}, Nombre Curso: ${curso.nombre}, precio: ${curso.precio}',
-                    title: 'Click Tarjeta de curso: ${curso.nombre}');
+                    title: curso.id);
                 NavigatorService.replaceTo(
                     '${Flurorouter.cursoLanding}/${curso.id}');
               }
@@ -45,22 +46,24 @@ class CourseCard extends StatelessWidget {
 
                 if (authProvider.authStatus == AuthStatus.authenticated &&
                     context.mounted) {
-                      Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
-                    email: authProvider.user!.correo,
-                    source: 'user/dashboard/miscursos',
-                    description:
-                        'user: ${authProvider.user!.uid} Curso ID: ${curso.id}, Nombre Curso: ${curso.nombre}, precio: ${curso.precio}',
-                    title: '${authProvider.user!.nombre} Entro a ver el curso: ${curso.nombre}');
+                  Provider.of<EventsProvider>(context, listen: false).clickEvent(
+                      uid: authProvider.user!.uid,
+                      email: authProvider.user!.correo,
+                      source: 'user/dashboard/miscursos',
+                      description:
+                          'user: ${authProvider.user!.uid} Curso ID: ${curso.id}, Nombre Curso: ${curso.nombre}, precio: ${curso.precio}',
+                      title: curso.id);
                   NavigatorService.replaceTo(
-                    
                       '${Flurorouter.curso}/${curso.id}/0');
                 } else {
-                  Provider.of<MetaEventProvider>(context, listen: false).clickEvent(
-                    email: authProvider.user!.correo,
-                    source: 'user/dashboard/miscursos',
-                    description:
-                        'user: ${authProvider.user!.uid} Curso ID: ${curso.id}, Nombre Curso: ${curso.nombre}, precio: ${curso.precio}',
-                    title: '${authProvider.user!.nombre} le intereza el curso ${curso.nombre}');
+                  Provider.of<EventsProvider>(context, listen: false).clickEvent(
+                      uid: authProvider.user!.uid,
+                      email: authProvider.user!.correo,
+                      source: 'user/dashboard/miscursos',
+                      description:
+                          'user: ${authProvider.user!.uid} Curso ID: ${curso.id}, Nombre Curso: ${curso.nombre}, precio: ${curso.precio}',
+                      title:
+                          curso.id);
                   NavigatorService.replaceTo(
                       '${Flurorouter.cursoLanding}/${curso.id}');
                 }
@@ -104,16 +107,17 @@ class CourseCard extends StatelessWidget {
                                             MaterialStatePropertyAll(
                                                 blancoText.withOpacity(0.1))),
                                     onPressed: () {
-                                      Provider.of<MetaEventProvider>(context,
+                                      Provider.of<EventsProvider>(context,
                                               listen: false)
                                           .clickEvent(
+                                              uid: authProvider.user!.uid,
                                               email: authProvider.user!.correo,
                                               source:
                                                   'user/dashboard/miscursos',
                                               description:
                                                   'usuario: ${authProvider.user?.uid} Click en curso ${curso.id}',
                                               title:
-                                                  'Click en Terminos de uso');
+                                                  'terminos-de-uso');
                                       NavigatorService.replaceTo(
                                           '${Flurorouter.curso}/${curso.id}/0');
                                     },
