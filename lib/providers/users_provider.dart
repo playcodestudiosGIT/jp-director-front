@@ -36,9 +36,16 @@ class UsersProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  createUser(String? nombre, String? apellido, String? email, String? password, String? rol, bool? estado) {
-
-    final data = {"nombre": nombre, "apellido": apellido, "correo": email, "password": password, "rol": rol, "estado": estado};
+  createUser(String? nombre, String? apellido, String? email, String? password,
+      String? rol, bool? estado) {
+    final data = {
+      "nombre": nombre,
+      "apellido": apellido,
+      "correo": email,
+      "password": email,
+      "rol": rol,
+      "estado": estado
+    };
 
     // Petición HTTP
     JpApi.post('/usuarios', data).then((json) {
@@ -46,7 +53,7 @@ class UsersProvider extends ChangeNotifier {
       users.add(authResponse.usuario);
       notifyListeners();
     }).catchError((e) {
-      throw Exception('Error en el create user  $e');
+      // print('errpr $e');
     });
   }
 

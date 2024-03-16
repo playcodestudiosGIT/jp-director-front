@@ -65,8 +65,11 @@ class _CourseViewState extends State<CourseView> {
     final Uri url = Uri.parse(curso.modulos[widget.videoIndex].video);
     videoPlayerController = VideoPlayerController.networkUrl(url,
         videoPlayerOptions: VideoPlayerOptions(
-            webOptions: const VideoPlayerWebOptions(
-                allowContextMenu: false, allowRemotePlayback: true)));
+          webOptions: const VideoPlayerWebOptions(
+            allowContextMenu: false,
+            allowRemotePlayback: true,
+          ),
+        ));
 
     chewieController = ChewieController(
         startAt: Duration(seconds: prog.marker),

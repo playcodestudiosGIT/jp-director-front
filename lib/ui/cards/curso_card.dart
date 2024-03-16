@@ -135,10 +135,14 @@ class CourseCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Container(
+                        height: 42,
                           margin:
                               const EdgeInsets.only(left: 5, right: 5, top: 0),
                           child: Text(
+                            
                             curso.nombre,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                             style: DashboardLabel.h4,
                           )),
                       if (!esMio) ...[
@@ -151,13 +155,13 @@ class CourseCard extends StatelessWidget {
                               style: DashboardLabel.h4,
                             )),
                         Container(
-                            height: 90,
+                            height: 70,
                             margin: const EdgeInsets.only(
                                 left: 5, right: 5, top: 5),
                             child: Text(curso.descripcion,
-                                maxLines: 5,
+                                maxLines: 4,
                                 overflow: TextOverflow.ellipsis,
-                                style: DashboardLabel.paragraph.copyWith(
+                                style: DashboardLabel.mini.copyWith(
                                     color: blancoText.withOpacity(0.5)))),
                       ],
                       const SizedBox(height: 10),

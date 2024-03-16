@@ -22,13 +22,16 @@ class ResultadosView extends StatelessWidget {
       ...listMiniPhotos.map((image) {
         final i = listMiniPhotos.indexOf(image);
         return Container(
-          margin: const EdgeInsets.symmetric(horizontal: 15),
+            margin: const EdgeInsets.symmetric(horizontal: 15),
             child: MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
                     onTap: () async {
                       await Provider.of<EventsProvider>(context, listen: false)
-              .clickEvent(title: 'Click Resultados mini', source: '/resultados', description: 'click en mini imagen $i');
+                          .clickEvent(
+                              title: 'Click Resultados mini',
+                              source: '/resultados',
+                              description: 'click en mini imagen $i');
                       _dialogBuilder(context: context, i: i);
                     },
                     child: Image(image: NetworkImage(image)))));
@@ -70,57 +73,59 @@ class ResultadosView extends StatelessWidget {
               child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                    const SizedBox(height: 100),
-                    Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: Text(
-                  appLocal.miraloOjos,
-                  textAlign: TextAlign.center,
-                  style: (wScreen > 580) ?DashboardLabel.gigant : DashboardLabel.h2.copyWith(fontWeight: FontWeight.bold)
-                ),
-              ),
-              Container(
-                width: (wScreen > 580) ? 548 : 400,
-                height: 5,
-                decoration: const BoxDecoration(
-                    gradient: LinearGradient(colors: [
-                  bgColor,
-                  azulText,
-                  bgColor,
-                ])),
-              ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      height: 300,
-                      child: PageView(
-                        
-                        children: [
-                        CarouselSlider(
-                            
-                            items: listResultWiget,
-                            options: CarouselOptions(
-                              scrollPhysics: const NeverScrollableScrollPhysics(),
-                                height: 300,
-                                viewportFraction: viewport,
-                                enlargeFactor: 0.4,
-                                enlargeCenterPage: true,
-                                enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                                pageSnapping: false,
-                                initialPage: 0,
-                                enableInfiniteScroll: true,
-                                autoPlay: true)),
-                      ]),
-                    ),
-                    Center(
-                      child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 5), color: Colors.transparent, child: const Image(image: baseGif)),
-                    )
-                  ])),
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(height: 100),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          child: Text(appLocal.miraloOjos,
+                              textAlign: TextAlign.center,
+                              style: (wScreen > 580)
+                                  ? DashboardLabel.gigant
+                                  : DashboardLabel.h2
+                                      .copyWith(fontWeight: FontWeight.bold)),
+                        ),
+                        Container(
+                          width: (wScreen > 580) ? 548 : 400,
+                          height: 5,
+                          decoration: const BoxDecoration(
+                              gradient: LinearGradient(colors: [
+                            bgColor,
+                            azulText,
+                            bgColor,
+                          ])),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 300,
+                          child: PageView(children: [
+                            CarouselSlider(
+                                items: listResultWiget,
+                                options: CarouselOptions(
+                                    scrollPhysics:
+                                        const NeverScrollableScrollPhysics(),
+                                    height: 300,
+                                    viewportFraction: viewport,
+                                    enlargeFactor: 0.4,
+                                    enlargeCenterPage: true,
+                                    enlargeStrategy:
+                                        CenterPageEnlargeStrategy.zoom,
+                                    pageSnapping: false,
+                                    initialPage: 0,
+                                    enableInfiniteScroll: true,
+                                    autoPlay: true)),
+                          ]),
+                        ),
+                        Center(
+                          child: Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 5),
+                              color: Colors.transparent,
+                              child: const Image(image: baseGif)),
+                        )
+                      ])),
             )
           ],
         ),
@@ -176,8 +181,10 @@ class _ContentDialogState extends State<ContentDialog> {
                     .map((e) => Padding(
                           padding: const EdgeInsets.only(bottom: 40.0),
                           child: PhotoView(
-                              loadingBuilder: (context, event) => const ProgressInd(),
-                              backgroundDecoration: const BoxDecoration(color: Colors.transparent),
+                              loadingBuilder: (context, event) =>
+                                  const ProgressInd(),
+                              backgroundDecoration: const BoxDecoration(
+                                  color: Colors.transparent),
                               imageProvider: NetworkImage(e)),
                         ))
                     .toList()
@@ -195,14 +202,25 @@ class _ContentDialogState extends State<ContentDialog> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         IconButton(
-                            style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(azulText)),
+                            style: const ButtonStyle(
+                                backgroundColor:
+                                    MaterialStatePropertyAll(azulText)),
                             onPressed: () {
+                              Provider.of<EventsProvider>(context,
+                                      listen: false)
+                                  .clickEvent(
+                                      source: '/resultados',
+                                      description:
+                                          'Click siguiente - Imagen $index',
+                                      title: 'resultados-imagenes');
                               if (index == 0) {
                                 index = 4;
                                 pagecntl.jumpToPage(4);
                               } else {
                                 index--;
-                                pagecntl.previousPage(duration: const Duration(microseconds: 300), curve: Curves.ease);
+                                pagecntl.previousPage(
+                                    duration: const Duration(microseconds: 300),
+                                    curve: Curves.ease);
                               }
                               setState(() {});
                             },
@@ -212,8 +230,17 @@ class _ContentDialogState extends State<ContentDialog> {
                               color: azulText,
                             )),
                         IconButton(
-                            style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(azulText)),
+                            style: const ButtonStyle(
+                                backgroundColor:
+                                    MaterialStatePropertyAll(azulText)),
                             onPressed: () {
+                              Provider.of<EventsProvider>(context,
+                                      listen: false)
+                                  .clickEvent(
+                                      source: '/resultados',
+                                      description:
+                                          'Salió de - Imagen $index',
+                                      title: 'resultados-imagenes');
                               Navigator.pop(context);
                             },
                             icon: const Icon(
@@ -222,14 +249,25 @@ class _ContentDialogState extends State<ContentDialog> {
                               color: Colors.red,
                             )),
                         IconButton(
-                            style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(azulText)),
+                            style: const ButtonStyle(
+                                backgroundColor:
+                                    MaterialStatePropertyAll(azulText)),
                             onPressed: () {
+                              Provider.of<EventsProvider>(context,
+                                      listen: false)
+                                  .clickEvent(
+                                      source: '/resultados',
+                                      description:
+                                          'Click siguiente - Imagen $index',
+                                      title: 'resultados-imagenes');
                               if (index > 4) {
                                 pagecntl.jumpToPage(0);
                                 index = 0;
                               } else {
                                 index++;
-                                pagecntl.nextPage(duration: const Duration(microseconds: 300), curve: Curves.ease);
+                                pagecntl.nextPage(
+                                    duration: const Duration(microseconds: 300),
+                                    curve: Curves.ease);
                               }
                               setState(() {});
                             },

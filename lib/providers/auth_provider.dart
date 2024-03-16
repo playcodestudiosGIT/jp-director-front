@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jp_director/providers/events_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../api/jp_api.dart';
 import '../generated/l10n.dart';
@@ -15,7 +17,7 @@ enum AuthStatus { checking, authenticated, notAuthenticated }
 class AuthProvider extends ChangeNotifier {
   // ignore: unused_field
   late String? _token;
-  late TargetPlatform _platform;
+  late TargetPlatform platform;
   AuthStatus authStatus = AuthStatus.checking;
   Usuario? user;
 
@@ -28,13 +30,6 @@ class AuthProvider extends ChangeNotifier {
   AuthProvider() {
     isAutenticated();
     // cursoView = _cursoDummy;
-  }
-
-// ------------------//
-
-  TargetPlatform get platform => _platform;
-  set platform(TargetPlatform value) {
-    _platform = value;
   }
 
   Locale _locale = const Locale('es');
@@ -63,6 +58,12 @@ class AuthProvider extends ChangeNotifier {
 
     JpApi.post('/auth/login', data).then((json) {
       final authResponse = AuthResponse.fromJson(json);
+      Provider.of<EventsProvider>(context, listen: false).ttkLoginEvent(
+        uid: authResponse.usuario.uid,
+        email: authResponse.usuario.correo,
+          source: '/login',
+          description: 'Login ${authResponse.usuario.estado}',
+          title: 'login');
       if (!authResponse.usuario.estado) {
         NotifServ.showSnackbarError(appLocal.debeVerificar, Colors.red);
         NavigatorService.replaceTo(Flurorouter.loginRoute);

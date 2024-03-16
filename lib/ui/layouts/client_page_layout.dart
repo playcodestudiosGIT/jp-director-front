@@ -87,7 +87,7 @@ class _ClientPageLayoutState extends State<ClientPageLayout>
                 Provider.of<EventsProvider>(context, listen: false).clickEvent(
                 source: 'Anywhere',
                 description: 'Cambio idioma a Espanol',
-                title: 'click-lenguaje-espanil');
+                title: 'click-lenguaje-espanol');
                 authProvider.setLocale(const Locale('es'));
               }
             },

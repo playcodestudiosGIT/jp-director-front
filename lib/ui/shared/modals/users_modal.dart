@@ -141,6 +141,19 @@ class _UsersModalState extends State<UsersModal> {
                       decoration: InputDecor.formFieldInputDecoration(label: appLocal.correoDeUsuario, icon: Icons.email_outlined),
                     ),
                   ),
+                  Container(
+                    constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
+                    child: TextFormField(
+                      cursorColor: azulText,
+                      style: DashboardLabel.paragraph,
+                      initialValue: '',
+                      onChanged: (value) {
+                        clave = value;
+                      },
+                      decoration: InputDecor.formFieldInputDecoration(label: 'Password', icon: Icons.password),
+                    ),
+                  ),
+
                   if (id != null) ...[
                     Container(
                       constraints: const BoxConstraints(maxWidth: 400, minWidth: 315),
@@ -372,7 +385,7 @@ class _UsersModalState extends State<UsersModal> {
                           onPress: () async {
                             if (id == null) {
                               // Crear
-                              await Provider.of<UsersProvider>(context, listen: false).createUser(nombre, apellido, correo, clave, rol, estado);
+                              await Provider.of<UsersProvider>(context, listen: false).createUser(nombre, apellido, correo, clave, 'USER_ROLE', estado);
                               NotifServ.showSnackbarError(appLocal.usuarioCreado, Colors.green);
                             } else {
                               await usersProvider.updateUser(

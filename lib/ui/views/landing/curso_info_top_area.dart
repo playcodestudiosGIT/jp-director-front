@@ -23,7 +23,7 @@ class CursoInfoTopArea extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: 800),
           width: double.infinity,
           child: Text(
-            appLocal.actualizado2023,
+            appLocal.actualizado2024,
             style: DashboardLabel.h4.copyWith(color: const Color(0xffFFEF98), fontWeight: FontWeight.bold),
           ),
         ),

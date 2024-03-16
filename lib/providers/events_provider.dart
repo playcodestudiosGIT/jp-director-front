@@ -8,7 +8,7 @@ class EventsProvider extends ChangeNotifier {
       {required String email, required String phone}) async {
     try {
       await JpApi.post('/events/meta-regalo', {"email": email, "phone": phone});
-      print('meta event creado');
+      await JpApi.post('/events/ttk-regalo', {"email": email, "phone": phone});
       return true;
     } catch (e) {
       return false;
@@ -22,7 +22,8 @@ class EventsProvider extends ChangeNotifier {
     try {
       await JpApi.post('/events/meta-registro',
           {"email": email, "name": name, "lastname": lastname});
-      print('meta event creado');
+      await JpApi.post('/events/ttk-registro',
+          {"email": email, "name": name, "lastname": lastname});
       return true;
     } catch (e) {
       return false;
@@ -44,7 +45,6 @@ class EventsProvider extends ChangeNotifier {
         "email": email,
         "phone": phone
       });
-      print('meta event creado');
 
       ///////////
 
@@ -59,13 +59,34 @@ class EventsProvider extends ChangeNotifier {
         "description": description,
         "title": title
       };
-      await JpApi.post('/events/ttk-click-event', data);
-      print('ttk event creado');
+      await JpApi.post('/events/ttk-click', data);
       return true;
     } catch (e) {
       return false;
     }
   }
 
-  
+  Future<bool> ttkLoginEvent({
+    required String source,
+    required String description,
+    required String title,
+    String uid = '',
+    String email = '',
+  }) async {
+    try {
+      final hashUid = sha256.convert(utf8.encode(uid));
+      final hashEmail = sha256.convert(utf8.encode(email));
+      final data = {
+        "source": source,
+        "hashId": hashUid,
+        "hashEmail": hashEmail,
+        "description": description,
+        "title": title
+      };
+      await JpApi.post('/events/ttk-login', data);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 }

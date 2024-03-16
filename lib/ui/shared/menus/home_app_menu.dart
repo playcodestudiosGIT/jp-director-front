@@ -387,7 +387,7 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                         .clickEvent(
                                             source: 'Mobile User Menu',
                                             description: 'Click en Contacto',
-                                            title: 'menu contacto');
+                                            title: 'menu-contacto');
                                     NavigatorService.navigateTo('/contacto');
                                   });
                                 }),
