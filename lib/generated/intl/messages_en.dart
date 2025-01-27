@@ -32,13 +32,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "actRapidez": MessageLookupByLibrary.simpleMessage(
             "Technology Updates and Speed"),
         "actRapidezResp": MessageLookupByLibrary.simpleMessage(
-            "I\'m sure an update of some tool or a new functionality came out while you were reading this. That\'s why on that day, we will discuss the latest trends of 2023."),
+            "I\'m sure an update of some tool or a new functionality came out while you were reading this. That\'s why on that day, we will discuss the latest trends of 2025."),
         "actRrssBtn":
             MessageLookupByLibrary.simpleMessage("UPDATE SOCIAL MEDIA"),
         "activo": MessageLookupByLibrary.simpleMessage("ACTIVE"),
         "actualizacionTyC":
             MessageLookupByLibrary.simpleMessage("Last updated March 7, 2023"),
-        "actualizado2024": MessageLookupByLibrary.simpleMessage("Updated 2024"),
+        "actualizado2024": MessageLookupByLibrary.simpleMessage("Updated 2025"),
         "actualizarBtn": MessageLookupByLibrary.simpleMessage("UPDATE"),
         "adminCursos":
             MessageLookupByLibrary.simpleMessage("Course Management"),
@@ -144,7 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "consultEspecText": MessageLookupByLibrary.simpleMessage(
             "You\'re a doctor, coach, realtor, lawyer, or nutritionist, and your services are highly sought after on social media. All that\'s left is to expose yourself in the right way through advertising."),
         "contactoLargeText": MessageLookupByLibrary.simpleMessage(
-            "For the past 5 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of \$7,000,000 USD invested and a return of + \$65,000,000 USD in advertising campaigns on Facebook, Instagram, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process."),
+            "For the past 5 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of more than \$10,000,000 USD invested and a return of more than \$135,000,000 USD in advertising campaigns on Facebook, Instagram, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process."),
         "contactoMenuBtn": MessageLookupByLibrary.simpleMessage("Contact"),
         "continuaMensaje":
             MessageLookupByLibrary.simpleMessage("continue the message..."),
@@ -208,7 +208,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "descubreComo": MessageLookupByLibrary.simpleMessage(
             "Discover how to boost your business"),
         "desdeHace4": MessageLookupByLibrary.simpleMessage(
-            "For the past 5 years, I\'ve been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I\'ve managed \$7,000,000 USD in advertising campaigns, achieving \$65,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns."),
+            "For the past 5 years, I\'ve been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I\'ve managed more than \$10,000,000 USD in advertising campaigns, achieving more than \$135,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns."),
         "deseasDejar": MessageLookupByLibrary.simpleMessage(
             "Wish to stop feeling anguish over non-converting results"),
         "deseasQueLaConf": MessageLookupByLibrary.simpleMessage(
@@ -534,7 +534,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "porQueYo": MessageLookupByLibrary.simpleMessage("Why Me?"),
         "porQueYoResp": MessageLookupByLibrary.simpleMessage(
             "SELECTIVE AND SINCERE\nBeing in charge of your brand requires commitment and responsibility. That\'s why I will thoroughly analyze your business before we start to determine if you meet all the requirements for me to support you.\n\nIf it\'s a YES, we will create an effective action plan.\n\nIf it\'s a NO, I will provide honest feedback and refer you to the specialist or plan your business needs.\n\nPRICE BASED ON YOUR BUSINESS MODEL\nOne of my distinguishing features is that I thoroughly review your business before starting, and even by evaluating it together with you, I can determine if you are ready to take this step.\n\nMy promise is that when you purchase my service, it will be a great relief, and you will see results.\n\nEXPERIENCE AND RESULTS\nFrom strategy creation, copywriting, creative ads, segmentation, web conversion funnels, budget management, to results analysis, these are all within my capabilities for taking on this role."),
-        "precio11": MessageLookupByLibrary.simpleMessage("\$250"),
+        "precio11": MessageLookupByLibrary.simpleMessage("\$280"),
         "precioDelCurso": MessageLookupByLibrary.simpleMessage("Course Price"),
         "preguntasfrecuentes":
             MessageLookupByLibrary.simpleMessage("Frequently Asked Questions"),

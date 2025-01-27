@@ -27,7 +27,7 @@ class AgendaPlugState extends State<AgendaPlug> {
 
           // ..style.scrollBehavior = 'none'
           ..srcdoc = """<!-- Principio del widget integrado de Calendly -->
-                      <div class="calendly-inline-widget" data-url="https://calendly.com/jp-director/asesoria-1-1?background_color=00041c&text_color=ffffff&primary_color=15e0fb" style="height:100vh; overflow:hidden;"></div>
+                      <div class="calendly-inline-widget" data-url="https://calendly.com/jpdirector/1hour?background_color=00041c&text_color=ffffff&primary_color=15e0fb" style="height:100vh; overflow:hidden;"></div>
                       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                   
                       <!-- Final del widget integrado de Calendly -->"""

@@ -223,7 +223,7 @@ class AppLocalizations {
   /// `For the past 5 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of $4,000,000 USD invested and a return of + $30,000,000 USD in advertising campaigns on Facebook, Instagram, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.`
   String get contactoLargeText {
     return Intl.message(
-      'For the past 5 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of \$7,000,000 USD invested and a return of + \$65,000,000 USD in advertising campaigns on Facebook, Instagram, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.',
+      'For the past 5 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of \$10,000,000 USD invested and a return of + \$135,000,000 USD in advertising campaigns on Facebook, Instagram, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.',
       name: 'contactoLargeText',
       desc: '',
       args: [],
@@ -510,10 +510,10 @@ class AppLocalizations {
     );
   }
 
-  /// `$250`
+  /// `$280`
   String get precio11 {
     return Intl.message(
-      '\$250',
+      '\$280',
       name: 'precio11',
       desc: '',
       args: [],
@@ -830,10 +830,10 @@ class AppLocalizations {
     );
   }
 
-  /// `I'm sure an update of some tool or a new functionality came out while you were reading this. That's why on that day, we will discuss the latest trends of 2023.`
+  /// `I'm sure an update of some tool or a new functionality came out while you were reading this. That's why on that day, we will discuss the latest trends of 2025.`
   String get actRapidezResp {
     return Intl.message(
-      'I\'m sure an update of some tool or a new functionality came out while you were reading this. That\'s why on that day, we will discuss the latest trends of 2023.',
+      'I\'m sure an update of some tool or a new functionality came out while you were reading this. That\'s why on that day, we will discuss the latest trends of 2025.',
       name: 'actRapidezResp',
       desc: '',
       args: [],
@@ -1643,7 +1643,7 @@ class AppLocalizations {
   /// `Updated 2024`
   String get actualizado2024 {
     return Intl.message(
-      'Updated 2024',
+      'Updated 2025',
       name: 'actualizado2024',
       desc: '',
       args: [],
@@ -1870,10 +1870,10 @@ class AppLocalizations {
     );
   }
 
-  /// `For the past 5 years, I've been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I've managed $7,000,000 USD in advertising campaigns, achieving $65,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns.`
+  /// `For the past 5 years, I've been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I've managed more than $10,000,000 USD in advertising campaigns, achieving more than $135,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns.`
   String get desdeHace4 {
     return Intl.message(
-      'For the past 5 years, I\'ve been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I\'ve managed \$7,000,000 USD in advertising campaigns, achieving \$65,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns.',
+      'For the past 5 years, I\'ve been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I\'ve managed more than \$10,000,000 USD in advertising campaigns, achieving more than \$135,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns.',
       name: 'desdeHace4',
       desc: '',
       args: [],
