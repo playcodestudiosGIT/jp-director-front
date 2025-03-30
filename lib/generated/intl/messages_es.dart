@@ -152,7 +152,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "consultEspecText": MessageLookupByLibrary.simpleMessage(
             "Eres médico, coach, realtor, abogado o nutricionista y tus servicios son altamente buscados en las redes sociales, por lo que solo falta exponerte de la manera correcta en publicidad."),
         "contactoLargeText": MessageLookupByLibrary.simpleMessage(
-            "Desde hace 5 años estoy comprometido en potenciar y educar con estrategias publicitarias efectivas que dan en el punto.\nCon un recorrido de mas de \$10.000.000 USD invertidos y un retorno de mas de \$135.000.000 USD en campañas publicitarias en Facebook, Instagram y Tiktok, afirmo que el éxito de los negocios consiste en: \n1. Una excelente estrategia publicitaria.\n2. Analizar y optimizar los datos.\n3. Contar con un profesional con experiencia.\nMi misión es ser el encargado o mentor acompañándote al éxito en todo el proceso publicitario."),
+            "Desde hace 5 años estoy comprometido en potenciar y educar con estrategias publicitarias efectivas que dan en el punto.\nCon un recorrido de mas de \$12.000.000 USD invertidos y un retorno de mas de \$160.000.000 USD en campañas publicitarias en Facebook, Instagram y Tiktok, afirmo que el éxito de los negocios consiste en: \n1. Una excelente estrategia publicitaria.\n2. Analizar y optimizar los datos.\n3. Contar con un profesional con experiencia.\nMi misión es ser el encargado o mentor acompañándote al éxito en todo el proceso publicitario."),
         "contactoMenuBtn": MessageLookupByLibrary.simpleMessage("Contacto"),
         "continuaMensaje":
             MessageLookupByLibrary.simpleMessage("continua el mensaje..."),
@@ -220,7 +220,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "descubreComo": MessageLookupByLibrary.simpleMessage(
             "Descubre cómo impulsar tu negocio"),
         "desdeHace4": MessageLookupByLibrary.simpleMessage(
-            "Desde hace 5 años me dedico a potenciar marcas y negocios con estrategias efectivas en ads que dan en el punto. \n\nEn todo el proceso he manejado una cantidad de mas de \$10.000.000 USD en campañas publicitarias, logrando mas de \$135.000.000 USD en ventas por internet. Luego de innumerables pruebas, análisis y educación, decidí realizar esta experiencia grupal para enseñarle a emprendedores, dueños de negocio o equipos de marketing a entender el motor que es realizar campañas publicitarias."),
+            "Desde hace 5 años me dedico a potenciar marcas y negocios con estrategias efectivas en ads que dan en el punto. \n\nEn todo el proceso he manejado una cantidad de mas de \$12.000.000 USD en campañas publicitarias, logrando mas de \$160.000.000 USD en ventas por internet. Luego de innumerables pruebas, análisis y educación, decidí realizar esta experiencia grupal para enseñarle a emprendedores, dueños de negocio o equipos de marketing a entender el motor que es realizar campañas publicitarias."),
         "deseasDejar": MessageLookupByLibrary.simpleMessage(
             "Deseas dejar de sentir angustia por resultados que no convierten"),
         "deseasQueLaConf": MessageLookupByLibrary.simpleMessage(

@@ -144,7 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "consultEspecText": MessageLookupByLibrary.simpleMessage(
             "You\'re a doctor, coach, realtor, lawyer, or nutritionist, and your services are highly sought after on social media. All that\'s left is to expose yourself in the right way through advertising."),
         "contactoLargeText": MessageLookupByLibrary.simpleMessage(
-            "For the past 5 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of more than \$10,000,000 USD invested and a return of more than \$135,000,000 USD in advertising campaigns on Facebook, Instagram, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process."),
+            "For the past 5 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of more than \$12,000,000 USD invested and a return of more than \$160,000,000 USD in advertising campaigns on Facebook, Instagram, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process."),
         "contactoMenuBtn": MessageLookupByLibrary.simpleMessage("Contact"),
         "continuaMensaje":
             MessageLookupByLibrary.simpleMessage("continue the message..."),
@@ -208,7 +208,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "descubreComo": MessageLookupByLibrary.simpleMessage(
             "Discover how to boost your business"),
         "desdeHace4": MessageLookupByLibrary.simpleMessage(
-            "For the past 5 years, I\'ve been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I\'ve managed more than \$10,000,000 USD in advertising campaigns, achieving more than \$135,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns."),
+            "For the past 5 years, I\'ve been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I\'ve managed more than \$12,000,000 USD in advertising campaigns, achieving more than \$160,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns."),
         "deseasDejar": MessageLookupByLibrary.simpleMessage(
             "Wish to stop feeling anguish over non-converting results"),
         "deseasQueLaConf": MessageLookupByLibrary.simpleMessage(
