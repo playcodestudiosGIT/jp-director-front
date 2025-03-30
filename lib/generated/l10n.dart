@@ -590,6 +590,27 @@ class AppLocalizations {
     );
   }
 
+
+  /// `Se acimula el tiempo?`
+  String get tiempoSeAcumulaPreg {
+    return Intl.message(
+      '¿If I watch less than the established time, does it accumulate?',
+      name: 'tiempoSeAcumulaPreg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Se acimula el tiempo?`
+  String get tiempoSeAcumulaResp {
+    return Intl.message(
+      'No, if you have scheduled your session and we have resolved your issue, the consultation will be considered finished.',
+      name: 'tiempoSeAcumulaResp',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Does it matter if I know nothing about Facebook - Instagram or Tik Tok Ads?\nNo, think of it as private lessons just for you.\n\nIf I already know and run campaigns, is this for me?\nYes, I will give your business a general examination and show you how to improve in the areas where you are struggling with ads.\n\nCan I extend our call beyond 1 hour?\nCertainly, if you need more lessons, we can coordinate the time and day for additional sessions at the end of our meeting. Be prepared for this challenge; I will send you many tasks.\n\nWhere will the video call take place?\nIt will be conducted through the Zoom platform.\n\nWhat if I'm not satisfied with my mentoring?\nIf it's not what you expected, I will refund your entire payment.\n\nI encountered an issue, can I reschedule our meeting?\nYou have 24 hours at the latest to schedule another day and time. You must notify us at the following email address: hola@jpdirector.net.\n\nIf you fail to do so within that time, you will lose your investment and need to pay for a new consultation.`
   String get preguntasfrecuentesResp {
     return Intl.message(

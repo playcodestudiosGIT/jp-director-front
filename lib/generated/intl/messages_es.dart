@@ -757,5 +757,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "yaTienesTodos":
             MessageLookupByLibrary.simpleMessage("Ya tienes todos los cursos"),
         "soporte": MessageLookupByLibrary.simpleMessage("Soporte"),
+        "tiempoSeAcumulaPreg": MessageLookupByLibrary.simpleMessage(
+            "¿Si veo menos del tiempo establecido se acumula?"),
+        "tiempoSeAcumulaResp": MessageLookupByLibrary.simpleMessage(	
+            "No, en caso de que hayas agendado tu sesión y hayamos resuelto tu problema se dará por finalizada la asesoría"),  
       };
 }

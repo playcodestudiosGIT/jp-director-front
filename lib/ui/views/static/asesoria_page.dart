@@ -56,7 +56,8 @@ class _AsesoriaBody extends StatelessWidget {
                     alignment: WrapAlignment.spaceBetween,
                     children: [
                       ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 600, maxHeight: 850),
+                        constraints:
+                            const BoxConstraints(maxWidth: 600, maxHeight: 850),
                         child: const _LetrasAsesoria(),
                       ),
                     ],
@@ -70,7 +71,8 @@ class _AsesoriaBody extends StatelessWidget {
                     child: Center(
                       child: Container(
                         // padding: EdgeInsets.symmetric(horizontal: 20),
-                        constraints: const BoxConstraints(minWidth: 300, maxWidth: 900),
+                        constraints:
+                            const BoxConstraints(minWidth: 300, maxWidth: 900),
                         child: Column(
                           children: [
                             Acordeon(
@@ -78,14 +80,24 @@ class _AsesoriaBody extends StatelessWidget {
                               content: appLocal.xdondeComenzarResp,
                               service: 'Asesoria',
                             ),
-                            const SizedBox(
-                              height: 30,
+                            const SizedBox(height: 30),
+                            Acordeon(
+                              title: appLocal.queHablaremos,
+                              content: appLocal.queHablaremosResp,
+                              service: 'Asesoria',
                             ),
-                            Acordeon(title: appLocal.queHablaremos, content: appLocal.queHablaremosResp, service: 'Asesoria',),
-                            const SizedBox(
-                              height: 30,
+                            const SizedBox(height: 30),
+                            Acordeon(
+                              title: appLocal.preguntasfrecuentes,
+                              content: appLocal.preguntasfrecuentesResp,
+                              service: 'Asesoria',
                             ),
-                            Acordeon(title: appLocal.preguntasfrecuentes, content: appLocal.preguntasfrecuentesResp, service: 'Asesoria',),
+                            const SizedBox(height: 30),
+                            Acordeon(
+                              title: appLocal.tiempoSeAcumulaPreg,
+                              content: appLocal.tiempoSeAcumulaResp,
+                              service: 'Asesoria',
+                            ),
                           ],
                         ),
                       ),
@@ -112,7 +124,10 @@ class _LetrasAsesoria extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(appLocal.asesoria11, style: (wScreen < 600) ? DashboardLabel.h1 : DashboardLabel.semiGigant),
+        Text(appLocal.asesoria11,
+            style: (wScreen < 600)
+                ? DashboardLabel.h1
+                : DashboardLabel.semiGigant),
         Container(
           width: 300,
           height: 5,
@@ -147,7 +162,8 @@ class _LetrasAsesoria extends StatelessWidget {
               right: 160,
               child: Image(
                 image: adsCircle,
-                color: (wScreen < 1200) ? blancoText.withOpacity(0.3) : blancoText,
+                color:
+                    (wScreen < 1200) ? blancoText.withOpacity(0.3) : blancoText,
                 colorBlendMode: BlendMode.modulate,
                 width: 80,
               ),
@@ -165,7 +181,8 @@ class _LetrasAsesoria extends StatelessWidget {
               appLocal.precio11,
               style: DashboardLabel.azulTextGigant,
             ),
-            Text(appLocal.usd, style: DashboardLabel.paragraph.copyWith(color: azulText)),
+            Text(appLocal.usd,
+                style: DashboardLabel.paragraph.copyWith(color: azulText)),
             const SizedBox(
               width: 8,
             ),
@@ -180,11 +197,14 @@ class _LetrasAsesoria extends StatelessWidget {
         ),
         BotonVerde(
           text: appLocal.agendarBtn,
-          onPressed: ()async  {
+          onPressed: () async {
             await Provider.of<EventsProvider>(context, listen: false)
-              .clickEvent(title: 'Click Asesoria Agendar', source: '/v/asesoria', description: 'Click en boton agendar asesoria');
-          NavigatorService.navigateTo(Flurorouter.agendarRoute);
-          } ,
+                .clickEvent(
+                    title: 'Click Asesoria Agendar',
+                    source: '/v/asesoria',
+                    description: 'Click en boton agendar asesoria');
+            NavigatorService.navigateTo(Flurorouter.agendarRoute);
+          },
           width: 100,
         ),
         SizedBox(

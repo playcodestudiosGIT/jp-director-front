@@ -428,7 +428,6 @@
     "correoYaExiste": "Correo ya existe. ir al Log in",
     "actInfo": "Actualizar Información"
     "soporte": "Soporte",
-
-
-    
+    "tiempoSeAcumulaPreg": "¿Si veo menos del tiempo establecido se acumula?",
+    "tiempoSeAcumulaResp": "No, en caso de que hayas agendado tu sesión y hayamos resuelto tu problema se dará por finalizada la asesoría",
 }
