@@ -1,5 +1,5 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart' as carousel;
 import 'package:flutter/material.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 
@@ -20,12 +20,12 @@ class ServicesView extends StatefulWidget {
 }
 
 class _ServicesViewState extends State<ServicesView> {
-  late CarouselController sliderController;
+  late carousel.CarouselSliderController sliderController;
   int index = 0;
   @override
   void initState() {
     super.initState();
-    sliderController = CarouselController();
+    sliderController = carousel.CarouselSliderController();
   }
 
   @override
@@ -275,10 +275,10 @@ class _ServicesViewState extends State<ServicesView> {
                     child: ConstrainedBox(
                       constraints:
                           const BoxConstraints(maxWidth: 1000, minWidth: 350),
-                      child: CarouselSlider(
+                      child: carousel.CarouselSlider(
                           carouselController: sliderController,
                           items: [...sliders],
-                          options: CarouselOptions(
+                          options: carousel.CarouselOptions(
                             scrollPhysics: const NeverScrollableScrollPhysics(),
                             onPageChanged: (index, reason) {
                               setState(() {

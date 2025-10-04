@@ -18,8 +18,10 @@ class AppLocalizations {
   static AppLocalizations? _current;
 
   static AppLocalizations get current {
-    assert(_current != null,
-        'No instance of AppLocalizations was loaded. Try to initialize the AppLocalizations delegate before accessing AppLocalizations.current.');
+    assert(
+      _current != null,
+      'No instance of AppLocalizations was loaded. Try to initialize the AppLocalizations delegate before accessing AppLocalizations.current.',
+    );
     return _current!;
   }
 
@@ -41,8 +43,10 @@ class AppLocalizations {
 
   static AppLocalizations of(BuildContext context) {
     final instance = AppLocalizations.maybeOf(context);
-    assert(instance != null,
-        'No instance of AppLocalizations present in the widget tree. Did you add AppLocalizations.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of AppLocalizations present in the widget tree. Did you add AppLocalizations.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -72,12 +76,7 @@ class AppLocalizations {
 
   /// `IF`
   String get siu {
-    return Intl.message(
-      'IF',
-      name: 'siu',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('IF', name: 'siu', desc: '', args: []);
   }
 
   /// `Looking to accelerate your business with advertising`
@@ -142,12 +141,7 @@ class AppLocalizations {
 
   /// `Courses`
   String get cursos {
-    return Intl.message(
-      'Courses',
-      name: 'cursos',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Courses', name: 'cursos', desc: '', args: []);
   }
 
   /// `Get clients who want to buy your product or service\nusing the platform you arrived here with:\nInstagram - Facebook - TikTok`
@@ -162,12 +156,7 @@ class AppLocalizations {
 
   /// `SERVICES`
   String get servicios {
-    return Intl.message(
-      'SERVICES',
-      name: 'servicios',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('SERVICES', name: 'servicios', desc: '', args: []);
   }
 
   /// `1:1 CONSULTING`
@@ -182,12 +171,7 @@ class AppLocalizations {
 
   /// `MENTORING`
   String get mentoria {
-    return Intl.message(
-      'MENTORING',
-      name: 'mentoria',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('MENTORING', name: 'mentoria', desc: '', args: []);
   }
 
   /// `BE THE ONE IN CHARGE`
@@ -220,10 +204,10 @@ class AppLocalizations {
     );
   }
 
-  /// `For the past 5 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of $12,000,000 USD invested and a return of + $160,000,000 USD in advertising campaigns on Facebook, Instagram, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.`
+  /// `For the past 5 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of more than $12,000,000 USD invested and a return of more than $160,000,000 USD in advertising campaigns on Facebook, Instagram, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.`
   String get contactoLargeText {
     return Intl.message(
-      'For the past 5 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of \$12,000,000 USD invested and a return of + \$160,000,000 USD in advertising campaigns on Facebook, Instagram, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.',
+      'For the past 5 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of more than \$12,000,000 USD invested and a return of more than \$160,000,000 USD in advertising campaigns on Facebook, Instagram, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.',
       name: 'contactoLargeText',
       desc: '',
       args: [],
@@ -282,12 +266,7 @@ class AppLocalizations {
 
   /// `COURSES`
   String get topBotonCursos {
-    return Intl.message(
-      'COURSES',
-      name: 'topBotonCursos',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('COURSES', name: 'topBotonCursos', desc: '', args: []);
   }
 
   /// `SERVICES`
@@ -310,6 +289,11 @@ class AppLocalizations {
     );
   }
 
+  /// `BLOG`
+  String get topBotonBlog {
+    return Intl.message('BLOG', name: 'topBotonBlog', desc: '', args: []);
+  }
+
   /// `CONTACT`
   String get topBotonContacto {
     return Intl.message(
@@ -322,22 +306,12 @@ class AppLocalizations {
 
   /// `LOGIN`
   String get botonLogin {
-    return Intl.message(
-      'LOGIN',
-      name: 'botonLogin',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('LOGIN', name: 'botonLogin', desc: '', args: []);
   }
 
   /// `Register`
   String get botonReg {
-    return Intl.message(
-      'Register',
-      name: 'botonReg',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Register', name: 'botonReg', desc: '', args: []);
   }
 
   /// `COMPLETELY PERSONALIZED`
@@ -472,22 +446,12 @@ class AppLocalizations {
 
   /// `Schedule`
   String get agendarBtn {
-    return Intl.message(
-      'Schedule',
-      name: 'agendarBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Schedule', name: 'agendarBtn', desc: '', args: []);
   }
 
   /// `VIDEO CALL`
   String get videollamada {
-    return Intl.message(
-      'VIDEO CALL',
-      name: 'videollamada',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('VIDEO CALL', name: 'videollamada', desc: '', args: []);
   }
 
   /// `with YOUR BUSINESS`
@@ -502,42 +466,22 @@ class AppLocalizations {
 
   /// `ONE-ON-ONE`
   String get unoAuno {
-    return Intl.message(
-      'ONE-ON-ONE',
-      name: 'unoAuno',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('ONE-ON-ONE', name: 'unoAuno', desc: '', args: []);
   }
 
   /// `$280`
   String get precio11 {
-    return Intl.message(
-      '\$280',
-      name: 'precio11',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('\$280', name: 'precio11', desc: '', args: []);
   }
 
   /// `USD`
   String get usd {
-    return Intl.message(
-      'USD',
-      name: 'usd',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('USD', name: 'usd', desc: '', args: []);
   }
 
   /// `per hour`
   String get xHora {
-    return Intl.message(
-      'per hour',
-      name: 'xHora',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('per hour', name: 'xHora', desc: '', args: []);
   }
 
   /// `Where to Begin?`
@@ -585,27 +529,6 @@ class AppLocalizations {
     return Intl.message(
       'Frequently Asked Questions',
       name: 'preguntasfrecuentes',
-      desc: '',
-      args: [],
-    );
-  }
-
-
-  /// `Se acimula el tiempo?`
-  String get tiempoSeAcumulaPreg {
-    return Intl.message(
-      '¿If I watch less than the established time, does it accumulate?',
-      name: 'tiempoSeAcumulaPreg',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Se acimula el tiempo?`
-  String get tiempoSeAcumulaResp {
-    return Intl.message(
-      'No, if you have scheduled your session and we have resolved your issue, the consultation will be considered finished.',
-      name: 'tiempoSeAcumulaResp',
       desc: '',
       args: [],
     );
@@ -683,12 +606,7 @@ class AppLocalizations {
 
   /// `How?`
   String get como {
-    return Intl.message(
-      'How?',
-      name: 'como',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('How?', name: 'como', desc: '', args: []);
   }
 
   /// `Strategy Design`
@@ -753,12 +671,7 @@ class AppLocalizations {
 
   /// `Why Me?`
   String get porQueYo {
-    return Intl.message(
-      'Why Me?',
-      name: 'porQueYo',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Why Me?', name: 'porQueYo', desc: '', args: []);
   }
 
   /// `SELECTIVE AND SINCERE\nBeing in charge of your brand requires commitment and responsibility. That's why I will thoroughly analyze your business before we start to determine if you meet all the requirements for me to support you.\n\nIf it's a YES, we will create an effective action plan.\n\nIf it's a NO, I will provide honest feedback and refer you to the specialist or plan your business needs.\n\nPRICE BASED ON YOUR BUSINESS MODEL\nOne of my distinguishing features is that I thoroughly review your business before starting, and even by evaluating it together with you, I can determine if you are ready to take this step.\n\nMy promise is that when you purchase my service, it will be a great relief, and you will see results.\n\nEXPERIENCE AND RESULTS\nFrom strategy creation, copywriting, creative ads, segmentation, web conversion funnels, budget management, to results analysis, these are all within my capabilities for taking on this role.`
@@ -863,12 +776,7 @@ class AppLocalizations {
 
   /// `Motivation`
   String get motivacion {
-    return Intl.message(
-      'Motivation',
-      name: 'motivacion',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Motivation', name: 'motivacion', desc: '', args: []);
   }
 
   /// `It takes a lot of courage to run a business or meet daily goals. That's why I share my journey to inspire and set an example that it IS possible.`
@@ -913,12 +821,7 @@ class AppLocalizations {
 
   /// `Email`
   String get correoForm {
-    return Intl.message(
-      'Email',
-      name: 'correoForm',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Email', name: 'correoForm', desc: '', args: []);
   }
 
   /// `Name and Surname`
@@ -933,12 +836,7 @@ class AppLocalizations {
 
   /// `Phone`
   String get telefonoForm {
-    return Intl.message(
-      'Phone',
-      name: 'telefonoForm',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Phone', name: 'telefonoForm', desc: '', args: []);
   }
 
   /// `What sector or city is your business in?`
@@ -953,12 +851,7 @@ class AppLocalizations {
 
   /// `NEXT`
   String get siguienteBtn {
-    return Intl.message(
-      'NEXT',
-      name: 'siguienteBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('NEXT', name: 'siguienteBtn', desc: '', args: []);
   }
 
   /// `How many years has your business been operational?`
@@ -993,12 +886,7 @@ class AppLocalizations {
 
   /// `Yes`
   String get si {
-    return Intl.message(
-      'Yes',
-      name: 'si',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Yes', name: 'si', desc: '', args: []);
   }
 
   /// `Less than 6 months`
@@ -1013,42 +901,22 @@ class AppLocalizations {
 
   /// `1 Year`
   String get uny {
-    return Intl.message(
-      '1 Year',
-      name: 'uny',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('1 Year', name: 'uny', desc: '', args: []);
   }
 
   /// `2 Years`
   String get dosy {
-    return Intl.message(
-      '2 Years',
-      name: 'dosy',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('2 Years', name: 'dosy', desc: '', args: []);
   }
 
   /// `3 Years`
   String get tresy {
-    return Intl.message(
-      '3 Years',
-      name: 'tresy',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('3 Years', name: 'tresy', desc: '', args: []);
   }
 
   /// `+4 Years`
   String get cuatroy {
-    return Intl.message(
-      '+4 Years',
-      name: 'cuatroy',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('+4 Years', name: 'cuatroy', desc: '', args: []);
   }
 
   /// `How can I find you on social media?`
@@ -1093,12 +961,7 @@ class AppLocalizations {
 
   /// `SEND`
   String get enviarBtn {
-    return Intl.message(
-      'SEND',
-      name: 'enviarBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('SEND', name: 'enviarBtn', desc: '', args: []);
   }
 
   /// `At what level of knowledge is your team regarding digital advertising?`
@@ -1113,42 +976,22 @@ class AppLocalizations {
 
   /// `Zero`
   String get cero {
-    return Intl.message(
-      'Zero',
-      name: 'cero',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Zero', name: 'cero', desc: '', args: []);
   }
 
   /// `Basic`
   String get basico {
-    return Intl.message(
-      'Basic',
-      name: 'basico',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Basic', name: 'basico', desc: '', args: []);
   }
 
   /// `Intermediate`
   String get intermedio {
-    return Intl.message(
-      'Intermediate',
-      name: 'intermedio',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Intermediate', name: 'intermedio', desc: '', args: []);
   }
 
   /// `Advanced`
   String get avanzado {
-    return Intl.message(
-      'Advanced',
-      name: 'avanzado',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Advanced', name: 'avanzado', desc: '', args: []);
   }
 
   /// `Do you want the conference to be in-person or prefer online?`
@@ -1233,32 +1076,17 @@ class AppLocalizations {
 
   /// `FINISH`
   String get finalizarBtn {
-    return Intl.message(
-      'FINISH',
-      name: 'finalizarBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('FINISH', name: 'finalizarBtn', desc: '', args: []);
   }
 
   /// `Home`
   String get inicioMenuBtn {
-    return Intl.message(
-      'Home',
-      name: 'inicioMenuBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Home', name: 'inicioMenuBtn', desc: '', args: []);
   }
 
   /// `Courses`
   String get cursosMenuBtn {
-    return Intl.message(
-      'Courses',
-      name: 'cursosMenuBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Courses', name: 'cursosMenuBtn', desc: '', args: []);
   }
 
   /// `Services`
@@ -1283,12 +1111,7 @@ class AppLocalizations {
 
   /// `Contact`
   String get contactoMenuBtn {
-    return Intl.message(
-      'Contact',
-      name: 'contactoMenuBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Contact', name: 'contactoMenuBtn', desc: '', args: []);
   }
 
   /// `Enter your data and receive my new GUIDE\nat no cost to you ❤️`
@@ -1323,12 +1146,7 @@ class AppLocalizations {
 
   /// `CANCEL`
   String get cancelarBtn {
-    return Intl.message(
-      'CANCEL',
-      name: 'cancelarBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('CANCEL', name: 'cancelarBtn', desc: '', args: []);
   }
 
   /// `CREATE ACCOUNT`
@@ -1343,22 +1161,12 @@ class AppLocalizations {
 
   /// `Email`
   String get correoTextFiel {
-    return Intl.message(
-      'Email',
-      name: 'correoTextFiel',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Email', name: 'correoTextFiel', desc: '', args: []);
   }
 
   /// `Name`
   String get nombreTextField {
-    return Intl.message(
-      'Name',
-      name: 'nombreTextField',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Name', name: 'nombreTextField', desc: '', args: []);
   }
 
   /// `Enter your name`
@@ -1423,12 +1231,7 @@ class AppLocalizations {
 
   /// `Log in here`
   String get iniciaAqui {
-    return Intl.message(
-      'Log in here',
-      name: 'iniciaAqui',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Log in here', name: 'iniciaAqui', desc: '', args: []);
   }
 
   /// `By logging in, you agree to our `
@@ -1463,12 +1266,7 @@ class AppLocalizations {
 
   /// `our `
   String get nuestra {
-    return Intl.message(
-      'our ',
-      name: 'nuestra',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('our ', name: 'nuestra', desc: '', args: []);
   }
 
   /// `Privacy Policy`
@@ -1483,42 +1281,22 @@ class AppLocalizations {
 
   /// `LOG IN`
   String get iniciaSesion {
-    return Intl.message(
-      'LOG IN',
-      name: 'iniciaSesion',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('LOG IN', name: 'iniciaSesion', desc: '', args: []);
   }
 
   /// `Remember me`
   String get recuerdame {
-    return Intl.message(
-      'Remember me',
-      name: 'recuerdame',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Remember me', name: 'recuerdame', desc: '', args: []);
   }
 
   /// `LOG IN`
   String get iniciarSesionBtn {
-    return Intl.message(
-      'LOG IN',
-      name: 'iniciarSesionBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('LOG IN', name: 'iniciarSesionBtn', desc: '', args: []);
   }
 
   /// `Are you new?`
   String get eresNuevo {
-    return Intl.message(
-      'Are you new?',
-      name: 'eresNuevo',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Are you new?', name: 'eresNuevo', desc: '', args: []);
   }
 
   /// `Sign up here`
@@ -1583,12 +1361,7 @@ class AppLocalizations {
 
   /// `REGISTER`
   String get registrarBtn {
-    return Intl.message(
-      'REGISTER',
-      name: 'registrarBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('REGISTER', name: 'registrarBtn', desc: '', args: []);
   }
 
   /// `RECOVER YOUR PASSWORD`
@@ -1653,15 +1426,10 @@ class AppLocalizations {
 
   /// `BUY`
   String get comprarBtn {
-    return Intl.message(
-      'BUY',
-      name: 'comprarBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('BUY', name: 'comprarBtn', desc: '', args: []);
   }
 
-  /// `Updated 2024`
+  /// `Updated 2025`
   String get actualizado2024 {
     return Intl.message(
       'Updated 2025',
@@ -1823,22 +1591,12 @@ class AppLocalizations {
 
   /// `I Want Ads`
   String get quieroAds {
-    return Intl.message(
-      'I Want Ads',
-      name: 'quieroAds',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('I Want Ads', name: 'quieroAds', desc: '', args: []);
   }
 
   /// `students`
   String get estudiantes {
-    return Intl.message(
-      'students',
-      name: 'estudiantes',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('students', name: 'estudiantes', desc: '', args: []);
   }
 
   /// `"I loved it, it's very comprehensive and a world of knowledge. For my business, this course marked a before and after."`
@@ -1913,12 +1671,7 @@ class AppLocalizations {
 
   /// `CONTINUE`
   String get continuar {
-    return Intl.message(
-      'CONTINUE',
-      name: 'continuar',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('CONTINUE', name: 'continuar', desc: '', args: []);
   }
 
   /// `You Already Have This Course`
@@ -1973,12 +1726,7 @@ class AppLocalizations {
 
   /// `Users`
   String get usuariosMenuBtn {
-    return Intl.message(
-      'Users',
-      name: 'usuariosMenuBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Users', name: 'usuariosMenuBtn', desc: '', args: []);
   }
 
   /// `Forms`
@@ -1993,32 +1741,17 @@ class AppLocalizations {
 
   /// `Leads`
   String get leadsMenuBtn {
-    return Intl.message(
-      'Leads',
-      name: 'leadsMenuBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Leads', name: 'leadsMenuBtn', desc: '', args: []);
   }
 
   /// `LOG OUT`
   String get logout {
-    return Intl.message(
-      'LOG OUT',
-      name: 'logout',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('LOG OUT', name: 'logout', desc: '', args: []);
   }
 
   /// `LOG OUT`
   String get logoutLabel {
-    return Intl.message(
-      'LOG OUT',
-      name: 'logoutLabel',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('LOG OUT', name: 'logoutLabel', desc: '', args: []);
   }
 
   /// `You Already Have All the Courses`
@@ -2053,12 +1786,7 @@ class AppLocalizations {
 
   /// `About Me`
   String get sobreMi {
-    return Intl.message(
-      'About Me',
-      name: 'sobreMi',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('About Me', name: 'sobreMi', desc: '', args: []);
   }
 
   /// `UPDATE INFORMATION`
@@ -2093,12 +1821,7 @@ class AppLocalizations {
 
   /// `UPDATE`
   String get actualizarBtn {
-    return Intl.message(
-      'UPDATE',
-      name: 'actualizarBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('UPDATE', name: 'actualizarBtn', desc: '', args: []);
   }
 
   /// `Invalid Extension`
@@ -2153,12 +1876,7 @@ class AppLocalizations {
 
   /// `See More`
   String get verMas {
-    return Intl.message(
-      'See More',
-      name: 'verMas',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('See More', name: 'verMas', desc: '', args: []);
   }
 
   /// `Modules: `
@@ -2213,12 +1931,7 @@ class AppLocalizations {
 
   /// `Deleted`
   String get eliminado {
-    return Intl.message(
-      'Deleted',
-      name: 'eliminado',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Deleted', name: 'eliminado', desc: '', args: []);
   }
 
   /// `Error deleting course`
@@ -2293,22 +2006,12 @@ class AppLocalizations {
 
   /// `Agree:`
   String get acepto2puntos {
-    return Intl.message(
-      'Agree:',
-      name: 'acepto2puntos',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Agree:', name: 'acepto2puntos', desc: '', args: []);
   }
 
   /// `Delete form`
   String get borrarForm {
-    return Intl.message(
-      'Delete form',
-      name: 'borrarForm',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Delete form', name: 'borrarForm', desc: '', args: []);
   }
 
   /// `Permanently delete the form`
@@ -2323,42 +2026,22 @@ class AppLocalizations {
 
   /// `Yes, Delete`
   String get siBorrar {
-    return Intl.message(
-      'Yes, Delete',
-      name: 'siBorrar',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Yes, Delete', name: 'siBorrar', desc: '', args: []);
   }
 
   /// `ACTIVE`
   String get activo {
-    return Intl.message(
-      'ACTIVE',
-      name: 'activo',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('ACTIVE', name: 'activo', desc: '', args: []);
   }
 
   /// `PENDING`
   String get pendiente {
-    return Intl.message(
-      'PENDING',
-      name: 'pendiente',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('PENDING', name: 'pendiente', desc: '', args: []);
   }
 
   /// `User`
   String get usuario {
-    return Intl.message(
-      'User',
-      name: 'usuario',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('User', name: 'usuario', desc: '', args: []);
   }
 
   /// `Lead Management`
@@ -2393,12 +2076,7 @@ class AppLocalizations {
 
   /// `ACTIONS`
   String get acciones {
-    return Intl.message(
-      'ACTIONS',
-      name: 'acciones',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('ACTIONS', name: 'acciones', desc: '', args: []);
   }
 
   /// `Form Management`
@@ -2413,12 +2091,7 @@ class AppLocalizations {
 
   /// `Form List`
   String get listaForm {
-    return Intl.message(
-      'Form List',
-      name: 'listaForm',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Form List', name: 'listaForm', desc: '', args: []);
   }
 
   /// `INFORMATION`
@@ -2453,12 +2126,7 @@ class AppLocalizations {
 
   /// `COURSE IMAGE`
   String get imgDeCurso {
-    return Intl.message(
-      'COURSE IMAGE',
-      name: 'imgDeCurso',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('COURSE IMAGE', name: 'imgDeCurso', desc: '', args: []);
   }
 
   /// `COURSE INFORMATION`
@@ -2483,32 +2151,17 @@ class AppLocalizations {
 
   /// `User List`
   String get listaUsuarios {
-    return Intl.message(
-      'User List',
-      name: 'listaUsuarios',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('User List', name: 'listaUsuarios', desc: '', args: []);
   }
 
   /// `IMAGE`
   String get imagen {
-    return Intl.message(
-      'IMAGE',
-      name: 'imagen',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('IMAGE', name: 'imagen', desc: '', args: []);
   }
 
   /// `COURSES`
   String get cursoMayus {
-    return Intl.message(
-      'COURSES',
-      name: 'cursoMayus',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('COURSES', name: 'cursoMayus', desc: '', args: []);
   }
 
   /// `VIEW CERTIFICATE`
@@ -2523,22 +2176,12 @@ class AppLocalizations {
 
   /// `VIEW`
   String get ver {
-    return Intl.message(
-      'VIEW',
-      name: 'ver',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('VIEW', name: 'ver', desc: '', args: []);
   }
 
   /// `COMMENTS`
   String get comentariosBtn {
-    return Intl.message(
-      'COMMENTS',
-      name: 'comentariosBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('COMMENTS', name: 'comentariosBtn', desc: '', args: []);
   }
 
   /// `VIEW MATERIAL`
@@ -2583,12 +2226,7 @@ class AppLocalizations {
 
   /// `COMMENT`
   String get comentar {
-    return Intl.message(
-      'COMMENT',
-      name: 'comentar',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('COMMENT', name: 'comentar', desc: '', args: []);
   }
 
   /// `An Administrator will answer your question`
@@ -2663,12 +2301,7 @@ class AppLocalizations {
 
   /// `Log in`
   String get irAlLogin {
-    return Intl.message(
-      'Log in',
-      name: 'irAlLogin',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Log in', name: 'irAlLogin', desc: '', args: []);
   }
 
   /// `Phone without special characters (12223334455)`
@@ -2723,22 +2356,12 @@ class AppLocalizations {
 
   /// `Required`
   String get requerido {
-    return Intl.message(
-      'Required',
-      name: 'requerido',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Required', name: 'requerido', desc: '', args: []);
   }
 
   /// `New User`
   String get nuevoUsuario {
-    return Intl.message(
-      'New User',
-      name: 'nuevoUsuario',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('New User', name: 'nuevoUsuario', desc: '', args: []);
   }
 
   /// `Username`
@@ -2793,22 +2416,12 @@ class AppLocalizations {
 
   /// `STATUS`
   String get estado {
-    return Intl.message(
-      'STATUS',
-      name: 'estado',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('STATUS', name: 'estado', desc: '', args: []);
   }
 
   /// `CREATE`
   String get crearBtn {
-    return Intl.message(
-      'CREATE',
-      name: 'crearBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('CREATE', name: 'crearBtn', desc: '', args: []);
   }
 
   /// `Add a course to the user`
@@ -2833,12 +2446,7 @@ class AppLocalizations {
 
   /// `ADD`
   String get agregarBtn {
-    return Intl.message(
-      'ADD',
-      name: 'agregarBtn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('ADD', name: 'agregarBtn', desc: '', args: []);
   }
 
   /// `User created successfully`
@@ -2893,22 +2501,12 @@ class AppLocalizations {
 
   /// `Edit:`
   String get editar2puntos {
-    return Intl.message(
-      'Edit:',
-      name: 'editar2puntos',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Edit:', name: 'editar2puntos', desc: '', args: []);
   }
 
   /// `New Course`
   String get nuevoCurso {
-    return Intl.message(
-      'New Course',
-      name: 'nuevoCurso',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('New Course', name: 'nuevoCurso', desc: '', args: []);
   }
 
   /// `Course Name`
@@ -3103,12 +2701,7 @@ class AppLocalizations {
 
   /// `New module`
   String get nuevoModulo {
-    return Intl.message(
-      'New module',
-      name: 'nuevoModulo',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('New module', name: 'nuevoModulo', desc: '', args: []);
   }
 
   /// `Published: `
@@ -3193,12 +2786,7 @@ class AppLocalizations {
 
   /// `1.3. USERS:`
   String get usuarios1_3 {
-    return Intl.message(
-      '1.3. USERS:',
-      name: 'usuarios1_3',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('1.3. USERS:', name: 'usuarios1_3', desc: '', args: []);
   }
 
   /// `Access and/or use of this website grants the USER the status of USER, who accepts, from said access and/or use, these terms of use; however, by the mere use of the website, this does not imply the commencement of any labor/commercial relationship.`
@@ -3623,12 +3211,7 @@ class AppLocalizations {
 
   /// `FORMS`
   String get formularios {
-    return Intl.message(
-      'FORMS',
-      name: 'formularios',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('FORMS', name: 'formularios', desc: '', args: []);
   }
 
   /// `The website has 4 types of forms:\nContact form: Users, clients, or participants can find forms that facilitate communication with JPDIRECTOR to ask questions, provide comments, request a quote, book any of the services offered on the website, or assert any rights they may have. Failure to provide the minimum necessary personal data will prevent JPDIRECTOR from responding to the request. This processing will be considered legitimate as part of a pre-contractual diligence. The website server and JPDIRECTOR's email will be responsible for processing.\nAdvertising form: Users, buyers, or participants will be asked for their express and voluntary consent to provide JPDIRECTOR with the minimum necessary data to send advertising and commercial information related to the services and/or products offered by JPDIRECTOR, to be added to an automated email marketing file managed by the data processor indicated below. The processing of personal data in this section has been carried out with the consent of the data subject.\nComment forms on the blog: In order to prevent spam, inappropriate messages, and to provide proper tracking, users will be asked for their name, email, and website to identify them in the comments they wish to make on blog posts. This data will be visible to other website users. If you do not want your data to be visible to others, you should contact JPDIRECTOR at the email address hola@jpdirector.net. The website server will be responsible for processing, and this will be done with the consent of the data subject.\nService request form: Users, clients, or participants will be asked for their data so that JPDIRECTOR can process the services requested by the client. Legitimate processing of personal data due to the contractual relationship with the client or participant. The data will be stored on the website server.\n`
@@ -3643,12 +3226,7 @@ class AppLocalizations {
 
   /// `RIGHTS`
   String get derechos {
-    return Intl.message(
-      'RIGHTS',
-      name: 'derechos',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('RIGHTS', name: 'derechos', desc: '', args: []);
   }
 
   /// `The user has the following rights related to their personal data:\nAccess: The user can contact JPDIRECTOR to find out what data has been collected about them.\nRectification: The user can rectify the data they have provided to JPDIRECTOR at any time.\nObjection: As long as it does not interrupt the provision of a service or a legal obligation that JPDIRECTOR has, the user may request the cessation of the processing of their personal data.\nDeletion: As long as it does not interrupt the provision of a service or a legal obligation that JPDIRECTOR has, the user may request the deletion of their personal data.\nProcessing Limitation: As long as it does not interrupt the provision of a service or a legal obligation that JPDIRECTOR has, the user may request that their personal data be processed as they limit it, for example, requesting that it not be modified, deleted, or suppressed.\nPortability: Whenever the user requests it and it can be done, they may request a copy of their personal data in a structured, commonly used, machine-readable, and interoperable format or request that it be transmitted to another data controller, provided that the processing is based on consent or within the framework of the execution of a contract.\nNot to be the subject of automated individual decisions: JPDIRECTOR does not make automated profiles that can significantly or negatively affect the user. Any decision made based on an automated profile is solely for the purpose of sending the user information they have requested in accordance with their browsing habits and material downloads on the website.\nInformation: The user has the right to know how their personal data is processed.\nTo exercise any of these rights, the user can write to the email address hola@jpdirector.net\n`
@@ -3843,62 +3421,32 @@ class AppLocalizations {
 
   /// `New Lead`
   String get nuevoLead {
-    return Intl.message(
-      'New Lead',
-      name: 'nuevoLead',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('New Lead', name: 'nuevoLead', desc: '', args: []);
   }
 
   /// `Reply`
   String get responder {
-    return Intl.message(
-      'Reply',
-      name: 'responder',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Reply', name: 'responder', desc: '', args: []);
   }
 
   /// `Response`
   String get respuesta {
-    return Intl.message(
-      'Response',
-      name: 'respuesta',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Response', name: 'respuesta', desc: '', args: []);
   }
 
   /// `Date`
   String get fecha {
-    return Intl.message(
-      'Date',
-      name: 'fecha',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Date', name: 'fecha', desc: '', args: []);
   }
 
   /// `New Form`
   String get nuevoForm {
-    return Intl.message(
-      'New Form',
-      name: 'nuevoForm',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('New Form', name: 'nuevoForm', desc: '', args: []);
   }
 
   /// `Hello,`
   String get hola {
-    return Intl.message(
-      'Hello,',
-      name: 'hola',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Hello,', name: 'hola', desc: '', args: []);
   }
 
   /// `Welcome to the most comprehensive digital advertising programs. We thank you and send you a big hug for trusting our training; we are excited to see you grow on this new path to success.`
@@ -4053,32 +3601,17 @@ class AppLocalizations {
 
   /// `Start Here`
   String get comienzaAqui {
-    return Intl.message(
-      'Start Here',
-      name: 'comienzaAqui',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Start Here', name: 'comienzaAqui', desc: '', args: []);
   }
 
   /// `Delete`
   String get borrar {
-    return Intl.message(
-      'Delete',
-      name: 'borrar',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Delete', name: 'borrar', desc: '', args: []);
   }
 
   /// `MODULES`
   String get modulos {
-    return Intl.message(
-      'MODULES',
-      name: 'modulos',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('MODULES', name: 'modulos', desc: '', args: []);
   }
 
   /// `TESTIMONIALS`
@@ -4353,9 +3886,74 @@ class AppLocalizations {
 
   /// `Support`
   String get soporte {
+    return Intl.message('Support', name: 'soporte', desc: '', args: []);
+  }
+
+  /// `¿If I watch less than the established time, does it accumulate?`
+  String get tiempoSeAcumulaPreg {
     return Intl.message(
-      'Support',
-      name: 'soporte',
+      '¿If I watch less than the established time, does it accumulate?',
+      name: 'tiempoSeAcumulaPreg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No, if you have scheduled your session and we have resolved your issue, the consultation will be considered finished.`
+  String get tiempoSeAcumulaResp {
+    return Intl.message(
+      'No, if you have scheduled your session and we have resolved your issue, the consultation will be considered finished.',
+      name: 'tiempoSeAcumulaResp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Blog`
+  String get blog {
+    return Intl.message('Blog', name: 'blog', desc: '', args: []);
+  }
+
+  /// `Published Blogs`
+  String get publishedBlogs {
+    return Intl.message(
+      'Published Blogs',
+      name: 'publishedBlogs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading blogs...`
+  String get loadingBlogs {
+    return Intl.message(
+      'Loading blogs...',
+      name: 'loadingBlogs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error loading blogs`
+  String get blogError {
+    return Intl.message(
+      'Error loading blogs',
+      name: 'blogError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Read More`
+  String get readMore {
+    return Intl.message('Read More', name: 'readMore', desc: '', args: []);
+  }
+
+  /// `No blogs found`
+  String get noBlogsFound {
+    return Intl.message(
+      'No blogs found',
+      name: 'noBlogsFound',
       desc: '',
       args: [],
     );

@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_controller.dart';
+import 'package:carousel_slider/carousel_slider.dart' as carousel;
 import 'package:flutter/material.dart';
 import 'package:jp_director/models/formulario.dart';
 import 'package:jp_director/models/http/forms_response.dart';
@@ -10,7 +10,7 @@ import '../api/jp_api.dart';
 import '../services/notificacion_service.dart';
 
 class FormProvider extends ChangeNotifier {
-  CarouselController formScrollController = CarouselController();
+  carousel.CarouselSliderController formScrollController = carousel.CarouselSliderController();
 
   GlobalKey<FormState> keyForm = GlobalKey<FormState>(debugLabel: 'keyForm');
   GlobalKey<FormState> keyForm2 = GlobalKey<FormState>(debugLabel: 'keyForm2');
@@ -151,8 +151,7 @@ class FormProvider extends ChangeNotifier {
     // final routeName = _pages[index];
     html.window.history.pushState(null, 'none', '#/${_pages[index]}');
 
-    formScrollController.animateToPage(index,
-        duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+    formScrollController.jumpToPage(index);
   }
 
   getForms() async {

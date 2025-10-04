@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
+import 'package:jp_director/providers/all_blogs_provider.dart';
+import 'package:jp_director/ui/views/admin_dash/blogs_admin_view.dart';
+import 'package:jp_director/ui/views/blog/blog_article_page.dart';
 import 'package:jp_director/ui/views/dashboard/start_here_view.dart';
+import 'package:jp_director/ui/views/home_views/blog_view.dart';
 import 'package:jp_director/ui/views/static/calendly_redirect.dart';
 import '../ui/shared/widgets/progress_ind.dart';
 import '../ui/views/system/soporte_view.dart';
@@ -107,12 +111,42 @@ class VisitorHandlers {
       final email = params['invitee_email']?.first ?? '';
       final phone = params['text_reminder_number']?.first ?? '';
       return CalendlyRedirect(
-        date: DateTime.parse(startTime ?? '1900-10-19'),
-        email: email,
-        fullname: name,
-        title: title,
-        phone: phone
-      );
+          date: DateTime.parse(startTime ?? '1900-10-19'),
+          email: email,
+          fullname: name,
+          title: title,
+          phone: phone);
+    },
+  );
+
+  // Handlers para el blog público - Sin carga de datos en la navegación
+  static Handler blogHome = Handler(
+    handlerFunc: (context, params) {
+      // Solo actualizar la URL en el sidebar, sin cargar datos
+      Provider.of<SideBarProvider>(context!, listen: false)
+          .setCurrentPageUrl(Flurorouter.blogRoute);
+      
+      // Determinar la vista según el estado de autenticación
+      final authStatus = Provider.of<AuthProvider>(context, listen: false).authStatus;
+      
+      // Simplemente retornar la vista correspondiente sin cargar datos
+      if (authStatus == AuthStatus.authenticated) {
+        return const BlogsAdminView();
+      } else {
+        return const BlogView();
+      }
+    },
+  );
+
+  static Handler blogArticle = Handler(
+    handlerFunc: (context, params) {
+      final articleId = params['articleId']?.first ?? '';
+      // Solo actualizar la URL en la barra lateral, sin cargar datos
+      Provider.of<SideBarProvider>(context!, listen: false).setCurrentPageUrl(
+          Flurorouter.blogArticleRoute.replaceAll(':articleId', articleId));
+
+      // Devolver la página sin realizar peticiones de datos
+      return BlogArticlePage(articleId: articleId);
     },
   );
 
@@ -144,8 +178,16 @@ class VisitorHandlers {
     if (page == 'resultados') {
       return const HomeBody(index: 3);
     }
-    if (page == 'contacto') {
+    if (page == 'blog') {
+      final authProvider = Provider.of<AuthProvider>(context, listen: false);
+      if (authProvider.authStatus == AuthStatus.authenticated) {
+        // Simplemente redirigir sin cargar datos
+        return const BlogsAdminView();
+      }
       return const HomeBody(index: 4);
+    }
+    if (page == 'contacto') {
+      return const HomeBody(index: 5);
     }
     if (page == 'checkout') {
       return const DashMisCursosView();
@@ -339,6 +381,19 @@ class AdminHandlers {
       Provider.of<SideBarProvider>(context, listen: false)
           .setCurrentPageUrl(Flurorouter.formsAdminDash);
       return const FormAdminView();
+    }
+  });
+
+  static Handler blogsAdminDash = Handler(handlerFunc: (context, params) {
+    final authProvider = Provider.of<AuthProvider>(context!, listen: false);
+    if (authProvider.authStatus == AuthStatus.notAuthenticated ||
+        authProvider.user!.rol != 'ADMIN_ROLE') {
+      return const HomeBody();
+    } else {
+      Provider.of<SideBarProvider>(context, listen: false)
+          .setCurrentPageUrl(Flurorouter.blogsAdminDash);
+      // Solo devolver la vista, sin cargar datos
+      return const BlogsAdminView();
     }
   });
 }

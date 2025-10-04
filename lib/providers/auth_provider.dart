@@ -36,7 +36,7 @@ class AuthProvider extends ChangeNotifier {
   Locale get locale => _locale;
   void setLocale(Locale value) {
     _locale = value;
-    notifyListeners();
+    // notifyListeners();
   }
 
   List<Curso> get misCursos => _misCursos;

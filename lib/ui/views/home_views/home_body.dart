@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'ads_view.dart';
+import 'blog_view.dart';
 import 'contacto_view.dart';
 import 'first_view.dart';
 import 'resultados_view.dart';
@@ -50,6 +51,7 @@ class _HomeBodyState extends State<HomeBody> {
               SizedBox(width: double.infinity, height: size.height, child: const AdsView()),
               SizedBox(width: double.infinity, height: size.height, child: const ServicesView()),
               SizedBox(width: double.infinity, height: size.height, child: ResultadosView()),
+              SizedBox(width: double.infinity, height: size.height, child: const BlogView()),
               SizedBox(width: double.infinity, height: size.height, child: const ContactoView()),
             ],
           ),

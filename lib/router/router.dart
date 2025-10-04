@@ -66,11 +66,16 @@ class Flurorouter {
 
   static String leadsAdminDash = '/admin/leads';
   static String formsAdminDash = '/admin/forms';
+  static String blogsAdminDash = '/admin/blogs';
 
   // CONDICIONES Y TERMINOS
   static String tycRoute = '/doc/tyc';
   static String pdpRoute = '/doc/pdp';
   static String docRoute = '/doc';
+
+  // rutas blog
+  static String blogRoute = '/blog';
+  static String blogArticleRoute = '/blog/:articleId';
 
   // rutas stripe
   static String checksession = '/checkout/checksession';
@@ -244,6 +249,23 @@ class Flurorouter {
         transitionDuration: const Duration(milliseconds: 100));
     router.define(formsAdminDash,
         handler: AdminHandlers.formsAdminDash,
+        transitionType: TransitionType.none,
+        transitionDuration: const Duration(milliseconds: 100));
+
+    router.define(blogsAdminDash,
+        handler: AdminHandlers.blogsAdminDash,
+        transitionType: TransitionType.none,
+        transitionDuration: const Duration(milliseconds: 100));
+
+    // BLOG ROUTES
+    
+    router.define(blogRoute,
+        handler: VisitorHandlers.blogHome,
+        transitionType: TransitionType.none,
+        transitionDuration: const Duration(milliseconds: 100));
+        
+    router.define(blogArticleRoute,
+        handler: VisitorHandlers.blogArticle,
         transitionType: TransitionType.none,
         transitionDuration: const Duration(milliseconds: 100));
 

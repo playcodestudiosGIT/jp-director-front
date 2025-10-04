@@ -1,4 +1,5 @@
 export 'package:provider/provider.dart';
+export 'all_blogs_provider.dart';
 export 'all_cursos_provider.dart';
 export 'all_respuestas_provider.dart';
 export 'auth_provider.dart';

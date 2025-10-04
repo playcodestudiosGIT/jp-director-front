@@ -173,6 +173,18 @@ class _UserPageLayoutState extends State<UserPageLayout> {
                                 NavigatorService.navigateTo('/resultados');
                               }),
                           MenuItemTop(
+                              text: 'BLOG',
+                              isActive: false,
+                              onPress: () {
+                                Provider.of<EventsProvider>(context,
+                                        listen: false)
+                                    .clickEvent(
+                                        source: 'home/',
+                                        description: 'Click en Menu Blog',
+                                        title: 'menu-blog');
+                                NavigatorService.navigateTo('/blog');
+                              }),
+                          MenuItemTop(
                               text: appLocal.topBotonContacto,
                               isActive: false,
                               onPress: () {

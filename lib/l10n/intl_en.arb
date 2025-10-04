@@ -1,4 +1,5 @@
 {
+    "@@locale": "en",
     "educacionYEstrategia": "Education and\nADS Strategy",
     "llegasteAlMundo": "You arrived in the right place",
     "siu": "IF",
@@ -25,6 +26,7 @@
     "topBotonCursos": "COURSES",
     "topBotonServicios": "SERVICES",
     "topBotonResultados": "RESULTS",
+    "topBotonBlog": "BLOG",
     "topBotonContacto": "CONTACT",
     "botonLogin": "LOGIN",
     "botonReg": "Register",
@@ -430,4 +432,10 @@
     "soporte": "Support",
     "tiempoSeAcumulaPreg": "¿If I watch less than the established time, does it accumulate?",
     "tiempoSeAcumulaResp": "No, if you have scheduled your session and we have resolved your issue, the consultation will be considered finished.",
+    "blog": "Blog",
+    "publishedBlogs": "Published Blogs",
+    "loadingBlogs": "Loading blogs...",
+    "blogError": "Error loading blogs",
+    "readMore": "Read More",
+    "noBlogsFound": "No blogs found"
 }

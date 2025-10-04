@@ -1,4 +1,5 @@
 {
+    "@@locale": "es",
     "educacionYEstrategia": "Educación y\nEstrategia de ADS",
     "llegasteAlMundo": "Llegaste al mundo indicado",
     "siu": "SI",
@@ -25,6 +26,7 @@
     "topBotonCursos": "CURSOS",
     "topBotonServicios": "SERVICIOS",
     "topBotonResultados": "RESULTADOS",
+    "topBotonBlog": "BLOG",
     "topBotonContacto": "CONTACTO",
     "botonLogin": "ENTRAR",
     "botonReg": "Registrate",
@@ -426,8 +428,14 @@
     "errorAuth": "Ocurrió problema con tu autenticación",
     "graciasPorRegistrarte": "Gracias por registrarte, revisa tu correo para verificar tu cuenta",
     "correoYaExiste": "Correo ya existe. ir al Log in",
-    "actInfo": "Actualizar Información"
+    "actInfo": "Actualizar Información",
     "soporte": "Soporte",
     "tiempoSeAcumulaPreg": "¿Si veo menos del tiempo establecido se acumula?",
     "tiempoSeAcumulaResp": "No, en caso de que hayas agendado tu sesión y hayamos resuelto tu problema se dará por finalizada la asesoría",
+    "blog": "Blog",
+    "publishedBlogs": "Blogs Publicados",
+    "loadingBlogs": "Cargando blogs...",
+    "blogError": "Error al cargar blogs",
+    "readMore": "Leer Más",
+    "noBlogsFound": "No se encontraron blogs"
 }

@@ -1,0 +1,708 @@
+{
+	"info": {
+		"_postman_id": "7a5c3d8f-2c3a-4e8a-8b7a-9d2c15f0e3a1",
+		"name": "JP-Director-Blogs",
+		"description": "Colección para probar los endpoints de blogs de JP Director",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12345678"
+	},
+	"item": [
+		{
+			"name": "Autenticación",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"correo\": \"test@test.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Inicio de sesión para obtener un token JWT"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Blogs",
+			"item": [
+				{
+					"name": "Obtener todos los blogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/blogs?limite=10&desde=0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogs"
+							],
+							"query": [
+								{
+									"key": "limite",
+									"value": "10"
+								},
+								{
+									"key": "desde",
+									"value": "0"
+								},
+								{
+									"key": "estado",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Obtiene todos los blogs con paginación"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener blogs publicados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/blogs/published?page=1&limit=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogs",
+								"published"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Obtiene blogs publicados (estado=true y fecha de publicación <= hoy)"
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar blogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/blogs/search?q=cine&page=1&limit=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogs",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "cine"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Busca blogs por contenido"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener blog por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/blogs/{{blog_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogs",
+								"{{blog_id}}"
+							]
+						},
+						"description": "Obtiene un blog específico por su ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear blog",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"if (jsonData._id) {",
+									"    pm.environment.set(\"blog_id\", jsonData._id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tituloEs\": \"Técnicas Avanzadas de Dirección de Actores\",\n    \"tituloEn\": \"Advanced Actor Directing Techniques\",\n    \"contenidoEs\": \"La dirección de actores es un arte que requiere una comprensión profunda de las emociones humanas. En este artículo, exploraremos las técnicas más efectivas para conseguir actuaciones naturales y convincentes.\",\n    \"contenidoEn\": \"Actor directing is an art that requires a deep understanding of human emotions. In this article, we will explore the most effective techniques for achieving natural and convincing performances.\",\n    \"fechaPublicacion\": \"2025-09-30\",\n    \"publicado\": true,\n    \"relacionados\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/blogs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogs"
+							]
+						},
+						"description": "Crea un nuevo blog (requiere token de admin)"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar blog",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"publicado\": true,\n    \"relacionados\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/blogs/{{blog_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogs",
+								"{{blog_id}}"
+							]
+						},
+						"description": "Actualiza un blog existente (requiere token de admin)"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar blog",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/blogs/{{blog_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogs",
+								"{{blog_id}}"
+							]
+						},
+						"description": "Elimina un blog (cambiar estado a false) - Requiere token de admin"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear blog sin acentos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"if (jsonData.blog && jsonData.blog._id) {",
+									"    pm.environment.set(\"blog_id\", jsonData.blog._id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tituloEs\": \"Tecnicas Avanzadas de Direccion de Actores\",\n    \"tituloEn\": \"Advanced Actor Directing Techniques\",\n    \"contenidoEs\": \"La direccion de actores es un arte que requiere una comprension profunda de las emociones humanas. En este articulo, exploraremos las tecnicas mas efectivas para conseguir actuaciones naturales y convincentes.\",\n    \"contenidoEn\": \"Actor directing is an art that requires a deep understanding of human emotions. In this article, we will explore the most effective techniques for achieving natural and convincing performances.\",\n    \"fechaPublicacion\": \"2025-09-30\",\n    \"estado\": true,\n    \"tags\": [\"direccion\", \"actuacion\", \"cine\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/blogs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogs"
+							]
+						},
+						"description": "Crea un nuevo blog sin usar acentos ni caracteres especiales (para pruebas)"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener blogs disponibles para relacionar",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/blogs/disponibles/{{blog_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogs",
+								"disponibles",
+								"{{blog_id}}"
+							]
+						},
+						"description": "Obtiene todos los blogs disponibles para relacionar con el blog actual, excluyendo al blog actual"
+					},
+					"response": [
+						{
+							"name": "Respuesta exitosa",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/blogs/disponibles/{{blog_id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"blogs",
+										"disponibles",
+										"{{blog_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"blogs\": [\n        {\n            \"_id\": \"68d879624716f9b71cd70661\",\n            \"tituloEs\": \"Iluminación para Directores\",\n            \"tituloEn\": \"Lighting for Directors\",\n            \"imagen\": \"https://res.cloudinary.com/dqiwrcosz/image/upload/v1695068240/blogs/iluminacion-directores.jpg\",\n            \"fechaPublicacion\": \"2025-09-15T00:00:00.000Z\"\n        },\n        {\n            \"_id\": \"68d879624716f9b71cd70662\",\n            \"tituloEs\": \"Dirección de Fotografía Cinematográfica\",\n            \"tituloEn\": \"Cinematographic Direction\",\n            \"imagen\": \"https://res.cloudinary.com/dqiwrcosz/image/upload/v1695068240/blogs/direccion-fotografia.jpg\",\n            \"fechaPublicacion\": \"2025-08-20T00:00:00.000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Actualizar artículos relacionados",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"relacionados\": [\"68d879624716f9b71cd70661\", \"68d879624716f9b71cd70662\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/blogs/{{blog_id}}/relacionados",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogs",
+								"{{blog_id}}",
+								"relacionados"
+							]
+						},
+						"description": "Actualiza la lista de artículos relacionados para un blog específico"
+					},
+					"response": [
+						{
+							"name": "Respuesta exitosa",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"relacionados\": [\"68d879624716f9b71cd70661\", \"68d879624716f9b71cd70662\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/blogs/{{blog_id}}/relacionados",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"blogs",
+										"{{blog_id}}",
+										"relacionados"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"68d879624716f9b71cd70660\",\n    \"tituloEs\": \"Técnicas Avanzadas de Dirección de Actores\",\n    \"tituloEn\": \"Advanced Actor Directing Techniques\",\n    \"contenidoEs\": \"La dirección de actores es un arte que requiere una comprensión profunda de las emociones humanas. En este artículo, exploraremos las técnicas más efectivas para conseguir actuaciones naturales y convincentes.\",\n    \"contenidoEn\": \"Actor directing is an art that requires a deep understanding of human emotions. In this article, we will explore the most effective techniques for achieving natural and convincing performances.\",\n    \"imagen\": \"https://res.cloudinary.com/dqiwrcosz/image/upload/v1695068240/blogs/tecnicas-direccion.jpg\",\n    \"estado\": true,\n    \"publicado\": true,\n    \"fechaPublicacion\": \"2025-09-30T00:00:00.000Z\",\n    \"usuario\": {\n        \"_id\": \"68d879624716f9b71cd70651\",\n        \"nombre\": \"Admin\"\n    },\n    \"relacionados\": [\n        {\n            \"_id\": \"68d879624716f9b71cd70661\",\n            \"tituloEs\": \"Iluminación para Directores\",\n            \"tituloEn\": \"Lighting for Directors\",\n            \"imagen\": \"https://res.cloudinary.com/dqiwrcosz/image/upload/v1695068240/blogs/iluminacion-directores.jpg\"\n        },\n        {\n            \"_id\": \"68d879624716f9b71cd70662\",\n            \"tituloEs\": \"Dirección de Fotografía Cinematográfica\",\n            \"tituloEn\": \"Cinematographic Direction\",\n            \"imagen\": \"https://res.cloudinary.com/dqiwrcosz/image/upload/v1695068240/blogs/direccion-fotografia.jpg\"\n        }\n    ],\n    \"createdAt\": \"2025-09-25T15:30:10.123Z\",\n    \"updatedAt\": \"2025-09-30T09:45:22.456Z\"\n}"
+						},
+						{
+							"name": "Error de validación",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"relacionados\": [\"id_incorrecto\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/blogs/{{blog_id}}/relacionados",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"blogs",
+										"{{blog_id}}",
+										"relacionados"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"ID no válido: id_incorrecto\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Obtener artículos relacionados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/blogs/{{blog_id}}/relacionados",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogs",
+								"{{blog_id}}",
+								"relacionados"
+							]
+						},
+						"description": "Obtiene los artículos relacionados de un blog específico"
+					},
+					"response": [
+						{
+							"name": "Respuesta exitosa",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/blogs/{{blog_id}}/relacionados",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"blogs",
+										"{{blog_id}}",
+										"relacionados"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"68d879624716f9b71cd70661\",\n        \"tituloEs\": \"Iluminación para Directores\",\n        \"tituloEn\": \"Lighting for Directors\",\n        \"contenidoEs\": \"La iluminación es un elemento fundamental en la narrativa visual. Este artículo explora cómo los directores pueden utilizar la luz para contar historias de manera más efectiva.\",\n        \"contenidoEn\": \"Lighting is a fundamental element in visual storytelling. This article explores how directors can use light to tell stories more effectively.\",\n        \"imagen\": \"https://res.cloudinary.com/dqiwrcosz/image/upload/v1695068240/blogs/iluminacion-directores.jpg\",\n        \"estado\": true,\n        \"publicado\": true,\n        \"fechaPublicacion\": \"2025-10-05T00:00:00.000Z\",\n        \"usuario\": {\n            \"_id\": \"68d879624716f9b71cd70651\",\n            \"nombre\": \"Admin\"\n        },\n        \"createdAt\": \"2025-09-26T13:15:30.123Z\",\n        \"updatedAt\": \"2025-10-05T09:45:22.456Z\"\n    },\n    {\n        \"_id\": \"68d879624716f9b71cd70662\",\n        \"tituloEs\": \"Dirección de Fotografía Cinematográfica\",\n        \"tituloEn\": \"Cinematographic Direction\",\n        \"contenidoEs\": \"La dirección de fotografía es el arte de crear imágenes que cuenten historias. En este blog, analizamos los principios fundamentales que todo director debería conocer.\",\n        \"contenidoEn\": \"Cinematography is the art of creating images that tell stories. In this blog, we analyze the fundamental principles that every director should know.\",\n        \"imagen\": \"https://res.cloudinary.com/dqiwrcosz/image/upload/v1695068240/blogs/direccion-fotografia.jpg\",\n        \"estado\": true,\n        \"publicado\": true,\n        \"fechaPublicacion\": \"2025-10-10T00:00:00.000Z\",\n        \"usuario\": {\n            \"_id\": \"68d879624716f9b71cd70651\",\n            \"nombre\": \"Admin\"\n        },\n        \"createdAt\": \"2025-09-27T10:45:18.789Z\",\n        \"updatedAt\": \"2025-10-10T14:30:05.123Z\"\n    }\n]"
+						},
+						{
+							"name": "Blog sin relacionados",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/blogs/{{blog_id}}/relacionados",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"blogs",
+										"{{blog_id}}",
+										"relacionados"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						},
+						{
+							"name": "Blog no encontrado",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/blogs/61a79c4fbb344c67c725dc99/relacionados",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"blogs",
+										"61a79c4fbb344c67c725dc99",
+										"relacionados"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Blog no encontrado con id 61a79c4fbb344c67c725dc99\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "blog_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

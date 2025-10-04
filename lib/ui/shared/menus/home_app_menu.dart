@@ -43,10 +43,8 @@ class _HomeAppMenuState extends State<HomeAppMenu>
     final hScreen = MediaQuery.of(context).size.height;
     final authProvider = Provider.of<AuthProvider>(context);
     final sideBarProvider = Provider.of<SideBarProvider>(context);
-    final double hMenu = (authProvider.user?.rol == 'ADMIN_ROLE') ? 550 : 340;
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
+    final double hMenu = (authProvider.user?.rol == 'ADMIN_ROLE') ? 601 : 380;
+    return GestureDetector(
           onTap: () {
             if (isOpen) {
               controller.reverse();
@@ -81,8 +79,12 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                             child: _MenuTitle(
                                 isOpen: isOpen, controller: controller),
                           ),
-                          if (isOpen) ...[
-                            MenuItemSide(
+                          if (isOpen) Expanded(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  MenuItemSide(
                                 text: appLocal.comienzaAqui,
                                 icon: FontAwesomeIcons.flagCheckered,
                                 isActive: sideBarProvider.currentPage ==
@@ -233,6 +235,24 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                         Flurorouter.leadsAdminDash);
                                     isOpen = false;
                                   }),
+                              MenuItemSide(
+                                  text: 'Blogs',
+                                  icon: Icons.article_outlined,
+                                  isActive: sideBarProvider.currentPage ==
+                                      Flurorouter.blogsAdminDash,
+                                  onPress: () {
+                                    Provider.of<EventsProvider>(context,
+                                            listen: false)
+                                        .clickEvent(
+                                          uid: authProvider.user!.uid,
+                                            email: authProvider.user!.correo,
+                                            source: 'Admin Menu',
+                                            description: 'Click en Blogs',
+                                            title: 'menu-blogs');
+                                    NavigatorService.navigateTo(
+                                        Flurorouter.blogsAdminDash);
+                                    isOpen = false;
+                                  }),
                             ],
                             const SizedBox(
                               height: 15,
@@ -253,7 +273,10 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                           title: 'menu-logout');
                                   authProvider.logOut(context);
                                 }),
-                          ]
+                                ]
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -272,13 +295,18 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                       alignment: Alignment.center,
                       color: bgColor,
                       width: isOpen ? 200 : 40,
-                      height: isOpen ? 310 : 50,
+                      height: isOpen ? 360 : 50,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           _MenuTitle(isOpen: isOpen, controller: controller),
-                          if (isOpen) ...[
+                          if (isOpen) Expanded(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
                             CustomMenuItem(
                                 padding: 30,
                                 width: 240,
@@ -373,6 +401,28 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                 padding: 30,
                                 width: 240,
                                 delay: 120,
+                                text: 'Blog',
+                                onPressed: () {
+                                  if (isOpen) {
+                                    controller.reverse();
+                                  } else {
+                                    controller.forward();
+                                  }
+                                  setState(() {
+                                    Provider.of<EventsProvider>(context,
+                                            listen: false)
+                                        .clickEvent(
+                                            source: 'Mobile User Menu',
+                                            description: 'Click en Blog',
+                                            title: 'menu-blog');
+                                    isOpen = !isOpen;
+                                    NavigatorService.navigateTo('/blog');
+                                  });
+                                }),
+                            CustomMenuItem(
+                                padding: 30,
+                                width: 240,
+                                delay: 150,
                                 text: appLocal.contactoMenuBtn,
                                 onPressed: () {
                                   if (isOpen) {
@@ -392,12 +442,15 @@ class _HomeAppMenuState extends State<HomeAppMenu>
                                   });
                                 }),
                             const SizedBox(height: 8)
-                          ]
+                                ]
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
                   ],
-                )),
+                ),
     );
   }
 }

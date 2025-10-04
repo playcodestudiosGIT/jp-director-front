@@ -23,9 +23,11 @@ import 'ui/layouts/user_page_layout.dart';
 import 'ui/shared/widgets/progress_ind.dart';
 
 void main() async {
+  // Inicializar servicios
   await LocalStorage.configurePrefs();
   JpApi.configureDio();
   Flurorouter.configureRoutes();
+  
   runApp(const AppState());
 }
 
@@ -36,6 +38,7 @@ class AppState extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => AllBlogsProvider()),
         ChangeNotifierProvider(create: (_) => AllCursosProvider()),
         ChangeNotifierProvider(create: (_) => CursoModalProvider()),
         ChangeNotifierProvider(create: (_) => AllRespuestasProvider()),
@@ -63,6 +66,8 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
+  // Clase simplificada sin observadores innecesarios
+  
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
