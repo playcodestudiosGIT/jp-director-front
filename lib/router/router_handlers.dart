@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
-import 'package:jp_director/providers/all_blogs_provider.dart';
 import 'package:jp_director/ui/views/admin_dash/blogs_admin_view.dart';
 import 'package:jp_director/ui/views/blog/blog_article_page.dart';
 import 'package:jp_director/ui/views/dashboard/start_here_view.dart';

@@ -5,6 +5,7 @@ import 'package:jp_director/api/jp_api.dart';
 import 'package:jp_director/constant.dart';
 import 'package:jp_director/models/blog.dart';
 import 'package:jp_director/providers/all_blogs_provider.dart';
+import 'package:jp_director/services/logger_service.dart';
 import 'package:jp_director/services/notificacion_service.dart';
 import 'package:jp_director/ui/shared/labels/dashboard_label.dart';
 import 'package:provider/provider.dart';
@@ -73,7 +74,7 @@ class _BlogsModalState extends State<BlogsModal> {
       
       _fechaController.text = DateFormat('dd/MM/yyyy').format(_fechaPublicacion);
     } catch (e) {
-      print('Error en initState de BlogsModal: $e');
+      
       _estado = true;
       _fechaPublicacion = DateTime.now();
       _fechaController.text = DateFormat('dd/MM/yyyy').format(_fechaPublicacion);
@@ -158,7 +159,7 @@ class _BlogsModalState extends State<BlogsModal> {
       // Mostrar diálogo para seleccionar blogs relacionados
       await _mostrarDialogoSeleccionBlogs();
     } catch (e) {
-      print('Error al cargar blogs disponibles: $e');
+      
       if (mounted) {
         setState(() {
           _cargandoBlogs = false;
@@ -316,7 +317,7 @@ class _BlogsModalState extends State<BlogsModal> {
                         try {
                           allBlogsProvider.tituloEsBlogModal = value;
                         } catch (e) {
-                          print('Error al establecer título ES: $e');
+                          
                         }
                       },
                       validator: (value) {
@@ -375,7 +376,7 @@ class _BlogsModalState extends State<BlogsModal> {
                         try {
                           allBlogsProvider.tituloEnBlogModal = value;
                         } catch (e) {
-                          print('Error al establecer título EN: $e');
+                          
                         }
                       },
                       validator: (value) {
@@ -455,7 +456,7 @@ class _BlogsModalState extends State<BlogsModal> {
                           // Manejamos posibles errores de codificación
                           allBlogsProvider.contenidoEsBlogModal = value;
                         } catch (e) {
-                          print('Error al establecer contenido ES: $e');
+                          
                         }
                       },
                       validator: (value) {
@@ -505,7 +506,7 @@ class _BlogsModalState extends State<BlogsModal> {
                           // Manejamos posibles errores de codificación
                           allBlogsProvider.contenidoEnBlogModal = value;
                         } catch (e) {
-                          print('Error al establecer contenido EN: $e');
+                          
                         }
                       },
                       validator: (value) {
@@ -776,7 +777,7 @@ class _BlogsModalState extends State<BlogsModal> {
                                       onChanged: _isSubmitting 
                                           ? null 
                                           : (value) {
-                                              print('Switch de estado cambiado: $value');
+                                              
                                               setState(() {
                                                 _estado = value;
                                                 allBlogsProvider.publicadoBlogModal = value;
@@ -961,17 +962,18 @@ class _BlogsModalState extends State<BlogsModal> {
                                   result = await allBlogsProvider.createBlog();
                                 } else {
                                   // Actualizar blog existente
-                                  print('Enviando ID para actualizar: ${widget.id}');
-                                  print('Estado actual: ${allBlogsProvider.publicadoBlogModal}');
                                   result = await allBlogsProvider.updateBlog(widget.id);
                                   
                                   // Si la actualización fue exitosa, actualizamos los blogs relacionados
-                                  if (result && _idsRelacionados.isNotEmpty) {
+                                  // Siempre actualizamos los blogs relacionados, incluso si la lista está vacía
+                                  if (result) {
                                     await _actualizarBlogsRelacionados();
                                   }
                                 }
                                 
                                 if (result) {
+                                  // Breve espera para asegurar que todas las operaciones se completen
+                                  await Future.delayed(const Duration(milliseconds: 300));
                                   if (context.mounted) {
                                     Navigator.pop(context, result);
                                   }
@@ -982,7 +984,7 @@ class _BlogsModalState extends State<BlogsModal> {
                                   });
                                 }
                               } catch (e) {
-                                print('Error catastrófico en modal de blogs: $e');
+                                
                                 setState(() {
                                   _errorMsg = 'Error: $e';
                                   _isSubmitting = false;
@@ -1046,7 +1048,7 @@ class _BlogsModalState extends State<BlogsModal> {
         });
       }
     } catch (e) {
-      print('Error al seleccionar fecha: $e');
+      
       setState(() {
         _errorMsg = 'Error al seleccionar fecha: $e';
       });
@@ -1055,8 +1057,8 @@ class _BlogsModalState extends State<BlogsModal> {
   
   // Método para cargar los blogs relacionados del blog que se está editando
   Future<void> _cargarBlogsRelacionados() async {
-    if (widget.id.isEmpty) return;
-    if (!mounted) return;
+    if (widget.id.isEmpty || !mounted) return;
+    
     setState(() {
       _cargandoBlogs = true;
       _errorMsg = null;
@@ -1064,7 +1066,6 @@ class _BlogsModalState extends State<BlogsModal> {
     
     try {
       final blogsProvider = Provider.of<AllBlogsProvider>(context, listen: false);
-      // Usamos la versión silenciosa para evitar notifyListeners() durante la construcción
       final relacionados = await blogsProvider.getBlogsRelacionadosSN(widget.id);
       
       if (!mounted) return;
@@ -1079,7 +1080,7 @@ class _BlogsModalState extends State<BlogsModal> {
       // Cargar también los blogs disponibles para que estén listos cuando se abra el diálogo
       _blogsDisponibles = await blogsProvider.getBlogsDisponiblesParaRelacionarSN(widget.id);
     } catch (e) {
-      print('Error al cargar blogs relacionados: $e');
+      Logger.error('Error al cargar blogs relacionados', e);
       if (mounted) {
         setState(() {
           _errorMsg = 'Error al cargar artículos relacionados: $e';
@@ -1191,7 +1192,7 @@ class _BlogsModalState extends State<BlogsModal> {
                                   // Aseguramos que la lista temporal se limpia correctamente
                                   tempSelectedIds = [];
                                 });
-                                print('Lista de IDs relacionados limpiada, longitud ahora: ${tempSelectedIds.length}');
+                                
                               },
                               style: TextButton.styleFrom(
                                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -1264,8 +1265,8 @@ class _BlogsModalState extends State<BlogsModal> {
                                             color: isSelected ? azulText : Colors.grey.withOpacity(0.5),
                                           ),
                                           onChanged: (bool? selected) {
-                                            print('Cambiando estado de selección para blog ${blog.id}: ${selected}');
-                                            print('Estado actual de tempSelectedIds antes: $tempSelectedIds');
+                                            
+                                            
                                             
                                             // Crear una nueva lista para asegurar que se detecta el cambio de estado
                                             List<String> newList = List<String>.from(tempSelectedIds);
@@ -1273,12 +1274,12 @@ class _BlogsModalState extends State<BlogsModal> {
                                             if (selected == true) {
                                               if (!newList.contains(blog.id)) {
                                                 newList.add(blog.id);
-                                                print('Añadido ID ${blog.id} a la lista');
+                                                
                                               }
                                             } else {
                                               if (newList.contains(blog.id)) {
                                                 newList.remove(blog.id);
-                                                print('Eliminado ID ${blog.id} de la lista');
+                                                
                                               }
                                             }
                                             
@@ -1286,7 +1287,7 @@ class _BlogsModalState extends State<BlogsModal> {
                                               tempSelectedIds = newList;
                                             });
                                             
-                                            print('Estado actual de tempSelectedIds después: $tempSelectedIds');
+                                            
                                           },
                                         );
                                       },
@@ -1324,7 +1325,7 @@ class _BlogsModalState extends State<BlogsModal> {
                                 .where((id) => id.isNotEmpty)
                                 .toList();
                             
-                            print('Guardando selección: $finalList (${finalList.length} artículos relacionados)');
+                            
                             Navigator.of(context).pop(finalList);
                           },
                         ),
@@ -1340,12 +1341,12 @@ class _BlogsModalState extends State<BlogsModal> {
     );
     
     if (result != null) {
-      print('Recibido resultado del diálogo: $result (${result.length} artículos)');
+      
       setState(() {
         _idsRelacionados = List<String>.from(result);
       });
       
-      // Mostrar una notificación si se seleccionaron blogs
+      // Mostrar una notificación adecuada según la selección
       if (_idsRelacionados.isNotEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -1356,14 +1357,22 @@ class _BlogsModalState extends State<BlogsModal> {
             duration: const Duration(seconds: 2),
           ),
         );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('No se han seleccionado artículos relacionados'),
+            backgroundColor: Colors.blue,
+            duration: Duration(seconds: 2),
+          ),
+        );
       }
     }
   }
   
   // Método para actualizar los blogs relacionados
   Future<bool> _actualizarBlogsRelacionados() async {
-    if (widget.id.isEmpty) return false;
-    if (!mounted) return false;
+    if (widget.id.isEmpty || !mounted) return false;
+    
     try {
       setState(() {
         _errorMsg = null;
@@ -1380,7 +1389,6 @@ class _BlogsModalState extends State<BlogsModal> {
       
       return result;
     } catch (e) {
-      print('Error al actualizar blogs relacionados: $e');
       if (mounted) {
         setState(() {
           _errorMsg = 'Error al actualizar artículos relacionados: $e';
@@ -1406,31 +1414,5 @@ class _BlogsModalState extends State<BlogsModal> {
     );
   }
   
-  InputDecoration _buildInputDecoration(String label, IconData icon) {
-    return InputDecoration(
-      fillColor: Colors.grey.withOpacity(0.1),
-      filled: true,
-      border: OutlineInputBorder(
-        borderSide: BorderSide(color: azulText.withOpacity(0.3)),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: azulText),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: azulText.withOpacity(0.3)),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.red),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      labelText: label,
-      labelStyle: TextStyle(color: Colors.grey),
-      hintStyle: TextStyle(color: Colors.grey.withOpacity(0.5)),
-      prefixIcon: Icon(icon, color: azulText.withOpacity(0.6)),
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-    );
-  }
+
 }

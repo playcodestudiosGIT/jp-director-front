@@ -56,14 +56,28 @@ class AuthProvider extends ChangeNotifier {
     isLoading = true;
     final data = {'correo': email, 'password': password};
 
-    JpApi.post('/auth/login', data).then((json) {
+    try {
+      final json = await JpApi.post('/auth/login', data);
+      
+      // Verificar si la respuesta contiene un error estructurado
+      if (json is Map && json['error'] == true) {
+        isLoading = false;
+        NotifServ.showSnackbarError(json['mensaje'] ?? appLocal.credencialesInvalidas, Colors.orange);
+        notifyListeners();
+        return;
+      }
+      
+      // Procesar la respuesta exitosa
       final authResponse = AuthResponse.fromJson(json);
+      
+      // Registrar evento de login
       Provider.of<EventsProvider>(context, listen: false).ttkLoginEvent(
         uid: authResponse.usuario.uid,
         email: authResponse.usuario.correo,
-          source: '/login',
-          description: 'Login ${authResponse.usuario.estado}',
-          title: 'login');
+        source: '/login',
+        description: 'Login ${authResponse.usuario.estado}',
+        title: 'login');
+        
       if (!authResponse.usuario.estado) {
         NotifServ.showSnackbarError(appLocal.debeVerificar, Colors.red);
         NavigatorService.replaceTo(Flurorouter.loginRoute);
@@ -71,20 +85,24 @@ class AuthProvider extends ChangeNotifier {
         notifyListeners();
         return;
       }
+      
+      // Actualizar estado de autenticación
       user = authResponse.usuario;
       _token = authResponse.token;
       authStatus = AuthStatus.authenticated;
       LocalStorage.prefs.setString('token', json['token']);
 
+      // Configurar Dio con el nuevo token y navegar
       JpApi.configureDio();
       NavigatorService.replaceTo(Flurorouter.clienteMisCursosDash);
       isLoading = false;
       notifyListeners();
-    }).catchError((e) {
+    } catch (e) {
+      // Este bloque solo se ejecuta si hay un error inesperado en el procesamiento de datos
       isLoading = false;
       NotifServ.showSnackbarError(appLocal.credencialesInvalidas, Colors.red);
       notifyListeners();
-    });
+    }
   }
 
   Future<bool> isAutenticated() async {
@@ -101,6 +119,22 @@ class AuthProvider extends ChangeNotifier {
 
     try {
       final resp = await JpApi.httpGet('/auth');
+      
+      // Verificar si la respuesta contiene un error estructurado
+      if (resp is Map && resp['error'] == true) {
+        // Manejar el error de forma elegante sin bloquear la UI
+        // Solo mostrar notificación si no es un error de conexión básico
+        if (resp['tipo'] != 'DioExceptionType.connectionError') {
+          NotifServ.showSnackbarError(resp['mensaje'] ?? 'Error de autenticación', Colors.orange);
+        }
+        
+        authStatus = AuthStatus.notAuthenticated;
+        isLoading = false;
+        notifyListeners();
+        return false;
+      }
+      
+      // Si no hay error, procesamos normalmente
       final authResponse = AuthResponse.fromJson(resp);
       user = authResponse.usuario;
       _token = authResponse.token;
@@ -109,7 +143,9 @@ class AuthProvider extends ChangeNotifier {
       notifyListeners();
       return true;
     } catch (e) {
-      NotifServ.showSnackbarError('Error in Auth. contact admin', Colors.red);
+      // Este bloque solo se ejecutará si hay un error en la conversión de datos
+      // o algún otro error inesperado
+      NotifServ.showSnackbarError('Error al procesar los datos de autenticación', Colors.red);
       authStatus = AuthStatus.notAuthenticated;
       isLoading = false;
       notifyListeners();

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../api/jp_api.dart';
 import '../models/blog.dart';
 import '../models/http/all_blogs_response.dart';
+import '../services/logger_service.dart';
 import '../services/notificacion_service.dart';
 
 class AllBlogsProvider extends ChangeNotifier {
@@ -121,7 +122,7 @@ class AllBlogsProvider extends ChangeNotifier {
     try {
       isLoading = true;
 
-      print('Recargando lista de blogs silenciosamente...');
+      Logger.log('Recargando lista de blogs silenciosamente...');
 
       // Añadir try/catch adicional para manejar posibles errores específicos
       try {
@@ -149,15 +150,15 @@ class AllBlogsProvider extends ChangeNotifier {
           _total = resp.total;
         }
 
-        print('Blogs cargados silenciosamente: ${_allBlogs.length}');
+        Logger.log('Blogs cargados silenciosamente: ${_allBlogs.length}');
       } catch (innerError) {
-        print('Error específico en getAllBlogsSN: $innerError');
+        Logger.error('Error específico en getAllBlogsSN', innerError);
       } finally {
         // Importante: restablecer isLoading a false
         isLoading = false;
       }
     } catch (e) {
-      print('Error general en getAllBlogsSN: $e');
+      Logger.error('Error general en getAllBlogsSN', e);
       isLoading = false;
     }
   }
@@ -168,42 +169,50 @@ class AllBlogsProvider extends ChangeNotifier {
       isLoading = true;
       // notifyListeners();
 
-      print('Recargando lista de blogs...');
+      Logger.log('Recargando lista de blogs...');
 
       // Añadir try/catch adicional para manejar posibles errores específicos
       try {
         final json = await JpApi.httpGet('/blogs');
+
+        // Verificar si la respuesta contiene un error estructurado
+        if (json is Map && json['error'] == true) {
+          Logger.error('Error al obtener blogs', json['detalles']);
+          // No lanzamos excepción, para que la UI pueda mostrar un mensaje amigable
+          isLoading = false;
+          return;
+        }
 
         // Verificar si la respuesta es válida
         if (json == null) {
           throw Exception('Respuesta vacía del servidor');
         }
 
-        print('Respuesta de getAllBlogs: $json');
+        Logger.log('Respuesta de getAllBlogs obtenida correctamente');
 
         // Intentar diferentes formatos de respuesta
         if (json is Map<String, dynamic> && json.containsKey('blogs')) {
           // Formato esperado: { blogs: [...], total: X }
-          print('Formato de respuesta: objeto con campo blogs');
+          Logger.debug('Formato de respuesta: objeto con campo blogs');
           _allBlogs =
               List<Blog>.from(json['blogs'].map((blog) => Blog.fromJson(blog)));
           _total = json['total'] ?? 0;
         } else if (json is List) {
           // Formato alternativo: directamente un array de blogs
-          print('Formato de respuesta: array de blogs');
+          Logger.debug('Formato de respuesta: array de blogs');
           _allBlogs = List<Blog>.from(json.map((blog) => Blog.fromJson(blog)));
           _total = json.length;
         } else {
           // Intentar como AllBlogsResponse
-          print('Intentando procesar como AllBlogsResponse...');
+          Logger.debug('Intentando procesar como AllBlogsResponse...');
           final AllBlogsResponse resp = AllBlogsResponse.fromJson(json);
           _allBlogs = resp.blogs;
           _total = resp.total;
         }
 
-        print('Blogs cargados: ${_allBlogs.length}');
+        Logger.log('Blogs cargados: ${_allBlogs.length}');
       } catch (innerError) {
-        print('Error específico en getAllBlogs: $innerError');
+        Logger.error('Error específico en getAllBlogs', innerError);
 
         // Si hay un error de decodificación, intentamos obtener los datos de forma manual
         if (innerError.toString().contains('UTF-8')) {
@@ -219,7 +228,7 @@ class AllBlogsProvider extends ChangeNotifier {
       isLoading = false;
       // notifyListeners();
     } catch (e) {
-      print('Error general en getAllBlogs: $e');
+      Logger.error('Error general en getAllBlogs', e);
       isLoading = false;
       // notifyListeners();
       NotifServ.showSnackbarError('Error al cargar blogs: $e', Colors.red);
@@ -1181,51 +1190,34 @@ class AllBlogsProvider extends ChangeNotifier {
   Future<bool> actualizarBlogsRelacionados(
       String blogId, List<String> idsRelacionados) async {
     try {
-      print('Actualizando blogs relacionados para blogId: $blogId');
-      print('IDs a relacionar: $idsRelacionados');
-
       // Asegurarnos de que solo enviamos IDs válidos (no vacíos)
       final idsValidos = idsRelacionados.where((id) => id.isNotEmpty).toList();
-
       final data = {'relacionados': idsValidos};
-
-      print('Enviando datos al servidor como JSON: $data');
+      
       final json = await JpApi.putJson('/blogs/$blogId/relacionados', data);
-
+      
       if (json != null) {
-        bool exito = false;
-
+        // Verificamos casos específicos de error
+        bool exito = true;
         if (json is Map<String, dynamic>) {
-          // Verificar múltiples formatos posibles de respuesta exitosa
-          if ((json.containsKey('ok') && json['ok'] == true) ||
-              (json.containsKey('success') && json['success'] == true) ||
-              (json.containsKey('status') &&
-                  (json['status'] == 'ok' || json['status'] == 'success'))) {
-            exito = true;
-          }
-          // Si la respuesta incluye el objeto blog actualizado
-          else if (json.containsKey('blog') || json.containsKey('data')) {
-            exito = true;
+          if ((json.containsKey('error') && json['error'] == true) ||
+              (json.containsKey('success') && json['success'] == false) ||
+              (json.containsKey('status') && 
+                  (json['status'] == 'error' || json['status'] == 'failed'))) {
+            exito = false;
           }
         }
-
-        if (exito) {
-          NotifServ.showSnackbarError(
-              'Blogs relacionados actualizados correctamente', Colors.green);
-          return true;
-        } else {
-          print('Respuesta no reconocida como éxito: $json');
-          NotifServ.showSnackbarError(
-              'No se pudo actualizar los blogs relacionados', Colors.orange);
-          return false;
+        
+        // Limpiar caché para forzar recarga de datos actualizados si fue exitoso
+        if (exito && _relacionadosCache.containsKey(blogId)) {
+          _relacionadosCache.remove(blogId);
         }
+        
+        return exito;
       } else {
-        throw Exception('Respuesta vacía del servidor');
+        return false;
       }
     } catch (e) {
-      print('Error al actualizar blogs relacionados: $e');
-      NotifServ.showSnackbarError(
-          'Error al actualizar blogs relacionados: $e', Colors.red);
       return false;
     }
   }

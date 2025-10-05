@@ -39,7 +39,7 @@ class _BlogsAdminViewState extends State<BlogsAdminView> {
         });
       }
     } catch (e) {
-      print('Error al recargar blogs: $e');
+      
     }
   }
 

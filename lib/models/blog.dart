@@ -44,7 +44,7 @@ class Blog {
   factory Blog.fromJson(Map<String, dynamic> json) {
     try {
       // Evitamos imprimir todo el objeto json para prevenir errores de codificación
-      print('Procesando Blog.fromJson, ID: ${json["_id"]}');
+      
       
       // Manejo seguro de ID: podría estar como _id o id
       String blogId = '';
@@ -91,7 +91,7 @@ class Blog {
           parsedFechaPublicacion = DateTime.parse(json["fechaPublicacion"]);
         }
       } catch (e) {
-        print('Error al parsear fechaPublicacion: ${json["fechaPublicacion"]}');
+        
       }
       
       try {
@@ -99,7 +99,7 @@ class Blog {
           parsedCreatedAt = DateTime.parse(json["createdAt"]);
         }
       } catch (e) {
-        print('Error al parsear createdAt: ${json["createdAt"]}');
+        
       }
       
       try {
@@ -107,7 +107,7 @@ class Blog {
           parsedUpdatedAt = DateTime.parse(json["updatedAt"]);
         }
       } catch (e) {
-        print('Error al parsear updatedAt: ${json["updatedAt"]}');
+        
       }
 
       // Manejo seguro de textos que pueden tener caracteres especiales
@@ -117,7 +117,7 @@ class Blog {
           // Convertir explícitamente a String y manejar posibles errores de codificación
           return map[key].toString();
         } catch (e) {
-          print('Error al convertir $key a String: $e');
+          
           return ''; // Devolvemos string vacío en caso de error
         }
       }
@@ -135,13 +135,32 @@ class Blog {
             
             if (filteredList.isNotEmpty) {
               blogsRelacionados = List<Blog>.from(
-                filteredList.map((blog) => Blog.fromJson(blog))
+                filteredList.map((blog) {
+                  // Si blog es un string (ID), crear un blog con ID pero otros campos vacíos
+                  if (blog is String) {
+                    
+                    return Blog(
+                      id: blog,
+                      tituloEs: '',
+                      tituloEn: '',
+                      contenidoEs: '',
+                      contenidoEn: '',
+                      img: '',
+                      publicado: true,
+                      fechaPublicacion: DateTime.now(),
+                      createdAt: DateTime.now(),
+                      updatedAt: DateTime.now(),
+                    );
+                  }
+                  // Si es un objeto completo, procesarlo normalmente
+                  return Blog.fromJson(blog);
+                })
               );
-              print('Blogs relacionados procesados: ${blogsRelacionados.length}');
+              
             }
           }
         } catch (e) {
-          print('Error al procesar blogs relacionados: $e');
+          
           // Ya está inicializado como lista vacía
         }
       }
@@ -168,7 +187,7 @@ class Blog {
         relacionados: blogsRelacionados,
       );
     } catch (e) {
-      print('Error en Blog.fromJson: $e');
+      
       return blogDummy; // Devolver un blog vacío en caso de error
     }
   }
@@ -183,7 +202,7 @@ class Blog {
           .replaceAll('\u{FFFD}', '') // Reemplazar caracteres de reemplazo UTF
           .trim();
     } catch (e) {
-      print('Error al sanitizar texto: $e');
+      
       return ''; // En caso de error, devolver string vacío
     }
   }

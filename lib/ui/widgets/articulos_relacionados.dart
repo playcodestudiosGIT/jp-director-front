@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../constant.dart';
 import '../../models/blog.dart';
 import '../../providers/auth_provider.dart';
+import '../../services/logger_service.dart';
 import '../../services/navigator_service.dart';
 import 'blog_card.dart';
 
@@ -23,7 +24,7 @@ class ArticulosRelacionados extends StatelessWidget {
     
     // Verificar si hay blogs relacionados para mostrar
     if (blogs.isEmpty) {
-      print('No hay blogs relacionados para mostrar');
+      Logger.log('No hay blogs relacionados para mostrar');
       return Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
@@ -60,18 +61,10 @@ class ArticulosRelacionados extends StatelessWidget {
       );
     }
     
-                  // Debug detallado: Mostrar información de los blogs relacionados con todas las propiedades
-    print('Mostrando ${blogs.length} blogs relacionados');
-    for (var blog in blogs) {
-      print('Blog relacionado ID: ${blog.id}');
-      print('- Título ES: "${blog.tituloEs}"');
-      print('- Título EN: "${blog.tituloEn}"');
-      print('- Imagen: "${blog.img}"');
-      print('- Fecha publicación: ${blog.fechaPublicacion}');
-      print('- Publicado: ${blog.publicado}');
-      print('- Contenido ES (primeros 20 chars): "${blog.contenidoEs.length > 20 ? blog.contenidoEs.substring(0, 20) + '...' : blog.contenidoEs}"');
-      print('- Contenido EN (primeros 20 chars): "${blog.contenidoEn.length > 20 ? blog.contenidoEn.substring(0, 20) + '...' : blog.contenidoEn}"');
-    }    return Container(
+    // Debug detallado usando Logger para información de blogs relacionados
+    Logger.debug('Mostrando ${blogs.length} blogs relacionados');
+    
+    return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
       child: Column(

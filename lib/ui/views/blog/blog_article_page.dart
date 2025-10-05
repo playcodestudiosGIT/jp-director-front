@@ -1,4 +1,6 @@
-﻿import 'package:flutter/material.dart';
+import 'dart:async';
+
+import 'package:flutter/material.dart';
 import 'package:jp_director/router/router.dart';
 import 'package:provider/provider.dart';
 
@@ -22,14 +24,14 @@ class BlogArticlePage extends StatefulWidget {
   State<BlogArticlePage> createState() => _BlogArticlePageState();
 }
 
-// FunciÃ³n global para el ancho responsivo - 768px es el punto de quiebre para pantallas pequeÃ±as
+// Función global para el ancho responsivo - 768px es el punto de quiebre para pantallas pequeñas
 double wSize(BuildContext context) {
   final size = MediaQuery.of(context).size;
   final isSmallScreen = size.width < 768;
   return isSmallScreen ? size.width * 0.9 : size.width * 0.7;
 }
 
-// FunciÃ³n global para determinar si la pantalla es pequeÃ±a
+// Función global para determinar si la pantalla es pequeña
 bool isSmallScreen(BuildContext context) {
   return MediaQuery.of(context).size.width < 768;
 }
@@ -41,7 +43,7 @@ class _BlogArticlePageState extends State<BlogArticlePage> {
   @override
   void initState() {
     super.initState();
-    // Diferimos la carga hasta después del primer build para evitar problemas
+    // Diferimos la carga hasta despu�s del primer build para evitar problemas
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         _loadArticle();
@@ -70,8 +72,26 @@ class _BlogArticlePageState extends State<BlogArticlePage> {
       // Solo continuar si el widget sigue montado
       if (!mounted) return;
       
-      // Cargar el blog
-      await blogProvider.getBlogById(widget.articleId);
+      // Cargar el blog con timeout para evitar que se quede colgado indefinidamente
+      bool timeoutOccurred = false;
+      
+      await Future.any([
+        // Petición normal
+        blogProvider.getBlogById(widget.articleId),
+        
+        // Timeout después de 8 segundos
+        Future.delayed(const Duration(seconds: 8), () {
+          timeoutOccurred = true;
+          throw TimeoutException("La conexión al servidor tardó demasiado. Verifique su conexión a Internet o inténtelo más tarde.");
+        })
+      ]).catchError((error) {
+        // Si ocurrió un timeout, lanzamos la excepción para que sea capturada por el catch exterior
+        if (timeoutOccurred) {
+          throw error;
+        }
+        // Para otros errores, también los propagamos
+        throw error;
+      });
       
       // Actualizar estado solo si el widget sigue montado
       if (mounted) {
@@ -80,10 +100,17 @@ class _BlogArticlePageState extends State<BlogArticlePage> {
         });
       }
     } catch (e) {
-      print('Error al cargar blog: $e');
-      
-      // Actualizar estado solo si el widget sigue montado
+      // Mostrar mensaje de error
       if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error al cargar el artículo: ${e.toString()}'),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 5),
+          ),
+        );
+        
+        // Actualizar estado para mostrar error en la UI
         setState(() {
           isLoading = false;
           hasError = true;
@@ -118,6 +145,49 @@ class _BlogArticlePageState extends State<BlogArticlePage> {
                   ],
                 ),
               )
+            else if (hasError)
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.error_outline,
+                      color: Colors.red,
+                      size: 60,
+                    ),
+                    const SizedBox(height: 15),
+                    const Text(
+                      "No se pudo cargar el artículo",
+                      style: TextStyle(color: blancoText, fontSize: 18),
+                    ),
+                    const SizedBox(height: 10),
+                    const Text(
+                      "Verifique su conexión a Internet o inténtelo más tarde",
+                      style: TextStyle(color: Colors.grey),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: _loadArticle,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: azulText,
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                      ),
+                      child: const Text("Volver a intentar"),
+                    ),
+                    const SizedBox(height: 20),
+                    TextButton(
+                      onPressed: () {
+                        NavigatorService.navigateTo(Flurorouter.blogRoute);
+                      },
+                      child: const Text(
+                        "Volver a Blogs",
+                        style: TextStyle(color: azulText),
+                      ),
+                    ),
+                  ],
+                ),
+              )
             else
               const Padding(
                 padding: EdgeInsets.only(top: 80.0), // Espacio para el botón de regreso
@@ -127,7 +197,7 @@ class _BlogArticlePageState extends State<BlogArticlePage> {
               top: 20,
               left: 20,
               child: SizedBox(
-                width: 200, // Ancho más pequeño para evitar problemas
+                width: 200, // Ancho m�s peque�o para evitar problemas
                 child: TopAreaBack(
                   onPress: () {
                     NavigatorService.navigateTo(Flurorouter.blogRoute);
@@ -158,7 +228,7 @@ class _BlogArticleBody extends StatelessWidget {
     final blogProvider = Provider.of<AllBlogsProvider>(context);
     final authProvider = Provider.of<AuthProvider>(context);
     
-    // Verificar si blogView es válido (no es el dummy)
+    // Verificar si blogView es v�lido (no es el dummy)
     if (blogProvider.blogView.id == blogDummy.id) {
       return Center(
         child: Column(
@@ -167,7 +237,7 @@ class _BlogArticleBody extends StatelessWidget {
             const CircularProgressIndicator(color: azulText),
             const SizedBox(height: 20),
             Text(
-              'Cargando artículo...',
+              'Cargando art�culo...',
               style: TextStyle(color: blancoText, fontSize: 18),
             ),
           ],
@@ -175,7 +245,7 @@ class _BlogArticleBody extends StatelessWidget {
       );
     }
     
-    final blog = blogProvider.blogView; // Ya verificamos que es válido
+    final blog = blogProvider.blogView; // Ya verificamos que es v�lido
     final size = MediaQuery.of(context).size;
     final bool smallScreen = isSmallScreen(context);
 
@@ -188,7 +258,7 @@ class _BlogArticleBody extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            // Espaciado para el botÃ³n de back
+            // Espaciado para el botón de back
             const SizedBox(height: 80),
 
             // Contenido principal
@@ -201,7 +271,7 @@ class _BlogArticleBody extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // TÃ­tulo del artÃ­culo
+                  // Título del artículo
                   Text(
                     blog.getTitulo(currentLocale),
                     style: TextStyle(
@@ -214,7 +284,7 @@ class _BlogArticleBody extends StatelessWidget {
 
                   const SizedBox(height: 12),
 
-                  // Fecha de publicaciÃ³n
+                  // Fecha de publicación
                   Text(
                     _formatDate(blog.fechaPublicacion),
                     style: TextStyle(
@@ -226,7 +296,7 @@ class _BlogArticleBody extends StatelessWidget {
 
                   const SizedBox(height: 40),
 
-                  // Imagen del artÃ­culo
+                  // Imagen del artículo
                   if (blog.img.isNotEmpty)
                     Container(
                       width: double.infinity,
@@ -258,13 +328,13 @@ class _BlogArticleBody extends StatelessWidget {
                             ),
                     ),
 
-                  // Contenido del artÃ­culo
+                  // Contenido del artículo
                   Container(
                     width: double.infinity,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // PÃ¡rrafos del contenido
+                        // Párrafos del contenido
                         ...(blog.getContenido(currentLocale).isNotEmpty
                             ? blog.getContenido(currentLocale).split('\n\n')
                             : ['No hay contenido disponible'])
@@ -272,7 +342,7 @@ class _BlogArticleBody extends StatelessWidget {
                           if (paragraph.trim().isEmpty)
                             return const SizedBox.shrink();
 
-                          // Detectar si es un subtÃ­tulo (empieza con ## o similar)
+                          // Detectar si es un subtítulo (empieza con ## o similar)
                           if (paragraph.startsWith('##')) {
                             return Container(
                               margin: const EdgeInsets.symmetric(vertical: 24),
@@ -288,7 +358,7 @@ class _BlogArticleBody extends StatelessWidget {
                             );
                           }
 
-                          // PÃ¡rrafo normal
+                          // Párrafo normal
                           return Container(
                             margin: const EdgeInsets.only(bottom: 20),
                             child: Text(
@@ -308,16 +378,16 @@ class _BlogArticleBody extends StatelessWidget {
 
                   const SizedBox(height: 60),
 
-                  // Artículos relacionados - Manejo seguro para prevenir errores de renderizado
+                  // Art�culos relacionados - Manejo seguro para prevenir errores de renderizado
                   if (context.mounted) 
                     Container(
                       constraints: const BoxConstraints(minHeight: 100),
-                      // Verificamos si el widget está montado antes de renderizar
+                      // Verificamos si el widget est� montado antes de renderizar
                       child: StatefulBuilder(
                         builder: (BuildContext ctx, StateSetter setState) {
                           return ArticulosRelacionados(
                             blogs: blog.relacionados,
-                            key: ValueKey('articulos_relacionados_${blog.id}'), // Usar key para mejorar identificación
+                            key: ValueKey('articulos_relacionados_${blog.id}'), // Usar key para mejorar identificaci�n
                           );
                         },
                       ),
@@ -351,6 +421,6 @@ class _BlogArticleBody extends StatelessWidget {
   }
 }
 
-// La sección RelatedArticlesSection fue reemplazada por el componente ArticulosRelacionados
+// La secci�n RelatedArticlesSection fue reemplazada por el componente ArticulosRelacionados
 
 // La clase _RelatedArticleCard fue reemplazada por componentes en ArticulosRelacionados

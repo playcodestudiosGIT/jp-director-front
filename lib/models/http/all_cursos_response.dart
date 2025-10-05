@@ -17,8 +17,10 @@ class AllCursosResponse {
     String toRawJson() => json.encode(toJson());
 
     factory AllCursosResponse.fromJson(Map<String, dynamic> json) => AllCursosResponse(
-        total: json["total"],
-        cursos: List<Curso>.from(json["cursos"].map((x) => Curso.fromJson(x))),
+        total: json["total"] ?? 0, // Usar 0 como valor predeterminado si es nulo
+        cursos: json["cursos"] != null
+            ? List<Curso>.from(json["cursos"].map((x) => Curso.fromJson(x)))
+            : [], // Devolver lista vacía si cursos es nulo
     );
 
     Map<String, dynamic> toJson() => {

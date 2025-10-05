@@ -16,7 +16,7 @@ class NavigatorService {
   static Future<void> navigateTo(String routeName) async {
     // Evitar navegaciones rápidas consecutivas que pueden causar problemas en Flutter Web
     if (_isNavigating) {
-      print('Navegación en progreso, ignorando solicitud a: $routeName');
+      
       return;
     }
     
@@ -38,7 +38,7 @@ class NavigatorService {
         }
       }
     } catch (e) {
-      print('Error durante la navegación a $routeName: $e');
+      
     } finally {
       // Cancelar temporizador y liberar bloqueo
       _navigationLockTimer?.cancel();
@@ -53,7 +53,7 @@ class NavigatorService {
         await navigatorKey.currentState!.pushReplacementNamed(routeName);
       }
     } catch (e) {
-      print('Error durante el reemplazo de ruta a $routeName: $e');
+      
     }
   }
 }

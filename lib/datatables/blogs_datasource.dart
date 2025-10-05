@@ -188,7 +188,7 @@ class BlogsDTS extends DataTableSource {
               onPress: () async {
                 Navigator.pop(context);
                 
-                print('Iniciando eliminación del blog ID: ${blog.id}');
+                
                 final provider = Provider.of<AllBlogsProvider>(context, listen: false);
                 
                 final success = await provider.deleteBlog(blog.id);
@@ -200,7 +200,7 @@ class BlogsDTS extends DataTableSource {
                   await provider.getAllBlogs();
                   notifyListeners();
                 } else {
-                  print('Falló la eliminación del blog ID: ${blog.id}');
+                  
                 }
               },
               color: Colors.red,

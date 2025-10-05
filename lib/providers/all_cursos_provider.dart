@@ -236,22 +236,46 @@ class AllCursosProvider extends ChangeNotifier {
   getAllCursos() async {
     try {
       final resp = await JpApi.httpGet('/cursos');
-      final cursosResponse = AllCursosResponse.fromJson(resp);
-      _total = cursosResponse.total;
-      _allCursos = cursosResponse.cursos;
-      notifyListeners();
+      
+      // Verificar si la respuesta contiene un error
+      if (resp is Map && resp['error'] == true) {
+        print('Error en la respuesta del servidor: ${resp['mensaje']}');
+        return; // No procesamos una respuesta con error
+      }
+      
+      // Verificar que la respuesta es válida antes de procesarla
+      if (resp != null) {
+        final cursosResponse = AllCursosResponse.fromJson(resp);
+        _total = cursosResponse.total;
+        _allCursos = cursosResponse.cursos;
+        notifyListeners();
+      } else {
+        print('La respuesta del servidor es nula');
+      }
     } catch (e) {
-      throw 'error $e';
+      // En lugar de lanzar una excepción, manejamos el error y lo registramos
+      print('Error al cargar cursos: $e');
+      // Podríamos establecer un flag de error aquí si es necesario
+      // _hasError = true;
+      // notifyListeners();
     }
   }
 
   Curso obtenerCurso(String id) {
     try {
+      // Verificamos si la lista está vacía para evitar errores
+      if (_allCursos.isEmpty) {
+        return _curso; // Usamos el curso dummy si no hay datos
+      }
+      
+      // Buscamos el curso por ID con manejo seguro
       final Curso newCurso = _allCursos
-          .firstWhere((element) => element.id == id, orElse: () => curso);
+          .firstWhere((element) => element.id == id, orElse: () => _curso);
       return newCurso;
     } catch (e) {
-      rethrow;
+      // Registramos el error para depuración
+      print('Error en obtenerCurso: $e');
+      return _curso; // Devolvemos el curso dummy en caso de error
     }
   }
 
