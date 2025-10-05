@@ -5,6 +5,7 @@ import '../../constant.dart';
 import '../../models/blog.dart';
 import '../../providers/auth_provider.dart';
 import '../../services/navigator_service.dart';
+import 'blog_card.dart';
 
 class ArticulosRelacionados extends StatelessWidget {
   final List<Blog> blogs;
@@ -59,13 +60,18 @@ class ArticulosRelacionados extends StatelessWidget {
       );
     }
     
-    // Debug: Mostrar información de los blogs relacionados
+                  // Debug detallado: Mostrar información de los blogs relacionados con todas las propiedades
     print('Mostrando ${blogs.length} blogs relacionados');
     for (var blog in blogs) {
-      print('Blog relacionado: ${blog.id} - ${blog.getTitulo(idioma)}');
-    }
-    
-    return Container(
+      print('Blog relacionado ID: ${blog.id}');
+      print('- Título ES: "${blog.tituloEs}"');
+      print('- Título EN: "${blog.tituloEn}"');
+      print('- Imagen: "${blog.img}"');
+      print('- Fecha publicación: ${blog.fechaPublicacion}');
+      print('- Publicado: ${blog.publicado}');
+      print('- Contenido ES (primeros 20 chars): "${blog.contenidoEs.length > 20 ? blog.contenidoEs.substring(0, 20) + '...' : blog.contenidoEs}"');
+      print('- Contenido EN (primeros 20 chars): "${blog.contenidoEn.length > 20 ? blog.contenidoEn.substring(0, 20) + '...' : blog.contenidoEn}"');
+    }    return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
       child: Column(
@@ -104,20 +110,32 @@ class ArticulosRelacionados extends StatelessWidget {
                 runSpacing: 20,
                 alignment: WrapAlignment.start,
                 children: this.blogs.map((blog) {
+                  // Formato de fechas
                   final date = '${blog.fechaPublicacion.day}/${blog.fechaPublicacion.month}/${blog.fechaPublicacion.year}';
-                  final title = blog.getTitulo(idioma);
-                  final description = blog.getContenido(idioma);
-                  final cleanDescription = description.length > 100 ? '${description.substring(0, 100)}...' : description;
-                  final imagen = blog.imagen;
+                  
+                  // Manejo seguro de título
+                  final title = blog.getTitulo(idioma).isNotEmpty 
+                      ? blog.getTitulo(idioma)
+                      : 'Título no disponible';
+                  
+                  // Manejo seguro de descripción según el idioma
+                  final String contenido = idioma == 'es' ? blog.contenidoEs : blog.contenidoEn;
+                  final cleanDescription = contenido.isNotEmpty
+                      ? (contenido.length > 100 ? '${contenido.substring(0, 100)}...' : contenido)
+                      : 'Leer este artículo relacionado';
+                  
+                  // Imagen del blog
+                  final imagen = blog.img;
                   
                   return SizedBox(
                     width: cardWidth > 280 ? 280 : cardWidth,
-                    child: _BlogCard(
+                    child: BlogCard(
                       date: date,
                       title: title,
                       description: cleanDescription,
                       articleId: blog.id,
                       imagen: imagen,
+                      width: cardWidth > 280 ? 280 : cardWidth,
                     ),
                   );
                 }).toList(),
@@ -128,143 +146,6 @@ class ArticulosRelacionados extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-// Widget de tarjeta de blog implementado como en home_views/blog_view.dart
-class _BlogCard extends StatelessWidget {
-  final String date;
-  final String title;
-  final String description;
-  final String articleId;
-  final String imagen;
-
-  const _BlogCard({
-    required this.date,
-    required this.title,
-    required this.description,
-    required this.articleId,
-    required this.imagen,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    // Evitamos cambios de estado durante la construcción usando un Builder separado
-    return Builder(
-      builder: (innerContext) => Container(
-        width: 280,
-        height: 350,
-        decoration: BoxDecoration(
-          color: Colors.transparent,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Imagen del artículo o placeholder si no hay imagen
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Container(
-              width: double.infinity,
-              height: 160,
-              decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(0.3),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: imagen.isNotEmpty
-                ? Image.network(
-                    imagen,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return const Icon(
-                        Icons.image,
-                        color: Colors.grey,
-                        size: 60,
-                      );
-                    },
-                  )
-                : const Icon(
-                    Icons.image,
-                    color: Colors.grey,
-                    size: 60,
-                  ),
-            ),
-          ),
-          
-          const SizedBox(height: 15),
-          
-          // Fecha
-          Text(
-            date,
-            style: TextStyle(
-              color: blancoText.withOpacity(0.6),
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-          
-          const SizedBox(height: 8),
-          
-          // Título
-          Text(
-            title,
-            style: const TextStyle(
-              color: blancoText,
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-            ),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-          
-          const SizedBox(height: 8),
-          
-          // Descripción
-          Expanded(
-            child: Text(
-              description,
-              style: TextStyle(
-                color: blancoText.withOpacity(0.7),
-                fontSize: 12,
-                height: 1.4,
-              ),
-              maxLines: 4,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-          
-          const SizedBox(height: 15),
-          
-          // Enlace discreto para leer más
-          GestureDetector(
-            onTap: () {
-              NavigatorService.navigateTo('/blog/$articleId');
-            },
-            child: Row(
-              children: [
-                Text(
-                  'Leer Más',
-                  style: const TextStyle(
-                    color: azulText,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    decoration: TextDecoration.underline,
-                    decorationColor: azulText,
-                  ),
-                ),
-                const SizedBox(width: 4),
-                const Icon(
-                  Icons.arrow_forward_ios,
-                  size: 10,
-                  color: azulText,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    ),
     );
   }
 }

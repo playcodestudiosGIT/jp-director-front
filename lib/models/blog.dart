@@ -6,7 +6,7 @@ class Blog {
   final String tituloEn;
   final String contenidoEs;
   final String contenidoEn;
-  final String imagen;
+  final String img; // Cambiado de imagen a img
   final bool publicado;
   final DateTime fechaPublicacion;
   final DateTime createdAt;
@@ -19,7 +19,7 @@ class Blog {
     required this.tituloEn,
     required this.contenidoEs,
     required this.contenidoEn,
-    required this.imagen,
+    required this.img, // Cambiado de imagen a img
     required this.publicado,
     required this.fechaPublicacion,
     required this.createdAt,
@@ -146,13 +146,21 @@ class Blog {
         }
       }
       
+      // Tratamiento especial para la imagen - intentar primero 'img' y si no hay, 'imagen'
+      String imagenFinal = "";
+      if (json.containsKey("img") && json["img"] != null && json["img"].toString().isNotEmpty) {
+        imagenFinal = safeGetString(json, "img");
+      } else if (json.containsKey("imagen") && json["imagen"] != null && json["imagen"].toString().isNotEmpty) {
+        imagenFinal = safeGetString(json, "imagen");
+      }
+      
       return Blog(
         id: blogId,
         tituloEs: safeGetString(json, "tituloEs"),
         tituloEn: safeGetString(json, "tituloEn"),
         contenidoEs: safeGetString(json, "contenidoEs"),
         contenidoEn: safeGetString(json, "contenidoEn"),
-        imagen: safeGetString(json, "imagen"),
+        img: imagenFinal, // Usar la imagen procesada de manera segura
         publicado: parsedEstado,
         fechaPublicacion: parsedFechaPublicacion,
         createdAt: parsedCreatedAt,
@@ -188,7 +196,7 @@ class Blog {
         "tituloEn": tituloEn,
         "contenidoEs": contenidoEs,
         "contenidoEn": contenidoEn,
-        "imagen": imagen,
+        "img": img, // Cambiado de imagen a img
         "publicado": publicado,
         "fechaPublicacion": fechaPublicacion.toIso8601String(),
         "createdAt": createdAt.toIso8601String(),
@@ -203,7 +211,7 @@ class Blog {
         tituloEn: '',
         contenidoEs: '',
         contenidoEn: '',
-        imagen: '',
+        img: '', // Cambiado de imagen a img
         publicado: true,
         fechaPublicacion: DateTime.now(),
         createdAt: DateTime.now(),
@@ -217,7 +225,7 @@ class Blog {
     String? tituloEn,
     String? contenidoEs,
     String? contenidoEn,
-    String? imagen,
+    String? img, // Cambiado de imagen a img
     bool? publicado,
     DateTime? fechaPublicacion,
     DateTime? createdAt,
@@ -230,7 +238,7 @@ class Blog {
       tituloEn: tituloEn ?? this.tituloEn,
       contenidoEs: contenidoEs ?? this.contenidoEs,
       contenidoEn: contenidoEn ?? this.contenidoEn,
-      imagen: imagen ?? this.imagen,
+      img: img ?? this.img, // Cambiado de imagen a img
       publicado: publicado ?? this.publicado,
       fechaPublicacion: fechaPublicacion ?? this.fechaPublicacion,
       createdAt: createdAt ?? this.createdAt,
@@ -247,7 +255,7 @@ final blogDummy = Blog(
   tituloEn: '',
   contenidoEs: '',
   contenidoEn: '',
-  imagen: '',
+  img: '', // Cambiado de imagen a img
   publicado: true,
   fechaPublicacion: DateTime.now(),
   createdAt: DateTime.now(),

@@ -227,7 +227,7 @@ class _BlogArticleBody extends StatelessWidget {
                   const SizedBox(height: 40),
 
                   // Imagen del artÃ­culo
-                  if (blog.imagen.isNotEmpty)
+                  if (blog.img.isNotEmpty)
                     Container(
                       width: double.infinity,
                       height: smallScreen ? 200 : 400,
@@ -236,11 +236,11 @@ class _BlogArticleBody extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                         color: Colors.grey.withOpacity(0.3),
                       ),
-                      child: blog.imagen.isNotEmpty
+                      child: blog.img.isNotEmpty
                           ? ClipRRect(
                               borderRadius: BorderRadius.circular(12),
                               child: Image.network(
-                                blog.imagen,
+                                blog.img,
                                 fit: BoxFit.cover,
                                 errorBuilder: (context, error, stackTrace) {
                                   return const Icon(

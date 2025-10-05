@@ -274,7 +274,7 @@ class AllBlogsProvider extends ChangeNotifier {
       _tituloEnBlogModal = blog.tituloEn;
       _contenidoEsBlogModal = blog.contenidoEs;
       _contenidoEnBlogModal = blog.contenidoEn;
-      _imagenBlogModal = blog.imagen;
+      _imagenBlogModal = blog.img; // Actualizado de imagen a img
       _publicadoBlogModal = blog.publicado;
       _fechaPublicacionBlogModal = blog.fechaPublicacion;
 
@@ -427,7 +427,7 @@ class AllBlogsProvider extends ChangeNotifier {
         'tituloEn': safeTextEn,
         'contenidoEs': safeContentEs,
         'contenidoEn': safeContentEn,
-        'imagen': _imagenBlogModal.isEmpty
+        'img': _imagenBlogModal.isEmpty  // Actualizado de 'imagen' a 'img'
             ? 'https://res.cloudinary.com/dqhj9cim6/image/upload/v1685068240/system/no-image_yvvpny.jpg'
             : _imagenBlogModal,
         'publicado':
@@ -533,7 +533,7 @@ class AllBlogsProvider extends ChangeNotifier {
         'tituloEn': safeTextEn,
         'contenidoEs': safeContentEs,
         'contenidoEn': safeContentEn,
-        'imagen': _imagenBlogModal,
+        'img': _imagenBlogModal, // Actualizado de 'imagen' a 'img'
         'publicado': _publicadoBlogModal,
         'fechaPublicacion': formattedDate,
       };
@@ -804,7 +804,14 @@ class AllBlogsProvider extends ChangeNotifier {
         if (json is List) {
           disponibles = List<Blog>.from(json.map((x) => Blog.fromJson(x)));
         }
-        // Si el servidor envuelve los blogs en un objeto
+        // Si el servidor envuelve los blogs en un objeto con clave "blogs" (formato actual del servidor)
+        else if (json is Map<String, dynamic> &&
+            json.containsKey('blogs')) {
+          print('Encontrada respuesta con formato {blogs: [...]}');
+          disponibles =
+              List<Blog>.from(json['blogs'].map((x) => Blog.fromJson(x)));
+        }
+        // Mantener compatibilidad con formato anterior usando clave "disponibles"
         else if (json is Map<String, dynamic> &&
             json.containsKey('disponibles')) {
           disponibles =
@@ -1182,8 +1189,8 @@ class AllBlogsProvider extends ChangeNotifier {
 
       final data = {'relacionados': idsValidos};
 
-      print('Enviando datos al servidor: $data');
-      final json = await JpApi.put('/blogs/$blogId/relacionados', data);
+      print('Enviando datos al servidor como JSON: $data');
+      final json = await JpApi.putJson('/blogs/$blogId/relacionados', data);
 
       if (json != null) {
         bool exito = false;

@@ -31,9 +31,9 @@ class BlogsDTS extends DataTableSource {
           width: 80,
           height: 80,
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
-          child: blog.imagen.isNotEmpty
+          child: blog.img.isNotEmpty
               ? Image.network(
-                  blog.imagen,
+                  blog.img,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return const Icon(Icons.image, size: 50, color: Colors.grey);
