@@ -377,7 +377,7 @@ abstract class AppLocalizations {
   /// No description provided for @precio11.
   ///
   /// In en, this message translates to:
-  /// **'\$280'**
+  /// **'\$300'**
   String get precio11;
 
   /// No description provided for @usd.

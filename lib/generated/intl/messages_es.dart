@@ -739,7 +739,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "porQueYoResp": MessageLookupByLibrary.simpleMessage(
       "SELECTIVO Y SINCERO\nSer el encargado de tu marca requiere compromiso y responsabilidad, es por eso que antes de comenzar analizaré tu negocio con mucho detalle para concluir si cumples con todos los requerimientos para poder apoyarte.\n\nEn caso de ser un SÍ pondremos un plan de acción eficaz.\n\nEn caso de ser un NO te daré mi feedback sincero para referirte con el especialista o plan que tu negocio necesite.\n\nPRECIO SEGÚN TU MODELO DE NEGOCIO\nAlgo que me caracteriza es que reviso muy a detalle tu negocio antes de comenzar e incluso evaluando en conjunto contigo puedo saber si estás preparado para dar este paso.\n\nMi promesa es que cuando adquieras mi servicio sea un gran alivio y veas resultados.\n\nEXPERIENCIA Y RESULTADOS\nDesde la creación de la estrategia, copywriting, anuncios creativos, segmentación, funnels de conversión de tu web, manejo de presupuesto y análisis de resultados están dentro de mis capacidades para ocupar este puesto",
     ),
-    "precio11": MessageLookupByLibrary.simpleMessage("\$280"),
+    "precio11": MessageLookupByLibrary.simpleMessage("\$300"),
     "precioDelCurso": MessageLookupByLibrary.simpleMessage("Precio del curso"),
     "preguntasfrecuentes": MessageLookupByLibrary.simpleMessage(
       "Preguntas frecuentes",

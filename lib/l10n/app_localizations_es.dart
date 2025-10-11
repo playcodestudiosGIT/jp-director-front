@@ -155,7 +155,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get unoAuno => 'UNO A UNO';
 
   @override
-  String get precio11 => '\$280';
+  String get precio11 => '\$300';
 
   @override
   String get usd => 'usd';

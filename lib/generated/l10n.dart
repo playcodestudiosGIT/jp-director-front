@@ -469,9 +469,9 @@ class AppLocalizations {
     return Intl.message('ONE-ON-ONE', name: 'unoAuno', desc: '', args: []);
   }
 
-  /// `$280`
+  /// `$300`
   String get precio11 {
-    return Intl.message('\$280', name: 'precio11', desc: '', args: []);
+    return Intl.message('\$300', name: 'precio11', desc: '', args: []);
   }
 
   /// `USD`
