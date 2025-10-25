@@ -65,7 +65,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get contactoLargeText =>
-      'For the past 5 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of more than \$12,000,000 USD invested and a return of more than \$160,000,000 USD in advertising campaigns on Facebook, Instagram, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.';
+      'For the past 6 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of more than \$18,000,000 USD invested and a return of more than \$\$180,000,000 USD in sales through advertising campaigns on Meta (Facebook, Instagram, WhatsApp), Google, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.';
 
   @override
   String get descargaRegaloBtn => 'DOWNLOAD THIS GIFT';
@@ -159,7 +159,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get unoAuno => 'ONE-ON-ONE';
 
   @override
-  String get precio11 => '\$300';
+  String get precio11 => '\$350';
 
   @override
   String get usd => 'USD';
@@ -611,7 +611,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get desdeHace4 =>
-      'For the past 5 years, I\'ve been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I\'ve managed more than \$12,000,000 USD in advertising campaigns, achieving more than \$160,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns.';
+      'For the past 6 years, I\'ve been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I\'ve managed more than \$18,000,000 USD in advertising campaigns, achieving more than \$180,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns.';
 
   @override
   String get quieroYaBtn => 'I WANT THIS COURSE NOW';

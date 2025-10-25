@@ -64,7 +64,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get contactoLargeText =>
-      'Desde hace 5 años estoy comprometido en potenciar y educar con estrategias publicitarias efectivas que dan en el punto.\nCon un recorrido de mas de \$12.000.000 USD invertidos y un retorno de mas de \$160.000.000 USD en campañas publicitarias en Facebook, Instagram y Tiktok, afirmo que el éxito de los negocios consiste en: \n1. Una excelente estrategia publicitaria.\n2. Analizar y optimizar los datos.\n3. Contar con un profesional con experiencia.\nMi misión es ser el encargado o mentor acompañándote al éxito en todo el proceso publicitario.';
+      'Desde hace 6 años estoy comprometido en potenciar y educar con estrategias publicitarias efectivas que dan en el punto.\nCon un recorrido de mas de \$18.000.000 USD invertidos y un retorno de mas de \$180.000.000 USD en ventas a través de campañas publicitarias en Meta (Facebook, Instagram, Whatsapp) Google y Tiktok, afirmo que el éxito de los negocios consiste en: \n1. Una excelente estrategia publicitaria.\n2. Analizar y optimizar los datos.\n3. Contar con un profesional con experiencia.\nMi misión es ser el encargado o mentor acompañándote al éxito en todo el proceso publicitario.';
 
   @override
   String get descargaRegaloBtn => 'DESCARGA ESTE REGALO';
@@ -158,7 +158,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get unoAuno => 'UNO A UNO';
 
   @override
-  String get precio11 => '\$300';
+  String get precio11 => '\$350';
 
   @override
   String get usd => 'usd';
@@ -610,7 +610,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get desdeHace4 =>
-      'Desde hace 5 años me dedico a potenciar marcas y negocios con estrategias efectivas en ads que dan en el punto. \n\nEn todo el proceso he manejado una cantidad de mas de \$12.000.000 USD en campañas publicitarias, logrando mas de \$160.000.000 USD en ventas por internet. Luego de innumerables pruebas, análisis y educación, decidí realizar esta experiencia grupal para enseñarle a emprendedores, dueños de negocio o equipos de marketing a entender el motor que es realizar campañas publicitarias.';
+      'Desde hace 6 años me dedico a potenciar marcas y negocios con estrategias efectivas en ads que dan en el punto. \n\nEn todo el proceso he manejado una cantidad de mas 18.000.000 USD en campañas publicitarias, logrando mas de \$180.000.000 USD 180.000.000 USD en ventas a través de campañas publicitarias en Meta (Facebook, Instagram, Whatsapp) Google y Tiktok. Luego de innumerables pruebas, análisis y educación, decidí realizar esta experiencia grupal para enseñarle a emprendedores, dueños de negocio o equipos de marketing a entender el motor que es realizar campañas publicitarias.';
 
   @override
   String get quieroYaBtn => 'QUIERO ESTE CURSO YA';

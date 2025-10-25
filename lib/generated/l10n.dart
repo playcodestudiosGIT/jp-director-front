@@ -204,10 +204,10 @@ class AppLocalizations {
     );
   }
 
-  /// `For the past 5 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of more than $12,000,000 USD invested and a return of more than $160,000,000 USD in advertising campaigns on Facebook, Instagram, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.`
+  /// `For the past 6 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of more than $18,000,000 USD invested and a return of more than $$180,000,000 USD in sales through advertising campaigns on Meta (Facebook, Instagram, WhatsApp), Google, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.`
   String get contactoLargeText {
     return Intl.message(
-      'For the past 5 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of more than \$12,000,000 USD invested and a return of more than \$160,000,000 USD in advertising campaigns on Facebook, Instagram, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.',
+      'For the past 6 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of more than \$18,000,000 USD invested and a return of more than \$180,000,000 USD in sales through advertising campaigns on Meta (Facebook, Instagram, WhatsApp), Google, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.',
       name: 'contactoLargeText',
       desc: '',
       args: [],
@@ -471,7 +471,7 @@ class AppLocalizations {
 
   /// `$300`
   String get precio11 {
-    return Intl.message('\$300', name: 'precio11', desc: '', args: []);
+    return Intl.message('\$350', name: 'precio11', desc: '', args: []);
   }
 
   /// `USD`
@@ -1649,10 +1649,10 @@ class AppLocalizations {
     );
   }
 
-  /// `For the past 5 years, I've been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I've managed more than $12,000,000 USD in advertising campaigns, achieving more than $160,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns.`
+  /// `For the past 6 years, I've been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I've managed more than $18,000,000 USD in advertising campaigns, achieving more than $180,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns.`
   String get desdeHace4 {
     return Intl.message(
-      'For the past 5 years, I\'ve been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I\'ve managed more than \$12,000,000 USD in advertising campaigns, achieving more than \$160,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns.',
+      'For the past 6 years, I\'ve been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I\'ve managed more than \$18,000,000 USD in advertising campaigns, achieving more than \$180,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns.',
       name: 'desdeHace4',
       desc: '',
       args: [],

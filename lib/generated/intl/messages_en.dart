@@ -176,7 +176,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "You\'re a doctor, coach, realtor, lawyer, or nutritionist, and your services are highly sought after on social media. All that\'s left is to expose yourself in the right way through advertising.",
     ),
     "contactoLargeText": MessageLookupByLibrary.simpleMessage(
-      "For the past 5 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of more than \$12,000,000 USD invested and a return of more than \$160,000,000 USD in advertising campaigns on Facebook, Instagram, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.",
+      "For the past 6 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of more than \$18,000,000 USD invested and a return of more than \$180,000,000 USD in sales through advertising campaigns on Meta (Facebook, Instagram, WhatsApp), Google, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.",
     ),
     "contactoMenuBtn": MessageLookupByLibrary.simpleMessage("Contact"),
     "continuaMensaje": MessageLookupByLibrary.simpleMessage(
@@ -262,7 +262,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Discover how to boost your business",
     ),
     "desdeHace4": MessageLookupByLibrary.simpleMessage(
-      "For the past 5 years, I\'ve been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I\'ve managed more than \$12,000,000 USD in advertising campaigns, achieving more than \$160,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns.",
+      "For the past 6 years, I\'ve been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I\'ve managed more than \$18,000,000 USD in advertising campaigns, achieving more than \$180,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns.",
     ),
     "deseasDejar": MessageLookupByLibrary.simpleMessage(
       "Wish to stop feeling anguish over non-converting results",
@@ -699,7 +699,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "porQueYoResp": MessageLookupByLibrary.simpleMessage(
       "SELECTIVE AND SINCERE\nBeing in charge of your brand requires commitment and responsibility. That\'s why I will thoroughly analyze your business before we start to determine if you meet all the requirements for me to support you.\n\nIf it\'s a YES, we will create an effective action plan.\n\nIf it\'s a NO, I will provide honest feedback and refer you to the specialist or plan your business needs.\n\nPRICE BASED ON YOUR BUSINESS MODEL\nOne of my distinguishing features is that I thoroughly review your business before starting, and even by evaluating it together with you, I can determine if you are ready to take this step.\n\nMy promise is that when you purchase my service, it will be a great relief, and you will see results.\n\nEXPERIENCE AND RESULTS\nFrom strategy creation, copywriting, creative ads, segmentation, web conversion funnels, budget management, to results analysis, these are all within my capabilities for taking on this role.",
     ),
-    "precio11": MessageLookupByLibrary.simpleMessage("\$300"),
+    "precio11": MessageLookupByLibrary.simpleMessage("\$350"),
     "precioDelCurso": MessageLookupByLibrary.simpleMessage("Course Price"),
     "preguntasfrecuentes": MessageLookupByLibrary.simpleMessage(
       "Frequently Asked Questions",

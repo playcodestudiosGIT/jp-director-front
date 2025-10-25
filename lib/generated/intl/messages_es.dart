@@ -190,7 +190,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Eres médico, coach, realtor, abogado o nutricionista y tus servicios son altamente buscados en las redes sociales, por lo que solo falta exponerte de la manera correcta en publicidad.",
     ),
     "contactoLargeText": MessageLookupByLibrary.simpleMessage(
-      "Desde hace 5 años estoy comprometido en potenciar y educar con estrategias publicitarias efectivas que dan en el punto.\nCon un recorrido de mas de \$12.000.000 USD invertidos y un retorno de mas de \$160.000.000 USD en campañas publicitarias en Facebook, Instagram y Tiktok, afirmo que el éxito de los negocios consiste en: \n1. Una excelente estrategia publicitaria.\n2. Analizar y optimizar los datos.\n3. Contar con un profesional con experiencia.\nMi misión es ser el encargado o mentor acompañándote al éxito en todo el proceso publicitario.",
+      "Desde hace 6 años estoy comprometido en potenciar y educar con estrategias publicitarias efectivas que dan en el punto.\nCon un recorrido de mas de \$18.000.000 USD invertidos y un retorno de mas de \$180.000.000 USD en ventas a través de campañas publicitarias en Meta (Facebook, Instagram, Whatsapp) Google y Tiktok, afirmo que el éxito de los negocios consiste en: \n1. Una excelente estrategia publicitaria.\n2. Analizar y optimizar los datos.\n3. Contar con un profesional con experiencia.\nMi misión es ser el encargado o mentor acompañándote al éxito en todo el proceso publicitario.",
     ),
     "contactoMenuBtn": MessageLookupByLibrary.simpleMessage("Contacto"),
     "continuaMensaje": MessageLookupByLibrary.simpleMessage(
@@ -278,7 +278,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Descubre cómo impulsar tu negocio",
     ),
     "desdeHace4": MessageLookupByLibrary.simpleMessage(
-      "Desde hace 5 años me dedico a potenciar marcas y negocios con estrategias efectivas en ads que dan en el punto. \n\nEn todo el proceso he manejado una cantidad de mas de \$12.000.000 USD en campañas publicitarias, logrando mas de \$160.000.000 USD en ventas por internet. Luego de innumerables pruebas, análisis y educación, decidí realizar esta experiencia grupal para enseñarle a emprendedores, dueños de negocio o equipos de marketing a entender el motor que es realizar campañas publicitarias.",
+      "Desde hace 6 años me dedico a potenciar marcas y negocios con estrategias efectivas en ads que dan en el punto. \n\nEn todo el proceso he manejado una cantidad de mas de \$18.000.000 USD en campañas publicitarias, logrando mas de \$180.000.000 USD 180.000.000 USD en ventas a través de campañas publicitarias en Meta (Facebook, Instagram, Whatsapp) Google y Tiktok. Luego de innumerables pruebas, análisis y educación, decidí realizar esta experiencia grupal para enseñarle a emprendedores, dueños de negocio o equipos de marketing a entender el motor que es realizar campañas publicitarias.",
     ),
     "deseasDejar": MessageLookupByLibrary.simpleMessage(
       "Deseas dejar de sentir angustia por resultados que no convierten",
@@ -739,7 +739,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "porQueYoResp": MessageLookupByLibrary.simpleMessage(
       "SELECTIVO Y SINCERO\nSer el encargado de tu marca requiere compromiso y responsabilidad, es por eso que antes de comenzar analizaré tu negocio con mucho detalle para concluir si cumples con todos los requerimientos para poder apoyarte.\n\nEn caso de ser un SÍ pondremos un plan de acción eficaz.\n\nEn caso de ser un NO te daré mi feedback sincero para referirte con el especialista o plan que tu negocio necesite.\n\nPRECIO SEGÚN TU MODELO DE NEGOCIO\nAlgo que me caracteriza es que reviso muy a detalle tu negocio antes de comenzar e incluso evaluando en conjunto contigo puedo saber si estás preparado para dar este paso.\n\nMi promesa es que cuando adquieras mi servicio sea un gran alivio y veas resultados.\n\nEXPERIENCIA Y RESULTADOS\nDesde la creación de la estrategia, copywriting, anuncios creativos, segmentación, funnels de conversión de tu web, manejo de presupuesto y análisis de resultados están dentro de mis capacidades para ocupar este puesto",
     ),
-    "precio11": MessageLookupByLibrary.simpleMessage("\$300"),
+    "precio11": MessageLookupByLibrary.simpleMessage("\$350"),
     "precioDelCurso": MessageLookupByLibrary.simpleMessage("Precio del curso"),
     "preguntasfrecuentes": MessageLookupByLibrary.simpleMessage(
       "Preguntas frecuentes",

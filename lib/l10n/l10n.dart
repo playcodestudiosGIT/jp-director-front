@@ -203,7 +203,7 @@ abstract class AppLocalizations {
   /// No description provided for @contactoLargeText.
   ///
   /// In en, this message translates to:
-  /// **'For the past 5 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of more than \$12,000,000 USD invested and a return of more than \$160,000,000 USD in advertising campaigns on Facebook, Instagram, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.'**
+  /// **'For the past 6 years, I have been committed to empowering and educating with effective advertising strategies that hit the mark.\nWith a track record of more than \$18,000,000 USD invested and a return of more than \$\$180,000,000 USD in sales through advertising campaigns on Meta (Facebook, Instagram, WhatsApp), Google, and TikTok, I affirm that business success consists of:\n1. An excellent advertising strategy.\n2. Analyzing and optimizing data.\n3. Having an experienced professional by your side.\nMy mission is to be the one in charge or mentor, accompanying you to success throughout the advertising process.'**
   String get contactoLargeText;
 
   /// No description provided for @descargaRegaloBtn.
@@ -383,7 +383,7 @@ abstract class AppLocalizations {
   /// No description provided for @precio11.
   ///
   /// In en, this message translates to:
-  /// **'\$300'**
+  /// **'\$350'**
   String get precio11;
 
   /// No description provided for @usd.
@@ -1199,7 +1199,7 @@ abstract class AppLocalizations {
   /// No description provided for @desdeHace4.
   ///
   /// In en, this message translates to:
-  /// **'For the past 5 years, I\'ve been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I\'ve managed more than \$12,000,000 USD in advertising campaigns, achieving more than \$160,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns.'**
+  /// **'For the past 6 years, I\'ve been dedicated to boosting brands and businesses with effective ad strategies that hit the mark. Throughout the process, I\'ve managed more than \$18,000,000 USD in advertising campaigns, achieving more than \$180,000,000 USD in online sales. After countless trials, analyses, and education, I decided to offer this group experience to teach entrepreneurs, business owners, or marketing teams to understand the engine that is running advertising campaigns.'**
   String get desdeHace4;
 
   /// No description provided for @quieroYaBtn.
